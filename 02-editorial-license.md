@@ -24,7 +24,7 @@ What is essential to the internal narrative was to thwart the "Solomon Spalding"
 
 Once you can recognize the intentional efforts to leverage the Ancient American Record to grow a church movement, the ability to identify the Pauline Baptish Campbellite Ridgon philosophies are much more plausible.  For antagonists, this fine point is irrelevant; the baby goes out with the bathe water.  For apologists, this potential reality is NOT comfortable.  Yet, this may be the way forward.  A way to fulfill the prophetic counsel offered in D&C 123:  to waste and wear out our lives to bring the truth from the darkness for the benefit of our children.  Cosmic irony at its best.  And a cosmic lesson regarding entropy of mediocrity for self-preservation of institutional norms.  The antithesis of innovative frames. 
 
-#### Church purpose
+#### Motivation to leverage Ancient Record to grow a Church
 The early Church went through several institutional changes very rapidly: (1) the ideal organization of Joseph Smith, (2) the Whitmer influence, (3) the Rigdon influence, (4) the Brigham synod with smaller schism movements, (5) the Talmage polemics, (6) the Hinckley bureaucracy, (7) the Nelson 'trust leadership' with its strong 'hold fast to the iron rod' messaging.
 
 Joseph Smith, Jr. had an uncle who started a Church (Lucy's brother) after having adventures on the high seas (possible source of the idea for Joseph Smith, Sr.: grow gingseng and sell to China; but no family member went on the ship and the fortune was lost/stolen) and losing the 'love of his life.'  This obvious data point is overlooked by many; internally may be intentionally overlooked to frame a simple First Vision narrative anchored to the Epistle of Jacob (vulgarly called James).
