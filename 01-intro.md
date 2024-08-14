@@ -66,3 +66,4 @@ Modern marketing describes this adoption process as the AIDAS funnel:  Awareness
 Many of those with whom Nephi would interact would NOT understand the vocal language, but the symbols written could diffuse a significant part of the message nonetheless.  A bit of bitumen or black pitch from a rubber tree, or some other form of blackened paint/ink would make the first metal leaf of the tablet available as a stamp on tor-tor or other papyrus.  The largest symbol was likely what we would classify as an "ankh symbol with a cross" and the overall design of the first page was likely radial from the anchor [I Nephi] like a word flower.  This would be similar to how scrabble pivots to create other words in an orthogonal way; however, this design would be circular or spiral representing an 'eternal round.'
 
 [insert oval-shape symbol for nfr]
+
