@@ -92,7 +92,7 @@ Aha!  Can you see?
 
 Why is it that Roman history is silent until about 100 AD where two historians are then commissioned to write narratives?  Josephus to write from a Jewish perspective and Pliny the Younger to write from a Roman perspective.  
 
-What is the primary implication?  The Messiah Death Event was much worse than you can imagine.  More brutal for those tortured AND the Apocalyptic Celestial Response *was* Epic.  There are plenty of clues remaining to this reality, a trinity of testimonies can be triangulated:  Psalms (20-24), Isaiah (20-24), and Matthew (20-24).
+What is the primary implication?  The Messiah Death Event was much worse than you can imagine.  More brutal for those tortured AND the Apocalyptic Celestial Response *was* Epic.  There are plenty of clues remaining to this reality, a trinity of triangulating testimonies:  Psalms (20-24), Isaiah (20-24), and Matthew (20-24).
 
 And that, my dear reader, is the seed needed to move forward.  To reconstruct your understanding of the Messiah Death Event.  To unlock how instutitions manipulate you to thrive and grow:  in healthcare, in education, in religion, in government/economics/politics.  To enable you to understand the purpose of this planet [mor-mon-ya] and your celestial heritage.
 
