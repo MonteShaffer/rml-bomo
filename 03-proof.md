@@ -75,7 +75,7 @@ My current understanding is that the word "Shazer" was the marker of the 600 yea
 ![sha](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sha.png?raw=true) *sha*
 ![zer](https://github.com/MonteShaffer/rml-bomo/blob/main/images/zer.png?raw=true) *zer*
 
-[sha: pdf page 123]([https://www.um.es/cepoat/egipcio/wp-content/uploads/egyptianhierogly.pdf)
+[sha: pdf page 123](https://www.um.es/cepoat/egipcio/wp-content/uploads/egyptianhierogly.pdf)
 
 [zer: Paleo-Hebrew](https://www.ancient-hebrew.org/alphabet/files/alphabet_chart2.pdf) with [mamzer: H4464](https://www.blueletterbible.org/lexicon/h4464/kjv/wlc/0-1/)
 
