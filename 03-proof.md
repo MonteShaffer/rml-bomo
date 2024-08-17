@@ -24,7 +24,7 @@ This is the best phrase I can use as a concise proof:  "And my father dwelt in a
 ![Teaching: And my father dwelt in tent](https://github.com/MonteShaffer/rml-bomo/blob/main/images/teaching-and-my-father-dwelt-in-tent.png?raw=true) 
 
 <!---
-https://i.ibb.co/8xywPDz/teaching-and-my-father-dwelt-in-tent.png
+https://i.ibb.co/WFRyQHG/teaching-and-my-father-dwelt-in-tent.png
 //-->
 
 
@@ -34,6 +34,9 @@ With one phrase, Nephi could educate his children how a society best operates.  
 
 ![Teaching: And my father dwelt in tent](https://github.com/MonteShaffer/rml-bomo/blob/main/images/teaching-and-my-father-dwelt-in-tent.png?raw=true) 
 
+<!---
+https://i.ibb.co/WFRyQHG/teaching-and-my-father-dwelt-in-tent.png
+//-->
 
 Students of biblical Hebrew will object to the inexactness of the above translation process based on the belief that their current understanding of Hebrew is the benchmark forgetting that biblical Hebrew is a broken language.  I need to emphasize: the language of Nephi is NOT a broken language.  And therein is a significant implication.  Nephi's language can help restore the broken Hebrew and the lost Egyptian.  It is like a Rosetta stone, but so much more.  As Joseph Smith described:  it is the keystone of religion.  Not just Judeo-Christian religion, nor Abrahamic religion.  It is the keystone of all religion.  Religion means to "bind again" and the language and teachings of Nephi will empower us with the knowledge to be "bound again" to our celestial heritage.  Many may describe such a claim as esoteric, and it may be so.  Joseph Smith was an innovator born in a traditional Christian era, and the innovations he received got pigeon-holed into the Christian frame yet a universal religion may have been part of his effort.
 
