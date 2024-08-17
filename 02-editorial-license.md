@@ -61,9 +61,16 @@ Regardless, the data remains that Hyrum Smith had some local prominence to get O
 
 Dartmouth College had some of the first doctors openly practicing non-wartime surgery in 1800s America.  The "bone surgery" story of Joseph's youth demonstrates that: (1) Lucy Mack had money to pay doctors for their constant visits (20 total doctors participated in Joseph's diagnosis and treatment), (2) Joseph would spend significant time in medical settings and therefore would have advanced access to the belief systems of these doctors, (3) Lucy Mack was convinced to perform a surgery on her son based on limited evidence (and even modern uncertainty) being assured that a leg surgery did not have the same spiritual consequence as a surgery in the human core (which was considered spiritual blaspheme among Christians at the time), (4) Joseph's typhoidal (more likely syphilic) condition is a cosmic tie-in to the "sore curse" described in the Book of Mormon that could turn a man or woman black down there (the genitalia region commonly called shame in the 1830s).
 
-What seems to be lacking from the preparation narratives is the role of Hyrum Smith.  Five years senior to Joseph, Hyrum was an older brother that intentionally returned to Carthage to be with his brother at the end.  Certainly, Hyrum would have been involved during the mansucript preparation.
+What seems to be lacking from the preparation narratives is the role of Hyrum Smith.  Five years senior to Joseph, Hyrum was an older brother that intentionally returned to Carthage to be with his brother at the end.  Certainly, Hyrum would have been involved during the mansucript preparation.  He was, after all one of the eight witnesses where 8 > 3.
 
 [insert daguerreotype of Hyrum, painting of Joseph here]
+
+[https://www.youtube.com/watch?v=o5epan2yGKI]
+
+https://i.ibb.co/wJvmgRZ/hyrum.png
+https://i.ibb.co/YRyCRRM/joseph.png
+
+
 
 #### Provenance failure with initial preparation  
 During the manuscript creation process, the first portion of the creation was lost when Joseph loaned Martin Harris the only copy of the prepared manuscript in its polished form.  Martin significantly financed the entrepreneurial enterprise.  Martin already helped Joseph by giving him $50 so Joseph could move.  In addition, Martin had promised to finance a significant portion of the printing costs of the first edition of the Book of Mormon.  Martin mortgaged some property as collateral and would turn a very healthy profit once the Book of Mormon was published and sold.
