@@ -63,14 +63,16 @@ Dartmouth College had some of the first doctors openly practicing non-wartime su
 
 What seems to be lacking from the preparation narratives is the role of Hyrum Smith.  Five years senior to Joseph, Hyrum was an older brother that intentionally returned to Carthage to be with his brother at the end.  Certainly, Hyrum would have been involved during the mansucript preparation.  He was, after all one of the eight witnesses where 8 > 3.
 
-[insert daguerreotype of Hyrum, painting of Joseph here]
+
+![Hyrum](https://github.com/MonteShaffer/rml-bomo/blob/main/images/hyrum.png?raw=true) 
+![Joseph](https://github.com/MonteShaffer/rml-bomo/blob/main/images/joseph.png?raw=true) 
 
 [https://www.youtube.com/watch?v=o5epan2yGKI]
 
+<!---
 https://i.ibb.co/wJvmgRZ/hyrum.png
 https://i.ibb.co/YRyCRRM/joseph.png
-
-
+//-->
 
 #### Provenance failure with initial preparation  
 During the manuscript creation process, the first portion of the creation was lost when Joseph loaned Martin Harris the only copy of the prepared manuscript in its polished form.  Martin significantly financed the entrepreneurial enterprise.  Martin already helped Joseph by giving him $50 so Joseph could move.  In addition, Martin had promised to finance a significant portion of the printing costs of the first edition of the Book of Mormon.  Martin mortgaged some property as collateral and would turn a very healthy profit once the Book of Mormon was published and sold.
