@@ -21,7 +21,7 @@ Interesting, there are many "poly" innovations that Joseph Smith suggested:  pol
 #### Concise proof:  And my father dwelt in a tent.
 This is the best phrase I can use as a concise proof:  "And my father dwelt in a tent."  First, this phrase exists.  Second, Sidney would have no reason whatsoever to editorialize this phrase.  Third, it visually displays the context of what is also vocalized.  Fourth, it is both a visual and vocal palindrome.  Fifth, its implications are profound.
 
-![Teaching: And my father dwelt in tent](https://github.com/MonteShaffer/rml-bomo/blob/main/images/teaching-and-my-father-dwelt-in-tent.png?raw=true) 
+![Teaching: And my father dwelt in tent](https://github.com/MonteShaffer/rml-bomo/blob/main/images/teaching-and-my-father-dwelt-in-tent.png?raw=true) *Teaching: And my father dwelt in tent*
 
 <!---
 https://i.ibb.co/WFRyQHG/teaching-and-my-father-dwelt-in-tent.png
@@ -32,11 +32,14 @@ I estimate that the statement is surrounded in "lamads" like we would surround a
 
 With one phrase, Nephi could educate his children how a society best operates.  This is the true form of harem living that has been historically miscontrued as something altogether different.  It is an exogamic society where the daughters stay in the village where they were raised and the boys move to join another village and marry females that are not milk-sisters.  Interdependence of the genders.
 
-![Teaching: And my father dwelt in tent](https://github.com/MonteShaffer/rml-bomo/blob/main/images/teaching-and-my-father-dwelt-in-tent.png?raw=true) 
+![Teaching: And my father dwelt in tent](https://github.com/MonteShaffer/rml-bomo/blob/main/images/teaching-and-my-father-dwelt-in-tent.png?raw=true) *Teaching: And my father dwelt in tent*
 
 <!---
 https://i.ibb.co/WFRyQHG/teaching-and-my-father-dwelt-in-tent.png
 //-->
+
+
+
 
 Students of biblical Hebrew will object to the inexactness of the above translation process based on the belief that their current understanding of Hebrew is the benchmark forgetting that biblical Hebrew is a broken language.  I need to emphasize: the language of Nephi is NOT a broken language.  And therein is a significant implication.  Nephi's language can help restore the broken Hebrew and the lost Egyptian.  It is like a Rosetta stone, but so much more.  As Joseph Smith described:  it is the keystone of religion.  Not just Judeo-Christian religion, nor Abrahamic religion.  It is the keystone of all religion.  Religion means to "bind again" and the language and teachings of Nephi will empower us with the knowledge to be "bound again" to our celestial heritage.  Many may describe such a claim as esoteric, and it may be so.  Joseph Smith was an innovator born in a traditional Christian era, and the innovations he received got pigeon-holed into the Christian frame yet a universal religion may have been part of his effort.
 
@@ -64,6 +67,14 @@ The Book of Mormon prophesy was precise, 600 years.  Certainly the Messianic bir
 Interestingly, stars or celestial events are obvious ommissions in the 1 Nephi narrative of the family traveling in the Arabian peninsula. (Imagine yourself in the middle of the Empty Quarter at night, would the stars not be a primary observation?)  So why are stars never mentioned?  In my reflections, I consider that possibly Nephi used omission as a teaching tool (fill in the blank):  children we were traveling through the barren deserts of Arabia, what is missing in the story?  The stars, of course!  As I now have arrived at the artistic license of the editorial process, another possibility exists:  it was removed.  But why?  Maybe to address the problems associated with the lost manuscript.
 
 My current understanding is that the word "Shazer" was the marker of the 600 year prophecy.  It represented the birth of Jacob, Nephi's younger brother.  And at his birth, there were many signs in the heavens.  "Shazer" (rudimentary definition being: Sha [garden] - zer [birth]) is what I would classify as a superword in Nephi's language (which interestingly Joseph Smith described when discussing Egyptian later in his life: one or two symbols could tell an entire story).  The two word stems can tell an entire story, and this was a teaching device: a sacred grove of almond trees, early spring, snow or blossoms dropping like snow or both, a difficult birth in a garden with an umbilical complication, a sharp knife, a fire, and so on.  This was the birth of Jacob!
+
+![sha](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sha.png?raw=true) *sha*
+![zer](https://github.com/MonteShaffer/rml-bomo/blob/main/images/zer.png?raw=true) *zer*
+
+<!---
+https://i.ibb.co/1QjBxNL/sha.png
+https://i.ibb.co/2PZkHVf/zer.png
+//-->
 
 If we can calculate when the family left Jerusalem, then we would know what year Yeshua was born.  And vice versa.  For example, the family can easily move within/without the city walls, so this puts a constraint on the potential year - the city could not be under seige.  Now the data of Samuel the Lamanite offers another boundary condition.  Many signs already had appeared and Samuel clarified that the ultimate sign would not occur for 5 more years.  So what was a significant sign with which they were familiar as a culture, that was not the ultimate sign?  And, what would the ultimate sign be?
 
