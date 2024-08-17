@@ -23,6 +23,8 @@ This is the best phrase I can use as a concise proof:  "And my father dwelt in a
 
 ![Teaching: And my father dwelt in tent](https://github.com/MonteShaffer/rml-bomo/blob/main/images/teaching-and-my-father-dwelt-in-tent.png?raw=true) *Teaching: And my father dwelt in tent*
 
+[Paleo-Hebrew](https://www.ancient-hebrew.org/alphabet/files/alphabet_chart2.pdf)
+
 <!---
 https://i.ibb.co/WFRyQHG/teaching-and-my-father-dwelt-in-tent.png
 //-->
@@ -33,6 +35,8 @@ I estimate that the statement is surrounded in "lamads" like we would surround a
 With one phrase, Nephi could educate his children how a society best operates.  This is the true form of harem living that has been historically miscontrued as something altogether different.  It is an exogamic society where the daughters stay in the village where they were raised and the boys move to join another village and marry females that are not milk-sisters.  Interdependence of the genders.
 
 ![Teaching: And my father dwelt in tent](https://github.com/MonteShaffer/rml-bomo/blob/main/images/teaching-and-my-father-dwelt-in-tent.png?raw=true) *Teaching: And my father dwelt in tent*
+
+[Paleo-Hebrew](https://www.ancient-hebrew.org/alphabet/files/alphabet_chart2.pdf)
 
 <!---
 https://i.ibb.co/WFRyQHG/teaching-and-my-father-dwelt-in-tent.png
@@ -70,6 +74,11 @@ My current understanding is that the word "Shazer" was the marker of the 600 yea
 
 ![sha](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sha.png?raw=true) *sha*
 ![zer](https://github.com/MonteShaffer/rml-bomo/blob/main/images/zer.png?raw=true) *zer*
+
+[sha: pdf page 123]([https://www.um.es/cepoat/egipcio/wp-content/uploads/egyptianhierogly.pdf)
+
+[zer: Paleo-Hebrew](https://www.ancient-hebrew.org/alphabet/files/alphabet_chart2.pdf) with [mamzer: H4464](https://www.blueletterbible.org/lexicon/h4464/kjv/wlc/0-1/)
+
 
 <!---
 https://i.ibb.co/1QjBxNL/sha.png
