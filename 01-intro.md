@@ -50,7 +50,7 @@ Interestingly, the small plates of Nephi had a very similar objective written ov
 
 
 #### Pedagogy of Introduction 
-I, Nephi, having been born of goodly parents ... this English rendition is lacking the depth of the original proposed text, but it is sufficient to understand the teaching apparatus:  (1) the first person is introduced with accompanying verb forms, (2) state your name when introducing yourself, (3) state your genealogy when introducing yourself, (4) define you parentage including the celestial domain.
+I, Nephi, having been born of goodly parents ... this English rendition is lacking the depth of the original proposed text, but it is sufficient to understand the teaching apparatus:  (1) the first person is introduced with accompanying verb forms, (2) state your name when introducing yourself, (3) state your genealogy when introducing yourself, (4) define you parentage including the celestial domain, (5) introduce literary forms such as alliteration, palindromes, and the spiral/circular non-sentence structure.
 
 
 Ancient American peoples would likely try to define themselves "we the people" in relationship to this father-founder Nephi; for example [nimíipuu] may describe a group with three migrations: [ni] representing Nephi, [míi] possibly representing Mosiah, and [pu] representing the unknown leader that lead "us" [u] to the Pacific Northwest, to the Colombia River system.  Locals would call this group of foreigners [sahaptin] and cousins would have playful names for them: "those that build the small boats". 

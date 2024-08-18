@@ -156,6 +156,27 @@ Now consider the lynchpin of the argument.  The description of the doctrine in 3
 
 One needs to merely review the establishment of the Brigham synod:  Brigham claimed no prophetic authority, personally knew Joseph and understood what a prophet was; rather, Brigham became the President of the Church, consolidated power to maintain control, and decades later, allowed the Church body declare that indeed he was a "prophet, seer, and revelator".  A tradition that continues today.
 
+
+
+
+#### David Whitmer's Testimony
+David Whitmer owned the entirety of a manuscript which the Brigham synod classifies as the "printer manuscript".  Oliver Cowdery, before his death in 1850, gifted this manuscript to David Whitmer.  Although David disengaged from the Mormon movement, he valued this gift.  The year before his death, 1887, at the age of 82, David published a narrative of his Mormon experience in "An address to all believers in Christ."   Before his death, ambassadors from the Brigham synod visit David to discuss the possibility of acquiring his manuscript.  The Brigham messengers were trying to emphasize to the old-timer that the manuscript was the "printer's edition" NOT the "original edition."  David ademantly rejected the idea that it was not the original.  Negotiations collapsed.  In 1903, of David Whitmer sells the manuscript to the Community of Christ, the RLDS or Smith-lineage synod of the Mormon movement.  In 2017, the Brigham synod would finally acquire this manuscript from the Community of Christ paying over $30 million.
+
+Synthesizing of the Whitmer testimony, in context of the translation process, is revealing.  Why would he be so ademant?  Was he just a confused old man?  Or is there something more to the testimony?  First, if you compare the original manuscript to the printer's edition, you will notice that there are many, many more scribal erros of sloppiness in the printer's edition.
+
+![600 years](https://github.com/MonteShaffer/rml-bomo/blob/main/images/600.png?raw=true) 
+
+<!---
+https://i.ibb.co/M2grK7K/600.png
+//-->
+
+
+
+
+
+
+
+
 ### Summary of Editorialization in Translation Process
 The celestial commission seems to have been "bring forth this Ancient American record."  Whether through personal ambitions or through additional directives beyond the primary marvelous work and wonder (singular), Joseph Smith leveraged the novel content in the Ancient American record to craft a religious movement.  Joseph's novel content was an innovation that Sidney could leverage in context of his own desires and ambitions.  Likely, the collaboration was decided when Sidney lost his association with the Baptist group and was rebuilding in Ohio using the Campbellite framework, mixed with his profound beliefs in "infant salvation by grace" that was essential to his person.  Reformationists always have strong beliefs opposing the status quo, but internal beliefs can be as severe and strong as the status quo.  Compare this to Martin Luther's 95 theses against the Catholic tradition, yet his new religious movement would severely punish anyone that was anti-Trinitarian.
 
