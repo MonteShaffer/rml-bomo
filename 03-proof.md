@@ -55,7 +55,7 @@ Mormon also made it very clear that language  was constantly evolving (devolving
 
 ##### Joseph Smith's esoteric perspective  
 
-Taken altogether, I have included the stem [mor-mon-ya] in my estimation of the first phrase written by Nephi in his small plates, the legend of Nephi.  This specific inclusion certainly would have captured Mormon's attention.  And it is a reference to Egyptian mythology that we (humans) are descended from the celestial (the gods) who came on one or more vessels (boats or ships) from a sacred water (lake).  A much different view of our origins than a modern Judeo-Christian norm.
+Taken altogether, I have included the stem [mor-mon-ya] in my estimation of the first phrase written by Nephi in his small plates, the legend of Nephi.  This specific inclusion certainly would have captured Mormon's attention.  And it is a reference to Egyptian mythology that we (humans) are descended from the celestial (the gods) who came on one or more vessels (boats or ships) from a sacred pure water (lake) in the highlands.  A much different view of our origins than a modern Judeo-Christian norm.
 
 Certainly Joseph Smith was engaged in expanding Judeo-Christian views of his era:  [elohim] as a plurality of gods, eternal progression to become a god, and the glory of god being the experience and learning obtained in this life.  Very far removed from a monotheistic view that evolved (or devolved) following the Messiah Death Event; of which, the Masoretes were intentional in removing the notion of polytheism in their efforts to preserve their legacy and remain relevant.
 
