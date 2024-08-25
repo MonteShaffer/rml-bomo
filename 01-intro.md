@@ -1,13 +1,15 @@
 # Restoring Mormon Lore
 
 ## Introduction
+What are the first words of the legend of Nephi found on the writings on the small plates? 
+
+```
 "Ah-nee [an-i] | nah-fee [naf-i] | ahl-yah [al-a] | ahl-ma [al-ma] | ee-ma [i-ma] | mor-mon-yah [mor-mon-a]"
+```
 
-### Implication
-What are the first words of the legend of Nephi found on the writings on the small plates?  Above is a possible description of these first sounds (using basic English phonetics with [Spanish] alternatives).
+ Above is a possible description of these first sounds (using basic English phonetics with [Spanish] alternatives).
 
-
-#### Language 
+### Language 
 - Language is derived from "lengua" meaning tongue.  Language by definition is spoken using the mouth (and often the tongue for a specific sound).  Historians love to separate the barbaric from the civilized by questioning:  does the group have a known written language?  However, written language is a poor descriptor as written symbols may be intended to be represent either a sound or an idea or both.
 - The homo sapien ("humanoid that thinks") has a vocal system that is rather uniform:  lungs, vocal chords, tongue, lips, teeth, mouth cavity with nasal escape.  The combination of these elements create a finite number of sounds, with slight variances.  Phoibles have an inventory of common sounds [https://phoible.org/parameters] yet this is anchored to subtleties that likely can be defined with less than 50 unique sounds isolated into combination pairs.  A good sound-character map would be unique and atomic: unique means that a single character symbol would map to a single sound; atomic means that the single symbol-sound cannot be further decomposed.  That is, two unique sounds can create a compound sound, but itself would not be classified as a unique singleton ([ny] in canyon would not need its own symbol [ñ] or [ɲ] whereas [ch] would need one single character such as the Russian [ч]).
 - The primary homo-sapien language systems likely consists of 5 core vowels (with a sixth neutral-state vowel) and 25-30 core consonants that can be combined in various full and partial pairs and triads.
@@ -15,7 +17,7 @@ What are the first words of the legend of Nephi found on the writings on the sma
 - Language may be best be understood like a river watershed system.  As two languages meet (a confluence) at a specific moment in time (Heraclitus), the interchange and result may be complex. 
 
 
-#### Writings
+### Writings
 Written symbols, in the case of Nephi's symbols, are engraved onto a metal leaf or tablet.  These symbols may be a mapping to specific sounds, or may be expressing ideas directly without a mapping to any particular sound.  Consider for example an IKEA instruction guide for assembling a piece of furniture.  One can infer from the symbols what tasks need to be performed in a universal way without the need of a vocalized language.  The stick figure of a human holding a hammer is NOT intended to be vocalized as language.  However, 2000 years in the future, some clever academic may find this artifact and erroneously create a vocalized mapping of the symbols to sounds and even claim a certain degree of accuracy (say 95%).  Nevertheless, that does NOT mean it was intended as such.  Now apply this principle to so-called experts in Egyptian, Mayan, or Hebrew.  QED.
 
 What is classified as Ancient Egyptian symbols are very similar to what is classified as ancient Hebrew.  If we accept the traditional "Judeo-Christian" narrative, the distinctions may be key anchors in better understanding these ancient languages.  Consider the "m" and "n" confusion.  In Hebrew, the "mem" or "mayim" is the symbol for water; the same symbol is purported one of the symbols pronounced as "n" in Egyptian.  If the Hebrews lived among the Egyptians for 200 or more years, there would need to be a method to distinguish the sound intended ("m" or "n") and the language being used (Egyptian or Hebrew).
@@ -24,7 +26,7 @@ Now to further exacerbate the confusion of "m" and "n", a homo sapien pronounces
 
 The lingua franca of Ancient America (generally called Old Tupí or Tupí-Guaraní which linguistically evolved into dialects commonly called Taíno, Arawak, Quechuan, and Algonquian) has tried to remove the volcalization confusion by pairing the "m" with the "b" (where both use the lips) and the "n" with the "d" (where both have the tongue touching the roof of the mouth).  So in Tupí-Guaraní many words have been written with "mb" and "nd" pairs to clarify which sound (and possibly the context of the pair use will inform the conversant whether the "m" or "b" was being clarified).  For example, prepending the "m" to "bya" to form "mbya":  bia means arrival in modern Hebrew, and "mbya" in Old Tupí may mean generically an "event thing" or in some contexts, arrival (as in the SE Brasilian beach where the man without sea legs wishes to arrive).  Such an understanding provides valuable insight into the use of "Colon-mbia"  (Colon-arrived or Colon-arrival) after 1492 in the Western Hemisphere known as the "Americas".  
 
-### Unknowns
+### Review of placeholder
 The phrase "Ah-nee [an-i] | nah-fee [naf-i] | ahl-yah [al-a] | ahl-ma [al-ma] | ee-ma [i-ma] | mor-mon-yah [mor-mon-a]" is NOT certain.  It is a placeholder to iterate and update as more information becomes available.  However, this prior is essential to beginning to understand the Ancient Record that got "translated" and published as the Book of Mormon in 1830 with Joseph Smith, Jr. being designated the primary author.
 
 [An-i] is likely a shortened rendition of [Am-ano-ki] or [Am-ana-zi]: 'I belong to (or I am derived from) the people from above.'  [ana-zi] may indicate an in-group people whereas [ano-ki] may represent another group (out-group).  So when language is interpreted, there needs to be an understanding that there may be 2+ groups of people (ancestors) from above with which a human may identify.  [An-i] in the root is impartial to which side (or sides) and merely emphasizes "I am a star seed" meaning my ancestory comes from the celestial, above this earth.
@@ -57,7 +59,7 @@ I, Nephi, having been born of goodly parents ... this English rendition is lacki
 
 Ancient American peoples would later try to define themselves "we the people" in relationship to this father-founder Nephi's introduction; for example [nimíipuu] may describe a people with three major leaders (not necessarily only males) that define their kinship group: [ni] representing Nephi, [míi] possibly representing Mosiah, and [pu] representing the unknown leader that lead "us" [u] to the Pacific Northwest, to the Colombia River system.  Locals would call this group of foreigners [sahaptin] and cousins would have playful names for them: "those that build the small boats".  Others may have placed Nephi as the "low man on the totem pole" to represent his importance as founder-contributor to a given people, such as the [ni'isjoohl] of the [nisga'a] (where the ['] can also be represented by <ʔ>, a neutral glottal stop).
 
-##### Temple as Awareness Marker
+#### Temple as Awareness Marker
 As one delves into the life and legend of Nephi, marketing efforts to increase the awareness of his ministry among those who do NOT know him are essential.  The most important visual brand was likely the construction of a large, white, alabaster-like (titi/teet-teet) building located atop a high point in the region to maximize visibility.  Possibly with a steel lightning rod to offer even more spectacle in a rainstorm.
 
 The flat mesa where this building was constructed may have been called a "tepui" by the locals.  Or the locals may have seen the phenomenon which was described to them in Egyptian as "peru taui-upi" or "peru upi-taui" (or some similar arrangement) meaning the house/temple of the sun-god/fire-god.  Regardless, associating the building "high on a mountain top with a banner unfurled as a ensign to the nations" with a unique and specific term would be intuitive: what in marketing would be called a brand. (What was written on the banner?  Maybe "in memory of: God, religion, freedom, peace, wives, and children" which inspired a naval captain hundreds of years later.)
@@ -71,7 +73,7 @@ And now, the legend of Tupí-Guaraní curated by Bartolomé de las Casas (in the
 
 Anchored to the dynamics of language diffusion, the brand Tupí may have been a label for Nephi much later than when he lived as the diffusion reached more and larger populations.  Another potential name for the temple may have been anchored to Egyptian language such as "Uru Uru Ua-u Ua-u".  A potential label for original land of Nephi's inheritance may have been "Uru-<ʔ>-ua-ana" where the double [u]-[u] sound gets separated by a neutral glottal stop which over time was likely interpreted by outsiders as [ugu] as the lower-glottal [g] is a very close proximal to the sound <ʔ>.  The fertile lands later discovered in the early history (before Mosiah) may have been called "Ghee-ana".
 
-##### Ministry
+#### Ministry
 The ministry of Nephi was an adoption and diffusion process.  Once another group was encountered through awareness, Nephi would engage as a servant-leader and protector, fulfilling many of the prophecies of Isaiah: go to the river islands and defend the helpless of the old nation from those that grind the face of the poor, use the rivers as protection (walls made low), become a nursing father where local kings would have their sons work for this great KORESH, literally turn swords into plough-shares to throw dirt and make raised gardens, henges, and other earth works, transplant many seeds of flora/fauna to America, help low-yield fluvial plains to flourish using compost and a slow fire (terra preta), develop a new zion (government system) and a new jerusalem (teaching system), and so on.  
 
 If the locals were satisfied with the adoption of Nephi's teachings and technologies, they would diffuse their understanding to others: family and friends.  The ministry of Nephi included a proselyting function.   Teaching the locals how to live would have improved their quality of life, giving them more free time, and protecting them from those that would want to enslave them.  
