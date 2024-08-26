@@ -29,6 +29,269 @@ The year before the Water Ox is the year of the Water Rat (壬子年]):  [schola
 
 Around the year 0, the closest possible year of the Water Ox is 8 BC.  An anchor for the birth of the Messiah.  
 
+### Two celestial signs: a primary and an ultimate 
+What are the significant celestial signs that were anchors for the prophecy of the Messianic birth?
+
+#### Herod and the wise men 
+In the New Testament, we have a narrative that : (1) a new star appeared in the east leading foreign wise men to the region who were following this star in order to meet the Messianic child; (2) in their local search, these wise men seek an audience with Herod; (3) Herod is curious about the timing of the "new star" as several celestial events had been observed; (4) after learning the "when", Herod reportedly orders that every male born (in the region under the age of two) to be killed; (5) the wise men encounter the child with Mary/Joseph and offer gifts, the family flees into Egypt, and assumingly, the wise men depart the region returning home.  
+
+We can infer Jewish tradition in the birth story.  First, the child would need to be born and, if immediately swaddled and placed in a manager, a lotus-birth would need to be eliminated as a possibility.  Second, the child would be presented to the local synagogue at 8 days old and given a name.  Third, if the child is a male, the naming would be accompanied with a circumcision of the child.  Fourth, a waiting period (likely to see if the child would live), defined as a purification period, would be observed:  8 x 5 = 40 days for a male and 8 x 10 = 80 days for a female.  Thereafter, the child would be presented to God in the temple with sacrificial rituals.  In this case, a firstborn male was (by definition) intended to serve God according to traditions of the House of Jacob.  However, since the decision to empower the tribe of Levi with priestly duties, other tribes could offer a proxy sacrifice known as "redemption of the first born" to absolve the first-born service requirement.  In context of this being a Messianic birth, did such an absolution occur?  
+Other questions remain:  How old was the Messiah when the wise men finally found the family?  What exactly was the order and timing of significant traditional events: wise men offer gifts, family flees to Egypt, Herod dies, family returns from Egypt, Messiah at bar mitzvah (age 12) amazes the erudites in the temple, and so on.  How many wise men were there?  Were there also wise women?  Did they give gifts and leave, or did they stay and observe the Messianic life?  Were they tutors for the young child?  Were the wise men locals (from the Abrahamic tradition) or globals (from all regions of the world)?
+
+Just to answer the question of timing (when the Messiah was born), the primary clue from the Herodian story is that significant celestial events were being observed and Herod understood that the sign of the prophesized Messianic birth occurred about two years previously.  So which sign was that?
+
+#### Samuel the Lamanite
+Samuel the Lamanite appears to the Ancient Americans after significant celestial events were being observed.  Seemingly, these observations, like in the Levant, created speculation as to their specific meaning.  Before clarifying the meaning of the celestial events, Samuel rebukes the society for the ever-so-common sin of "grinding the face of the poor" (see Isaiah 1).  Samuel then reminds the people of the details of the six-hundred year prophecy.  The initial observation, which I will label the primary marker, had occurred.  However, a more significant sign, a unique and ultimate marker was yet to occur.  That is, the ultimate sign would follow the primary sign by a few years (recorded in the editorialized Book of Mormon as: precisely 5 years from now, which is shortly after the primary sign, an ultimate sign would be given).
+
+Interestingly, about 40 years later, when the Messiah visits America after the resurrection, the scribes are (gently) rebuked for excluding these significant prophecies of Samuel.  Seemingly, the pure-blood guardians of the records made an editorial decision to exclude the words of the brown-skinned outsider.
+
+####  Supernova as ultimate sign 
+The ultimate sign was that the sun would set yet the sky for one night would not darken.  That implies that the sign would generate enough light to brighten the sky.  And if this was a global phenomenon (not hemispheric), the bright lights would endure for at least 24 hours. 
+
+In modern vernacular, we may call this event a supernova event described as a powerful and luminous explosion of a star.  The apparent magnitude (or brightness) of a star is a function of its distance from Earth and the intensity of light that the star emits.  This new star was likely previously present in the night sky but was not bright enough to be seen.  If the star exploded, the blast would immediately emit tremendous amounts of light, which would diminish over time as, according to modern theory, the star dies:  a explosion with significant light in the heavens, the source of light is seen as a "new star", the new star continually diminishes in brightness until the star fades from view.    
+
+Johannes Kepler had the opportunity to experience two supernova events in his lifetime.  The first occurred in 1572 when Kepler was an infant, yet later in life he was able to oversee the reprints of Tycho's descriptions to appreciate this event.  The second occurred on 17 October 1604.  This "new star" was the brightest star in the heavens and was visible during the day for twenty or more days and visible at night for over a year. At the time, Kepler believed a supernova event like the two he experienced during his lifetime was the explanation for the Star of Bethlehem in Christian tradition. 
+
+Supernova are rare events.  Often, they are surrounded with controversy.  Some cultures believe supernovae are categorically bad omens; other cultures believe the exact opposite: a supernova as light can only bring good.  Even others cultures consider the celestial rarity to be a message that leads to speculation, discussion, and action.  For example, Queen Elizabeth asked astronomical mathematicians for advice after observing the 1572 supernova.  Or consider the story of Galileo.  Many believe that Galileo used the 1604 event as an impetus to challenge the orthodoxy of Aristotelian physics romanticized with the phrase "E pur si muove".
+
+####  5 April 8 BC: Qingming celebration  
+Anchoring to a fixed equinox as March 21, I propose that exactly half a month later (15 days later) would be the timing for the Messianic birth.  That is, 5 April 8 BC.  
+
+Singificant markers for this conclusion include:  Nowruz anchored to human observation not mathematical cycles; Isaiah's reprimand of the house of Jacob using lunations for its calculations; replacing the lunar anchor with a solar anchor (equinox); the basic concept of the Passover occuring mid-month after a celestial marker; a year being defined as exactly 360 days containing 12 months of 30 days BEFORE some celestial event which caused some groups to celebrate these extra days given (epagomenal days that are outside of times/seasons) giving us the modern 365.2422-day year.
+
+Astronomical documentation for a supernova occuring on this date at the moment is unavailable.  The Chinese do have a festival (celebratory holiday) aligning with this date.  The Qingming festival (清明节:  green/blue water + sun/moon brightness + celebration) is defined to be 15 days following the equinox, varying from between 4 April to 6 April.  The festival is associated with bright lights.  On this day, the living visit burial sites of the ancestors and sweep the tombs (as if preparing the ancestors for resurrection).  In addition, this holiday has a reference to a strange master-servant story that demonstrates loyalty and love amidst a trial of shared suffering.
+
+This festival is anchored to a solar marker, not a lunar marker.  Agrarian centers of ancient China would develop calendars anchored to the sun, including: 大明历 (oldest + brightest + calendar), 四分曆  (son enclosure + divide in 10 + experience/history/event), 四時八節曆 (son enclosure + time/season + divide/eight + segment/classify + experience/history/event).  The year would begin on the equinox consisting of months of 30 days.  A month would be segmented into thirds, known as decans.  That is, a 10-day week.  A week would consist of two pentads, or 5-day periods.  Every few years, an extra decan (10-days) would be added to the year (midsummer) to correct for epagomenal differences between the ideal (360 days) and the observed (365.25-ish days) suggesting that the calendar equinox would drift a few days from the actual equinox.  Of note, is the anchor of time to the number ten, specifically, two sets of 5.  Easy to count using your hands.  And anchored to social interactions.  For example, a agrarian worker was told to bathe at least once every 5 days.  Or, an emperor would retreat into his palace and mourn for 5 days.
+
+#### Lyra Comet 1P as primary sign 
+The "ultimate" sign, a supernova, was unique and novel.  And it would occur, according to Samuel the Lamanite after a more common and frequent.  This primary sign was likely a comet.  A comet, from earth appears to be a star that is moving with a tail, that changes direction, and then disappears.  And then, after some time, the cycle repeats again:  appears, changes direction, and disappears.  Even within one culture, there have been many names for these "guest stars".
+
+| Chinese  | Meaning | Roots |
+| :--:| :------: | :---- |
+| 孛星 |   bushy star    | ten + cover + child : sun/day + life |
+| 彗星 |   broom star   | abundance + abundance + "pig-snout" : sun/day + life |
+| 掃星 |  sweeping star   | hand + "pig-snout" + cover + turban/scarf : sun/day + life |
+| 天攙 |  heavenly intermingler   | one + big : knife + mouth + compare/compete + knife + mouth + second + line + dot |
+| 篷星 |  sailing star   | bamboo + go + walk + one + two + line : sun/day + life  |
+| 長星 |  long star   |  long/grow OR chief/elder OR "pig-snout" + one + bend : sun/day + life  |
+| 燭星 |  candle-flame star   |  fire + net + wrap + insect : sun/day + life  |
+
+The most well-known of these moving celestial bodies is vulgarly called the comet of Halley, attributed to a British astronomer born in 1600s.  A more culturally-nuetral label, Lyra Comet 1P will be used to describe this recurring phenomenon.
+
+Comet Lyra is cyclical 
+
+
+
+The comet Lyra has a cycle (shaw-nah, H8138) that is approximately 75 years: more or less depending on whether the comet gets close to a planet when it enters the planetary region of the solar system and is effected by local gravity.  In addition, the mass of the comet would likely be reduced over time as it emits a stream of material which could possibly create a time trend. 
+
+If so, the people of Nephi would have likely tracked each occurrence of the cyclical appearance of this comet.  Since the cyclical appearance fluctuates, maybe the data varied within 72-78 year window.  Using modern engineering notation, we would say 75 ± 3 years to capture the uncertainty. 
+
+
+
+If we take Samuel's words as "5 years exactly", a supernova occuring on 5 April 8 BC would necessitate a lesser-yet-primary sign to occur on 5 April 13 BC.  This primary sign was not a unique, one-off event, rather it was cyclical.  As such, this celestial event can be used to keep track of time.  From earth, it would appear like a moving star that appears and disappears.
+
+Comets are celestial bodies that appear to be moving lights 
+
+One of the most famous phenomenon we call the comet of Halley, attributed to a British astronomer born in 1600s.
+
+| Chinese  | Meaning | Roots |
+| :--:| :------: | :---- |
+| 孛星 |   bushy star    | ten + cover + child : sun/day + life |
+| 彗星 |   broom star   | abundance + abundance + "pig-snout" : sun/day + life |
+| 掃星 |  sweeping star   | hand + "pig-snout" + cover + turban/scarf : sun/day + life |
+| 天攙 |  heavenly intermingler   | one + big : knife + mouth + compare/compete + knife + mouth + second + line + dot |
+| 篷星 |  sailing star   | bamboo + go + walk + one + two + line : sun/day + life  |
+| 長星 |  long star   |  long/grow OR chief/elder OR "pig-snout" + one + bend : sun/day + life  |
+| 燭星 |  candle-flame star   |  fire + net + wrap + insect : sun/day + life  |
+
+
+
+https://en.wikipedia.org/wiki/Historical_comet_observations_in_China
+
+volcanic eruption that took place from 5 to 14 May 1706
+
+May 5th is 1/3 of year from January 1 start ...
+
+
+Deed to Jedediah M. Grant, 5 May 1843
+
+5 May 1844 (Sunday Afternoon and Evening). Mansion House
+
+BYU Religious Studies Center
+https://rsc.byu.edu › words-joseph-smith › 5-may-1844...
+5 May 1844 (Sunday Afternoon and Evening). Mansion House. [1] A large co in Bar Room P.M. & eve Joseph spoke a long time on petitions read Friersons [2] ...
+
+https://eclipse.gsfc.nasa.gov/5MCSEmap/0001-0100/31-05-10.gif
+
+
+https://www.youtube.com/watch?v=mWLSX04Upig
+Comet 9 March 5 BC?
+
+
+31 AD:  Summer, 4th month (Jan Wu) of year, day of Ren Wu  (3:45)
+https://youtu.be/mWLSX04Upig
+
+3 days later a halo 5:06 
+
+Book of Wei, official history of the Wei dynasty. The book contains only summary information from the now lost official astronomer's records, but nevertheless has reasonably accurate information
+
+The evidence points to Jesus being born in the period 5 BC March 9 - May 4, probably around Passover time: 5 BC April 13-27. Birth in the spring is consistent with the account in Luke that there were shepherds living out in the fields nearby keeping watch over their flock by night. Birth in 5 BC is also consistent with the census of Caesar Augustus. The date of the Nativity presented here enables a new chronology of the life of Christ to be constructed which is consistent with the available evidence.
+
+https://ui.adsabs.harvard.edu/abs/1991QJRAS..32..389H/abstract#:~:text=Astronomical%20and%20historical%20evidence%20suggests,described%20in%20ancient%20Chinese%20records.
+
+scimitar 
+
+https://articles.adsabs.harvard.edu/full/1991QJRAS..32..389H
+pg. 395 ...
+
+po(comet): 12 BC, August 26 (visible for 56 days)
+
+sui(comet): 5 BC, March 9 - April 6 (visible for 70 days) ... sui as hui 
+
+po(comet): 4 BC, April 
+
+po(comet): 10 BC 
+
+https://ui.adsabs.harvard.edu/abs/1962VA......5..127H/abstract
+
+https://scholar.google.com.au/scholar?cites=16601536224523758815&as_sdt=5,48&sciodt=0,48&hl=en
+
+https://articles.adsabs.harvard.edu/cgi-bin/nph-iarticle_query?1987SSRv...45....1D&defaultprint=YES&filetype=.pdf
+
+The apparition of 87 BC was recorded in Babylonian tablets which state that the comet was seen "day beyond day" for a mont
+
+he 760 AD apparition was recorded in the Zuqnin Chronicle's entry for iyyōr 1071 SE (May 760 AD), calling it a "white sig
+
+
+
+
+
+
+
+
+
+
+Wikipedia says 613 BC 
+
+
+240 BC was comet, was this King Mosiah?
+
+| Item              | In Stock | Price |
+| :---------------- | :------: | ----: |
+| Python Hat        |   True   | 23.99 |
+| SQL Hat           |   True   | 23.99 |
+| Codecademy Tee    |  False   | 19.99 |
+| Codecademy Hoodie |  False   | 42.99 | 
+
+Out of Lyra is a celestial body that appears every 75 years or so.
+
+
+Recall that both narratives (Herod and Samuel the Lamanite) indicate there were many celestial signs.  Maybe this could be associated with annual meteor showers.  However, as discussed, an ultimate sign of the Messianic birth was a supernova.  And this occurred after a significant primary sign.  
+
+
+NASA has data on various heavenly events, and many of those are cyclical which means they can be estimated if not recorded or referenced in wrriten observations.  During the family journey described in 1 Nephi, there was an unusual cluster of solar/lunar eclipses with totalities visible within the Arabian peninsula.  In addition, a famous comet may have appeared during that time frame (Astophysicists use the cyclical nature of the comet and estimates sightings that are not readily available in written documents).
+
+One of the most famous phenomenon we call the comet of Halley, attributed to a British astronomer born in 1600s.  I will give it a more time-honored name, the Comet Lyra or Comet 1P from Lyra.  Joseph Smith observed this phenomenon in 1835 and discussed it as an important sign and wonder of the heavens (and Mark Twain even has a unique relationship with this comet).  The comet Lyra has a cycle (shaw-nah, H8138) that is approximately 75 years: more or less depending on whether the comet gets close to a planet when it enters the planetary region of the solar system and is effected by local gravity.  In addition, the mass of the comet would likely be reduced over time as it emits a stream of material which could possibly create a time trend. 
+
+##### Comet and Shazer 
+So maybe the 600-year prophecy was anchored to, or computed from,  the appearance of this comet?  "Bright light" is one meaning of "Shazer" representing both a celestial phenomenon in the heavens as well as the celestial miracle on the earth: the birth of a child as a gift of light (e.g., [dar la luz] in Spanish: a crown of flowing light, see H2213 H2215 H2224 H2225 and so on).  Maybe part of "Shazer" was the appearance 
+
+
+
+
+ and would be composed of three seasons of four months  
+
+, of which, there are many descriptions in ancient China: 
+
+
+This aligns with a Chinese celebration of Qingming: bright lights, sweeping the tombs of the ancestors, and a vague master-servant relationship.  
+
+
+
+
+ Such a holiday would be anchored to an ancient solar calendar commonly used by agrariain populations known as the four-quarters calendar (四時八節曆):   
+
+
+This aligns with a Chinese celebration of Qingming: bright lights, sweeping the tombs of the ancestors, and a vague master-servant relationship.  The Chinese had a four-pillars calendar based exclusively on the sun, but the modern lunar-solar calendar will suffice to demonstrate that 8 BC is the year of the Water Ox.  
+
+
+
+
+
+
+
+
+
+Joseph Smith declared that the Messiah was born 6 April.  My mathematical frame places the year to be 8 BC.  So did a supernova occur at that time?
+
+
+
+
+
+
+
+
+
+Since a supernova is a one-time, non-cyclical event, the historical record is the only source of potential events.  The earliest record of a supernova that we currently have is from the year 185 AD when the Chinese noted a "guest star" appeared.  Other potential candidates from Chinese tradition may include:  ~1300 BC, and 532 BC.  In addition, Chinese observed that the meteor showers from Lyra began about 686 BC with the first observed meteorite hitting the earth in 643 BC.
+
+
+
+
+
+ (labeled Tycho's supernova).  The second occurred in 1604 (labeled Kepler's supernova).
+
+So the bright light would over time dim and present itself as a new star in the heavens.   The luminosity makes a star visible to the human eye ..
+
+
+ That is, the star is dying, and its explosion is a key change point in the death process. 
+
+
+
+Joseph Smith emphasized
+
+
+Some (such as Johannes Kepler) would later consider the possibility that the "new star" appearing in the East was the result of a supernova.  Joseph Smith concluded that 6 April was the date of the event.
+
+So, can we find evidence for a supernova event that occurred on 6 April 8 BC?    
+
+ That is, the local peoples knew of the six-hundred year prophecy.  Samuel clarifies that the speculative trigger, which I will label the primary sign, had occurred.   After a few more years (recorded in the editorialized Book of Mormon as precisely 5 years), another sign would be given to commemorate the Messianic birth.  This sign I will label the ultimate sign.
+
+
+
+
+
+
+
+
+
+Many traditions suggest that the child was approximately two years old when the wise men finally meet the Messiah.   
+
+Other traditions change the order, that the wise men meet the family and Messianic child in Alexandria Egypt when the child is about four years old.  The wise men may have returned home or they may have spent the remainder of their lives with the child, possibly helping educate the child.  (Recall, that at the age of 12, the Messiah appears in the temple answering questions and amazes the teachers therein.)  The number of wise men is also unknown, with three (or four) being the common number as it represents the number of gifts offered.  Local traditions suggest there may have been as many as 12 wise men.
+
+
+
+
+
+ kills every child in the specified region under the age of two.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
