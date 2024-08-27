@@ -78,11 +78,276 @@ The "ultimate" sign, a supernova, was unique and novel.  And it would occur, acc
 
 The most well-known of these moving celestial bodies is vulgarly called the comet of Halley, attributed to a British astronomer born in 1600s.  A more culturally-nuetral label, Lyra Comet 1P will be used to describe this recurring phenomenon.
 
-Comet Lyra is cyclical 
+Comet Lyra is has a cyclical orbit, appearing approximately every 75 years: more or less depending on whether the comet gets close to a planet when it enters the planetary region of the solar system and is effected by local gravity.  In addition, the mass of the comet would likely be reduced over time as it emits a stream of material which could possibly create a directional time-trend. 
+
+#### Comets as candidates for the Star of Bethlehem
+
+Chinese records suggest there may be several candidates:  16 BC, 12 BC, 10 BC, 5 BC, 4 BC.  Most dismiss the 16 BC and 10 BC candidates as replicates or not fully developed descriptions.  With a traditional anchor that Herod died in 4 BC, many conclude that the Messianic birth occurred in April of 5 BC.  But what about the two-year boundary condition with the wise men?  And was Herod on his death bed when meeting with the wise men.  Taking all of these details in their entirety, 12 BC is a reasonable anchor for the primary sign, followed by a supernova some time later.
+
+If we take Samuel's words as "5 years exactly", a supernova occuring on 5 April 8 BC would necessitate a lesser-yet-primary sign to occur on 5 April 13 BC.  The Chinese record details the comet being visible on 26 August 12 BC, visible for over 56 days.  The exactness of the 5 years from Samuel is off by at most 222 days.  However, we do not know the details of Samuel the Lamanite prophecy; or rather, a reminder of an more ancient prophecy.  Did the people of Nephi use a solar calendar with an equinox start date?  If the first landing was in South America, would they establish time based on the September equinox?  Or was there a times/seasons recipe for measuring time preserved within the brass plates, originally defined by Abraham or his great-grandson Joseph?  
+
+The six-hundred year prophecy and its relationship to the story of Nephi and his family in Jerusalem will give us some additional insights.
+
+#### Leaving Jerusalem six hundred years earlier
+The Messianic prophecy had many celestial markers within the window of the birth date.  We conclude the preliminary marker is a primary, recurring appearance of a comet, approximately 12 BC.  Next, the ultimate marker of the precise birth to occur on 5 April 8 BC.
+
+So, should we also expect two events six-hundred years prior?  First, let's consider the recurring marker of a comet.  Did Comet Lyra 1P appear in 612 BC?  The Chinese did observe a comet at this time; according to Wikipedia, in the year 613 BC; according to a Harvard Research article  (Table II, [https://adsabs.harvard.edu/full/1982JBAA...92..209B]), a comet appeared in the autumn of 614 BC. 
+
+##### Josiah's life mission and death 
+According to biblical chronology, Josiah the King of Jerusalem died in August 609 BC.  About 5 years after the comet appeared.  Was the appearance of Comet Lyra 1P an impetus for Josiah to renovate the temple which led to the discover of lost prophecies and ultimately his death?  Creating a speculative time for everyone living in Jerusalem at the time, witnessing these events.  Maybe young Nephi was only 8 years old when he witnessed this celestial event.  
+
+In the renovation of the temple, lost prophecies were found and carefully studied.  Upon reading them, Josiah rips his garments and goes into mourning.  Thereafter, he seeks counsel from the MISNE.  Huldah, the keeper of the wardrobe, and likely the chief prophetess, gives him guidances.  Seemingly, the prophecy had some references to the feminine worship in the temple, many conclude some reference to the cakes baked for the Queen Mother of Heaven and the Asherah poles/trees that adorned the temple grounds.  The King follows her counsel: the cessation of worship the Queen Mother in the temple (which Jeremiah later second-guesses after Jerusalem falls), tearing down Asherah poles at the temples (the primary in Jerusalem and others throughout the region) and killing some of the priest class, the KOHEN, burning their bones to ash on the altars of these temples.  Very strange narrative, which gets stranger.  The details of the prophecies that motivates these actions has been lost to time; the Deutoronomists and Masoretes (likely members of this priest class) were themselves motivated to editorialize some details of the story.  As a result, the narrative that leads to Josiah's death gets even more bazaar.
+
+##### Josiah retrieves the Ark of the Covenant 
+The KOHEN were guardians of the Ark of the Covenant.  King David used this artifact as a weapon of war.  King Solomon retired the weapon placing it within a room within a room: the holy of holies.  Once a year, the KOHEN would send one person in this room to perform ritural ceremonies.  A group of KOHEN who had built a temple in Elephantine (Egypt) may have transferred the Ark of the Covenant out of Jerusalem.  Likely, this group was marching with Necho carrying the artifact to war with the Egyptian leader.  Now, Josiah, marching to intercept this army would make sense.  Necho responds "What have I to do with you, king of Judah? I am not coming against you today, but against the house with which I am at war; and God has commanded me to hurry. Cease opposing God, who is with me, so that he will not destroy you".  Yet Josiah persists.  
+
+If Josiah was retrieving the Ark of the Covenant, the narrative makes more sense.  "Cease opposing God, who is with me, so that he will not destroy you" may be a latent marker for a group of KOHEN carrying the Ark of the Covenant to war for Necho.  The narrative was obfuscated to conceal the KOHEN's potential wrong doing.  Josiah is shot by arrows from Necho's archers and returns to Jerusalem where he dies.  And latently, it would seem, he died successfully retrieving the Ark of the Covenant.  Josiah died in August 609 BC.  
+
+##### The family of Nephi, the Ark of the Covenant, and the Brass Plates 
+The political dynamics of Jerusalem would be unprecedented.  Josiah had two wives with diplomatic relationships to competing neighbors from the North and South.  And, it would seem, Nephi's family left the city within a few months following Josiah's death.  And, if you read the narratives carefully, the family took the Ark of the Covenant with them to America where Nephi built a temple to house it.  When the city was sieged in 605 BC and 586 BC, the Ark was not found.  Later prophets voiced that the Ark left the region, never to return.  Isaiah predicted that the archers/arrows of Kedar would protect a group fleeing south after "binding the tabernacle" (tᵊʿûḏâ).
+
+And now, some of the narrative of Nephi makes more sense.  Why would Laman, the firstborn, approach the keeper of the treasury, Laban, and just ask for the brass plates?  Nothing is offered in exchange, so it would seem, the family had legal property rights to the records.  Seemingly, when the family packed up their tents (and tabernacle), it was assumed that the brass plates were housed within the Ark of the Covenant.  The Ark contained several significant artifacts (likely including what was described by Nephi as a Liahona).  The record is not found among the artifacts, so the brothers are sent to retrieve them.
+
+##### "Shazer" on 5 April 608 BC: Jacob is born at the Mountain of Almonds (aka Sinai)
+The family of Nephi was safely established in tents near a fresh-water well close to the Red Sea.  They had recovered all the artifacts necessary to continue their journey.  They had convinced another family to join them as well.  One of the women was pregnant, soon to give birth to Nephi's brother, Jacob.  Yet, to fulfill prophecy, the family must move a short distance before "Shazer" so the Liahona is the impetus to force the men to break-down camp and the women to raise their skirts to cross the nearby high-water river (Isa 47:2), travel four days SSE and camp at the base of the Mountain of Almonds (Jabal al-Lawz).
+
+Joseph Smith, as he was studying the Egyptian papyri in 1835 (the year Lyra Comet 1P appeared in his lifetime), had a scribe decipher some of the Egyptians glyphs on one side of a page, from which an entire narrative would be composed.  Joseph would proclaim that a few glyphs could tell an entire story.  Many scoff at such a claim, but it would seem this was an Egyptian literary (or possibly pedagogical) instrument.  
+
+"Shazer" (rudimentary definition being: Sha [garden] - zer [birth]) is what I would classify as a superword in Nephi's language   The two syllables can tell an entire story: to make haste to a sacred grove of almond trees with a spring of fresh water flowing from a ravine, snow or blossoms dropping like snow or both (early spring), a difficult birth in a garden with an umbilical complication, bright lights in the heavens, a sharp knife, a fire, an anointing, a crown of flowing light, and so on.  This was the birth of Jacob!
+
+![sha](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sha.png?raw=true) *sha*
+![zer](https://github.com/MonteShaffer/rml-bomo/blob/main/images/zer.png?raw=true) *zer*
+
+[sha: pdf page 123](https://www.um.es/cepoat/egipcio/wp-content/uploads/egyptianhierogly.pdf)
+
+[zer: Paleo-Hebrew](https://www.ancient-hebrew.org/alphabet/files/alphabet_chart2.pdf) from root of [mamzer: H4464](https://www.blueletterbible.org/lexicon/h4464/kjv/wlc/0-1/): a head passing through a canal or a head appearing after much sweat, very literal.
+
+<!---
+https://i.ibb.co/1QjBxNL/sha.png
+https://i.ibb.co/2PZkHVf/zer.png
+//-->
+
+If Jewish traditions were followed, the sojourners would remain at least 40 days at this location before continuing the journey.  
+
+##### Shazer as 'dar la luz'
+"Bright light" is one significant element in the "Shazer" narrative.  There was a celestial phenomenon in the heavens.  And the birth of Jacob was a celestial miracle on earth.  That is, the birth of a child represents a gift of light and the birthing process can be described as "to give the light" (e.g., Spanish phrase [dar la luz]).
+
+###### Biblical Hebrew "sha"
+| Reference  | Stem | Meaning |
+| :-- | :------ | :---- |
+| H5395 |  naw-sham'    | a woman panting during travail of labor |
+| H7579 |   sha'ab   | woman drawing water |
+| H7580 |  shaw-ag'  | cry of distress |
+| H7583 |  shaw-aw'   | gaze in wonder/awe |
+| H7592 |  shaw-al'   | ask/beg  |
+| H7599 |  shaw-an'   |  to be at peace / to rest  |
+| H7602 |  shaw-af'   |  gasp / long for breath / breathe heavily  |
+| H7604 |  shaw-ar'   |  to leave a gift  |
+| H7608 |  shah-ar-aw'   |  kinswoman  |
+| H7623 |  shaw-bakh'   |  to soothe  |
+| H7632 |  shaw-beeb'   |  flame/spark  |
+| H7635 |  shaw-beel'   |  a path  |
+| H7636 |  shaw-beece'   |  interweaved woman's refinery (hair/neck) / woven glass  |
+| H7640 |  show'-bel   |  skirt  |
+| H7650 |  shaw-bah'   |  oath to/by Jehovah  |
+| H7660 |  shaw-bats'   |  weave/embroider  |
+| H7665 |  shaw-bar'   |  a child crowning in the womb  |
+| H7686 |  shaw-gaw'   |  reel with wine  |
+| H7688 |  shaw-gakh'   |  gaze/gawk  |
+| H7693 |  shaw-gal'   |  to copulate  |
+| H7699 |  shad   |  breasts of a woman  |
+| H7710 |  shaw-daf'   |  to scorch  |
+| H7723 |  shawv   |  vanity/emptiness  |
+| H7737 |  shaw-vaw'   |  to make equal / to resemble  |
+| H7768 |  shaw-vah'   |  to be free / to be rich / to cry out for help  |
+| H7798 |  shav-shaw'   |  rejoice / joyful  |
+| H7806  |  shaw-zar'   |  twisting  |
+| H7812 |  shaw-khaw'   |  prostrate to worship  |
+| H7857 |  shaw-taf'   |  to rinse / to wash off  |
+| H7901 |  shaw-kab'   |  to lie down / copulate  |
+| H7911 |  shaw-kakh'   |  to forget  |
+| H7918 |  shaw-kak'   |  to pacify  |
+| H7921 |  shaw-kole'   |  to miscarry / to abort / to be barren  |
+| H7925 |  shaw-kam'   |  to get up early in morning  |
+| H7931 |  shaw-kan'   |  to dwell / to reside / to take residence  |
+| H7937 |  shaw-kar'   |  to become drunk / inebriated  |
+| H7947 |  shaw-lab'   |  to join together / evenly spaced   |
+| H7949 |  shaw-lag'   |  snow / snow-like  |
+| H7957 |  shal-heh'-beth   |  flame / flaming fire 
+| H7991 |  shaw-leesh'   |  a third part / musical instrument  |
+| H7999 |  shaw-lam'   |  peace / soundness / happy / to reciprocate |
+| H8058 |  shaw-mat'   |  strike down  |
+| H8065 |  shaw-mah'-yin   |  heaven  |
+| H8066 |  shem-ee-nee'   |  eighth  |
+| H8085 |  shaw-mah'   |  to hear / to obey / to discern  |
+| H8104 |  shaw-mar'   |  to guard / to protect  |
+| H8144 |  shaw-nee'   |  scarlet / crimson  |
+| H8150 |  shaw-nan'   |  to sharpen / to pierce |
+| H8154 |  shaw-saw'   |  to rob / plunder  |
+| H8173 |  shaw-ah'   |  to delight onself  |
+| H8192 |  shaw-faw'   |  bare / bald  |
+| H8194 |  shaw-faw'   |  cheese  |
+| H8210 |  shaw-fak'   |  pour out / gush out  |
+| H8231 |  shaw-far'   |  beauty / pleasing / to glisten / to be bright  |
+| H8246 |  shaw-kad'   |  shaped like almond blossoms  |
+| H8247 |  shaw-kade'   |  almond / almond tree  |
+| H8248 |  shaw-kaw'   |  to drink water / to irrigate  |
+| H8256 |  shik-maw'   |  sycamore tree / figs  |
+| H8265 |  saw-kar'   |  to ogle / to look with wanton eyes  |
+| H8270 |  shore   |  umbilical cord / navel string / twisting  |
+| H8273 |  shaw-rawb'   |  parched land / mirage  |
+| H8275 |  shar-beet'   |  scepter  |
+| H8281 |  shaw-raw'   |  to free / to loosen / to liberate  |
+| H8306 |  shaw-reer'   |  sinew / navel / cord  |
+| H8362 |  shaw-thal'   |  plant/transplant  |
+| H8366 |  shaw-than'   |  urinate  |
+| H8367 |  shaw-thak'   |  to be silent / to be quiet  |
+| H8366 |  saw-thar'   |  xxx  |
+
+###### Egyptian "sha"
+
+The primary meaning of "sha" in Egyptian is garden, symbolized with a row of trees in the hieroglyph.  A deeper dive into the "sh" worldlist is quite interesting.
+
+![water in the garden](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sh-Garden.png?raw=true) *water in the garden*
+
+Interestingly, stars or celestial events are obvious ommissions in the 1 Nephi narrative of the family traveling in the Arabian peninsula. (Imagine yourself in the middle of the Empty Quarter at night, would the stars not be a primary observation?)  So why are stars never mentioned?  In my reflections, I consider that possibly Nephi used omission as a teaching tool (fill in the blank):  children we were traveling through the barren deserts of Arabia, what is missing in the story?  The stars, of course!  As I now have arrived at the artistic license of the editorial process, another possibility exists:  it was removed.  But why?  Maybe to address the problems associated with the lost manuscript and its editorialization.
+
+
+![stars in the garden](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sh-Stars.png?raw=true) *stars in the garden*
+
+
+###### Nephi narratives as "sha" wordplay
+
+Now, the wordplay to craft stories is beginning to emerge.  It would seem like the introduction is anchored to the power of the [sh] which is fundamentally the power of woman.  Very interesting indeed.  So are there other [sh] sounds we can piece together to recreate the 1 Nephi narrative?
+
+![Nephi synopsis](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sh-Nephi-synopsis.png?raw=true) *Nephi synopsis*: Nephi synopsis of introduction: Our family traveled into the desert, a parent proposed we (the brothers) return to Jerusalem to acquire the writings.  I will go and do.  I observed the sword was of curious craftsmanship.  … Later, the family of Ishmael joined us and my "Ishtar" became my consummated wife.
+
+![Nephi kills Laban](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sh-Nephi-night.png?raw=true) *Nephi kills Laban*: I will go and do, sneak around the city at night and skillfully kill Laban.
+
+
+![Lehi's vision](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sh-Lehi.png?raw=true) *Lehi's vision*: A gulf of misery, joy for some, lamentation for others
+
+
+![Nephi steering boat](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sh-Nephi-boat.png?raw=true) *Nephi steering boat*: I was steering the boat, my brothers designed to mutiny, a tempest arose driving us backward, I was again free, I again was steering the boat to an unknown foreign land 
+
+
+###### Other Biblical narratives using "sha" wordplay
+
+To ascertain if this wordplay is a common literary device of the ancients, let's consider two additional examples:  one from the Old Testament and one from the New Testament.  As you begin to see the power of the wordplay, you will observe that some words used in one example could have also been used in another example which would give the story an even richer meaning.
+
+![Josiah renovates the temple](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sh-Josiah.png?raw=true) *Josiah renovates the temple*:  Josiah commissions quarry work to renovate the temple, documents and writings are discovered.  Josiah examines these, tears his garments, returns to his palace (office) and is full of grief and sorrow.
+
+![Yeshua considers the Lilies of the Field](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sh-Yeshua.png?raw=true) JYeshua considers the Lilies of the Field*:  To "consider" means to ponder, reflect, engage in the "sapien" dimension of humanity that makes us homo sapiens.  Lilies do NOT engage in such activity, yet have a beauty unsurpassed.
+
+###### Implications 
+There are a few significant implications to this literary wordplay.  First, understanding that they exist enables won to attempt to recraft known stories in the ancient Egyptian.  Possibly.  This is a rule that can be utilized to start assembling the puzzle.  It is analagous to a corner piece or straight-edge piece.  
+
+Second, maybe [sh] is the first letter of the alphabet.  
+
+Third, does Nephi outline an entire abecedarian on the small plates?  
+
+Fourth, did Mormon implement the literary form AFTER discovering the small plates?  Mormon does attempt to use a phonetic anchor [kh] in one portion of his writings.  This is why the Korihor story seems so disjoint from the main storyline.  And within the [kh] storyline, there are some very odd interjections.  Was Mormon trying his hand at the ancient literary practice?  It would seem that Mormon was not very good at this, so maybe it was new to him.  Or maybe, after he had written his curated summary, he discovered Nephi's literature and was both amazed and humbled.
+
+Finally, the correlation of the broken Hebrew with the broken Egyptian in context of a literary wordplay will enable an iterative process that will inform and update each of the three elements.
 
 
 
-The comet Lyra has a cycle (shaw-nah, H8138) that is approximately 75 years: more or less depending on whether the comet gets close to a planet when it enters the planetary region of the solar system and is effected by local gravity.  In addition, the mass of the comet would likely be reduced over time as it emits a stream of material which could possibly create a time trend. 
+###### Biblical Hebrew "zer"
+| Reference  | Stem | Meaning |
+| :-- | :------ | :---- |
+| xxx | xxx | xxx |
+| xxx | xxx | xxx |
+| xxx | xxx | xxx |
+| xxx | xxx | xxx |
+| xxx | xxx | xxx |
+
+
+###### Egyptian "zer"
+Does Egyptian have a "zer" sound?  Would intimate family events use loan words from Egyptian?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+representing both a celestial phenomenon in the heavens as well as the celestial miracle on the earth: the birth of a child as a gift of light (e.g., [dar la luz] in Spanish: a crown of flowing light, see H2213 H2215 H2224 H2225 and so on).
+
+
+
+
+H2796 khaw-rawsh' ... like kheresh, craftsman ; engraver / mason 
+
+
+
+
+
+for an appropriate date.  So, did this same comet also appear in 612 BC?   According to a different Chinese record, a comet appeared in the autumn of 614 BC (Table II, [https://adsabs.harvard.edu/full/1982JBAA...92..209B]).  Given the limited data, we may reasonably conclude that this comet was also Lyra 1P.
+
+
+
+
+#### Cycles of 50 and 75
+
+
+
+
+
+
 
 If so, the people of Nephi would have likely tracked each occurrence of the cyclical appearance of this comet.  Since the cyclical appearance fluctuates, maybe the data varied within 72-78 year window.  Using modern engineering notation, we would say 75 ± 3 years to capture the uncertainty. 
 
