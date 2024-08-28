@@ -222,7 +222,7 @@ NASA has data on various heavenly events, and many of those are cyclical which m
 One of the most famous phenomenon we call the comet of Halley, attributed to a British astronomer born in 1600s.  I will give it a more time-honored name, the Comet Lyra or Comet 1P from Lyra.  Joseph Smith observed this phenomenon in 1835 and discussed it as an important sign and wonder of the heavens (and Mark Twain even has a unique relationship with this comet).  The comet Lyra has a cycle (shaw-nah, H8138) that is approximately 75 years: more or less depending on whether the comet gets close to a planet when it enters the planetary region of the solar system and is effected by local gravity.  In addition, the mass of the comet would likely be reduced over time as it emits a stream of material which could possibly create a time trend. 
 
 ##### Comet and Shazer 
-So maybe the 600-year prophecy was anchored to, or computed from,  the appearance of this comet?  "Bright light" is one meaning of "Shazer" representing both a celestial phenomenon in the heavens as well as the celestial miracle on the earth: the birth of a child as a gift of light (e.g., [dar la luz] in Spanish: a crown of flowing light, see H2213 H2215 H2224 H2225 and so on).  Maybe part of "Shazer" was the appearance of this comet and the prophesy recorded by Lehi was something like: this sign in the heaven will appear eight more times in the next six hundred years (75 x 8 = 600); then, a new star will appear; and then, the Messiah will be born.
+So maybe the 600-year prophecy was anchored to, or computed from,  the appearance of this comet?  "Bright light" is one meaning of "Shazer" representing both a celestial phenomenon in the heavens as well as the celestial miracle on the earth: the birth of a child as a gift of light (e.g., [dar la luz] in Spanish: a crown of flowing light, see H2213 H2215  H2224 H2225 and so on).  Maybe part of "Shazer" was the appearance of this comet and the prophesy recorded by Lehi was something like: this sign in the heaven will appear eight more times in the next six hundred years (75 x 8 = 600); then, a new star will appear; and then, the Messiah will be born.
 
 
 ##### Cultural Implications of Lyra Comet 1P
@@ -360,4 +360,17 @@ Godspeed.  Namaste.
 
 
 
+
+
+
+2184 idolatry 2199 cry out ... zen-ock 
+226 emblem/ensign ... zenoth =>
+os = shame ... zenos 
+aws = heap together 
+gathering ... 
+787 foundation 
+837 happiness ... eat,drink,be merry
+wicked/stink
+
+The Lyrid meteor shower occurs between April 16-25 every year 
 

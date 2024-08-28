@@ -288,36 +288,156 @@ Seemingly, the "zer" stem represents the entire conception process: the mixing o
 That is, where Nephi's brother Jacob was breaking forth, Nephi's first-born son may have been planted into a well.  Is it Mor-on-i or Cum-or-yah?  In context of this location, likely Cum-or-yah  (the rising light of Jehovah) was conceived at Shazer.  Mor-on-i (captain of navy) would be more intuitive when the family settles in Southern Arabia and eventually Nephi builds one or more maritime vessels.
 
 
-2184 idolatry 2199 cry out ... zen-ock 
-
 ###### Egyptian "zer"
 Does Egyptian have a "z" sound?  Yes, it seems that early Egyptologists used the "s" to represent two distinct characters:  the "lamad" symbol was one form of "s" and the "two-horizontal knots" was another form of "s" (called a "door bolt" by some) which today has been mapped to the "z" sound.  The same sound in Hebrew is mapped to a symbol that looks like an equal sign and may represent "sweat" as in, the sweat of the brow.  Interestingly, the Egyptian use of "z" seems to activate something inactive, representing the action of "making it so".  That is the "z" symbol prepends to the known: for example, "baq" meaning shiny becomes "z'baq" meaning to make shiny or to cause to be shiny.  That is, by the sweat of the brow, a human acts to make a thing/state.
 
 Interestingly, it has been concluded that the Egyptian language did not have the "l" sound (like lion) which is strange considering the ability to pronounce such a sound is not extremely difficult.  And the "lamad" symbol exists in early Hebrew which produces such a sound.  Was it a cultural omission to focus on Ra by intentionally removing the L from the language system?
 
+![Give birth in a garden](https://github.com/MonteShaffer/rml-bomo/blob/main/images/z-Birth.png?raw=true) *Give birth in a garden*:  To make shine and to make pregnant seemed to be very similar in sound.  The pregnancy appears to conclude with a woman squatting (in a garden) allowing the child to break forth.  The "za" and "za't" represent the male and female child respectively.  The "z" symbol seems to represent the union (copulation) that leads to a child.  Or, the penetration of a seed into the earth for a plant.  The seed of man penetrates the well of the woman, and if the woman shows signs after opening her legs and embracing a man, an offspring will (after a time) gush forth.  See Alma 32. 
 
-Does Egyptian have a "zer" sound?  Would intimate family events use loan words from Egyptian?
+![Time](https://github.com/MonteShaffer/rml-bomo/blob/main/images/z-Time.png?raw=true) *Time*:  Time leads to the birth of a free man, who may engage in war with another free man, may show graciousness in life as a noble man.
 
-
-
-
-
+![Fire and Water](https://github.com/MonteShaffer/rml-bomo/blob/main/images/z-FireWater.png?raw=true) *Fire And Water*:  The fire or flame leads to marital congress, a moment of bliss when the seed is planted.  The gushing forth of water is the process which causes a woman to tremble and shake.
 
 
+![Yeast and Rejuvenation](https://github.com/MonteShaffer/rml-bomo/blob/main/images/z-Misc.png?raw=true) *Yeast and Rejuvenation*:  Yeast is an active ingredient that helps bread rise as a "proper planting" of a man's seed in the woman's well would cause the woman's womb to grow.  Likely, the cakes prepared for the Queen Mother of Heaven in the ancient temple were directly associated with the desires of a betrothed woman to become a mother, an Ishtar.
 
-
-
+![Milk](https://github.com/MonteShaffer/rml-bomo/blob/main/images/z-Misc2.png?raw=true) *Milk*:  M
 
 
 
 
+##### Shazer and the six-hundred year prophecy
+About 5 April 608 BC, Jacob is born at the event Nephi describes as "Shazer", meaning the twisting.  The month of April is known for the Lyrid meteor showers.  Chinese "star gazers" first recorded observing these meteor showers from Lyra in ~686 BC.  They first observed a meteorite hitting the earth in ~643 BC.  So what exactly was seen in the heavens, in the stars, when Jacob was born?
+
+Lyra Comet 1P already appeared in the heavens about five years earlier.  Was there a supernova event at this time?  Did a meteorite strike the top of the Mountain creating a fire, a new "Sinai" event?  
+We do not know exactly.  We do know that the 1 Nephi narrative never mentions stars which is indeed strange given the context of their travels in Arabia.  Maybe "Shazer" represents a cartouche-of-sorts clarifying that the heavens were filled with signs and wonders.  Regardless, Lyra Comet 1P was a warning to Jerusalem that begin the chaos that led to the family being isolated in the desert at the Mount of Almonds for Jacob to be born at this sacred place.  The mountain of all mountains.  A place where Abraham (and Moses) and Joshua already communed with the heavens.  A place where Yeshua and Muhammad would later commune with the heavens.  A sacred cross roads for Abraham located in the land of his six youngest sons:  the Midians.
+
+Samuel the Lamanite clarified that the Messianic birth would be declared by a supernova five years after seeing the cyclical appearance of Lyra Comet 1P.  Does that mean the six-hundred year prophecy had a similar, two-stage anchor of reference?  The pattern seems to be:  Lyra Comet 1P creates speculation and wonder by observers (of all ages) and then something happens thereafter.  
+
+Consider the comet's appearance in April 1066.  Speculation abounded by locals that there was a succession crisis in Britain.  William of Normandy leveraged this phenomenon to invade Britain in October and thereafter the Normans controlled much of Britain until 1154 when Henry II became an undisputed British monarch.
+
+For the people of Nephi in America, certainly this cyclical phenomenon would be observed.  Similarly, the question can be posed if the Hebrew nation had observed this phenomenon previously in their history.
+
+#### Cycles of 60 and 75
+A 60-year cycle, the cycle of the return of the Water Ox can be anchored to the year 8 BC.  A 75-year cycle, the cycle of the return of Lyra Comet 1P can be anchored to the year 12 BC.  From those anchors, we can review the past and future, to ascertain any significant historical change points.  Of note is the fact that these cycles will coincide (plus or minus a few years) every 300 years:  60 × 5 = 75 × 4.
 
 
 
+| Event              | 60 | 75 |
+| :----------------: | :------: | :----: |
+| Sodom/Gomorrah?       |   1808 BC   |  1812 BC |
+|        |   1748 BC   |        |
+|        |            |  1737 BC |
+|        |   1688 BC   |        |
+|        |            |  1662 BC |
+|        |   1628 BC   |        |
+|        |            |  1587 BC |
+|        |   1568 BC    |        |
+|        |   1508 BC   |  1512 BC |
+|        |   1448 BC   |        |
+|        |            |  1437 BC |
+|        |   1388 BC   |        |
+|        |            |  1362 BC |
+|        |   1328 BC   |        |
+|        |            |  1287 BC |
+|        |   1268 BC    |        |
+|        |   1208 BC   |  1212 BC |
+|        |   1148 BC   |        |
+|        |            |  1137 BC |
+|        |   1088 BC   |        |
+|        |            |  1062 BC |
+|        |   1028 BC   |        |
+|        |            |  987 BC |
+|        |   968 BC    |        |
+|        |   908 BC   |  912 BC |
+|        |   848 BC   |        |
+|        |            |  837 BC |
+|        |   788 BC   |        |
+|        |            |  762 BC |
+|        |   728 BC   |        |
+|        |            |  687 BC |
+|        |   668 BC    |        |
+|  Shazer (Jacob is born)      |   608 BC   |  612 BC |
+|        |   548 BC   |        |
+|        |            |  537 BC |
+|        |   488 BC   |        |
+|        |            |  462 BC |
+|        |   428 BC   |        |
+|        |            |  387 BC |
+|        |   368 BC    |        |
+|  Jewish tradition of Alexander the Macedonian (323 BC)      |   308 BC   |  312 BC |
+|        |   248 BC   |        |
+|        |            |  237 BC | 240 BC (-3)
+|        |   188 BC   |        |
+|        |            |  162 BC | 164 BC (-2)
+|        |   128 BC   |        |
+|        |            |  87 BC | *
+|        |   68 BC    |        |
+| Messianic Birth          |     8 BC   |  12 BC |
+|   |   53 AD  |          |
+|   |          |    64 AD | 66 (+2)
+|   |   113 AD  |          |
+|   |          |    139 AD | 141 (+2)
+|   |   173 AD  |          |
+|   |          |    214 AD |
+|   |   233 AD  |          |
+|   |   293 AD   |    289 AD |
+|   |   353 AD  |          |
+|   |          |    364 AD | 374 (+10)
+|   |   413 AD  |          |
+| Attila loses  |          |    439 AD | 451 (+12)
+|   |   473 AD  |          |
+|   |          |    514 AD |
+|   |   533 AD  |          |
+|   |   593 AD   |    589 AD | 607 (+18)
+|   |   653 AD  |          |
+|   |          |    664 AD | 684 (+20)
+|   |   713 AD  |          |
+|   |          |    739 AD | 760 (+21)
+|   |   773 AD  |          |
+|   |          |    814 AD | 837 (+23)
+|   |   833 AD  |          |
+|   |   893 AD   |    889 AD | 912 (+23)
+|   |   953 AD  |          |
+|   |          |    964 AD |
+|   |   1013 AD  |          |
+| Normandy / Cahokia  |          |    1039 AD | 1066 (+27)
+|   |   1073 AD  |          |
+|   |          |    1114 AD | 1145 (+31)
+|   |   1133 AD  |          |
+| Genghis Khan  |   1193 AD   |    1189 AD | 1222 (+33)
+|   |   1253 AD  |          |
+|   |          |    1264 AD | 1301 (+37)
+|   |   1313 AD  |          |
+|   |          |    1339 AD | 1378 (+39)
+|   |   1373 AD  |          |
+|  Cahokia/Marajoara  |          |    1414 AD | 1456 (+42)
+|   |   1433 AD  |          |
+| Colon-mbia  |   1493 AD   |    1489 AD | 1531 (+42)
+|   |   1553 AD  |          | 
+|   |          |    1564 AD | 1607 (+43)
+|   |   1613 AD  |          |
+|   |          |    1639 AD | 1682 (+43)
+|   |   1673 AD  |          |
+|   |          |    1714 AD | 1758 (+44)
+|   |   1733 AD  |          |
+|  French Republic  |   1793 AD   |    1789 AD | 1835 (+46)
+|   |   1853 AD  |          |
+|   |          |    1864 AD | 1910 (+46)
+|   |   1913 AD  |          |
+|   |          |    1939 AD | 1986 (+47)
+|   |   1973 AD  |          |
+|   |          |    2014 AD | 2061 (+47)
+|   |   2033 AD  |          |
 
 
 
+The Siege of Damascus occurred in 825 BC when the Israelite king Jeroboam II captured the city of Damascus from the Arameans.
 
+Comet was anchored to Jewish history 
+
+312 BCE Alexander the Great, according to Hebrew history; 323 BC is commonly-accepted history ...
 
 
 
