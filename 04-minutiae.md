@@ -239,8 +239,10 @@ To ascertain if this wordplay is a common literary device of the ancients, let's
 
 ![Yeshua considers the Lilies of the Field](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sh-Yeshua.png?raw=true) JYeshua considers the Lilies of the Field*:  To "consider" means to ponder, reflect, engage in the "sapien" dimension of humanity that makes us homo sapiens.  Lilies do NOT engage in such activity, yet have a beauty unsurpassed.
 
+For the uninitiated, the word "sha" can mean garden or field; Solomon's name is tied to the concept of peace "shaw-lawm".  This should be sufficient to enable a literary hunt for a potential alliteration in this remnant of a teaching from Yeshua.  Or possibly some other poetic form.
+
 ###### Implications 
-There are a few significant implications to this literary wordplay.  First, understanding that they exist enables won to attempt to recraft known stories in the ancient Egyptian.  Possibly.  This is a rule that can be utilized to start assembling the puzzle.  It is analagous to a corner piece or straight-edge piece.  
+There are a few significant implications to this literary wordplay.  First, understanding that they exist enables one to attempt to recraft known stories back into the ancient Egyptian.  Possibly.  This is a rule that can be utilized to start assembling the puzzle.  It is analagous to a corner piece or straight-edge piece.  
 
 Second, maybe [sh] is the first letter of the alphabet.  
 
@@ -255,14 +257,45 @@ Finally, the correlation of the broken Hebrew with the broken Egyptian in contex
 ###### Biblical Hebrew "zer"
 | Reference  | Stem | Meaning |
 | :-- | :------ | :---- |
-| xxx | xxx | xxx |
-| xxx | xxx | xxx |
-| xxx | xxx | xxx |
-| xxx | xxx | xxx |
-| xxx | xxx | xxx |
+| H148 | ad-ar''-gaw-zare' | (Aramaic) astrologer |
+| H1506 | gheh'-zer | a part / to cut off / to be isolated |
+| H2213 | zare | crown |
+| H2214 | zaw-raw' | nausea |
+| H2215 | zaw-rab' | warm waters pour out |
+| H2216 | zer-oob-baw-bel' | born in babel |
+| H2224 | zaw-rakh' | to break forth / to shine / to irradiate light |
+| H2225 | zeh'-rakh | rising light / shining light / dawning light |
+| H2229 | zaw-ram' | water pouring/gushing out |
+| H2230 | zeh'-rem | gush of water |
+| H2232 | zaw-rah' | conceive/produce fruit |
+| H2233 | zeh'-rah | child/posterity |
+| H2234 | zer-ah' | (Aramaic) offspring |
+| H2235 | zay-ro'-ah | Daniel's pulse (food) |
+| H2236 | zaw-rak' | to sprinkle |
+| H2237 | zaw-rar' | to sneeze (stranger) |
+| H2239 | zeh'-reth | stretch out fingers |
+| H3154 | yeh'-zah | to sweat |
+| H4216 | maz-zaw-raw' | celestial: 12 signs of the zodiac and 36 associated constellations |
+| H4464 | mam-zare' | mongrel/bastard/foreigner |
+| H5139 | naw-zeer' | consecrated one / separated one / unpruned vine |
+| H5145 | neh'-zer | consecrated |
+| H5826 | aw-zar' | to surround / to offer aid / to help / Jehovah helps |
+| H5835 | az-aw-raw' | enclosure by surrounding |
+| H7806 | shaw-zar' | twisting (twine) |
 
+Seemingly, the "zer" stem represents the entire conception process: the mixing of fluids to grow a child which breaks forth and is born.  That is, the sowing, the growing, and the breaking forth.  Therefore, as we may say "this person was born to be a consecrated priest", the ancients may say "this person was sown to become a consecrated priest."  If anything, the planting of the seed (consummation leading to conception), is most important in the ancient language: to spring forth or to raise up.  
+
+That is, where Nephi's brother Jacob was breaking forth, Nephi's first-born son may have been planted into a well.  Is it Mor-on-i or Cum-or-yah?  In context of this location, likely Cum-or-yah  (the rising light of Jehovah) was conceived at Shazer.  Mor-on-i (captain of navy) would be more intuitive when the family settles in Southern Arabia and eventually Nephi builds one or more maritime vessels.
+
+
+2184 idolatry 2199 cry out ... zen-ock 
 
 ###### Egyptian "zer"
+Does Egyptian have a "z" sound?  Yes, it seems that early Egyptologists used the "s" to represent two distinct characters:  the "lamad" symbol was one form of "s" and the "two-horizontal knots" was another form of "s" (called a "door bolt" by some) which today has been mapped to the "z" sound.  The same sound in Hebrew is mapped to a symbol that looks like an equal sign and may represent "sweat" as in, the sweat of the brow.  Interestingly, the Egyptian use of "z" seems to activate something inactive, representing the action of "making it so".  That is the "z" symbol prepends to the known: for example, "baq" meaning shiny becomes "z'baq" meaning to make shiny or to cause to be shiny.  That is, by the sweat of the brow, a human acts to make a thing/state.
+
+Interestingly, it has been concluded that the Egyptian language did not have the "l" sound (like lion) which is strange considering the ability to pronounce such a sound is not extremely difficult.  And the "lamad" symbol exists in early Hebrew which produces such a sound.  Was it a cultural omission to focus on Ra by intentionally removing the L from the language system?
+
+
 Does Egyptian have a "zer" sound?  Would intimate family events use loan words from Egyptian?
 
 

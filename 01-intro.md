@@ -1,4 +1,4 @@
-# Restoring Mormon Lore
+# Restoring Mormon Lore:  Book of Mormon Origins
 
 ## Introduction
 What are the first words of the legend of Nephi found on the writings on the small plates? 
