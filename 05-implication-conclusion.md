@@ -165,7 +165,7 @@ For me, the anchor point is the number 600.
 As I disclose my arrival, please understand that this process was non-linear, recursive, and Bayesian.  My effort to describe it requires taking the iterations of learning and placing into a linear frame.
 
 The six hundred year prophecy between leaving Jerusalem and the birth of the Messiah.  And, this same number is found in the story of Noah.  And this number is associated with Muhammed (his wisdom received on his hijra was 622).  And in my studies, there may be some connection to the Bengali calendar of the Gangan tradition.
-
+  
 The number 600 is the beginning with 6 being the first perfect number in mathematics.   Some key ways of arriving at 600 are:  60 × 10; 75 x 8; 50 x 12; 100 x 6.  Of note, is the Noah reference to the same number in his timeline.  Anchored to a Christian belief that Yeshua was born around year 0 (in a mathematician's dating system), 600 BC and 600 AD are important markers.  Maybe 600 AD is anchored to the wisdom of Muhammad before his hijra in 622.  Maybe Moses or Joseph or Abraham was born in the 600 year cycle.  Noah has a referential anchor to this number.  Maybe the great Buddha is an anchor as well, not limiting the cycle to the Abrahamic tradition.
 
 ##### Sixty-year Chinese Cycle 
