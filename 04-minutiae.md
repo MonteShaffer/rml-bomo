@@ -104,9 +104,11 @@ The KOHEN were guardians of the Ark of the Covenant.  King David used this artif
 If Josiah was retrieving the Ark of the Covenant, the narrative makes more sense.  "Cease opposing God, who is with me, so that he will not destroy you" may be a latent marker for a group of KOHEN carrying the Ark of the Covenant to war for Necho.  The narrative was obfuscated to conceal the KOHEN's potential wrong doing.  Josiah is shot by arrows from Necho's archers and returns to Jerusalem where he dies.  And latently, it would seem, he died successfully retrieving the Ark of the Covenant.  Josiah died in August 609 BC.  
 
 ##### The family of Nephi, the Ark of the Covenant, and the Brass Plates 
-The political dynamics of Jerusalem would be unprecedented.  Josiah had two wives with diplomatic relationships to competing neighbors from the North and South.  And, it would seem, Nephi's family left the city within a few months following Josiah's death.  And, if you read the narratives carefully, the family took the Ark of the Covenant with them to America where Nephi built a temple to house it.  When the city was sieged in 605 BC and 586 BC, the Ark was not found.  Later prophets voiced that the Ark left the region, never to return.  Isaiah predicted that the archers/arrows of Kedar would protect a group fleeing south after "binding the tabernacle" (tᵊʿûḏâ).
+The political dynamics of Jerusalem would be unprecedented.  Josiah had two wives with diplomatic relationships to competing neighbors from the North and South.  And, it would seem, Nephi's family left the city within a few months following Josiah's death.  And, if you read the narratives carefully, the family took the Ark of the Covenant with them to America where Nephi built a temple to house it.  When the city was sieged in 605 BC and 586 BC, the Ark was not found.  Later prophets voiced that the Ark left the region, never to return.  
 
 And now, some of the narrative of Nephi makes more sense.  Why would Laman, the firstborn, approach the keeper of the treasury, Laban, and just ask for the brass plates?  Nothing is offered in exchange, so it would seem, the family had legal property rights to the records.  Seemingly, when the family packed up their tents (and tabernacle), it was assumed that the brass plates were housed within the Ark of the Covenant.  The Ark contained several significant artifacts (likely including what was described by Nephi as a Liahona).  The record is not found among the artifacts, so the brothers are sent to retrieve them.
+
+Isaiah predicted that the archers/arrows of Kedar would protect a group fleeing south after "binding the tabernacle (tᵊʿûḏâ)", (Isa 8:16).  That this group would be burdened with personal riches on the shoulders of young asses and the wealth of the treasury on humps of camels, carrying the treasures to a land where it will have no value; where the people will consider such things shameful (Isa 30:6).  Well, it would seem that Nephi recovered the family wealth, plus so much more.  Who exactly was the young and old lion?  And who exactly was the viper and the  fiery flying serpent?
 
 ##### "Shazer" on 5 April 608 BC: Jacob is born at the Mountain of Almonds (aka Sinai)
 The family of Nephi was safely established in tents near a fresh-water well close to the Red Sea.  They had recovered all the artifacts necessary to continue their journey.  They had convinced another family to join them as well.  One of the women was pregnant, soon to give birth to Nephi's brother, Jacob.  Yet, to fulfill prophecy, the family must move a short distance before "Shazer" so the Liahona is the impetus to force the men to break-down camp and the women to raise their skirts to cross the nearby high-water river (Isa 47:2), travel four days SSE and camp at the base of the Mountain of Almonds (Jabal al-Lawz).
@@ -282,6 +284,7 @@ Finally, the correlation of the broken Hebrew with the broken Egyptian in contex
 | H5826 | aw-zar' | to surround / to offer aid / to help / Jehovah helps |
 | H5835 | az-aw-raw' | enclosure by surrounding |
 | H7806 | shaw-zar' | twisting (twine) |
+| H8314 | saw-rawf' | burning / flaming fiery serpent |
 
 Seemingly, the "zer" stem represents the entire conception process: the mixing of fluids to grow a child which breaks forth and is born.  That is, the sowing, the growing, and the breaking forth.  Therefore, as we may say "this person was born to be a consecrated priest", the ancients may say "this person was sown to become a consecrated priest."  If anything, the planting of the seed (consummation leading to conception), is most important in the ancient language: to spring forth or to raise up.  
 
@@ -322,9 +325,7 @@ For the people of Nephi in America, certainly this cyclical phenomenon would be 
 #### Cycles of 60 and 75
 A 60-year cycle, the cycle of the return of the Water Ox can be anchored to the year 8 BC.  A 75-year cycle, the cycle of the return of Lyra Comet 1P can be anchored to the year 12 BC.  From those anchors, we can review the past and future, to ascertain any significant historical change points.  Of note is the fact that these cycles will coincide (plus or minus a few years) every 300 years:  60 × 5 = 75 × 4.
 
-
-
-| Event              | 60 | 75 |
+| Event              | 60 | 75 | Actual (Deviation)
 | :----------------: | :------: | :----: |
 | Sodom/Gomorrah?       |   1808 BC   |  1812 BC |
 |        |   1748 BC   |        |
@@ -358,7 +359,7 @@ A 60-year cycle, the cycle of the return of the Water Ox can be anchored to the 
 |        |   728 BC   |        |
 |        |            |  687 BC |
 |        |   668 BC    |        |
-|  Shazer (Jacob is born)      |   608 BC   |  612 BC |
+|  Shazer (Jacob is born)      |   608 BC   |  612 BC | 613 BC (-1)
 |        |   548 BC   |        |
 |        |            |  537 BC |
 |        |   488 BC   |        |
@@ -430,6 +431,90 @@ A 60-year cycle, the cycle of the return of the Water Ox can be anchored to the 
 |   |   1973 AD  |          |
 |   |          |    2014 AD | 2061 (+47)
 |   |   2033 AD  |          |
+
+
+
+
+
+The 60-year cycle is purely mathematical so will not have any deviations.   Anchoring to a solar equinox as a New Year (Nowruz), the passage of time is easy to measure.  However, the appearance of some initial signs in the heavens that led to speculation (that then led to Samuel the Lamanite entering frame and preaching), indicates a cycle with uncertainty.  That is, the 75-year cycle of Lyra Comet 1P.
+
+The people of Nephi considered the age of a man to be about 72 years, why was this?  Was it because the founder [ni] lived to this age?  Or was it anchored to the cyclical nature of this comet?  Or maybe both?
+
+![Lyra Comet 1P: 75-year cycle with deviations
+](https://github.com/MonteShaffer/rml-bomo/blob/main/images/Lyra-trend.png?raw=true) *Lyra Comet 1P: 75-year cycle with deviations*
+
+The trend of the comet is rather consistent after the appearance immediately preceding the Messianic birth.  There appears to be a sinusoidal deviation around a simple linear trend:  On average, every 75 years, the comet appears 2.1 years later.  In 20 cycles (1500 years later), the deviation would be 42 years according to the estimated trend and actual observation.  This trend does not help astrological speculation before the Messianic birth.  However, given its importance at the onset of the story for the family of Nephi, it would be carefully monitored and documented.  
+
+##### Colon-mbia: the 2100-year prophecy
+The 2100-year prophecy was very likely part of the legend of Nephi found on the small plates.  If you can recognize the 1830s puffery about Columbus coupled with the anti-semitic sentiment, the elements of editorialization can be examined.
+
+- Colon (or Colom) was the name prophesied.  In a historical document, this is unprecedented (a smoking gun for the veracity of the Ancient American Record).  What is objectively laudable would be laughable in 1830s America.  So the name is removed from the prophecy.
+- Colon was Jewish: a man among Gentiles.  In mathematics, the current language could imply either a Jew or Gentile, but given Colon's life and commentary about the Ancient Americans (look, they are clean-shaven and circumcised, all of them), Colon was Jewish during the Iberian era of the Inquisition.  Likely born in Barcelona, a member of the Colom family, the man made every effort to dissociate himself with his heritage.  What was his first name?  Well, to fit in, Cristóbal or Cristoforo is a nice Christian choice.  Careful analysis of any original texts we have will demonstrate examples of phrases from the Catalan language.  But of course, all of his original journals were curated and editorialized by Bartolomé de las Casas.  And, Colom commissioned his good friend to help craft a Christian theophany about the Crusades in the Holy Land.  And, Colom's sons on his death bed begged to know their true heritage, a secret Colom took to the grave.  Just imagine if the Mormon movement, even today, would anchor to this frame.
+- Colon-mbia literally means the arrival of Colon.  A fulfillment of the apocalyptic prophecy of Nephi:  in 2100 years, ships from the east (using our ship-building technology) will arrive and KILL YOU ALL.  Kafkaesque.  This is a very intriguing prophecy in essence.  Yet is shrowded with sunshine and rainbows:  Colon was inspired to come to this land and KILL YOU ALL; these liberated Gentiles were not all bad, they were seeking religious freedom so they came to America to KILL YOU ALL.  After the lens of editorialization is applied, the inconsistencies can be removed so serious discussion can follow.
+    - Nephi described this event to his children with a name and a timeframe: Colon will arrive (Colon-mbia) in 2100 years after Shazer (~1493).  Children would be ripped from their mothers and their heads smashed against brick homes; your daughters will be raped until sores/callouses develop; your efforts to negotiate and find commonality (your God visited us and this is what He taught) will result in torturous deaths.  What will you do?
+        - Option 1: we fight.  The original voyage of Colon was a disaster.  The three captains had different objectives, one was interested in prioritizing rape and returned to Europe dying shortly thereafter from syphilis.  The other two ships were summarily defeated, Colon's ship was forced onto a reef and sunk.  A careful reading of the Doctor's diary on the second voyage reveals the official narrative of men left behind to secure a fort is pure fiction.  Taking a few slave girls for ravaging, they returned to Europe.  Not Spain.  Colon arrived in Portugal as he wanted to avoid the financiers of his lost vessel.  Within six months, they were able to return to America with 17 ships and 1500 men.  And these slave girls were also useful for understanding a local 'lingua franca' that made communication with very distinct tribes possible through the Americas.  The maritime superioty that defeated Colon was never encountered again.  Although Colon actively looked for them.  They were gone.
+		Option 2: we flight.  The above story is a hit-and-run, almost a scouting party.  After the encounter, this group likely went North to warn their cousins in Cahokia.  Maybe other messengers went South to warn the locals there as well.  And the flight to isolation began.  The people of Marajo vanish in the archeology.  Tairona and Machu Pichu seems to be the highlands-isolation strategy.  Another group blocks the Cayenne River (Cuyarí) by chopping down large trees to damn access upstream; the Portuguese would name this river Madeira (meaning wood).
+		Option 3: we fade to white.  The Americas may have had over 100 million people in 1491.  Most have painted the population desolation as an American Holocaust; that is, the killing and disease decimated the populations.  One interesting study among the Maya, however, suggests that the locals may have chose to stop having children.  Given the prophecy, to you want to be enslaved by the greedy colonists for generations, or do you just want to live a nice laugh, watch the sunset with your loved ones, and fade to white.
+		Option 4: we proselyte.  The Book of Mormon is replete with stories of brave missionaries proselyting among their enemies.  The civilization was advanced, had the capability of trans-oceanic travel, and so this option was also likely exercised by some.  Maybe several different efforts.  Where did the Vikings come from?  How about the Anglo-Saxons?  Or the Franks?  Were these groups from America that decided to take the ministry to Europe: to build a society like Nephi did that would protect the innocent?
+		Option 5: we embrace the blight.  One woodcarving suggests that suicide was a way out.  One example was a depiction of a beautiful, tall, naked blond woman that took a club and beat her daughter to death, told her boy to run off into the woods, and then hung herself.  Maybe this could be classified as a "flight", but maybe not.  Others would meet with the conquistadores trying to persuade them knowing hoping to bring out the goodness of men.  How many times did an initial meet-and-greet turn into a hostage situation?  This option is to embrace the blight as a learning experience.  To endure, bearing the burdens that were required, so that the prophecy of the scattering and the remnant would be fulfilled.  "All" was not absolute, a remnant of the descendants of Nephi exists today.  Because they chose to embrace the blight.
+		
+
+	- The people of Nephi, in an effort to thwart the inevitable, may have enabled it.  Maybe they wrecked a ship along the Iberian coastline.  Or maybe, in a missionary effort, they arrived in port to meet with the local kings.  King John of Portugual seeminly decided to use this design to plunder, starting with North Africa in 1415 and arriving in India by 1475.  The ship was a game-changing technology as it could carry lots of plunder, had thick timbers for war, and were extremely sturdy in poor weather and still reasonably fast (although not agile).  The Portuguese would call this ship the Não, which the Muslims of the Indian tradecenters would fear, naming it the "qaraqir" (the dread of the merchant ship) which became standardized as the carraca and carrack.  A radical innovation that turned the peaceful Indian Ocean into a zone of piracy.  Portugal would pillage and later claim they were establishing free trade (at extortionary prices).  When, in fact, they ended a free-trade zone that was successful and collaborative for over 2000 years!
+	- Colon arrives in America and notices how friendly the locals are and how willing they are to exchange goods for glass beads or seashells.  What he did not understand that these small items were tokens of a fiat economy, a simple token of currency NOT anchored to gold/silver which is so easily pillaged.  Upon returning to Portugal, Colon was mocked by the Indian enterprises:  he was bringing back minimal goods whereas they were bringing back shiploads of spices, gold and silver.
+	
+	
+	
+	
+	
+	
+	
+	
+	The portuguese began using a unique ship design called the "nau" which the spanish also started to mimick "nao"... 
+	
+	qaraqir "merchant ship"
+	
+	name of carraca -> carrack 
+	
+	The carrack first appeared, historians believe, in the late 13th and early 14th centuries
+	
+	who invented it 
+	carrack origin
+	
+	
+	 São Gabriel h
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
