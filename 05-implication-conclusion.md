@@ -495,5 +495,14 @@ zāhāḇ gold
 
 Isa 22:18 hezekiah lower case is brother of heze this   hze-hskn  H5532, associate/friend ...
 
+s-sa to strip off cloethes
+maybe lamad was masculine, two bolts was feminine, or vice versa ... duck seems to be feminine, and hawk seems to be masculine ... get naked ... to make like a duck ... s-duck, s'-hawk 
+
+kefa = to unclothe 
+kap = to clothe 
+p/f confusion in Hebrew?
+
+kap as incense, part of dressing is putting on perfumes 
+
 
 
