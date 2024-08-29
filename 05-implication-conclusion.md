@@ -374,3 +374,126 @@ wicked/stink
 
 The Lyrid meteor shower occurs between April 16-25 every year 
 
+
+
+sheshe in Hebrew https://www.blueletterbible.org/lexicon/h7799/kjv/wlc/0-1/
+shoo-shan'
+lilies
+
+https://www.blueletterbible.org/kjv/mat/6/28/s_935028
+Consider the lilies of the field, how they grow; they toil not, neither do they spin:
+
+And yet I say unto you, That even Solomon in all his glory was not arrayed like one of these.
+
+do not wither
+
+Consider the lilies of the field, how they grow 
+toil not (wither not), do not spin 
+Solomon in all his glory was not surrounded like one of these 
+
+
+consider
+sek-al' 7920, soom 7760, zaw-mam' 2161
+lily
+shoo-shan' 7799
+field
+sher-ay-maw' 8309, saw-deh' 7704
+
+Matt 6:28
+carefully evaluate ... kat-am-an-than'-o G2648
+
+Luke 12:27 ... kat-an-o-eh'-o G2657
+
+Isa 5:12 ... harp and pipe (halil) ... hiss forth ... consider 
+
+raw-aw' H7200 (consider)
+mah-as-eh' H4639 (works of hands)
+pōʿal 6467 (work)
+
+haw-dawr' 1926 (glory)
+
+kos-meh'-o G2885 adorn = cosmetics 
+
+https://www.blueletterbible.org/kjv/eze/16/13/t_conc_818013
+zāhāḇ gold 
+mal-boosh' apparel
+shaysh fine linen
+meh'-shee costly garment 
+rik-maw' embroidered 
+yaw-faw'	beauty
+tsaw-lakh' prosper 
+
+shame 8034 = famous (lol)
+aw-saw' 6213 = to dress
+kaw-saw' 3640 = to clothe
+
+grow = Isa 61:11
+branch = tseh'-makh
+gan-naw' = garden/orchard (gee-gannaw-ana)
+
+zay-roo'-ah = sown
+
+h6509 increased (grow) = para ... fruitful
+
+sheh-ay-reeth' remnant/residue 7611
+raw-baw' increase 7235
+
+naw-veh' dwelling/meadow, man's place 5116
+5115 naw-vaw' ... adorn / beauty 
+
+weary = faint yaw-af' 3286
+Isa 40:31 (mount on eagles wings)
+
+spin = twine, twisting ...
+šāzar 7806, šēš 8336 Ex 36:35
+
+khaw-shav' = cunning/good work 2803
+taw-vaw' = to spin 2901
+shool = hem of skirt 7757
+shaw-zar' 7806 twisting/twined 
+shaw-nee' 8144 crimson / scarlet 
+
+
+Pronunciation
+per-ee-bal'-lo = arrayed, clothed, surrounded 
+
+https://www.blueletterbible.org/lexicon/g4016/kjv/lxx/0-1/#lexResults
+
+sim-law' 8071 garment/apparel
+
+kaw-rah' = tear to pieces Portuguese ... 7167
+
+qir = walls 7023
+koor = 6979
+
+qara-qir = tear to pieces (H7167) - walls (H7023)
+
+law-bash' 3847 ... to put on clothes 
+l = lamad = s in Egyptian ... is this Egyptian 
+sab *decirate.adorn*
+
+ash = 809, tightly wrapped ... pressed together
+
+
+should be "English" ... sash ... 
+
+tsaw-naf' 6801, to wrap tightly ... 
+
+ash = call out, ask for help ... Egyptian ... also means perfume  
+sab-ash = dress with the help of another 
+
+
+enosh === en-ash ... man = in woman (married husband)
+
+[H794] ('ashedah/ash-ay-daw') feminine of 793; a
+ravine:--springs. see H793
+
+
+
+5532 saw-kan' = treasurer ... Zoram? Zor = gold, people of gold 
+zāhāḇ gold
+
+Isa 22:18 hezekiah lower case is brother of heze this   hze-hskn  H5532, associate/friend ...
+
+
+
