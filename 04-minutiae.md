@@ -336,11 +336,11 @@ A 60-year cycle, the cycle of the return of the Water Ox can be anchored to the 
 
 | Event              | 60 | 75 | Actual (Deviation)|
 | :---------------- | :------: | :----: | :---------------- |
-| Sodom/Gomorrah?       |   1808 BC   |  1812 BC |
+|   Buddha (?)       |   1808 BC   |  1812 BC |
 |        |   1748 BC   |        |
 |        |            |  1737 BC |
 |        |   1688 BC   |        |
-|        |            |  1662 BC |
+|  Sodom/Gomorrah (?)      |            |  1662 BC |
 |        |   1628 BC   |        |
 |        |            |  1587 BC |
 |        |   1568 BC    |        |
@@ -368,7 +368,7 @@ A 60-year cycle, the cycle of the return of the Water Ox can be anchored to the 
 |        |   728 BC   |        |
 |        |            |  687 BC |
 |        |   668 BC    |        |
-|  Shazer (Jacob is born)      |   608 BC   |  612 BC | 613 BC (-1)
+|  Shazer (Jacob is born)      |   608 BC   |  612 BC | 614 BC (-2)
 |        |   548 BC   |        |
 |        |            |  537 BC |
 |        |   488 BC   |        |
@@ -378,7 +378,7 @@ A 60-year cycle, the cycle of the return of the Water Ox can be anchored to the 
 |        |   368 BC    |        |
 |  Jewish tradition of Alexander the Macedonian (323 BC)      |   308 BC   |  312 BC |
 |        |   248 BC   |        |
-|        |            |  237 BC | 240 BC (-3)
+|  Mosiah / King Benjamin (?)      |            |  237 BC | 240 BC (-3)
 |        |   188 BC   |        |
 |        |            |  162 BC | 164 BC (-2)
 |        |   128 BC   |        |
@@ -400,7 +400,7 @@ A 60-year cycle, the cycle of the return of the Water Ox can be anchored to the 
 |   |   473 AD  |          |
 |   |          |    514 AD |
 |   |   533 AD  |          |
-|   |   593 AD   |    589 AD | 607 (+18)
+|  Muhammed (?)  |   593 AD   |    589 AD | 607 (+18)
 |   |   653 AD  |          |
 |   |          |    664 AD | 684 (+20)
 |   |   713 AD  |          |
@@ -435,17 +435,17 @@ A 60-year cycle, the cycle of the return of the Water Ox can be anchored to the 
 |  French Republic  |   1793 AD   |    1789 AD | 1835 (+46)
 |   |   1853 AD  |          |
 |   |          |    1864 AD | 1910 (+46)
-|   |   1913 AD  |          |
+|  Age of Tribulation (?) |   1913 AD  |          |
 |   |          |    1939 AD | 1986 (+47)
-|   |   1973 AD  |          |
+|  Age of Desolation (?) |   1973 AD  |          |
 |   |          |    2014 AD | 2061 (+47)
-|   |   2033 AD  |          |
+|  Endgame (?) |   2033 AD  |          |
 
 
 
 
 
-The 60-year cycle is purely mathematical so will not have any deviations.   Anchoring to a solar equinox as a New Year (Nowruz), the passage of time is easy to measure.  However, the appearance of some initial signs in the heavens that led to speculation (that then led to Samuel the Lamanite entering frame and preaching), indicates a cycle with uncertainty.  That is, the 75-year cycle of Lyra Comet 1P.
+The 60-year cycle is purely mathematical so will not have any deviations.   Anchoring to a solar equinox as a New Year (Nowruz), the passage of time is easy to measure.  However, the appearance of some initial signs in the heavens that led to speculation (that then enabled Samuel the Lamanite to enter the frame and begin preaching), indicates a cycle with uncertainty.  That is, the 75-year cycle of Lyra Comet 1P.
 
 The people of Nephi considered the age of a man to be about 72 years, why was this?  Was it because the founder [ni] lived to this age?  Or was it anchored to the cyclical nature of this comet?  Or maybe both?
 
@@ -458,19 +458,25 @@ The trend of the comet is rather consistent after the appearance immediately pre
 The 2100-year prophecy was very likely part of the legend of Nephi found on the small plates.  If you can recognize the 1830s puffery about Columbus coupled with the anti-semitic sentiment, the elements of editorialization can be examined.
 
 - Colon (or Colom) was the name prophesied.  In a historical document, this is unprecedented (a smoking gun for the veracity of the Ancient American Record).  What is objectively laudable would be laughable in 1830s America.  So the name is removed from the prophecy.
-- Colon was Jewish: a man among Gentiles.  In mathematics, the current language could imply either a Jew or Gentile, but given Colon's life and commentary about the Ancient Americans (look, they are clean-shaven and circumcised, all of them), Colon was Jewish during the Iberian era of the Inquisition.  Likely born in Barcelona, a member of the Colom family, the man made every effort to dissociate himself with his heritage.  What was his first name?  Well, to fit in, Cristóbal or Cristoforo is a nice Christian choice.  Careful analysis of any original texts we have will demonstrate examples of phrases from the Catalan language.  But of course, all of his original journals were curated and editorialized by Bartolomé de las Casas.  And, Colom commissioned his good friend to help craft a Christian theophany about the Crusades in the Holy Land.  And, Colom's sons on his death bed begged to know their true heritage, a secret Colom took to the grave.  Just imagine if the Mormon movement, even today, would anchor to this frame.
+- Colon was Jewish: a man among Gentiles.  In mathematics, the current language could imply either a Jew or Gentile, but given Colon's life and commentary about the Ancient Americans (look, they are clean-shaven and circumcised, all of them), Colon was Jewish during the Iberian era of the Inquisition.  Likely born in Barcelona, a member of the Colom family, the man made every effort to dissociate himself with his heritage.  What was his first name?  Well, to fit in, Cristóbal or Cristoforo is a nice Christian choice.  Careful analysis of any original texts we have will demonstrate examples of phrases from the Catalan language.  But of course, all of his original journals were curated and editorialized by Bartolomé de las Casas.  And, Colom commissioned this good friend to help craft a Christian theophany about the Crusades in the Holy Land.  And, Colom's sons on his death bed begged to know their true heritage, a secret Colom took to the grave.  Just imagine if the Mormon movement, even today, would anchor to this frame.
 
 ###### Colon-mbia is apocalyptic
-Colon-mbia literally means the arrival of Colon.  A fulfillment of the apocalyptic prophecy of Nephi:  in 2100 years, ships from the east (using our ship-building technology) will arrive and KILL YOU ALL.  Kafkaesque.  This is a very intriguing prophecy in essence.  Yet is shrowded with sunshine and rainbows:  Colon was inspired to come to this land and KILL YOU ALL; these liberated Gentiles were not all bad, they were seeking religious freedom so they came to America to KILL YOU ALL.  After the lens of editorialization is applied, the inconsistencies can be removed so serious discussion can follow.
+Colon-mbia literally means the arrival of Colon.  A fulfillment of the apocalyptic prophecy of Nephi:  in 2100 years, ships from the east (using our ship-building technology) will arrive and KILL YOU ALL.  Kafkaesque.  This is a very intriguing prophecy in essence.  Yet is shrowded with sunshine and rainbows in its editorialization:  Colon was inspired to come to this land and KILL YOU ALL; these liberated Gentiles were not all bad, they were seeking religious freedom so they came to America to KILL YOU ALL.  After the lens of editorialization is applied, the inconsistencies can be removed so serious discussion can follow.
 
 ##### Preparing for Colon-mbia
-Nephi described this event to his children with a name and a timeframe: Colon will arrive (Colon-mbia) in 2100 years after Shazer (~1493).  Children would be ripped from their mothers and their heads smashed against brick homes; your daughters will be raped until sores/callouses develop; your efforts to negotiate and find commonality (your God visited us and this is what He taught) will result in torturous deaths.  What will you do?
-        - Option 1: we fight.  The original voyage of Colon was a disaster.  The three captains had different objectives, one was interested in prioritizing rape and returned to Europe dying shortly thereafter from syphilis.  The other two ships were summarily defeated, Colon's ship was forced onto a reef and sunk.  A careful reading of the Doctor's diary on the second voyage reveals the official narrative of men left behind to secure a fort is pure fiction.  Taking a few slave girls for ravaging, they returned to Europe.  Not Spain.  Colon arrived in Portugal as he wanted to avoid the financiers of his lost vessel.  Within six months, they were able to return to America with 17 ships and 1500 men.  And these slave girls were also useful for understanding a local 'lingua franca' that made communication with very distinct tribes possible through the Americas.  The maritime superioty that defeated Colon was never encountered again.  Although Colon actively looked for them.  They were gone.
-		Option 2: we flight.  The above story is a hit-and-run, almost a scouting party.  After the encounter, this group likely went North to warn their cousins in Cahokia.  Maybe other messengers went South to warn the locals there as well.  And the flight to isolation began.  The people of Marajo vanish in the archeology.  Tairona and Machu Pichu seems to be the highlands-isolation strategy.  Another group blocks the Cayenne River (Cuyarí) by chopping down large trees to damn access upstream; the Portuguese would name this river Madeira (meaning wood).
-		Option 3: we fade to white.  The Americas may have had over 100 million people in 1491.  Most have painted the population desolation as an American Holocaust; that is, the killing and disease decimated the populations.  One interesting study among the Maya, however, suggests that the locals may have chose to stop having children.  Given the prophecy, to you want to be enslaved by the greedy colonists for generations, or do you just want to live a nice laugh, watch the sunset with your loved ones, and fade to white.
-		Option 4: we proselyte.  The Book of Mormon is replete with stories of brave missionaries proselyting among their enemies.  The civilization was advanced, had the capability of trans-oceanic travel, and so this option was also likely exercised by some.  Maybe several different efforts.  Where did the Vikings come from?  How about the Anglo-Saxons?  Or the Franks?  Were these groups from America that decided to take the ministry to Europe: to build a society like Nephi did that would protect the innocent?
-		Option 5: we embrace the blight.  One woodcarving suggests that suicide was a way out.  One example was a depiction of a beautiful, tall, naked blond woman that took a club and beat her daughter to death, told her boy to run off into the woods, and then hung herself.  Maybe this could be classified as a "flight", but maybe not.  Others would meet with the conquistadores trying to persuade them knowing hoping to bring out the goodness of men.  How many times did an initial meet-and-greet turn into a hostage situation?  This option is to embrace the blight as a learning experience.  To endure, bearing the burdens that were required, so that the prophecy of the scattering and the remnant would be fulfilled.  "All" was not absolute, a remnant of the descendants of Nephi exists today.  Because they chose to embrace the blight.
-		Option 6: rebel out of spite.  It could be understandable how some would see this impending outcome as a curse for living in a society crafted by Nephi.  Such people may revert to other practices, may utilize knowledge about the details of the Messiah Death Event and hunt down and torture faithful believers in similar ways:  forcing a good man to copulate with your sister before bashing his head in with a club, cutting a good man's throat from ear-to-ear on the altar of a temple, severely mutilating the genitalia of a man before castrating, and forcing family and friends to eat the flesh of their fathers (Moroni 9).
+Nephi described this event to his children with a name and a timeframe: Colon will arrive (Colon-mbia) in 2100 years after Shazer (~1493).  Children would be ripped from their mothers and their heads smashed against brick homes; daughters will be raped until sores/callouses develop; any efforts to negotiate and find commonality (your God visited us and this is what He taught) will result in torturous deaths.  What will you do?
+
+- Option 1: we fight.  The original voyage of Colon was a disaster.  The three captains had different objectives, one was interested in prioritizing rape and returned to Europe dying shortly thereafter from syphilis.  The other two ships were summarily defeated, Colon's ship was forced onto a reef and sunk.  A careful reading of the Doctor's diary on the second voyage reveals the official narrative of men left behind to secure a fort is pure fiction.  Taking a few slave girls for ravaging, they returned to Europe.  Not Spain.  Colon arrived in Portugal as he wanted to avoid the financiers of his lost vessel.  Within six months, they were able to return to America with 17 ships and 1500 men.  And these slave girls were also useful for understanding a local 'lingua franca' that made communication with very distinct tribes possible through the Americas.  The maritime superioty that defeated Colon was never encountered again.  Although Colon actively looked for them.  They were gone.
+
+- Option 2: we flight.  The above story is a hit-and-run, almost a scouting party.  After the encounter, this group likely went North to warn their cousins in Cahokia.  Maybe other messengers went South to warn the locals there as well.  And the flight to isolation began.  The people of Marajo vanish in the archeology.  Tairona and Machu Pichu seems to be the highlands-isolation strategy.  Another group blocks the Cayenne River (Cuyarí) by chopping down large trees to damn access upstream; the Portuguese would name this river Madeira (meaning wood).
+
+- Option 3: we fade to white.  The Americas may have had over 100 million people in 1491.  Most have painted the population desolation as an American Holocaust; that is, the killing and disease decimated the populations.  One interesting study among the Maya, however, suggests that the locals may have chose to stop having children.  Given the prophecy, to you want to be enslaved by the greedy colonists for generations, or do you just want to live a nice laugh, watch the sunset with your loved ones, and fade to white.
+
+- Option 4: we proselyte.  The Book of Mormon is replete with stories of brave missionaries proselyting among their enemies.  The civilization was advanced, had the capability of trans-oceanic travel, and so this option was also likely exercised by some.  Maybe several different efforts.  Where did the Vikings come from?  How about the Anglo-Saxons?  Or the Franks?  Were these groups from America that decided to take the ministry to Europe: to build a society like Nephi did that would protect the innocent?
+	
+- Option 5: we embrace the blight.  One woodcarving suggests that suicide was a way out.  One example was a depiction of a beautiful, tall, naked blond woman that took a club and beat her daughter to death, told her boy to run off into the woods, and then hung herself.  Maybe this could be classified as a "flight", but maybe not.  Others would meet with the conquistadores trying to persuade them knowing hoping to bring out the goodness of men.  How many times did an initial meet-and-greet turn into a hostage situation?  This option is to embrace the blight as a learning experience.  To endure, bearing the burdens that were required, so that the prophecy of the scattering and the remnant would be fulfilled.  "All" was not absolute, a remnant of the descendants of Nephi exists today.  Because they chose to embrace the blight.
+
+- Option 6: rebel out of spite.  It could be understandable how some would see this impending outcome as a curse for living in a society crafted by Nephi.  Such people may revert to other practices, may utilize knowledge about the details of the Messiah Death Event and hunt down and torture faithful believers in similar ways:  forcing a good man to copulate with your sister before bashing his head in with a club, cutting a good man's throat from ear-to-ear on the altar of a temple, severely mutilating the genitalia of a man before castrating, and forcing family and friends to eat the flesh of their fathers (Moroni 9).
 
 ##### Portuguese Maritime Genius
 When one studies the diffusion of innovation, the source of innovation must always be identified.  For example, the Veneticians had a long history of building boats for defense and trade.  So, when the Portuguese end up pillaging and plundering the free-trade zone of the Indian Ocean, many local leaders would seek out the wisdom and technology of the Veneticians.  To no avail.  The technology they were facing was new and novel to the world.  Or at least to the known world.
