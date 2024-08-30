@@ -315,7 +315,7 @@ Additionally, the difference of the two "s" symbols in Egyptian may have been ag
 
 
 
-##### Shazer and the six-hundred year prophecy
+### Shazer and the six-hundred year prophecy
 About 5 April 608 BC, Jacob is born at the event Nephi describes as "Shazer", meaning the twisting.  The month of April is known for the Lyrid meteor showers.  Chinese "star gazers" first recorded observing these meteor showers from Lyra in ~686 BC.  They first observed a meteorite hitting the earth in ~643 BC.  So what exactly was seen in the heavens, in the stars, when Jacob was born?
 
 Lyra Comet 1P already appeared in the heavens about five years earlier.  Was there a supernova event at this time?  Did a meteorite strike the top of the Mountain creating a fire, a new "Sinai" event?  
@@ -450,13 +450,17 @@ The people of Nephi considered the age of a man to be about 72 years, why was th
 
 The trend of the comet is rather consistent after the appearance immediately preceding the Messianic birth.  There appears to be a sinusoidal deviation around a simple linear trend:  On average, every 75 years, the comet appears 2.1 years later.  In 20 cycles (1500 years later), the deviation would be 42 years according to the estimated trend and actual observation.  This trend does not help astrological speculation before the Messianic birth.  However, given its importance at the onset of the story for the family of Nephi, it would be carefully monitored and documented.  
 
-##### Colon-mbia: the 2100-year prophecy
+#### Colon-mbia: the 2100-year prophecy
 The 2100-year prophecy was very likely part of the legend of Nephi found on the small plates.  If you can recognize the 1830s puffery about Columbus coupled with the anti-semitic sentiment, the elements of editorialization can be examined.
 
 - Colon (or Colom) was the name prophesied.  In a historical document, this is unprecedented (a smoking gun for the veracity of the Ancient American Record).  What is objectively laudable would be laughable in 1830s America.  So the name is removed from the prophecy.
 - Colon was Jewish: a man among Gentiles.  In mathematics, the current language could imply either a Jew or Gentile, but given Colon's life and commentary about the Ancient Americans (look, they are clean-shaven and circumcised, all of them), Colon was Jewish during the Iberian era of the Inquisition.  Likely born in Barcelona, a member of the Colom family, the man made every effort to dissociate himself with his heritage.  What was his first name?  Well, to fit in, Cristóbal or Cristoforo is a nice Christian choice.  Careful analysis of any original texts we have will demonstrate examples of phrases from the Catalan language.  But of course, all of his original journals were curated and editorialized by Bartolomé de las Casas.  And, Colom commissioned his good friend to help craft a Christian theophany about the Crusades in the Holy Land.  And, Colom's sons on his death bed begged to know their true heritage, a secret Colom took to the grave.  Just imagine if the Mormon movement, even today, would anchor to this frame.
-- Colon-mbia literally means the arrival of Colon.  A fulfillment of the apocalyptic prophecy of Nephi:  in 2100 years, ships from the east (using our ship-building technology) will arrive and KILL YOU ALL.  Kafkaesque.  This is a very intriguing prophecy in essence.  Yet is shrowded with sunshine and rainbows:  Colon was inspired to come to this land and KILL YOU ALL; these liberated Gentiles were not all bad, they were seeking religious freedom so they came to America to KILL YOU ALL.  After the lens of editorialization is applied, the inconsistencies can be removed so serious discussion can follow.
-    - Nephi described this event to his children with a name and a timeframe: Colon will arrive (Colon-mbia) in 2100 years after Shazer (~1493).  Children would be ripped from their mothers and their heads smashed against brick homes; your daughters will be raped until sores/callouses develop; your efforts to negotiate and find commonality (your God visited us and this is what He taught) will result in torturous deaths.  What will you do?
+
+###### Colon-mbia is apocalyptic
+Colon-mbia literally means the arrival of Colon.  A fulfillment of the apocalyptic prophecy of Nephi:  in 2100 years, ships from the east (using our ship-building technology) will arrive and KILL YOU ALL.  Kafkaesque.  This is a very intriguing prophecy in essence.  Yet is shrowded with sunshine and rainbows:  Colon was inspired to come to this land and KILL YOU ALL; these liberated Gentiles were not all bad, they were seeking religious freedom so they came to America to KILL YOU ALL.  After the lens of editorialization is applied, the inconsistencies can be removed so serious discussion can follow.
+
+##### Preparing for Colon-mbia
+Nephi described this event to his children with a name and a timeframe: Colon will arrive (Colon-mbia) in 2100 years after Shazer (~1493).  Children would be ripped from their mothers and their heads smashed against brick homes; your daughters will be raped until sores/callouses develop; your efforts to negotiate and find commonality (your God visited us and this is what He taught) will result in torturous deaths.  What will you do?
         - Option 1: we fight.  The original voyage of Colon was a disaster.  The three captains had different objectives, one was interested in prioritizing rape and returned to Europe dying shortly thereafter from syphilis.  The other two ships were summarily defeated, Colon's ship was forced onto a reef and sunk.  A careful reading of the Doctor's diary on the second voyage reveals the official narrative of men left behind to secure a fort is pure fiction.  Taking a few slave girls for ravaging, they returned to Europe.  Not Spain.  Colon arrived in Portugal as he wanted to avoid the financiers of his lost vessel.  Within six months, they were able to return to America with 17 ships and 1500 men.  And these slave girls were also useful for understanding a local 'lingua franca' that made communication with very distinct tribes possible through the Americas.  The maritime superioty that defeated Colon was never encountered again.  Although Colon actively looked for them.  They were gone.
 		Option 2: we flight.  The above story is a hit-and-run, almost a scouting party.  After the encounter, this group likely went North to warn their cousins in Cahokia.  Maybe other messengers went South to warn the locals there as well.  And the flight to isolation began.  The people of Marajo vanish in the archeology.  Tairona and Machu Pichu seems to be the highlands-isolation strategy.  Another group blocks the Cayenne River (Cuyarí) by chopping down large trees to damn access upstream; the Portuguese would name this river Madeira (meaning wood).
 		Option 3: we fade to white.  The Americas may have had over 100 million people in 1491.  Most have painted the population desolation as an American Holocaust; that is, the killing and disease decimated the populations.  One interesting study among the Maya, however, suggests that the locals may have chose to stop having children.  Given the prophecy, to you want to be enslaved by the greedy colonists for generations, or do you just want to live a nice laugh, watch the sunset with your loved ones, and fade to white.
@@ -464,545 +468,83 @@ The 2100-year prophecy was very likely part of the legend of Nephi found on the 
 		Option 5: we embrace the blight.  One woodcarving suggests that suicide was a way out.  One example was a depiction of a beautiful, tall, naked blond woman that took a club and beat her daughter to death, told her boy to run off into the woods, and then hung herself.  Maybe this could be classified as a "flight", but maybe not.  Others would meet with the conquistadores trying to persuade them knowing hoping to bring out the goodness of men.  How many times did an initial meet-and-greet turn into a hostage situation?  This option is to embrace the blight as a learning experience.  To endure, bearing the burdens that were required, so that the prophecy of the scattering and the remnant would be fulfilled.  "All" was not absolute, a remnant of the descendants of Nephi exists today.  Because they chose to embrace the blight.
 		Option 6: rebel out of spite.  It could be understandable how some would see this impending outcome as a curse for living in a society crafted by Nephi.  Such people may revert to other practices, may utilize knowledge about the details of the Messiah Death Event and hunt down and torture faithful believers in similar ways:  forcing a good man to copulate with your sister before bashing his head in with a club, cutting a good man's throat from ear-to-ear on the altar of a temple, severely mutilating the genitalia of a man before castrating, and forcing family and friends to eat the flesh of their fathers (Moroni 9).
 
-	- The people of Nephi, in an effort to thwart the inevitable, may have enabled it.  Maybe they wrecked a ship along the Iberian coastline.  Or maybe, in a missionary effort, they arrived in port to meet with the local kings.  King John of Portugual seeminly decided to use this design to plunder, starting with North Africa in 1415.  Thereafter a school of navigation was developed and the explorations of Portuguese were kept secret.  Likely the cyclical tradewinds of 30-degrees south were understood as the Brasilian land was discovered.  Almost, as if, they were given clues by seasoned explorers.  The ship was a game-changing technology as it could carry lots of plunder, had thick timbers for war, and were extremely sturdy in poor weather and still reasonably fast (although not agile).  The Portuguese would call this ship the Não, which the Muslims being plundered named it the "qaraqir" (the dread of the merchant ports, literally the wall-buster:  qara-qir = tear to pieces [H7167] - walls [H7023]) which became standardized as the carraca and carrack.  The caravel was a modified version with a shallower draft and more manueverable.  A radical innovation that turned the peaceful Indian Ocean into a zone of piracy.  Portugal would pillage and later claim they were establishing free trade (at extortionary prices).  When, in fact, they ended a free-trade zone that was successful and collaborative for over 2000 years!
-	- Colon arrives in America and notices how friendly the locals are and how willing they are to exchange goods for glass beads or seashells.  What he did not understand that these small items were tokens of a fiat economy, a simple token of currency NOT anchored to gold/silver which is so easily pillaged.  
+##### Portuguese Maritime Genius
+When one studies the diffusion of innovation, the source of innovation must always be identified.  For example, the Veneticians had a long history of building boats for defense and trade.  So, when the Portuguese end up pillaging and plundering the free-trade zone of the Indian Ocean, many local leaders would seek out the wisdom and technology of the Veneticians.  To no avail.  The technology they were facing was new and novel to the world.  Or at least to the known world.
+
+The Muslims would call the ship the the "qaraqir" (the dread of the merchant ports, literally the wall-buster:  qara-qir = tear to pieces [H7167] - walls [H7023]) which became standardized as the carraca and carrack.  The ship was made from thick timbers so could withstand significant cannon fire.  It had a very low draft which enabled it to carry lots of cargo, but more importantly made it very stable in storms.  It would not tip over.  Yet, this could also be its weakness, in the correct circumstances; by forcing the ship into shallow waters, it would easily run aground (as Colon's Santa Maria did on his first voyage).  From this radical innovation, incremental improvements would be made, namely a ship that was shallower on the draft and more maneuverable; that is a caravel (qara-vel).
+
+So where did this engineering innovation come from?  How did a small Iberian country suddenly become a plundering giant?  The details are a mystery, but after the introduction of the ship, the Portuguese created a School of Navigation and kept many of their voyages and ship-building technologies secret.  Again, that informs the acquisition of a novel technology yet does NOT demonstrate the Portuguese created the technology.  The name for the ship may have been Nao or Nau or Não, which sounds a lot like the word "Noah" who anciently is known for building a thick-timbered vessel.
+
+King John of Portugual seeminly decided to use this design to plunder, starting with North Africa in 1415.   At the time, the power of the technology was not fully understood as the King tried to land and engage the enemies.  Over time, the Não would just bombard the target until the conditions of surrender were met, reducing the need for soldiers (paying, feeding, burying them), and maximizing the ability to plunder.  And so begins the conquest of the free-trade center of the Indian Ocean.  An area that experienced peaceful trade for over 2000 years.
+
+Sailing around Africa was a challenge until two Portuguese navigators decided to sail west to catch a trade wind that would then take them south and then return east.  Interesting capability that just appears.  And this unique trade secret occurs at about 30-degrees south latitude.  It is estimated that before the Portuguese signed the Treaty of Tordesillas, they were well-aware of the region we today call Brasil.
+
+All of the mystery behind the masterful maritime genius could be explained by a society that had over 2000 years of expertise in the ship-building ecosystem, the people of Nephi.  The people of Nephi, in an effort to thwart the inevitable, may have enabled it.  Maybe they wrecked a ship along the Iberian coastline.  Or maybe, in a missionary effort, they arrived in port to meet with the local kings.  
+
+###### Colon: glass beads and sea shells
+Colon arrives in America and notices how friendly the locals are and how willing they are to exchange goods for glass beads or seashells.  What he did not understand that these small items were tokens of a fiat economy, a simple token of currency NOT anchored to gold/silver which is so easily pillaged in transport.  Interestingly, one again needs to consider the source of innovation.
+
+Q: Where and when did glass develop for the production of glass beads?  
+
+Of course, the "historian" will answer: from Venice, of course.  Technically, from the island of Murano to reduce the risk of fire on the main island.  
+
+Q: Well, what defines "Murano glass"?  
+A: A specific mixture of silica with bicarbonate.  
+
+Q: And did Venice develop this technology?  
+A: Well no, the bicarbonate was sourced from the Levant and the technique may date back to Egypt from about 3000 BC.  
+
+Q: Has archaelogists discovered glass beads in Ancient America? 
+A: Yes, but it all came from Colon.  
+
+Q: How do you know?  
+A: Well, these 'dumb locals' did not have the skills to make it.  
+
+Q: Well then, why did they value it?  Would that not imply a past-knowledge of the thing, which maybe was lost to them?  
+A: No, of course not.  No one was able to melt sand to form glass until 3000 BC.   There is no way the Ancient Americans had developed that skill before 1500 AD yet lost the capability.
+
+In summary, this is called "colonialism archaelogy" anchored to a specific worldview where what is being discovered aligns with colonial ethnocentrism.  Such capability seemed to be lost by some of the locals in Ancient Americans, but not all.  Ironically, in an effort to demonstrate the fiction of significant 'land migrations over the Bering Strait', archaelogists discovered glass beads in Alaska.  The "Murano" brand, dated in the 1400s.  But the "Murano" brand is actually not Venetian in origin - it is Egyptian!
 	
-	
-	
-	
-	
-	
-	
-	
-	The portuguese began using a unique ship design called the "nau" which the spanish also started to mimick "nao"... 
-	
-	qaraqir "merchant ship"
-	
-	name of carraca -> carrack 
-	
-	The carrack first appeared, historians believe, in the late 13th and early 14th centuries
-	
-	who invented it 
-	carrack origin
-	
-	
-	 São Gabriel h
+###### Cahokia
+The levels of 'colonial distortion' may be too complex to unwind.  Consider Cahokia.  Which may be "KiasKiasKiah" based on a local Alogonquin tribe.  There are several potential meanings of either root, using ancient Egyptian.  Fundamentally, it would seem that the area had a large mound which would demarcate a boundary or territory.  Likely a banner was unfurled across this large mound.  Across the way, in modern-day Saint Louis, it is reported that there was another such large mound, likely a little bit further from shore than the Gateway Arch.  This mound, like its neighbors was ploughed under and demolished to build the city.  Along with approximately 200,000 other mounds that stretched from Cahokia to Upstate New York.  
 
+Each of these large mounds would be tied to a specific river branch, demonstrating a confluence.  A visual marker that enabled navigators on the rivers to understand where they were headed.  And so, the primary cultures were have a land of inheritance:  possibly the Lakota/Dakota north along one river system (Ta means Land in Egyptian).  Or the Adena/Hopewell peoples of "Ohio" which is above the Port we call Louisville today.  That is, the Ohio river is impassable due to Falls, so that region north would be an isolate.  However, the Tennessee River valley would represent its own watershed which interestingly almost connects with the Alabama River system that feeds the Gulf of Mexico and the Savannah/Samtee River systems that feed the Altantic Coast.  These highland areas have a few surving raised-earth works which likely consisted of a wood-henge which could be used as a map to quickly ascertain latitude.
 
+The Cahokia complex has the most robust remainder of such wood henges.  One circle has 28 posts on the periphery: very useful to marking the phases of the moon.  Four other circles seem to have been found: 12, 24, 36, and 60 posts.  Useful for dividing the year.  And one circle that has been partially destroyed may have had 72 or 75 posts:  very useful for tracking Lyra Comet 1P.
 
+For ancients, there was only one cardinal direction: East.  This is where the sun was born to give life to each day.  If you put a wooden post in the ground, you can see easily follow the shadow and the light.  In the northern hemisphere, the sun always is to the south and the shadow is to the north.  That is, the second cardinal direction is a function of the first, the sun.  On the summer solstice, the shadow at mid-day (a function of a minimum shadow, often referred to as solar noon) is at a minimum.  If you measure the angle of a shadow at that time, you know your exact latitude.  So for example, if you are at the Equator, on the summer solstice, there will be no shadow at solar noon.  You are at 0-degree latitude.
 
+Any skilled outdoorsman can find true north (shadow north) and therefore the remaining cardinal directions by observing the sun and the shadow path for less than an hour.  Maybe that should be updated to:  any skilled outsdoorsman used to be able to find true north ....
 
+Placing 36 posts in a circle will enable more sophisticated calculations, literally dividing a year into 10-day periods (with an extra 5.2422 days that would need to be addressed).  One could divide the year into 2 parts, 3 parts, 4 parts, 6 parts, 12 parts, and so on.  If the height of the post is known, the interplay of the shadows may allow one to ascertain latitude quite quickly.  So, for navigation purposes, at a highland where several river systems meet, or at a confluence of two river systems, having a raised earth work with a wood-henge would enable one to "ubicarse" (to understand where in geography you are) similar to a mall-map.  You are here.  If you want to go visit the Lakota cousins, follow that river system.
 
+At the moment, Cahokia seems to me to be a gathering place that was an education and reunion center.  And of course, a burial center.  With a belief that "hell" is defined as "SHE-OL", the pit, it seems obvious that the burial of the dead above ground was to get them closer to the heavens.  Some burials throughout the Americas demonstrated an embalming process, but the dead seemed to be positioned in a sitting position unlike the class Egyptian Pharoahs which lay reposed.
 
+Archaelogiests, with their "colonist lens" and hoping to get a click-bait headline with their research, will often conclude that a human-sacrifice ritual occurred here.  They have get on their "jump-to-conclusions" mat several times to arrive there.  But it gets them noticed.
 
+Cahokia is one such example.  Cahokia springs to life after the 1066 appearance of Lyra Comet 1P.  And Cahokia seemingly vanishes in the window of 1378/1456 two other appearances of the comet.  If there was a 2100-year Colon-mbia prophecy, maybe this was a final meeting of the cousins to celebrate what was, before preparing for what will be.  In this context, the location of the other mounds adjacent to the larger mound may be a memorial in the form of a map.  If some believers are killed in a skirmish with another tribe, maybe the dead (or dying) are carried by boat to Cahokia to be buried in the region that corresponds to where they live.  Or, if a village is raided to steal the young girls from the House of Virgins, and their tribe practices Option 5 may have been taught (similar to a fire drill):  if the enemy tribes capture you, they will do horrible things to you, so if the men fail defending the village, here is a piece of linen, tie it to a rafter, and hang yourself.  If true, the value of the village attack has been lost to the invaders, so they would leave.  Thereafter, the young girls would be carried by ship to Cahokia and buried, virtue intact.
 
+And so, one can explain the same archaelogy from a very different perspective.  And one should not judge which option a specific tribe chose to embrace for Colon-mbia.  Some, it would seem, chose suicide as a path forward.  Others embraced the opportunity to learn from the life presented them.  It has been said that Carib invaders would capture the Taíno daughters.  And so, these women would be carried to a Caribbean island, raising children and living a reasonable life.  Not an ideal life, but nonetheless, alive.  And these women would teach their sons and daughters their language, which preserves the heritage of the Taíno.
 
+#### Alexander the Macedonian 
+Certainly to the people of Nephi, the cycles of the Comet Lyra 1P would be carefully observed, but what of others within the Hebrew tradition.  After the Josiah comet appearance (613 BC), it would seem that the astrologers did track this important comet.  In fact, the Jewish community linked its appearance to the rise of Greek influence in the region at the hands of Alexander the Macedonians.  Historians want to date this moment at 323 BC, but Jewish tradition anchors to the appearance of the comet in 312 BC.  Both could be correct if you see the comet as an indicator of change that is impending.
 
+Maybe the fall of the Northern Kingdom was anchored to the appearance of the comet.  Maybe Solomon's triumph of his navies against Aden.  Or the Exodus.  Or Joseph's success in Egypt to preserve life against a famine.  Or maybe, as observed by the Chinese, the comet made its first appearance with the meteor showers from Lyra.  That the Josiah appearance was the first.  At this point, it is uncertain.  Enough data is not available.   But certainly for the people of Nephi it was significant.  A marker to ascertain the Messianic birth.
 
+### Messianic Age
+The Messiah was born 5 April 8 BC, the year of the Water Ox, 15 days after the solar year begins (Nowruz) defined by an equinox.  A few years prior, as a omen of change, Lyra Comet 1P appears in 12 BC.  And to commemorate the Messianic birth, a supernova occurs, which the Chinese have defined as QingMing.
 
+#### Death Date: Internal Views 
+If the Messiah only lived 33 years, the death would be about 26 AD.  According to Roman "history", Pontius Pilate is appointed prefect, Tiberius retires, and Jesus was crucified (one of three potential years).  Based on other narrations regarding John the Baptist 7 April 30 AD and 3 April 33 AD are also internal candidates.  Of course, many theories to fit into these timelines are significantly flawed.  For example, the timing of the Passover was a function of the moon as dictated by the local authorities.  For example, if there was a major renovation in Jerusalem that was not ready, it is possible that whimsically Passover would be pushed back a month.  Not common, but very plausible according to Jewish traditions.  In addition, the timelines are all anchored to a 7-day week based on the Roman Catholic traditions of the Holy Week.  Rome did not adopt the 7-day week until 100 AD, so any such speculation is an anachronism.  Ancient Egypt had 10-day "weeks" called decans, Genesis 1 has God "saying" about 10 times, your hands have 10 digits, Paul had visited more than the 7 churches highlighted in Revelation.  Anchoring to numbers from internal sources is very dangerous as these are the easiest things to manipulate.  As my journey of discovery has me conclude when reflecting on the 3 Nephi chronology.
 
+Isaiah makes it evident that God is tired of the lunations and sacrifices.  Maybe that implies that a lunar (luni-solar) calendar had replaced the older, traditional solar calendar.  Maybe there was a 7-day week during Isaiah's lifetime; certainly there were diplomatic ties with northern traditions that anchored to 7: likely starting with the Sumerian/Akkadian tradtions.
 
+#### Death Date: External Anchor
+The Messiah Death Event culminated with the Messianic death on 5 May 31 AD.  This is anchored to a testimony of a Chinese Emperor who observed a solar eclipse, proclaiming that a "man from heaven had died" and entered his private palacial chambers for 5 days.  Possibly the date was 31 AD described as the "summer, in fourth month of the year, on the day of Ren Wu."  NASA has developed algorithms to estimate historic eclipse events.  Fred Espenak's models offer a 4 minute, 26 second eclipse with totality in the Sea of Japan occuring on 10 May 31 AD.  Occuring about 1 PM in China, this event would have been partially seen in the Levant at about 8 AM.  There is noise trying to align dates between various ancient calendaring systems and with computer-projected models that also have a degree of uncertainty.
 
+My selection of 5 May 31 AD is a placeholder, a best guess at the moment; as is the placeholder of 5 April 8 BC.  Taken together, the Messiah would have lived a life of 37 years, 30 days.
 
+### Impasse: 33 or 37?
+My conclusions that the Messiah died at the age of 37 is in direct conflict with the timeline presented in 3 Nephi which summarily concluded that the Messiah died at the age of 33.  A clear impasse, especially for a mathematician.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-The Siege of Damascus occurred in 825 BC when the Israelite king Jeroboam II captured the city of Damascus from the Arameans.
-
-Comet was anchored to Jewish history 
-
-312 BCE Alexander the Great, according to Hebrew history; 323 BC is commonly-accepted history ...
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-representing both a celestial phenomenon in the heavens as well as the celestial miracle on the earth: the birth of a child as a gift of light (e.g., [dar la luz] in Spanish: a crown of flowing light, see H2213 H2215 H2224 H2225 and so on).
-
-
-
-
-H2796 khaw-rawsh' ... like kheresh, craftsman ; engraver / mason 
-
-
-
-
-
-for an appropriate date.  So, did this same comet also appear in 612 BC?   According to a different Chinese record, a comet appeared in the autumn of 614 BC (Table II, [https://adsabs.harvard.edu/full/1982JBAA...92..209B]).  Given the limited data, we may reasonably conclude that this comet was also Lyra 1P.
-
-
-
-
-#### Cycles of 50 and 75
-
-
-
-
-
-
-
-If so, the people of Nephi would have likely tracked each occurrence of the cyclical appearance of this comet.  Since the cyclical appearance fluctuates, maybe the data varied within 72-78 year window.  Using modern engineering notation, we would say 75 ± 3 years to capture the uncertainty. 
-
-
-
-If we take Samuel's words as "5 years exactly", a supernova occuring on 5 April 8 BC would necessitate a lesser-yet-primary sign to occur on 5 April 13 BC.  This primary sign was not a unique, one-off event, rather it was cyclical.  As such, this celestial event can be used to keep track of time.  From earth, it would appear like a moving star that appears and disappears.
-
-Comets are celestial bodies that appear to be moving lights 
-
-One of the most famous phenomenon we call the comet of Halley, attributed to a British astronomer born in 1600s.
-
-| Chinese  | Meaning | Roots |
-| :--:| :------: | :---- |
-| 孛星 |   bushy star    | ten + cover + child : sun/day + life |
-| 彗星 |   broom star   | abundance + abundance + "pig-snout" : sun/day + life |
-| 掃星 |  sweeping star   | hand + "pig-snout" + cover + turban/scarf : sun/day + life |
-| 天攙 |  heavenly intermingler   | one + big : knife + mouth + compare/compete + knife + mouth + second + line + dot |
-| 篷星 |  sailing star   | bamboo + go + walk + one + two + line : sun/day + life  |
-| 長星 |  long star   |  long/grow OR chief/elder OR "pig-snout" + one + bend : sun/day + life  |
-| 燭星 |  candle-flame star   |  fire + net + wrap + insect : sun/day + life  |
-
-
-
-https://en.wikipedia.org/wiki/Historical_comet_observations_in_China
-
-volcanic eruption that took place from 5 to 14 May 1706
-
-May 5th is 1/3 of year from January 1 start ...
-
-
-Deed to Jedediah M. Grant, 5 May 1843
-
-5 May 1844 (Sunday Afternoon and Evening). Mansion House
-
-BYU Religious Studies Center
-https://rsc.byu.edu › words-joseph-smith › 5-may-1844...
-5 May 1844 (Sunday Afternoon and Evening). Mansion House. [1] A large co in Bar Room P.M. & eve Joseph spoke a long time on petitions read Friersons [2] ...
-
-https://eclipse.gsfc.nasa.gov/5MCSEmap/0001-0100/31-05-10.gif
-
-
-https://www.youtube.com/watch?v=mWLSX04Upig
-Comet 9 March 5 BC?
-
-
-31 AD:  Summer, 4th month (Jan Wu) of year, day of Ren Wu  (3:45)
-https://youtu.be/mWLSX04Upig
-
-3 days later a halo 5:06 
-
-Book of Wei, official history of the Wei dynasty. The book contains only summary information from the now lost official astronomer's records, but nevertheless has reasonably accurate information
-
-The evidence points to Jesus being born in the period 5 BC March 9 - May 4, probably around Passover time: 5 BC April 13-27. Birth in the spring is consistent with the account in Luke that there were shepherds living out in the fields nearby keeping watch over their flock by night. Birth in 5 BC is also consistent with the census of Caesar Augustus. The date of the Nativity presented here enables a new chronology of the life of Christ to be constructed which is consistent with the available evidence.
-
-https://ui.adsabs.harvard.edu/abs/1991QJRAS..32..389H/abstract#:~:text=Astronomical%20and%20historical%20evidence%20suggests,described%20in%20ancient%20Chinese%20records.
-
-scimitar 
-
-https://articles.adsabs.harvard.edu/full/1991QJRAS..32..389H
-pg. 395 ...
-
-po(comet): 12 BC, August 26 (visible for 56 days)
-
-sui(comet): 5 BC, March 9 - April 6 (visible for 70 days) ... sui as hui 
-
-po(comet): 4 BC, April 
-
-po(comet): 10 BC 
-
-https://ui.adsabs.harvard.edu/abs/1962VA......5..127H/abstract
-
-https://scholar.google.com.au/scholar?cites=16601536224523758815&as_sdt=5,48&sciodt=0,48&hl=en
-
-https://articles.adsabs.harvard.edu/cgi-bin/nph-iarticle_query?1987SSRv...45....1D&defaultprint=YES&filetype=.pdf
-
-The apparition of 87 BC was recorded in Babylonian tablets which state that the comet was seen "day beyond day" for a mont
-
-he 760 AD apparition was recorded in the Zuqnin Chronicle's entry for iyyōr 1071 SE (May 760 AD), calling it a "white sig
-
-
-
-
-
-
-
-
-
-
-Wikipedia says 613 BC 
-
-
-240 BC was comet, was this King Mosiah?
-
-| Item              | In Stock | Price |
-| :---------------- | :------: | ----: |
-| Python Hat        |   True   | 23.99 |
-| SQL Hat           |   True   | 23.99 |
-| Codecademy Tee    |  False   | 19.99 |
-| Codecademy Hoodie |  False   | 42.99 | 
-
-Out of Lyra is a celestial body that appears every 75 years or so.
-
-
-Recall that both narratives (Herod and Samuel the Lamanite) indicate there were many celestial signs.  Maybe this could be associated with annual meteor showers.  However, as discussed, an ultimate sign of the Messianic birth was a supernova.  And this occurred after a significant primary sign.  
-
-
-NASA has data on various heavenly events, and many of those are cyclical which means they can be estimated if not recorded or referenced in wrriten observations.  During the family journey described in 1 Nephi, there was an unusual cluster of solar/lunar eclipses with totalities visible within the Arabian peninsula.  In addition, a famous comet may have appeared during that time frame (Astophysicists use the cyclical nature of the comet and estimates sightings that are not readily available in written documents).
-
-One of the most famous phenomenon we call the comet of Halley, attributed to a British astronomer born in 1600s.  I will give it a more time-honored name, the Comet Lyra or Comet 1P from Lyra.  Joseph Smith observed this phenomenon in 1835 and discussed it as an important sign and wonder of the heavens (and Mark Twain even has a unique relationship with this comet).  The comet Lyra has a cycle (shaw-nah, H8138) that is approximately 75 years: more or less depending on whether the comet gets close to a planet when it enters the planetary region of the solar system and is effected by local gravity.  In addition, the mass of the comet would likely be reduced over time as it emits a stream of material which could possibly create a time trend. 
-
-##### Comet and Shazer 
-So maybe the 600-year prophecy was anchored to, or computed from,  the appearance of this comet?  "Bright light" is one meaning of "Shazer" representing both a celestial phenomenon in the heavens as well as the celestial miracle on the earth: the birth of a child as a gift of light (e.g., [dar la luz] in Spanish: a crown of flowing light, see H2213 H2215 H2224 H2225 and so on).  Maybe part of "Shazer" was the appearance 
-
-
-
-
- and would be composed of three seasons of four months  
-
-, of which, there are many descriptions in ancient China: 
-
-
-This aligns with a Chinese celebration of Qingming: bright lights, sweeping the tombs of the ancestors, and a vague master-servant relationship.  
-
-
-
-
- Such a holiday would be anchored to an ancient solar calendar commonly used by agrariain populations known as the four-quarters calendar (四時八節曆):   
-
-
-This aligns with a Chinese celebration of Qingming: bright lights, sweeping the tombs of the ancestors, and a vague master-servant relationship.  The Chinese had a four-pillars calendar based exclusively on the sun, but the modern lunar-solar calendar will suffice to demonstrate that 8 BC is the year of the Water Ox.  
-
-
-
-
-
-
-
-
-
-Joseph Smith declared that the Messiah was born 6 April.  My mathematical frame places the year to be 8 BC.  So did a supernova occur at that time?
-
-
-
-
-
-
-
-
-
-Since a supernova is a one-time, non-cyclical event, the historical record is the only source of potential events.  The earliest record of a supernova that we currently have is from the year 185 AD when the Chinese noted a "guest star" appeared.  Other potential candidates from Chinese tradition may include:  ~1300 BC, and 532 BC.  In addition, Chinese observed that the meteor showers from Lyra began about 686 BC with the first observed meteorite hitting the earth in 643 BC.
-
-
-
-
-
- (labeled Tycho's supernova).  The second occurred in 1604 (labeled Kepler's supernova).
-
-So the bright light would over time dim and present itself as a new star in the heavens.   The luminosity makes a star visible to the human eye ..
-
-
- That is, the star is dying, and its explosion is a key change point in the death process. 
-
-
-
-Joseph Smith emphasized
-
-
-Some (such as Johannes Kepler) would later consider the possibility that the "new star" appearing in the East was the result of a supernova.  Joseph Smith concluded that 6 April was the date of the event.
-
-So, can we find evidence for a supernova event that occurred on 6 April 8 BC?    
-
- That is, the local peoples knew of the six-hundred year prophecy.  Samuel clarifies that the speculative trigger, which I will label the primary sign, had occurred.   After a few more years (recorded in the editorialized Book of Mormon as precisely 5 years), another sign would be given to commemorate the Messianic birth.  This sign I will label the ultimate sign.
-
-
-
-
-
-
-
-
-
-Many traditions suggest that the child was approximately two years old when the wise men finally meet the Messiah.   
-
-Other traditions change the order, that the wise men meet the family and Messianic child in Alexandria Egypt when the child is about four years old.  The wise men may have returned home or they may have spent the remainder of their lives with the child, possibly helping educate the child.  (Recall, that at the age of 12, the Messiah appears in the temple answering questions and amazes the teachers therein.)  The number of wise men is also unknown, with three (or four) being the common number as it represents the number of gifts offered.  Local traditions suggest there may have been as many as 12 wise men.
-
-
-
-
-
- kills every child in the specified region under the age of two.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Will it work with historical norms and  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Looping through the 60-year cycles defined as big years:  1793, 1853, 1913, 1973, 2033 would represent the thirtieth to thirty-fourth big years.  Maybe these are important anchors representing milestones: the age of modern freedom (French Republic Constitution), the age of modern science (physics, chemistry, and so on), the age of modern war (WWI, institution banking), the age of social awakening (Roe v. Wade, Nixon visits China, sexual revolution), and finally the age of the celestial big reveal (e.g., Close Encounters of the Third Kind).
-
-
-Anchoring to a Chinese meaning of a Water Ox that aligns well with Hebrew meaning, I conclude that the Messiah was born 8 BC.  The 60-year cycle could be classified as a big year.  The 33rd big year occurred in 1973; and the 34th big year will occur in 2033. 
-
-1913, 1853, 1793 
-
-
-Interestingly, the Water Ox is preceded (12 years earlier) by a Metal Ox (辛丑年: [industrious] + [two-knife]) which is possibly the year of Nephi's birth (20 BC) as the great KHERESH.  In addition, the Water Ox is succeeded (12 years later) by a Wood Ox (乙丑年: [second position] + [two-knife]) which is the year of Joseph Smith's birth in 1805.
-
- 
-
-##### Birth dates: the Messiah and Nephi's brother Jacob 
-The Book of Mormon prophesy as presented was precise, 600 years.  Certainly the Messianic birth is part of the prophecy.  What is the other anchor exactly?  Was it also a birth?  If so, who was born?  If we accept the Christian narrative at face value, there was a new star in the heavens appearing before the Messianic birth: a star in the east and wonders in the heavens.  The interchange between Herod and the "wise men" may suggest that many, many celestial events were occuring, so it was difficult to ascertain which sign was the prophetic one.
-
-Interestingly, stars or celestial events are obvious ommissions in the 1 Nephi narrative of the family traveling in the Arabian peninsula. (Imagine yourself in the middle of the Empty Quarter at night, would the stars not be a primary observation?)  So why are stars never mentioned?  In my reflections, I consider that possibly Nephi used omission as a teaching tool (fill in the blank):  children we were traveling through the barren deserts of Arabia, what is missing in the story?  The stars, of course!  As I now have arrived at the artistic license of the editorial process, another possibility exists:  it was removed.  But why?  Maybe to address the problems associated with the lost manuscript and its editorialization.
-
-##### Shazer: Jacob is born at the Mountain of Almonds (aka Sinai)
-My current understanding is that the word "Shazer" was the marker of the 600 year prophecy.  It represented the birth of Jacob, Nephi's younger brother.  And at his birth, there were many signs in the heavens.  "Shazer" (rudimentary definition being: Sha [garden] - zer [birth]) is what I would classify as a superword in Nephi's language (which interestingly Joseph Smith described when discussing Egyptian later in his life: one or two symbols could tell an entire story).  The two word stems can tell an entire story, and this was a teaching device: a sacred grove of almond trees, early spring, snow or blossoms dropping like snow or both, a difficult birth in a garden with an umbilical complication, a sharp knife, a fire, and so on.  This was the birth of Jacob!
-
-![sha](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sha.png?raw=true) *sha*
-![zer](https://github.com/MonteShaffer/rml-bomo/blob/main/images/zer.png?raw=true) *zer*
-
-[sha: pdf page 123](https://www.um.es/cepoat/egipcio/wp-content/uploads/egyptianhierogly.pdf)
-
-[zer: Paleo-Hebrew](https://www.ancient-hebrew.org/alphabet/files/alphabet_chart2.pdf) from root of [mamzer: H4464](https://www.blueletterbible.org/lexicon/h4464/kjv/wlc/0-1/): a head passing through a canal or a head appearing after much sweat, very literal.
-
-
-<!---
-https://i.ibb.co/1QjBxNL/sha.png
-https://i.ibb.co/2PZkHVf/zer.png
-//-->
-
-#### Synchronizing Dates
-
-If we can calculate when the family left Jerusalem, then we would know what year the Messiah was born.  And vice versa.  
-
-For example, the family can easily move within/without the city walls, so this puts a constraint on the potential year - the city could not be under seige.  The city of Jerusalem was destroyed about 586 BC during a second siege of the city; the first seige occurred about 605 BC.
-
-Next, the data of Samuel the Lamanite regarding the Messianic birth offers another boundary condition.  Many signs already had appeared and Samuel clarified that the ultimate sign would occur a few years after the primary sign.  So what was the primary sign?  And, what would the ultimate sign be?
-
-##### Celestial anchor: Lyra Comet 1P as the primary sign 
-NASA has data on various heavenly events, and many of those are cyclical which means they can be estimated if not recorded or referenced in wrriten observations.  During the family journey described in 1 Nephi, there was an unusual cluster of solar/lunar eclipses with totalities visible within the Arabian peninsula.  In addition, a famous comet may have appeared during that time frame (Astophysicists use the cyclical nature of the comet and estimates sightings that are not readily available in written documents).
-
-One of the most famous phenomenon we call the comet of Halley, attributed to a British astronomer born in 1600s.  I will give it a more time-honored name, the Comet Lyra or Comet 1P from Lyra.  Joseph Smith observed this phenomenon in 1835 and discussed it as an important sign and wonder of the heavens (and Mark Twain even has a unique relationship with this comet).  The comet Lyra has a cycle (shaw-nah, H8138) that is approximately 75 years: more or less depending on whether the comet gets close to a planet when it enters the planetary region of the solar system and is effected by local gravity.  In addition, the mass of the comet would likely be reduced over time as it emits a stream of material which could possibly create a time trend. 
-
-##### Comet and Shazer 
-So maybe the 600-year prophecy was anchored to, or computed from,  the appearance of this comet?  "Bright light" is one meaning of "Shazer" representing both a celestial phenomenon in the heavens as well as the celestial miracle on the earth: the birth of a child as a gift of light (e.g., [dar la luz] in Spanish: a crown of flowing light, see H2213 H2215 H2224 H2225 and so on).  Maybe part of "Shazer" was the appearance of this comet and the prophesy recorded by Lehi was something like: this sign in the heaven will appear eight more times in the next six hundred years (75 x 8 = 600); then, a new star will appear; and then, the Messiah will be born.
-
-
-##### Cultural Implications of Lyra Comet 1P
-If so, the people of Nephi would have likely tracked each occurrence of the cyclical appearance of this comet.  Since the cyclical appearance fluctuates, maybe the data varied within 72-78 year window.  Using modern engineering notation, we would say 75 ± 3 years to capture the uncertainty. 
-
-The people of Nephi considered the age of a man to be about 72 years, why was this?  Was it because the founder [ni] lived to this age?  Or was it anchored to the cyclical nature of this comet?  Again, one must read each number judiciously:  maybe Joseph originally voiced 75 which ultimately was recorded as 72.  Any literal reading should be done cautiously given the nature of the translation process (with or without any editorialization).
-
-And the cosmic cycle of the comet would seem to continue to be an important sign of the heavens for the Ancient Americans.  Maybe it was part of the 2100-year "Colon-mbia" prediction.  This presents the possibility that "Colon-mbia" was also a timed prophecy of 2100 years: 600 + 600 + 600 + 300 = 28 cycles of 75 = 35 cycles of 60.  
-
-Cahokia seems to have been established around 1066 (a final gathering of the cousins) and then disbanded after 1441 (well before Colon-mbia in 1492).  Archeologists have confirmed that many other Ancient American groups (e.g., Marajoara)  disappeared from large lowland cities within the timeframe of 75 years before 1492.  Speculations abound if these groups migrated to isolated locations (the safety of remote highlands in significant jungle) or if they merely chose not to continue having children (negative birth rate) or a combination of both.
-
-##### Other Potential Cultural Implications of Lyra Comet 1P
-
-It has been well established in history that Lyra Comet 1P was used as rational for explaining political events and outcomes.  For example, the Battle of Hastings in 1066 followed the comet's appearance which many at the time associated with England's succession crisis.  
-
-Maybe the Hebrew tradition had similar familiarity with this comet before the "Shazer" era.  And if the celestial events of Nephi's life were similar to celestial events occuring when the Messiah was born, additional insights can be considered.  That is, "Shazer" may have been an ultimate event .
-
-
-
-
-#### Six-hundred year prophecy 
-To clarify the six-hundred year prophecy, we need to consider the potential relevance of the comet.  According to our understanding of one historical Chinese astronomical record, a comet believed to be Lyra 1P appeared in 12 BC (26 August - 20 October).  This would be an anchor for the Messianic birth, as it is in the neighborhood for an appropriate date.  So, did this same comet also appear in 612 BC?   According to a different Chinese record, a comet appeared in the autumn of 614 BC (Table II, [https://adsabs.harvard.edu/full/1982JBAA...92..209B]).  Given the limited data, we may reasonably conclude that this comet was also Lyra 1P.
-
-Anchored to our current temporal assumptions of a solar year (365.2422 days per year), the two appearances occurred a little over 600 years apart: maybe 602 years, two and a half months.  Should we conclude that the  prophecy was literally that number, or was the prophecy anchored to the appearance of the cyclical Lyra 1P Comet with its deviations?  What did Joseph original voice?  That is, if Joseph voiced 602 years, would Sidney have edited the number to 600 based on his knowledge of biblical numerology, specifically the story of Noah?  It is worth noting that no one on the editorial staff for the Book of Mormon (or in the inner circle of the early Church) had significant mathematical prowess.
-
-
-##### Samuel the Lamanite: add 5 years  
-Next, consider the data we can derive from story of Samuel the Lamanite.  Celestial events were being observed.  And, if Comet Lyra 1P was part of the prophecy, it would be considered to be an important marker.  Likely, Samuel used the appearance of the comet to remind the people of the entire prophesy.    Maybe Samuel the Lamanite did indeed say 5 years.  If so, did that mean exactly 5 years?  Or within 5 years?  Maybe Samuel said exactly 3 years and 7 months?  Or maybe "15 days after the fourth vernal equinox from now" which cardinally be anchored to a fifth?   If the published does deviate from the actual, cCompounding what Joseph understood was voiced coupled with his team's understanding of ancient time counting and its accompanying mathematics, the question would remain:  what was the exact motivation for such an editorialization? 
-
-
-##### The ultimate sign of the Messianic birth  
-And what precisely was the official sign of the Messianic birth: a night without darkness (that would be visible globally, not just hemispherically)?  The description may suggest the new star was a supernova event (Kepler held this belief) or a two-star-merging anova.  Did Joseph Smith or his editorial staff know of Kepler's estimation and work this detail into the narrative?  Or did Joseph receive an ancient narrative about Samuel the Lamanite, from which, editorialization may occur?
-
-
-#### Times and Seasons:  Bookends of the Messianic Life 
-Intersecting all available data, I currently conclude that the Messianic birth occurred 5 April 8 BC.  Or maybe 6 April based on Joseph Smith's statement.  This aligns with a Chinese celebration of Qingming: bright lights, sweeping the tombs of the ancestors, and a vague master-servant relationship.  The Chinese had a four-pillars calendar based exclusively on the sun, but the modern lunar-solar calendar will suffice to demonstrate that 8 BC is the year of the Water Ox.  And interestingly, this coincides with the year -600 in the Bengali calendar.
-
-Joseph Smith was a Wood Ox 
-
-
-##### Year of the Water Ox 
-The original Chinese glyphs which are interpreted as "the year of the Water Ox" actually have more primitive roots [https://hanzicraft.com/character/癸丑年]:  [one-big-footsteps] + [two-knife] (ugly/shame) + [bend-one-ten] (year).  An obvious interpretation of "the year of the Water Ox" could be the "year where one takes big steps carrying a double-edged sword".
-
-
-586 BC, second siege, fall of Jerusalem 
-605 BC, first siege
-Spring 609BC, death of Josiah ...
-608 BC Shazer ... maybe +5 was embedded ...
-
-612 BC, Comet (signs that trigger Lehi/Josiah)
-
-
-Solomon reign, 970 to 931 BCE
-
-912 + 75 = 987, King David? city of David 
-
-13 x 75 = 975 
-12 = 900
-11 = 825 
-The Siege of Damascus occurred in 825 BC when the Israelite king Jeroboam II captured the city of Damascus from the Arameans.
-
-Comet was anchored to Jewish history 
-
-312 BCE Alexander the Great, according to Hebrew history; 323 BC is commonly-accepted history ...
-
-
-
-
-
-##### Traditional Challenges to a date earlier than 6BC
-Many would dismiss such an early birth year based on Herod-death constraints.  One needs to carefully consider how little we know of the actual story as the narratives we have all have gone through significant editorialization for two millenia.  We have a character Herod who was observing many significant celestial signs.  We have wise men that were seeking to interact with the Messianic family.  Yeshua had to be born; at 8 days Yeshua had to be named and circumcised (was this a Lotus birth?); at 40 days Mary would have been able to present herself at the temple.  Given the interchange between Herod and the wise men, Herod orders all male under the age of 2 to be killed in the region.  Mary/Joseph lived in Nazareth, but Yeshua born in Bethlehem.  The family was warned of Herod's wicked heart and fled to Egypt, likely Alexandria.  At some point the wisemen encountered the family, most suggest this occurred before the family left for Egypt.  As one iterates through the implications of the life and death of the Messiah, all of this data may need to be carefully reconsidered.  Are the order of events literal and accurate?  Was Herod, a Hasmonean that was restoring Hebrew convenants within the Abrahamic tradition, a bad guy?  Are you capable of seeing how the narrative could have been manipulated to paint the Jewish leader as the bad guy so the Roman leadership could be identified as good guys, or at least neutral (washing their hands of the Messianic death)?
-
-
-
-
-So if the Messianic birth was 5 April 8 BC, when was the Messianic death?  This birth anchor is earlier than most would allow given traditions of when the death occurred and the Herod-death constraints.  Again, assuming the Christian tradition at face value (there are also obvious motivations for editorialization), the wisemen encountered the young Yeshua in Alexandria, Egypt when the boy was about 4 years old.  The Herod timeline could work.
-
-
-
-
-##### Numerology of the Perfect Life: The Christ Number 33
-Most also believe that 33 is the perfect Christ number and that he lived to be exactly 33 years.  Tradition is that the Messiah was born 1 AD and died 34 AD.  Most scholars place the Messiah Death Event in the 30-33 AD range.  Which is precisely the range we find in 3 Nephi.  
-
-My calculations have Yeshua being born 5 April 8 BC and dying 5 May 31 AD, living 37 years, 30 days.  Not a full 40 years, but more than 30 years: fulfilling a Jewish tradition.  And interestingly, Joseph Smith when he was that age was pondering death.  In January 1843, Joseph gave a sermon focusing on an Old Testament reference that we as God's pinnacle of creation will one day feed the grasses of the field.
-
-##### Impasse: In the 33rd and 34th year ...
-Anchored to a belief of exactness within the Book of Mormon, I was at an impasse. All I had was a comment by scholar Royal Skousen when he concluded from his lifetime of study that "Oliver was tricky."  This means that, according to Royal, Oliver Cowdery would make edits to the manuscript and Joseph kept having to review the work to make certain this did NOT continue.  But now, given that Sidney or Oliver may have intentionally manipulated a few dates to fit their internal belief systems, I could look for a Messiah Death date independent of the constraint found in 3 Nephi.
-
-So the various data all aligned very nicely with the exception of 3 Nephi.  A review of the limited data we have, curated by Royal Skousen, shows that the scribes had crossed-out and replaced at least one date in 3 Nephi.  Maybe to align with Sidney's belief that the Messiah lived a perfect life of 33 years, born 1 AD and died 34 AD (an anchor James Talmage would use in his framing of Jesus the Christ).  
-My anchors for the birth/death of the Messiah are from a seemingly uninvolved third party:  China.  Qingming occurs 15 days after the equinox on April 5th-ish and means the celebration of the bright lights or pure lights where the living sweep the tombs of their ancestors (possibly preparing them for a promised ressurrection), the year 8BC is my proposal as the origin of the holiday is unknown (conflated with other holiday, traditions, and stories).  I associate this to the supernova predicting the birth of the Messiah.  
-
-And the death anchored to the observation of a solar eclipse with totality visible in the Sea of Japan, 5 May 31 AD.
-
-### Personal reflection in the limit 
-Being raised in the Mormon tradition, it was very difficult to challenge one's own internal belief system.  For me personally, the mathematics was undeniable.  But what are the consequences?  Again, I think about the consequences also in a maths frame.  What is the finite state of the system?  I experience cognitive dissonance, I realize my internal belief system is flawed.  So what do I do?  I could play the Dehlin card and spend the rest of my life feeding the flames of real feelings of perceived betrayal.  Where does that road lead?  What is the finite state of that choice?  Living an angry, bitter life.  No, thank you.
-
-So a mathematician will extend and abstract the consequences before settling on a finite state machine.  The Mormon Church institution manipulated information to encourage you to arrive at a certain conclusion so the institution could survive and thrive.  Once you get on that train, the conclusions are obvious:  The Christian institution formalized by Constantine and reformed ever since has manipulated information to encourage you to arrive at a certain conclusion so the institution could survive and thrive.  The Masoretic tradition of Jewish thought manipulated information to encourage you to arrive at a certain conclusion so the institution could survive and thrive.  
-
-Now consider the four domains of life: physical (health), education, religion, government/economics as defined by Luke 2:52.  I have outlined just the religious dimension of institutional manipulation.  And for this treatise, let's stay focused on the religious domain although the implications obviously flow into the other three.
-
-Once you conclude that institutions manage information for Ciceran purposes (grow and self-preserve), layering of belief needs to be deconstructed and redeveloped:  my Mormon traditions, the underlying Judeo-Christian traditions, and the underlying American-British-Roman traditions.  Nephi was wise when he observes how the "traditions of the fathers" can easily blind us.
-
-If you distill these realities, the obvious conclusion is that the Messiah Death Event was very significant.  Why else would the Masoretes manipulate the original Passover tradition and invent the golden calf narrative which was non-existent in the Greek Septuagint?  Why would the polytheistic Roman society have a mother-son adopt such a minor monotheistic religion if there was not reason (data we do not currently have) to motivate such adoption?  Interestingly, the best source document we have to unlock the truth about the Messiah Death Event is the Book of Mormon, with all of its editorial editions and flaws.
-
-#### Anchor of Faith: 3 days of darkness 
-The anchor remains:  3 Nephi says there was 3 days of darkness whereas Christian tradition defines only 3 hours of darkness.  Certainly Sidney would have known the 3-hour tradition yet the 3-day innovation was included.  Maybe this was something Sidney edited, Oliver implemented, and Joseph Smith corrected.  Those details would be fascinating.
-
-Regardless, why did the polemics of the Mormon movement NOT anchor to this obvious difference?  Why was faith not exercised in the literal words of 3 Nephi.  3 days of darkness!  What can cause 3 days of darkness throughout the world?  The answer is obvious: multiple volcanic eruptions that filled the skies with ash. 
-
-And for the modern Mormon institution, what I describe as the Brigham Synod (the culture of my upbringing), where is the strong stance on this very obvious distinction?  Why is the difference avoided or apologized away?  Talk about the ultimate "click-bait" for a modern discussion:  Mormon Church doubles down on 3 Nephi description of three-days of darkness calling Western traditions of Roman history pure fiction! 
-
-This was the anchor of faith from which Mormonism could have thrived to fulfill the promise of Isaiah:  that the knowledge of Jehovah would fill the world like the waters fill the sea.  Apologists seem to want to make this data point disappear rather than anchor and pivot from it.  If Roman tradition says there was 3 hours of darkness and Nephi tradition says there was 3 days of darkness, who should you believe?  An uninvolved witness half way around the world, or a society directly involved with the Messiah Death Event?
-
-Aha!  Can you see?
-
-###### Implications for Romans crafting history
-This unlocks the obvious conclusion that the Romans intentionally lied about the details of the Messiah Death Event, which, in turn, will challenge any detail in Roman history after Julius Caesar:  when did the Pompeii destruction occur?  when and how did Tiberius and Caligula die?
-
-The Messiah Death Event was much worse than you can imagine.  More brutal for those tortured AND the Apocalyptic Celestial Response *was* Epic.  There are plenty of clues remaining to this reality, a trinity of triangulating testimonies:  Psalms (20-24), Isaiah (20-24), and Matthew (20-24).  Rome does not recover to take the city of Jerusalem until 70 AD (soldiers die, power structures are destabilized), Roman "historians" begin recrafting a narrative in 100 AD:  Josephus to develop messaging for the Jewish audience and Pliny the Younger to develop messaging for a Roman audience.
-
-
-##### The Messiah Death Event
-The death likely occurred on 5 May 31 AD.  There was a solar eclipse over the Japan Sea on that day; the Emperor of China observed the occurence, proclaimed a "Son of the heavens has died" and entered his palace [in mourning] for 5 days.  There was an airburst event over Jerusalem that turned stones on the temple's altar to chalkstone.  This event likely created shockwaves that archaelogists associate with a magnitude 6+ earthquake with an epicenter in the middle of the Dead Sea.  The water level of the Dead Sea immediately dropped 50 feet.  Lilies of the field were decimated according to pollen data replaced by flora that can survive in a more arid environment.  Hearty oliveyards and vineyards suffer and rebound.  Trees that trigger seeding after fire-events (pines and pistachios) flourish.  And so on.  
-
-
-If the Book of Mormon is literally true, why has the Mormon Church never double-downed on the distinction of 3 days NOT 3 hours? Now, as I reflect on my journey, I have concluded that during the Joseph Smith era, everyone understood that Joseph as Prophet received novel content that was organized into the Book of Mormon with the help of his scribes.  If true, such an objective anchor would NOT be so objective for those living in that era.  
-
-But what of the modern movement?  Does it also have knowledge that such a distinction (3 days, not 3 hours) may have been an editorialization?  
-
-Regardless, stepping forward with faith that the 3 days of darknesses was not edited by Oliver or Sidney, the implications are tremendous.  
-
-And that, my dear reader, is the seed needed to move forward.  To reconstruct your understanding of the Messiah Death Event.  To unlock how instutitions manipulate you to thrive and grow:  in healthcare, in education, in religion, in government/economics/politics.  To enable you to understand the purpose of this planet [mor-mon-ya] and your celestial heritage.
-
-Godspeed.  Namaste.
-
-
-
-
+Royal Skousen had commented that Oliver would be tricky, and Joseph was constantly reviewing changes he was making.  A careful review of the manuscript data does indicate that at least one of the dates in the 3 Nephi narrative was crossed out and replaced.  I had not considered that the entire publication process was an editorialized expansion of an original text.  Yet, the mathematics is undeniable.  
