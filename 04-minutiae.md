@@ -226,9 +226,9 @@ Interestingly, stars or celestial events are obvious ommissions in the 1 Nephi n
 
 Now, the wordplay to craft stories is beginning to emerge.  It would seem like the introduction is anchored to the power of the [sh] which is fundamentally the power of woman.  Very interesting indeed.  So are there other [sh] sounds we can piece together to recreate the 1 Nephi narrative?
 
-![Nephi synopsis](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sh-Nephi-synopsis.png?raw=true) *Nephi synopsis*: Nephi synopsis of introduction: Our family traveled into the desert, a parent proposed we (the brothers) return to Jerusalem to acquire the writings.  I will go and do.  I observed the sword was of curious craftsmanship.  … Later, the family of Ishmael joined us and my "Ishtar" became my consummated wife.
+![Nephi synopsis](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sh-Nephi-synopsis.png?raw=true) *Nephi synopsis*: Nephi synopsis of introduction: Our family traveled into the desert, a parent proposed we (the brothers) return to Jerusalem to acquire the writings.  I will go and do.  I observed the sword was of curious craftsmanship.  … Later, the family of Ishmael joined us and my "Ishtar" (Moron) became my consummated wife.
 
-![Nephi kills Laban](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sh-Nephi-night.png?raw=true) *Nephi kills Laban*: I will go and do, sneak around the city at night and skillfully kill Laban.
+![Nephi kills Laban](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sh-Nephi-night.png?raw=true) *Nephi kills Laban*: I will go and do, sneak around the city at night and skillfully kill Laban.  And since "sh" can also represent a wall, maybe include that element to the story: climbing a wall of a city at night seems to be a common strategy among the brave in the stories that follow.
 
 
 ![Lehi's vision](https://github.com/MonteShaffer/rml-bomo/blob/main/images/sh-Lehi.png?raw=true) *Lehi's vision*: A gulf of misery, joy for some, lamentation for others
