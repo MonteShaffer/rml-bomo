@@ -313,7 +313,7 @@ Additionally, the difference of the two "s" symbols in Egyptian may have been ag
 
 ![Yeast and Rejuvenation](https://github.com/MonteShaffer/rml-bomo/blob/main/images/z-Misc.png?raw=true) *Yeast and Rejuvenation*:  Yeast is an active ingredient that helps bread rise as a "proper planting" of a man's seed in the woman's well would cause the woman's womb to grow.  Likely, the cakes prepared for the Queen Mother of Heaven in the ancient temple were directly associated with the desires of a betrothed woman to become a mother, an Ishtar.
 
-![Milk](https://github.com/MonteShaffer/rml-bomo/blob/main/images/z-Misc2.png?raw=true) *Milk*:  M
+![Milk](https://github.com/MonteShaffer/rml-bomo/blob/main/images/z-Misc2.png?raw=true) *Milk*:  
 
 
 
@@ -322,8 +322,11 @@ Additionally, the difference of the two "s" symbols in Egyptian may have been ag
 About 5 April 608 BC, Jacob is born at the event Nephi describes as "Shazer", meaning the twisting.  The month of April is known for the Lyrid meteor showers.  Chinese "star gazers" first recorded observing these meteor showers from Lyra in ~686 BC.  They first observed a meteorite hitting the earth in ~643 BC.  So what exactly was seen in the heavens, in the stars, when Jacob was born?
 
 Lyra Comet 1P already appeared in the heavens about five years earlier.  Was there a supernova event at this time?  Did a meteorite strike the top of the Mountain creating a fire, a new "Sinai" event?
+
+
+
   
-We do not know exactly.  We do know that the 1 Nephi narrative never mentions stars which is indeed strange given the context of their travels in Arabia.  Maybe "Shazer" represents a cartouche-of-sorts clarifying that the heavens were filled with signs and wonders.  Regardless, Lyra Comet 1P was a warning to Jerusalem that begin the chaos that led to the family being isolated in the desert at the Mount of Almonds for Jacob to be born at this sacred place.  The mountain of all mountains.  A place where Abraham (and Moses) and Joshua already communed with the heavens.  A place where Yeshua and Muhammad would later commune with the heavens.  A sacred cross roads for Abraham located in the land of his six youngest sons:  the Midians.
+We do not know exactly.  We do know that the 1 Nephi narrative never mentions stars which is indeed strange given the context of their travels in Arabia.  Maybe "Shazer" represents a cartouche-of-sorts clarifying that the heavens were filled with signs and wonders.  Regardless, Lyra Comet 1P was a warning to Jerusalem that begin the chaos that led to the family being isolated in the desert at the [Mount of Almonds](https://thepilgrim.co/jabal-al-lawz/) for Jacob to be born at this sacred place.  The mountain of all mountains.  A place where Abraham (and Moses) and Joshua already communed with the heavens.  A place where Yeshua and Muhammad would later commune with the heavens.  A sacred cross roads for Abraham located in the land of his six youngest sons:  the Midians.
 
 Samuel the Lamanite clarified that the Messianic birth would be celestially announced by a supernova five years after seeing the cyclical appearance of Lyra Comet 1P.  Does that mean the six-hundred year prophecy had a similar, two-stage anchor of reference?  The pattern seems to be:  Lyra Comet 1P creates speculation and wonder by observers (of all ages) and then something happens thereafter.  
 
