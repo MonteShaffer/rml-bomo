@@ -484,7 +484,9 @@ Nephi described this event to his children with a name and a timeframe: Colon wi
 #### Dynamics and Evolution of Options
 Such an apocalyptic future would require careful consideration.  Quite possibly, different family units would have different perspectives on the issue based on their sense of mercy/justice and the purpose of life.  Some would anchor to a principle of non-violence, like the people of Anti-Nephi-Lehi (geographic locator after first settlement in Jershon: East of lands of Nephi and Lehi, likely a river of refuge that Jehovah provides; SABA ANA) that took upon themselves the name of Ammon: AM-MON as in the PEOPLE of LOVE.  As descendants of Laman, when the people learned the teaching available to them, they made an oath of peace: MAA-KHERU becoming the people of peace: AM-MAA-KHERU (another meaning of America).  What exactly were they reading?  Was it the words "Captain" Moroni wrote on his cloak-turned-banner?  Was it prophecy regarding the nature of the upcoming Messiah Death Event?  Something like "no greater love than this, to lay down your life with your friends, for the benefit/salvation of your enemies."
 
-![Peace](https://github.com/MonteShaffer/rml-bomo/blob/main/images/peace.png?raw=true) *Peace:*  A crown of innocence, an oath of truth, to establish law and order by laying down the spear forever.  Literal symbols, right example:  scimitar/scythe (to kill or harvest), true oath, bear/carry with arm, to put spear down.
+![Peace](https://github.com/MonteShaffer/rml-bomo/blob/main/images/peace.png?raw=true) *Peace:*  A crown of innocence, an oath of truth, to establish law and order by laying down the spear forever.  Literal symbols, left example:  scimitar/scythe (to kill or harvest), foundation (truth/integrity),  sieve/mouth (to fall/defeat/slaughter), spear (downward facing, put down); right example: scimitar/scythe (to kill or harvest), foundation (truth/integrity), arm (to bear/carry), spear (downward facing, put down).
+
+right example:  scimitar/scythe (to kill or harvest), true oath, bear/carry with arm, to put spear down.
 
 kher sieve/mouth: to fall or defeat or slaughter 
 
@@ -493,6 +495,10 @@ beq = pregnant woman ... s'beg = make pregenant ... sabacka = doggy style ...
  kha = sieve/hand ... king's coronation 
  
  am = what is in, who is in 
+ 
+ s-ma = to join ... to make ma, to make together 
+ 
+ s-am = to make people ... maybe sam was a brother from a different mother, regardless, if sam's daughter was not violating the rule of the tree, everything's fine ... sister's sort of ...
  
  
 
