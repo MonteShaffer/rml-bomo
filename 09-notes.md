@@ -1083,3 +1083,14 @@ Godspeed.  Namaste.
 
 
 
+
+
+
+
+ khus = build
+ kher = slaughter
+ 
+ z'enos = to make like enos
+ z'enock = to make like enoch
+ 
+ 

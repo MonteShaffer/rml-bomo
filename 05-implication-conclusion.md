@@ -106,7 +106,7 @@ Rome does not recover to take the city of Jerusalem until 70 AD (soldiers die, d
 
 The death likely occurred on 5 May 31 AD.  There was a solar eclipse over the Japan Sea on that day; the Emperor of China observed the occurence, proclaimed a "the sun hides its face in shame as a son of the heavens has died" and entered his palace [in mourning] for 5 days.  First, according to this record, there is a reference of no sunlight.  Was it merely the solar eclipse or does this observation by the emperor of China include a testimony of 5 days of darkness.
 
-An hoow would he know that the disasters were anchored to the death of a good man from heaven?  Was he (or one of his emissaries) one of the wisemen that directly had the opportunity to observe a Messianic life?  Were these wisemen later framed as "apostles" who were sent back home (sent away) to share the Messianic story?  Not to witness the death and destruction, but to share a way of living.
+An how would the Emperor know that the disasters were anchored to the death of a good man from heaven?  Was he (or one of his emissaries) one of the wisemen that directly had the opportunity to observe a Messianic life?  Were these wisemen later framed as "apostles" who were sent back home (sent away) to share the Messianic story?  Not to witness the death and destruction, but to share a way of living.
 
 There was an airburst event over Jerusalem that turned stones on the temple's altar to chalkstone.  This event likely created shockwaves that archaelogists associate with a magnitude 6+ earthquake with an epicenter in the middle of the Dead Sea.  The water level of the Dead Sea immediately dropped 50 feet.  Lilies of the field were decimated according to pollen data replaced by flora that can survive in a more arid environment.  Hearty oliveyards and vineyards suffer and rebound.  Trees that trigger seeding after fire-events (pines and pistachios) flourish.  And so on.  
 
@@ -121,10 +121,10 @@ But what of the modern movement?  Does it also have knowledge that such a distin
 #### Time and Season Under Heaven:  Non-optimal diffusion
 For many devout Christians, there are significant hurdles to accept that the Roman version of events were not completely accurate.  Many evangelicals have a strong belief in the 'inerrancy of the Bible.'  Any issues with editorial manipulations of translators is a challenge for them.  As I remind them, using the evangelical frame:  'God is still on the throne.  God has got this!'  Said differently, these 'errors' are breadcrumbs or clues that enable us to move forward with faith.  To anchor, and pivot.
 
-For many devout Mormons, there are similar hurdles.  'Inerrancy of the Book of Mormon' leaves behind clues.  And is not the glory of God to seek truth and light from the darkenss? 
+For many devout Mormons, there are similar hurdles.  'Inerrancy of the Book of Mormon' leaves behind clues.  And is not the glory of God to seek truth and light from the darkness? 
 
 ##### Pauline Gospel
-Most of what we call the New Testament has been identified as Pauline writing by most academic scholars.  The Epistle of Jacob (not James) is one exception.  And it would seem, that Revelation was significantly editorialized from an older record before Pauline influence.  Paul was born in Tarsus.  Tarsus is likely just outside of the blast zone that occurred on 5 May 31 AD which Paul may have observed when he was about 26-years old.
+Most of what we call the New Testament has been identified as Pauline writing by academic scholars.  The Epistle of Jacob (not James) is one exception.  And it would seem, that Revelation was significantly editorialized from an older record before Pauline influence.  Paul was born in Tarsus.  Tarsus is likely just outside of the blast zone that occurred on 5 May 31 AD which Paul may have observed when he was about 26-years old.
 
 Paul was supposedly both a Roman citizen and a Pharisee.  This is difficult to believe given that his inability to understand [Habakkuk](https://www.youtube.com/watch?v=ZCshIENR8xw) led to the creation of his own gospel, the gospel of salvation by grace alone throught the Messianic blood.
 
