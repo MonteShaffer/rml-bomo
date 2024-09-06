@@ -273,6 +273,9 @@ Finally, the correlation of the broken Hebrew with the broken Egyptian in contex
 | :-- | :------ | :---- |
 | H148 | ad-ar''-gaw-zare' | (Aramaic) astrologer |
 | H1506 | gheh'-zer | a part / to cut off / to be isolated |
+| H2134 | zak | clean/pure |
+| H2135 | zaw-kaw' | transluscent/innocent/pure |
+| H2142 | zaw-kar' | to be male |
 | H2213 | zare | crown |
 | H2214 | zaw-raw' | nausea |
 | H2215 | zaw-rab' | warm waters pour out |
