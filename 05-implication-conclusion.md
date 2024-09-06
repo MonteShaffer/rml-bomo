@@ -153,7 +153,7 @@ It is very difficult for institutions to change their ingrained norms.  Maybe im
 Regardless of the actions (and agency) of those within these two groups (Christians and Mormons), the celestial is more than capable of succeeding.  In typical evangelical parlance "God's got this."  This also is enabling.  You can choose to embrace a path forward, exercising faith in the celestial.  Or you can hope that these institutions will save you.  
 
 If you are looking for a specific plan of action, I would recommend reading Isaiah 1 and ask yourself "do you grind the face of the poor?  Do you play God trying to control the universe?"  Then, I would recommend studying the life of Nephi and ask yourself what a celestial ministry looks like:  
-- Are you willing to enable others telestially first by making certain everyone has free access to food/clothes/shelter?
+- Are you willing to enable others telestially first by making certain everyone has free access to food/clothes/shelter?  A land flowing with milk and honey (cheese and wine), where one can procure it without money (Isa 55:1).
 - Are you willing to integrate with others a society anchored in freedoms:  a respect for Great Earth Mother (or Father), an economy of abundance (not scarcity), a homeopathic health care system that respects the herbs God provides and does not attempt to play God, a government anchored in freedom and peace for all humans, and a society that allows for natural socialities to develop based on shared interests.
 - Are you willing to prepare to meet/receive the celestial? Can you stand in the place of possibility and be open to what comes, not afraid if it does not align with what you were taught throughout your lifetime?
 
