@@ -77,7 +77,7 @@ Anchored to the dynamics of language diffusion, the brand Tupí may have been a 
 - The river "[Uru-gua-i](https://en.wikipedia.org/wiki/Uruguay_River
 )" where "gua" indicates an impassable navigation impedence on a river; one could sail up this river until this location.  Interestingly, a three-country border is found along this river (Argentina, Uruguay, Brasil) at 30.18 degrees south latitude, and just upstream is the modern city of Uru-gua-i-ana (great-falls-shore-jehovah provides).  At about this location, this river is not navegable due to large cascades in the river.
 - The fertile lands later discovered in the early history (before Mosiah) may have been called "Ghee-ana" or "Gan-yah".  
-- Seemingly, Nephi's oldest brother chose the power of the falls "gua" for his land of inheritance:  "[gua-i-ra](https://en.wikipedia.org/wiki/Guaíra_Falls)" as the falls-shore-head/chief and "[i-gua-zu](https://en.wikipedia.org/wiki/Iguazu_Falls)" as shore-falls-windy/crown/break becoming known locally as "Gua-ra-ani":  I am [ani] the head/chief [ra] of the falls [gua].
+- Seemingly, Nephi's oldest brother chose the power of the falls "gua" for his land of inheritance:  "[gua-i-ra](https://en.wikipedia.org/wiki/Guaíra_Falls)" as the 'falls-shore-head/chief' and "[i-gua-zu](https://en.wikipedia.org/wiki/Iguazu_Falls)" as 'shore-falls-windy/crown/break' becoming known locally as "Gua-ra-ani":  I am [ani] the head/chief [ra] of the falls [gua].
 - Nephi seems to anchor to [ana] in geographic labels (jehovah provides) whereas his oldest brother Laman seems to anchor to [ra] in geographic labels (I am the head/chief).
 
 
