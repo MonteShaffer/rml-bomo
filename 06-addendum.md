@@ -33,4 +33,17 @@ Laman/Laban may be a debate between the sons/fathers regarding the purpose of th
 v. 20: the teachers of the MISNE will be no longer be ignored as they wander away with their teachings
 
 
+#### Walls
+Nephi climbs a wall to sneak into the city at night.  Where is Laban?  There are several gates, there are timekeepers (waterclocks) with calls of the night.  How does he dispose of the body?  Does he throw it into the garbage/trash associated with the temple where the dogs feed on the parts not burned to ash, but discarded in a disregarding way?
+
+Samuel the Lamanite climbs walls and has arrows shot at him.  An honor I imagine, maybe a reference to Nephi?
+
+Teancum with his copper javelin climbs a wall and kills a man where he sleeps.  Did Nephi find him sleeping?  Why would Teancum not behead the enemy like Nephi?  Was Nephi near where the Messiah Death Event may occur in the temple?
+
+Ancient Americans may have had a bravery tactic of "counting coup" where they would scalp but not kill a man to show bravery.  To make the enemy bald and hairless.
+
+Outside the walls, the brothers waited in the catacombs.  Where the poor live and hide (a cave?).  When the brothers were beating on Nephi, was it an angel in the flesh (a Joseph Smith angel) that rescued Nephi or an angel from the spirit (celestial light angel)?
+
+Samuel => Lemuel, what is the "el" ending for Yahwists?  How does the Egyptian language NOT have the "l" sound like lion?
+
 
