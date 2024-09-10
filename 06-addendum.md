@@ -46,4 +46,17 @@ Outside the walls, the brothers waited in the catacombs.  Where the poor live an
 
 Samuel => Lemuel, what is the "el" ending for Yahwists?  How does the Egyptian language NOT have the "l" sound like lion?
 
+### Liahona ... river islands, the way to
+Embedded in the hebrew (like Lehi), the fundamental meaning is the journey to the river island, as in a guidance tool.
+
+At the time, waterclocks would announce the hours of the night.  Isaiah confronted Ahaz making the "sundial" go back ten steps.  Likely a 3-D sundial with seasonal adjustments (aka Resort Xcaret).  Maybe it was an entire stairway replica.
+
+The Liahona was spherical and likely had a glass-crystal component, analagous to a "Urim".  A lens of sorts to measure the sun or stars.
+
+That is, it would measure shadow (sundial) if appropriately aligned.  It was an astrolabe to measure stars.
+
+In Alma, Nephi is thrown under the bus for his "sins" which caused the Liahona to stop functioning.  Was this factual, that got editorialized by Smith/Cowdery/Ridgon?  Or was it fiction, based on Nephi's non-mono views (polygenesis, polytheism, polyamory)?  In the history of the world with all of its citizenry, Nephi is one of the last person's I would want to do a stare-down at the judment bar.  Maybe one of the four great "seraphs" of this world!
+
+lia-h.oma as lei-yah-h.oma?
+
 
