@@ -58,7 +58,7 @@ Supernova are rare events.  Often, they are surrounded with controversy.  Some c
 ####  5 April 8 BC: Qingming celebration  
 Anchoring to a fixed equinox as March 21, I propose that exactly half a month later (15 days later) would be the timing for the Messianic birth.  That is, 5 April 8 BC.  
 
-Singificant markers for this conclusion include:  Nowruz anchored to human observation not mathematical cycles; Isaiah's reprimand of the house of Jacob using lunations for its calculations; replacing the lunar anchor with a solar anchor (equinox); the basic concept of the Passover occuring mid-month after a celestial marker; a year being defined as exactly 360 days containing 12 months of 30 days BEFORE some celestial event which caused some groups to celebrate these extra days given (epagomenal days that are outside of times/seasons) giving us the modern 365.2422-day year.
+Significant markers for this conclusion include:  Nowruz anchored to human observation not mathematical cycles; Isaiah's reprimand of the house of Jacob using lunations for its calculations; replacing the lunar anchor with a solar anchor (equinox); the basic concept of the Passover occuring mid-month after a celestial marker; a year being defined as exactly 360 days containing 12 months of 30 days BEFORE some celestial event which caused some groups to celebrate these extra days given (epagomenal days that are outside of times/seasons) giving us the modern 365.2422-day year.
 
 Astronomical documentation for a supernova occuring on this date at the moment is unavailable.  The Chinese do have a festival (celebratory holiday) aligning with this date.  The Qingming festival (清明节:  green/blue water + sun/moon brightness + celebration) is defined to be 15 days following the equinox, varying from between 4 April to 6 April.  The festival is associated with bright lights.  On this day, the living visit burial sites of the ancestors and sweep the tombs (as if preparing the ancestors for resurrection).  In addition, this holiday has a reference to a strange master-servant story that demonstrates loyalty and love amidst a trial of shared suffering.
 
@@ -77,7 +77,7 @@ The "ultimate" sign, a supernova, was unique and novel.  And it would occur, acc
 | 長星 |  long star   |  long/grow OR chief/elder OR "pig-snout" + one + bend : sun/day + life  |
 | 燭星 |  candle-flame star   |  fire + net + wrap + insect : sun/day + life  |
 
-The most well-known of these moving celestial bodies is vulgarly called the comet of Halley, attributed to a British astronomer born in the 1600s.  A more culturally-nuetral label, Lyra Comet 1P will be used to describe this recurring phenomenon.
+The most well-known of these moving celestial bodies is vulgarly called the comet of Halley, attributed to a British astronomer born in the 1600s.  A more culturally-neutral label, Lyra Comet 1P will be used to describe this recurring phenomenon.
 
 Lyra Comet 1P has a cyclical orbit, appearing approximately every 75 years: more or less depending on whether the comet gets close to a planet when it enters the planetary region of the solar system and is effected by local gravity.  In addition, the mass of the comet would likely be reduced over time as it emits a stream of material which could possibly create a directional time-trend.  That is, as the comet gets older, it has less mass, so less of a gravitational relationship with the sun; therefore, every cycle would be longer.
 
@@ -332,7 +332,7 @@ Additionally, the difference of the two "s" symbols in Egyptian may have been ag
 ### Shazer and the six-hundred year prophecy
 About 5 April 608 BC, Jacob is born at the event Nephi describes as "Shazer", meaning the twisting.  The month of April is known for the Lyrid meteor showers.  Chinese "star gazers" first recorded observing these meteor showers from Lyra in ~686 BC.  They first observed a meteorite hitting the earth in ~643 BC.  So what exactly was seen in the heavens, in the stars, when Jacob was born?
 
-Lyra Comet 1P already appeared in the heavens about five years earlier.  Was there a supernova event at this time?  Did a meteorite strike the top of the Mountain creating a fire, a new "Sinai" event?  Was there a volacanic eruption?
+Lyra Comet 1P already appeared in the heavens about five years earlier.  Was there a supernova event at this time?  Did a meteorite strike the top of the Mountain creating a fire, a new "Sinai" event?  Was there a volcanic  eruption?
   
 We do not know exactly.  We do know that the 1 Nephi narrative never mentions stars which is indeed strange given the context of their travels in Arabia.  Maybe "Shazer" represents a cartouche-of-sorts clarifying that the heavens were filled with signs and wonders.  Regardless, Lyra Comet 1P was a warning to Jerusalem that begin the chaos that led to the family being isolated in the desert at the [Mount of Almonds](https://thepilgrim.co/jabal-al-lawz/) for Jacob to be born at this sacred place.  The mountain of all mountains.  A place where Abraham (and Moses) and Joshua already communed with the heavens.  A place where Yeshua and Muhammad would later commune with the heavens.  A sacred cross roads for Abraham located in the land of his six youngest sons:  the Midians.
 
