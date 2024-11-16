@@ -87,7 +87,7 @@ The ministry of Nephi was an adoption and diffusion process.  Once another group
 If the locals were satisfied with the adoption of Nephi's teachings and technologies, they would diffuse their understanding to others: their family and friends.  The ministry of Nephi included a proselyting function likely with practical gifts (e.g., Yerba Mate [ka<ʔ>a]).  Teaching the locals how to live would have improved their quality of life, giving them more free time, and protecting them from those that would want to enslave them.  
 
 
-As the locals acculturated into the community of practice Nephi established, a common language would develop.  This lingua franca would build upon local traditions yet be as simple as possible: weaving the linguistics of the locals into the primary thread of the core/essential elements of the language of Nephi.
+As the locals acculturated into the community of practice Nephi established, a common language would develop.  This lingua franca would built upon local traditions yet be as simple as possible: weaving the linguistics of the locals into the primary thread of the core/essential elements of the language of Nephi.
 
 Order is important for adoption:  if Nephi "saves" them telestially (no longer a slave and has basic sustenance: food/housing) first, then terrestially a society/government could develop and then the celestial reasons for the telestial/terrestial efforts could be more easily adopted.  Joseph Smith may have later understood this to be the concept of the United Order (of government and religion) which would necessitate a different concept of economics:  one of abundance, not scarcity.  That is, work we must, but lunch is free.
 
