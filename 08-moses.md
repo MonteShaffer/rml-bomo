@@ -76,4 +76,52 @@ What are the key drivers?
 
 We just need to set-seed(NULL) and let the rest take care of itself.  Ask the CIA idiots for an initial commitment of 100B each, and figure out ways to make everything efficient with high-quality results.  Focus on "Ancient American" reparations first - all the first nations.  Simultaneous focus on widows/fatherless (are not Native groups a good test-case of this).  The objective is simple:  how to feed, clothe, and house everyone on earth.  Using the best inputs (most abundant and sustainable):  water, hemp, trees, aluminum, steel, etc.  Lithium and rare earth minerals are not abundant, so they are poor choices.  Have geo-thermal systems for modular AC units (https://www.youtube.com/watch?v=s-41UF02vrU).  Plumb the base 10 units for a walk-in fridge/freezer and figure out how to transfer heat to shower, capture rainwater, have a green house on south "corner" of each unit... helicopter or crane install.  Modular design in creation, scaling, installing.  Dirt boys move earth and prep the area on day 1, on day 2, homes are installed.  By day 10, we have move in?  Initial benchmarks.  Can we get it down to one 10-set start to finish from sunrise to sunset in one day.  10-set with basics, 12 of those formed with North as third dividers for train tech.  100 of those is a community: 10 x 12 = 120 x 100 = 12000 ... the hundred can be a bigger shape, lots of space for crops or cattle or whatever.
 
+I can speculate and crude-design all I want, but without hands ... at some point, I need to be the armchair quarterback and call the shots... I am physically incapable of doing the work myself without the necessary support systems.  I am the Davidic guy (https://www.youtube.com/watch?v=LFcJ5uhEgTA https://www.youtube.com/watch?v=lQ_iM-cNYJ4), Joseph Smith's prophesied final servant?  If so, I already know who my spokesman (Kevin) and staff (Alatini) are!
+
+If you are called, you are called.  You don't seek the calling.  Stone cut out of the mountain, Monte from Montana.  My father's name is David.  The Mormon curse at my birth.  Bootstrap life with projects/opus-es completed.  Maybe.  But so what.  Rob Warcup has a few good ideas.  Latter-day Chad, not so much!  Follow JS example, learn Hebrew and Egyptian.  Then maybe you can say something intelligible. 
+
+Fullness of gospel... (Love God [however you want to define it], love neighbor).
+
+Repent - constantly change your mind 
+Ritual bathing - ritual blessing 
+Ritual endowments - we have one version of many potentials ... in one day give newcomers all of it... open the temple doors.
+
+An Elder, but not a high priest... return to first elders  ... first/second/last (Kevin/Alatini/me)... JS failed because of money dimension.  Call people Zion = no poor (and therefore no rich) among them.
+
+A church without creeds, purge the Sidney elements immediately.  Uchtdorf/Bednar/Kim B Clark are remnant, nothing more.
+
+Go to war against Babylon, the great and spacious building (virtual Twitter echo-chambers).  Challenge "settled science" emphatically.  Separate data collection, analysis, and synthesis.  Focus less on synthesis into theories and more on data and its descriptives.
+
+[smithsonian](https://tmsearch.uspto.gov/search/search-results) ... they love their protections
+Joseph Smithonian ... something ridiculous but obvious (maybe a SunStone that looks very similar/ mayan / old sunstone glyph or something) [Sun Clipart #55087](https://clipartix.com/sun-clipart-vector-pencil-and-in-color-sun-jpg-image-55087/) ... put Intellect Reserve lawyers to work...
+
+Land ownership and cessation strategies ... actively have the constitution hang by a thread... re-acquire all Utah lands stolen by polygamy move of federales.  Go to court to challenge forgotten treaties to give the Ancient Americans their lands back.  Burn it down, to the ground, the remnants and ideas can remain but the Babylonian form will end...
+
+JS bought Egyptian papyrus for his personal motives (Lehi's stuff) but God left it as a marker: study Hebrew, organize and find all things ancient Egyptian.  Create a repository, open-source.  Add artifacts that are directly tied to Paleo-Hebrew/Egyptian or directly tied to Ancient American history.  For example, the decalogue as possibly a pre-exilic king-line form of righting that got standardized during the exile.  Remember Josiah had women from Egypt and Babylon, maybe "exilic Hebrew" was already a thing being considered during his lifetime.  That would explain the decalogue coming from Mulek.  The literal translation would be nice.  Chase the rabbit into the hole.  The result may be "this is a hoax" but until I read the 10 commandments in the given language, how will I know.  If it is verbatim copy of Masoretic decalogue, of course it is a hoax.  But if not, the "diff" would be very insightful to understand the religion of Moses.
+
+I tire of waiting, what more can I do with my current circumstances?  I feel like I need my moral-authority unchallenged, would that not be ET-my name is Enoch and I am here to put Monte in charge?  Short of that, I cannot see a path forward.  Truth from darkness.  Gird up loins.  Be divorced.  Be hidden/forgotten in plain site.  I learned some other foretold details.  But I already had to face that reality with Stone-from-Mountain.  Yes, I am learned.  And Yes, I will defend JS desire to share truth.  I will not defend his actions, but will celebrate them as clues and markers to truly understand the religion of Nephi.
+
+No one cares... 6-8 views on my shorts about Nasca/lilies etc. No views on Easter May 5 of 2024.  20-24 (Isaiah, Matthew, Psalms).  No one cares!
+
+Did I start my Karen journey.  Left in suspension for how long.  Cipher in the Snow for how long?  If something happens to unlock what feels like a standstill, the heavens better have recordings of my past thoughts, I won't be able to or want to repeat myself.
+
+One of the Davidic scriptures suggested he was exhausted from his efforts to contribute to the world.  Yes, that is me to a T.
+
+Suspension on which timeline, which path forward.  And honestly, more knowledge at this point will not help much, because no one cares.  And until I anchor and begin to iterate and pivot, the groundswell event has no meaning without it impacting others.  Great, I figured out some things!  No one cares!
+
+I don't have the energy to debate or defend what I know.  I do have the energy to begin to guide a last effort to set-seed(NULL) for Zion.  Enoch are you arriving anytime soon?  How about by September 23!?!
+
+You can't have a Most High God if you don't have gods (elohim ananazi ananoki).
+You can't have an Eternal Father if there are not children (ergo an Eternal Mother - Queen Mother of Heaven).  The HG is a representation of She.  She is light and energy.  He is density and matter.
+
+Pauline Christianity is so embedded in Rigdon's philosophy, unlocking true Christianity will take some time.  God is in you (Gospel of Thomas). saviors of men (vs Savior of Men).  The Legend of Nephi is essential to unlocking the true nature of Jesus.  Why just a Son of God?  Where is the Daughter of God?  Eve as the "savior" (lower case) for Adam [not helpmeet].
+
+The answers will be in the languages.
+
+Liahona is the ultimate prize.  The Easter Egg of Ready Player 1.  We need Expedition Unknown style entertainment.
+
+What we need is process innovations.  Can you develop a soil sample kit and analysis like DNA 23 and me?  I order a kit, take a 1-10 meter soil sample, and process the results in days.  Data is kaggled for anyone to use, the descriptive data is ready to go.  Get old-timers out in the lakes collecting the data.  Reduce the time/costs of the pollen detections, etc.  Or OCR old texts and potential translations in a crowd-source methodology.  And so on...
+
+No one cares.
+
 
