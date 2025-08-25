@@ -64,6 +64,8 @@ Wind cools the water of the sea for 24 hours, when Moses speaks with his rod/sta
 ### Take a stand of faith in the place of possibility
 The Mormon church needs to stop be Babylon pleasers and stand as servants to nurture the vineyard one last time.  What a great anchor of faith.  Ani Nafi university could have a team explore the hydrology of such an event using the surface tension, capillary effects, and so on.  Could this flash-freeze slushee surface be a solution? 
 
+It seems this is a geo-thermal technology.  One columns spews hot-fire the other column cold-cloud... a pillar of fire by night, a pillar of cloud by day to heat/cool as needed.  Two ends of a geothermal system, so when the fire pillar interfered with Egyptians, was the other side drawing heat from the Sea to heat the fire?  You could reverse the system to blast cold air in one place and exhaust hot air somewhere else.
+
 Ron Wyatt was an extremist, but his ideas have merit.  So let's use science to test some hypotheses.  Send crews of divers to Nuweiba and look for actual artifacts.  Do soil samples, sea samples, wadi samples to understand the flora and fauna of this location.  God's ways are not our ways, but is not the purpose to work out his ways?  Life eternal to know God?
 
 Ultimately, the keys to creation can be unlocked if we can find the Liahona and read it.  All of the gaps in science and technology will diminish, we will work out the last 4+ quantum particles to create a unified theory and address conundrums baffling us (wave-particle duality, Schrodinger's cat, Heisenberg's uncertainty, etc.)
