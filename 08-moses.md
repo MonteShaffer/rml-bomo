@@ -120,7 +120,9 @@ The answers will be in the languages.
 
 Liahona is the ultimate prize.  The Easter Egg of Ready Player 1.  We need Expedition Unknown style entertainment.
 
-What we need is process innovations.  Can you develop a soil sample kit and analysis like DNA 23 and me?  I order a kit, take a 1-10 meter soil sample, and process the results in days.  Data is kaggled for anyone to use, the descriptive data is ready to go.  Get old-timers out in the lakes collecting the data.  Reduce the time/costs of the pollen detections, etc.  Or OCR old texts and potential translations in a crowd-source methodology.  And so on...
+What we need is process innovations.  Can you develop a soil sample kit and analysis like DNA 23 and me?  I order a kit, take a 1-10 meter soil sample, and process the results in days.  Data is kaggled for anyone to use, the descriptive data is ready to go.  Get old-timers out in the lakes collecting the data.  Reduce the time/costs of the pollen detections, etc.  Or OCR old texts and potential translations in a crowd-source methodology.  And so on... Lidar of large earth, lidar of small carvings in stone or wood.
+
+Is set.seed(NULL) the same thing as the foundations for a STARTREK like society?
 
 No one cares.
 
