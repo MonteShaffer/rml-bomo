@@ -155,3 +155,7 @@ Rather than competition for goods, there will be competition for quality.  There
 For every social pod [10 x 12], there will be a common hostel environment (longhouse) and a common recreation center and raised structure for the bridgegroom.  With 12 o'clock being EAST, 1:30 would be longhouse, 6 o'clock would be bridegroom temple/house, 10:00 would be common recreation center.  Or something like that.
 
 05:00 AM ... not much left in the tank to pontiphicate...
+05:25 ... as I ponder, the heaviness/gravitas returns, am I the wicked one ?!? who am I?  do I naturally believe in meritocracy or is that just my avatar?  is the "jester" my true self ... did I make someone angry and suffered for it and this is the retribution for the suffering ... or am I the jester that tried to usurp God's ways (possible, but I have a hard time believing that).  Is my foggy memory (iba) empowering me to do good ... or is it a way to extract information from me freely.  Heavy!
+
+
+
