@@ -1,0 +1,3284 @@
+{
+  "level": {
+    "leveling": 1,
+    "level": 3,
+    "levels": 3
+  },
+  "extrapol": {
+    "extrapolated": 1
+  },
+  "overlay": {
+    "overlay": 1
+  },
+  "difficulti": {
+    "difficulties": 1
+  },
+  "hidden": {
+    "hidden": 1
+  },
+  "unstructur": {
+    "unstructured": 1
+  },
+  "overcom": {
+    "overcome": 2
+  },
+  "goal": {
+    "goal": 4
+  },
+  "context": {
+    "context": 2
+  },
+  "itor": {
+    "itor": 1
+  },
+  "min": {
+    "min": 1
+  },
+  "webappl": {
+    "webapplication": 1
+  },
+  "truli": {
+    "truly": 1
+  },
+  "figur": {
+    "figure": 6
+  },
+  "servic": {
+    "services": 10,
+    "service": 14
+  },
+  "deerwest": {
+    "deerwester": 2
+  },
+  "weight": {
+    "weightings": 1,
+    "weighting": 4
+  },
+  "target": {
+    "targeting": 1,
+    "target": 1
+  },
+  "quinn": {
+    "quinn": 1
+  },
+  "click": {
+    "click": 1
+  },
+  "surpass": {
+    "surpass": 1
+  },
+  "protocol": {
+    "protocol": 1
+  },
+  "onlin": {
+    "online": 3
+  },
+  "tung": {
+    "tung": 1
+  },
+  "bulk": {
+    "bulk": 2
+  },
+  "merge10": {
+    "merge10": 1
+  },
+  "miss": {
+    "miss": 1,
+    "missed": 1
+  },
+  "ith": {
+    "ith": 1
+  },
+  "improv": {
+    "improve": 1
+  },
+  "enabl": {
+    "enabling": 4,
+    "enable": 3
+  },
+  "facil": {
+    "facilities": 1
+  },
+  "fraction": {
+    "fraction": 1
+  },
+  "adjac": {
+    "adjacent": 1
+  },
+  "10m": {
+    "10m": 1
+  },
+  "thousand": {
+    "thousands": 5
+  },
+  "snowbal": {
+    "snowball": 1
+  },
+  "public": {
+    "publication": 1,
+    "publications": 1,
+    "public": 1
+  },
+  "diagnos": {
+    "diagnose": 1
+  },
+  "classif": {
+    "classifications": 2
+  },
+  "prolif": {
+    "prolific": 1
+  },
+  "support": {
+    "support": 2
+  },
+  "manifest": {
+    "manifestation": 1
+  },
+  "wealth": {
+    "wealth": 1
+  },
+  "jargon": {
+    "jargon": 2
+  },
+  "structur": {
+    "structure": 2,
+    "structures": 1
+  },
+  "nich": {
+    "niche": 2
+  },
+  "manipul": {
+    "manipulated": 1
+  },
+  "inset": {
+    "inset": 1
+  },
+  "tb": {
+    "tbs": 1
+  },
+  "equival": {
+    "equivalent": 2
+  },
+  "essenti": {
+    "essential": 1
+  },
+  "ultim": {
+    "ultimately": 1
+  },
+  "probabilist": {
+    "probabilistically": 1,
+    "probabilistic": 1
+  },
+  "prioriti": {
+    "priority": 1
+  },
+  "budget": {
+    "budget": 2
+  },
+  "face": {
+    "facing": 1
+  },
+  "resourc": {
+    "resources": 5
+  },
+  "pca": {
+    "pca": 1
+  },
+  "soni": {
+    "sony": 1
+  },
+  "save": {
+    "save": 1
+  },
+  "www": {
+    "www": 2
+  },
+  "enhanc": {
+    "enhance": 2,
+    "enhancements": 1,
+    "enhancing": 1
+  },
+  "disclosur": {
+    "disclosure": 3
+  },
+  "acceler": {
+    "accelerate": 1
+  },
+  "dimens": {
+    "dimensions": 2
+  },
+  "size": {
+    "size": 2
+  },
+  "act": {
+    "act": 1
+  },
+  "partner": {
+    "partner": 1,
+    "partners": 1
+  },
+  "fall": {
+    "fall": 1
+  },
+  "gpu": {
+    "gpu": 1
+  },
+  "ultra": {
+    "ultra": 1
+  },
+  "meet": {
+    "meet": 1
+  },
+  "integr": {
+    "integrated": 1
+  },
+  "crie": {
+    "crie": 2
+  },
+  "ment": {
+    "ments": 1
+  },
+  "nearli": {
+    "nearly": 2
+  },
+  "parti": {
+    "parties": 3
+  },
+  "forese": {
+    "foresee": 1
+  },
+  "automobil": {
+    "automobile": 1
+  },
+  "fundament": {
+    "fundamental": 11
+  },
+  "princip": {
+    "principal": 1
+  },
+  "past": {
+    "past": 1,
+    "paste": 3,
+    "pasted": 1
+  },
+  "perfectli": {
+    "perfectly": 1
+  },
+  "extens": {
+    "extension": 1
+  },
+  "polici": {
+    "policy": 1
+  },
+  "intract": {
+    "intractable": 4
+  },
+  "correspondingli": {
+    "correspondingly": 1
+  },
+  "desist": {
+    "desist": 2
+  },
+  "impli": {
+    "implies": 1
+  },
+  "gave": {
+    "gave": 1
+  },
+  "place": {
+    "place": 1
+  },
+  "traffic": {
+    "traffic": 2
+  },
+  "neighbor": {
+    "neighbors": 3,
+    "neighbor": 4
+  },
+  "what": {
+    "whats": 1
+  },
+  "authomobil": {
+    "authomobile": 1
+  },
+  "orion": {
+    "orion": 2
+  },
+  "truszczynski": {
+    "truszczynski": 1
+  },
+  "similarli": {
+    "similarly": 1
+  },
+  "drive": {
+    "driving": 1
+  },
+  "iipea4": {
+    "iipea4": 1
+  },
+  "return": {
+    "return": 4,
+    "returns": 1,
+    "returned": 3
+  },
+  "necessarili": {
+    "necessarily": 3
+  },
+  "anonym": {
+    "anonymously": 1
+  },
+  "articl": {
+    "article": 1
+  },
+  "ibm": {
+    "ibm": 3
+  },
+  "empir": {
+    "empirically": 1
+  },
+  "rigor": {
+    "rigorous": 1,
+    "rigor": 1
+  },
+  "averag": {
+    "average": 2
+  },
+  "meaning": {
+    "meaningful": 3
+  },
+  "graph": {
+    "graph": 2
+  },
+  "major": {
+    "major": 4
+  },
+  "implic": {
+    "implications": 1
+  },
+  "transform": {
+    "transform": 1
+  },
+  "card": {
+    "card": 1
+  },
+  "deliv": {
+    "deliver": 1,
+    "delivered": 1
+  },
+  "set": {
+    "set": 3
+  },
+  "annual": {
+    "annual": 1
+  },
+  "dynam": {
+    "dynamics": 2
+  },
+  "week": {
+    "weeks": 1
+  },
+  "constitut": {
+    "constitution": 1
+  },
+  "speci": {
+    "speci": 1
+  },
+  "valu": {
+    "values": 3
+  },
+  "analyt": {
+    "analytic": 1,
+    "analytics": 3
+  },
+  "primari": {
+    "primary": 1
+  },
+  "firm": {
+    "firms": 2
+  },
+  "precis": {
+    "precise": 1
+  },
+  "learn": {
+    "learning": 1
+  },
+  "refus": {
+    "refusal": 1
+  },
+  "advanced3": {
+    "advanced3": 1
+  },
+  "compar": {
+    "compare": 1,
+    "compared": 1
+  },
+  "tandem": {
+    "tandem": 1
+  },
+  "secur": {
+    "secure": 1,
+    "securing": 1
+  },
+  "time": {
+    "times": 4
+  },
+  "local": {
+    "local": 1
+  },
+  "submit": {
+    "submitted": 1
+  },
+  "lead": {
+    "lead": 1,
+    "leads": 1
+  },
+  "hit": {
+    "hit": 1
+  },
+  "method": {
+    "method": 5,
+    "methods": 4
+  },
+  "abil": {
+    "ability": 3
+  },
+  "seed": {
+    "seed": 1
+  },
+  "work": {
+    "works": 1,
+    "working": 5
+  },
+  "critic": {
+    "critical": 2
+  },
+  "input": {
+    "inputs": 1,
+    "input": 10,
+    "inputed": 16
+  },
+  "ordin": {
+    "ordinal": 1
+  },
+  "potenti": {
+    "potential": 7,
+    "potentially": 4
+  },
+  "garag": {
+    "garage": 1
+  },
+  "cess": {
+    "cessing": 1
+  },
+  "stopward": {
+    "stopward": 1
+  },
+  "reduc": {
+    "reduces": 3,
+    "reduce": 6,
+    "reduced": 1
+  },
+  "descript": {
+    "descriptions": 1,
+    "description": 5
+  },
+  "begin": {
+    "begin": 1,
+    "beginning": 1
+  },
+  "machin": {
+    "machine": 2,
+    "machines": 2
+  },
+  "assign": {
+    "assigned": 4
+  },
+  "take": {
+    "takes": 1
+  },
+  "see": {
+    "sees": 1
+  },
+  "repeat": {
+    "repeat": 1
+  },
+  "incur": {
+    "incurred": 1
+  },
+  "analysi": {
+    "analysis": 11
+  },
+  "ea4": {
+    "ea4": 2
+  },
+  "find": {
+    "finding": 1
+  },
+  "approxim": {
+    "approximate": 1,
+    "approximation": 3,
+    "approximately": 3
+  },
+  "third": {
+    "thirds": 1
+  },
+  "fisher": {
+    "fisher": 1
+  },
+  "tactic": {
+    "tactics": 1
+  },
+  "gal": {
+    "gal": 1
+  },
+  "conform": {
+    "conforming": 1
+  },
+  "minut": {
+    "minutes": 4,
+    "minute": 1
+  },
+  "misclassif": {
+    "misclassifications": 1
+  },
+  "varianc": {
+    "variance": 3
+  },
+  "month": {
+    "month": 1,
+    "months": 5
+  },
+  "automat": {
+    "automatically": 1
+  },
+  "econom": {
+    "economic": 1
+  },
+  "conclus": {
+    "conclusion": 1
+  },
+  "go": {
+    "going": 2
+  },
+  "correl": {
+    "correlated": 6,
+    "correlations": 18,
+    "correlation": 5,
+    "correlate": 1
+  },
+  "stress": {
+    "stress": 2
+  },
+  "final": {
+    "finally": 2
+  },
+  "termdocu": {
+    "termdocument": 1
+  },
+  "intern": {
+    "internally": 1,
+    "interns": 1
+  },
+  "vmrk": {
+    "vmrk": 1
+  },
+  "illustr": {
+    "illustrate": 1
+  },
+  "inclus": {
+    "inclusion": 1
+  },
+  "slightli": {
+    "slightly": 2
+  },
+  "depth": {
+    "depth": 2
+  },
+  "searchreport": {
+    "searchreporting": 1
+  },
+  "500": {
+    "500": 1
+  },
+  "effici": {
+    "efficient": 4
+  },
+  "gram": {
+    "gram": 12,
+    "grams": 9
+  },
+  "payment": {
+    "payment": 3
+  },
+  "stream": {
+    "streams": 1
+  },
+  "remov": {
+    "remove": 1
+  },
+  "late": {
+    "late": 1
+  },
+  "properti": {
+    "properties": 1,
+    "property": 3
+  },
+  "landscap": {
+    "landscape": 3
+  },
+  "rel": {
+    "relative": 1
+  },
+  "academ": {
+    "academics": 1,
+    "academic": 2
+  },
+  "found": {
+    "founded": 1
+  },
+  "ask": {
+    "ask": 1
+  },
+  "chemistri": {
+    "chemistry": 1
+  },
+  "concept": {
+    "concept": 16,
+    "concepts": 25
+  },
+  "cost": {
+    "costs": 3,
+    "cost": 4
+  },
+  "informat": {
+    "informatics": 1
+  },
+  "plant": {
+    "plant": 1
+  },
+  "initi": {
+    "initiate": 1,
+    "initially": 6,
+    "initial": 5,
+    "initiative": 1
+  },
+  "transfer": {
+    "transfer": 2
+  },
+  "conceptu": {
+    "conceptual": 1
+  },
+  "refin": {
+    "refinement": 1,
+    "refined": 1
+  },
+  "field": {
+    "field": 1
+  },
+  "interfac": {
+    "interface": 4
+  },
+  "artifici": {
+    "artificial": 1
+  },
+  "searcher": {
+    "searchers": 2,
+    "searcher": 14
+  },
+  "sens": {
+    "sense": 3
+  },
+  "rang": {
+    "range": 2
+  },
+  "expert": {
+    "expert": 1
+  },
+  "transpar": {
+    "transparency": 2,
+    "transparent": 1
+  },
+  "platform": {
+    "platform": 4
+  },
+  "visual": {
+    "visualizations": 1,
+    "visually": 1
+  },
+  "fit": {
+    "fits": 1
+  },
+  "convers": {
+    "conversations": 1,
+    "conversion": 1,
+    "conversely": 1,
+    "conversation": 1
+  },
+  "mission": {
+    "mission": 1
+  },
+  "guarante": {
+    "guarantee": 1
+  },
+  "associ": {
+    "associations": 1
+  },
+  "terabyt": {
+    "terabytes": 1
+  },
+  "timelin": {
+    "timeline": 1
+  },
+  "remain": {
+    "remaining": 2
+  },
+  "sunk": {
+    "sunk": 1
+  },
+  "textual": {
+    "textual": 1
+  },
+  "note": {
+    "note": 2
+  },
+  "comprehens": {
+    "comprehensive": 3
+  },
+  "demonstr": {
+    "demonstrate": 2
+  },
+  "opportun": {
+    "opportunity": 1,
+    "opportunities": 1
+  },
+  "blei": {
+    "blei": 2
+  },
+  "comput": {
+    "computation": 1,
+    "computed": 1,
+    "computations": 6,
+    "computational": 2,
+    "compute": 6,
+    "computing": 3
+  },
+  "albeit": {
+    "albeit": 2
+  },
+  "discuss": {
+    "discuss": 1,
+    "discussion": 2
+  },
+  "ecommerc": {
+    "ecommerce": 4
+  },
+  "willing": {
+    "willingness": 1
+  },
+  "vision": {
+    "vision": 2
+  },
+  "busi": {
+    "business": 15,
+    "businesses": 1
+  },
+  "aij": {
+    "aij": 1
+  },
+  "christensen": {
+    "christensen": 1
+  },
+  "impress": {
+    "impressed": 1
+  },
+  "flow": {
+    "flow": 1
+  },
+  "restrict": {
+    "restrictions": 1
+  },
+  "laura": {
+    "laura": 1
+  },
+  "summer": {
+    "summer": 2
+  },
+  "ceas": {
+    "cease": 2
+  },
+  "awar": {
+    "aware": 2
+  },
+  "ceo": {
+    "ceos": 1
+  },
+  "beta": {
+    "beta": 3
+  },
+  "unserv": {
+    "unserved": 1
+  },
+  "searchsubset": {
+    "searchsubset": 1
+  },
+  "sell": {
+    "selling": 1,
+    "sell": 1
+  },
+  "quantil": {
+    "quantile": 2
+  },
+  "entrepreneur": {
+    "entrepreneurs": 4
+  },
+  "assess": {
+    "assess": 2,
+    "assessment": 1
+  },
+  "heurist": {
+    "heuristically": 1
+  },
+  "subscript": {
+    "subscription": 2
+  },
+  "constraint": {
+    "constraint": 1
+  },
+  "respons": {
+    "responsibilities": 1,
+    "response": 3
+  },
+  "dollar": {
+    "dollars": 1
+  },
+  "master": {
+    "master": 1
+  },
+  "exist": {
+    "exists": 1,
+    "existing": 5,
+    "exist": 2
+  },
+  "troll": {
+    "troll": 1,
+    "trolls": 1
+  },
+  "amibiguity5": {
+    "amibiguity5": 1
+  },
+  "custom": {
+    "customer": 2,
+    "custom": 7,
+    "customers": 5
+  },
+  "function": {
+    "functionality": 1
+  },
+  "feed": {
+    "feeds": 2
+  },
+  "scale": {
+    "scale": 1
+  },
+  "preliminari": {
+    "preliminary": 1
+  },
+  "ambit": {
+    "ambition": 1
+  },
+  "keyword": {
+    "keywords": 3
+  },
+  "stop": {
+    "stop": 1
+  },
+  "polysemi": {
+    "polysemy": 1
+  },
+  "product": {
+    "products": 2,
+    "product": 9
+  },
+  "explain": {
+    "explains": 3
+  },
+  "known": {
+    "known": 2
+  },
+  "smaller": {
+    "smaller": 3
+  },
+  "ascertain": {
+    "ascertaining": 2,
+    "ascertain": 12
+  },
+  "phrase": {
+    "phrase": 5,
+    "phrases": 5
+  },
+  "individu": {
+    "individual": 1
+  },
+  "unsaf": {
+    "unsafe": 1
+  },
+  "close": {
+    "closely": 4,
+    "close": 1
+  },
+  "count": {
+    "counts": 1
+  },
+  "concern": {
+    "concerns": 1
+  },
+  "instal": {
+    "installed": 1
+  },
+  "mauborgn": {
+    "mauborgne": 1
+  },
+  "project": {
+    "project": 9
+  },
+  "unaffect": {
+    "unaffected": 2
+  },
+  "offic": {
+    "offices": 1,
+    "office": 3
+  },
+  "obviou": {
+    "obvious": 1
+  },
+  "download": {
+    "downloading": 2
+  },
+  "summarili": {
+    "summarily": 1
+  },
+  "disambigu": {
+    "disambiguation": 1
+  },
+  "key": {
+    "key": 8
+  },
+  "infer": {
+    "infer": 3
+  },
+  "total": {
+    "total": 7
+  },
+  "make": {
+    "making": 3,
+    "makes": 1
+  },
+  "sale": {
+    "sales": 4
+  },
+  "contextu": {
+    "contextual": 1
+  },
+  "pli": {
+    "plied": 1
+  },
+  "paramet": {
+    "parameter": 3,
+    "parameters": 2
+  },
+  "complex": {
+    "complexity": 7
+  },
+  "navigli": {
+    "navigli": 1
+  },
+  "pillar": {
+    "pillars": 1
+  },
+  "depend": {
+    "depending": 1
+  },
+  "email": {
+    "email": 1
+  },
+  "statist": {
+    "statistics": 2
+  },
+  "copyright": {
+    "copyright": 1
+  },
+  "fix": {
+    "fixed": 1
+  },
+  "newcom": {
+    "newcomers": 1
+  },
+  "aforement": {
+    "aforementioned": 1
+  },
+  "combin": {
+    "combined": 1,
+    "combination": 1,
+    "combinations": 1
+  },
+  "imypatentidea": {
+    "imypatentideas": 1
+  },
+  "thursday": {
+    "thursday": 1
+  },
+  "attempt": {
+    "attempts": 1,
+    "attempt": 1
+  },
+  "augment": {
+    "augmenting": 1
+  },
+  "care": {
+    "carefully": 2
+  },
+  "attorney": {
+    "attorneys": 4,
+    "attorney": 1
+  },
+  "surprisingli": {
+    "surprisingly": 1
+  },
+  "lsi": {
+    "lsi": 2
+  },
+  "talk": {
+    "talking": 1,
+    "talked": 1
+  },
+  "opinion": {
+    "opinion": 2,
+    "opinions": 1
+  },
+  "licens": {
+    "licenses": 1
+  },
+  "drastic": {
+    "drastically": 1
+  },
+  "call": {
+    "called": 1
+  },
+  "page": {
+    "pages": 2
+  },
+  "spend": {
+    "spending": 1,
+    "spend": 1
+  },
+  "janauri": {
+    "janaury": 1
+  },
+  "autom": {
+    "automated": 1,
+    "automation": 2
+  },
+  "simplic": {
+    "simplicity": 1
+  },
+  "realiti": {
+    "reality": 1
+  },
+  "significantli": {
+    "significantly": 3
+  },
+  "unmet": {
+    "unmet": 1
+  },
+  "valid": {
+    "validate": 1,
+    "valid": 4,
+    "validity": 5
+  },
+  "neighborspat": {
+    "neighborspatents": 1
+  },
+  "advertis": {
+    "advertisements": 1
+  },
+  "action": {
+    "actionable": 1
+  },
+  "incumb": {
+    "incumbents": 1
+  },
+  "buy": {
+    "buy": 1
+  },
+  "sold": {
+    "sold": 1
+  },
+  "singular": {
+    "singular": 4
+  },
+  "matric": {
+    "matrices": 1
+  },
+  "posit": {
+    "posit": 6
+  },
+  "enterpris": {
+    "enterprises": 1
+  },
+  "novelti": {
+    "novelty": 1
+  },
+  "store": {
+    "store": 1,
+    "stored": 1
+  },
+  "denot": {
+    "denoted": 3
+  },
+  "grow": {
+    "growing": 1
+  },
+  "launch": {
+    "launch": 1
+  },
+  "competit": {
+    "competitive": 6,
+    "competition": 1
+  },
+  "nlp": {
+    "nlp": 1
+  },
+  "decomposit": {
+    "decomposition": 4
+  },
+  "shroud": {
+    "shrouded": 1
+  },
+  "obstacl": {
+    "obstacles": 2
+  },
+  "pairwis": {
+    "pairwise": 4
+  },
+  "need": {
+    "needs": 2,
+    "need": 6,
+    "needed": 2
+  },
+  "unsuit": {
+    "unsuitable": 1
+  },
+  "predefin": {
+    "predefined": 1
+  },
+  "oper": {
+    "operate": 2,
+    "operations": 1
+  },
+  "anchor": {
+    "anchored": 2,
+    "anchor": 1
+  },
+  "red": {
+    "red": 1
+  },
+  "physic": {
+    "physically": 1
+  },
+  "kia": {
+    "kia": 4
+  },
+  "deep": {
+    "deep": 1
+  },
+  "merit": {
+    "merit": 3
+  },
+  "lose": {
+    "lose": 2
+  },
+  "hundr": {
+    "hundreds": 1
+  },
+  "assumpt": {
+    "assumption": 1
+  },
+  "technolog": {
+    "technology": 25,
+    "technologies": 6,
+    "technological": 5
+  },
+  "mathemat": {
+    "mathematically": 2,
+    "mathematics": 4
+  },
+  "worth": {
+    "worth": 3
+  },
+  "type": {
+    "typing": 1
+  },
+  "softwar": {
+    "software": 7
+  },
+  "result": {
+    "result": 3,
+    "results": 17,
+    "resulting": 3
+  },
+  "sslsa": {
+    "sslsa": 12
+  },
+  "limit": {
+    "limits": 1,
+    "limited": 3
+  },
+  "driven": {
+    "driven": 1
+  },
+  "filter": {
+    "filtering": 3,
+    "filter": 6,
+    "filtered": 3
+  },
+  "capac": {
+    "capacity": 1
+  },
+  "incessantli": {
+    "incessantly": 1
+  },
+  "decompos": {
+    "decompose": 1,
+    "decomposed": 2
+  },
+  "sourc": {
+    "sources": 1
+  },
+  "group": {
+    "groups": 1,
+    "group": 2
+  },
+  "releas": {
+    "released": 1
+  },
+  "internet": {
+    "internet": 1
+  },
+  "privaci": {
+    "privacy": 1
+  },
+  "chang": {
+    "change": 1
+  },
+  "applic": {
+    "application": 10,
+    "applications": 5,
+    "applicants": 1
+  },
+  "intend": {
+    "intended": 1
+  },
+  "cleans": {
+    "cleansing": 4,
+    "cleansed": 2
+  },
+  "threat": {
+    "threat": 1
+  },
+  "lawyer": {
+    "lawyers": 1
+  },
+  "personnel": {
+    "personnel": 1
+  },
+  "run": {
+    "running": 1,
+    "run": 3
+  },
+  "health": {
+    "health": 1
+  },
+  "250": {
+    "250": 1
+  },
+  "sequenc": {
+    "sequence": 4
+  },
+  "document": {
+    "documented": 1,
+    "document": 59,
+    "documents": 48
+  },
+  "kentucki": {
+    "kentuckys": 1
+  },
+  "deconstruct": {
+    "deconstructions": 1
+  },
+  "uspto": {
+    "uspto": 5
+  },
+  "estim": {
+    "estimate": 1
+  },
+  "silverbrook": {
+    "silverbrook": 1
+  },
+  "trademark": {
+    "trademark": 2
+  },
+  "requir": {
+    "requirements": 1,
+    "requires": 1,
+    "required": 1
+  },
+  "optim": {
+    "optimize": 1,
+    "optimality": 2,
+    "optimal": 10
+  },
+  "endeavor": {
+    "endeavor": 1
+  },
+  "foundat": {
+    "foundation": 1
+  },
+  "meta": {
+    "meta": 1
+  },
+  "free": {
+    "free": 2
+  },
+  "thing": {
+    "things": 1
+  },
+  "appli": {
+    "applied": 1,
+    "apply": 2
+  },
+  "attribut": {
+    "attributes": 1
+  },
+  "aim": {
+    "aim": 1
+  },
+  "statement": {
+    "statement": 1
+  },
+  "128mb": {
+    "128mb": 1
+  },
+  "approach": {
+    "approaches": 4,
+    "approach": 10
+  },
+  "competitor": {
+    "competitors": 5
+  },
+  "apsslsa": {
+    "apsslsa": 1
+  },
+  "degre": {
+    "degrees": 2
+  },
+  "knowhow": {
+    "knowhow": 1
+  },
+  "purpl": {
+    "purple": 1
+  },
+  "iip": {
+    "iip": 1
+  },
+  "data": {
+    "data": 19
+  },
+  "methodolog": {
+    "methodology": 9,
+    "methodologies": 4
+  },
+  "modul": {
+    "module": 2
+  },
+  "cpu": {
+    "cpus": 2
+  },
+  "biolog": {
+    "biology": 1
+  },
+  "svd": {
+    "svd": 21
+  },
+  "addit": {
+    "additional": 3,
+    "addition": 3,
+    "additionally": 3
+  },
+  "mention": {
+    "mentioned": 2
+  },
+  "m+m3": {
+    "m+m3": 1
+  },
+  "synthes": {
+    "synthesize": 1,
+    "synthesized": 4,
+    "synthesizes": 2
+  },
+  "obvious": {
+    "obviously": 1
+  },
+  "report": {
+    "report": 9,
+    "reports": 6,
+    "reporting": 4
+  },
+  "regist": {
+    "registered": 1
+  },
+  "simpli": {
+    "simply": 3
+  },
+  "night": {
+    "night": 1
+  },
+  "hofmann": {
+    "hofmann": 2
+  },
+  "patentidea": {
+    "patentideas": 1
+  },
+  "june": {
+    "june": 1
+  },
+  "high": {
+    "high": 1
+  },
+  "regard": {
+    "regarding": 2
+  },
+  "staff": {
+    "staff": 1
+  },
+  "portion": {
+    "portion": 1
+  },
+  "vital": {
+    "vital": 1
+  },
+  "wsd": {
+    "wsd": 1
+  },
+  "phase": {
+    "phase": 8
+  },
+  "import": {
+    "important": 7
+  },
+  "offer": {
+    "offering": 5,
+    "offerings": 1,
+    "offer": 7
+  },
+  "confid": {
+    "confident": 1
+  },
+  "appropri": {
+    "appropriately": 1
+  },
+  "phone": {
+    "phone": 1
+  },
+  "money": {
+    "money": 1
+  },
+  "5gram": {
+    "5grams": 1
+  },
+  "select": {
+    "selection": 3,
+    "select": 1,
+    "selected": 2
+  },
+  "arm": {
+    "arm": 1
+  },
+  "embed": {
+    "embedded": 1
+  },
+  "divin": {
+    "divine": 1
+  },
+  "empow": {
+    "empower": 1
+  },
+  "occur": {
+    "occur": 1
+  },
+  "enter": {
+    "enter": 2,
+    "enters": 1
+  },
+  "serv": {
+    "served": 4
+  },
+  "determin": {
+    "determination": 1,
+    "determine": 8
+  },
+  "link": {
+    "linked": 1
+  },
+  "obtain": {
+    "obtained": 2
+  },
+  "perform8": {
+    "perform8": 1
+  },
+  "strateg": {
+    "strategic": 1
+  },
+  "choos": {
+    "choose": 2
+  },
+  "program": {
+    "program": 2,
+    "programming": 1
+  },
+  "search": {
+    "searches": 17,
+    "search": 100,
+    "searched": 2
+  },
+  "art": {
+    "art": 4
+  },
+  "partial": {
+    "partially": 1
+  },
+  "server": {
+    "server": 1,
+    "servers": 1
+  },
+  "web": {
+    "web": 3
+  },
+  "nurtur": {
+    "nurturing": 1
+  },
+  "nation": {
+    "national": 1
+  },
+  "vector": {
+    "vector": 1
+  },
+  "mcguir": {
+    "mcguire": 1
+  },
+  "smart": {
+    "smart": 6
+  },
+  "incentiv": {
+    "incentivized": 1
+  },
+  "verb": {
+    "verb": 2
+  },
+  "googl": {
+    "googles": 3,
+    "google": 11
+  },
+  "studi": {
+    "study": 1
+  },
+  "150tb": {
+    "150tb": 1
+  },
+  "schema": {
+    "schema": 1
+  },
+  "canon": {
+    "canon": 1
+  },
+  "distinguish": {
+    "distinguish": 1
+  },
+  "chat": {
+    "chat": 1
+  },
+  "finish": {
+    "finish": 1
+  },
+  "case": {
+    "case": 3
+  },
+  "tractabl": {
+    "tractable": 3
+  },
+  "flush": {
+    "flushed": 1
+  },
+  "overview": {
+    "overview": 1
+  },
+  "prefilt": {
+    "prefilter": 1
+  },
+  "motiv": {
+    "motivator": 1
+  },
+  "retriev": {
+    "retrieval": 2,
+    "retrieved": 3
+  },
+  "tradit": {
+    "traditional": 5
+  },
+  "quintillion": {
+    "quintillion": 1
+  },
+  "emphas": {
+    "emphasize": 1
+  },
+  "believ": {
+    "believe": 3
+  },
+  "day": {
+    "days": 2
+  },
+  "heart": {
+    "heart": 1
+  },
+  "amibigu": {
+    "amibiguity": 1
+  },
+  "exclud": {
+    "excluded": 1
+  },
+  "conserv": {
+    "conservatively": 1,
+    "conservative": 1
+  },
+  "quickli": {
+    "quickly": 2
+  },
+  "latent": {
+    "latent": 4
+  },
+  "expens": {
+    "expensive": 1
+  },
+  "succeed": {
+    "succeeded": 1
+  },
+  "multi": {
+    "multi": 1
+  },
+  "help": {
+    "helps": 1
+  },
+  "unrk": {
+    "unrk": 1
+  },
+  "output": {
+    "output": 1
+  },
+  "sum": {
+    "sum": 1
+  },
+  "answer": {
+    "answered": 2,
+    "answer": 3,
+    "answers": 2
+  },
+  "bag": {
+    "bag": 2
+  },
+  "think": {
+    "think": 2,
+    "thinking": 1
+  },
+  "fulli": {
+    "fully": 1
+  },
+  "mypatentidea": {
+    "mypatentideas": 10
+  },
+  "sophist": {
+    "sophisticated": 4
+  },
+  "n+m": {
+    "n+m": 1
+  },
+  "provision": {
+    "provisional": 1
+  },
+  "200page": {
+    "200page": 2
+  },
+  "spectral": {
+    "spectral": 1
+  },
+  "attend": {
+    "attending": 1
+  },
+  "asymmetri": {
+    "asymmetry": 1
+  },
+  "percentag": {
+    "percentage": 2
+  },
+  "similar": {
+    "similar": 4,
+    "similarities": 1,
+    "similarity": 3
+  },
+  "rare": {
+    "rare": 1
+  },
+  "creat": {
+    "created": 3,
+    "creating": 4,
+    "create": 8
+  },
+  "stakehold": {
+    "stakeholders": 4
+  },
+  "say": {
+    "say": 2
+  },
+  "procedur": {
+    "procedures": 1,
+    "procedure": 8
+  },
+  "sbir": {
+    "sbir": 5
+  },
+  "author": {
+    "author": 2
+  },
+  "develop": {
+    "developing": 3,
+    "developed": 11,
+    "develop": 11,
+    "development": 8
+  },
+  "benefit": {
+    "benefit": 3,
+    "benefits": 1
+  },
+  "4gram": {
+    "4grams": 1
+  },
+  "live": {
+    "live": 1
+  },
+  "tu2": {
+    "tu2": 1
+  },
+  "perform": {
+    "performs": 2,
+    "perform": 19,
+    "performed": 9,
+    "performing": 1
+  },
+  "affect": {
+    "affect": 1
+  },
+  "personality12": {
+    "personality12": 1
+  },
+  "hour": {
+    "hour": 1
+  },
+  "simular": {
+    "simular": 1
+  },
+  "prepar": {
+    "prepare": 1,
+    "preparation": 1
+  },
+  "ument": {
+    "uments": 1
+  },
+  "observ": {
+    "observe": 2
+  },
+  "univers": {
+    "university": 2,
+    "universitys": 1,
+    "universities": 3
+  },
+  "reason": {
+    "reasons": 1,
+    "reasonable": 1
+  },
+  "foster": {
+    "fostering": 1
+  },
+  "model": {
+    "models": 1
+  },
+  "multipl": {
+    "multiple": 11,
+    "multiplication": 1
+  },
+  "purchas": {
+    "purchase": 1,
+    "purchases": 2,
+    "purchased": 1
+  },
+  "leader": {
+    "leader": 1
+  },
+  "larg": {
+    "large": 8
+  },
+  "computersci": {
+    "computerscience": 1
+  },
+  "error": {
+    "errors": 2,
+    "error": 2
+  },
+  "repositori": {
+    "repository": 2
+  },
+  "scenario": {
+    "scenario": 3,
+    "scenarios": 2
+  },
+  "docuneighbor": {
+    "docuneighbors": 1
+  },
+  "elev": {
+    "elevator": 1
+  },
+  "99per": {
+    "99per": 1
+  },
+  "faster": {
+    "faster": 1
+  },
+  "includ": {
+    "included": 7,
+    "including": 1,
+    "include": 6
+  },
+  "broader": {
+    "broader": 1
+  },
+  "innographi": {
+    "innography": 1
+  },
+  "identifi": {
+    "identified": 3,
+    "identify": 5
+  },
+  "process": {
+    "processing": 6,
+    "process": 12
+  },
+  "compani": {
+    "companys": 1,
+    "companies": 4,
+    "company": 7
+  },
+  "captur": {
+    "capture": 11,
+    "captured": 1
+  },
+  "entreprenuri": {
+    "entreprenurial": 1
+  },
+  "privat": {
+    "private": 1
+  },
+  "common": {
+    "commonalities": 1,
+    "common": 19,
+    "commonality": 3
+  },
+  "tu1": {
+    "tu1": 1
+  },
+  "address": {
+    "addressing": 1,
+    "address": 2,
+    "addressed": 1,
+    "addresses": 1
+  },
+  "relat": {
+    "relates": 1,
+    "related": 9,
+    "relation": 2
+  },
+  "strategi": {
+    "strategy": 2,
+    "strategies": 2
+  },
+  "summari": {
+    "summary": 1
+  },
+  "mechan": {
+    "mechanisms": 1,
+    "mechanism": 1
+  },
+  "indic": {
+    "indices": 2
+  },
+  "like": {
+    "likely": 3
+  },
+  "storag": {
+    "storage": 1
+  },
+  "progress": {
+    "progress": 1
+  },
+  "sound": {
+    "sound": 1
+  },
+  "singl": {
+    "single": 10
+  },
+  "purpos": {
+    "purpose": 1,
+    "purposefully": 1
+  },
+  "entir": {
+    "entire": 18
+  },
+  "afraid": {
+    "afraid": 1
+  },
+  "merg": {
+    "merge": 1
+  },
+  "locat": {
+    "located": 1
+  },
+  "end": {
+    "end": 6
+  },
+  "plan": {
+    "planning": 1,
+    "plan": 3
+  },
+  "anm": {
+    "anm": 1
+  },
+  "detail": {
+    "details": 2,
+    "detailed": 1
+  },
+  "pipelin": {
+    "pipeline": 1
+  },
+  "option": {
+    "options": 5
+  },
+  "alpha": {
+    "alpha": 3
+  },
+  "low": {
+    "low": 2
+  },
+  "previous": {
+    "previously": 2
+  },
+  "box": {
+    "box": 5
+  },
+  "dasgupta": {
+    "dasgupta": 1
+  },
+  "column": {
+    "columns": 1
+  },
+  "simul": {
+    "simulation": 5,
+    "simulations": 2,
+    "simulated": 4
+  },
+  "letter": {
+    "letter": 2,
+    "letters": 1
+  },
+  "zoom": {
+    "zoom": 1
+  },
+  "present": {
+    "presented": 1
+  },
+  "ssl": {
+    "ssl": 1
+  },
+  "histori": {
+    "history": 1
+  },
+  "suggest": {
+    "suggests": 1,
+    "suggested": 1
+  },
+  "happen": {
+    "happen": 1
+  },
+  "feedback": {
+    "feedback": 3
+  },
+  "fund": {
+    "funds": 3,
+    "funding": 3
+  },
+  "random": {
+    "random": 2
+  },
+  "propos": {
+    "proposals": 1,
+    "proposes": 1,
+    "proposing": 1,
+    "proposal": 7,
+    "proposed": 6
+  },
+  "upload": {
+    "uploading": 1
+  },
+  "proprietari": {
+    "proprietary": 3
+  },
+  "infring": {
+    "infringing": 1,
+    "infringement": 4
+  },
+  "kit": {
+    "kits": 1,
+    "kit": 1
+  },
+  "finder": {
+    "finder": 1
+  },
+  "lab": {
+    "labs": 1
+  },
+  "revenu": {
+    "revenues": 5,
+    "revenue": 2
+  },
+  "number": {
+    "numbers": 1,
+    "number": 7
+  },
+  "larli": {
+    "larly": 1
+  },
+  "updat": {
+    "update": 3,
+    "updating": 1
+  },
+  "impact": {
+    "impacts": 1,
+    "impact": 1
+  },
+  "neighborhood": {
+    "neighborhood": 1
+  },
+  "sort": {
+    "sorting": 1,
+    "sort": 2
+  },
+  "consist": {
+    "consist": 1
+  },
+  "inventor": {
+    "inventor": 12,
+    "inventors": 9
+  },
+  "prohibit": {
+    "prohibitive": 1
+  },
+  "cloud": {
+    "clouds": 2
+  },
+  "repres": {
+    "represent": 4,
+    "represents": 7,
+    "representing": 1
+  },
+  "promot": {
+    "promotion": 1
+  },
+  "dissert": {
+    "dissertation": 3
+  },
+  "touch": {
+    "touches": 1
+  },
+  "decomporeturn": {
+    "decomporeturn": 1
+  },
+  "linear": {
+    "linear": 1
+  },
+  "fear": {
+    "fear": 1
+  },
+  "technic": {
+    "technical": 9
+  },
+  "fielda": {
+    "fielda": 1
+  },
+  "societ": {
+    "societal": 1
+  },
+  "nsf": {
+    "nsf": 4
+  },
+  "sythes": {
+    "sythesizing": 1
+  },
+  "ideal": {
+    "ideally": 1
+  },
+  "futur": {
+    "future": 1
+  },
+  "dire": {
+    "dire": 1
+  },
+  "uncommon": {
+    "uncommon": 8,
+    "uncommonality": 1
+  },
+  "vkt": {
+    "vkt": 3
+  },
+  "user": {
+    "users": 1
+  },
+  "matrix9": {
+    "matrix9": 1
+  },
+  "dimension": {
+    "dimensionality": 2
+  },
+  "star": {
+    "star": 1
+  },
+  "scheme": {
+    "scheme": 1
+  },
+  "decemb": {
+    "december": 1
+  },
+  "award": {
+    "award": 1
+  },
+  "psychograph": {
+    "psychographic": 1
+  },
+  "element": {
+    "elements": 2,
+    "element": 1
+  },
+  "capitalist": {
+    "capitalists": 2
+  },
+  "consid": {
+    "consider": 6
+  },
+  "effort": {
+    "effort": 1,
+    "efforts": 1
+  },
+  "compon": {
+    "component": 2,
+    "components": 2
+  },
+  "label": {
+    "label": 1
+  },
+  "deriv": {
+    "derived": 1
+  },
+  "adword": {
+    "adwords": 1
+  },
+  "countri": {
+    "countrys": 1,
+    "countries": 1
+  },
+  "diagon": {
+    "diagonal": 1
+  },
+  "natur": {
+    "natural": 11,
+    "nature": 2
+  },
+  "row": {
+    "rows": 1
+  },
+  "featur": {
+    "features": 5,
+    "feature": 3
+  },
+  "prior": {
+    "prior": 4
+  },
+  "success": {
+    "successful": 2,
+    "success": 1
+  },
+  "suppos": {
+    "suppose": 1
+  },
+  "patentcaf": {
+    "patentcafe": 1
+  },
+  "base": {
+    "based": 32
+  },
+  "terpris": {
+    "terprises": 1
+  },
+  "list": {
+    "list": 1
+  },
+  "dive": {
+    "dive": 1
+  },
+  "minimum": {
+    "minimum": 2
+  },
+  "token": {
+    "token": 2,
+    "tokens": 3
+  },
+  "sooner": {
+    "sooner": 1
+  },
+  "inform": {
+    "informed": 6,
+    "informal": 1,
+    "informs": 1,
+    "informative": 2,
+    "information": 8,
+    "inform": 1
+  },
+  "focal": {
+    "focal": 6
+  },
+  "cosin": {
+    "cosine": 1
+  },
+  "object": {
+    "objects": 1,
+    "objectives": 2,
+    "objective": 4,
+    "objectively": 3
+  },
+  "test": {
+    "test": 4
+  },
+  "encourag": {
+    "encouragement": 1
+  },
+  "advanc": {
+    "advanced": 2,
+    "advancement": 1,
+    "advance": 1
+  },
+  "collect": {
+    "collection": 15,
+    "collections": 1,
+    "collect": 1
+  },
+  "placement": {
+    "placement": 1
+  },
+  "corpu": {
+    "corpus": 33
+  },
+  "state": {
+    "states": 4
+  },
+  "capit": {
+    "capitalize": 1
+  },
+  "feasibl": {
+    "feasibility": 1
+  },
+  "ngram": {
+    "ngram": 2
+  },
+  "abl": {
+    "able": 1
+  },
+  "reliev": {
+    "relieve": 1
+  },
+  "64mb": {
+    "64mb": 1
+  },
+  "professor": {
+    "professors": 1
+  },
+  "form": {
+    "form": 3
+  },
+  "knowledg": {
+    "knowledge": 3
+  },
+  "costs1": {
+    "costs1": 1
+  },
+  "mirek": {
+    "mirek": 1,
+    "mireks": 1
+  },
+  "real": {
+    "real": 2
+  },
+  "loop": {
+    "loop": 1
+  },
+  "overarch": {
+    "overarching": 1
+  },
+  "innov": {
+    "innovative": 1,
+    "innovations": 3,
+    "innovators": 2,
+    "innovator": 1,
+    "innovation": 21
+  },
+  "account": {
+    "account": 1,
+    "accounts": 1
+  },
+  "receiv": {
+    "receives": 1,
+    "receive": 1,
+    "received": 2
+  },
+  "facet": {
+    "faceted": 1
+  },
+  "formul": {
+    "formulation": 1
+  },
+  "corpor": {
+    "corporate": 2,
+    "corporations": 1
+  },
+  "blog": {
+    "blog": 1
+  },
+  "paper": {
+    "paper": 3
+  },
+  "involv": {
+    "involved": 1
+  },
+  "defin": {
+    "defines": 3,
+    "define": 16,
+    "defined": 12,
+    "defining": 2
+  },
+  "rank": {
+    "ranked": 2,
+    "ranking": 2,
+    "rank": 11
+  },
+  "mean": {
+    "meanings": 2,
+    "means": 3,
+    "meaning": 6
+  },
+  "enbuild": {
+    "enbuild": 1
+  },
+  "construct": {
+    "constructing": 1,
+    "construct": 2,
+    "constructed": 1,
+    "construction": 1
+  },
+  "indirect": {
+    "indirect": 1
+  },
+  "immedi": {
+    "immediately": 3
+  },
+  "visit": {
+    "visit": 1
+  },
+  "simi": {
+    "simi": 1
+  },
+  "price": {
+    "price": 2,
+    "pricing": 4
+  },
+  "question": {
+    "questions": 3,
+    "question": 9
+  },
+  "uniqu": {
+    "unique": 2,
+    "uniquely": 1
+  },
+  "paid": {
+    "paid": 2
+  },
+  "global": {
+    "global": 2
+  },
+  "intellig": {
+    "intelligent": 1,
+    "intelligence": 3
+  },
+  "issu": {
+    "issued": 4,
+    "issues": 4
+  },
+  "follow": {
+    "follows": 1,
+    "follow": 1
+  },
+  "challeng": {
+    "challenge": 2
+  },
+  "experi": {
+    "experience": 1,
+    "experiments": 3,
+    "experiment": 3
+  },
+  "com": {
+    "coms": 1,
+    "com": 13
+  },
+  "stopword": {
+    "stopwords": 2,
+    "stopword": 1
+  },
+  "instrument": {
+    "instrumental": 1
+  },
+  "idea": {
+    "idea": 55,
+    "ideas": 2
+  },
+  "mont": {
+    "monte": 2
+  },
+  "match": {
+    "matching": 4
+  },
+  "matrix": {
+    "matrix": 13
+  },
+  "juli": {
+    "july": 1
+  },
+  "pantro": {
+    "pantros": 1
+  },
+  "synthesi": {
+    "synthesis": 1
+  },
+  "answeredi": {
+    "answeredi": 1
+  },
+  "enterpriselevel": {
+    "enterpriselevel": 1
+  },
+  "fact": {
+    "fact": 1
+  },
+  "legalzoom": {
+    "legalzoom": 1
+  },
+  "solut": {
+    "solution": 1,
+    "solutions": 3
+  },
+  "grant": {
+    "granting": 1,
+    "grant": 4,
+    "granted": 1
+  },
+  "allow": {
+    "allow": 2
+  },
+  "tuesday": {
+    "tuesday": 1
+  },
+  "sentenc": {
+    "sentence": 3,
+    "sentences": 1
+  },
+  "legal": {
+    "legal": 1
+  },
+  "eigenvalu": {
+    "eigenvalues": 3,
+    "eigenvalue": 1
+  },
+  "introduc": {
+    "introduces": 1,
+    "introduce": 1
+  },
+  "stage": {
+    "stages": 1,
+    "stage": 4
+  },
+  "evid": {
+    "evidence": 1
+  },
+  "review": {
+    "reviewers": 1,
+    "review": 1,
+    "reviewing": 1
+  },
+  "describ": {
+    "describing": 1
+  },
+  "prototyp": {
+    "prototype": 5,
+    "prototypes": 1,
+    "prototyped": 2
+  },
+  "item": {
+    "items": 1
+  },
+  "appear": {
+    "appearing": 1,
+    "appears": 1
+  },
+  "pursu": {
+    "pursuing": 3
+  },
+  "randomli": {
+    "randomly": 2
+  },
+  "ted": {
+    "ted": 1
+  },
+  "mainli": {
+    "mainly": 1
+  },
+  "small": {
+    "small": 8
+  },
+  "outlin": {
+    "outline": 2,
+    "outlined": 1
+  },
+  "interest": {
+    "interested": 5
+  },
+  "current": {
+    "current": 5
+  },
+  "invent": {
+    "invention": 2,
+    "inventions": 1,
+    "invented": 1
+  },
+  "truth": {
+    "truth": 1
+  },
+  "proof": {
+    "proof": 1
+  },
+  "agenc": {
+    "agencies": 1
+  },
+  "slave": {
+    "slave": 1
+  },
+  "examin": {
+    "examiner": 1,
+    "examination": 1,
+    "examiners": 2
+  },
+  "independ": {
+    "independently": 1,
+    "independent": 7
+  },
+  "share": {
+    "share": 1
+  },
+  "team": {
+    "team": 4
+  },
+  "protest": {
+    "protest": 1
+  },
+  "intent": {
+    "intentionally": 1
+  },
+  "build": {
+    "build": 6
+  },
+  "confer": {
+    "conference": 1
+  },
+  "techniqu": {
+    "technique": 1,
+    "techniques": 2
+  },
+  "agirr": {
+    "agirre": 1
+  },
+  "directli": {
+    "directly": 3
+  },
+  "hand": {
+    "hand": 1
+  },
+  "owner": {
+    "owners": 3,
+    "owner": 3
+  },
+  "mid": {
+    "mid": 1
+  },
+  "disrupt": {
+    "disruptive": 1
+  },
+  "aspect": {
+    "aspect": 1
+  },
+  "nuanc": {
+    "nuance": 1
+  },
+  "broad": {
+    "broad": 1
+  },
+  "liter": {
+    "literally": 2
+  },
+  "top10": {
+    "top10": 1
+  },
+  "3gram": {
+    "3grams": 2,
+    "3gram": 1
+  },
+  "map": {
+    "maps": 1,
+    "map": 4,
+    "mapped": 1
+  },
+  "null": {
+    "null": 1
+  },
+  "complet": {
+    "completed": 1,
+    "complete": 1
+  },
+  "design": {
+    "design": 5,
+    "designed": 1
+  },
+  "publish": {
+    "published": 1
+  },
+  "layer": {
+    "layer": 2
+  },
+  "previou": {
+    "previous": 1
+  },
+  "school": {
+    "schools": 2
+  },
+  "mere": {
+    "merely": 2
+  },
+  "confidenti": {
+    "confidentiality": 1
+  },
+  "sition": {
+    "sitions": 1
+  },
+  "leverag": {
+    "leveraged": 1
+  },
+  "patent": {
+    "patenter": 1,
+    "patented": 10,
+    "patenting": 6,
+    "patent": 111,
+    "patentability": 6,
+    "patentable": 9,
+    "patents": 27
+  },
+  "request": {
+    "request": 1
+  },
+  "visitor": {
+    "visitors": 2
+  },
+  "landauer": {
+    "landauer": 2
+  },
+  "weekli": {
+    "weekly": 4
+  },
+  "brand": {
+    "branded": 1
+  },
+  "round": {
+    "rounds": 1
+  },
+  "multin": {
+    "multinational": 2
+  },
+  "financi": {
+    "financial": 1
+  },
+  "search11": {
+    "search11": 1
+  },
+  "archiv": {
+    "archive": 1,
+    "archives": 4,
+    "archival": 1
+  },
+  "loss": {
+    "loss": 1
+  },
+  "get": {
+    "getting": 2
+  },
+  "ventur": {
+    "venture": 3
+  },
+  "strong": {
+    "strong": 1
+  },
+  "rate": {
+    "rate": 1
+  },
+  "proceed": {
+    "proceed": 1,
+    "proceeding": 1
+  },
+  "pareto": {
+    "pareto": 1
+  },
+  "ocean": {
+    "ocean": 3
+  },
+  "truncat": {
+    "truncate": 1
+  },
+  "hypothesi": {
+    "hypothesis": 4
+  },
+  "2gram": {
+    "2grams": 2,
+    "2gram": 1
+  },
+  "websit": {
+    "website": 5
+  },
+  "incept": {
+    "inception": 1
+  },
+  "highlight": {
+    "highlighted": 1
+  },
+  "cheaper": {
+    "cheaper": 1
+  },
+  "lsa": {
+    "lsa": 13
+  },
+  "zero": {
+    "zeroing": 1
+  },
+  "access": {
+    "access": 1
+  },
+  "play": {
+    "playing": 1
+  },
+  "algorithm": {
+    "algorithm": 2,
+    "algorithms": 2
+  },
+  "anticip": {
+    "anticipate": 6
+  },
+  "intellectu": {
+    "intellectual": 4
+  },
+  "disclos": {
+    "disclosed": 1
+  },
+  "union": {
+    "union": 1
+  },
+  "extract": {
+    "extraction": 1,
+    "extracted": 1,
+    "extract": 3
+  },
+  "onsit": {
+    "onsite": 1
+  },
+  "sampl": {
+    "sample": 3
+  },
+  "million": {
+    "millions": 2,
+    "million": 12
+  },
+  "thoma": {
+    "thomas": 1
+  },
+  "bring": {
+    "bring": 3
+  },
+  "shaffer": {
+    "shaffer": 2
+  },
+  "entrepreneuri": {
+    "entrepreneurial": 2
+  },
+  "maker": {
+    "maker": 1
+  },
+  "condit": {
+    "conditions": 1
+  },
+  "saa": {
+    "saas": 1
+  },
+  "pitch": {
+    "pitch": 1
+  },
+  "profession": {
+    "professional": 1,
+    "professionals": 4
+  },
+  "kim": {
+    "kim": 1
+  },
+  "prefer": {
+    "preferences": 1
+  },
+  "util": {
+    "utilize": 3,
+    "utilizing": 2,
+    "utility": 3
+  },
+  "alleg": {
+    "alleged": 1
+  },
+  "documentcorrel": {
+    "documentcorrelation": 1
+  },
+  "unit": {
+    "united": 4,
+    "unit": 1
+  },
+  "seat": {
+    "seat": 3
+  },
+  "prune": {
+    "pruning": 1,
+    "pruned": 1,
+    "prune": 2
+  },
+  "robust": {
+    "robust": 3
+  },
+  "boxer": {
+    "boxers": 1
+  },
+  "module7": {
+    "module7": 1
+  },
+  "facilit": {
+    "facilitated": 1,
+    "facilitates": 1
+  },
+  "demand": {
+    "demanding": 1
+  },
+  "semant": {
+    "semantic": 8
+  },
+  "perceiv": {
+    "perceived": 1,
+    "perceives": 1
+  },
+  "seo": {
+    "seo": 1
+  },
+  "simpl": {
+    "simple": 1
+  },
+  "car": {
+    "car": 2
+  },
+  "post": {
+    "post": 1
+  },
+  "patent2": {
+    "patent2": 1
+  },
+  "deal": {
+    "deal": 1
+  },
+  "colleg": {
+    "colleges": 1
+  },
+  "trix": {
+    "trix": 1
+  },
+  "task": {
+    "task": 5,
+    "tasks": 1
+  },
+  "nomolog": {
+    "nomological": 9,
+    "nomologically": 1
+  },
+  "der": {
+    "der": 3
+  },
+  "pars": {
+    "parsing": 2
+  },
+  "ficiti": {
+    "ficity": 1
+  },
+  "fast": {
+    "fast": 7
+  },
+  "index": {
+    "index": 8,
+    "indexing": 1
+  },
+  "daili": {
+    "daily": 4
+  },
+  "problem": {
+    "problem": 2,
+    "problems": 2
+  },
+  "tran": {
+    "tran": 1
+  },
+  "exclus": {
+    "exclusively": 1
+  },
+  "gener": {
+    "generality": 1,
+    "general": 3,
+    "generating": 2
+  },
+  "synonymi": {
+    "synonymy": 1
+  },
+  "provid": {
+    "providing": 2,
+    "provided": 1,
+    "provide": 4
+  },
+  "notabl": {
+    "notably": 1
+  },
+  "copi": {
+    "copy": 3,
+    "copied": 1
+  },
+  "subset": {
+    "subset": 30
+  },
+  "educ": {
+    "education": 1,
+    "educational": 2,
+    "educated": 3,
+    "educating": 3
+  },
+  "claim": {
+    "claim": 1
+  },
+  "tc2": {
+    "tc2": 1
+  },
+  "tc1": {
+    "tc1": 1
+  },
+  "advantag": {
+    "advantage": 1
+  },
+  "achiev": {
+    "achieve": 1
+  },
+  "boolean": {
+    "boolean": 2
+  },
+  "contigu": {
+    "contiguous": 1
+  },
+  "scienc": {
+    "science": 5
+  },
+  "granular": {
+    "granularity": 2
+  },
+  "want": {
+    "want": 12,
+    "wants": 5
+  },
+  "implement": {
+    "implement": 2,
+    "implementations": 1,
+    "implemented": 1
+  },
+  "measur": {
+    "measuring": 1,
+    "measure": 1
+  },
+  "network": {
+    "network": 5
+  },
+  "manag": {
+    "managers": 4,
+    "manager": 1,
+    "manageable": 1,
+    "management": 1
+  },
+  "ram": {
+    "ram": 1
+  },
+  "1gram": {
+    "1grams": 2,
+    "1gram": 1
+  },
+  "direct": {
+    "direct": 3,
+    "directed": 1,
+    "direction": 1
+  },
+  "extern": {
+    "external": 1
+  },
+  "easili": {
+    "easily": 1
+  },
+  "market": {
+    "marketing": 2,
+    "markets": 1,
+    "market": 19
+  },
+  "highli": {
+    "highly": 2
+  },
+  "commerci": {
+    "commercial": 5,
+    "commercialization": 6
+  },
+  "scrutin": {
+    "scrutinize": 1
+  },
+  "databas": {
+    "database": 2
+  },
+  "organ": {
+    "organization": 1,
+    "organizing": 1,
+    "organic": 2
+  },
+  "noun": {
+    "noun": 1
+  },
+  "valuat": {
+    "valuate": 1,
+    "valuation": 1
+  },
+  "specif": {
+    "specific": 3
+  },
+  "worker": {
+    "workers": 2
+  },
+  "space": {
+    "space": 3
+  },
+  "relationship": {
+    "relationship": 2
+  },
+  "readili": {
+    "readily": 3
+  },
+  "40page": {
+    "40page": 1
+  },
+  "commiss": {
+    "commissions": 1
+  },
+  "languag": {
+    "language": 15
+  },
+  "trial": {
+    "trials": 1
+  },
+  "norm": {
+    "normative": 1
+  },
+  "built": {
+    "built": 1
+  },
+  "mayb": {
+    "maybe": 2
+  },
+  "mergent": {
+    "mergent": 4,
+    "mergents": 1
+  },
+  "entrepreneurship": {
+    "entrepreneurship": 4
+  },
+  "auvil": {
+    "auvil": 1
+  },
+  "100": {
+    "100": 3
+  },
+  "invari": {
+    "invariably": 1
+  },
+  "analys": {
+    "analyses": 6
+  },
+  "frequenc": {
+    "frequency": 5,
+    "frequencies": 2
+  },
+  "longer": {
+    "longer": 1
+  },
+  "microsoft": {
+    "microsoft": 1
+  },
+  "core": {
+    "core": 2,
+    "cores": 3
+  },
+  "delin": {
+    "delineate": 1
+  },
+  "blue": {
+    "blue": 1
+  },
+  "worri": {
+    "worry": 1
+  },
+  "analyz": {
+    "analyzed": 1
+  },
+  "overwhelm": {
+    "overwhelms": 1
+  },
+  "scientif": {
+    "scientific": 2
+  },
+  "optimization4": {
+    "optimization4": 1
+  },
+  "consumpt": {
+    "consumption": 1
+  },
+  "tool": {
+    "tool": 1,
+    "tools": 5
+  },
+  "discoveri": {
+    "discovery": 1
+  },
+  "strike": {
+    "strikes": 1,
+    "strike": 9
+  },
+  "engin": {
+    "engine": 4,
+    "engineering": 1
+  },
+  "conclud": {
+    "conclude": 1
+  },
+  "research": {
+    "research": 21,
+    "researcher": 1
+  },
+  "term": {
+    "term": 28,
+    "terms": 32
+  },
+  "understand": {
+    "understand": 1,
+    "understanding": 1
+  },
+  "ambigu": {
+    "ambiguity": 2
+  },
+  "frequent": {
+    "frequent": 1
+  },
+  "file": {
+    "filed": 2,
+    "filing": 2
+  },
+  "freedom": {
+    "freedom": 2
+  },
+  "realtim": {
+    "realtime": 1
+  },
+  "industri": {
+    "industry": 2
+  },
+  "relev": {
+    "relevant": 16
+  },
+  "nearest": {
+    "nearest": 8
+  },
+  "student": {
+    "students": 2
+  },
+  "http": {
+    "http": 3
+  },
+  "pay": {
+    "pay": 5
+  },
+  "basic": {
+    "basic": 7
+  },
+  "samsung": {
+    "samsung": 1
+  },
+  "queri": {
+    "queries": 1,
+    "querys": 1,
+    "query": 33
+  },
+  "true": {
+    "true": 3
+  },
+  "subtl": {
+    "subtle": 1
+  }
+}

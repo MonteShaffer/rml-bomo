@@ -1,0 +1,2062 @@
+{
+  "searchsubset+lsa+sslsa": {
+    "searchsubset+lsa+sslsa": 1
+  },
+  "document+comput+correl": {
+    "document+compute+correlations": 1
+  },
+  "develop+legal+opinion": {
+    "developing+legal+opinions": 1
+  },
+  "professor+invent+disclosur": {
+    "professors+invention+disclosure": 1
+  },
+  "provid+inform+data": {
+    "providing+informative+data": 1
+  },
+  "figur+market+size": {
+    "figure+market+size": 1
+  },
+  "softwar+base+servic": {
+    "software+based+service": 1
+  },
+  "detail+follow+task": {
+    "details+follow+task": 1
+  },
+  "faster+cheaper+extrapol": {
+    "faster+cheaper+extrapolated": 1
+  },
+  "4gram+3gram+2gram": {
+    "4grams+3grams+2grams": 1
+  },
+  "robust+boolean+search": {
+    "robust+boolean+search": 1
+  },
+  "answer+immedi+independ": {
+    "answers+immediately+independently": 1
+  },
+  "provision+patent+applic": {
+    "provisional+patent+application": 1
+  },
+  "search+rank+methodolog": {
+    "search+ranking+methodology": 1
+  },
+  "univers+technolog+transfer": {
+    "universitys+technology+transfer": 1
+  },
+  "neighbor+patent+base": {
+    "neighbor+patents+based": 1
+  },
+  "nlp+navigli+agirr": {
+    "nlp+navigli+agirre": 1
+  },
+  "languag+process+nlp": {
+    "language+processing+nlp": 1
+  },
+  "innov+publish+patent": {
+    "innovation+published+patent": 1
+  },
+  "creat+repeat+busi": {
+    "create+repeat+business": 1
+  },
+  "inset+zoom+featur": {
+    "inset+zoom+feature": 1
+  },
+  "ventur+capitalist+ascertain": {
+    "venture+capitalists+ascertain": 1
+  },
+  "larg+corpor+base": {
+    "large+corporations+based": 1
+  },
+  "meta+search+protocol": {
+    "meta+search+protocol": 1
+  },
+  "educ+minimum+costs1": {
+    "educated+minimum+costs1": 1
+  },
+  "potenti+correl+document": {
+    "potentially+correlated+documents": 1
+  },
+  "filter+term+base": {
+    "filter+terms+based": 1
+  },
+  "specif+sslsa+approach": {
+    "specific+sslsa+approach": 1
+  },
+  "patent+profession+patent": {
+    "patent+professionals+patent": 1
+  },
+  "larg+corpor+patent": {
+    "large+corporate+patenter": 1
+  },
+  "filter+correl+comput": {
+    "filter+correlation+computations": 1
+  },
+  "rank+term+frequenc": {
+    "ranked+term+frequency": 1
+  },
+  "competit+cost+prohibit": {
+    "competitive+cost+prohibitive": 1
+  },
+  "busi+innov+provid": {
+    "business+innovator+providing": 1
+  },
+  "common+term+tc2": {
+    "common+term+tc2": 1
+  },
+  "infring+financi+figur": {
+    "infringing+financial+figure": 1
+  },
+  "relev+result+result": {
+    "relevant+results+results": 1
+  },
+  "extract+relev+concept": {
+    "extract+relevant+concepts": 1
+  },
+  "common+search+term": {
+    "common+search+terms": 1
+  },
+  "patent+data+object": {
+    "patent+data+objects": 1
+  },
+  "box+advanc+natur": {
+    "box+advanced+natural": 1
+  },
+  "enabl+inventor+ventur": {
+    "enabling+inventors+venture": 1
+  },
+  "term+frequenc+scheme": {
+    "term+frequency+scheme": 1
+  },
+  "patent+indirect+custom": {
+    "patent+indirect+customers": 1
+  },
+  "import+concept+educ": {
+    "important+concepts+educating": 1
+  },
+  "technolog+innov+object": {
+    "technological+innovation+objectively": 1
+  },
+  "busi+school+get": {
+    "business+schools+getting": 1
+  },
+  "sale+team+enabl": {
+    "sales+team+enabling": 1
+  },
+  "patent+infring+demand": {
+    "patent+infringement+demanding": 1
+  },
+  "http+www+patent": {
+    "http+www+patent": 1
+  },
+  "core+patent+data": {
+    "core+patent+data": 1
+  },
+  "trademark+offic+uspto": {
+    "trademark+office+uspto": 2
+  },
+  "prototyp+search+report": {
+    "prototype+search+reporting": 1
+  },
+  "patent+search+servic": {
+    "patent+search+services": 1,
+    "patent+search+service": 2
+  },
+  "find+revenu+stream": {
+    "finding+revenue+streams": 1
+  },
+  "design+plant+patent": {
+    "design+plant+patents": 1
+  },
+  "small+busi+owner": {
+    "small+business+owner": 2,
+    "small+business+owners": 2
+  },
+  "determin+prior+art": {
+    "determine+prior+art": 1
+  },
+  "custom+report+base": {
+    "custom+reports+based": 1
+  },
+  "ordin+ith+term": {
+    "ordinal+ith+term": 1
+  },
+  "servic+saa+offer": {
+    "service+saas+offerings": 1
+  },
+  "propos+patent+profession": {
+    "proposal+patent+professionals": 1
+  },
+  "princip+compon+analysi": {
+    "principal+components+analysis": 1
+  },
+  "algorithm+input+idea": {
+    "algorithm+inputed+idea": 1
+  },
+  "correl+problem+statement": {
+    "correlations+problem+statement": 1
+  },
+  "patent+document+task": {
+    "patent+documents+task": 1
+  },
+  "synthes+concept+search": {
+    "synthesized+concept+search": 1
+  },
+  "servic+idea+fit": {
+    "service+idea+fits": 1
+  },
+  "end+procedur+ficiti": {
+    "end+procedure+ficity": 1
+  },
+  "creat+mypatentidea+com": {
+    "creating+mypatentideas+com": 1
+  },
+  "valuat+technolog+patent": {
+    "valuation+technology+patent": 1
+  },
+  "drive+addit+traffic": {
+    "driving+additional+traffic": 1
+  },
+  "mirek+personality12+report": {
+    "mireks+personality12+report": 1
+  },
+  "miss+import+result": {
+    "miss+important+results": 1
+  },
+  "initi+data+feed": {
+    "initial+data+feeds": 1
+  },
+  "develop+smart+search": {
+    "develop+smart+search": 1
+  },
+  "correl+commerci+opportun": {
+    "correlations+commercial+opportunity": 1
+  },
+  "patent+comput+svd": {
+    "patent+compute+svd": 1
+  },
+  "googl+search+approach": {
+    "googles+search+approach": 1
+  },
+  "subset+svd+sslsa": {
+    "subset+svd+sslsa": 1
+  },
+  "cost+leader+christensen": {
+    "cost+leader+christensen": 1
+  },
+  "patent+infring+freedom": {
+    "patentability+infringement+freedom": 1
+  },
+  "common+concept+weight": {
+    "common+concept+weightings": 1
+  },
+  "approxim+million+patent": {
+    "approximately+million+patent": 1
+  },
+  "technolog+patent+rank": {
+    "technology+patent+rank": 1
+  },
+  "million+patent+document": {
+    "million+patent+documents": 2
+  },
+  "entir+patent+document": {
+    "entire+patent+document": 1
+  },
+  "frequenc+scheme+deriv": {
+    "frequency+scheme+derived": 1
+  },
+  "patent+repositori+patent": {
+    "patent+repository+patent": 1
+  },
+  "filter+techniqu+defin": {
+    "filtering+techniques+defining": 1
+  },
+  "develop+alpha+prototyp": {
+    "developed+alpha+prototypes": 1
+  },
+  "nsf+sbir+phase": {
+    "nsf+sbir+phase": 1
+  },
+  "languag+end+procedur": {
+    "language+end+procedure": 1
+  },
+  "develop+servic+idea": {
+    "develop+service+idea": 1
+  },
+  "document+correl+commerci": {
+    "document+correlations+commercial": 1
+  },
+  "prefilt+end+procedur": {
+    "prefilter+end+procedure": 1
+  },
+  "relev+term+concept": {
+    "relevant+terms+concepts": 1
+  },
+  "mergent+archiv+trix": {
+    "mergent+archives+trix": 1
+  },
+  "servic+knowledg+discoveri": {
+    "services+knowledge+discovery": 1
+  },
+  "semant+analys+util": {
+    "semantic+analyses+utilize": 1
+  },
+  "ultra+conserv+size": {
+    "ultra+conservative+size": 1
+  },
+  "smart+search+technolog": {
+    "smart+search+technologies": 3
+  },
+  "www+mypatentidea+com": {
+    "www+mypatentideas+com": 1
+  },
+  "ventur+capitalist+patent": {
+    "venture+capitalists+patent": 1
+  },
+  "patent+commerci+feasibl": {
+    "patents+commercial+feasibility": 1
+  },
+  "multipl+machin+develop": {
+    "multiple+machines+develop": 1
+  },
+  "prior+art+finder": {
+    "prior+art+finder": 1
+  },
+  "interest+parti+entrepreneur": {
+    "interested+parties+entrepreneurs": 1
+  },
+  "common+search+base": {
+    "common+search+based": 1
+  },
+  "repositori+patent+rank": {
+    "repository+patent+rank": 1
+  },
+  "perform+semant+analys": {
+    "perform+semantic+analyses": 1
+  },
+  "state+gener+market": {
+    "states+generating+marketing": 1
+  },
+  "entrepreneur+propos+patent": {
+    "entrepreneurs+proposal+patent": 1
+  },
+  "approxim+techniqu+hofmann": {
+    "approximation+techniques+hofmann": 1
+  },
+  "multipl+search+method": {
+    "multiple+search+methods": 1
+  },
+  "maker+educ+sbir": {
+    "maker+education+sbir": 1
+  },
+  "advanced3+boolean+search": {
+    "advanced3+boolean+search": 1
+  },
+  "applic+call+patent": {
+    "application+called+patent": 1
+  },
+  "alleg+patent+troll": {
+    "alleged+patent+trolls": 1
+  },
+  "file+total+singl": {
+    "filing+total+single": 1
+  },
+  "input+idea+document": {
+    "inputed+idea+document": 1
+  },
+  "face+revenu+technic": {
+    "facing+revenues+technical": 1
+  },
+  "googl+patent+search": {
+    "google+patent+search": 1
+  },
+  "idea+patent+potenti": {
+    "idea+patentable+potentially": 1
+  },
+  "websit+http+www": {
+    "website+http+www": 1
+  },
+  "initi+search+methodolog": {
+    "initially+search+methodology": 1
+  },
+  "crie+commerci+research": {
+    "crie+commercialization+research": 1
+  },
+  "inform+report+googl": {
+    "informative+report+google": 1
+  },
+  "price+strategi+base": {
+    "pricing+strategies+based": 1
+  },
+  "ocean+unserv+market": {
+    "ocean+unserved+market": 1
+  },
+  "patent+search+option": {
+    "patent+search+options": 1
+  },
+  "strong+market+potenti": {
+    "strong+market+potential": 1
+  },
+  "search+input+patent": {
+    "search+input+patent": 1
+  },
+  "product+price+model": {
+    "product+pricing+models": 1
+  },
+  "entir+patent+corpu": {
+    "entire+patent+corpus": 1
+  },
+  "similar+patent+convers": {
+    "similar+patents+conversely": 1
+  },
+  "school+get+degre": {
+    "schools+getting+degrees": 2
+  },
+  "busi+servic+knowledg": {
+    "business+services+knowledge": 1
+  },
+  "valid+nomolog+captur": {
+    "valid+nomological+capture": 1
+  },
+  "lsi+map+term": {
+    "lsi+map+terms": 1
+  },
+  "statement+intellectu+merit": {
+    "statement+intellectual+merit": 1
+  },
+  "end+procedur+figur": {
+    "end+procedure+figure": 1
+  },
+  "extract+prior+research": {
+    "extracted+prior+research": 1
+  },
+  "document+task+ecommerc": {
+    "documents+task+ecommerce": 1
+  },
+  "larg+subset+construct": {
+    "large+subset+construct": 1
+  },
+  "search+lsa+reduc": {
+    "search+lsa+reduces": 1
+  },
+  "process+nsf+iipea4": {
+    "process+nsf+iipea4": 1
+  },
+  "patent+applic+document": {
+    "patent+application+documents": 1,
+    "patented+application+documents": 1
+  },
+  "profession+opinion+current": {
+    "professionals+opinion+current": 1
+  },
+  "proprietari+tradit+lsa": {
+    "proprietary+traditional+lsa": 1
+  },
+  "free+search+tool": {
+    "free+search+tools": 1
+  },
+  "current+googl+search": {
+    "current+google+search": 1
+  },
+  "small+busi+innov": {
+    "small+business+innovation": 2,
+    "small+business+innovator": 1
+  },
+  "nomolog+search+experi": {
+    "nomological+search+experiment": 2
+  },
+  "market+patent+informat": {
+    "market+patent+informatics": 1
+  },
+  "simul+experi+detail": {
+    "simulated+experiments+detailed": 1
+  },
+  "entir+patent+collect": {
+    "entire+patent+collection": 3
+  },
+  "ocean+partial+serv": {
+    "ocean+partially+served": 1
+  },
+  "total+singl+patent": {
+    "total+single+patent": 1
+  },
+  "intellectu+properti+merit": {
+    "intellectual+property+merit": 1
+  },
+  "dive+synthes+multipl": {
+    "dive+synthesizes+multiple": 1
+  },
+  "updat+search+methodolog": {
+    "updating+search+methodologies": 1
+  },
+  "fulli+develop+idea": {
+    "fully+developed+idea": 1
+  },
+  "surpass+million+patent": {
+    "surpass+million+patents": 1
+  },
+  "2gram+natur+languag": {
+    "2grams+natural+language": 1
+  },
+  "busi+innov+research": {
+    "business+innovation+researcher": 1,
+    "business+innovation+research": 1
+  },
+  "input+idea+defin": {
+    "inputed+idea+defines": 1
+  },
+  "comput+complex+million": {
+    "computational+complexity+million": 1
+  },
+  "provid+valid+result": {
+    "provide+valid+results": 1
+  },
+  "end+procedur+process": {
+    "end+procedure+processing": 1
+  },
+  "probabilist+approxim+techniqu": {
+    "probabilistic+approximation+techniques": 1
+  },
+  "patent+research+object": {
+    "patents+research+objectives": 1
+  },
+  "subset+corpu+methodolog": {
+    "subset+corpus+methodology": 1
+  },
+  "offer+search+servic": {
+    "offer+search+services": 1
+  },
+  "queri+document+idea": {
+    "query+document+idea": 1
+  },
+  "capitalist+patent+profession": {
+    "capitalists+patent+professionals": 1
+  },
+  "patent+rank+databas": {
+    "patent+rank+database": 1
+  },
+  "document+corpu+lsa": {
+    "document+corpus+lsa": 1
+  },
+  "valid+patent+search": {
+    "valid+patent+search": 1
+  },
+  "regist+patent+attorney": {
+    "registered+patent+attorneys": 1
+  },
+  "term+concept+matrix": {
+    "term+concept+matrix": 1
+  },
+  "procedur+figur+sslsa": {
+    "procedure+figure+sslsa": 1
+  },
+  "subset+global+corpu": {
+    "subset+global+corpus": 1
+  },
+  "patent+attorney+approxim": {
+    "patent+attorneys+approximately": 1
+  },
+  "corpu+lsa+polysemi": {
+    "corpus+lsa+polysemy": 1
+  },
+  "search+methodolog+base": {
+    "search+methodology+based": 1
+  },
+  "defin+true+similar": {
+    "define+true+similarity": 1
+  },
+  "understand+patent+document": {
+    "understanding+patent+document": 1
+  },
+  "bulk+purchas+subscript": {
+    "bulk+purchases+subscription": 1
+  },
+  "minut+task+synthes": {
+    "minutes+task+synthesized": 1
+  },
+  "live+chat+function": {
+    "live+chat+functionality": 1
+  },
+  "matrix+innov+detail": {
+    "matrix+innovation+details": 1
+  },
+  "comprehens+nomolog+captur": {
+    "comprehensive+nomological+capture": 1
+  },
+  "natur+languag+end": {
+    "natural+language+end": 1
+  },
+  "fast+document+correl": {
+    "fast+document+correlations": 4
+  },
+  "latent+semant+index": {
+    "latent+semantic+index": 1
+  },
+  "http+crie+patent": {
+    "http+crie+patent": 1
+  },
+  "document+correl+sbir": {
+    "document+correlations+sbir": 1
+  },
+  "subset+construct+common": {
+    "subset+construct+common": 1
+  },
+  "patent+examin+identifi": {
+    "patent+examiner+identified": 1
+  },
+  "optim+paramet+select": {
+    "optimal+parameter+selection": 1
+  },
+  "40page+research+paper": {
+    "40page+research+paper": 1
+  },
+  "document+correl+final": {
+    "document+correlations+finally": 1
+  },
+  "servic+perform+conceptu": {
+    "service+performs+conceptual": 1
+  },
+  "thoma+innov+ibm": {
+    "thomas+innovation+ibm": 1
+  },
+  "solut+mainli+inventor": {
+    "solutions+mainly+inventors": 1
+  },
+  "unmet+market+need": {
+    "unmet+market+need": 1
+  },
+  "interfac+optim+nomolog": {
+    "interface+optimal+nomological": 1
+  },
+  "figur+tradit+tractabl": {
+    "figure+traditional+tractable": 1
+  },
+  "product+price+strategi": {
+    "product+pricing+strategies": 1
+  },
+  "languag+languag+process": {
+    "language+language+processing": 1
+  },
+  "diagon+matrix+repres": {
+    "diagonal+matrix+representing": 1
+  },
+  "advanc+natur+languag": {
+    "advanced+natural+language": 1
+  },
+  "patent+innov+creat": {
+    "patent+innovations+creating": 1
+  },
+  "tractabl+lsa+approach": {
+    "tractable+lsa+approaches": 1
+  },
+  "document+correl+problem": {
+    "document+correlations+problem": 1
+  },
+  "innov+provid+inform": {
+    "innovator+providing+informative": 1
+  },
+  "document+corpu+mypatentidea": {
+    "document+corpus+mypatentideas": 1
+  },
+  "neighbor+patent+document": {
+    "neighbor+patent+documents": 2
+  },
+  "applic+sbir+phase": {
+    "applications+sbir+phase": 1
+  },
+  "data+cleans+procedur": {
+    "data+cleansing+procedures": 1
+  },
+  "make+cleans+patent": {
+    "making+cleansed+patent": 1
+  },
+  "samsung+canon+soni": {
+    "samsung+canon+sony": 1
+  },
+  "measur+nearest+neighbor": {
+    "measure+nearest+neighbor": 1
+  },
+  "model+bulk+token": {
+    "models+bulk+token": 1
+  },
+  "optim+featur+includ": {
+    "optimality+features+include": 1
+  },
+  "patent+archiv+module7": {
+    "patent+archival+module7": 1
+  },
+  "desist+patent+infring": {
+    "desist+patent+infringement": 1
+  },
+  "document+collect+corpu": {
+    "document+collection+corpus": 1
+  },
+  "search+report+interfac": {
+    "search+reporting+interface": 2
+  },
+  "feasibl+broader+impact": {
+    "feasibility+broader+impacts": 1
+  },
+  "overlay+technolog+classif": {
+    "overlay+technology+classifications": 1
+  },
+  "play+fielda+singl": {
+    "playing+fielda+single": 1
+  },
+  "aforement+product+patent": {
+    "aforementioned+product+patent": 1
+  },
+  "technolog+transfer+team": {
+    "technology+transfer+team": 1
+  },
+  "search+box+advanc": {
+    "search+box+advanced": 1
+  },
+  "spectral+decomposit+analysi": {
+    "spectral+decomposition+analysis": 1
+  },
+  "matrix+multipl+unrk": {
+    "matrix+multiplication+unrk": 1
+  },
+  "process+nlp+navigli": {
+    "processing+nlp+navigli": 1
+  },
+  "result+set+base": {
+    "result+set+based": 1
+  },
+  "task+ecommerc+web": {
+    "task+ecommerce+web": 1
+  },
+  "search+term+addit": {
+    "search+term+additionally": 1
+  },
+  "potenti+relev+patent": {
+    "potentially+relevant+patents": 1
+  },
+  "search+rank+mechan": {
+    "search+ranking+mechanism": 1
+  },
+  "semant+index+lsi": {
+    "semantic+index+lsi": 1
+  },
+  "methodolog+develop+beta": {
+    "methodologies+develop+beta": 1
+  },
+  "99per+search+price": {
+    "99per+search+price": 1
+  },
+  "languag+process+method": {
+    "language+processing+methods": 1
+  },
+  "call+patent+rank": {
+    "called+patent+rank": 1
+  },
+  "entrepreneur+garag+organ": {
+    "entrepreneurs+garage+organizing": 1
+  },
+  "focal+document+idea": {
+    "focal+document+idea": 1
+  },
+  "transfer+team+need": {
+    "transfer+team+needs": 1
+  },
+  "patent+profession+associ": {
+    "patent+professional+associations": 1
+  },
+  "research+optim+product": {
+    "research+optimal+product": 1
+  },
+  "engin+biolog+chemistri": {
+    "engineering+biology+chemistry": 1
+  },
+  "sale+commiss+paid": {
+    "sales+commissions+paid": 1
+  },
+  "analys+report+patent": {
+    "analyses+reporting+patented": 1
+  },
+  "data+updat+search": {
+    "data+update+search": 1
+  },
+  "fundament+strateg+question": {
+    "fundamental+strategic+questions": 1
+  },
+  "2gram+phrase+semant": {
+    "2gram+phrase+semantic": 1
+  },
+  "techniqu+hofmann+build": {
+    "techniques+hofmann+build": 1
+  },
+  "sourc+quinn+auvil": {
+    "sources+quinn+auvil": 1
+  },
+  "focal+queri+document": {
+    "focal+query+document": 2
+  },
+  "exist+patent+document": {
+    "existing+patent+documents": 1
+  },
+  "search+interfac+develop": {
+    "search+interface+develop": 1
+  },
+  "term+document+matrix9": {
+    "term+document+matrix9": 1
+  },
+  "concept+weight+document": {
+    "concept+weightings+document": 1
+  },
+  "futur+patent+public": {
+    "future+patent+publications": 1
+  },
+  "potenti+nearest+neighbor": {
+    "potential+nearest+neighbor": 1
+  },
+  "current+option+select": {
+    "current+options+selected": 1
+  },
+  "task+optim+nomolog": {
+    "task+optimal+nomological": 1
+  },
+  "product+price+option": {
+    "product+pricing+options": 1
+  },
+  "fast+patent+document": {
+    "fast+patent+document": 1
+  },
+  "address+fundament+strateg": {
+    "address+fundamental+strategic": 1
+  },
+  "visual+educ+technolog": {
+    "visualizations+educational+technologies": 1
+  },
+  "advanc+report+educ": {
+    "advanced+report+educating": 1
+  },
+  "expens+price+structur": {
+    "expensive+pricing+structures": 1
+  },
+  "profession+patent+attorney": {
+    "professionals+patent+attorneys": 1
+  },
+  "prototyp+fast+document": {
+    "prototype+fast+document": 1
+  },
+  "option+bulk+purchas": {
+    "options+bulk+purchases": 1
+  },
+  "inventor+languag+hypothesi": {
+    "inventors+language+hypothesis": 1
+  },
+  "propos+sbir+phase": {
+    "proposal+sbir+phase": 1
+  },
+  "approxim+concept+map": {
+    "approximate+concept+map": 1
+  },
+  "busi+owner+receiv": {
+    "business+owner+receives": 1
+  },
+  "basic+patent+search": {
+    "basic+patentability+search": 1
+  },
+  "document+concept+matrix": {
+    "document+concept+matrix": 1
+  },
+  "product+patent+rank": {
+    "product+patent+rank": 1
+  },
+  "attorney+develop+legal": {
+    "attorneys+developing+legal": 1
+  },
+  "mid+rang+compani": {
+    "mid+range+companies": 1
+  },
+  "mont+shaffer+complet": {
+    "monte+shaffer+completed": 1
+  },
+  "relat+patent+identifi": {
+    "related+patents+identified": 1
+  },
+  "ecommerc+web+applic": {
+    "ecommerce+web+application": 2
+  },
+  "review+process+nsf": {
+    "review+process+nsf": 1
+  },
+  "match+search+intent": {
+    "matching+search+intentionally": 1
+  },
+  "purchas+search+token": {
+    "purchase+search+tokens": 1
+  },
+  "applic+file+mean": {
+    "applications+filed+meaning": 1
+  },
+  "concept+search+base": {
+    "concept+search+based": 1
+  },
+  "bulk+token+purchas": {
+    "bulk+token+purchases": 1
+  },
+  "search+experi+run": {
+    "search+experiment+run": 1
+  },
+  "prohibit+blue+ocean": {
+    "prohibitive+blue+ocean": 1
+  },
+  "independ+onlin+sale": {
+    "independent+online+sales": 1
+  },
+  "perform+pairwis+correl": {
+    "perform+pairwise+correlations": 1
+  },
+  "task+optim+svd": {
+    "task+optimal+svd": 1
+  },
+  "document+correl+patent": {
+    "document+correlation+patent": 1
+  },
+  "computersci+research+student": {
+    "computerscience+research+students": 1
+  },
+  "compani+ibm+samsung": {
+    "companies+ibm+samsung": 1
+  },
+  "brand+websit+http": {
+    "branded+website+http": 1
+  },
+  "purpl+ocean+partial": {
+    "purple+ocean+partially": 1
+  },
+  "tradit+tractabl+lsa": {
+    "traditional+tractable+lsa": 1
+  },
+  "blog+websit+appear": {
+    "blog+website+appearing": 1
+  },
+  "knowledg+worker+initi": {
+    "knowledge+workers+initially": 1
+  },
+  "optim+nomolog+search": {
+    "optimal+nomological+search": 2
+  },
+  "fast+search+interfac": {
+    "fast+search+interface": 1
+  },
+  "common+term+tc1": {
+    "common+term+tc1": 1
+  },
+  "creat+artifici+intellig": {
+    "creating+artificial+intelligent": 1
+  },
+  "uncommon+perform+lsa": {
+    "uncommon+perform+lsa": 1
+  },
+  "basic+patent+file": {
+    "basic+patent+filing": 1
+  },
+  "global+corpu+frequenc": {
+    "global+corpus+frequencies": 1
+  },
+  "market+need+enabl": {
+    "market+need+enabling": 1
+  },
+  "concern+regard+privaci": {
+    "concerns+regarding+privacy": 1
+  },
+  "innov+research+phase": {
+    "innovation+research+phase": 1
+  },
+  "custom+queri+request": {
+    "custom+query+request": 1
+  },
+  "cleans+patent+data": {
+    "cleansed+patent+data": 2
+  },
+  "synthes+multipl+search": {
+    "synthesizes+multiple+searches": 1
+  },
+  "input+paramet+develop": {
+    "input+parameters+develop": 1
+  },
+  "intract+hofmann+blei": {
+    "intractable+hofmann+blei": 1
+  },
+  "collect+term+concept": {
+    "collection+term+concept": 1
+  },
+  "search+offer+consid": {
+    "search+offering+consider": 1
+  },
+  "scenario+visitor+lead": {
+    "scenario+visitors+leads": 1
+  },
+  "parti+entrepreneur+univers": {
+    "parties+entrepreneurs+university": 1
+  },
+  "prior+research+suggest": {
+    "prior+research+suggests": 1
+  },
+  "major+technic+challeng": {
+    "major+technical+challenge": 1
+  },
+  "determin+key+term": {
+    "determine+key+terms": 1
+  },
+  "defin+svd+deerwest": {
+    "define+svd+deerwester": 1
+  },
+  "lsa+latent+semant": {
+    "lsa+latent+semantic": 1
+  },
+  "uncommon+term+tu2": {
+    "uncommon+term+tu2": 1
+  },
+  "relat+patent+document": {
+    "related+patent+documents": 1
+  },
+  "term+frequenc+vector": {
+    "term+frequency+vector": 1
+  },
+  "construct+common+concept": {
+    "construct+common+concept": 1
+  },
+  "opinion+current+patent": {
+    "opinion+current+patent": 1
+  },
+  "inventor+ventur+capitalist": {
+    "inventors+venture+capitalists": 1
+  },
+  "boolean+search+methodolog": {
+    "boolean+search+methodology": 1
+  },
+  "concept+matrix+innov": {
+    "concept+matrix+innovation": 1
+  },
+  "creat+custom+report": {
+    "create+custom+reports": 1
+  },
+  "report+patent+document": {
+    "reporting+patented+documents": 1
+  },
+  "tradit+approxim+techniqu": {
+    "traditional+approximation+technique": 1
+  },
+  "sbir+phase+imypatentidea": {
+    "sbir+phase+imypatentideas": 1
+  },
+  "core+valuat+technolog": {
+    "core+valuation+technology": 1
+  },
+  "www+patent+rank": {
+    "www+patent+rank": 1
+  },
+  "common+indic+task": {
+    "commonality+indices+task": 1
+  },
+  "http+www+mypatentidea": {
+    "http+www+mypatentideas": 1
+  },
+  "concept+issu+relat": {
+    "concept+issues+related": 1
+  },
+  "low+cost+leader": {
+    "low+cost+leader": 1
+  },
+  "singl+patent+cost": {
+    "single+patent+costs": 1
+  },
+  "rigor+scientif+method": {
+    "rigorous+scientific+methods": 1
+  },
+  "facilit+effici+program": {
+    "facilitates+efficient+programming": 1
+  },
+  "concept+search+featur": {
+    "concept+search+feature": 1
+  },
+  "direct+market+research": {
+    "direct+market+research": 1
+  },
+  "defin+potenti+nomolog": {
+    "define+potential+nomological": 1
+  },
+  "keyword+patent+innov": {
+    "keywords+patentability+innovation": 1
+  },
+  "sens+disambigu+wsd": {
+    "sense+disambiguation+wsd": 1
+  },
+  "nomolog+captur+error": {
+    "nomological+capture+errors": 1
+  },
+  "properti+busi+servic": {
+    "property+business+services": 1
+  },
+  "complex+comput+restrict": {
+    "complexity+computational+restrictions": 1
+  },
+  "document+creat+approxim": {
+    "documents+creating+approximation": 1
+  },
+  "gram+term+intract": {
+    "gram+terms+intractable": 1
+  },
+  "strike+verb+mean": {
+    "strike+verb+means": 2
+  },
+  "search+current+option": {
+    "search+current+options": 1
+  },
+  "stage+approach+smart": {
+    "stage+approach+smart": 1
+  },
+  "develop+independ+search": {
+    "develop+independent+search": 1
+  },
+  "kentucki+innov+network": {
+    "kentuckys+innovation+network": 1
+  },
+  "filter+subset+defin": {
+    "filtering+subset+defined": 1
+  },
+  "correl+comput+optim": {
+    "correlation+computations+optimize": 1
+  },
+  "purchas+subscript+base": {
+    "purchases+subscription+based": 1
+  },
+  "commerci+applic+call": {
+    "commercial+application+called": 1
+  },
+  "repres+prior+art": {
+    "represent+prior+art": 1
+  },
+  "innov+creat+artifici": {
+    "innovations+creating+artificial": 1
+  },
+  "initi+meta+search": {
+    "initial+meta+search": 1
+  },
+  "perform8+svd+singular": {
+    "perform8+svd+singular": 1
+  },
+  "onlin+sale+staff": {
+    "online+sales+staff": 1
+  },
+  "uniqu+defin+base": {
+    "uniquely+defined+based": 1
+  },
+  "frequenc+vector+sition": {
+    "frequency+vector+sitions": 1
+  },
+  "patent+search+approach": {
+    "patent+search+approaches": 1
+  },
+  "rank+mechan+overwhelm": {
+    "ranking+mechanism+overwhelms": 1
+  },
+  "gener+nich+market": {
+    "general+niche+market": 1
+  },
+  "process+patent+kit": {
+    "process+patenting+kits": 1
+  },
+  "technic+school+get": {
+    "technical+schools+getting": 1
+  },
+  "simi+larli+perform": {
+    "simi+larly+perform": 1
+  },
+  "million+student+attend": {
+    "million+students+attending": 1
+  },
+  "patent+search+opinion": {
+    "patentability+search+opinion": 1
+  },
+  "problem+statement+intellectu": {
+    "problem+statement+intellectual": 1
+  },
+  "initi+answer+immedi": {
+    "initial+answers+immediately": 1
+  },
+  "daili+searcher+gener": {
+    "daily+searchers+generating": 1
+  },
+  "gram+1gram+natur": {
+    "grams+1grams+natural": 1
+  },
+  "queri+phase+reduc": {
+    "query+phase+reduces": 1
+  },
+  "academ+initi+known": {
+    "academic+initiative+known": 1
+  },
+  "perform+multipl+search": {
+    "performed+multiple+searches": 1,
+    "performs+multiple+searches": 1
+  },
+  "sens+amibigu+issu": {
+    "sense+amibiguity+issues": 1
+  },
+  "learn+copyright+act": {
+    "learning+copyright+act": 1
+  },
+  "multipl+search+strategi": {
+    "multiple+search+strategies": 1
+  },
+  "input+queri+document": {
+    "input+query+document": 1,
+    "inputed+query+document": 1
+  },
+  "potenti+nomolog+captur": {
+    "potential+nomological+capture": 1
+  },
+  "document+correl+strategi": {
+    "document+correlation+strategy": 1
+  },
+  "simul+experi+design": {
+    "simulated+experiment+design": 1
+  },
+  "patent+attorney+develop": {
+    "patent+attorneys+developing": 1
+  },
+  "patent+term+index": {
+    "patent+term+index": 1
+  },
+  "patent+rank+receiv": {
+    "patent+rank+received": 1
+  },
+  "financi+figur+market": {
+    "financial+figure+market": 1
+  },
+  "natur+languag+prefer": {
+    "natural+language+preferences": 1
+  },
+  "norm+weight+base": {
+    "normative+weighting+based": 1
+  },
+  "market+size+stress": {
+    "market+size+stress": 1
+  },
+  "natur+languag+process": {
+    "natural+language+processing": 2
+  },
+  "smart+search+filter": {
+    "smart+search+filtering": 1
+  },
+  "ea4+educ+technolog": {
+    "ea4+educational+technologies": 1
+  },
+  "legalzoom+custom+want": {
+    "legalzoom+customers+want": 1
+  },
+  "current+patent+search": {
+    "current+patent+search": 2
+  },
+  "nation+scienc+foundat": {
+    "national+science+foundation": 1
+  },
+  "optim+nomolog+captur": {
+    "optimal+nomological+capture": 1
+  },
+  "patent+rank+com": {
+    "patent+rank+com": 2
+  },
+  "search+subset+svd": {
+    "search+subset+svd": 1
+  },
+  "custom+inform+retriev": {
+    "custom+information+retrieval": 1
+  },
+  "program+object+perform": {
+    "programming+objectives+performed": 1
+  },
+  "entir+figur+tradit": {
+    "entire+figure+traditional": 1
+  },
+  "patent+data+platform": {
+    "patent+data+platform": 3
+  },
+  "1gram+phrase+claim": {
+    "1gram+phrase+claim": 1
+  },
+  "correl+synthes+report": {
+    "correlations+synthesized+reports": 1
+  },
+  "relev+document+patent": {
+    "relevant+documented+patents": 1
+  },
+  "onlin+webappl+solut": {
+    "online+webapplication+solution": 1
+  },
+  "search+methodolog+develop": {
+    "search+methodologies+develop": 1
+  },
+  "defin+filter+term": {
+    "defined+filter+terms": 1
+  },
+  "latent+semant+analysi": {
+    "latent+semantic+analysis": 2
+  },
+  "infring+demand+ceas": {
+    "infringement+demanding+cease": 1
+  },
+  "custom+want+initi": {
+    "customers+want+initial": 1
+  },
+  "synthes+report+base": {
+    "synthesized+reports+based": 1
+  },
+  "invent+keyword+patent": {
+    "inventions+keywords+patentability": 1
+  },
+  "patent+document+final": {
+    "patent+documents+finally": 1
+  },
+  "common+procedur+sslsa": {
+    "common+procedure+sslsa": 1
+  },
+  "determin+document+correl": {
+    "determine+document+correlations": 2
+  },
+  "patent+inventor+firm": {
+    "patents+inventors+firms": 1
+  },
+  "document+correl+synthes": {
+    "document+correlations+synthesized": 1
+  },
+  "correl+document+creat": {
+    "correlated+documents+creating": 1
+  },
+  "correl+patent+search": {
+    "correlation+patent+search": 1
+  },
+  "addit+singular+valu": {
+    "additional+singular+values": 1
+  },
+  "term+concept+map": {
+    "term+concept+maps": 1
+  },
+  "patent+network+dynam": {
+    "patent+network+dynamics": 1
+  },
+  "custom+report+featur": {
+    "custom+reporting+features": 1
+  },
+  "independ+smart+search": {
+    "independent+smart+searches": 1
+  },
+  "academ+research+paper": {
+    "academics+research+paper": 1
+  },
+  "correl+elev+pitch": {
+    "correlations+elevator+pitch": 1
+  },
+  "experi+run+simul": {
+    "experiment+run+simulated": 1
+  },
+  "ocean+highli+competit": {
+    "ocean+highly+competitive": 1
+  },
+  "indic+task+optim": {
+    "indices+task+optimal": 1
+  },
+  "perform+independ+search": {
+    "perform+independent+searches": 1
+  },
+  "search+method+googl": {
+    "search+method+google": 1
+  },
+  "patent+technolog+descript": {
+    "patented+technology+descriptions": 1
+  },
+  "input+idea+level": {
+    "inputed+idea+level": 1
+  },
+  "entrepreneurship+intellectu+properti": {
+    "entrepreneurship+intellectual+property": 1
+  },
+  "effici+program+object": {
+    "efficient+programming+objectives": 1
+  },
+  "optim+svd+correl": {
+    "optimal+svd+correlation": 1
+  },
+  "speci+end+procedur": {
+    "speci+end+procedure": 1
+  },
+  "task+data+feed": {
+    "task+data+feeds": 1
+  },
+  "sale+intern+direct": {
+    "sales+interns+directed": 1
+  },
+  "machin+physic+locat": {
+    "machine+physically+located": 1
+  },
+  "potenti+relev+document": {
+    "potentially+relevant+documents": 1
+  },
+  "unit+state+patent": {
+    "united+states+patent": 2
+  },
+  "project+propos+sbir": {
+    "project+proposal+sbir": 1
+  },
+  "phrase+semant+analysi": {
+    "phrase+semantic+analysis": 1
+  },
+  "method+orion+fisher": {
+    "methods+orion+fisher": 1
+  },
+  "commerci+feasibl+broader": {
+    "commercial+feasibility+broader": 1
+  },
+  "subset+defin+filter": {
+    "subset+defined+filter": 1
+  },
+  "hidden+semant+structur": {
+    "hidden+semantic+structure": 1
+  },
+  "intellectu+properti+busi": {
+    "intellectual+property+business": 1
+  },
+  "document+object+tool": {
+    "documents+objective+tools": 1
+  },
+  "smart+multi+facet": {
+    "smart+multi+faceted": 1
+  },
+  "focal+input+document": {
+    "focal+input+document": 1
+  },
+  "canon+soni+microsoft": {
+    "canon+sony+microsoft": 1
+  },
+  "partial+serv+market": {
+    "partially+served+markets": 1
+  },
+  "input+focal+queri": {
+    "input+focal+query": 1
+  },
+  "broad+societ+need": {
+    "broad+societal+need": 1
+  },
+  "profession+grant+review": {
+    "professionals+grant+reviewers": 1
+  },
+  "multi+facet+search": {
+    "multi+faceted+search": 1
+  },
+  "search+engin+optimization4": {
+    "search+engine+optimization4": 1
+  },
+  "data+feed+autom": {
+    "data+feeds+automation": 1
+  },
+  "lawyer+examin+technolog": {
+    "lawyers+examiners+technologies": 1
+  },
+  "relev+busi+intellig": {
+    "relevant+business+intelligence": 1
+  },
+  "stopword+filter+term": {
+    "stopword+filtering+term": 1
+  },
+  "educ+sbir+phase": {
+    "education+sbir+phase": 1
+  },
+  "rank+com+addit": {
+    "rank+com+additionally": 1
+  },
+  "product+descript+page": {
+    "product+description+pages": 1
+  },
+  "mypatentidea+com+deep": {
+    "mypatentideas+coms+deep": 1
+  },
+  "letter+strike+fear": {
+    "letter+strikes+fear": 1
+  },
+  "patent+document+correl": {
+    "patent+documents+correlate": 1,
+    "patent+document+correlations": 3
+  },
+  "nearest+patent+neighbor": {
+    "nearest+patent+neighbors": 1
+  },
+  "approach+smart+multi": {
+    "approach+smart+multi": 1
+  },
+  "multipl+term+share": {
+    "multiple+terms+share": 1
+  },
+  "der+serv+market": {
+    "der+served+market": 3
+  },
+  "com+deep+dive": {
+    "coms+deep+dive": 1
+  },
+  "issu+latent+semant": {
+    "issues+latent+semantic": 1
+  },
+  "run+simul+experi": {
+    "run+simulated+experiments": 1
+  },
+  "search+servic+ultim": {
+    "search+services+ultimately": 1
+  },
+  "singl+search+term": {
+    "single+search+term": 1
+  },
+  "correl+document+base": {
+    "correlated+documents+based": 1
+  },
+  "allow+interest+parti": {
+    "allow+interested+parties": 1
+  },
+  "construct+term+document": {
+    "construct+term+document": 1
+  },
+  "robust+approach+account": {
+    "robust+approach+accounts": 1
+  },
+  "follow+task+optim": {
+    "follow+task+optimal": 1
+  },
+  "fundament+valid+question": {
+    "fundamental+validity+question": 1
+  },
+  "queri+document+util": {
+    "query+document+utilizing": 1
+  },
+  "innov+ibm+patentcaf": {
+    "innovation+ibm+patentcafe": 1
+  },
+  "base+scenario+visitor": {
+    "based+scenario+visitors": 1
+  },
+  "prune+phase+reduc": {
+    "prune+phase+reduces": 1
+  },
+  "patent+collect+level": {
+    "patent+collection+level": 1
+  },
+  "multipl+mean+synonymi": {
+    "multiple+meanings+synonymy": 1
+  },
+  "need+enabl+inventor": {
+    "need+enabling+inventors": 1
+  },
+  "queri+input+idea": {
+    "query+inputed+idea": 1
+  },
+  "posit+procedur+search": {
+    "posit+procedure+search": 1
+  },
+  "multipl+search+process": {
+    "multiple+search+process": 1
+  },
+  "fielda+singl+author": {
+    "fielda+single+author": 1
+  },
+  "action+busi+intellig": {
+    "actionable+business+intelligence": 1
+  },
+  "concept+commerci+approach": {
+    "concept+commercialization+approach": 1
+  },
+  "search+intent+limit": {
+    "search+intentionally+limits": 1
+  },
+  "technolog+speci+end": {
+    "technological+speci+end": 1
+  },
+  "sslsa+subset+search": {
+    "sslsa+subset+search": 1
+  },
+  "queri+document+comput": {
+    "query+document+compute": 1
+  },
+  "potenti+competit+advantag": {
+    "potential+competitive+advantage": 1
+  },
+  "svd+correl+comput": {
+    "svd+correlation+computations": 1
+  },
+  "gram+document+sequenc": {
+    "gram+document+sequence": 1
+  },
+  "market+face+revenu": {
+    "marketing+facing+revenues": 1
+  },
+  "discoveri+visual+educ": {
+    "discovery+visualizations+educational": 1
+  },
+  "gener+purpos+comput": {
+    "general+purpose+computing": 1
+  },
+  "blue+ocean+unserv": {
+    "blue+ocean+unserved": 1
+  },
+  "result+retriev+base": {
+    "results+retrieved+based": 1
+  },
+  "seat+subscript+servic": {
+    "seat+subscription+services": 1
+  },
+  "basic+algorithm+design": {
+    "basic+algorithm+design": 1
+  },
+  "cost+prohibit+blue": {
+    "cost+prohibitive+blue": 1
+  },
+  "mergent+patent+archiv": {
+    "mergent+patent+archive": 1,
+    "mergent+patent+archives": 1
+  },
+  "personality12+report+develop": {
+    "personality12+report+develop": 1
+  },
+  "divin+proprietari+inform": {
+    "divine+proprietary+information": 1
+  },
+  "perform+conceptu+analys": {
+    "performs+conceptual+analyses": 1
+  },
+  "term+concept+comput": {
+    "terms+concepts+compute": 1
+  },
+  "price+model+bulk": {
+    "pricing+models+bulk": 1
+  },
+  "nsf+iipea4+entrepreneuri": {
+    "nsf+iipea4+entrepreneurial": 1
+  },
+  "third+nearli+patent": {
+    "thirds+nearly+patents": 1
+  },
+  "engin+optimization4+tool": {
+    "engine+optimization4+tools": 1
+  },
+  "multin+compani+ibm": {
+    "multinational+companies+ibm": 1
+  },
+  "local+subset+global": {
+    "local+subset+global": 1
+  },
+  "process+method+orion": {
+    "processing+methods+orion": 1
+  },
+  "optim+product+price": {
+    "optimal+product+pricing": 1
+  },
+  "uncommon+term+tu1": {
+    "uncommon+term+tu1": 1
+  },
+  "gram+phrase+natur": {
+    "gram+phrase+natural": 1
+  },
+  "innov+uncommon+perform": {
+    "innovation+uncommon+perform": 1
+  },
+  "unit+state+gener": {
+    "united+states+generating": 1
+  },
+  "natur+languag+languag": {
+    "natural+language+language": 1
+  },
+  "object+patent+network": {
+    "objective+patent+network": 1
+  },
+  "document+repres+prior": {
+    "documents+represent+prior": 1
+  },
+  "preliminari+provision+patent": {
+    "preliminary+provisional+patent": 1
+  },
+  "propos+tung+tran": {
+    "proposal+tung+tran": 1
+  },
+  "patent+profession+grant": {
+    "patent+professionals+grant": 1
+  },
+  "includ+ventur+capitalist": {
+    "include+venture+capitalists": 1
+  },
+  "optim+matrix+comput": {
+    "optimize+matrix+computations": 1
+  },
+  "artifici+intellig+algorithm": {
+    "artificial+intelligent+algorithms": 1
+  },
+  "sslsa+algorithm+input": {
+    "sslsa+algorithm+inputed": 1
+  },
+  "amibiguity5+issu+latent": {
+    "amibiguity5+issues+latent": 1
+  },
+  "basic+search+process": {
+    "basic+search+process": 1
+  },
+  "searcher+receiv+feedback": {
+    "searcher+receive+feedback": 1
+  },
+  "comput+significantli+ideal": {
+    "computation+significantly+ideally": 1
+  },
+  "singl+search+rank": {
+    "single+search+ranking": 1
+  },
+  "patent+archiv+descript": {
+    "patent+archive+description": 1
+  },
+  "singl+simul+scenario": {
+    "single+simulation+scenario": 1
+  },
+  "prototyp+task+data": {
+    "prototyped+task+data": 1
+  },
+  "corpu+mypatentidea+com": {
+    "corpus+mypatentideas+coms": 1
+  },
+  "payment+option+bulk": {
+    "payment+options+bulk": 1
+  },
+  "web+applic+build": {
+    "web+application+build": 1
+  },
+  "return+terpris+make": {
+    "return+terprises+making": 1
+  },
+  "inform+retriev+process": {
+    "information+retrieval+process": 1
+  },
+  "total+storag+capac": {
+    "total+storage+capacity": 1
+  },
+  "tradit+lsa+latent": {
+    "traditional+lsa+latent": 1
+  },
+  "subset+document+corpu": {
+    "subset+document+corpus": 1
+  },
+  "ea4+entrepreneuri+inform": {
+    "ea4+entrepreneurial+informal": 1
+  },
+  "paid+search+servic": {
+    "paid+search+services": 1
+  },
+  "sens+amibiguity5+issu": {
+    "sense+amibiguity5+issues": 1
+  },
+  "exist+patent+relat": {
+    "existing+patents+related": 1
+  },
+  "figur+sslsa+algorithm": {
+    "figure+sslsa+algorithm": 1
+  },
+  "method+sslsa+subset": {
+    "method+sslsa+subset": 1
+  },
+  "search+engin+implement": {
+    "search+engine+implementations": 1
+  },
+  "subset+search+lsa": {
+    "subset+search+lsa": 1
+  },
+  "simpl+search+servic": {
+    "simple+search+service": 1
+  },
+  "sophist+network+mathemat": {
+    "sophisticated+network+mathematics": 1
+  },
+  "map+term+concept": {
+    "map+terms+concepts": 1
+  },
+  "uncommon+2gram+phrase": {
+    "uncommon+2gram+phrase": 1
+  },
+  "complex+million+time": {
+    "complexity+million+times": 1
+  },
+  "comput+pairwis+similar": {
+    "compute+pairwise+similarities": 1
+  },
+  "relev+patent+document": {
+    "relevant+patent+documents": 2
+  },
+  "propos+searchsubset+lsa": {
+    "proposed+searchsubset+lsa": 1
+  },
+  "want+initi+answer": {
+    "want+initial+answers": 1
+  },
+  "develop+beta+report": {
+    "develop+beta+reports": 1
+  },
+  "independ+search+methodolog": {
+    "independent+search+methodologies": 1
+  },
+  "concept+search+technolog": {
+    "concept+search+technology": 1
+  },
+  "patent+applic+weekli": {
+    "patent+applications+weekly": 1
+  },
+  "phrase+natur+languag": {
+    "phrase+natural+language": 1
+  },
+  "firm+lawyer+examin": {
+    "firms+lawyers+examiners": 1
+  },
+  "pca+princip+compon": {
+    "pca+principal+components": 1
+  },
+  "matrix+repres+eigenvalu": {
+    "matrix+representing+eigenvalues": 1
+  },
+  "patent+innov+entrepreneurship": {
+    "patentability+innovation+entrepreneurship": 1
+  },
+  "larg+document+collect": {
+    "large+document+collections": 1,
+    "large+document+collection": 1
+  },
+  "patent+process+patent": {
+    "patenting+process+patenting": 1
+  },
+  "inventor+firm+lawyer": {
+    "inventors+firms+lawyers": 1
+  },
+  "ascertain+exist+patent": {
+    "ascertain+existing+patents": 1
+  },
+  "creat+approxim+indic": {
+    "creating+approximation+indices": 1
+  },
+  "red+ocean+highli": {
+    "red+ocean+highly": 1
+  },
+  "close+relat+patent": {
+    "closely+related+patent": 1
+  },
+  "patent+document+repres": {
+    "patent+documents+represent": 1
+  },
+  "busi+intellig+servic": {
+    "business+intelligence+services": 1
+  },
+  "1gram+natur+languag": {
+    "1grams+natural+language": 1
+  },
+  "saa+offer+directli": {
+    "saas+offerings+directly": 1
+  },
+  "compani+patent+rank": {
+    "company+patent+rank": 2
+  },
+  "patent+analyt+product": {
+    "patent+analytic+products": 1
+  },
+  "input+patent+document": {
+    "input+patent+document": 1
+  },
+  "multipl+search11+set": {
+    "multiple+search11+set": 1
+  },
+  "entrepreneurship+make+cleans": {
+    "entrepreneurship+making+cleansed": 1
+  },
+  "task+synthes+report": {
+    "task+synthesized+reports": 1
+  },
+  "nearest+neighbor+patent": {
+    "nearest+neighbor+patents": 2,
+    "nearest+neighbor+patent": 2
+  },
+  "util+design+plant": {
+    "utility+design+plant": 1
+  },
+  "object+inform+stakehold": {
+    "objectively+inform+stakeholders": 1
+  },
+  "phase+imypatentidea+com": {
+    "phase+imypatentideas+com": 1
+  },
+  "ascertain+document+correl": {
+    "ascertain+document+correlations": 1
+  },
+  "term+corpu+collect": {
+    "terms+corpus+collection": 1
+  },
+  "applic+document+object": {
+    "application+documents+objective": 1
+  },
+  "contextu+concept+issu": {
+    "contextual+concept+issues": 1
+  },
+  "perform+direct+market": {
+    "performed+direct+market": 1
+  },
+  "archiv+trix+comput": {
+    "archives+trix+computations": 1
+  },
+  "search+methodolog+custom": {
+    "search+methodology+customers": 1
+  },
+  "post+filter+correl": {
+    "post+filter+correlation": 1
+  },
+  "singl+search+current": {
+    "single+search+current": 1
+  },
+  "ibm+samsung+canon": {
+    "ibm+samsung+canon": 1
+  },
+  "term+document+matrix": {
+    "term+document+matrix": 4
+  },
+  "onsit+privat+server": {
+    "onsite+private+server": 1
+  },
+  "term+intract+idea": {
+    "terms+intractable+idea": 1
+  },
+  "annual+revenu+obvious": {
+    "annual+revenues+obviously": 1
+  },
+  "comput+optim+matrix": {
+    "computations+optimize+matrix": 1
+  },
+  "deep+dive+synthes": {
+    "deep+dive+synthesizes": 1
+  },
+  "uncommon+search+return": {
+    "uncommon+searches+return": 1
+  },
+  "custom+lsa+base": {
+    "custom+lsa+based": 1
+  },
+  "search+filter+subset": {
+    "search+filtering+subset": 1
+  },
+  "util+patent+grant": {
+    "utility+patent+granted": 1
+  },
+  "correl+sbir+phase": {
+    "correlations+sbir+phase": 1
+  },
+  "patent+data+weekli": {
+    "patent+data+weekly": 1
+  },
+  "enbuild+latent+semant": {
+    "enbuild+latent+semantic": 1
+  },
+  "focal+queri+input": {
+    "focal+query+inputed": 1
+  },
+  "svd+document+collect": {
+    "svd+document+collection": 1
+  },
+  "gener+technolog+space": {
+    "general+technological+space": 1
+  },
+  "overarch+languag+structur": {
+    "overarching+language+structure": 1
+  },
+  "document+correl+innov": {
+    "document+correlations+innovation": 1
+  },
+  "singl+author+inventor": {
+    "single+author+inventor": 1
+  },
+  "worker+initi+target": {
+    "workers+initially+targeting": 1
+  },
+  "work+ecommerc+platform": {
+    "working+ecommerce+platform": 1
+  },
+  "patent+infring+letter": {
+    "patent+infringement+letter": 1
+  },
+  "publish+patent+document": {
+    "published+patent+documents": 1
+  },
+  "determin+concept+base": {
+    "determine+concepts+based": 1
+  },
+  "patent+file+total": {
+    "patent+filing+total": 1
+  },
+  "highli+competit+cost": {
+    "highly+competitive+cost": 1
+  },
+  "high+complex+comput": {
+    "high+complexity+computational": 1
+  },
+  "gener+market+face": {
+    "generating+marketing+facing": 1
+  },
+  "patent+document+collect": {
+    "patent+document+collection": 1
+  },
+  "appli+semant+analysi": {
+    "apply+semantic+analysis": 1
+  },
+  "patent+offic+includ": {
+    "patent+office+including": 1
+  },
+  "report+interfac+optim": {
+    "reporting+interface+optimal": 1
+  },
+  "neighbor+patent+commerci": {
+    "neighbor+patents+commercial": 1
+  },
+  "initi+solut+mainli": {
+    "initially+solutions+mainly": 1
+  },
+  "patent+languag+jargon": {
+    "patent+language+jargon": 1
+  },
+  "innov+entrepreneurship+intellectu": {
+    "innovation+entrepreneurship+intellectual": 1
+  },
+  "crie+patent+rank": {
+    "crie+patent+rank": 1
+  },
+  "optim+input+paramet": {
+    "optimal+input+parameters": 1
+  },
+  "documentcorrel+concept+search": {
+    "documentcorrelation+concept+search": 1
+  },
+  "revenu+technic+discuss": {
+    "revenues+technical+discussion": 1
+  },
+  "semant+analysi+lsa": {
+    "semantic+analysis+lsa": 1
+  },
+  "document+correl+elev": {
+    "document+correlations+elevator": 1
+  },
+  "compani+primari+technolog": {
+    "companys+primary+technology": 1
+  },
+  "document+patent+research": {
+    "documented+patents+research": 1
+  },
+  "key+psychograph+motiv": {
+    "key+psychographic+motivator": 1
+  },
+  "match+search+servic": {
+    "matching+search+services": 1
+  },
+  "knowledg+discoveri+visual": {
+    "knowledge+discovery+visualizations": 1
+  },
+  "goal+base+scenario": {
+    "goal+based+scenario": 1
+  }
+}

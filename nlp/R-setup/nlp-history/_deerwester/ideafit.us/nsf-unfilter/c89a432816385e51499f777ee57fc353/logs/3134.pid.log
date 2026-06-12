@@ -1,0 +1,968 @@
+top - 00:02:26 up 35 days,  5:40,  8 users,  load average: 0.05, 0.16, 0.18
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66690032 used, 65600500 free,  7321504 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53720864 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  844408 433552  12956 S   0.0  0.3   0:00.05 apache2
+top - 00:02:32 up 35 days,  5:40,  8 users,  load average: 0.13, 0.17, 0.19
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66691360 used, 65599172 free,  7321504 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53723496 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  848400 437796  12996 S   0.0  0.3   0:00.08 apache2
+top - 00:02:37 up 35 days,  5:41,  8 users,  load average: 0.20, 0.19, 0.19
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66720408 used, 65570124 free,  7321508 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53730032 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  870192 468924  23920 S   6.6  0.4   0:01.30 apache2
+top - 00:02:42 up 35 days,  5:41,  8 users,  load average: 0.26, 0.20, 0.19
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66734648 used, 65555884 free,  7321516 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53733752 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  879032 477760  23920 S   0.0  0.4   0:01.64 apache2
+top - 00:02:47 up 35 days,  5:41,  8 users,  load average: 0.32, 0.21, 0.20
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66738488 used, 65552044 free,  7321520 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53737352 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  879032 477760  23920 S   0.0  0.4   0:01.64 apache2
+top - 00:02:52 up 35 days,  5:41,  8 users,  load average: 0.43, 0.24, 0.21
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66740440 used, 65550092 free,  7321524 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53740416 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  879032 477760  23920 S   0.0  0.4   0:01.64 apache2
+top - 00:02:57 up 35 days,  5:41,  8 users,  load average: 0.47, 0.25, 0.21
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66742760 used, 65547772 free,  7321528 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53743164 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  879032 477760  23920 S   0.0  0.4   0:01.64 apache2
+top - 00:03:03 up 35 days,  5:41,  8 users,  load average: 0.52, 0.27, 0.22
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66744832 used, 65545700 free,  7321532 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53746132 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  879032 477760  23920 S   0.0  0.4   0:01.64 apache2
+top - 00:03:08 up 35 days,  5:41,  8 users,  load average: 0.55, 0.28, 0.22
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66747644 used, 65542888 free,  7321540 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53749100 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  879032 477760  23920 S   0.0  0.4   0:01.64 apache2
+top - 00:03:13 up 35 days,  5:41,  8 users,  load average: 0.59, 0.29, 0.22
+Tasks:   1 total,   1 running,   0 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66745104 used, 65545428 free,  7321544 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53751952 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  879032 477764  23920 R  19.9  0.4   0:01.67 apache2
+top - 00:03:18 up 35 days,  5:41,  8 users,  load average: 0.62, 0.30, 0.23
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66761592 used, 65528940 free,  7321548 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53754416 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:01.86 apache2
+top - 00:03:23 up 35 days,  5:41,  8 users,  load average: 0.65, 0.31, 0.23
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66765152 used, 65525380 free,  7321552 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53758020 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:01.86 apache2
+top - 00:03:28 up 35 days,  5:41,  8 users,  load average: 0.68, 0.33, 0.24
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66767768 used, 65522764 free,  7321560 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53761212 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:01.86 apache2
+top - 00:03:33 up 35 days,  5:42,  8 users,  load average: 0.79, 0.35, 0.25
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66769396 used, 65521136 free,  7321564 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53764304 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:01.86 apache2
+top - 00:03:39 up 35 days,  5:42,  8 users,  load average: 0.81, 0.36, 0.25
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66773388 used, 65517144 free,  7321564 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53767132 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.06 apache2
+top - 00:03:44 up 35 days,  5:42,  8 users,  load average: 0.82, 0.38, 0.26
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66776232 used, 65514300 free,  7321568 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53770276 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.06 apache2
+top - 00:03:49 up 35 days,  5:42,  8 users,  load average: 0.84, 0.39, 0.26
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66790916 used, 65499616 free,  7321576 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53774664 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.13 apache2
+top - 00:03:54 up 35 days,  5:42,  8 users,  load average: 0.85, 0.40, 0.27
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 66782796 used, 65507736 free,  7321580 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53777300 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.16 apache2
+top - 00:03:59 up 35 days,  5:42,  8 users,  load average: 0.86, 0.41, 0.27
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 69619112 used, 62671420 free,  7321588 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 53780724 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:04:04 up 35 days,  5:42,  8 users,  load average: 2.23, 0.70, 0.37
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 79985256 used, 52305276 free,  7321588 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 54110472 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:04:10 up 35 days,  5:42,  8 users,  load average: 3.50, 0.99, 0.46
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 81560096 used, 50730440 free,  7321592 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 54961240 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:04:15 up 35 days,  5:42,  8 users,  load average: 4.66, 1.27, 0.55
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 83017136 used, 49273396 free,  7321600 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 55669936 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:04:20 up 35 days,  5:42,  8 users,  load average: 5.73, 1.55, 0.65
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 82826928 used, 49463604 free,  7321608 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 56475148 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:04:25 up 35 days,  5:42,  8 users,  load average: 6.79, 1.84, 0.75
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 83991776 used, 48298756 free,  7321616 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 57175548 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:04:30 up 35 days,  5:42,  8 users,  load average: 7.69, 2.11, 0.84
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 85333952 used, 46956576 free,  7321624 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 57838264 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:04:35 up 35 days,  5:43,  8 users,  load average: 8.51, 2.37, 0.93
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 86664208 used, 45626320 free,  7321628 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 58536196 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:04:41 up 35 days,  5:43,  8 users,  load average: 9.27, 2.63, 1.02
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 84979360 used, 47311176 free,  7321632 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 58975132 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:04:46 up 35 days,  5:43,  8 users,  load average: 9.97, 2.89, 1.12
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 85707848 used, 46582684 free,  7321636 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 59493232 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:04:51 up 35 days,  5:43,  8 users,  load average: 10.62, 3.14, 1.21
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 86278544 used, 46011984 free,  7321640 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 59981184 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:04:56 up 35 days,  5:43,  8 users,  load average: 11.21, 3.38, 1.30
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 86978536 used, 45311996 free,  7321644 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 60524404 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:05:01 up 35 days,  5:43,  8 users,  load average: 11.75, 3.63, 1.39
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 87609392 used, 44681144 free,  7321648 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 61012504 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:05:06 up 35 days,  5:43,  8 users,  load average: 12.25, 3.86, 1.48
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 87959096 used, 44331436 free,  7321656 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 61237188 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:05:12 up 35 days,  5:43,  8 users,  load average: 12.87, 4.13, 1.58
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 88494320 used, 43796208 free,  7321664 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 61605740 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:05:17 up 35 days,  5:43,  8 users,  load average: 13.44, 4.40, 1.67
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 89122096 used, 43168436 free,  7321672 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 62059252 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:05:22 up 35 days,  5:43,  8 users,  load average: 13.81, 4.62, 1.76
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 89734176 used, 42556356 free,  7321676 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 62502720 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:05:27 up 35 days,  5:43,  8 users,  load average: 14.14, 4.84, 1.85
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 90127768 used, 42162764 free,  7321684 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 62778304 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:05:32 up 35 days,  5:43,  8 users,  load average: 14.81, 5.29, 2.03
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 90640576 used, 41649956 free,  7321688 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 63173196 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:05:37 up 35 days,  5:44,  8 users,  load average: 15.07, 5.51, 2.11
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 91170688 used, 41119848 free,  7321692 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 63509744 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:05:42 up 35 days,  5:44,  8 users,  load average: 15.22, 5.70, 2.19
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 91753864 used, 40536668 free,  7321696 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 63815656 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:05:48 up 35 days,  5:44,  8 users,  load average: 15.36, 5.88, 2.27
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 92255936 used, 40034592 free,  7321704 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 64039784 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:05:53 up 35 days,  5:44,  8 users,  load average: 15.58, 6.09, 2.36
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 92809728 used, 39480800 free,  7321708 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 64366912 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:05:58 up 35 days,  5:44,  8 users,  load average: 15.77, 6.28, 2.44
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 93477600 used, 38812928 free,  7321708 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 64695028 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:06:03 up 35 days,  5:44,  8 users,  load average: 15.95, 6.48, 2.53
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 94250000 used, 38040532 free,  7321712 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 65065968 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:06:08 up 35 days,  5:44,  8 users,  load average: 16.11, 6.67, 2.61
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 94027984 used, 38262548 free,  7321716 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 65419760 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:06:13 up 35 days,  5:44,  8 users,  load average: 16.27, 6.86, 2.69
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 94694720 used, 37595816 free,  7321728 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 65976076 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:06:19 up 35 days,  5:44,  8 users,  load average: 16.40, 7.04, 2.78
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 95390224 used, 36900308 free,  7321732 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 66380348 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:06:24 up 35 days,  5:44,  8 users,  load average: 16.53, 7.23, 2.86
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 96073984 used, 36216548 free,  7321736 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 66792644 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:06:29 up 35 days,  5:44,  8 users,  load average: 16.65, 7.41, 2.94
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 96749696 used, 35540840 free,  7321736 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 67151424 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:06:34 up 35 days,  5:45,  8 users,  load average: 16.60, 7.55, 3.01
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 97360480 used, 34930048 free,  7321744 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 67470816 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:06:39 up 35 days,  5:45,  8 users,  load average: 16.71, 7.72, 3.09
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 98005904 used, 34284628 free,  7321748 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 68017032 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:06:44 up 35 days,  5:45,  8 users,  load average: 16.65, 7.86, 3.16
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 98678208 used, 33612324 free,  7321748 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 68325328 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:06:50 up 35 days,  5:45,  8 users,  load average: 16.68, 8.01, 3.23
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 99368936 used, 32921596 free,  7321752 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 68736096 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:06:55 up 35 days,  5:45,  8 users,  load average: 16.79, 8.18, 3.31
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 99990664 used, 32299868 free,  7321752 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 68941472 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:07:00 up 35 days,  5:45,  8 users,  load average: 16.88, 8.34, 3.39
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10058310+used, 31707432 free,  7321760 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 69246928 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:07:05 up 35 days,  5:45,  8 users,  load average: 16.97, 8.50, 3.47
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10127820+used, 31012328 free,  7321760 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 69477440 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:07:10 up 35 days,  5:45,  8 users,  load average: 17.06, 8.66, 3.55
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10033192+used, 31958604 free,  7321768 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 69911920 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:07:15 up 35 days,  5:45,  8 users,  load average: 17.21, 8.83, 3.63
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10091620+used, 31374332 free,  7321772 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 70296064 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:07:21 up 35 days,  5:45,  8 users,  load average: 17.19, 8.97, 3.71
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10145785+used, 30832676 free,  7321776 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 70678688 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:07:26 up 35 days,  5:45,  8 users,  load average: 17.26, 9.12, 3.78
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10125548+used, 31035040 free,  7321780 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 70935152 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:07:31 up 35 days,  5:45,  8 users,  load average: 17.32, 9.27, 3.86
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10181214+used, 30478392 free,  7321788 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 71261056 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:07:36 up 35 days,  5:46,  8 users,  load average: 17.37, 9.41, 3.94
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10236065+used, 29929876 free,  7321796 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 71632304 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:07:41 up 35 days,  5:46,  8 users,  load average: 17.42, 9.55, 4.01
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10286462+used, 29425912 free,  7321800 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 72068904 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:07:46 up 35 days,  5:46,  8 users,  load average: 17.47, 9.69, 4.09
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10353436+used, 28756172 free,  7321800 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 72577392 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:07:52 up 35 days,  5:46,  8 users,  load average: 17.51, 9.83, 4.16
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10426894+used, 28021588 free,  7321808 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 73050816 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:07:57 up 35 days,  5:46,  8 users,  load average: 17.55, 9.97, 4.24
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10483451+used, 27456016 free,  7321812 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 73477472 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:08:02 up 35 days,  5:46,  8 users,  load average: 17.59, 10.10, 4.31
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10561422+used, 26676308 free,  7321816 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 73970400 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:08:07 up 35 days,  5:46,  8 users,  load average: 17.70, 10.25, 4.39
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10625864+used, 26031896 free,  7321820 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 74330288 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:08:12 up 35 days,  5:46,  8 users,  load average: 17.73, 10.38, 4.46
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10698902+used, 25301504 free,  7321828 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 74779840 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:08:17 up 35 days,  5:46,  8 users,  load average: 17.61, 10.60, 4.60
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10758482+used, 24705708 free,  7321832 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 75136752 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:08:22 up 35 days,  5:46,  8 users,  load average: 17.64, 10.72, 4.67
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10796769+used, 24322836 free,  7321840 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 75311968 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:08:28 up 35 days,  5:46,  8 users,  load average: 17.67, 10.84, 4.74
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10867485+used, 23615676 free,  7321840 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 75609424 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:08:33 up 35 days,  5:46,  8 users,  load average: 17.62, 10.94, 4.81
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10901708+used, 23273444 free,  7321840 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 75834216 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:08:38 up 35 days,  5:47,  8 users,  load average: 17.65, 11.06, 4.88
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10949048+used, 22800044 free,  7321848 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 76057280 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:08:43 up 35 days,  5:47,  8 users,  load average: 17.68, 11.18, 4.95
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 10997979+used, 22310740 free,  7321852 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 76246952 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:08:48 up 35 days,  5:47,  8 users,  load average: 17.70, 11.29, 5.02
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11058764+used, 21702884 free,  7321856 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 76490064 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:08:53 up 35 days,  5:47,  8 users,  load average: 17.73, 11.40, 5.09
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11128347+used, 21007060 free,  7321860 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 76703376 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:08:59 up 35 days,  5:47,  8 users,  load average: 17.75, 11.51, 5.16
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11195758+used, 20332952 free,  7321868 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 77020784 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:09:04 up 35 days,  5:47,  8 users,  load average: 17.77, 11.62, 5.23
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11240095+used, 19889580 free,  7321872 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 77211496 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:09:09 up 35 days,  5:47,  8 users,  load average: 17.79, 11.73, 5.30
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11123573+used, 21054796 free,  7321872 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 77602504 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:09:14 up 35 days,  5:47,  8 users,  load average: 17.81, 11.83, 5.37
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11139703+used, 20893500 free,  7321876 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 78005824 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:09:19 up 35 days,  5:47,  8 users,  load average: 17.82, 11.93, 5.43
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11180150+used, 20489032 free,  7321880 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 78277504 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:09:24 up 35 days,  5:47,  8 users,  load average: 17.84, 12.03, 5.50
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11226556+used, 20024960 free,  7321880 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 78511664 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:09:30 up 35 days,  5:47,  8 users,  load average: 17.85, 12.13, 5.57
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11220764+used, 20082884 free,  7321884 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 78869312 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:09:35 up 35 days,  5:48,  8 users,  load average: 17.86, 12.23, 5.64
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11270297+used, 19587556 free,  7321884 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 79158080 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:09:40 up 35 days,  5:48,  8 users,  load average: 17.87, 12.33, 5.70
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11328390+used, 19006624 free,  7321884 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 79561712 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:09:45 up 35 days,  5:48,  8 users,  load average: 17.88, 12.42, 5.77
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11380804+used, 18482484 free,  7321884 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 79892192 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:09:50 up 35 days,  5:48,  8 users,  load average: 17.81, 12.50, 5.83
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11425245+used, 18038076 free,  7321888 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 80076864 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:09:55 up 35 days,  5:48,  8 users,  load average: 17.83, 12.59, 5.90
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11496355+used, 17326984 free,  7321888 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 80506720 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:10:01 up 35 days,  5:48,  8 users,  load average: 17.84, 12.68, 5.96
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11562062+used, 16669912 free,  7321892 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 80820184 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:10:06 up 35 days,  5:48,  8 users,  load average: 17.93, 12.78, 6.03
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11613651+used, 16154016 free,  7321892 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 81044064 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:10:11 up 35 days,  5:48,  8 users,  load average: 17.94, 12.87, 6.10
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11660526+used, 15685264 free,  7321900 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 81254400 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:10:16 up 35 days,  5:48,  8 users,  load average: 17.86, 12.94, 6.15
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11714358+used, 15146944 free,  7321904 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 81521472 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:10:21 up 35 days,  5:48,  8 users,  load average: 17.88, 13.02, 6.22
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11765776+used, 14632764 free,  7321904 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 81847440 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:10:26 up 35 days,  5:48,  8 users,  load average: 17.81, 13.09, 6.28
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11822580+used, 14064732 free,  7321904 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 82109352 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:10:31 up 35 days,  5:48,  8 users,  load average: 17.82, 13.17, 6.34
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11873564+used, 13554892 free,  7321908 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 82336048 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:10:37 up 35 days,  5:49,  8 users,  load average: 17.75, 13.24, 6.40
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11919977+used, 13090752 free,  7321916 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 82481184 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:10:42 up 35 days,  5:49,  8 users,  load average: 17.77, 13.31, 6.46
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11900558+used, 13284952 free,  7321920 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 82634784 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:10:47 up 35 days,  5:49,  8 users,  load average: 17.79, 13.39, 6.52
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11539876+used, 16891760 free,  7321924 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 82745072 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:10:52 up 35 days,  5:49,  8 users,  load average: 17.49, 13.40, 6.56
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11397188+used, 18318652 free,  7321928 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 82931824 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:10:57 up 35 days,  5:49,  8 users,  load average: 17.05, 13.38, 6.59
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11380702+used, 18483508 free,  7321932 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 83174200 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:11:02 up 35 days,  5:49,  8 users,  load average: 16.64, 13.36, 6.62
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11417507+used, 18115460 free,  7321936 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 83382000 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:11:08 up 35 days,  5:49,  8 users,  load average: 16.16, 13.36, 6.69
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11388340+used, 18407124 free,  7321936 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 83592640 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:11:13 up 35 days,  5:49,  8 users,  load average: 15.90, 13.35, 6.73
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11433256+used, 17957972 free,  7321936 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 83839408 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:11:18 up 35 days,  5:49,  8 users,  load average: 15.59, 13.33, 6.76
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11479353+used, 17496996 free,  7321940 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 84021088 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:11:23 up 35 days,  5:49,  8 users,  load average: 15.38, 13.33, 6.79
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11527700+used, 17013524 free,  7321948 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 84265352 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:11:28 up 35 days,  5:49,  8 users,  load average: 15.03, 13.29, 6.81
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11551905+used, 16771476 free,  7321952 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 84363920 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:11:33 up 35 days,  5:50,  8 users,  load average: 14.79, 13.27, 6.84
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11581816+used, 16472376 free,  7321956 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 84463568 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:11:39 up 35 days,  5:50,  8 users,  load average: 14.65, 13.26, 6.88
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11622339+used, 16067136 free,  7321956 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 84671120 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:11:44 up 35 days,  5:50,  8 users,  load average: 14.43, 13.24, 6.90
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11668579+used, 15604744 free,  7321960 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 84924856 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:11:49 up 35 days,  5:50,  8 users,  load average: 14.32, 13.24, 6.94
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11722912+used, 15061408 free,  7321968 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 85185744 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:11:54 up 35 days,  5:50,  8 users,  load average: 14.21, 13.23, 6.97
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11772513+used, 14565392 free,  7321972 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 85340736 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:11:59 up 35 days,  5:50,  8 users,  load average: 14.12, 13.23, 7.00
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11819806+used, 14092472 free,  7321976 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 85514096 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:12:04 up 35 days,  5:50,  8 users,  load average: 13.79, 13.17, 7.02
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11863384+used, 13656692 free,  7321988 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 85646856 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:12:10 up 35 days,  5:50,  8 users,  load average: 13.64, 13.15, 7.04
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11905372+used, 13236808 free,  7321988 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 85814744 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:12:15 up 35 days,  5:50,  8 users,  load average: 13.43, 13.12, 7.07
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11799696+used, 14293564 free,  7322000 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 85954224 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:12:20 up 35 days,  5:50,  8 users,  load average: 13.24, 13.08, 7.09
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11851558+used, 13774944 free,  7322004 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 86208336 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:12:25 up 35 days,  5:50,  8 users,  load average: 13.06, 13.05, 7.11
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11897544+used, 13315092 free,  7322008 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 86497408 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:12:30 up 35 days,  5:50,  8 users,  load average: 12.97, 13.03, 7.14
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11944572+used, 12844808 free,  7322012 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 86759776 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:12:35 up 35 days,  5:51,  8 users,  load average: 12.81, 13.00, 7.16
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 11985577+used, 12434752 free,  7322016 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 86900336 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+top - 00:12:40 up 35 days,  5:51,  8 users,  load average: 12.75, 12.98, 7.18
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.1 sy,  0.1 ni, 99.2 id,  0.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  13229052+total, 12016363+used, 12126896 free,  7322024 buffers
+KiB Swap: 11869180 total,     4456 used, 11864724 free. 87068352 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3134 www-data  20   0  885880 484612  23920 S   0.0  0.4   0:02.38 apache2
+
+
+##############################
+
+We Are Finished
+
+##############################
+

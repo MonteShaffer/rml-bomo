@@ -1,0 +1,21 @@
+{
+  "stopwords": {
+    "unique": 371,
+    "total": 6396
+  },
+  "words": {
+    "unique": 2582,
+    "total": 13754
+  },
+  "unique_stems": {
+    "1": 1639,
+    "2": 2516,
+    "3": 1558,
+    "4": 920,
+    "5": 587
+  },
+  "gowords": {
+    "unique": 2211,
+    "total": 7358
+  }
+}

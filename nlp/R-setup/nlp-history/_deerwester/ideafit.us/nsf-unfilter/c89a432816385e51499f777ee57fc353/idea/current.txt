@@ -1,0 +1,2190 @@
+02 INFORMATION ABOUT PRINCIPAL INVESTIGATORS/PROJECT DIRECTORS(PI/PD) and
+co-PRINCIPAL INVESTIGATORS/co-PROJECT DIRECTORS
+Submit only ONE copy of this form for each PI/PD and co-PI/PD identified on the proposal. The form(s) should be attached to the original
+proposal as specified in GPG Section II.C.a. Submission of this information is voluntary and is not a precondition of award. This information will
+not be disclosed to external peer reviewers. DO NOT INCLUDE THIS FORM WITH ANY OF THE OTHER COPIES OF YOUR PROPOSAL AS
+THIS MAY COMPROMISE THE CONFIDENTIALITY OF THE INFORMATION.
+PI/PD Name:
+
+Monte J Shaffer
+
+Gender:
+
+Male
+
+Female
+
+Ethnicity: (Choose one response)
+
+Hispanic or Latino
+
+Race:
+(Select one or more)
+
+American Indian or Alaska Native
+
+Not Hispanic or Latino
+
+Asian
+Black or African American
+Native Hawaiian or Other Pacific Islander
+White
+
+Disability Status:
+(Select one or more)
+
+Hearing Impairment
+Visual Impairment
+Mobility/Orthopedic Impairment
+Other
+None
+
+Citizenship:
+
+(Choose one)
+
+U.S. Citizen
+
+Permanent Resident
+
+Other non-U.S. Citizen
+
+Check here if you do not wish to provide any or all of the above information (excluding PI/PD name):
+REQUIRED: Check here if you are currently serving (or have previously served) as a PI, co-PI or PD on any federally funded
+project
+Ethnicity Definition:
+Hispanic or Latino. A person of Mexican, Puerto Rican, Cuban, South or Central American, or other Spanish culture or origin, regardless
+of race.
+Race Definitions:
+American Indian or Alaska Native. A person having origins in any of the original peoples of North and South America (including Central
+America), and who maintains tribal affiliation or community attachment.
+Asian. A person having origins in any of the original peoples of the Far East, Southeast Asia, or the Indian subcontinent including, for
+example, Cambodia, China, India, Japan, Korea, Malaysia, Pakistan, the Philippine Islands, Thailand, and Vietnam.
+Black or African American. A person having origins in any of the black racial groups of Africa.
+Native Hawaiian or Other Pacific Islander. A person having origins in any of the original peoples of Hawaii, Guam, Samoa,
+or other Pacific Islands.
+White. A person having origins in any of the original peoples of Europe, the Middle East, or North Africa.
+WHY THIS INFORMATION IS BEING REQUESTED:
+The Federal Government has a continuing commitment to monitor the operation of its review and award processes to identify and address
+any inequities based on gender, race, ethnicity, or disability of its proposed PIs/PDs. To gather information needed for this important
+task, the proposer should submit a single copy of this form for each identified PI/PD with each proposal. Submission of the requested
+information is voluntary and will not affect the organization’s eligibility for an award. However, information not submitted will seriously undermine
+the statistical validity, and therefore the usefulness, of information recieved from others. Any individual not wishing to submit some or all the
+information should check the box provided for this purpose. (The exceptions are the PI/PD name and the information about prior Federal support, the
+last question above.)
+Collection of this information is authorized by the NSF Act of 1950, as amended, 42 U.S.C. 1861, et seq. Demographic data allows NSF to
+gauge whether our programs and other opportunities in science and technology are fairly reaching and benefiting everyone regardless of
+demographic category; to ensure that those in under-represented groups have the same knowledge of and access to programs and other
+research and educational oppurtunities; and to assess involvement of international investigators in work supported by NSF. The information
+may be disclosed to government contractors, experts, volunteers and researchers to complete assigned work; and to other government
+agencies in order to coordinate and assess programs. The information may be added to the Reviewer file and used to select potential
+candidates to serve as peer reviewers or advisory committee members. See Systems of Records, NSF-50, "Principal Investigator/Proposal
+File and Associated Records", 63 Federal Register 267 (January 5, 1998), and NSF-51, "Reviewer/Proposal File and Associated Records",
+63 Federal Register 268 (January 5, 1998).
+
+ List of Suggested Reviewers or Reviewers Not To Include (optional)
+SUGGESTED REVIEWERS:
+Not Listed
+
+REVIEWERS NOT TO INCLUDE:
+Not Listed
+
+ Not for distribution
+
+COVER SHEET FOR PROPOSAL TO THE NATIONAL SCIENCE FOUNDATION
+PROGRAM ANNOUNCEMENT/SOLICITATION NO./CLOSING DATE/if not in response to a program announcement/solicitation enter NSF 15-1
+
+NSF 15-605
+
+FOR NSF USE ONLY
+
+NSF PROPOSAL NUMBER
+
+12/08/15
+
+FOR CONSIDERATION BY NSF ORGANIZATION UNIT(S)
+
+1620992
+
+(Indicate the most specific unit known, i.e. program, division, etc.)
+
+IIP - SMALL BUSINESS PHASE I
+DATE RECEIVED NUMBER OF COPIES DIVISION ASSIGNED FUND CODE DUNS#
+
+12/04/2015
+
+1
+
+07070000 IIP
+
+EMPLOYER IDENTIFICATION NUMBER (EIN) OR
+TAXPAYER IDENTIFICATION NUMBER (TIN)
+
+5371
+
+FILE LOCATION
+
+(Data Universal Numbering System)
+
+078286980
+
+12/04/2015 5:57pm
+
+IS THIS PROPOSAL BEING SUBMITTED TO ANOTHER FEDERAL
+AGENCY?
+YES
+NO
+IF YES, LIST ACRONYM(S)
+
+SHOW PREVIOUS AWARD NO. IF THIS IS
+A RENEWAL
+AN ACCOMPLISHMENT-BASED RENEWAL
+
+452562977
+NAME OF ORGANIZATION TO WHICH AWARD SHOULD BE MADE
+
+ADDRESS OF AWARDEE ORGANIZATION, INCLUDING 9 DIGIT ZIP CODE
+
+Entrepreneurial Innovation
+921 Beasley Street #210
+Lexington, KY. 405090000
+
+Entrepreneurial Innovation
+AWARDEE ORGANIZATION CODE (IF KNOWN)
+
+6250026089
+NAME OF PRIMARY PLACE OF PERF
+
+ADDRESS OF PRIMARY PLACE OF PERF, INCLUDING 9 DIGIT ZIP CODE
+
+Entrepreneurial Innovation
+2350 Woodhill Drive Suite #152
+Lexington ,KY ,405091052 ,US.
+
+Entrepreneurial Innovation
+
+IS AWARDEE ORGANIZATION (Check All That Apply)
+(See GPG II.C For Definitions)
+TITLE OF PROPOSED PROJECT
+
+MINORITY BUSINESS
+IF THIS IS A PRELIMINARY PROPOSAL
+WOMAN-OWNED BUSINESS THEN CHECK HERE
+
+SBIR Phase I:MyPatentIdeas.com -- From Search to Research with Fast
+Patent-document Correlations
+
+REQUESTED AMOUNT
+
+225,000
+
+$
+
+SMALL BUSINESS
+FOR-PROFIT ORGANIZATION
+
+PROPOSED DURATION (1-60 MONTHS)
+
+12
+
+REQUESTED STARTING DATE
+
+SHOW RELATED PRELIMINARY PROPOSAL NO.
+IF APPLICABLE
+
+07/01/16
+
+months
+
+THIS PROPOSAL INCLUDES ANY OF THE ITEMS LISTED BELOW
+BEGINNING INVESTIGATOR (GPG I.G.2)
+
+HUMAN SUBJECTS (GPG II.D.7) Human Subjects Assurance Number
+
+DISCLOSURE OF LOBBYING ACTIVITIES (GPG II.C.1.e)
+
+Exemption Subsection
+
+PROPRIETARY & PRIVILEGED INFORMATION (GPG I.D, II.C.1.d)
+
+INTERNATIONAL ACTIVITIES: COUNTRY/COUNTRIES INVOLVED (GPG II.C.2.j)
+
+or IRB App. Date
+
+HISTORIC PLACES (GPG II.C.2.j)
+VERTEBRATE ANIMALS (GPG II.D.6) IACUC App. Date
+PHS Animal Welfare Assurance Number
+FUNDING MECHANISM Research - other than RAPID
+PI/PD DEPARTMENT
+
+Not a collaborative proposal
+
+PI/PD POSTAL ADDRESS
+
+2350 Woodhill Drive Suite #152
+
+PI/PD FAX NUMBER
+NAMES (TYPED)
+
+COLLABORATIVE STATUS
+
+or EAGER
+
+Lexington, KY 40509
+United States
+High Degree
+
+Yr of Degree
+
+Telephone Number
+
+PhD
+
+2011
+
+509-592-7592
+
+Email Address
+
+PI/PD NAME
+
+Monte J Shaffer
+CO-PI/PD
+
+CO-PI/PD
+
+CO-PI/PD
+
+CO-PI/PD
+
+Page 1 of 3
+
+monte.shaffer@gmail.com
+
+ Not for distribution
+
+CERTIFICATION PAGE
+Certification for Authorized Organizational Representative (or Equivalent) or Individual Applicant
+By electronically signing and submitting this proposal, the Authorized Organizational Representative (AOR) or Individual Applicant is: (1) certifying that statements made herein are true and
+complete to the best of his/her knowledge; and (2) agreeing to accept the obligation to comply with NSF award terms and conditions if an award is made as a result of this application. Further,
+the applicant is hereby providing certifications regarding conflict of interest (when applicable), drug-free workplace, debarment and suspension, lobbying activities (see below),
+nondiscrimination, flood hazard insurance (when applicable), responsible conduct of research, organizational support, Federal tax obligations, unpaid Federal tax liability, and criminal
+convictions as set forth in the NSF Proposal & Award Policies & Procedures Guide,Part I: the Grant Proposal Guide (GPG). Willful provision of false information in this application and its
+supporting documents or in reports required under an ensuing award is a criminal offense (U.S. Code, Title 18, Section 1001).
+
+Certification Regarding Conflict of Interest
+The AOR is required to complete certifications stating that the organization has implemented and is enforcing a written policy on conflicts of interest (COI), consistent with the provisions
+of AAG Chapter IV.A.; that, to the best of his/her knowledge, all financial disclosures required by the conflict of interest policy were made; and that conflicts of interest, if any, were,
+or prior to the organization’s expenditure of any funds under the award, will be, satisfactorily managed, reduced or eliminated in accordance with the organization’s conflict of interest policy.
+Conflicts that cannot be satisfactorily managed, reduced or eliminated and research that proceeds without the imposition of conditions or restrictions when a conflict of interest exists,
+must be disclosed to NSF via use of the Notifications and Requests Module in FastLane.
+
+Drug Free Work Place Certification
+By electronically signing the Certification Pages, the Authorized Organizational Representative (or equivalent), is providing the Drug Free Work Place Certification contained in
+Exhibit II-3 of the Grant Proposal Guide.
+
+Debarment and Suspension Certification
+
+(If answer "yes", please provide explanation.)
+
+Is the organization or its principals presently debarred, suspended, proposed for debarment, declared ineligible, or voluntarily excluded
+from covered transactions by any Federal department or agency?
+
+Yes
+
+No
+
+By electronically signing the Certification Pages, the Authorized Organizational Representative (or equivalent) or Individual Applicant is providing the
+Debarment and Suspension Certification contained in Exhibit II-4 of the Grant Proposal Guide.
+
+Certification Regarding Lobbying
+This certification is required for an award of a Federal contract, grant, or cooperative agreement exceeding $100,000 and for an award of a Federal loan or a commitment providing
+for the United States to insure or guarantee a loan exceeding $150,000.
+
+Certification for Contracts, Grants, Loans and Cooperative Agreements
+The undersigned certifies, to the best of his or her knowledge and belief, that:
+(1) No Federal appropriated funds have been paid or will be paid, by or on behalf of the undersigned, to any person for influencing or attempting to influence an officer or employee of any
+agency, a Member of Congress, an officer or employee of Congress, or an employee of a Member of Congress in connection with the awarding of any Federal contract, the making of any
+Federal grant, the making of any Federal loan, the entering into of any cooperative agreement, and the extension, continuation, renewal, amendment, or modification of any Federal
+contract, grant, loan, or cooperative agreement.
+(2) If any funds other than Federal appropriated funds have been paid or will be paid to any person for influencing or attempting to influence an officer or employee of any agency, a
+Member of Congress, an officer or employee of Congress, or an employee of a Member of Congress in connection with this Federal contract, grant, loan, or cooperative agreement, the
+undersigned shall complete and submit Standard Form-LLL, ‘‘Disclosure of Lobbying Activities,’’ in accordance with its instructions.
+(3) The undersigned shall require that the language of this certification be included in the award documents for all subawards at all tiers including subcontracts, subgrants, and contracts
+under grants, loans, and cooperative agreements and that all subrecipients shall certify and disclose accordingly.
+This certification is a material representation of fact upon which reliance was placed when this transaction was made or entered into. Submission of this certification is a prerequisite for
+making or entering into this transaction imposed by section 1352, Title 31, U.S. Code. Any person who fails to file the required certification shall be subject to a civil penalty of not less
+than $10,000 and not more than $100,000 for each such failure.
+
+Certification Regarding Nondiscrimination
+By electronically signing the Certification Pages, the Authorized Organizational Representative (or equivalent) is providing the Certification Regarding
+Nondiscrimination contained in Exhibit II-6 of the Grant Proposal Guide.
+
+Certification Regarding Flood Hazard Insurance
+Two sections of the National Flood Insurance Act of 1968 (42 USC §4012a and §4106) bar Federal agencies from giving financial assistance for acquisition or
+construction purposes in any area identified by the Federal Emergency Management Agency (FEMA) as having special flood hazards unless the:
+(1) community in which that area is located participates in the national flood insurance program; and
+(2) building (and any related equipment) is covered by adequate flood insurance.
+By electronically signing the Certification Pages, the Authorized Organizational Representative (or equivalent) or Individual Applicant located in FEMA-designated special flood hazard areas is
+certifying that adequate flood insurance has been or will be obtained in the following situations:
+(1) for NSF grants for the construction of a building or facility, regardless of the dollar amount of the grant; and
+(2) for other NSF grants when more than $25,000 has been budgeted in the proposal for repair, alteration or improvement (construction) of a building or facility.
+
+Certification Regarding Responsible Conduct of Research (RCR)
+(This certification is not applicable to proposals for conferences, symposia, and workshops.)
+By electronically signing the Certification Pages, the Authorized Organizational Representative is certifying that, in accordance with the NSF Proposal
+& Award Policies & Procedures Guide, Part II, Award & Administration Guide (AAG) Chapter IV.B., the institution has a plan in place to provide appropriate training and oversight in the
+responsible and ethical conduct of research to undergraduates, graduate students and postdoctoral researchers who will be supported by NSF to conduct research.
+The AOR shall require that the language of this certification be included in any award documents for all subawards at all tiers.
+
+Page 2 of 3
+
+ Not for distribution
+
+CERTIFICATION PAGE - CONTINUED
+Certification Regarding Organizational Support
+By electronically signing the Certification Pages, the Authorized Organizational Representative (or equivalent) is certifying that there is organizational support for the proposal as required by
+Section 526 of the America COMPETES Reauthorization Act of 2010. This support extends to the portion of the proposal developed to satisfy the Broader Impacts Review Criterion as well as
+the Intellectual Merit Review Criterion, and any additional review criteria specified in the solicitation. Organizational support will be made available, as described in the proposal, in order to
+address the broader impacts and intellectual merit activities to be undertaken.
+
+Certification Regarding Federal Tax Obligations
+When the proposal exceeds $5,000,000, the Authorized Organizational Representative (or equivalent) is required to complete the following certification regarding Federal tax obligations.
+By electronically signing the Certification pages, the Authorized Organizational Representative is certifying that, to the best of their knowledge and belief, the proposing organization:
+(1) has filed all Federal tax returns required during the three years preceding this certification;
+(2) has not been convicted of a criminal offense under the Internal Revenue Code of 1986; and
+(3) has not, more than 90 days prior to this certification, been notified of any unpaid Federal tax assessment for which the liability remains unsatisfied, unless the assessment is the
+subject of an installment agreement or offer in compromise that has been approved by the Internal Revenue Service and is not in default, or the assessment is the subject of a non-frivolous
+administrative or judicial proceeding.
+
+Certification Regarding Unpaid Federal Tax Liability
+When the proposing organization is a corporation, the Authorized Organizational Representative (or equivalent) is required to complete the following certification regarding Federal Tax
+Liability:
+By electronically signing the Certification Pages, the Authorized Organizational Representative (or equivalent) is certifying that the corporation has no unpaid Federal tax liability that has
+been assessed, for which all judicial and administrative remedies have been exhausted or lapsed, and that is not being paid in a timely manner pursuant to an agreement with the authority
+responsible for collecting the tax liability.
+
+Certification Regarding Criminal Convictions
+When the proposing organization is a corporation, the Authorized Organizational Representative (or equivalent) is required to complete the following certification regarding Criminal
+Convictions:
+By electronically signing the Certification Pages, the Authorized Organizational Representative (or equivalent) is certifying that the corporation has not been convicted of a felony criminal
+violation under any Federal law within the 24 months preceding the date on which the certification is signed.
+
+AUTHORIZED ORGANIZATIONAL REPRESENTATIVE
+
+SIGNATURE
+
+DATE
+
+NAME
+
+Monte J Shaffer
+TELEPHONE NUMBER
+
+509-592-7592
+
+Electronic Signature
+EMAIL ADDRESS
+
+Dec 4 2015 5:54PM
+FAX NUMBER
+
+monte.shaffer@gmail.com
+
+fm1207rrs-07
+
+Page 3 of 3
+
+ Not for distribution
+NATIONAL SCIENCE FOUNDATION
+Program Solicitation/Instruction Guide Number
+
+NSF 15-605
+
+SBIR PHASE I - PROPOSAL COVER PAGE
+TOPIC
+EA
+PROPOSAL TITLE
+
+SUBTOPIC LETTER (if any)
+TOPIC TITLE
+EA4
+Educational Technologies and Applications
+SBIR Phase I:MyPatentIdeas.com -- From Search to Research with Fast
+Patent-document Correlations
+
+COMPANY NAME
+Entrepreneurial Innovation
+
+EMPLOYER IDENTIFICATION NUMBER (EIN) OR
+TAXPAYER IDENTIFICATION NUMBER (TIN)
+452562977
+
+NAME OF ANY AFFILIATED COMPANIES (Parent, Subsidiary, Predecessor)
+
+ADDRESS (Including address of Company Headquarters and zip code plus four digit extension)
+Entrepreneurial Innovation
+921 Beasley Street #210
+Lexington, KY. 405090000
+REQUESTED AMOUNT
+PROPOSED DURATION
+PERIOD OF PERFORMANCE
+$225000
+12
+THE SMALL BUSINESS CERTIFIES THAT:
+Y/N
+1. It is a small business as defined in the solicitation.
+Y
+2. It qualifies as a socially and economically disadvantaged business as defined in the solicitation. (FOR STATISTICAL
+PURPOSES ONLY.)
+N
+3. It qualifies as a women-owned business as defined in the solicitation. (FOR STATISTICAL PURPOSES ONLY)
+N
+4. NSF is the only Federal agency that has received this proposal (or overlapping or equivalent proposal) from the small
+business concern. If No, you must disclose overlapping or equivalent proposals and awards as required by this solicitation. Y
+5.SBIR: A minimum of two-thirds of the research will be performed by this firm in Phase I.
+STTR: It will perform at least 40 percent of the work and the collaborating research institution will
+perform at least 30 percent of the work as described in the proposal.
+Y
+6. The primary employment of the Principal Investigator will be with this firm at the time of the award and during the
+conduct of the research.
+Y
+7. It will permit the government to disclose the title and technical abstact page, plus the name, address and telephone
+number of a corporate official if the proposal does not result in an award to parties that may be interested in
+contacting the small business for further information or possible investment.
+Y
+8. It will comply with the provisions of the Civil Rights Act of 1964 (P.L. 88-352) and the regulations pursuant thereto.
+Y
+9. It has previously submitted proposals to NSF.
+Y
+10. It previously submitted this proposal (which was declined) and significant modifications have been made
+as described in the solicitation.
+N
+11. It has received Phase II awards from the Federal Government. If "yes" provide a company commercialization history
+in the supplementary documents module.
+N
+PRINCIPAL INVESTIGATOR / PROJECT DIRECTOR
+NAME
+Monte J Shaffer
+SOCIAL SECURITY NO.
+HIGHEST DEGREE / YEAR
+E-MAIL ADDRESS
+not displayed intentionally
+PhD/2011
+monte.shaffer@gmail.com
+TELEPHONE NO.
+FAX NO.
+WEB ADDRESS
+509-592-7592
+COMPANY OFFICER (FOR BUSINESS AND FINANCIAL MATTERS)
+NAME
+TITLE
+TELEPHONE NO.
+Monte Shaffer
+Owner
+509-592-7592
+OTHER INFORMATION
+PRESIDENTS NAME
+Monte Shaffer
+YEAR FIRM FOUNDED 2011
+NUMBER OF EMPLOYEES (including Parent, Subsidiary, Predecessor)
+AVERAGE PREVIOUS 12 MO.: 2
+CURRENTLY: 2
+RESEARCH INSTITUTION NAME
+Entrepreneurial Innovation
+RESEARCH INVESTIGATOR NAME
+RESEARCH INVESTIGATOR TELEPHONE NO.
+PROPRIETARY NOTICE: See instructions concerning proprietary information.
+Check Here x if proposal contains proprietary information.
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+Problem Statement (Intellectual Merit)
+This Small Business Innovation Research Phase I project attempts to address a fundamental question for innovators: is your idea patentable? One would think the answer to this question is simply
+a click away. Yet surprisingly, this is not the case. Google’s text-matching search intentionally limits a query to about 50 terms to reduce response time. Albeit fast, the thousands of results retrieved,
+based on a single search-ranking mechanism, overwhelms rather than informs. Such basic search
+cannot extract concepts from the inputed text nor can basic search process an entire document as
+a query input. Currently, patent search is not optimal. This project proposes to make documentcorrelation concept search a reality by creating MyPatentIdeas.com to meet this unmet market need
+enabling inventors, venture capitalists, patent professionals, grant reviewers, and patent managers
+to ascertain existing patents related to a fully-developed idea such as a 40-page research paper
+or a 200-page dissertation. Using a two-stage approach (smart multi-faceted search followed by
+spectral-decomposition analysis of the subset document corpus), MyPatentIdeas.com’s deep dive
+synthesizes multiple searches and analyses, reporting patented documents that are most similar to
+the inputed idea document, and educating the searcher about relevant terms, concepts, and technology classifications among these nearest-neighbor patents.
+
+Commercial Feasibility (Broader Impacts)
+The scientific rigor of MyPatentIdeas.com to measure nearest-neighbor patents based on textual
+analyses can provide meaningful and relevant business-intelligence services to the market. Patent
+informatics is purposefully shrouded in ambiguity and our goal of this project is to “deliver transparent and objective patent-network dynamics.” Such a service would benefit the public. Fundamental to the assessment of all entreprenurial opportunities of new innovations is to objectively
+ascertain the intellectual-property merit of the proposed technology. This real-time, concept search
+based on the inputed idea can transform this industry by leveling the playing field–a single-author
+inventor can have the same access to patent analysis as a large corporate patenter (such as IBM) or
+even the alleged patent trolls. This technology will benefit the small-business innovator, providing
+informative data about the competitive landscape for a fraction of the cost of current patent-search
+options available.
+Overview: Development of MyPatentIdeas.com using smart-search technologies to answer a
+fundamental question (is this idea already patented in the United States?) for inventions.
+Keywords: patentability, innovation, entrepreneurship, intellectual property, business services,
+knowledge discovery, visualizations,
+Educational Technologies and Applications (EA): EA4. Entrepreneurial, Informal, and
+Maker Education
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+(MyPatentIdeas.com)
+
+ TABLE OF CONTENTS
+For font size and page formatting specifications, see GPG section II.B.2.
+
+Total No. of
+Pages
+
+Page No.*
+(Optional)*
+
+Cover Sheet for Proposal to the National Science Foundation
+Project Summary
+
+(not to exceed 1 page)
+
+1
+
+Table of Contents
+
+1
+
+Project Description (Including Results from Prior
+NSF Support) (not to exceed 15 pages) (Exceed only if allowed by a
+specific program announcement/solicitation or if approved in
+advance by the appropriate NSF Assistant Director or designee)
+
+15
+
+References Cited
+
+1
+
+Biographical Sketches
+
+(Not to exceed 2 pages each)
+
+Budget
+
+2
+4
+
+(Plus up to 3 pages of budget justification)
+
+Current and Pending Support
+
+1
+
+Facilities, Equipment and Other Resources
+
+1
+
+Special Information/Supplementary Documents
+(Data Management Plan, Mentoring Plan
+and Other Supplementary Documents)
+
+1
+
+Appendix (List below. )
+(Include only if allowed by a specific program announcement/
+solicitation or if approved in advance by the appropriate NSF
+Assistant Director or designee)
+
+Appendix Items:
+
+*Proposers may select any numbering mechanism for the proposal. The entire proposal however, must be paginated.
+Complete both columns only if the proposal is numbered consecutively.
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+1
+
+PI:
+
+Shaffer
+
+Elevator Pitch
+
+Is your idea already patented? In 10 minutes, you could know! Our software-based service allows
+you to quickly assess your idea within the context of all U.S. patents. By simply typing in a few
+key words and/or uploading a description of your idea, our software will quickly and automatically
+perform a thorough patentability search for you. Your idea will be compared to all of those patented
+by the U.S. Patent office, including over 10 million patent documents, and the most relevant results
+will be filtered and presented to you. Then, using sophisticated network mathematics, we will
+compare your idea directly to the subset of the most relevant patent documents and our software
+will give you a top-20 of “nearest neighbors”—patents that are most closely related to your idea.
+From there you can determine whether your idea has already been patented either in full or in part,
+who your most likely competitors and/or business partners will be if you choose to patent your idea
+and build a business around itor perhaps you might choose sell your idea to one of the owners of the
+related patents identified by our software. Our software will arm you with the critical information
+that you need to bring your ideas to life and, more important, to capitalize on them.
+Paid search services take weeks (or longer) to perform and the result is merely one professional’s
+opinion. Current patent-search approaches are heuristically driven, described by many as an art:
+one requires an in-depth knowledge of patent jargon, appropriate technical keywords, and so on.
+The key benefit of our search service for customers would be that they could “know now” using
+rigorous scientific methods. In 10 minutes, using our do-it-yourself-initially search methodology,
+customers could be informed and educated. Minimum costs1 for patent professionals: an hour of
+time ($300), a basic patentability search opinion ($2,000), a basic patent filing ($10,000), total
+single-patent costs ($40,000). Before proceeding with such costs, for less than $100, an inventor
+can immediately be informed about competitive patents and patent applications that already exist
+in relation to his/her idea. Therefore, the direct customer would be the inventor that wants to
+ascertain if his/her idea is worth pursuing as a patent. Indirect customers could include venture
+capitalists (ascertain the IP landscape of an entrepreneur’s proposal), patent professionals (patent
+attorneys developing legal opinions) and patent managers (e.g., a university’s technology transfer
+team needs to ascertain if a professor’s invention disclosure is worth pursuing as a patent before
+the inventor’s research is disclosed at a conference). The key features of the innovation: (1) the
+search is performed on an entire idea, not just a few keywords – literally, a 200-page dissertation
+could be copied and pasted into the search box, (2) advanced natural-language pre-processing is
+performed on the idea to determine key terms and concepts, (3) several independent smart searches
+are performed to define a subset of potential “nearest-neighbor” patent documents, (4) this subset
+is further analyzed using singular value decomposition to extract relevant concepts and ascertain
+document correlations, (5) synthesized reports based on these searches and analyses are created.
+Truly, what we are proposing will make patent search better, faster, cheaper.
+1
+
+Extrapolated from two sources (Quinn 2015, Auvil and Divine 2011).
+Proprietary information is highlighted throughout this project proposal.
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+1
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+2
+
+PI:
+
+Shaffer
+
+Commercial Opportunity
+
+There is a broad societal need for synthesized concept search to answer a fundamental question: is
+my idea patentable? Or, what patent documents correlate with my idea, my patent, or my product
+offering? We define our potential customer as a searcher with limited resources to spend on patent
+analytics, but ‘information on a budget’ is critical to them. Is their idea patentable? Should they
+worry about the ‘cease and desist’ patent infringement letter they received?
+The ‘promotion of the progress of science’ (U.S. Constitution Article 8, Section 1) and the
+‘encouragement of learning’ (1790 Copyright Act) are vital pillars of this country’s strategy for
+economic development and are embedded within the mission of the National Science Foundation.
+Since inception, over 8,625,000 utility / 675,000 design / 24,000 plant patents have been issued
+by the United States Patent and Trademark Office (USPTO). In 2013, more than 270,000 patents
+were issued, of which, over 75,000 were assigned to top-50 multinational companies. By the end
+of 2016, this innovation network will surpass 10 million patents plus nearly 4 million non-patented
+application documents. Objective tools to diagnose the health of this innovation pipeline by measuring dynamics of the network of patents, inventors, firms, lawyers, examiners, technologies, and
+countries would be instrumental in nurturing and fostering innovation in sophisticated R&D research labs and in an entrepreneur’s garage. Organizing the wealth of information available about
+patent innovations, creating artificial-intelligent algorithms to extract meaning from this evidence,
+and sythesizing these analytics into actionable business intelligence has the potential to reduce
+asymmetry of information and bring ‘transparency to intellectual property.’
+Our market is a global market – anyone that has an interest in securing an idea as a patent
+within the U.S. patenting system. Over 250,000 new patents are issued every year, with an average
+patent having about three inventors. Five out of six patents are assigned to a company. Over one
+third of those are assigned to the top 50 multinational companies (IBM, Samsung, Canon, Sony,
+Microsoft). This means that the remaining two-thirds (nearly 150,000 patents every year) are
+assigned directly to inventors or smaller businesses. We identify this group as the un(der)served
+market. For each patent issued, there were two applications filed, meaning that applicants gave
+up on patenting their idea for several reasons; one of which, we posit, is that the patent examiner
+identified that this idea already is described in existing patents. Our search service could have
+informed the inventor much sooner before sunk costs were incurred.
+How many entrepreneurs/inventors have a good idea, and want to know if the idea is patentable?
+Not every inventor (or perceived inventor) has a patent or patenting experience. Everyone perceives
+they have an idea new to the world, which makes ‘is my idea patentable’ potentially a general
+niche market. Every year, there are 17 million students attending U.S. colleges and universities.
+Some are in business schools, getting degrees in marketing or entrepreneurship. Others are in
+technical schools, getting degrees in engineering, biology, chemistry, and so on. Both groups have
+an interest in patents, patentability, and the value of innovations. Within granting agencies, like the
+NSF, thousands of proposals are submitted every year, and the ability to valuate the technological
+innovation objectively would have obvious benefits to the review process.
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+2
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+We offer an ultra-conservative size of our direct market to be about 4 million users and further
+decompose it in red-ocean (highly competitive, cost-prohibitive), blue-ocean (unserved market, see
+Kim and Mauborgne (2015)) and purple-ocean (partially-served markets). We want to capture a
+portion of this niche, un(der)served market (“do-it-yourself-initially” solutions) mainly inventors
+and small business owners.
+/ŶǀĞŶƚŽƌƐ        Ϯ͕ϭϮϱ͕ϬϬϬ
+The inventor is on his/her computer late at night, thinking
+ ƚƚŽƌŶĞǇƐ        ϭ͕ϮϱϬ͕ϬϬϬ
+about this great idea and how it can change the world; he/she
+ ĐĂĚĞŵŝĐƐ hƐŝŶŐ WĂƚĞŶƚ  ĂƚĂ             ϯϬ͕ϬϬϬ
+DĂŶĂŐĞŵĞŶƚ  ŽŶƐƵůƚĂŶƚƐ           ϭϬϬ͕ϬϬϬ
+Google searches ‘is my idea patentable’ and sees for $99 (My/W ŵĂŶĂŐĞƌƐ             ϮϬ͕ϬϬϬ
+PatentIdeas.com) the question can be immediately answered using
+/W  ǆĞĐƵƚŝǀĞƐ             ϱϬ͕ϬϬϬ
+“smart-search” technologies. A small business owner receives a leKƚŚĞƌ  ǆĞĐƵƚŝǀĞƐ           ϱϬϬ͕ϬϬϬ
+gal threat of patent infringement, demanding ‘cease and desist’ and
+       ϰ͕Ϭϳϱ͕ϬϬϬ
+a payment of $500,000 for infringement. This letter strikes fear in
+hŶƐĞƌǀĞĚ DĂƌŬĞƚ ; ůƵĞ KĐĞĂŶ  
+the heart of the small business owner. Before going to a patent
+hŶĚĞƌƐĞƌǀĞĚ DĂƌŬĞƚ ;WƵƌƉůĞ KĐĞĂŶ  
+ ŽŵƉĞƚŝƚŝǀĞ DĂƌŬĞƚ ;ZĞĚ KĐĞĂŶ 
+attorney and spending thousands of dollars there as well, he/she
+wants to know how his/her technology is infringing. Financial
+Figure 1: Market Size
+stress is a key psychographic motivator (whether I am afraid I must
+pay a ‘patent troll’ or maybe I am in dire need of finding revenue streams for my technology), and
+market intelligence is what we offer with MyPatentIdeas.com (I want to know something RIGHT
+NOW that helps relieve my stress). The business owner can simply go to MyPatentIdeas.com and
+enter a description of his/her technology to see what’s going on.
+We anticipate selling our online software-as-a-service (SaaS) offerings directly to “IP knowledge workers” initially targeting those who want “do-it-yourself-initially” solutions (a la LegalZoom). Customers want initial answers immediately, independently, and anonymously.
+We have performed direct market research by talking to hundreds of inventors and patent2
+attorneys. We have also talked to CEOs of several mid-range companies to ascertain their IP-management needs that can be answered using search-input/patent-document correlations. This touches
+on “freedom-to-operate” searches. Even offices of technology transfer at major universities have an
+interest in using the proposed technology if implemented. In sum, the relevant market is interested.
+Our goal is to launch a simple search service, one search per token (e.g., for $99). As outlined in our
+letters of support, we will initially give away these tokens to small group of interested stakeholders, to beta-test the system, and provide feedback for enhancements. From these conversations, we
+may consider other product-pricing models: bulk token purchases, per-seat subscription services,
+and so on. Due to the proprietary nature of the inputed searches, we will discuss with potential
+customers their concerns regarding privacy and confidentiality which may lead to a new manifestation of the technology in the form of an onsite, private server. The search-engine would update
+as new patent documents are released weekly, but all reports and search history would be stored
+2
+
+We have a database of all registered patent attorneys [approximately 60,000], with their phone numbers and
+email addresses. During the summer of 2013, we had 10 sales interns, directed by Ted McGuire, call many of
+these patent attorneys. In this process, we flushed out MyPatentIdeas.com as a top priority for a product offering as
+research funds to implement the technology become available.
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+3
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+internally on a machine physically located within a firm’s facilities. The initial “proof-of-concept”
+commercialization approach will go as follows: (1) we build a prototype search-reporting interface; (2) we provide tokens for free searches for interested parties: entrepreneurs, university IP
+managers, corporate IP managers, and patent professional associations; (3) we develop an ecommerce “pay-as-you-use” system to purchase search tokens for money; (4) we update and enhance
+our product description pages (e.g., http://www.mypatentideas.com/) as we implement the searchreporting technology; (5) we collect feedback on the service, and research optimal product-pricing
+strategies based on searcher’s willingness to pay.
+There are competitors in this market. There are several free search tools, such as the USPTO
+and Google Patents. These tools allow for advanced3 boolean search, and Google has even suggested a “prior-art finder.” These services are limited: (1) they only use one search-ranking methodology so they may miss important results, (2) they cannot account for contextual concept issues
+related to term ambiguity (e.g., strike or car vs. authomobile) hereafter described, (3) they do not
+synthesize the results into an informative report. Google has developed a very fast search interface
+for the internet, and has applied this search tool to patents. Using one search method, Google gives
+a searcher thousands of results in less than one second. Is this what the searcher wants? We think
+not. We posit that the searcher wants a comprehensive synthesis of all related documents. The
+searcher wants to be informed and educated about how his/her idea relates to existing patent documents. The searcher enters a document, and our system performs multiple searches to make certain
+all relevant documents are included; then, our service performs conceptual analyses to determine
+document correlations; finally, our service synthesizes the search/analysis into a meaningful report.
+There is another layer of competitors that offer per-seat licenses of their patent analytic products.
+Some of these competitors even offer some sort of concept-search feature within these enterpriselevel solutions. These tools provided by companies like Thomas Innovation, IBM, PatentCafe now
+part of Pantros IP, and Innography are intended for large corporations based on expensive pricing
+structures (e.g., around $50,000 per year for a single seat). Our $99-per-search price will enable us
+to be a disruptive innovation and low-cost leader (Christensen 1997) thereby providing a service
+to the small business owners and innovators that is currently not available to them.
+If you currently perform a Google search “is my idea patentable” you will find several resources
+enabling the searcher to begin the patenting process (patenting kits). You will also find information on “do-it-yourself” patentability search using basic text-matching search services such as the
+USPTO or Google. However, if you carefully scrutinize the market need and the resulting products
+and services, you can readily see that the fundamental question is not answered–I have an idea and
+I want to know if the idea is already patented before I buy a patenting kit. I am not an expert on
+patent-language jargon, nor do I want to be. I merely want to enter my idea into a search box,
+and be informed and educated about my idea in relationship to existing patents. Now, the market
+does not readily offer a document-correlation patent-search service. Five years ago, this was also
+the case. Five years from now, we anticipate this will still be the case. The large incumbents are
+3
+
+We again emphasize that there is a limitation of terms allowed in a query:
+see https://support.google.com/gsa/answer/4411411#requests.
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+4
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+not incentivized to target this un(der)served market. Part of our commercialization effort will be
+to get organic traffic to find our website. For example, using various search-engine-optimization4
+tools, we conclude that conservatively, there are 20,000 daily searches for this phrase. This search
+space is highly competitive, but none of the competition answers the question with an online webapplication solution. We believe this implies a strong market potential. First, can we achieve 1000
+visitors per day through organic search? This would save us daily about $6000 over having to pay
+for placed advertisements using Google AdWords. Second, from those who visit our page, can we
+get a 10% conversion rate? We have developed some live-chat functionality into our website, so
+the searcher can ask questions to a sales team enabling us to close the deal. If the price per unit is
+$99, with 5% + 10% sales commissions paid to an independent online sales staff, after the technology is developed, we foresee $84 of revenue per sold search. In the above goal-based scenario.
+1000 visitors leads to 100 daily searchers, generating $8400 in daily revenues which is $3M in
+annual revenues. Obviously, if we create repeat business, and offer other product-pricing options,
+we believe that the initial impact of this technology could be $10M per year.
+We anticipate that we have all of the necessary technical resources to develop this prototype.
+We own five servers with a total storage capacity of 150TB which can easily store all 10 million
+patents and the millions of patent-application documents. Across these machines we have over
+100 cores (CPUs) and either 64MB or 128MB of RAM in each machine. Additionally, we have
+one GPU card (which has thousands of computing cores) which can be used for general-purpose
+computing of matrix computations. On the software side of things, we have developed alpha
+prototypes of all of the elements needed to make this product offering possible. We will utilize this
+project resources to scale these alpha components into an integrated system.
+
+3
+
+Innovation
+
+Published patent documents represent “prior art” in the determination of future patent publications.
+As such, understanding patent-document correlations is important to stakeholders in innovation
+and its commercialization. Many times, these stakeholders have a document of interest (e.g., an
+invention disclosure or a patent publication) and they want to understand which patent documents
+are most related to this focal document (idea). Such a technology would enable them to address
+fundamental strategic questions: ‘is my idea patentable?’ or ‘what is the competitive landscape of
+this focal patent?’ These questions have implications for: (1) patentability, (2) infringement, (3)
+freedom-to-operate, and other important issues.
+
+4
+
+If you do a current Google search of this phrase “is my idea patentable”, you should see our blog website appearing on page 2, with a few pages ranked therein. We anticipate enhancing these SEO tactics to improve our overall
+placement thereby driving additional traffic.
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+5
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+To illustrate the utility of our methodology, consider the following sentences:
+1. The workers went on strike due to unsafe work conditions.
+2. The boxers strike one another incessantly for 12 rounds.
+3. The newcomers strike up a conversation with their neighbors.
+The word strike has a different meaning depending on context. In the first sentence, we infer that
+strike (noun) is the refusal to work as a form of protest. In the second sentence, we infer that strike
+(verb) means to hit. In the third sentence, we infer that strike (verb) means to initiate. If we were to
+use Google’s text-matching search for the “strike,” the search engine has no way to distinguish the
+multiple meanings from the single search term. Additionally, if two words have a similar meaning
+(e.g. car and automobile), results may be missed using Google’s search approach. A more robust
+approach accounts for basic word-sense amibiguity5 issues.
+Latent semantic analysis (LSA) has been developed (Deerwester et al. 1990, Landauer et al.
+1998) enabling the extraction of latent (or hidden) semantic structure thereby addressing these
+word-sense amibiguity issues that text-matching search cannot. Albeit robust, this approach for
+large document collections is not tractable due to the high-complexity computational restrictions.
+We overcome this problem by creating a manageable subset of potentially relevant documents
+(through multiple-search strategies), and then perform a custom LSA on this subset corpus.
+For a document collection of n documents and m terms, the singular value decomposition
+(SVD) necessary to perform LSA has a complexity defined to be: O(n2 m+m3 ). The complexity of
+the post-filter correlation computations using cosine similarity is O(n2 −n+m). As a result of this
+complexity, performing a full or true SVD on a large document collection (corpus) is intractable
+(Hofmann 1999, Blei et al. 2003, Laura et al. 2005) meaning in the traditional form, it is unsuitable
+to search a large collection of documents. Consider, for example n = 10 million documents with
+a total of m = 250, 000 terms; the complexity of the needed SVD is about 25 quintillion. Our
+innovation is to use a search methodology based on the idea inputed to drastically reduce n and
+m. For example, if we can create a subset of n
+˜ = 2, 000 documents with a total of m
+˜ = 200, 000
+6
+terms reduced to 10,000 terms, the new complexity is 24 million times more efficient. Something
+that was intractable can now be delivered to the searcher in a few minutes. If our proposed searchsubset LSA (SSLSA) can be performed in one minute, it would take over 63 years to perform a
+realtime, full-document-corpus LSA.
+5
+
+Polysemy is when a single term has multiple meanings. Synonymy is when multiple terms share a single meaning.
+Word Sense Disambiguation (WSD) is one of the fundamental problems in the field of Natural Language Processing
+(NLP) (Navigli 2009, Agirre et al. 2014).
+6
+We further reduce to m
+˜   = 10, 000 terms by constructing the term-document matrix A˜ such that only terms
+from the query input are included (not the entire corpus). The query phase reduces n
+˜ significantly and m
+˜ slightly.
+The prune phase reduces m
+˜   significantly: we prune to only include terms found in the inputed query. Such pruning
+defines the concepts of the analysis based on the natural language of the author of inputed idea.
+
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+6
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+The first aspect of our innovative process is the search input, or query. Normally, this is a few
+key words, or maybe a few attributes. In our proposed technology, the input is an entire document.
+If you are an inventor with a research paper, you can literally copy and paste the entire document
+into the search box as the query. If you are a university IP manager ascertaining whether an
+academic’s research paper is worth pursuing as a patented technology, you can copy and paste the
+entire document into the search box as the query. If you are reviewing a NSF grant for technical
+merit, you can copy and paste the entire proposal into the search box as the query. The input (focal
+query document) is an entire document, and the fundamental output will be the most closely related
+patent documents, which we define as document correlations. We posit that our specific SSLSA
+approach is unique and novel to provide valid results within a reasonable response time.
+We however, do not suppose that “concept search” for patents is exclusively our
+n = 10 million documents, m = 250,000 1Ͳgram terms (INTRACTABLE)
+idea. In fact, we are aware of several enBuild latent semantic index (LSI) from 
+Apply this LSI map (terms ї concepts) 
+Compute all pairwise 
+corpus of all documents or 
+to the query document (idea) to 
+correlations to the query 
+probabilistically from a large subset 
+construct common concept weightings 
+document and sort to return 
+terprises making such search available by
+of the corpus
+from the idea’s terms
+most correlated documents
+creating approximation-indices of the entire patent corpus, since full-SVD is not
+ñ =  2,000 documents, mѺ
+ = 10,000 NͲgram terms 
+possible. They offer search services to
+large enterprises, and even to patent examiners to determine prior art during the
+examination process. The traditional approximation technique: (1) an index is
+created about once a month on a random
+subset of the entire patent-document collection (and takes several days to compute), (2) the index defines for the entire
+Figure 2: Traditional “tractable” LSA approaches vs.
+collection term-concept maps that are apSSLSA
+plied to the inputed idea, (3) the most relevant documents are retrieved.
+With that disclosure, we emphasize that no one is offering a low-cost, do-it-yourself initially
+service that will empower the small business innovation researcher. This is the essential aim of our
+endeavor. We introduce SSLSA as an automated method to determine document correlations from
+an input query document. The resulting analysis is anchored to the natural language of the inventor, not the overarching language structure of all patent documents. This process is a two-stage
+approach. In the first stage, we search the entire corpus using several independent N-gram queries
+and merge these results into a subset. From this subset, we perform SVD on all query-defined
+N-grams using various filtering techniques. Defining the concepts using SVD based on the focal
+query document is fundamental to this approach. Rather than having the corpus define the concepts, the focal query (inputed idea) defines the concepts. This is an important nuance as we apply
+semantic analysis to innovation documents to ascertain a query’s novelty. The overall research plan
+has been designed, and the component elements of the technology associated with the innovation
+Uncommon
+
+Perform LSA on 
+this subset 
+corpus in 
+
+Common
+
+realͲtime 
+
+SmartͲSearch
+Filtering
+
+Subset defined
+
+Filter terms 
+based on 
+query 
+document
+
+Compute 
+
+Correlations
+
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+7
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+have been alpha prototyped. The seed funding from this grant would be to: (1) empirically assess
+the validity of the methodology based on optimal input parameters, (2) develop the updating search
+methodologies, (3) develop beta reports to the searcher, (4) receive feedback from interested parties to enhance the reports and search interface, (5) develop a working ecommerce platform for the
+pay-per-search offering, (6) consider other payment options (bulk purchases, subscription based,
+and so on).
+A preliminary provisional patent application was filed in Janaury 2014 regarding a less refined
+description of this project. We are in the process of filing for a traditional application of this technology. In addition, our cleansed patent-data platform, in its organization, represents a component
+of a potential competitive advantage. In our Mergent Patent Archive description, we delineate
+how we have data more comprehensive in its preparation than both the USPTO and the Google
+patent-search services. Ultimately, our ability to create custom reports based on sophisticated
+mathematics and sound statistics so that the average inventor can be impressed with both the depth
+and simplicity of the report, will determine the success of this venture in relation to competitors.
+The major technical challenge will be the optimal formulation of the multiple-search process
+to guarantee a valid nomological capture of potentially relevant patents before SVD is performed.
+That is, can we perform searches to get a subset of n
+˜ = 2000 documents such that the top, say
+200, documents after search-subset SVD (SSLSA) would also be found in the full-SVD document
+collection? Our simulated experiments detailed in the Technical Discussion will further outline
+how this validity challenge will be addressed.
+
+4
+
+Company/Team
+
+This research will be carried out by Entrepreneurial Innovation, LLC. (DBA Patent Rank). This
+company was formed as a Nevada-based LLC, recently converted to a Washington-based LLC,
+with foreign-entity operating permissions in the state of Kentucky. The company has a NSF code
+of 6250026089, a DUNS number of 078286980, a tax-identification number of 452562977, and a
+CCR PIN of PatentR99. We believe the overall Phase I objective can be readily achieved within
+the twelve-month performance period.
+The company was founded by Monte Shaffer, the principal investigator (PI) in 2011. Since inception, Ted McGuire has been the acting CEO of this company. Both the PI and CEO will devote
+a significant level of effort to the proposed Phase I activities. Monte’s efforts will focus on managing and directing the technology development and the overall R&D plan. Ted’s efforts will focus
+on the development of market opportunites: direct B2C sales, relationships with venturing groups
+and programs, feedback from patent professionals and technical-merit managers at universities and
+grant-funding institutions. Monte’s expertise in internet marketing will support Ted’s efforts (e.g.,
+see the market-facing informational website already developed: http://www.mypatentideas.com).
+
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+8
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+The vision of the company Patent Rank
+is to bring transparency to patent analytics
+through the development of services that objectively inform stakeholders using sophisticated mathematics and statistics (see branded
+website: http://www.patent-rank.com). The
+company has existing operations. The company’s primary technology is Patent Rank, an
+objective value of a patented technology over
+time. MyPatentIdeas.com (the value of an
+Figure 3: Personnel to Develop Service
+idea) fits well within the overall vision and
+direction of the company. Patent Rank is involved as an industry partner with an academic initiative known as CRIE (Commercialization Research on Innovation and Entrepreneurship) - making cleansed patent data more readily available for academic consumption to advance the study
+of innovation and entrepreneurship (see http://crie.patent-rank.com). Additionally, using the same
+patent repository, Patent Rank has developed a patent-archival module7 within Mergent’s Archives.
+Within this aforementioned product, Patent Rank has developed a robust boolean-search methodology that can be leveraged in the development of this concept-search technology.
+Since 2008, Monte has been cleansing and augmenting the patent-data platform. The technical
+and commercialization team has developed since that
+time. Mirek Truszczynski has facilitated the advancement of computer-science algorithms into the
+data cleansing procedures and also facilitates efficient
+programming objectives performed by the computerscience research students also included on the proposal. Tung Tran is in his second year of a Ph.D.
+program in Computer Science and has been working on the patent data since the Fall of 2013. His
+major responsibilities have been the core patent data
+objects, the search-engine implementations, and the
+development of natural-language processing methods.
+Orion Fisher is planning on beginning his first year of
+a Ph.D. program in Computer Science and has been
+working on the patent data since the Summer of 2014.
+Orion has been working on the fundamental SVD ma- Figure 4: Module of Mergent Archives
+trix computations with efforts of making these computations as efficient as possible utilizing various approaches.
+7
+
+http://www.mergent.com/solutions/print-digital-archives/mergent-archives
+
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+9
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+The company has had some limited revenues over the past three years. The core valuation
+technology, Patent Rank, received a NSF SBIR Phase I/Ib Award IIP #1315850 and external funding from Kentucky’s Innovation Network to support the development of the patent-data platform.
+When Monte Shaffer completed his dissertation (Shaffer 2011) and founded this company, he had
+less than 2 terabytes (TB) of patent data. Now, the company has over 50 TBs of patent data, and the
+repository is growing weekly as new patent data is made available through the United States Patent
+and Trademark Office (USPTO). In addition to the grant-funds as revenues, through the development of the relationship with Mergent, patent archives as a module of Mergent Archives has been
+purchased and installed at major universities in the United States, generating marketing-facing
+revenues.
+
+5
+
+Technical Discussion / R&D Plan
+
+We define the following:
+Stopwords Words filtered out before the processing of natural language text. For example,
+the “snowball” list: a, about, above, after, again, against . . .
+N-gram A contiguous sequence of N items from a given sequence of text unaffected by
+the stopword filtering.
+Term Any unique N-gram.
+Document Sequence of Nt terms denoted by d = (t1 , t2 , . . . , tNt ) where ti represents the
+ordinal ith term in the sequence of all terms.
+Corpus Collection of n documents denoted by D = {d1 , d2 , . . . , dn } where dj represents
+any specific element in D.
+Query Unstructured text q that is stopward filtered and defined using the N-gram terms
+as the focal input document dq . This document may or may not be part of the
+corpus.
+Common A term ti from the query that is frequent within the corpus. The most common
+term tC1 , the second most common term tC2 , and so on.
+Uncommon A term ti from the query that is rare within the corpus. The most uncommon term
+tU1 , the second most uncommon term tU2 , and so on.
+Index A ranked term-frequency scheme derived from the corpus to determine the (un)common
+nature of an individual term. The index returns the rank (or quantile) if the term
+exists. If the term is not found, null is returned.
+˜ retrieved in (un)common searches where
+Subset Collection of n
+˜ documents denoted by D
+n
+˜ n
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+10
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+[We consider this entire section to be proprietary.]
+
+Traditional LSA (latent semantic analysis) is intractable with millions of documents defined
+within an information retrieval system. Other approaches that anchor to LSA-methodologies,
+most notably the probabilistic approximation techniques (Hofmann 1999), build an approximate
+concept-map. We, however, do not want to lose the ability to determine concepts based on the
+inputed query document, so we want to perform8 SVD (singular value decomposition) based on
+the key phrases from the query NOT from the overall concepts of the entire patent collection. For
+example, if 400 concepts were defined from a corpus of 10 million documents across 250,000
+terms, the dimensionality of each concept explains less and less variance. The first concept explains the most variance, the second concept explains the next most variance, and so on. The top
+concepts in this construction would be more related to the overall requirements of natural language
+within patent documents. On the other hand, if we were to reduce the document set using our subset corpus methodology and we also include the terms based on those that exist within the query
+document, all concepts will be uniquely defined based on the inputed idea. Although subtle, this
+is an important feature of our document-correlation strategy. The searcher is informed based on
+the inputed text, and all concepts are anchored to that custom query request. Our method, SSLSA
+(subset-search LSA), reduces the dimensionality of the computation significantly. Ideally, we want
+to demonstrate that this method works without loss of generality. That is, if we performed full LSA
+and identified the top-20 most correlated documents (based on terms and concepts) relative to the
+query document, would we get the same top-20 results using our SSLSA methodology. As previously mentioned above, doing so would make the computational complexity 24 million times more
+efficient. Mathematically, we define SVD (Deerwester et al. 1990) as:
+A = U SV T
+
+(1)
+
+where An×m represents the term-document matrix9 that can be decomposed as the product of three
+matrices U , S, and V T where matrix S is a diagonal matrix representing eigenvalues for the termdocument system. Necessarily, each eigenvalue is necessarily smaller than the previous and the
+inclusion of all eigenvalues would perfectly represent a linear combination of a weighting schema
+of all terms mapped to all documents. Based on these mathematics, one can consider or a fixed
+number of eigenvalues within S, hereafter defined as k concepts. This is equivalent to zeroing-out
+all additional singular values of S which also correspondingly affect U and V T . That is, we can
+observe Uk , Sk , VkT . Furthermore, if we truncate A as A˜ based on our proposed methodologies, we
+can similarly observe U˜k , S˜k , V˜kT .
+8
+
+SVD is mathematically equivalent to PCA (principal components analysis).
+The matrix has terms as columns, documents as rows. The values of aij ∈ A can be either frequency counts (how
+many times the term appears within the given document) or some normative weighting based on within-document and
+within-corpus frequencies. The rank of S is rk(S) = min(n, m). Based on these deconstructions and conforming
+properties of matrix multiplication: Un×rk(S) represents the document-concept matrix and Vm×rk(S) represents the
+term-concept matrix.
+9
+
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+11
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+Innovation Details
+Can we develop “smart-search” technologies to ascertain a subset corpus of the entire patent collection such that the subset n
+˜   n, yet the document correlations are just as valid as if we did
+perform semantic analyses on the entire collection? Although most semantic analyses utilize the
+“bag-of-words” assumption (Blei et al. 2003), we utilize key N-grams or phrases to more carefully
+define the subset through an initial meta-search protocol (the granularity hypothesis).
+We identify phrases as common 1: procedure SSLSA(q, D, r, k)
+˜ =∅
+or uncommon by indexing all phrases 2:
+D
+in the entire patent collection. For 3:
+dq ←NGRAM(q, r)
+example, the 1-gram phrase “claim” 4:
+while r  = 0 do
+  For r-gram terms
+is a required word in all patent doc- 5:
+sc ←SEARCH(dq , r, NC(r) ,common)
+uments, so it is very common. A 6:
+su ←SEARCH(dq , r, NU(r) ,uncommon)
+2-gram phrase “semantic analysis” 7:
+˜ =D
+˜ ∪ sc ∪ su
+D
+is likely a term that is not common 8:
+r =r−1
+within the patent collection. A 3- 9:
+˜ is the subset
+end while
+ D
+gram phrase “natural language pro- 10:
+˜ =D
+˜ ∪ dq ;
+D
+cessing” is even more likely a term 11:
+˜
+A˜ ←FILTER(dq , D)
+that is not common within the patent 12:
+˜
+Compute SVD(A) for k concepts
+collection. Furthermore, this 3-gram, 13:
+Note U˜k , S˜k , V˜kT
+can be decomposed into smaller N- 14:
+˜
+Compute pairwise similarities (di , dj ) in D
+grams: 1-grams {natural, language, 15: end procedure
+processing} and 2-grams {natural
+language, language processing}. If 16: procedure NGRAM(text,r)
+remove stopwords
+we define our search to include all 17:
+18:
+build frequency for each unaffected r-gram
+3-grams and the relevant decomporeturn d
+  Document as term-frequency vector
+sitions, our multiple-search methods 19:
+should be very precise as a prefilter 20: end procedure
+to create a subset corpus. We posit 21: procedure SEARCH(d , r, n,method)
+q
+that common searches will capture 22:
+(common) from index: OR top-n r-grams
+the general technological space of 23:
+(uncommon) from index: OR bottom-n r-grams
+the idea and that uncommon searches 24:
+return s   Most relevant results (results ≤ 250)
+will capture the technological speci- 25: end procedure
+ficity of the idea.
+˜
+For each relevant N-gram, we 26: procedure FILTER(dq , D)
+˜
+Construct Term-Document Matrix of D
+can query the patent-term index and 27:
+Filter by terms found in dq
+return quantile thereby ascertaining 28:
+return A˜
+its (un)commonality. We can simi- 29:
+larly perform N-gram analysis of the 30: end procedure
+Figure 5: SSLSA Algorithm
+inputed idea as a query document.
+
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+12
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+Now, we can describe commonality and uncommonality at the patent-collection level (the corpus) and at the inputed-idea level (the query-document). Utilizing these features, can we develop
+independent search methodologies to nomologically capture all relevant patent documents such
+that the most correlated documents (e.g., top-20) are always obtained? This is the optimality constraint that will make this technological innovation very meaningful to the market. Once we have
+appropriately captured the subset, we can create a custom LSA based on the inputed idea, and report the most-related documents. The terms of the custom LSA are defined by the inputed idea, and
+various weighting mechanisms can be developed based on local/subset/global corpus frequencies.
+Above, in Figure 5, we outline the basic algorithm design for our prototype fast-document
+correlations innovation with inputs: query q, document corpus D, number of N-grams r, number
+of concepts k. First, we filter out very common words, known as stop words. Next, we create
+N-grams based on the query input. For each N-gram, we perform an independent (un)common
+search based on a predefined policy. We perform independent searches, and merge10 the resulting
+˜ At this stage, we can also summarily report on these multiple-search11
+set as subset corpus D.
+results. We can also build nomological word clouds based on the (un)commonalities of the idea
+searched and patent documents. Finally, we proceed to perform SVD to identify concepts of this
+subset corpus. In the synthesized report, we can create word clouds describing the most important
+concepts educating the searcher on the technological space using terms from patented technology
+descriptions. In addition, we can perform pairwise correlations which will enable us to visually
+graph the result set (based on say the first two dimensions or concepts). From this graph, we can
+create a document map. On this map, we can place a star (your idea is here) and overlay technology
+classifications of patent documents. We can then do an inset zoom feature, and describe the most
+relevant documented patents.
+
+Research Objectives and Technical Tasks
+The overall research objective is to validate the nomological capture of this SSLSA approach. If
+successful, the web application can be prototyped.
+[Task 1:] Data feeds. Automation of downloading new patent data (weekly, every
+Tuesday); parsing and cleansing the data; Automation of downloading new
+patent applications (weekly, every Thursday); parsing and cleansing the
+data; update search and commonality indices.
+[Task 2:] Optimal Nomological Search (Experiment). Run simulated experiments
+to ascertain the optimal nomological capture. More details follow.
+[Task 3:] Optimal SVD / correlation computations. Optimize matrix computations across multiple machines (develop a master/slave work flow system
+10
+11
+
+The subset corpus will be defined as a union of all independent searches.
+This is, as-if we went to Google and performed multiple searches and combined all top results.
+
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+13
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+so results can be returned in two stages, with a goal that the total response
+time for this custom information-retrieval process be less than 10 minutes).
+[Task 4:] Synthesized reports (e.g., Mirek’s personality12 report). Develop a summary report of the search results and an advanced report educating the
+searcher on the relevant concepts and nearest-neighbor patent documents.
+[Task 5:] Ecommerce web application Build a website that is secure (SSL) with
+payment options, and the search-reporting interface.
+
+Optimal Nomological Search (Experiment).
+The entire U.S. patent corpus contains approximately 10 million patent documents. The fundamental validity question is: “if we use a search methodology to reduce the SVD dimensions, do we still
+capture all potentially correlated documents?” We define this validity question as comprehensive
+nomological capture. To demonstrate the validity of SSLSA, as part of our simulated-experiment
+design, we have created a patent corpus: we first searched for all patents invented by Kia Silverbrook, the most prolific inventor in the world. We obtained over 4500 documents. We next
+randomly selected a utility patent granted in the same year as a corresponding Kia patent. Taken
+together, we define this sample as our corpus D. We posit that the Kia patents should necessarily
+be more closely correlated to each other, since they represent patents from the same inventor which
+we posit uses the same natural-language preferences. They represent an adjacent neighborhood of
+similar patents. Conversely, the random sample should consist of patents not closely correlated.
+Within this sample corpus, we have over 9000 documents, and full SVD can be computed
+(that is, it is tractable). We will perform full SVD to define “true similarity” among documents.
+This introduces the first parameter selection r, the number of N-grams to include in defining the
+term-document matrix A. We will run simulations to test r = 1 (similar to bag of words) up
+through r = 5 where 5-grams and corresponding 4-grams, 3-grams, 2-grams, and 1-grams are
+defined as terms (the granularity hypothesis of linked phrases). The second parameter selection k
+represents the number of concepts to be extracted. Prior research suggests that an optimal range
+for k = [50, 1000] (Landauer et al. 1998); in our simulated design, we will loop over values for
+k = 50, 100, 250, 500, 1000. At the full-SVD level, we therefore have 25 simulation-combinations
+to perform (5 levels of N-grams and 5 levels of concepts).
+Several features within a simulation can also be manipulated, in search of optimality. Features
+include: the minimum frequency for a term to be included in the matrix, whether the terms are
+pruned based on the query or if all terms are included (the inventor’s-language hypothesis), how
+the term-document matrix is constructed (various weighting methods), how truth is defined (top10, top-20, top-50, top-100), the number of results returned from a single search (top-50, top-100,
+top-250, top-500), the number of (un)common search terms that are included in a single search
+12
+
+We have experience building advanced reports: http://www.profiletraits.com/a/report/self/RkouG9janggAAOoEhvs/
+
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+14
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+(current options selected are the same for both (un)common searches: NC(r) = NU(r) = 10 or
+NC(r) = NU(r) = 5r + 5 or NC(r) = NU(r) = 2r + 5), and so on. In total, we have over 5000
+simulation-scenarios. For a single simulation-scenario, we will perform 100 simulations (a total
+of 500,000 trials). We estimate that running on 90+ cores (CPUs), these simulation-scenarios will
+take approximately 20 days to run.
+We randomly select a document from the corpus D, and label it the search query. We note if
+this document was part of the Kia subset or not. Given the specific parameters of the scenario, we
+perform the necessary SSLSA and we compute all pairwise correlations for the query document q
+˜ Sorting on these correlations, we identify the nearest patent neighbors. At
+and the subset corpus D.
+the full-SVD layer, we do simular correlations to identify what we define as true similarity. Did we
+lose any top results in our SSLSA approach? To ascertain this, we define potential “nomological
+capture errors.” We define Type I error as the percentage of excluded documents found in nearest
+˜ We define Type II error as the percentage of included docuneighbors of D but not found in D.
+˜ but not found in nearest neighbors of D. As previously mentioned, we define
+ments found in D
+these errors for various levels of correlation (top-10, top-20, top-50, top-100). We may attempt to
+develop a hypothesis test of such misclassifications as an extension of the work of Dasgupta et al.
+(2015).
+
+Timeline
+We anticipate this research and development (R&D) project to take 12 months from July 1, 2016–
+June 30, 2017. The first two months will be used to prepare the initial data feeds, and design the
+experiments to ascertain the optimal parameter selection for nomological capture. Thereafter, the
+ecommerce web-application will be built in tandem with the custom reporting features. We anticipate that about six months into this project (December 2016), we will have a working prototype
+that we can allow interested parties to beta-test. In the first six months, we believe over 80% of the
+project will be complete, but common to pareto problems, the refinement to finish the prototype
+(remaining 20%) will take an additional six months. We have already developed a commercial application called Patent Rank database and are aware of the difficulties and obstacles in developing
+a new commercial application. Also, we succeeded in developing our commercial application with
+a budget that was slightly less than the current proposed one. Hence, we are confident that our
+team can overcome the various obstacles that invariably occur in this process.
+
+6
+
+Conclusion
+
+We have a plan. We have the patent data. We have the computing resources. We have the knowhow. We have the ambition. We now need the funding to make this happen. With the appropriate
+funds, we will be able to accelerate the research and commercialization process to make MyPatentIdeas.com a successful and valid patent-search service.
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+15
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+C. References Cited
+References
+Agirre, Eneko, Oier Lopez de Lacalle, Aitor Soroa. 2014. Random walks for knowledge-based word sense
+disambiguation. Computational Linguistics 40(1) 57–84.
+Auvil, Steven M., David A. Divine. 2011. AIPLA Report Of The Economic Survey 2011 . (Accessed:
+November 1, 2015).
+{http://www.aipla.org/members/Documents/AIPLA%202011%20Report-%20Summary%20102411.pdf}.
+Blei, David M, Andrew Y Ng, Michael I Jordan. 2003. Latent dirichlet allocation. The Journal of Machine
+Learning Research 3 993–1022.
+Christensen, Clayton. 1997. The innovator’s dilemma: when new technologies cause great firms to fail.
+Harvard Business Review Press.
+Dasgupta, Nairanjana, Alan Genz, Nicole Lazar. 2015. A look at multiplicity through misclassification.
+Sankhya B: The Indian Journal of Statistics Forthcoming.
+Deerwester, Scott C., Susan T Dumais, Thomas K. Landauer, George W. Furnas, Richard A. Harshman.
+1990. Indexing by latent semantic analysis. JAsIs 41(6) 391–407.
+Hofmann, Thomas. 1999. Probabilistic latent semantic indexing. Proceedings of the 22nd annual international ACM SIGIR conference on Research and development in information retrieval. ACM, 50–57.
+Kim, W Chan, Renee Mauborgne. 2015. Blue Ocean Strategy, Expanded Edition: How to Create Uncontested Market Space and Make the Competition Irrelevant. Harvard Business Review Press.
+Landauer, Thomas K, Peter W Foltz, Darrell Laham. 1998. An introduction to latent semantic analysis.
+Discourse processes 25(2-3) 259–284.
+Laura, Luigi, Umberto Nanni, Fabiano Sarracco. 2005. Fast LSI-based techniques for query expansion in
+text retrieval systems. International Workshop on Text-Based Information Retrieval. Citeseer, 15.
+Navigli, Roberto. 2009. Word sense disambiguation: A survey. ACM Computing Surveys (CSUR) 41(2) 10.
+Quinn, Gene. 2015. The Cost of Obtaining a Patent in the U.S. (Accessed: November 1, 2015).
+http://www.ipwatchdog.com/2015/04/04/the-cost-of-obtaining-a-patent-in-the-us/.
+Shaffer, Monte J. 2011. Entrepreneurial Innovation: Patent Rank and Marketing Science. Dissertation,
+Washington State University. http://www.mshaffer.com/dissertation/mjsPRINT.pdf.
+Song, Michael, Tang Wang, Mark E. Parry. 2010. Do market information processes improve new venture
+performance? Journal of Business Venturing 25(6) 556 – 568.
+
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+16
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+D. Biographical sketches
+Monte J. Shaffer
+Owner/Founder, Patent Rank
+
+Monte J. Shaffer earned his Ph.D. (May 2011) in Marketing with a dissertation entitled “Entrepreneurial Innovation: Patent Rank and Marketing
+Science.” Over the past several years, Monte developed the dataset and
+the parsing algorithms to extract data from the patent files he harvested
+from the USPTO. Prior to completing graduate degrees (MBA Marketing
+Research, M.S. Statistics, Ph.D. in Marketing), he had significant experience developing commercial web applications, including: for the United States Marines (USMC),
+Embry-Riddle Aeronautics, the Naval Postgraduate School (NPS), consumer-product websites
+(e.g., iloveorganicgirl.com, selftestonline.com, pezzinifarms.com, apr-carmel.com), and several
+informational websites.
+Interactive CV: http://www.mshaffer.com/arizona/
+LinkedIn Profile: https://www.linkedin.com/profile/view?id=3128529
+
+Miroslaw (Mirek) Truszczynski
+Professor of Knowledge Representation and Artificial Intelligence,
+Computer Science Department, University of Kentucky
+
+Mirek received his PhD in Mathematics from the Warsaw University
+of Technology. He joined the Department of Computer Science at the
+University of Kentucky in 1984, became full professor in 1991, served as
+Consultant
+department chair from 1993 to 2007. Mirek’s research interests include
+knowledge representation, nonmonotonic reasoning, logic programming, and constraint satisfaction and programming. He is the author or co-author of over 170 technical papers in journals,
+conference proceedings and books. Mirek is active in his research community. He was an organizer or the program committee chair for several major conferences in his field. He served on the
+Executive Committee of the Association of Logic Programming (2003-2008), and as Chair of the
+Steering Committee of Nonmonotonic Reasoning Workshops (2000 - 2008). Since 2000, he has
+been a member of the Steering Committee of Knowledge Representation, Inc. In 2010-2012 he
+served as President of that organization. Mirek serves on editorial and advisory boards of several
+professional journals, including Journal of Artificial Intelligence Research, Artificial Intelligence
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+17
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+Journal, Theory and Practice of Logic Programming and AI Communications. In 2013, Mirek
+was elected Fellow of the Association for the Advancement of Artificial Intelligence (AAAI). In
+January 2015, he began serving as Editor-in-Chief of the journal Theory and Practice of Logic
+Programming (TPLP).
+Short CV:
+Website:
+
+http://www.mshaffer.com/arizona/Mirek.pdf
+http://tinyurl.com/jojdojf
+
+Ted McGuire
+CEO, Patent Rank
+Ted McGuire is a graduate of the University of Arizona Eller College of Management where he
+earned a Bachelors of Science in Marketing and Entrepreneurship. He has worked for the past 20
+years in the private sector. He has developed, launched and sold websites for the travel industry.
+In addition, Mr. McGuire has worked in the insurance industry as well as real estate development.
+He currently operates a small business in Tucson, Arizona where he lives with his wife and four
+children. He is active in his community and believes “People are the most important asset in any
+organization.”
+
+Nairanjana (Jan) Dasgupta
+Professor of Statistics and Distributional Probability,
+Department of Mathematics, Washington State University
+
+Jan received her PhD in Statistics from the University of South Carolina. Working with her advisor, John D. Spurrier, Jan developed a multivariate chi-square hypothesis test for multiple comparisons to control for
+logistic regressions. As Monte’s advisor for his M.S. Statistics, together,
+they generalized this hypothesis test for paremeterized nonlinear growth
+Consultant
+models. This statistical procedure is a foundation of the patent-prediction
+model developed by Monte (see http://www.google.com/patents/US20120317040 ). She will be
+Short CV:
+Website:
+
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+http://www.mshaffer.com/arizona/Jan.pdf
+http://www.math.wsu.edu/faculty/ndasgupta/
+
+Page
+
+18
+
+(MyPatentIdeas.com)
+
+ SUMMARY
+PROPOSAL BUDGET
+
+YEAR
+
+1
+
+FOR NSF USE ONLY
+PROPOSAL NO.
+DURATION (months)
+Proposed Granted
+AWARD NO.
+
+ORGANIZATION
+
+Entrepreneurial Innovation
+PRINCIPAL INVESTIGATOR / PROJECT DIRECTOR
+
+Monte Shaffer
+A. SENIOR PERSONNEL: PI/PD, Co-PI’s, Faculty and Other Senior Associates
+(List each separately with title, A.7. show number in brackets)
+
+NSF Funded
+Person-months
+
+CAL
+
+ACAD
+
+1.
+0.00 0.00
+2.
+3.
+4.
+5.
+6. ( 0 ) OTHERS (LIST INDIVIDUALLY ON BUDGET JUSTIFICATION PAGE)
+0.00 0.00
+7. ( 1 ) TOTAL SENIOR PERSONNEL (1 - 6)
+0.00 0.00
+B. OTHER PERSONNEL (SHOW NUMBERS IN BRACKETS)
+1. ( 0 ) POST DOCTORAL SCHOLARS
+0.00 0.00
+2. ( 0 ) OTHER PROFESSIONALS (TECHNICIAN, PROGRAMMER, ETC.)
+0.00 0.00
+3. ( 0 ) GRADUATE STUDENTS
+4. ( 0 ) UNDERGRADUATE STUDENTS
+5. ( 0 ) SECRETARIAL - CLERICAL (IF CHARGED DIRECTLY)
+6. ( 0 ) OTHER
+TOTAL SALARIES AND WAGES (A + B)
+C. FRINGE BENEFITS (IF CHARGED AS DIRECT COSTS)
+TOTAL SALARIES, WAGES AND FRINGE BENEFITS (A + B + C)
+D. EQUIPMENT (LIST ITEM AND DOLLAR AMOUNT FOR EACH ITEM EXCEEDING $5,000.)
+
+SUMR
+
+Funds
+Requested By
+proposer
+
+Funds
+granted by NSF
+(if different)
+
+0.00
+
+0.00
+0.00
+
+0
+0
+
+0.00
+0.00
+
+0
+0
+0
+0
+0
+0
+0
+0
+0
+
+0
+0
+0
+
+TOTAL EQUIPMENT
+E. TRAVEL
+1. DOMESTIC (INCL. U.S. POSSESSIONS)
+2. FOREIGN
+
+F. PARTICIPANT SUPPORT COSTS
+0
+1. STIPENDS
+$
+0
+2. TRAVEL
+0
+3. SUBSISTENCE
+0
+4. OTHER
+(
+)
+TOTAL
+PARTICIPANT
+COSTS
+0
+G. OTHER DIRECT COSTS
+1. MATERIALS AND SUPPLIES
+2. PUBLICATION COSTS/DOCUMENTATION/DISSEMINATION
+3. CONSULTANT SERVICES
+4. COMPUTER SERVICES
+5. SUBAWARDS
+6. OTHER
+TOTAL OTHER DIRECT COSTS
+H. TOTAL DIRECT COSTS (A THROUGH G)
+I. INDIRECT COSTS (F&A)(SPECIFY RATE AND BASE)
+
+0
+0
+0
+0
+0
+0
+225,000
+225,000
+225,000
+
+(Rate: , Base: )
+0
+225,000
+0
+225,000
+
+TOTAL INDIRECT COSTS (F&A)
+J. TOTAL DIRECT AND INDIRECT COSTS (H + I)
+K. SMALL BUSINESS FEE (IF REQUESTED MAXIMUM = 7% OF J )
+L. TOTAL COST AND FEE (J + K)
+
+fm1030sb-07
+
+PI/PD NAME
+
+Monte Shaffer
+ORG. REP. NAME*
+
+FOR NSF USE ONLY
+INDIRECT COST RATE VERIFICATION
+Date Checked
+
+Date Of Rate Sheet
+
+Initials - ORG
+
+Monte Shaffer
+1 *ELECTRONIC SIGNATURES REQUIRED ONLY FOR REVISED BUDGET
+
+ SUMMARY
+PROPOSAL BUDGET
+
+Cumulative
+FOR NSF USE ONLY
+PROPOSAL NO.
+DURATION (months)
+Proposed Granted
+AWARD NO.
+
+ORGANIZATION
+
+Entrepreneurial Innovation
+PRINCIPAL INVESTIGATOR / PROJECT DIRECTOR
+
+Monte Shaffer
+A. SENIOR PERSONNEL: PI/PD, Co-PI’s, Faculty and Other Senior Associates
+(List each separately with title, A.7. show number in brackets)
+
+NSF Funded
+Person-months
+
+CAL
+
+ACAD
+
+1.
+0.00 0.00
+2.
+3.
+4.
+5.
+6. (
+) OTHERS (LIST INDIVIDUALLY ON BUDGET JUSTIFICATION PAGE)
+0.00 0.00
+7. ( 0 ) TOTAL SENIOR PERSONNEL (1 - 6)
+0.00 0.00
+B. OTHER PERSONNEL (SHOW NUMBERS IN BRACKETS)
+1. ( 0 ) POST DOCTORAL SCHOLARS
+0.00 0.00
+2. ( 0 ) OTHER PROFESSIONALS (TECHNICIAN, PROGRAMMER, ETC.)
+0.00 0.00
+3. ( 0 ) GRADUATE STUDENTS
+4. ( 0 ) UNDERGRADUATE STUDENTS
+5. ( 0 ) SECRETARIAL - CLERICAL (IF CHARGED DIRECTLY)
+6. ( 0 ) OTHER
+TOTAL SALARIES AND WAGES (A + B)
+C. FRINGE BENEFITS (IF CHARGED AS DIRECT COSTS)
+TOTAL SALARIES, WAGES AND FRINGE BENEFITS (A + B + C)
+D. EQUIPMENT (LIST ITEM AND DOLLAR AMOUNT FOR EACH ITEM EXCEEDING $5,000.)
+
+SUMR
+
+Funds
+Requested By
+proposer
+
+Funds
+granted by NSF
+(if different)
+
+0.00
+
+0.00
+0.00
+
+0
+0
+
+0.00
+0.00
+
+0
+0
+0
+0
+0
+0
+0
+0
+0
+
+0
+0
+0
+
+TOTAL EQUIPMENT
+E. TRAVEL
+1. DOMESTIC (INCL. U.S. POSSESSIONS)
+2. FOREIGN
+
+F. PARTICIPANT SUPPORT COSTS
+0
+1. STIPENDS
+$
+0
+2. TRAVEL
+0
+3. SUBSISTENCE
+0
+4. OTHER
+(
+)
+TOTAL
+PARTICIPANT
+COSTS
+0
+G. OTHER DIRECT COSTS
+1. MATERIALS AND SUPPLIES
+2. PUBLICATION COSTS/DOCUMENTATION/DISSEMINATION
+3. CONSULTANT SERVICES
+4. COMPUTER SERVICES
+5. SUBAWARDS
+6. OTHER
+TOTAL OTHER DIRECT COSTS
+H. TOTAL DIRECT COSTS (A THROUGH G)
+I. INDIRECT COSTS (F&A)(SPECIFY RATE AND BASE)
+
+0
+0
+0
+0
+0
+0
+225,000
+225,000
+225,000
+
+0
+225,000
+0
+225,000
+
+TOTAL INDIRECT COSTS (F&A)
+J. TOTAL DIRECT AND INDIRECT COSTS (H + I)
+K. SMALL BUSINESS FEE (IF REQUESTED MAXIMUM = 7% OF J )
+L. TOTAL COST AND FEE (J + K)
+
+fm1030sb-07
+
+PI/PD NAME
+
+Monte Shaffer
+ORG. REP. NAME*
+
+FOR NSF USE ONLY
+INDIRECT COST RATE VERIFICATION
+Date Checked
+
+Date Of Rate Sheet
+
+Initials - ORG
+
+Monte Shaffer
+C*ELECTRONIC SIGNATURES REQUIRED ONLY FOR REVISED BUDGET
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+E. Budget Justification ($225,000 for 12 months)
+We define our Indirect Costs at a conservative rate of 25%. We include costs for travel to the NSF
+conference ($4000), and anticipate discretionary Residual Funds to be less than the allowed 7%
+rate. Two consultants (Mirek and Jan) will account for $30,000, representing 13% of the budget.
+
+Senior Personnel
+Ted McGuire, CEO. (Market Development)
+Ted McGuire will commit a substantial portion of his time to focus on market-facing, salesdeveloping strategies. In addition to providing feedback on the end-user reports, Ted will facilitate
+the development of an independent sales group. Additionally, Ted will work with the interested
+beta-testing partners to demonstrate the system, receive feedback, and pass along enhancement
+suggestions to the development team. [See BLS: 11-1011; 11-2022; 41-3099]
+12 months × $3, 333.33 = $40, 000
+
+Monte J. Shaffer, Ph.D. (Innovation Development)
+Dr. Monte Shaffer (PI) will be the project leader. He will direct research and development with senior
+mathematicians/computer scientists/statisticians, manage the development with the technical professionals,
+and generally manage personnel/deliverables on this project. [See BLS: 15-2021/15-2041; 11-2021/131161; 15-1132/15-1133/15-1134; 15-1111]
+2 months × $10, 000 = $20, 000
+
+Miroslaw (Mirek) Truszczynski, Ph.D. (Algorithm Development)
+Dr. Mirek Truszczynski will direct the artificial-intelligence research and computer-engineering designs to
+optimally develop the proposed technologies. [See BLS: 15-2021/15-1111] Consultant
+2 months × $10, 000 = $20, 000
+
+Nairanjana (Jan) Dasgupta, Ph.D. (Statistics)
+Dr. Jan Dasgupta will direct the design and implementation of the statistical computing simulations (experiment) to validate “nomological capture.” [See BLS: 25-1022/15-2041] Consultant
+1 month × $10, 000 = $10, 000
+
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+19
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+Technical/Professional Personnel
+Tung Tran (Data Management and Search Platform)
+Tung Tran will develop the core system to perform smart search. [See BLS: 15-2021/15-2041; 15-1111]
+2 months × $5, 500 = $11, 000
+
+Orion Fisher (Matrix / Correlation Computations)
+Orion Fisher will develop the core system to perform LSA. [See BLS: 15-2021/15-2041; 15-1111]
+2 months × $5, 500 = $11, 000
+
+To Be Determined (TBD)
+Computer Science programmer: Programmer will perform necessary work to support the others named on
+the research team. [See BLS: 15-2021/15-2041]
+6 months × $5, 000 = $30, 000
+System Administrator: Sysadmin will perform necessary hardware configurations for the development of
+MyPatentIdeas.com, its maintenance, and security. [See BLS: 15-1142]
+4 months × $4, 500 = $18, 000
+Web-application Developer: Web Developer will create an ecommerce software-as-a-service (SaaS) solution
+(MyPatentIdeas.com) using protocols for both internet and mobile devices (DOM/JQUERY/AJAX). [See
+BLS: 15-1134/15-1132]
+4 months × $4, 500 = $18, 000
+
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+20
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+F. Current and Pending Support
+Beyond this solicitation for SBIR funding, we do not have any current or pending NSF or government
+support for this project.
+
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+21
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+G. Facilities, Equipment and Other Resources
+Entrepreneurial Innovation, LLC (DBA Patent Rank) has the equipment and facilities necessary to perform
+the work. The company owns some basic office furniture, computers, etc.
+
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+22
+
+(MyPatentIdeas.com)
+
+ SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+H. Supplementary Documents
+S1. Data Management Plan
+All data generated in this SBIR Phase I project is considered proprietary.
+
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+23
+
+(MyPatentIdeas.com)
+
+   
+ 
+December 3, 2015
+National Science Foundation
+Proposal Review Committee SBIR #15-605
+IIP: EA4. Entrepreneurial, Informal, and Maker Education
+RE: Letter of Support for Proposed Technology MyPatentIdeas by Dr. Monte Shaffer
+
+Dear National Science Foundation,
+I am writing this letter of support for Dr. Monte J. Shaffer and his technological innovation
+MyPatentIdeas. As the Executive Director for the McGuire Center of Entrepreneurship at the
+University of Arizona, I see the immediate need fulfillment of this technology within our
+entrepreneurship program. Each student team that develops a business plan with the intent of
+launching must position their venture within a competitive landscape. One area of competitive
+analysis that is often very difficult to do is the analysis of the intellectual property associated
+with the idea for their venture. While our student teams receive consulting advice from
+advanced students in the James E. Rogers College of Law at the University of Arizona, this
+technology would be a tremendous asset in informing these students about the entrepreneurial
+potential of their idea.
+The McGuire Center for Entrepreneurship is an independent Center within the Eller College of
+Management at the University of Arizona. The McGuire Center is the foundation of the
+University’s premier and pioneering reputation in entrepreneurship education, and is a key driver
+of entrepreneurship research and entrepreneurial activity within the College and broader
+community. For nearly 30 years, the McGuire Center’s undergraduate and graduate degree
+programs in entrepreneurship have been top-ranked by US News, Economist, Business Week, and
+Entrepreneur rankings. For 2016, US News ranked the McGuire Center #3 among public
+universities for undergraduate entrepreneurship programs and #7 overall, and #5 among public
+universities for graduate programs and #11 overall. Princeton Review/Entrepreneurship
+Magazine ranked the McGuire Center #22 among undergraduate programs in entrepreneurship
+and #19 among graduate programs.
+We have already partnered with Monte’s company to provide research faculty with quality patent
+data to advance research on innovation and entrepreneurship. This initiative, CRIE
+(Commercialization Research on Innovation and Entrepreneurship), see http://crie.patentrank.com/ is under further development. In short, Dr. Shaffer knows patent data well.
+We have also agreed to beta test the proposed MyPatentIdeas technology with our student teams
+to provide feedback on how entrepreneurs can be better informed about the patented-technology
+competitive landscape.
+
+  
+
+                        
+
+ 
+
+  
+ 
+If I can be of further help, please feel to contact me at (520) 626-0464.
+Sincerely,
+
+Joseph P. Broschak
+Executive Director, McGuire Center for Entrepreneurship
+Associate Professor of Management & Organizations
+University of Arizona, Eller College of Management
+
+  
+
+                        
+
+ 
+
+  SBIR Phase I Proposal: From search to research with fast document correlations
+
+PI:
+
+Shaffer
+
+H. Supplementary Documents
+S4. Small Business Administration (SBA) Company Registry Documentation
+ 
+
+  
+
+6%,5 JRY 6%& 5HJLVWUDWLRQ &RQWURO ,' )RUP
+
+  &RPSDQ\ ,QIRUPDWLRQ
+ 
+
+6%& &RQWURO ,'
+
+6%&B         
+
+&RPSDQ\ 1DPH
+
+(QWUHSUHQHXULDO ,QQRYDWLRQ
+
+$GGUHVV
+
+    %HDVOH\ 6WUHHW   6XLWH        '%$ 3DWHQW 5DQN 
+
+&LW\
+
+/H[LQJWRQ
+
+6WDWH
+
+.<
+
+7,1 (,1
+
+         
+
+'816
+
+         
+
+&RPSDQ\ 85/
+
+KWWS   SDWHQW UDQN FRP 
+
+1XPEHU RI (PSOR\HHV
+
+ 
+
+,V WKLV 6%& PDMRULW\ RZQHG E\ PXOWLSOH YHQWXUH FDSLWDO RSHUDWLQJ
+
+1R
+
+=LS
+
+          
+
+FRPSDQLHV  KHGJH IXQGV  RU SULYDWH HTXLW\ ILUPV"
+:KDW SHUFHQWDJH     RI WKH 6%& LV PDMRULW\ RZQHG E\ PXOWLSOH YHQWXUH
+
+  
+
+FDSLWDO RSHUDWLQJ FRPSDQLHV  KHGJH IXQGV  RU SULYDWH HTXLW\ ILUPV"
+ 
+
+(NSF 15-605 IIP:EA4. Entrepreneurial)
+
+Page
+
+25
+
+(MyPatentIdeas.com)
