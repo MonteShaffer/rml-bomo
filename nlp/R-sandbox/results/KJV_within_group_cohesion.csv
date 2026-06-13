@@ -1,0 +1,151 @@
+corpus_id,feature_set,metric,section,within_distance
+KJV,char3,cosine,1 Kings,0.19873282553780006
+KJV,char3,cosine,1 Samuel,0.2214211538647047
+KJV,char3,cosine,2 Kings,0.17687911118319238
+KJV,char3,cosine,2 Samuel,0.21840346645177947
+KJV,char3,cosine,Amos,0.21248256935274168
+KJV,char3,cosine,Ezekiel,0.2282555276262131
+KJV,char3,cosine,Hosea,0.2818013219932596
+KJV,char3,cosine,Isaiah_1_35,0.2262261950119634
+KJV,char3,cosine,Isaiah_36_39,0.1915557989137239
+KJV,char3,cosine,Isaiah_40_55,0.220595729568099
+KJV,char3,cosine,Isaiah_56_66,0.2370855691543092
+KJV,char3,cosine,Jeremiah,0.18529014350454093
+KJV,char3,cosine,Job,0.32644101879083476
+KJV,char3,cosine,Proverbs,0.2628700471395614
+KJV,char3,cosine,Psalms,0.44155752541245635
+KJV,char3,delta,1 Kings,0.4786211598033079
+KJV,char3,delta,1 Samuel,0.45760220451241573
+KJV,char3,delta,2 Kings,0.4553410624344378
+KJV,char3,delta,2 Samuel,0.4788531103311348
+KJV,char3,delta,Amos,0.4904938698850717
+KJV,char3,delta,Ezekiel,0.4546253185623622
+KJV,char3,delta,Hosea,0.5196288757297444
+KJV,char3,delta,Isaiah_1_35,0.5003127103856085
+KJV,char3,delta,Isaiah_36_39,0.4597378564034523
+KJV,char3,delta,Isaiah_40_55,0.47122061214016453
+KJV,char3,delta,Isaiah_56_66,0.4766295266827946
+KJV,char3,delta,Jeremiah,0.453104986258417
+KJV,char3,delta,Job,0.5328356464771408
+KJV,char3,delta,Proverbs,0.4955424877762422
+KJV,char3,delta,Psalms,0.527835270612827
+KJV,char4,cosine,1 Kings,0.475090641123794
+KJV,char4,cosine,1 Samuel,0.497185045406962
+KJV,char4,cosine,2 Kings,0.4376593749490277
+KJV,char4,cosine,2 Samuel,0.5035532533875179
+KJV,char4,cosine,Amos,0.4754933044465989
+KJV,char4,cosine,Ezekiel,0.5048601371211255
+KJV,char4,cosine,Hosea,0.5710363297765384
+KJV,char4,cosine,Isaiah_1_35,0.48800185162951387
+KJV,char4,cosine,Isaiah_36_39,0.452619092927499
+KJV,char4,cosine,Isaiah_40_55,0.486518137950655
+KJV,char4,cosine,Isaiah_56_66,0.5204898206291755
+KJV,char4,cosine,Jeremiah,0.4498952642516639
+KJV,char4,cosine,Job,0.6410924611647877
+KJV,char4,cosine,Proverbs,0.5610456373896624
+KJV,char4,cosine,Psalms,0.7269210336492982
+KJV,char4,delta,1 Kings,0.3494907829131264
+KJV,char4,delta,1 Samuel,0.3373408666698227
+KJV,char4,delta,2 Kings,0.3269570691909028
+KJV,char4,delta,2 Samuel,0.3503010942907276
+KJV,char4,delta,Amos,0.3308662512071335
+KJV,char4,delta,Ezekiel,0.31786366034261115
+KJV,char4,delta,Hosea,0.34417286645608014
+KJV,char4,delta,Isaiah_1_35,0.34325040190302925
+KJV,char4,delta,Isaiah_36_39,0.3327864180780882
+KJV,char4,delta,Isaiah_40_55,0.33404204543253996
+KJV,char4,delta,Isaiah_56_66,0.3408856393560345
+KJV,char4,delta,Jeremiah,0.3223032986021632
+KJV,char4,delta,Job,0.37158596570267416
+KJV,char4,delta,Proverbs,0.3574837549468077
+KJV,char4,delta,Psalms,0.3134388888475474
+KJV,word3,cosine,1 Kings,0.8236491747388873
+KJV,word3,cosine,1 Samuel,0.8675688563102979
+KJV,word3,cosine,2 Kings,0.7550665019197679
+KJV,word3,cosine,2 Samuel,0.8416390567957612
+KJV,word3,cosine,Amos,0.7582966572437011
+KJV,word3,cosine,Ezekiel,0.7846134090532644
+KJV,word3,cosine,Hosea,0.932298104995069
+KJV,word3,cosine,Isaiah_1_35,0.8844246600856394
+KJV,word3,cosine,Isaiah_36_39,0.7916920701809618
+KJV,word3,cosine,Isaiah_40_55,0.8659557359513692
+KJV,word3,cosine,Isaiah_56_66,0.8801436868679181
+KJV,word3,cosine,Jeremiah,0.7733904890185173
+KJV,word3,cosine,Job,0.9584309433237607
+KJV,word3,cosine,Proverbs,0.8912355273717265
+KJV,word3,cosine,Psalms,0.96216389882066
+KJV,word3,delta,1 Kings,0.29461110646953026
+KJV,word3,delta,1 Samuel,0.27336546771183395
+KJV,word3,delta,2 Kings,0.30889901709914963
+KJV,word3,delta,2 Samuel,0.2828251643161987
+KJV,word3,delta,Amos,0.21788016498028298
+KJV,word3,delta,Ezekiel,0.25245815079530026
+KJV,word3,delta,Hosea,0.2012360859996399
+KJV,word3,delta,Isaiah_1_35,0.20392974289629928
+KJV,word3,delta,Isaiah_36_39,0.27810905263761165
+KJV,word3,delta,Isaiah_40_55,0.20811150547353985
+KJV,word3,delta,Isaiah_56_66,0.2080325204694153
+KJV,word3,delta,Jeremiah,0.27504216138587034
+KJV,word3,delta,Job,0.19419611939389603
+KJV,word3,delta,Proverbs,0.17579011604803793
+KJV,word3,delta,Psalms,0.1526306858988968
+KJV,function_words,cosine,1 Kings,0.08139069047194361
+KJV,function_words,cosine,1 Samuel,0.09854568959077208
+KJV,function_words,cosine,2 Kings,0.0815604288875433
+KJV,function_words,cosine,2 Samuel,0.09657396961335692
+KJV,function_words,cosine,Amos,0.09377222691656138
+KJV,function_words,cosine,Ezekiel,0.17287678033510087
+KJV,function_words,cosine,Hosea,0.21184015486717492
+KJV,function_words,cosine,Isaiah_1_35,0.11504463754435652
+KJV,function_words,cosine,Isaiah_36_39,0.12189355157142828
+KJV,function_words,cosine,Isaiah_40_55,0.1678514958905094
+KJV,function_words,cosine,Isaiah_56_66,0.18472419296311585
+KJV,function_words,cosine,Jeremiah,0.10585168027555102
+KJV,function_words,cosine,Job,0.2793279310672089
+KJV,function_words,cosine,Proverbs,0.20326390529157978
+KJV,function_words,cosine,Psalms,0.3489037158735837
+KJV,function_words,delta,1 Kings,0.5792478911766914
+KJV,function_words,delta,1 Samuel,0.670207387234711
+KJV,function_words,delta,2 Kings,0.5319227893423203
+KJV,function_words,delta,2 Samuel,0.6021190891452467
+KJV,function_words,delta,Amos,0.5800994609486885
+KJV,function_words,delta,Ezekiel,0.6672448845328517
+KJV,function_words,delta,Hosea,0.6728789157944057
+KJV,function_words,delta,Isaiah_1_35,0.5932216087334865
+KJV,function_words,delta,Isaiah_36_39,0.6308000308718985
+KJV,function_words,delta,Isaiah_40_55,0.6194303989210118
+KJV,function_words,delta,Isaiah_56_66,0.7295021543580693
+KJV,function_words,delta,Jeremiah,0.5992364117259891
+KJV,function_words,delta,Job,0.8200680146138976
+KJV,function_words,delta,Proverbs,0.628318632611791
+KJV,function_words,delta,Psalms,0.8234356426300304
+KJV,pos3,cosine,1 Kings,0.18647393081300961
+KJV,pos3,cosine,1 Samuel,0.1982122797588017
+KJV,pos3,cosine,2 Kings,0.16550179479516866
+KJV,pos3,cosine,2 Samuel,0.21834165143251816
+KJV,pos3,cosine,Amos,0.22316905696755943
+KJV,pos3,cosine,Ezekiel,0.24431404929047926
+KJV,pos3,cosine,Hosea,0.2718182260322739
+KJV,pos3,cosine,Isaiah_1_35,0.2539220575534664
+KJV,pos3,cosine,Isaiah_36_39,0.12517400166959272
+KJV,pos3,cosine,Isaiah_40_55,0.24507923920144187
+KJV,pos3,cosine,Isaiah_56_66,0.2509471635356269
+KJV,pos3,cosine,Jeremiah,0.18248956370181574
+KJV,pos3,cosine,Job,0.3080820302089517
+KJV,pos3,cosine,Proverbs,0.2373810780463938
+KJV,pos3,cosine,Psalms,0.4466056872888613
+KJV,pos3,delta,1 Kings,0.4569447158024516
+KJV,pos3,delta,1 Samuel,0.47248206084353805
+KJV,pos3,delta,2 Kings,0.41399771316129885
+KJV,pos3,delta,2 Samuel,0.4936217048489737
+KJV,pos3,delta,Amos,0.43481283320062336
+KJV,pos3,delta,Ezekiel,0.4111760840579166
+KJV,pos3,delta,Hosea,0.39442487649295754
+KJV,pos3,delta,Isaiah_1_35,0.42395106275538386
+KJV,pos3,delta,Isaiah_36_39,0.381756859428223
+KJV,pos3,delta,Isaiah_40_55,0.43522022105291414
+KJV,pos3,delta,Isaiah_56_66,0.43615902017444663
+KJV,pos3,delta,Jeremiah,0.3939664139311626
+KJV,pos3,delta,Job,0.4943114655571475
+KJV,pos3,delta,Proverbs,0.46530569684514883
+KJV,pos3,delta,Psalms,0.46739347043545504

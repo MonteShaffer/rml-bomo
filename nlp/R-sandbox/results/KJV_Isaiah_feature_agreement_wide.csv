@@ -1,0 +1,67 @@
+doc_id,char3,char4,function_words,pos3,word3,overall,agreement
+Isaiah_1,Jeremiah,Psalms,Isaiah_1_35,Jeremiah,Psalms,Jeremiah,2
+Isaiah_10,Jeremiah,Psalms,Isaiah_1_35,Isaiah_1_35,Psalms,Isaiah_1_35,2
+Isaiah_11,Isaiah_1_35,Psalms,Isaiah_1_35,Isaiah_1_35,Psalms,Isaiah_1_35,3
+Isaiah_12,Psalms,Psalms,Psalms,Isaiah_1_35,Psalms,Psalms,4
+Isaiah_13,Jeremiah,Psalms,Isaiah_1_35,1 Kings,Psalms,Psalms,2
+Isaiah_14,Jeremiah,Psalms,Jeremiah,Jeremiah,Psalms,Jeremiah,3
+Isaiah_15,Jeremiah,Psalms,Isaiah_1_35,Jeremiah,Psalms,Jeremiah,2
+Isaiah_16,Jeremiah,Psalms,Isaiah_1_35,Jeremiah,Psalms,Jeremiah,2
+Isaiah_17,Isaiah_1_35,Psalms,Isaiah_1_35,Isaiah_1_35,Psalms,Isaiah_1_35,3
+Isaiah_18,Jeremiah,Psalms,Ezekiel,Ezekiel,Psalms,Ezekiel,2
+Isaiah_19,Ezekiel,Psalms,Isaiah_1_35,Jeremiah,Psalms,Psalms,2
+Isaiah_2,Jeremiah,Psalms,Isaiah_1_35,Jeremiah,Psalms,Jeremiah,2
+Isaiah_20,2 Kings,Psalms,Isaiah_1_35,Jeremiah,Psalms,Psalms,2
+Isaiah_21,Jeremiah,Psalms,Isaiah_1_35,Isaiah_1_35,Psalms,Isaiah_1_35,2
+Isaiah_22,Isaiah_1_35,Psalms,Isaiah_1_35,Isaiah_40_55,Psalms,Isaiah_1_35,2
+Isaiah_23,Isaiah_1_35,Psalms,Isaiah_1_35,Proverbs,Psalms,Isaiah_1_35,2
+Isaiah_24,Jeremiah,Psalms,Isaiah_1_35,Jeremiah,Psalms,Jeremiah,2
+Isaiah_25,Isaiah_1_35,Psalms,Isaiah_1_35,Isaiah_40_55,Psalms,Isaiah_1_35,2
+Isaiah_26,Jeremiah,Psalms,Isaiah_1_35,Proverbs,Psalms,Psalms,2
+Isaiah_27,Isaiah_1_35,Psalms,Ezekiel,Isaiah_1_35,Psalms,Isaiah_1_35,2
+Isaiah_28,Isaiah_1_35,Psalms,Isaiah_1_35,Isaiah_1_35,Psalms,Isaiah_1_35,3
+Isaiah_29,Isaiah_1_35,Psalms,Isaiah_1_35,Isaiah_1_35,Psalms,Isaiah_1_35,3
+Isaiah_3,Jeremiah,Psalms,Jeremiah,Isaiah_1_35,Psalms,Jeremiah,2
+Isaiah_30,Jeremiah,Psalms,Isaiah_1_35,2 Kings,Psalms,Psalms,2
+Isaiah_31,Jeremiah,Psalms,Isaiah_1_35,2 Kings,Psalms,Psalms,2
+Isaiah_32,Isaiah_1_35,Psalms,Isaiah_1_35,Jeremiah,Psalms,Isaiah_1_35,2
+Isaiah_33,Isaiah_1_35,Psalms,Isaiah_1_35,2 Kings,Psalms,Isaiah_1_35,2
+Isaiah_34,Isaiah_1_35,Psalms,Isaiah_1_35,Isaiah_1_35,Psalms,Isaiah_1_35,3
+Isaiah_35,Isaiah_1_35,Psalms,Isaiah_1_35,Jeremiah,Psalms,Isaiah_1_35,2
+Isaiah_36,2 Kings,2 Kings,2 Kings,Jeremiah,Psalms,2 Kings,3
+Isaiah_37,2 Kings,2 Kings,2 Kings,Isaiah_36_39,2 Kings,2 Kings,4
+Isaiah_38,2 Kings,2 Kings,Jeremiah,Isaiah_36_39,Psalms,2 Kings,2
+Isaiah_39,2 Kings,2 Kings,2 Kings,Jeremiah,Psalms,2 Kings,3
+Isaiah_4,Isaiah_1_35,Psalms,Isaiah_1_35,Psalms,Psalms,Psalms,3
+Isaiah_40,Isaiah_40_55,Psalms,Isaiah_1_35,Jeremiah,Psalms,Psalms,2
+Isaiah_41,Isaiah_40_55,Psalms,Ezekiel,Isaiah_36_39,Psalms,Psalms,2
+Isaiah_42,Isaiah_40_55,Psalms,Isaiah_40_55,Jeremiah,Psalms,Isaiah_40_55,2
+Isaiah_43,Isaiah_40_55,Psalms,Isaiah_40_55,Jeremiah,Psalms,Isaiah_40_55,2
+Isaiah_44,Isaiah_40_55,Psalms,Isaiah_40_55,Jeremiah,Psalms,Isaiah_40_55,2
+Isaiah_45,Isaiah_40_55,Psalms,Isaiah_40_55,Isaiah_1_35,Psalms,Isaiah_40_55,2
+Isaiah_46,Isaiah_40_55,Psalms,Isaiah_40_55,Jeremiah,Psalms,Isaiah_40_55,2
+Isaiah_47,Isaiah_40_55,Psalms,Isaiah_56_66,Jeremiah,Psalms,Psalms,2
+Isaiah_48,Isaiah_40_55,Psalms,Isaiah_40_55,Jeremiah,Psalms,Isaiah_40_55,2
+Isaiah_49,Jeremiah,Jeremiah,Jeremiah,Ezekiel,Psalms,Jeremiah,3
+Isaiah_5,Jeremiah,Psalms,Isaiah_1_35,Isaiah_1_35,Psalms,Isaiah_1_35,2
+Isaiah_50,Isaiah_40_55,Psalms,Isaiah_40_55,Jeremiah,Psalms,Isaiah_40_55,2
+Isaiah_51,Isaiah_1_35,Psalms,Jeremiah,Jeremiah,Psalms,Jeremiah,2
+Isaiah_52,Isaiah_40_55,Psalms,Isaiah_1_35,Jeremiah,Psalms,Psalms,2
+Isaiah_53,Jeremiah,Psalms,Psalms,Jeremiah,Psalms,Psalms,3
+Isaiah_54,Jeremiah,Psalms,Isaiah_56_66,Jeremiah,Psalms,Jeremiah,2
+Isaiah_55,Isaiah_40_55,Psalms,Isaiah_56_66,Jeremiah,Psalms,Psalms,2
+Isaiah_56,Jeremiah,Psalms,Jeremiah,1 Samuel,Psalms,Jeremiah,2
+Isaiah_57,Jeremiah,Psalms,Jeremiah,Isaiah_1_35,Psalms,Jeremiah,2
+Isaiah_58,Isaiah_1_35,Psalms,Jeremiah,Isaiah_1_35,Psalms,Isaiah_1_35,2
+Isaiah_59,Jeremiah,Psalms,Jeremiah,Jeremiah,Psalms,Jeremiah,3
+Isaiah_6,Jeremiah,Psalms,1 Samuel,Jeremiah,Psalms,Jeremiah,2
+Isaiah_60,Ezekiel,Psalms,Ezekiel,Ezekiel,Psalms,Ezekiel,3
+Isaiah_61,Jeremiah,Psalms,Isaiah_1_35,Psalms,Psalms,Psalms,3
+Isaiah_62,Isaiah_40_55,Psalms,Ezekiel,Isaiah_1_35,Psalms,Psalms,2
+Isaiah_63,Jeremiah,Psalms,1 Kings,Jeremiah,Psalms,Jeremiah,2
+Isaiah_64,Jeremiah,Psalms,Psalms,Jeremiah,Psalms,Psalms,3
+Isaiah_65,Jeremiah,Psalms,Jeremiah,Jeremiah,Psalms,Jeremiah,3
+Isaiah_66,Jeremiah,Psalms,Isaiah_1_35,Isaiah_1_35,Psalms,Isaiah_1_35,2
+Isaiah_7,Jeremiah,Psalms,Isaiah_1_35,Isaiah_1_35,Psalms,Isaiah_1_35,2
+Isaiah_8,Jeremiah,Psalms,Isaiah_1_35,Isaiah_1_35,Psalms,Isaiah_1_35,2
+Isaiah_9,Isaiah_1_35,Psalms,Isaiah_1_35,Isaiah_1_35,Psalms,Isaiah_1_35,3

@@ -1,0 +1,16 @@
+feature_set,comparison,distance
+Character 3-grams,Isaiah_1_35 vs Isaiah_40_55,0.242748441446268
+Character 3-grams,Isaiah_40_55 vs Isaiah_56_66,0.23039056616392775
+Character 3-grams,Isaiah_40_55 vs Jeremiah,0.23228357852730264
+Character 3-grams,Isaiah_40_55 vs Ezekiel,0.24844418250426445
+Character 3-grams,Isaiah_1_35 vs Jeremiah,0.23416604695309087
+Character 4-grams,Isaiah_1_35 vs Isaiah_40_55,0.5208268813283495
+Character 4-grams,Isaiah_40_55 vs Isaiah_56_66,0.5084170252252083
+Character 4-grams,Isaiah_40_55 vs Jeremiah,0.5181632542228621
+Character 4-grams,Isaiah_40_55 vs Ezekiel,0.5339139580116994
+Character 4-grams,Isaiah_1_35 vs Jeremiah,0.5250040952785718
+Word 3-grams,Isaiah_1_35 vs Isaiah_40_55,0.9214392664914637
+Word 3-grams,Isaiah_40_55 vs Isaiah_56_66,0.8872329411453752
+Word 3-grams,Isaiah_40_55 vs Jeremiah,0.8764689452448187
+Word 3-grams,Isaiah_40_55 vs Ezekiel,0.8946277604389967
+Word 3-grams,Isaiah_1_35 vs Jeremiah,0.9063089000862933

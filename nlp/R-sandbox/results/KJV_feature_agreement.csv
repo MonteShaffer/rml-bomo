@@ -1,0 +1,1247 @@
+corpus_id,doc_id,neighbor_section,agreement
+KJV,1 Kings_1,1 Kings,2
+KJV,1 Kings_1,1 Samuel,1
+KJV,1 Kings_1,Psalms,2
+KJV,1 Kings_10,1 Kings,1
+KJV,1 Kings_10,2 Kings,2
+KJV,1 Kings_10,Psalms,2
+KJV,1 Kings_11,1 Kings,3
+KJV,1 Kings_11,2 Kings,1
+KJV,1 Kings_11,Psalms,1
+KJV,1 Kings_12,1 Kings,2
+KJV,1 Kings_12,2 Kings,2
+KJV,1 Kings_12,Psalms,1
+KJV,1 Kings_13,1 Kings,1
+KJV,1 Kings_13,2 Kings,2
+KJV,1 Kings_13,Psalms,2
+KJV,1 Kings_14,1 Kings,3
+KJV,1 Kings_14,2 Kings,1
+KJV,1 Kings_14,Psalms,1
+KJV,1 Kings_15,1 Kings,2
+KJV,1 Kings_15,2 Kings,3
+KJV,1 Kings_16,1 Kings,1
+KJV,1 Kings_16,2 Kings,3
+KJV,1 Kings_16,Psalms,1
+KJV,1 Kings_17,1 Kings,2
+KJV,1 Kings_17,2 Kings,1
+KJV,1 Kings_17,Psalms,2
+KJV,1 Kings_18,1 Kings,2
+KJV,1 Kings_18,2 Kings,1
+KJV,1 Kings_18,Psalms,2
+KJV,1 Kings_19,1 Kings,2
+KJV,1 Kings_19,Ezekiel,1
+KJV,1 Kings_19,Psalms,2
+KJV,1 Kings_2,1 Kings,4
+KJV,1 Kings_2,Psalms,1
+KJV,1 Kings_20,1 Kings,1
+KJV,1 Kings_20,2 Kings,2
+KJV,1 Kings_20,Ezekiel,1
+KJV,1 Kings_20,Psalms,1
+KJV,1 Kings_21,1 Kings,1
+KJV,1 Kings_21,2 Kings,1
+KJV,1 Kings_21,Jeremiah,1
+KJV,1 Kings_21,Psalms,2
+KJV,1 Kings_22,2 Kings,4
+KJV,1 Kings_22,Psalms,1
+KJV,1 Kings_3,1 Kings,2
+KJV,1 Kings_3,2 Kings,1
+KJV,1 Kings_3,Psalms,2
+KJV,1 Kings_4,1 Kings,1
+KJV,1 Kings_4,2 Kings,2
+KJV,1 Kings_4,Psalms,2
+KJV,1 Kings_5,1 Kings,2
+KJV,1 Kings_5,2 Kings,1
+KJV,1 Kings_5,Psalms,2
+KJV,1 Kings_6,2 Kings,1
+KJV,1 Kings_6,Ezekiel,2
+KJV,1 Kings_6,Jeremiah,1
+KJV,1 Kings_6,Psalms,1
+KJV,1 Kings_7,2 Kings,1
+KJV,1 Kings_7,Ezekiel,3
+KJV,1 Kings_7,Psalms,1
+KJV,1 Kings_8,2 Kings,2
+KJV,1 Kings_8,Jeremiah,1
+KJV,1 Kings_8,Psalms,2
+KJV,1 Kings_9,1 Kings,3
+KJV,1 Kings_9,2 Kings,1
+KJV,1 Kings_9,Psalms,1
+KJV,1 Samuel_1,1 Kings,2
+KJV,1 Samuel_1,1 Samuel,1
+KJV,1 Samuel_1,Psalms,2
+KJV,1 Samuel_10,1 Samuel,2
+KJV,1 Samuel_10,2 Kings,1
+KJV,1 Samuel_10,Psalms,2
+KJV,1 Samuel_11,1 Samuel,2
+KJV,1 Samuel_11,2 Samuel,1
+KJV,1 Samuel_11,Psalms,2
+KJV,1 Samuel_12,Jeremiah,3
+KJV,1 Samuel_12,Psalms,2
+KJV,1 Samuel_13,1 Samuel,3
+KJV,1 Samuel_13,2 Kings,1
+KJV,1 Samuel_13,Psalms,1
+KJV,1 Samuel_14,1 Samuel,3
+KJV,1 Samuel_14,2 Samuel,1
+KJV,1 Samuel_14,Psalms,1
+KJV,1 Samuel_15,1 Kings,1
+KJV,1 Samuel_15,1 Samuel,1
+KJV,1 Samuel_15,2 Samuel,1
+KJV,1 Samuel_15,Psalms,2
+KJV,1 Samuel_16,1 Kings,1
+KJV,1 Samuel_16,1 Samuel,1
+KJV,1 Samuel_16,2 Samuel,1
+KJV,1 Samuel_16,Psalms,2
+KJV,1 Samuel_17,1 Samuel,3
+KJV,1 Samuel_17,2 Kings,1
+KJV,1 Samuel_17,Psalms,1
+KJV,1 Samuel_18,1 Samuel,4
+KJV,1 Samuel_18,Psalms,1
+KJV,1 Samuel_19,1 Samuel,4
+KJV,1 Samuel_19,Psalms,1
+KJV,1 Samuel_2,1 Kings,1
+KJV,1 Samuel_2,2 Kings,1
+KJV,1 Samuel_2,Jeremiah,1
+KJV,1 Samuel_2,Psalms,2
+KJV,1 Samuel_20,1 Kings,1
+KJV,1 Samuel_20,1 Samuel,1
+KJV,1 Samuel_20,2 Samuel,1
+KJV,1 Samuel_20,Psalms,2
+KJV,1 Samuel_21,1 Samuel,2
+KJV,1 Samuel_21,2 Kings,1
+KJV,1 Samuel_21,Psalms,2
+KJV,1 Samuel_22,1 Kings,1
+KJV,1 Samuel_22,1 Samuel,1
+KJV,1 Samuel_22,2 Samuel,1
+KJV,1 Samuel_22,Psalms,2
+KJV,1 Samuel_23,1 Kings,1
+KJV,1 Samuel_23,1 Samuel,3
+KJV,1 Samuel_23,Psalms,1
+KJV,1 Samuel_24,1 Kings,2
+KJV,1 Samuel_24,1 Samuel,1
+KJV,1 Samuel_24,Psalms,2
+KJV,1 Samuel_25,1 Samuel,1
+KJV,1 Samuel_25,2 Kings,1
+KJV,1 Samuel_25,2 Samuel,1
+KJV,1 Samuel_25,Psalms,2
+KJV,1 Samuel_26,1 Kings,1
+KJV,1 Samuel_26,1 Samuel,2
+KJV,1 Samuel_26,2 Samuel,1
+KJV,1 Samuel_26,Psalms,1
+KJV,1 Samuel_27,1 Kings,1
+KJV,1 Samuel_27,1 Samuel,1
+KJV,1 Samuel_27,2 Kings,1
+KJV,1 Samuel_27,Psalms,2
+KJV,1 Samuel_28,1 Kings,1
+KJV,1 Samuel_28,1 Samuel,1
+KJV,1 Samuel_28,Ezekiel,1
+KJV,1 Samuel_28,Psalms,2
+KJV,1 Samuel_29,1 Samuel,1
+KJV,1 Samuel_29,2 Kings,1
+KJV,1 Samuel_29,2 Samuel,1
+KJV,1 Samuel_29,Psalms,2
+KJV,1 Samuel_3,1 Kings,1
+KJV,1 Samuel_3,1 Samuel,1
+KJV,1 Samuel_3,2 Kings,1
+KJV,1 Samuel_3,Psalms,2
+KJV,1 Samuel_30,1 Kings,1
+KJV,1 Samuel_30,1 Samuel,1
+KJV,1 Samuel_30,Hosea,1
+KJV,1 Samuel_30,Psalms,2
+KJV,1 Samuel_31,1 Kings,1
+KJV,1 Samuel_31,1 Samuel,1
+KJV,1 Samuel_31,2 Samuel,1
+KJV,1 Samuel_31,Psalms,2
+KJV,1 Samuel_4,1 Samuel,1
+KJV,1 Samuel_4,2 Kings,1
+KJV,1 Samuel_4,Jeremiah,1
+KJV,1 Samuel_4,Psalms,2
+KJV,1 Samuel_5,1 Samuel,2
+KJV,1 Samuel_5,2 Kings,1
+KJV,1 Samuel_5,Psalms,2
+KJV,1 Samuel_6,1 Samuel,1
+KJV,1 Samuel_6,2 Kings,2
+KJV,1 Samuel_6,2 Samuel,1
+KJV,1 Samuel_6,Psalms,1
+KJV,1 Samuel_7,1 Samuel,3
+KJV,1 Samuel_7,Psalms,2
+KJV,1 Samuel_8,1 Kings,1
+KJV,1 Samuel_8,1 Samuel,1
+KJV,1 Samuel_8,2 Samuel,1
+KJV,1 Samuel_8,Psalms,2
+KJV,1 Samuel_9,1 Kings,1
+KJV,1 Samuel_9,1 Samuel,1
+KJV,1 Samuel_9,2 Kings,1
+KJV,1 Samuel_9,Psalms,2
+KJV,2 Kings_1,1 Kings,1
+KJV,2 Kings_1,2 Kings,2
+KJV,2 Kings_1,Psalms,2
+KJV,2 Kings_10,1 Kings,2
+KJV,2 Kings_10,2 Kings,1
+KJV,2 Kings_10,Isaiah_1_35,1
+KJV,2 Kings_10,Psalms,1
+KJV,2 Kings_11,2 Kings,2
+KJV,2 Kings_11,Isaiah_1_35,1
+KJV,2 Kings_11,Psalms,2
+KJV,2 Kings_12,2 Kings,4
+KJV,2 Kings_12,Psalms,1
+KJV,2 Kings_13,2 Kings,3
+KJV,2 Kings_13,Isaiah_1_35,1
+KJV,2 Kings_13,Psalms,1
+KJV,2 Kings_14,1 Kings,1
+KJV,2 Kings_14,2 Kings,3
+KJV,2 Kings_14,Psalms,1
+KJV,2 Kings_15,2 Kings,4
+KJV,2 Kings_15,Jeremiah,1
+KJV,2 Kings_16,2 Kings,4
+KJV,2 Kings_16,Psalms,1
+KJV,2 Kings_17,1 Kings,1
+KJV,2 Kings_17,2 Kings,1
+KJV,2 Kings_17,Jeremiah,1
+KJV,2 Kings_17,Psalms,2
+KJV,2 Kings_18,2 Kings,2
+KJV,2 Kings_18,Isaiah_36_39,3
+KJV,2 Kings_19,2 Kings,1
+KJV,2 Kings_19,Isaiah_36_39,4
+KJV,2 Kings_2,1 Kings,2
+KJV,2 Kings_2,2 Kings,1
+KJV,2 Kings_2,Psalms,2
+KJV,2 Kings_20,1 Kings,1
+KJV,2 Kings_20,1 Samuel,1
+KJV,2 Kings_20,Isaiah_36_39,2
+KJV,2 Kings_20,Psalms,1
+KJV,2 Kings_21,2 Kings,4
+KJV,2 Kings_21,Psalms,1
+KJV,2 Kings_22,2 Kings,3
+KJV,2 Kings_22,Jeremiah,1
+KJV,2 Kings_22,Psalms,1
+KJV,2 Kings_23,2 Kings,3
+KJV,2 Kings_23,Ezekiel,1
+KJV,2 Kings_23,Psalms,1
+KJV,2 Kings_24,2 Kings,4
+KJV,2 Kings_24,Psalms,1
+KJV,2 Kings_25,2 Kings,2
+KJV,2 Kings_25,Jeremiah,3
+KJV,2 Kings_3,1 Kings,2
+KJV,2 Kings_3,2 Kings,2
+KJV,2 Kings_3,Psalms,1
+KJV,2 Kings_4,1 Kings,1
+KJV,2 Kings_4,2 Kings,3
+KJV,2 Kings_4,Psalms,1
+KJV,2 Kings_5,2 Kings,4
+KJV,2 Kings_5,Psalms,1
+KJV,2 Kings_6,1 Kings,1
+KJV,2 Kings_6,2 Kings,3
+KJV,2 Kings_6,Psalms,1
+KJV,2 Kings_7,1 Samuel,1
+KJV,2 Kings_7,2 Kings,2
+KJV,2 Kings_7,Psalms,2
+KJV,2 Kings_8,1 Kings,2
+KJV,2 Kings_8,2 Kings,2
+KJV,2 Kings_8,Psalms,1
+KJV,2 Kings_9,1 Kings,2
+KJV,2 Kings_9,2 Kings,2
+KJV,2 Kings_9,Psalms,1
+KJV,2 Samuel_1,1 Kings,2
+KJV,2 Samuel_1,1 Samuel,1
+KJV,2 Samuel_1,Psalms,2
+KJV,2 Samuel_10,1 Kings,1
+KJV,2 Samuel_10,1 Samuel,2
+KJV,2 Samuel_10,Psalms,2
+KJV,2 Samuel_11,1 Kings,1
+KJV,2 Samuel_11,2 Samuel,2
+KJV,2 Samuel_11,Psalms,2
+KJV,2 Samuel_12,1 Kings,2
+KJV,2 Samuel_12,2 Samuel,1
+KJV,2 Samuel_12,Psalms,2
+KJV,2 Samuel_13,1 Samuel,1
+KJV,2 Samuel_13,2 Kings,1
+KJV,2 Samuel_13,2 Samuel,1
+KJV,2 Samuel_13,Psalms,2
+KJV,2 Samuel_14,1 Kings,1
+KJV,2 Samuel_14,2 Kings,1
+KJV,2 Samuel_14,2 Samuel,1
+KJV,2 Samuel_14,Psalms,2
+KJV,2 Samuel_15,2 Samuel,3
+KJV,2 Samuel_15,Psalms,2
+KJV,2 Samuel_16,2 Kings,1
+KJV,2 Samuel_16,2 Samuel,2
+KJV,2 Samuel_16,Psalms,2
+KJV,2 Samuel_17,2 Kings,1
+KJV,2 Samuel_17,2 Samuel,2
+KJV,2 Samuel_17,Psalms,2
+KJV,2 Samuel_18,1 Samuel,1
+KJV,2 Samuel_18,2 Kings,1
+KJV,2 Samuel_18,2 Samuel,1
+KJV,2 Samuel_18,Psalms,2
+KJV,2 Samuel_19,2 Kings,1
+KJV,2 Samuel_19,2 Samuel,3
+KJV,2 Samuel_19,Psalms,1
+KJV,2 Samuel_2,1 Kings,1
+KJV,2 Samuel_2,2 Samuel,3
+KJV,2 Samuel_2,Psalms,1
+KJV,2 Samuel_20,1 Samuel,1
+KJV,2 Samuel_20,2 Kings,2
+KJV,2 Samuel_20,Psalms,2
+KJV,2 Samuel_21,1 Samuel,1
+KJV,2 Samuel_21,2 Kings,2
+KJV,2 Samuel_21,Psalms,2
+KJV,2 Samuel_22,Jeremiah,1
+KJV,2 Samuel_22,Psalms,4
+KJV,2 Samuel_23,2 Samuel,2
+KJV,2 Samuel_23,Jeremiah,1
+KJV,2 Samuel_23,Psalms,2
+KJV,2 Samuel_24,1 Kings,2
+KJV,2 Samuel_24,2 Kings,1
+KJV,2 Samuel_24,Psalms,2
+KJV,2 Samuel_3,1 Samuel,2
+KJV,2 Samuel_3,2 Samuel,1
+KJV,2 Samuel_3,Psalms,2
+KJV,2 Samuel_4,1 Kings,1
+KJV,2 Samuel_4,1 Samuel,1
+KJV,2 Samuel_4,2 Samuel,1
+KJV,2 Samuel_4,Psalms,2
+KJV,2 Samuel_5,1 Samuel,1
+KJV,2 Samuel_5,2 Kings,1
+KJV,2 Samuel_5,2 Samuel,1
+KJV,2 Samuel_5,Psalms,2
+KJV,2 Samuel_6,1 Kings,1
+KJV,2 Samuel_6,1 Samuel,1
+KJV,2 Samuel_6,2 Kings,1
+KJV,2 Samuel_6,Psalms,2
+KJV,2 Samuel_7,1 Kings,1
+KJV,2 Samuel_7,Jeremiah,2
+KJV,2 Samuel_7,Psalms,2
+KJV,2 Samuel_8,2 Kings,1
+KJV,2 Samuel_8,2 Samuel,2
+KJV,2 Samuel_8,Psalms,2
+KJV,2 Samuel_9,1 Kings,2
+KJV,2 Samuel_9,2 Samuel,1
+KJV,2 Samuel_9,Psalms,2
+KJV,Amos_1,Amos,2
+KJV,Amos_1,Jeremiah,1
+KJV,Amos_1,Psalms,2
+KJV,Amos_2,Amos,1
+KJV,Amos_2,Jeremiah,2
+KJV,Amos_2,Psalms,2
+KJV,Amos_3,Isaiah_1_35,1
+KJV,Amos_3,Jeremiah,2
+KJV,Amos_3,Psalms,2
+KJV,Amos_4,Ezekiel,1
+KJV,Amos_4,Jeremiah,2
+KJV,Amos_4,Psalms,2
+KJV,Amos_5,Jeremiah,3
+KJV,Amos_5,Psalms,2
+KJV,Amos_6,Jeremiah,3
+KJV,Amos_6,Psalms,2
+KJV,Amos_7,1 Kings,1
+KJV,Amos_7,Jeremiah,2
+KJV,Amos_7,Psalms,2
+KJV,Amos_8,Ezekiel,1
+KJV,Amos_8,Jeremiah,2
+KJV,Amos_8,Psalms,2
+KJV,Amos_9,Ezekiel,2
+KJV,Amos_9,Jeremiah,1
+KJV,Amos_9,Psalms,2
+KJV,Ezekiel_1,Ezekiel,3
+KJV,Ezekiel_1,Psalms,2
+KJV,Ezekiel_10,Ezekiel,3
+KJV,Ezekiel_10,Jeremiah,1
+KJV,Ezekiel_10,Psalms,1
+KJV,Ezekiel_11,Ezekiel,2
+KJV,Ezekiel_11,Jeremiah,1
+KJV,Ezekiel_11,Psalms,2
+KJV,Ezekiel_12,Ezekiel,3
+KJV,Ezekiel_12,Jeremiah,1
+KJV,Ezekiel_12,Psalms,1
+KJV,Ezekiel_13,Ezekiel,3
+KJV,Ezekiel_13,Psalms,2
+KJV,Ezekiel_14,Ezekiel,3
+KJV,Ezekiel_14,Jeremiah,1
+KJV,Ezekiel_14,Psalms,1
+KJV,Ezekiel_15,Ezekiel,3
+KJV,Ezekiel_15,Psalms,2
+KJV,Ezekiel_16,Ezekiel,3
+KJV,Ezekiel_16,Jeremiah,1
+KJV,Ezekiel_16,Psalms,1
+KJV,Ezekiel_17,Ezekiel,1
+KJV,Ezekiel_17,Isaiah_1_35,1
+KJV,Ezekiel_17,Jeremiah,1
+KJV,Ezekiel_17,Psalms,2
+KJV,Ezekiel_18,Ezekiel,2
+KJV,Ezekiel_18,Isaiah_40_55,1
+KJV,Ezekiel_18,Psalms,2
+KJV,Ezekiel_19,2 Kings,1
+KJV,Ezekiel_19,Ezekiel,2
+KJV,Ezekiel_19,Psalms,2
+KJV,Ezekiel_2,Ezekiel,3
+KJV,Ezekiel_2,Psalms,2
+KJV,Ezekiel_20,Ezekiel,3
+KJV,Ezekiel_20,Isaiah_1_35,1
+KJV,Ezekiel_20,Psalms,1
+KJV,Ezekiel_21,Ezekiel,3
+KJV,Ezekiel_21,Jeremiah,1
+KJV,Ezekiel_21,Psalms,1
+KJV,Ezekiel_22,Ezekiel,4
+KJV,Ezekiel_22,Psalms,1
+KJV,Ezekiel_23,Ezekiel,2
+KJV,Ezekiel_23,Hosea,1
+KJV,Ezekiel_23,Jeremiah,1
+KJV,Ezekiel_23,Psalms,1
+KJV,Ezekiel_24,Ezekiel,2
+KJV,Ezekiel_24,Jeremiah,1
+KJV,Ezekiel_24,Psalms,2
+KJV,Ezekiel_25,Ezekiel,4
+KJV,Ezekiel_25,Psalms,1
+KJV,Ezekiel_26,Ezekiel,2
+KJV,Ezekiel_26,Jeremiah,1
+KJV,Ezekiel_26,Psalms,2
+KJV,Ezekiel_27,Ezekiel,4
+KJV,Ezekiel_27,Psalms,1
+KJV,Ezekiel_28,Ezekiel,4
+KJV,Ezekiel_28,Psalms,1
+KJV,Ezekiel_29,Ezekiel,4
+KJV,Ezekiel_29,Psalms,1
+KJV,Ezekiel_3,Ezekiel,3
+KJV,Ezekiel_3,Jeremiah,1
+KJV,Ezekiel_3,Psalms,1
+KJV,Ezekiel_30,Ezekiel,4
+KJV,Ezekiel_30,Psalms,1
+KJV,Ezekiel_31,Ezekiel,2
+KJV,Ezekiel_31,Jeremiah,1
+KJV,Ezekiel_31,Psalms,2
+KJV,Ezekiel_32,Ezekiel,4
+KJV,Ezekiel_32,Psalms,1
+KJV,Ezekiel_33,Ezekiel,3
+KJV,Ezekiel_33,Isaiah_40_55,1
+KJV,Ezekiel_33,Psalms,1
+KJV,Ezekiel_34,Ezekiel,4
+KJV,Ezekiel_34,Psalms,1
+KJV,Ezekiel_35,1 Kings,1
+KJV,Ezekiel_35,Ezekiel,3
+KJV,Ezekiel_35,Psalms,1
+KJV,Ezekiel_36,1 Kings,1
+KJV,Ezekiel_36,Ezekiel,2
+KJV,Ezekiel_36,Jeremiah,1
+KJV,Ezekiel_36,Psalms,1
+KJV,Ezekiel_37,Ezekiel,4
+KJV,Ezekiel_37,Psalms,1
+KJV,Ezekiel_38,Ezekiel,4
+KJV,Ezekiel_38,Psalms,1
+KJV,Ezekiel_39,Ezekiel,2
+KJV,Ezekiel_39,Jeremiah,2
+KJV,Ezekiel_39,Psalms,1
+KJV,Ezekiel_4,Ezekiel,3
+KJV,Ezekiel_4,Psalms,2
+KJV,Ezekiel_40,1 Kings,1
+KJV,Ezekiel_40,Ezekiel,3
+KJV,Ezekiel_40,Psalms,1
+KJV,Ezekiel_41,1 Kings,1
+KJV,Ezekiel_41,Ezekiel,3
+KJV,Ezekiel_41,Psalms,1
+KJV,Ezekiel_42,Ezekiel,4
+KJV,Ezekiel_42,Psalms,1
+KJV,Ezekiel_43,Ezekiel,4
+KJV,Ezekiel_43,Psalms,1
+KJV,Ezekiel_44,Ezekiel,2
+KJV,Ezekiel_44,Isaiah_1_35,1
+KJV,Ezekiel_44,Psalms,2
+KJV,Ezekiel_45,Ezekiel,4
+KJV,Ezekiel_45,Psalms,1
+KJV,Ezekiel_46,Ezekiel,3
+KJV,Ezekiel_46,Isaiah_1_35,1
+KJV,Ezekiel_46,Psalms,1
+KJV,Ezekiel_47,Ezekiel,3
+KJV,Ezekiel_47,Psalms,2
+KJV,Ezekiel_48,1 Kings,1
+KJV,Ezekiel_48,Ezekiel,3
+KJV,Ezekiel_48,Psalms,1
+KJV,Ezekiel_5,Ezekiel,3
+KJV,Ezekiel_5,Psalms,2
+KJV,Ezekiel_6,Ezekiel,4
+KJV,Ezekiel_6,Psalms,1
+KJV,Ezekiel_7,Ezekiel,1
+KJV,Ezekiel_7,Jeremiah,2
+KJV,Ezekiel_7,Psalms,2
+KJV,Ezekiel_8,Ezekiel,2
+KJV,Ezekiel_8,Jeremiah,1
+KJV,Ezekiel_8,Psalms,2
+KJV,Ezekiel_9,1 Samuel,1
+KJV,Ezekiel_9,Ezekiel,1
+KJV,Ezekiel_9,Jeremiah,1
+KJV,Ezekiel_9,Psalms,2
+KJV,Hosea_1,Jeremiah,3
+KJV,Hosea_1,Psalms,2
+KJV,Hosea_10,Isaiah_1_35,2
+KJV,Hosea_10,Jeremiah,1
+KJV,Hosea_10,Psalms,2
+KJV,Hosea_11,Hosea,1
+KJV,Hosea_11,Jeremiah,2
+KJV,Hosea_11,Psalms,2
+KJV,Hosea_12,2 Kings,1
+KJV,Hosea_12,Hosea,1
+KJV,Hosea_12,Jeremiah,1
+KJV,Hosea_12,Psalms,2
+KJV,Hosea_13,Ezekiel,2
+KJV,Hosea_13,Jeremiah,1
+KJV,Hosea_13,Psalms,2
+KJV,Hosea_14,Hosea,1
+KJV,Hosea_14,Psalms,4
+KJV,Hosea_2,Ezekiel,1
+KJV,Hosea_2,Jeremiah,2
+KJV,Hosea_2,Psalms,2
+KJV,Hosea_3,1 Kings,1
+KJV,Hosea_3,Isaiah_1_35,1
+KJV,Hosea_3,Jeremiah,1
+KJV,Hosea_3,Psalms,2
+KJV,Hosea_4,Jeremiah,3
+KJV,Hosea_4,Psalms,2
+KJV,Hosea_5,Ezekiel,1
+KJV,Hosea_5,Jeremiah,2
+KJV,Hosea_5,Psalms,2
+KJV,Hosea_6,Jeremiah,2
+KJV,Hosea_6,Psalms,3
+KJV,Hosea_7,Ezekiel,1
+KJV,Hosea_7,Jeremiah,2
+KJV,Hosea_7,Psalms,2
+KJV,Hosea_8,Jeremiah,3
+KJV,Hosea_8,Psalms,2
+KJV,Hosea_9,Ezekiel,1
+KJV,Hosea_9,Hosea,1
+KJV,Hosea_9,Jeremiah,1
+KJV,Hosea_9,Psalms,2
+KJV,Isaiah_1,Isaiah_1_35,1
+KJV,Isaiah_1,Jeremiah,2
+KJV,Isaiah_1,Psalms,2
+KJV,Isaiah_10,Isaiah_1_35,2
+KJV,Isaiah_10,Jeremiah,1
+KJV,Isaiah_10,Psalms,2
+KJV,Isaiah_11,Isaiah_1_35,3
+KJV,Isaiah_11,Psalms,2
+KJV,Isaiah_12,Isaiah_1_35,1
+KJV,Isaiah_12,Psalms,4
+KJV,Isaiah_13,1 Kings,1
+KJV,Isaiah_13,Isaiah_1_35,1
+KJV,Isaiah_13,Jeremiah,1
+KJV,Isaiah_13,Psalms,2
+KJV,Isaiah_14,Jeremiah,3
+KJV,Isaiah_14,Psalms,2
+KJV,Isaiah_15,Isaiah_1_35,1
+KJV,Isaiah_15,Jeremiah,2
+KJV,Isaiah_15,Psalms,2
+KJV,Isaiah_16,Isaiah_1_35,1
+KJV,Isaiah_16,Jeremiah,2
+KJV,Isaiah_16,Psalms,2
+KJV,Isaiah_17,Isaiah_1_35,3
+KJV,Isaiah_17,Psalms,2
+KJV,Isaiah_18,Ezekiel,2
+KJV,Isaiah_18,Jeremiah,1
+KJV,Isaiah_18,Psalms,2
+KJV,Isaiah_19,Ezekiel,1
+KJV,Isaiah_19,Isaiah_1_35,1
+KJV,Isaiah_19,Jeremiah,1
+KJV,Isaiah_19,Psalms,2
+KJV,Isaiah_2,Isaiah_1_35,1
+KJV,Isaiah_2,Jeremiah,2
+KJV,Isaiah_2,Psalms,2
+KJV,Isaiah_20,2 Kings,1
+KJV,Isaiah_20,Isaiah_1_35,1
+KJV,Isaiah_20,Jeremiah,1
+KJV,Isaiah_20,Psalms,2
+KJV,Isaiah_21,Isaiah_1_35,2
+KJV,Isaiah_21,Jeremiah,1
+KJV,Isaiah_21,Psalms,2
+KJV,Isaiah_22,Isaiah_1_35,2
+KJV,Isaiah_22,Isaiah_40_55,1
+KJV,Isaiah_22,Psalms,2
+KJV,Isaiah_23,Isaiah_1_35,2
+KJV,Isaiah_23,Proverbs,1
+KJV,Isaiah_23,Psalms,2
+KJV,Isaiah_24,Isaiah_1_35,1
+KJV,Isaiah_24,Jeremiah,2
+KJV,Isaiah_24,Psalms,2
+KJV,Isaiah_25,Isaiah_1_35,2
+KJV,Isaiah_25,Isaiah_40_55,1
+KJV,Isaiah_25,Psalms,2
+KJV,Isaiah_26,Isaiah_1_35,1
+KJV,Isaiah_26,Jeremiah,1
+KJV,Isaiah_26,Proverbs,1
+KJV,Isaiah_26,Psalms,2
+KJV,Isaiah_27,Ezekiel,1
+KJV,Isaiah_27,Isaiah_1_35,2
+KJV,Isaiah_27,Psalms,2
+KJV,Isaiah_28,Isaiah_1_35,3
+KJV,Isaiah_28,Psalms,2
+KJV,Isaiah_29,Isaiah_1_35,3
+KJV,Isaiah_29,Psalms,2
+KJV,Isaiah_3,Isaiah_1_35,1
+KJV,Isaiah_3,Jeremiah,2
+KJV,Isaiah_3,Psalms,2
+KJV,Isaiah_30,2 Kings,1
+KJV,Isaiah_30,Isaiah_1_35,1
+KJV,Isaiah_30,Jeremiah,1
+KJV,Isaiah_30,Psalms,2
+KJV,Isaiah_31,2 Kings,1
+KJV,Isaiah_31,Isaiah_1_35,1
+KJV,Isaiah_31,Jeremiah,1
+KJV,Isaiah_31,Psalms,2
+KJV,Isaiah_32,Isaiah_1_35,2
+KJV,Isaiah_32,Jeremiah,1
+KJV,Isaiah_32,Psalms,2
+KJV,Isaiah_33,2 Kings,1
+KJV,Isaiah_33,Isaiah_1_35,2
+KJV,Isaiah_33,Psalms,2
+KJV,Isaiah_34,Isaiah_1_35,3
+KJV,Isaiah_34,Psalms,2
+KJV,Isaiah_35,Isaiah_1_35,2
+KJV,Isaiah_35,Jeremiah,1
+KJV,Isaiah_35,Psalms,2
+KJV,Isaiah_36,2 Kings,3
+KJV,Isaiah_36,Jeremiah,1
+KJV,Isaiah_36,Psalms,1
+KJV,Isaiah_37,2 Kings,4
+KJV,Isaiah_37,Isaiah_36_39,1
+KJV,Isaiah_38,2 Kings,2
+KJV,Isaiah_38,Isaiah_36_39,1
+KJV,Isaiah_38,Jeremiah,1
+KJV,Isaiah_38,Psalms,1
+KJV,Isaiah_39,2 Kings,3
+KJV,Isaiah_39,Jeremiah,1
+KJV,Isaiah_39,Psalms,1
+KJV,Isaiah_4,Isaiah_1_35,2
+KJV,Isaiah_4,Psalms,3
+KJV,Isaiah_40,Isaiah_1_35,1
+KJV,Isaiah_40,Isaiah_40_55,1
+KJV,Isaiah_40,Jeremiah,1
+KJV,Isaiah_40,Psalms,2
+KJV,Isaiah_41,Ezekiel,1
+KJV,Isaiah_41,Isaiah_36_39,1
+KJV,Isaiah_41,Isaiah_40_55,1
+KJV,Isaiah_41,Psalms,2
+KJV,Isaiah_42,Isaiah_40_55,2
+KJV,Isaiah_42,Jeremiah,1
+KJV,Isaiah_42,Psalms,2
+KJV,Isaiah_43,Isaiah_40_55,2
+KJV,Isaiah_43,Jeremiah,1
+KJV,Isaiah_43,Psalms,2
+KJV,Isaiah_44,Isaiah_40_55,2
+KJV,Isaiah_44,Jeremiah,1
+KJV,Isaiah_44,Psalms,2
+KJV,Isaiah_45,Isaiah_1_35,1
+KJV,Isaiah_45,Isaiah_40_55,2
+KJV,Isaiah_45,Psalms,2
+KJV,Isaiah_46,Isaiah_40_55,2
+KJV,Isaiah_46,Jeremiah,1
+KJV,Isaiah_46,Psalms,2
+KJV,Isaiah_47,Isaiah_40_55,1
+KJV,Isaiah_47,Isaiah_56_66,1
+KJV,Isaiah_47,Jeremiah,1
+KJV,Isaiah_47,Psalms,2
+KJV,Isaiah_48,Isaiah_40_55,2
+KJV,Isaiah_48,Jeremiah,1
+KJV,Isaiah_48,Psalms,2
+KJV,Isaiah_49,Ezekiel,1
+KJV,Isaiah_49,Jeremiah,3
+KJV,Isaiah_49,Psalms,1
+KJV,Isaiah_5,Isaiah_1_35,2
+KJV,Isaiah_5,Jeremiah,1
+KJV,Isaiah_5,Psalms,2
+KJV,Isaiah_50,Isaiah_40_55,2
+KJV,Isaiah_50,Jeremiah,1
+KJV,Isaiah_50,Psalms,2
+KJV,Isaiah_51,Isaiah_1_35,1
+KJV,Isaiah_51,Jeremiah,2
+KJV,Isaiah_51,Psalms,2
+KJV,Isaiah_52,Isaiah_1_35,1
+KJV,Isaiah_52,Isaiah_40_55,1
+KJV,Isaiah_52,Jeremiah,1
+KJV,Isaiah_52,Psalms,2
+KJV,Isaiah_53,Jeremiah,2
+KJV,Isaiah_53,Psalms,3
+KJV,Isaiah_54,Isaiah_56_66,1
+KJV,Isaiah_54,Jeremiah,2
+KJV,Isaiah_54,Psalms,2
+KJV,Isaiah_55,Isaiah_40_55,1
+KJV,Isaiah_55,Isaiah_56_66,1
+KJV,Isaiah_55,Jeremiah,1
+KJV,Isaiah_55,Psalms,2
+KJV,Isaiah_56,1 Samuel,1
+KJV,Isaiah_56,Jeremiah,2
+KJV,Isaiah_56,Psalms,2
+KJV,Isaiah_57,Isaiah_1_35,1
+KJV,Isaiah_57,Jeremiah,2
+KJV,Isaiah_57,Psalms,2
+KJV,Isaiah_58,Isaiah_1_35,2
+KJV,Isaiah_58,Jeremiah,1
+KJV,Isaiah_58,Psalms,2
+KJV,Isaiah_59,Jeremiah,3
+KJV,Isaiah_59,Psalms,2
+KJV,Isaiah_6,1 Samuel,1
+KJV,Isaiah_6,Jeremiah,2
+KJV,Isaiah_6,Psalms,2
+KJV,Isaiah_60,Ezekiel,3
+KJV,Isaiah_60,Psalms,2
+KJV,Isaiah_61,Isaiah_1_35,1
+KJV,Isaiah_61,Jeremiah,1
+KJV,Isaiah_61,Psalms,3
+KJV,Isaiah_62,Ezekiel,1
+KJV,Isaiah_62,Isaiah_1_35,1
+KJV,Isaiah_62,Isaiah_40_55,1
+KJV,Isaiah_62,Psalms,2
+KJV,Isaiah_63,1 Kings,1
+KJV,Isaiah_63,Jeremiah,2
+KJV,Isaiah_63,Psalms,2
+KJV,Isaiah_64,Jeremiah,2
+KJV,Isaiah_64,Psalms,3
+KJV,Isaiah_65,Jeremiah,3
+KJV,Isaiah_65,Psalms,2
+KJV,Isaiah_66,Isaiah_1_35,2
+KJV,Isaiah_66,Jeremiah,1
+KJV,Isaiah_66,Psalms,2
+KJV,Isaiah_7,Isaiah_1_35,2
+KJV,Isaiah_7,Jeremiah,1
+KJV,Isaiah_7,Psalms,2
+KJV,Isaiah_8,Isaiah_1_35,2
+KJV,Isaiah_8,Jeremiah,1
+KJV,Isaiah_8,Psalms,2
+KJV,Isaiah_9,Isaiah_1_35,3
+KJV,Isaiah_9,Psalms,2
+KJV,Jeremiah_1,Jeremiah,3
+KJV,Jeremiah_1,Psalms,2
+KJV,Jeremiah_10,Isaiah_1_35,1
+KJV,Jeremiah_10,Jeremiah,2
+KJV,Jeremiah_10,Psalms,2
+KJV,Jeremiah_11,Jeremiah,4
+KJV,Jeremiah_11,Psalms,1
+KJV,Jeremiah_12,Jeremiah,3
+KJV,Jeremiah_12,Psalms,2
+KJV,Jeremiah_13,Jeremiah,3
+KJV,Jeremiah_13,Psalms,2
+KJV,Jeremiah_14,Jeremiah,4
+KJV,Jeremiah_14,Psalms,1
+KJV,Jeremiah_15,Jeremiah,3
+KJV,Jeremiah_15,Psalms,2
+KJV,Jeremiah_16,Jeremiah,4
+KJV,Jeremiah_16,Psalms,1
+KJV,Jeremiah_17,Ezekiel,1
+KJV,Jeremiah_17,Jeremiah,2
+KJV,Jeremiah_17,Psalms,2
+KJV,Jeremiah_18,Jeremiah,4
+KJV,Jeremiah_18,Psalms,1
+KJV,Jeremiah_19,Jeremiah,4
+KJV,Jeremiah_19,Psalms,1
+KJV,Jeremiah_2,Jeremiah,3
+KJV,Jeremiah_2,Psalms,2
+KJV,Jeremiah_20,Jeremiah,3
+KJV,Jeremiah_20,Psalms,2
+KJV,Jeremiah_21,Jeremiah,4
+KJV,Jeremiah_21,Psalms,1
+KJV,Jeremiah_22,Jeremiah,4
+KJV,Jeremiah_22,Psalms,1
+KJV,Jeremiah_23,Jeremiah,4
+KJV,Jeremiah_23,Psalms,1
+KJV,Jeremiah_24,Jeremiah,3
+KJV,Jeremiah_24,Psalms,2
+KJV,Jeremiah_25,Jeremiah,4
+KJV,Jeremiah_25,Psalms,1
+KJV,Jeremiah_26,Jeremiah,4
+KJV,Jeremiah_26,Psalms,1
+KJV,Jeremiah_27,Jeremiah,4
+KJV,Jeremiah_27,Psalms,1
+KJV,Jeremiah_28,Jeremiah,4
+KJV,Jeremiah_28,Psalms,1
+KJV,Jeremiah_29,Jeremiah,4
+KJV,Jeremiah_29,Psalms,1
+KJV,Jeremiah_3,Jeremiah,4
+KJV,Jeremiah_3,Psalms,1
+KJV,Jeremiah_30,Ezekiel,1
+KJV,Jeremiah_30,Jeremiah,3
+KJV,Jeremiah_30,Psalms,1
+KJV,Jeremiah_31,Jeremiah,4
+KJV,Jeremiah_31,Psalms,1
+KJV,Jeremiah_32,Jeremiah,4
+KJV,Jeremiah_32,Psalms,1
+KJV,Jeremiah_33,Jeremiah,4
+KJV,Jeremiah_33,Psalms,1
+KJV,Jeremiah_34,Jeremiah,4
+KJV,Jeremiah_34,Psalms,1
+KJV,Jeremiah_35,Jeremiah,4
+KJV,Jeremiah_35,Psalms,1
+KJV,Jeremiah_36,2 Kings,1
+KJV,Jeremiah_36,Jeremiah,3
+KJV,Jeremiah_36,Psalms,1
+KJV,Jeremiah_37,Jeremiah,4
+KJV,Jeremiah_37,Psalms,1
+KJV,Jeremiah_38,Jeremiah,4
+KJV,Jeremiah_38,Psalms,1
+KJV,Jeremiah_39,Jeremiah,4
+KJV,Jeremiah_39,Psalms,1
+KJV,Jeremiah_4,Jeremiah,3
+KJV,Jeremiah_4,Psalms,2
+KJV,Jeremiah_40,2 Kings,1
+KJV,Jeremiah_40,Jeremiah,3
+KJV,Jeremiah_40,Psalms,1
+KJV,Jeremiah_41,2 Kings,1
+KJV,Jeremiah_41,Jeremiah,3
+KJV,Jeremiah_41,Psalms,1
+KJV,Jeremiah_42,Isaiah_1_35,1
+KJV,Jeremiah_42,Jeremiah,3
+KJV,Jeremiah_42,Psalms,1
+KJV,Jeremiah_43,2 Kings,1
+KJV,Jeremiah_43,Jeremiah,2
+KJV,Jeremiah_43,Psalms,2
+KJV,Jeremiah_44,Jeremiah,4
+KJV,Jeremiah_44,Psalms,1
+KJV,Jeremiah_45,Jeremiah,2
+KJV,Jeremiah_45,Psalms,3
+KJV,Jeremiah_46,Isaiah_1_35,1
+KJV,Jeremiah_46,Jeremiah,3
+KJV,Jeremiah_46,Psalms,1
+KJV,Jeremiah_47,Isaiah_1_35,1
+KJV,Jeremiah_47,Jeremiah,2
+KJV,Jeremiah_47,Psalms,2
+KJV,Jeremiah_48,2 Kings,1
+KJV,Jeremiah_48,Isaiah_1_35,1
+KJV,Jeremiah_48,Jeremiah,2
+KJV,Jeremiah_48,Psalms,1
+KJV,Jeremiah_49,Jeremiah,4
+KJV,Jeremiah_49,Psalms,1
+KJV,Jeremiah_5,Jeremiah,4
+KJV,Jeremiah_5,Psalms,1
+KJV,Jeremiah_50,Jeremiah,4
+KJV,Jeremiah_50,Psalms,1
+KJV,Jeremiah_51,Jeremiah,4
+KJV,Jeremiah_51,Psalms,1
+KJV,Jeremiah_52,2 Kings,4
+KJV,Jeremiah_52,Jeremiah,1
+KJV,Jeremiah_6,Jeremiah,4
+KJV,Jeremiah_6,Psalms,1
+KJV,Jeremiah_7,Jeremiah,4
+KJV,Jeremiah_7,Psalms,1
+KJV,Jeremiah_8,Jeremiah,4
+KJV,Jeremiah_8,Psalms,1
+KJV,Jeremiah_9,Jeremiah,4
+KJV,Jeremiah_9,Psalms,1
+KJV,Job_1,1 Kings,2
+KJV,Job_1,2 Kings,1
+KJV,Job_1,Psalms,2
+KJV,Job_10,Job,1
+KJV,Job_10,Psalms,4
+KJV,Job_11,Job,2
+KJV,Job_11,Psalms,3
+KJV,Job_12,1 Samuel,1
+KJV,Job_12,2 Kings,1
+KJV,Job_12,Isaiah_40_55,1
+KJV,Job_12,Psalms,2
+KJV,Job_13,Hosea,1
+KJV,Job_13,Job,1
+KJV,Job_13,Psalms,3
+KJV,Job_14,1 Samuel,1
+KJV,Job_14,Jeremiah,1
+KJV,Job_14,Job,1
+KJV,Job_14,Psalms,2
+KJV,Job_15,Isaiah_1_35,1
+KJV,Job_15,Jeremiah,1
+KJV,Job_15,Job,1
+KJV,Job_15,Psalms,2
+KJV,Job_16,Job,3
+KJV,Job_16,Psalms,2
+KJV,Job_17,Isaiah_1_35,1
+KJV,Job_17,Jeremiah,1
+KJV,Job_17,Psalms,3
+KJV,Job_18,Psalms,5
+KJV,Job_19,Job,1
+KJV,Job_19,Psalms,4
+KJV,Job_2,1 Samuel,1
+KJV,Job_2,Job,2
+KJV,Job_2,Psalms,2
+KJV,Job_20,Jeremiah,1
+KJV,Job_20,Job,2
+KJV,Job_20,Psalms,2
+KJV,Job_21,Isaiah_1_35,1
+KJV,Job_21,Jeremiah,1
+KJV,Job_21,Psalms,3
+KJV,Job_22,Ezekiel,2
+KJV,Job_22,Job,1
+KJV,Job_22,Psalms,2
+KJV,Job_23,Jeremiah,1
+KJV,Job_23,Job,2
+KJV,Job_23,Psalms,2
+KJV,Job_24,Jeremiah,2
+KJV,Job_24,Psalms,3
+KJV,Job_25,Jeremiah,1
+KJV,Job_25,Proverbs,1
+KJV,Job_25,Psalms,3
+KJV,Job_26,Job,2
+KJV,Job_26,Psalms,3
+KJV,Job_27,Isaiah_40_55,1
+KJV,Job_27,Job,2
+KJV,Job_27,Psalms,2
+KJV,Job_28,Jeremiah,3
+KJV,Job_28,Psalms,2
+KJV,Job_29,Jeremiah,1
+KJV,Job_29,Job,1
+KJV,Job_29,Psalms,3
+KJV,Job_3,Isaiah_40_55,1
+KJV,Job_3,Jeremiah,1
+KJV,Job_3,Job,1
+KJV,Job_3,Psalms,2
+KJV,Job_30,Isaiah_40_55,1
+KJV,Job_30,Psalms,4
+KJV,Job_31,Jeremiah,1
+KJV,Job_31,Job,1
+KJV,Job_31,Psalms,3
+KJV,Job_32,Isaiah_40_55,1
+KJV,Job_32,Job,1
+KJV,Job_32,Psalms,3
+KJV,Job_33,Job,1
+KJV,Job_33,Psalms,4
+KJV,Job_34,Isaiah_40_55,1
+KJV,Job_34,Job,2
+KJV,Job_34,Psalms,2
+KJV,Job_35,Jeremiah,1
+KJV,Job_35,Job,2
+KJV,Job_35,Psalms,2
+KJV,Job_36,Jeremiah,2
+KJV,Job_36,Psalms,3
+KJV,Job_37,1 Samuel,1
+KJV,Job_37,Jeremiah,1
+KJV,Job_37,Job,1
+KJV,Job_37,Psalms,2
+KJV,Job_38,Jeremiah,1
+KJV,Job_38,Psalms,4
+KJV,Job_39,Ezekiel,1
+KJV,Job_39,Psalms,4
+KJV,Job_4,Jeremiah,2
+KJV,Job_4,Job,1
+KJV,Job_4,Psalms,2
+KJV,Job_40,Isaiah_40_55,1
+KJV,Job_40,Jeremiah,1
+KJV,Job_40,Job,1
+KJV,Job_40,Psalms,2
+KJV,Job_41,Job,2
+KJV,Job_41,Proverbs,1
+KJV,Job_41,Psalms,2
+KJV,Job_42,1 Kings,1
+KJV,Job_42,Isaiah_36_39,1
+KJV,Job_42,Job,1
+KJV,Job_42,Psalms,2
+KJV,Job_5,Isaiah_1_35,2
+KJV,Job_5,Psalms,3
+KJV,Job_6,Jeremiah,2
+KJV,Job_6,Job,1
+KJV,Job_6,Psalms,2
+KJV,Job_7,Jeremiah,1
+KJV,Job_7,Job,1
+KJV,Job_7,Psalms,3
+KJV,Job_8,Isaiah_1_35,1
+KJV,Job_8,Jeremiah,1
+KJV,Job_8,Psalms,3
+KJV,Job_9,Job,3
+KJV,Job_9,Psalms,2
+KJV,Proverbs_1,Jeremiah,3
+KJV,Proverbs_1,Psalms,2
+KJV,Proverbs_10,Proverbs,4
+KJV,Proverbs_10,Psalms,1
+KJV,Proverbs_11,Proverbs,5
+KJV,Proverbs_12,Proverbs,3
+KJV,Proverbs_12,Psalms,2
+KJV,Proverbs_13,Proverbs,4
+KJV,Proverbs_13,Psalms,1
+KJV,Proverbs_14,Proverbs,4
+KJV,Proverbs_14,Psalms,1
+KJV,Proverbs_15,Isaiah_1_35,1
+KJV,Proverbs_15,Proverbs,4
+KJV,Proverbs_16,Jeremiah,1
+KJV,Proverbs_16,Proverbs,2
+KJV,Proverbs_16,Psalms,2
+KJV,Proverbs_17,Jeremiah,1
+KJV,Proverbs_17,Proverbs,2
+KJV,Proverbs_17,Psalms,2
+KJV,Proverbs_18,Proverbs,3
+KJV,Proverbs_18,Psalms,2
+KJV,Proverbs_19,Proverbs,3
+KJV,Proverbs_19,Psalms,2
+KJV,Proverbs_2,Isaiah_1_35,1
+KJV,Proverbs_2,Proverbs,2
+KJV,Proverbs_2,Psalms,2
+KJV,Proverbs_20,Proverbs,3
+KJV,Proverbs_20,Psalms,2
+KJV,Proverbs_21,Proverbs,4
+KJV,Proverbs_21,Psalms,1
+KJV,Proverbs_22,Isaiah_1_35,1
+KJV,Proverbs_22,Isaiah_40_55,1
+KJV,Proverbs_22,Proverbs,1
+KJV,Proverbs_22,Psalms,2
+KJV,Proverbs_23,Proverbs,3
+KJV,Proverbs_23,Psalms,2
+KJV,Proverbs_24,Jeremiah,1
+KJV,Proverbs_24,Proverbs,2
+KJV,Proverbs_24,Psalms,2
+KJV,Proverbs_25,Job,1
+KJV,Proverbs_25,Proverbs,2
+KJV,Proverbs_25,Psalms,2
+KJV,Proverbs_26,Proverbs,2
+KJV,Proverbs_26,Psalms,3
+KJV,Proverbs_27,Proverbs,3
+KJV,Proverbs_27,Psalms,2
+KJV,Proverbs_28,Proverbs,3
+KJV,Proverbs_28,Psalms,2
+KJV,Proverbs_29,Proverbs,2
+KJV,Proverbs_29,Psalms,3
+KJV,Proverbs_3,Proverbs,3
+KJV,Proverbs_3,Psalms,2
+KJV,Proverbs_30,Jeremiah,3
+KJV,Proverbs_30,Psalms,2
+KJV,Proverbs_31,Ezekiel,1
+KJV,Proverbs_31,Hosea,1
+KJV,Proverbs_31,Proverbs,1
+KJV,Proverbs_31,Psalms,2
+KJV,Proverbs_4,Proverbs,3
+KJV,Proverbs_4,Psalms,2
+KJV,Proverbs_5,Jeremiah,1
+KJV,Proverbs_5,Proverbs,2
+KJV,Proverbs_5,Psalms,2
+KJV,Proverbs_6,Proverbs,3
+KJV,Proverbs_6,Psalms,2
+KJV,Proverbs_7,1 Samuel,1
+KJV,Proverbs_7,Jeremiah,1
+KJV,Proverbs_7,Proverbs,1
+KJV,Proverbs_7,Psalms,2
+KJV,Proverbs_8,Jeremiah,2
+KJV,Proverbs_8,Proverbs,1
+KJV,Proverbs_8,Psalms,2
+KJV,Proverbs_9,Proverbs,3
+KJV,Proverbs_9,Psalms,2
+KJV,Psalms_1,Ezekiel,1
+KJV,Psalms_1,Psalms,4
+KJV,Psalms_10,Job,1
+KJV,Psalms_10,Psalms,4
+KJV,Psalms_100,Psalms,5
+KJV,Psalms_101,Psalms,5
+KJV,Psalms_102,Ezekiel,1
+KJV,Psalms_102,Isaiah_40_55,1
+KJV,Psalms_102,Jeremiah,1
+KJV,Psalms_102,Psalms,2
+KJV,Psalms_103,Psalms,5
+KJV,Psalms_104,Job,2
+KJV,Psalms_104,Psalms,3
+KJV,Psalms_105,Psalms,5
+KJV,Psalms_106,Psalms,5
+KJV,Psalms_107,Psalms,5
+KJV,Psalms_108,Psalms,5
+KJV,Psalms_109,Job,1
+KJV,Psalms_109,Psalms,4
+KJV,Psalms_11,Psalms,5
+KJV,Psalms_110,Psalms,5
+KJV,Psalms_111,Psalms,5
+KJV,Psalms_112,Job,1
+KJV,Psalms_112,Psalms,4
+KJV,Psalms_113,Psalms,5
+KJV,Psalms_114,Psalms,5
+KJV,Psalms_115,Psalms,5
+KJV,Psalms_116,Jeremiah,1
+KJV,Psalms_116,Psalms,4
+KJV,Psalms_117,Psalms,5
+KJV,Psalms_118,Psalms,5
+KJV,Psalms_119,Psalms,5
+KJV,Psalms_12,Psalms,5
+KJV,Psalms_120,Psalms,5
+KJV,Psalms_121,Isaiah_1_35,1
+KJV,Psalms_121,Psalms,4
+KJV,Psalms_122,Jeremiah,2
+KJV,Psalms_122,Psalms,3
+KJV,Psalms_123,Psalms,5
+KJV,Psalms_124,Ezekiel,1
+KJV,Psalms_124,Isaiah_1_35,1
+KJV,Psalms_124,Psalms,3
+KJV,Psalms_125,Isaiah_1_35,1
+KJV,Psalms_125,Psalms,4
+KJV,Psalms_126,Psalms,5
+KJV,Psalms_127,Jeremiah,1
+KJV,Psalms_127,Proverbs,1
+KJV,Psalms_127,Psalms,3
+KJV,Psalms_128,Isaiah_40_55,1
+KJV,Psalms_128,Psalms,4
+KJV,Psalms_129,Psalms,5
+KJV,Psalms_13,Psalms,5
+KJV,Psalms_130,Psalms,5
+KJV,Psalms_131,Hosea,1
+KJV,Psalms_131,Psalms,4
+KJV,Psalms_132,Jeremiah,1
+KJV,Psalms_132,Psalms,4
+KJV,Psalms_133,Jeremiah,1
+KJV,Psalms_133,Psalms,4
+KJV,Psalms_134,Jeremiah,1
+KJV,Psalms_134,Psalms,4
+KJV,Psalms_135,Psalms,5
+KJV,Psalms_136,Psalms,5
+KJV,Psalms_137,Isaiah_1_35,1
+KJV,Psalms_137,Jeremiah,1
+KJV,Psalms_137,Psalms,3
+KJV,Psalms_138,Psalms,5
+KJV,Psalms_139,Jeremiah,1
+KJV,Psalms_139,Job,1
+KJV,Psalms_139,Psalms,3
+KJV,Psalms_14,Psalms,5
+KJV,Psalms_140,Psalms,5
+KJV,Psalms_141,Jeremiah,1
+KJV,Psalms_141,Psalms,4
+KJV,Psalms_142,Hosea,1
+KJV,Psalms_142,Psalms,4
+KJV,Psalms_143,Isaiah_1_35,1
+KJV,Psalms_143,Psalms,4
+KJV,Psalms_144,Psalms,5
+KJV,Psalms_145,Ezekiel,1
+KJV,Psalms_145,Psalms,4
+KJV,Psalms_146,Psalms,5
+KJV,Psalms_147,Psalms,5
+KJV,Psalms_148,Psalms,5
+KJV,Psalms_149,Psalms,5
+KJV,Psalms_15,Proverbs,2
+KJV,Psalms_15,Psalms,3
+KJV,Psalms_150,Psalms,5
+KJV,Psalms_16,Psalms,5
+KJV,Psalms_17,Psalms,5
+KJV,Psalms_18,2 Samuel,2
+KJV,Psalms_18,Psalms,3
+KJV,Psalms_19,Isaiah_1_35,1
+KJV,Psalms_19,Psalms,4
+KJV,Psalms_2,Isaiah_1_35,1
+KJV,Psalms_2,Jeremiah,1
+KJV,Psalms_2,Psalms,3
+KJV,Psalms_20,1 Kings,1
+KJV,Psalms_20,Psalms,4
+KJV,Psalms_21,Psalms,5
+KJV,Psalms_22,Isaiah_1_35,1
+KJV,Psalms_22,Isaiah_40_55,1
+KJV,Psalms_22,Psalms,3
+KJV,Psalms_23,Psalms,5
+KJV,Psalms_24,Isaiah_1_35,1
+KJV,Psalms_24,Jeremiah,1
+KJV,Psalms_24,Psalms,3
+KJV,Psalms_25,Psalms,5
+KJV,Psalms_26,Psalms,5
+KJV,Psalms_27,Psalms,5
+KJV,Psalms_28,Ezekiel,1
+KJV,Psalms_28,Psalms,4
+KJV,Psalms_29,Psalms,5
+KJV,Psalms_3,Psalms,5
+KJV,Psalms_30,Psalms,5
+KJV,Psalms_31,Psalms,5
+KJV,Psalms_32,Isaiah_40_55,1
+KJV,Psalms_32,Jeremiah,1
+KJV,Psalms_32,Psalms,3
+KJV,Psalms_33,Jeremiah,1
+KJV,Psalms_33,Psalms,4
+KJV,Psalms_34,Isaiah_40_55,1
+KJV,Psalms_34,Psalms,4
+KJV,Psalms_35,Psalms,5
+KJV,Psalms_36,Proverbs,1
+KJV,Psalms_36,Psalms,4
+KJV,Psalms_37,Isaiah_1_35,2
+KJV,Psalms_37,Psalms,3
+KJV,Psalms_38,Psalms,5
+KJV,Psalms_39,Isaiah_40_55,1
+KJV,Psalms_39,Jeremiah,1
+KJV,Psalms_39,Psalms,3
+KJV,Psalms_4,Psalms,5
+KJV,Psalms_40,Psalms,5
+KJV,Psalms_41,Jeremiah,1
+KJV,Psalms_41,Psalms,4
+KJV,Psalms_42,Psalms,5
+KJV,Psalms_43,Psalms,5
+KJV,Psalms_44,Psalms,5
+KJV,Psalms_45,Ezekiel,2
+KJV,Psalms_45,Psalms,3
+KJV,Psalms_46,Psalms,5
+KJV,Psalms_47,Psalms,5
+KJV,Psalms_48,Psalms,5
+KJV,Psalms_49,Isaiah_1_35,1
+KJV,Psalms_49,Job,1
+KJV,Psalms_49,Psalms,3
+KJV,Psalms_5,Isaiah_1_35,1
+KJV,Psalms_5,Psalms,4
+KJV,Psalms_50,Jeremiah,2
+KJV,Psalms_50,Psalms,3
+KJV,Psalms_51,Psalms,5
+KJV,Psalms_52,Psalms,5
+KJV,Psalms_53,Psalms,5
+KJV,Psalms_54,Psalms,5
+KJV,Psalms_55,Ezekiel,1
+KJV,Psalms_55,Psalms,4
+KJV,Psalms_56,Psalms,5
+KJV,Psalms_57,Psalms,5
+KJV,Psalms_58,Psalms,5
+KJV,Psalms_59,Jeremiah,1
+KJV,Psalms_59,Psalms,4
+KJV,Psalms_6,Psalms,5
+KJV,Psalms_60,Psalms,5
+KJV,Psalms_61,2 Samuel,1
+KJV,Psalms_61,Psalms,4
+KJV,Psalms_62,Psalms,5
+KJV,Psalms_63,Psalms,5
+KJV,Psalms_64,Isaiah_1_35,1
+KJV,Psalms_64,Psalms,4
+KJV,Psalms_65,Psalms,5
+KJV,Psalms_66,1 Kings,1
+KJV,Psalms_66,Hosea,1
+KJV,Psalms_66,Psalms,3
+KJV,Psalms_67,Psalms,5
+KJV,Psalms_68,1 Kings,1
+KJV,Psalms_68,Jeremiah,1
+KJV,Psalms_68,Psalms,3
+KJV,Psalms_69,Psalms,5
+KJV,Psalms_7,2 Samuel,1
+KJV,Psalms_7,Psalms,4
+KJV,Psalms_70,Job,1
+KJV,Psalms_70,Psalms,4
+KJV,Psalms_71,Psalms,5
+KJV,Psalms_72,Isaiah_1_35,2
+KJV,Psalms_72,Psalms,3
+KJV,Psalms_73,Jeremiah,1
+KJV,Psalms_73,Psalms,4
+KJV,Psalms_74,Psalms,5
+KJV,Psalms_75,Amos,1
+KJV,Psalms_75,Psalms,4
+KJV,Psalms_76,1 Kings,1
+KJV,Psalms_76,Psalms,4
+KJV,Psalms_77,Jeremiah,1
+KJV,Psalms_77,Psalms,4
+KJV,Psalms_78,Psalms,5
+KJV,Psalms_79,Psalms,5
+KJV,Psalms_8,Psalms,5
+KJV,Psalms_80,2 Kings,1
+KJV,Psalms_80,Jeremiah,1
+KJV,Psalms_80,Psalms,3
+KJV,Psalms_81,1 Kings,1
+KJV,Psalms_81,Jeremiah,1
+KJV,Psalms_81,Psalms,3
+KJV,Psalms_82,Isaiah_40_55,1
+KJV,Psalms_82,Jeremiah,1
+KJV,Psalms_82,Psalms,3
+KJV,Psalms_83,Jeremiah,2
+KJV,Psalms_83,Psalms,3
+KJV,Psalms_84,Psalms,5
+KJV,Psalms_85,Psalms,5
+KJV,Psalms_86,Psalms,5
+KJV,Psalms_87,Jeremiah,1
+KJV,Psalms_87,Psalms,4
+KJV,Psalms_88,Psalms,5
+KJV,Psalms_89,Jeremiah,1
+KJV,Psalms_89,Psalms,4
+KJV,Psalms_9,Ezekiel,1
+KJV,Psalms_9,Psalms,4
+KJV,Psalms_90,Psalms,5
+KJV,Psalms_91,Isaiah_1_35,1
+KJV,Psalms_91,Isaiah_40_55,1
+KJV,Psalms_91,Psalms,3
+KJV,Psalms_92,Psalms,5
+KJV,Psalms_93,Psalms,5
+KJV,Psalms_94,Isaiah_40_55,1
+KJV,Psalms_94,Jeremiah,1
+KJV,Psalms_94,Psalms,3
+KJV,Psalms_95,Psalms,5
+KJV,Psalms_96,Psalms,5
+KJV,Psalms_97,Ezekiel,1
+KJV,Psalms_97,Psalms,4
+KJV,Psalms_98,Psalms,5
+KJV,Psalms_99,Psalms,5

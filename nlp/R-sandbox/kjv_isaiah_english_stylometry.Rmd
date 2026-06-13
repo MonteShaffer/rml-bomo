@@ -1,0 +1,1621 @@
+---
+title: "KJV English Stylometry: Isaiah and Control Chapters"
+author: "Monte J. Shaffer"
+date: "`r Sys.Date()`"
+output:
+  html_notebook:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# ============================================================
+# KJV English Stylometry Notebook
+# Goal:
+#   Compare Isaiah sections using KJV English text, with controls
+#   such as Samuel, Kings, Jeremiah, Ezekiel, Psalms, etc.
+#
+# Main methods:
+#   - Chapter-level feature matrices
+#   - Most frequent words
+#   - Function-word style
+#   - Character n-grams
+#   - PCA visualization
+#   - Hierarchical clustering
+#   - Cosine similarity nearest neighbors
+#   - Optional POS tagging with UDPipe
+# ============================================================
+
+required_packages <- c(
+  "tidyverse", "tidytext", "stringr", "readr", "janitor",
+  "widyr", "proxy", "FactoMineR", "factoextra", "stylo",
+  "udpipe", "mclust"
+)
+
+install_if_missing <- function(pkgs) {
+  missing <- pkgs[!pkgs %in% installed.packages()[, "Package"]]
+  if (length(missing) > 0) install.packages(missing)
+}
+
+install_if_missing(required_packages)
+
+library(tidyverse)
+library(tidytext)
+library(stringr)
+library(readr)
+library(janitor)
+library(widyr)
+library(proxy)
+library(FactoMineR)
+library(factoextra)
+library(stylo)
+library(udpipe)
+library(mclust)
+```
+
+
+# 0. Data prep
+```text
+translation, book, chapter, verse, text
+```
+
+The translation would be KJV, WLC (Hebrew), SEPT (Septuagint).
+
+Use this R Markdown block. It downloads `kjv.json` from `bibleapi-bibles-json`, filters Isaiah plus your controls, and writes `data/kjv.csv`. The repo includes KJV JSON and is intended for JSON Bible imports. ([GitHub][1])
+
+
+```{r prepare-kjv-csv}
+# Prepare KJV CSV for Isaiah stylometry + controls
+
+library(dplyr)
+library(readr)
+library(stringr)
+library(scriptuRs)
+
+dir.create("data", showWarnings = FALSE)
+
+target_books <- c(
+  "Isaiah",
+  "Jeremiah", "Ezekiel", "Hosea", "Amos",
+  "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+  "Psalms", "Job", "Proverbs"
+)
+
+kjv_selected <- kjv_bible() %>%
+  filter(book_title %in% target_books) %>%
+  transmute(
+    translation = "KJV",
+    book = book_title,
+    chapter = as.integer(chapter_number),
+    verse = as.integer(verse_number),
+    text = str_squish(text)
+  ) %>%
+  arrange(match(book, target_books), chapter, verse)
+
+write_csv(kjv_selected, "data/kjv.csv")
+
+cat("Wrote: data/kjv.csv\n")
+cat("Rows:", nrow(kjv_selected), "\n")
+table(kjv_selected$book)
+```
+
+## Chapters
+```{r}
+library(dplyr)
+library(stringr)
+library(readr)
+
+kjv_chapters <- kjv_selected %>%
+  group_by(book, chapter) %>%
+  summarize(
+    text = str_c(text, collapse = " "),
+    n_verses = n(),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    doc_id = paste(book, chapter, sep="_")
+  ) %>%
+  select(doc_id, book, chapter, n_verses, text)
+
+write_csv(kjv_chapters, "data/kjv_chapters.csv")
+
+dim(kjv_chapters)
+
+(kjv_chapters)
+```
+
+## Deutero?
+```{r}
+library(dplyr)
+library(readr)
+
+kjv_chapters <- kjv_chapters %>%
+  mutate(
+    section = case_when(
+      book == "Isaiah" & chapter <= 35 ~ "Isaiah_1_35",
+      book == "Isaiah" & chapter <= 39 ~ "Isaiah_36_39",
+      book == "Isaiah" & chapter <= 55 ~ "Isaiah_40_55",
+      book == "Isaiah" & chapter <= 66 ~ "Isaiah_56_66",
+      TRUE ~ book
+    )
+  )
+
+table(kjv_chapters$section)
+
+write_csv(kjv_chapters, "data/kjv_chapters.csv")
+```
+
+## POS tagging
+```{r}
+# install.packages("quanteda")
+library(quanteda)
+library(dplyr)
+
+corp <- corpus(
+  kjv_chapters,
+  text_field = "text"
+)
+
+docvars(corp, "section") <- kjv_chapters$section
+
+toks <- tokens(
+  corp,
+  remove_punct = TRUE,
+  remove_numbers = TRUE
+)
+
+chars <- tokens_ngrams(
+  toks,
+  n = 3,
+  concatenator = ""
+)
+
+dfm3 <- dfm(chars)
+
+dim(dfm3)
+
+
+dfm3_trim <- dfm_trim(
+  dfm3,
+  min_docfreq = 5
+)
+
+dim(dfm3_trim)
+
+topfeatures(dfm3_trim, 50)
+
+dfm_word3 <- dfm3_trim
+
+
+
+corp <- corpus(
+  kjv_chapters,
+  text_field="text"
+)
+
+chars <- tokens(
+  corp,
+  what = "character",
+  remove_punct=TRUE,
+  remove_numbers=TRUE
+)
+
+char3 <- tokens_ngrams(
+  chars,
+  n=3,
+  concatenator=""
+)
+
+dfm_char3 <- dfm(char3)
+
+dfm_char3 <- dfm_trim(
+  dfm_char3,
+  min_docfreq=5
+)
+
+topfeatures(dfm_char3,50)
+
+
+
+
+chars4 <- tokens_ngrams(
+    chars,
+    n=4,
+    concatenator=""
+)
+
+dfm_char4 <- dfm(chars4)
+
+dfm_char4 <- dfm_trim(
+    dfm_char4,
+    min_docfreq=5
+)
+
+topfeatures(dfm_char4,20)
+
+
+
+
+
+library(stopwords)
+
+fw <- stopwords("en")
+
+toks_fw <- tokens_select(
+    toks,
+    pattern=fw
+)
+
+dfm_fw <- dfm(toks_fw)
+
+topfeatures(dfm_fw,50)
+
+
+
+
+phrases <- c(
+"thus saith the lord",
+"the word of the lord",
+"lord of hosts",
+"and it came to pass",
+"the house of",
+"the land of",
+"the children of"
+)
+
+library(stringr)
+
+formula_counts <- kjv_chapters %>%
+  mutate(
+
+    thus_saith =
+      str_count(
+        str_to_lower(text),
+        "thus saith the lord"
+      ),
+
+    word_of_lord =
+      str_count(
+        str_to_lower(text),
+        "the word of the lord"
+      ),
+
+    lord_of_hosts =
+      str_count(
+        str_to_lower(text),
+        "lord of hosts"
+      )
+
+  )
+
+
+
+
+
+
+
+
+
+library(proxy)
+
+m <- as.matrix(dfm_weight(dfm3_trim, "prop"))
+
+cos_sim <- 1 - proxy::dist(
+  m,
+  method = "cosine"
+)
+
+cos_sim[1:10,1:10]
+
+
+
+
+
+isaiah40 <- which(kjv_chapters$section=="Isaiah_40_55")
+
+sort(
+  cos_sim[isaiah40[1],],
+  decreasing=TRUE
+)[1:20]
+
+
+
+
+
+library(FactoMineR)
+library(factoextra)
+
+X <- as.matrix(dfm_weight(dfm3_trim, "prop"))
+
+pca <- PCA(
+  X,
+  graph=FALSE
+)
+
+fviz_pca_ind(
+  pca,
+  habillage = kjv_chapters$section,
+  repel=TRUE
+)
+
+
+
+
+
+
+
+
+
+
+
+X <- as.matrix(
+    dfm_weight(
+        dfm_char3,
+        scheme="prop"
+    )
+)
+
+library(proxy)
+
+D <- as.matrix(
+    proxy::dist(
+        X,
+        method="cosine"
+    )
+)
+
+rownames(D) <- kjv_chapters$doc_id
+colnames(D) <- kjv_chapters$doc_id
+
+sort(
+    D["Isaiah_40",]
+)[1:20]
+
+
+
+
+
+nearest_neighbors <- function(doc){
+
+    sort(
+      D[doc,]
+    )[1:10]
+
+}
+
+nearest_neighbors("Isaiah_1")
+nearest_neighbors("Isaiah_35")
+nearest_neighbors("Isaiah_40")
+nearest_neighbors("Isaiah_55")
+nearest_neighbors("Isaiah_56")
+nearest_neighbors("Isaiah_66")
+
+
+nearest_neighbors("Isaiah_35")
+nearest_neighbors("Isaiah_36")
+nearest_neighbors("Isaiah_39")
+nearest_neighbors("Isaiah_40")
+nearest_neighbors("Isaiah_55")
+nearest_neighbors("Isaiah_56")
+
+
+mean_distance <- function(group1, group2, D, metadata){
+
+  idx1 <- which(metadata$section == group1)
+  idx2 <- which(metadata$section == group2)
+
+  mean(
+    D[idx1, idx2]
+  )
+
+}
+
+
+
+mean_distance(
+  "Isaiah_1_35",
+  "Isaiah_40_55",
+  D,
+  kjv_chapters
+)
+
+mean_distance(
+  "Isaiah_40_55",
+  "Isaiah_56_66",
+  D,
+  kjv_chapters
+)
+
+mean_distance(
+  "Isaiah_40_55",
+  "Jeremiah",
+  D,
+  kjv_chapters
+)
+
+mean_distance(
+  "Isaiah_40_55",
+  "Ezekiel",
+  D,
+  kjv_chapters
+)
+
+mean_distance(
+  "Isaiah_1_35",
+  "Jeremiah",
+  D,
+  kjv_chapters
+)
+
+
+
+
+
+
+```
+
+
+
+
+
+### full working code?
+---
+title: "KJV Isaiah Stylometry"
+output: html_notebook
+---
+
+```{r setup}
+library(dplyr)
+library(stringr)
+library(readr)
+library(quanteda)
+library(proxy)
+library(scriptuRs)
+
+dir.create("data", showWarnings = FALSE)
+```
+
+```{r prepare-kjv}
+target_books <- c(
+  "Isaiah",
+  "Jeremiah", "Ezekiel", "Hosea", "Amos",
+  "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+  "Psalms", "Job", "Proverbs"
+)
+
+kjv_selected <- kjv_bible() %>%
+  filter(book_title %in% target_books) %>%
+  transmute(
+    translation = "KJV",
+    book = book_title,
+    chapter = as.integer(chapter_number),
+    verse = as.integer(verse_number),
+    text = str_squish(text)
+  ) %>%
+  arrange(match(book, target_books), chapter, verse)
+
+write_csv(kjv_selected, "data/kjv.csv")
+
+table(kjv_selected$book)
+```
+
+```{r make-chapters}
+kjv_chapters <- kjv_selected %>%
+  group_by(book, chapter) %>%
+  summarize(
+    text = str_c(text, collapse = " "),
+    n_verses = n(),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    doc_id = paste(book, chapter, sep = "_"),
+    section = case_when(
+      book == "Isaiah" & chapter <= 35 ~ "Isaiah_1_35",
+      book == "Isaiah" & chapter <= 39 ~ "Isaiah_36_39",
+      book == "Isaiah" & chapter <= 55 ~ "Isaiah_40_55",
+      book == "Isaiah" & chapter <= 66 ~ "Isaiah_56_66",
+      TRUE ~ book
+    )
+  ) %>%
+  select(doc_id, book, chapter, section, n_verses, text)
+
+write_csv(kjv_chapters, "data/kjv_chapters.csv")
+
+table(kjv_chapters$section)
+```
+
+```{r corpus}
+corp <- corpus(kjv_chapters, text_field = "text")
+
+docvars(corp, "doc_id") <- kjv_chapters$doc_id
+docvars(corp, "book") <- kjv_chapters$book
+docvars(corp, "chapter") <- kjv_chapters$chapter
+docvars(corp, "section") <- kjv_chapters$section
+```
+
+```{r character-trigrams}
+chars <- tokens(
+  corp,
+  what = "character",
+  remove_punct = TRUE,
+  remove_numbers = TRUE
+)
+
+char3 <- tokens_ngrams(
+  chars,
+  n = 3,
+  concatenator = ""
+)
+
+dfm_char3 <- dfm(char3) %>%
+  dfm_trim(min_docfreq = 5)
+
+dim(dfm_char3)
+topfeatures(dfm_char3, 50)
+```
+
+```{r character-fourgrams}
+char4 <- tokens_ngrams(
+  chars,
+  n = 4,
+  concatenator = ""
+)
+
+dfm_char4 <- dfm(char4) %>%
+  dfm_trim(min_docfreq = 5)
+
+dim(dfm_char4)
+topfeatures(dfm_char4, 50)
+```
+
+```{r word-trigrams}
+toks_words <- tokens(
+  corp,
+  remove_punct = TRUE,
+  remove_numbers = TRUE
+)
+
+word3 <- tokens_ngrams(
+  toks_words,
+  n = 3,
+  concatenator = "_"
+)
+
+dfm_word3 <- dfm(word3) %>%
+  dfm_trim(min_docfreq = 5)
+
+dim(dfm_word3)
+topfeatures(dfm_word3, 50)
+```
+
+```{r distance-functions}
+make_distance <- function(dfm_object) {
+  
+  X <- as.matrix(
+    dfm_weight(
+      dfm_object,
+      scheme = "prop"
+    )
+  )
+  
+  D <- as.matrix(
+    proxy::dist(
+      X,
+      method = "cosine"
+    )
+  )
+  
+  rownames(D) <- kjv_chapters$doc_id
+  colnames(D) <- kjv_chapters$doc_id
+  
+  return(D)
+}
+
+nearest_neighbors <- function(doc, D, n = 20) {
+  sort(D[doc, ])[1:n]
+}
+
+mean_distance <- function(group1, group2, D, metadata) {
+  
+  idx1 <- which(metadata$section == group1)
+  idx2 <- which(metadata$section == group2)
+  
+  mean(D[idx1, idx2])
+}
+
+section_distance_matrix <- function(D, metadata) {
+  
+  groups <- unique(metadata$section)
+  
+  M <- matrix(
+    NA,
+    nrow = length(groups),
+    ncol = length(groups)
+  )
+  
+  rownames(M) <- groups
+  colnames(M) <- groups
+  
+  for (i in seq_along(groups)) {
+    for (j in seq_along(groups)) {
+      M[i, j] <- mean_distance(
+        groups[i],
+        groups[j],
+        D,
+        metadata
+      )
+    }
+  }
+  
+  round(M, 4)
+}
+```
+
+```{r distances-char3}
+D_char3 <- make_distance(dfm_char3)
+
+nearest_neighbors("Isaiah_35", D_char3, 10)
+nearest_neighbors("Isaiah_36", D_char3, 10)
+nearest_neighbors("Isaiah_39", D_char3, 10)
+nearest_neighbors("Isaiah_40", D_char3, 20)
+nearest_neighbors("Isaiah_55", D_char3, 10)
+nearest_neighbors("Isaiah_56", D_char3, 10)
+
+section_distance_matrix(D_char3, kjv_chapters)
+```
+
+```{r key-comparisons-char3}
+char3_comparisons <- tibble(
+  comparison = c(
+    "Isaiah_1_35 vs Isaiah_40_55",
+    "Isaiah_40_55 vs Isaiah_56_66",
+    "Isaiah_40_55 vs Jeremiah",
+    "Isaiah_40_55 vs Ezekiel",
+    "Isaiah_1_35 vs Jeremiah"
+  ),
+  distance = c(
+    mean_distance("Isaiah_1_35", "Isaiah_40_55", D_char3, kjv_chapters),
+    mean_distance("Isaiah_40_55", "Isaiah_56_66", D_char3, kjv_chapters),
+    mean_distance("Isaiah_40_55", "Jeremiah", D_char3, kjv_chapters),
+    mean_distance("Isaiah_40_55", "Ezekiel", D_char3, kjv_chapters),
+    mean_distance("Isaiah_1_35", "Jeremiah", D_char3, kjv_chapters)
+  )
+)
+
+char3_comparisons %>%
+  arrange(distance)
+```
+
+```{r compare-feature-sets}
+D_char4 <- make_distance(dfm_char4)
+D_word3 <- make_distance(dfm_word3)
+
+feature_comparison <- bind_rows(
+  tibble(
+    feature_set = "Character 3-grams",
+    comparison = char3_comparisons$comparison,
+    distance = char3_comparisons$distance
+  ),
+  tibble(
+    feature_set = "Character 4-grams",
+    comparison = char3_comparisons$comparison,
+    distance = c(
+      mean_distance("Isaiah_1_35", "Isaiah_40_55", D_char4, kjv_chapters),
+      mean_distance("Isaiah_40_55", "Isaiah_56_66", D_char4, kjv_chapters),
+      mean_distance("Isaiah_40_55", "Jeremiah", D_char4, kjv_chapters),
+      mean_distance("Isaiah_40_55", "Ezekiel", D_char4, kjv_chapters),
+      mean_distance("Isaiah_1_35", "Jeremiah", D_char4, kjv_chapters)
+    )
+  ),
+  tibble(
+    feature_set = "Word 3-grams",
+    comparison = char3_comparisons$comparison,
+    distance = c(
+      mean_distance("Isaiah_1_35", "Isaiah_40_55", D_word3, kjv_chapters),
+      mean_distance("Isaiah_40_55", "Isaiah_56_66", D_word3, kjv_chapters),
+      mean_distance("Isaiah_40_55", "Jeremiah", D_word3, kjv_chapters),
+      mean_distance("Isaiah_40_55", "Ezekiel", D_word3, kjv_chapters),
+      mean_distance("Isaiah_1_35", "Jeremiah", D_word3, kjv_chapters)
+    )
+  )
+)
+
+feature_comparison %>%
+  arrange(feature_set, distance)
+```
+
+```{r pca-char3}
+X_char3 <- as.matrix(
+  dfm_weight(dfm_char3, scheme = "prop")
+)
+
+pca_char3 <- prcomp(
+  X_char3,
+  center = TRUE,
+  scale. = FALSE
+)
+
+pca_df <- as_tibble(pca_char3$x[, 1:2]) %>%
+  mutate(
+    doc_id = kjv_chapters$doc_id,
+    book = kjv_chapters$book,
+    chapter = kjv_chapters$chapter,
+    section = kjv_chapters$section
+  )
+
+head(pca_df)
+```
+
+```{r plot-pca-char3}
+library(ggplot2)
+
+#install.packages("ggrepel")
+library(ggrepel)
+
+var_explained <- pca_char3$sdev^2 /
+                 sum(pca_char3$sdev^2)
+
+pc1_pct <- round(
+  100 * var_explained[1],
+  1
+)
+
+pc2_pct <- round(
+  100 * var_explained[2],
+  1
+)
+
+
+
+ggplot(
+  pca_df,
+  aes(
+    x = PC1,
+    y = PC2,
+    color = section
+  )
+) +
+  geom_point(
+    size = 2,
+    alpha = 0.7
+  ) +
+
+  geom_text_repel(
+    data =
+      subset(
+        pca_df,
+        grepl("^Isaiah", doc_id)
+      ),
+
+    aes(
+      label = doc_id
+    ),
+
+    size = 3,
+    max.overlaps = 100
+  ) +
+
+  theme_minimal() +
+
+  labs(
+    title = "KJV Stylometry: Character 3-gram PCA",
+
+    subtitle =
+      "Isaiah chapters labeled",
+
+    x =
+      paste0(
+        "PC1 (",
+        pc1_pct,
+        "%)"
+      ),
+
+    y =
+      paste0(
+        "PC2 (",
+        pc2_pct,
+        "%)"
+      )
+  )
+```
+
+
+```{r save-results}
+write_csv(char3_comparisons, "data/char3_comparisons.csv")
+write_csv(feature_comparison, "data/feature_comparison.csv")
+write_csv(pca_df, "data/pca_char3.csv")
+```
+
+
+```{r isaiah only}
+isaiah_pca <- pca_df %>%
+  filter(grepl("^Isaiah", doc_id))
+
+ggplot(
+  isaiah_pca,
+  aes(
+    PC1,
+    PC2,
+    color=section
+  )
+)+
+
+geom_point(size=3)+
+
+geom_path(
+  aes(group=1),
+  color="gray70",
+  alpha=.5
+)+
+
+geom_text(
+  aes(label=chapter),
+  size=3,
+  check_overlap=TRUE,
+  vjust=-.5
+)+
+
+theme_minimal()+
+
+labs(
+  title="Isaiah Character 3-gram PCA",
+  subtitle="Chapters connected sequentially",
+  x=paste0(
+    "PC1 (",
+    pc1_pct,
+    "%)"
+  ),
+  y=paste0(
+    "PC2 (",
+    pc2_pct,
+    "%)"
+  )
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+dir.create("corpus", showWarnings = FALSE)
+
+for(i in 1:nrow(kjv_chapters)){
+
+  writeLines(
+
+    kjv_chapters$text[i],
+
+    paste0(
+      "corpus/",
+      kjv_chapters$doc_id[i],
+      ".txt"
+    )
+
+  )
+
+}
+
+
+
+library(stylo)
+stylo(
+
+  corpus.dir="corpus",
+
+  analysis.type="CA",
+
+  mfw.min=100,
+
+  mfw.max=1000,
+
+  distance.measure="delta",
+
+  gui=FALSE
+
+)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r pos-tagging}
+library(udpipe)
+library(dplyr)
+library(stringr)
+library(quanteda)
+
+
+dir.create(
+  "cache",
+  showWarnings=FALSE
+)
+
+
+
+# Download once
+model_file <- udpipe_download_model(language = "english-ewt")
+ud_model <- udpipe_load_model(model_file$file_model)
+
+# Tag chapter texts  ## this takes awhile...
+if(file.exists("cache/pos_df.rds")){
+
+  pos_df <-
+
+    readRDS(
+      "cache/pos_df.rds"
+    )
+
+} else {
+
+  pos_annot <-
+
+    udpipe_annotate(
+
+      ud_model,
+
+      x=kjv_chapters$text,
+
+      doc_id=
+        kjv_chapters$doc_id
+
+    )
+
+  pos_df <-
+
+    as.data.frame(
+      pos_annot
+    )
+
+  saveRDS(
+
+    pos_df,
+
+    "cache/pos_df.rds"
+
+  )
+
+}
+```
+
+
+
+```{r pos-trigrams}
+pos_docs <- pos_df %>%
+  filter(!is.na(upos)) %>%
+  group_by(doc_id) %>%
+  summarize(
+    pos_text = str_c(upos, collapse = " "),
+    .groups = "drop"
+  )
+
+pos_corp <- corpus(pos_docs, text_field = "pos_text")
+
+toks_pos <- tokens(
+  pos_corp,
+  what = "word"
+)
+
+pos3 <- tokens_ngrams(
+  toks_pos,
+  n = 3,
+  concatenator = "_"
+)
+
+dfm_pos3 <- dfm(pos3) %>%
+  dfm_trim(min_docfreq = 5)
+
+dim(dfm_pos3)
+topfeatures(dfm_pos3, 50)
+
+
+
+
+
+
+
+D_pos3 <- make_distance(dfm_pos3)
+
+nearest_neighbors("Isaiah_40", D_pos3, 20)
+
+pos3_comparisons <- tibble(
+  feature_set = "POS 3-grams",
+  comparison = char3_comparisons$comparison,
+  distance = c(
+    mean_distance("Isaiah_1_35", "Isaiah_40_55", D_pos3, kjv_chapters),
+    mean_distance("Isaiah_40_55", "Isaiah_56_66", D_pos3, kjv_chapters),
+    mean_distance("Isaiah_40_55", "Jeremiah", D_pos3, kjv_chapters),
+    mean_distance("Isaiah_40_55", "Ezekiel", D_pos3, kjv_chapters),
+    mean_distance("Isaiah_1_35", "Jeremiah", D_pos3, kjv_chapters)
+  )
+)
+
+pos3_comparisons %>%
+  arrange(distance)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 1. Data input
+
+This notebook assumes you have a KJV chapter-level file with at least these columns:
+
+```text
+book, chapter, verse, text
+```
+
+A verse-level CSV is ideal. Each row should be one verse.
+
+Example:
+
+```text
+book,chapter,verse,text
+Isaiah,1,1,"The vision of Isaiah the son of Amoz..."
+Isaiah,1,2,"Hear, O heavens, and give ear, O earth..."
+```
+
+```{r load-data}
+# Change this path to your local KJV CSV file.
+# Example: "data/kjv.csv"
+kjv_path <- "data/kjv.csv"
+
+kjv <- read_csv(kjv_path, show_col_types = FALSE) %>%
+  clean_names() %>%
+  mutate(
+    book = str_squish(book),
+    chapter = as.integer(chapter),
+    verse = as.integer(verse),
+    text = str_squish(text)
+  )
+
+glimpse(kjv)
+```
+
+# 2. Select Isaiah and control books
+
+Recommended control groups:
+
+- **Prophetic controls**: Jeremiah, Ezekiel, Hosea, Amos
+- **Narrative controls**: 1 Samuel, 2 Samuel, 1 Kings, 2 Kings
+- **Poetic controls**: Psalms, Job, Proverbs
+
+```{r select-books}
+control_books <- c(
+  "Jeremiah", "Ezekiel", "Hosea", "Amos",
+  "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+  "Psalms", "Job", "Proverbs"
+)
+
+books_to_keep <- c("Isaiah", control_books)
+
+corpus_verses <- kjv %>%
+  filter(book %in% books_to_keep)
+
+corpus_chapters <- corpus_verses %>%
+  group_by(book, chapter) %>%
+  summarise(text = paste(text, collapse = " "), .groups = "drop") %>%
+  mutate(
+    doc_id = paste(book, chapter, sep = "_"),
+    isaiah_section = case_when(
+      book == "Isaiah" & chapter >= 1  & chapter <= 35 ~ "Isaiah_1_35",
+      book == "Isaiah" & chapter >= 36 & chapter <= 39 ~ "Isaiah_36_39_narrative",
+      book == "Isaiah" & chapter >= 40 & chapter <= 55 ~ "Isaiah_40_55",
+      book == "Isaiah" & chapter >= 56 & chapter <= 66 ~ "Isaiah_56_66",
+      TRUE ~ "Control"
+    ),
+    genre_group = case_when(
+      book %in% c("1 Samuel", "2 Samuel", "1 Kings", "2 Kings") ~ "Narrative",
+      book %in% c("Psalms", "Job", "Proverbs") ~ "Poetic_Wisdom",
+      book %in% c("Jeremiah", "Ezekiel", "Hosea", "Amos", "Isaiah") ~ "Prophetic",
+      TRUE ~ "Other"
+    )
+  )
+
+corpus_chapters %>% count(book, genre_group)
+```
+
+# 3. Basic tokenization
+
+```{r tokenize}
+tokens <- corpus_chapters %>%
+  select(doc_id, book, chapter, isaiah_section, genre_group, text) %>%
+  unnest_tokens(word, text) %>%
+  filter(str_detect(word, "[a-z]"))
+
+tokens %>% count(word, sort = TRUE) %>% head(30)
+```
+
+# 4. Chapter-length diagnostics
+
+Short chapters can behave erratically in stylometry.
+
+```{r chapter-lengths}
+chapter_lengths <- tokens %>%
+  count(doc_id, book, chapter, isaiah_section, genre_group, name = "word_count")
+
+chapter_lengths %>%
+  ggplot(aes(x = word_count)) +
+  geom_histogram(bins = 30) +
+  labs(title = "Chapter word counts", x = "Words per chapter", y = "Number of chapters")
+
+chapter_lengths %>% arrange(word_count) %>% head(20)
+```
+
+Optional filter:
+
+```{r filter-short-chapters}
+min_words <- 150
+valid_docs <- chapter_lengths %>%
+  filter(word_count >= min_words) %>%
+  pull(doc_id)
+
+tokens_valid <- tokens %>% filter(doc_id %in% valid_docs)
+corpus_valid <- corpus_chapters %>% filter(doc_id %in% valid_docs)
+```
+
+# 5. Most frequent word matrix
+
+This is the classic stylometric starting point.
+
+```{r mfw-matrix}
+num_mfw <- 300
+
+mfw <- tokens_valid %>%
+  count(word, sort = TRUE) %>%
+  slice_head(n = num_mfw) %>%
+  pull(word)
+
+word_matrix <- tokens_valid %>%
+  filter(word %in% mfw) %>%
+  count(doc_id, word) %>%
+  group_by(doc_id) %>%
+  mutate(freq = n / sum(n)) %>%
+  ungroup() %>%
+  select(doc_id, word, freq) %>%
+  pivot_wider(names_from = word, values_from = freq, values_fill = 0)
+
+word_metadata <- corpus_valid %>% select(doc_id, book, chapter, isaiah_section, genre_group)
+
+word_features <- word_matrix %>%
+  left_join(word_metadata, by = "doc_id") %>%
+  relocate(doc_id, book, chapter, isaiah_section, genre_group)
+
+word_features %>% glimpse()
+```
+
+# 6. PCA on most frequent words
+
+```{r pca-mfw}
+feature_cols <- setdiff(names(word_features), c("doc_id", "book", "chapter", "isaiah_section", "genre_group"))
+
+pca_input <- word_features %>%
+  select(all_of(feature_cols)) %>%
+  as.data.frame()
+
+rownames(pca_input) <- word_features$doc_id
+
+pca_result <- prcomp(pca_input, center = TRUE, scale. = TRUE)
+
+pca_scores <- as_tibble(pca_result$x, rownames = "doc_id") %>%
+  left_join(word_metadata, by = "doc_id")
+
+pca_scores %>%
+  ggplot(aes(x = PC1, y = PC2, label = doc_id, color = isaiah_section, shape = genre_group)) +
+  geom_point(size = 2.5) +
+  labs(title = "PCA: KJV chapter style using most frequent words")
+```
+
+# 7. PCA: Isaiah only
+
+```{r pca-isaiah-only}
+pca_scores %>%
+  filter(book == "Isaiah") %>%
+  ggplot(aes(x = PC1, y = PC2, label = chapter, color = isaiah_section)) +
+  geom_point(size = 3) +
+  geom_text(nudge_y = 0.15, size = 3) +
+  labs(title = "PCA: Isaiah chapters only")
+```
+
+# 8. Hierarchical clustering
+
+```{r hierarchical-clustering}
+dist_matrix <- dist(pca_input, method = "euclidean")
+hc <- hclust(dist_matrix, method = "ward.D2")
+
+plot(hc, labels = rownames(pca_input), main = "Hierarchical clustering: KJV chapters")
+```
+
+# 9. Cosine similarity nearest neighbors
+
+This is useful for your proposed “top-k nearest neighbors” approach.
+
+```{r cosine-similarity}
+cosine_dist <- proxy::dist(pca_input, method = "cosine")
+cosine_sim <- 1 - as.matrix(cosine_dist)
+
+top_k_neighbors <- function(doc, sim_matrix, k = 5) {
+  sims <- sort(sim_matrix[doc, ], decreasing = TRUE)
+  sims <- sims[names(sims) != doc]
+  tibble(
+    doc_id = doc,
+    neighbor = names(sims)[1:k],
+    similarity = as.numeric(sims[1:k])
+  )
+}
+
+isaiah_docs <- word_metadata %>%
+  filter(book == "Isaiah") %>%
+  pull(doc_id)
+
+neighbors <- map_dfr(isaiah_docs, top_k_neighbors, sim_matrix = cosine_sim, k = 5) %>%
+  left_join(word_metadata, by = c("neighbor" = "doc_id")) %>%
+  rename(
+    neighbor_book = book,
+    neighbor_chapter = chapter,
+    neighbor_section = isaiah_section,
+    neighbor_genre = genre_group
+  )
+
+neighbors %>%
+  filter(str_detect(doc_id, "Isaiah")) %>%
+  arrange(doc_id, desc(similarity))
+```
+
+# 10. Function-word analysis
+
+For English KJV, function words can reduce content/topic effects.
+
+```{r function-words}
+function_words <- c(
+  "the", "and", "of", "to", "that", "in", "he", "shall", "for", "unto",
+  "i", "his", "a", "they", "be", "is", "not", "with", "him", "them",
+  "it", "my", "me", "thy", "thou", "ye", "you", "your", "we", "our",
+  "as", "but", "or", "if", "from", "by", "upon", "therefore", "then", "when",
+  "which", "who", "whom", "whose", "this", "these", "those", "all", "no", "neither"
+)
+
+function_matrix <- tokens_valid %>%
+  filter(word %in% function_words) %>%
+  count(doc_id, word) %>%
+  group_by(doc_id) %>%
+  mutate(freq = n / sum(n)) %>%
+  ungroup() %>%
+  select(doc_id, word, freq) %>%
+  pivot_wider(names_from = word, values_from = freq, values_fill = 0)
+
+function_features <- function_matrix %>%
+  left_join(word_metadata, by = "doc_id") %>%
+  relocate(doc_id, book, chapter, isaiah_section, genre_group)
+
+function_input <- function_features %>%
+  select(-doc_id, -book, -chapter, -isaiah_section, -genre_group) %>%
+  as.data.frame()
+rownames(function_input) <- function_features$doc_id
+
+function_pca <- prcomp(function_input, center = TRUE, scale. = TRUE)
+
+function_scores <- as_tibble(function_pca$x, rownames = "doc_id") %>%
+  left_join(word_metadata, by = "doc_id")
+
+function_scores %>%
+  ggplot(aes(x = PC1, y = PC2, color = isaiah_section, shape = genre_group)) +
+  geom_point(size = 2.5) +
+  labs(title = "PCA: KJV function-word style")
+```
+
+# 11. Character n-grams
+
+Character n-grams often perform well in authorship work.
+
+```{r char-ngrams}
+make_char_ngrams <- function(text, n = 4) {
+  text <- str_to_lower(text)
+  text <- str_replace_all(text, "[^a-z ]", " ")
+  text <- str_squish(text)
+  chars <- strsplit(text, "")[[1]]
+  if (length(chars) < n) return(character(0))
+  map_chr(seq_len(length(chars) - n + 1), ~ paste0(chars[.x:(.x+n-1)], collapse = ""))
+}
+
+char_n <- 4
+num_char_features <- 500
+
+char_tokens <- corpus_valid %>%
+  select(doc_id, book, chapter, isaiah_section, genre_group, text) %>%
+  mutate(char_ngram = map(text, make_char_ngrams, n = char_n)) %>%
+  select(-text) %>%
+  unnest(char_ngram) %>%
+  filter(str_detect(char_ngram, "[a-z]"))
+
+top_char <- char_tokens %>%
+  count(char_ngram, sort = TRUE) %>%
+  slice_head(n = num_char_features) %>%
+  pull(char_ngram)
+
+char_matrix <- char_tokens %>%
+  filter(char_ngram %in% top_char) %>%
+  count(doc_id, char_ngram) %>%
+  group_by(doc_id) %>%
+  mutate(freq = n / sum(n)) %>%
+  ungroup() %>%
+  select(doc_id, char_ngram, freq) %>%
+  pivot_wider(names_from = char_ngram, values_from = freq, values_fill = 0)
+
+char_features <- char_matrix %>%
+  left_join(word_metadata, by = "doc_id") %>%
+  relocate(doc_id, book, chapter, isaiah_section, genre_group)
+
+char_input <- char_features %>%
+  select(-doc_id, -book, -chapter, -isaiah_section, -genre_group) %>%
+  as.data.frame()
+rownames(char_input) <- char_features$doc_id
+
+char_pca <- prcomp(char_input, center = TRUE, scale. = TRUE)
+
+char_scores <- as_tibble(char_pca$x, rownames = "doc_id") %>%
+  left_join(word_metadata, by = "doc_id")
+
+char_scores %>%
+  ggplot(aes(x = PC1, y = PC2, color = isaiah_section, shape = genre_group)) +
+  geom_point(size = 2.5) +
+  labs(title = "PCA: KJV character 4-gram style")
+```
+
+# 12. mclust mixture modeling
+
+This estimates the number of clusters from the feature space. Treat this as exploratory.
+
+```{r mclust-model}
+# Use PCA scores rather than hundreds of raw features.
+# Usually PC1-PC10 is enough for exploratory clustering.
+
+mclust_input <- pca_scores %>%
+  select(PC1:PC10) %>%
+  as.data.frame()
+rownames(mclust_input) <- pca_scores$doc_id
+
+mc <- Mclust(mclust_input)
+summary(mc)
+plot(mc, what = "classification")
+
+mclust_classes <- tibble(
+  doc_id = rownames(mclust_input),
+  mclust_class = mc$classification
+) %>%
+  left_join(word_metadata, by = "doc_id")
+
+mclust_classes %>%
+  count(mclust_class, book, isaiah_section, genre_group) %>%
+  arrange(mclust_class, book)
+```
+
+# 13. Optional POS tagging with UDPipe
+
+For KJV English, this is feasible. It may take time on a full corpus.
+
+```{r udpipe-pos, eval=FALSE}
+# Download once. Then reuse the downloaded model path.
+english_model_info <- udpipe_download_model(language = "english-ewt")
+english_model <- udpipe_load_model(english_model_info$file_model)
+
+pos_annotations <- udpipe_annotate(
+  english_model,
+  x = corpus_valid$text,
+  doc_id = corpus_valid$doc_id
+) %>%
+  as.data.frame() %>%
+  as_tibble()
+
+pos_annotations %>% select(doc_id, token, lemma, upos, xpos, feats) %>% head(20)
+```
+
+# 14. POS n-gram stylometry
+
+```{r pos-ngrams, eval=FALSE}
+pos_ngrams <- pos_annotations %>%
+  filter(!is.na(upos)) %>%
+  group_by(doc_id) %>%
+  summarise(pos_sequence = paste(upos, collapse = " "), .groups = "drop") %>%
+  unnest_tokens(pos_bigram, pos_sequence, token = "ngrams", n = 2)
+
+num_pos_features <- 150
+
+top_pos_bigrams <- pos_ngrams %>%
+  count(pos_bigram, sort = TRUE) %>%
+  slice_head(n = num_pos_features) %>%
+  pull(pos_bigram)
+
+pos_matrix <- pos_ngrams %>%
+  filter(pos_bigram %in% top_pos_bigrams) %>%
+  count(doc_id, pos_bigram) %>%
+  group_by(doc_id) %>%
+  mutate(freq = n / sum(n)) %>%
+  ungroup() %>%
+  select(doc_id, pos_bigram, freq) %>%
+  pivot_wider(names_from = pos_bigram, values_from = freq, values_fill = 0)
+
+pos_features <- pos_matrix %>%
+  left_join(word_metadata, by = "doc_id") %>%
+  relocate(doc_id, book, chapter, isaiah_section, genre_group)
+
+pos_input <- pos_features %>%
+  select(-doc_id, -book, -chapter, -isaiah_section, -genre_group) %>%
+  as.data.frame()
+rownames(pos_input) <- pos_features$doc_id
+
+pos_pca <- prcomp(pos_input, center = TRUE, scale. = TRUE)
+
+pos_scores <- as_tibble(pos_pca$x, rownames = "doc_id") %>%
+  left_join(word_metadata, by = "doc_id")
+
+pos_scores %>%
+  ggplot(aes(x = PC1, y = PC2, color = isaiah_section, shape = genre_group)) +
+  geom_point(size = 2.5) +
+  labs(title = "PCA: KJV POS bigram style")
+```
+
+# 15. Ensemble nearest-neighbor voting
+
+This combines multiple feature sets by asking: for each Isaiah chapter, what documents repeatedly appear among its nearest neighbors?
+
+```{r ensemble-neighbors}
+nearest_neighbors_from_matrix <- function(feature_matrix, metadata, feature_name, k = 5) {
+  cosine_dist <- proxy::dist(feature_matrix, method = "cosine")
+  cosine_sim <- 1 - as.matrix(cosine_dist)
+  docs <- rownames(feature_matrix)
+
+  map_dfr(docs, function(doc) {
+    sims <- sort(cosine_sim[doc, ], decreasing = TRUE)
+    sims <- sims[names(sims) != doc]
+    tibble(
+      doc_id = doc,
+      neighbor = names(sims)[1:k],
+      similarity = as.numeric(sims[1:k]),
+      feature_set = feature_name
+    )
+  }) %>%
+    left_join(metadata, by = c("neighbor" = "doc_id")) %>%
+    rename(
+      neighbor_book = book,
+      neighbor_chapter = chapter,
+      neighbor_section = isaiah_section,
+      neighbor_genre = genre_group
+    )
+}
+
+neighbors_mfw <- nearest_neighbors_from_matrix(pca_input, word_metadata, "MFW", k = 5)
+neighbors_function <- nearest_neighbors_from_matrix(function_input, word_metadata, "Function_Words", k = 5)
+neighbors_char <- nearest_neighbors_from_matrix(char_input, word_metadata, "Character_4grams", k = 5)
+
+ensemble_neighbors <- bind_rows(neighbors_mfw, neighbors_function, neighbors_char)
+
+isaiah_ensemble_summary <- ensemble_neighbors %>%
+  filter(doc_id %in% isaiah_docs) %>%
+  count(doc_id, neighbor_book, neighbor_section, neighbor_genre, sort = TRUE)
+
+isaiah_ensemble_summary %>%
+  arrange(doc_id, desc(n))
+```
+
+# 16. Suggested interpretation logic
+
+Use this notebook to look for patterns such as:
+
+1. Do Isaiah 40–55 chapters cluster together across multiple feature sets?
+2. Do Isaiah 36–39 cluster with Kings/Samuel because they are narrative?
+3. Do Isaiah 40–55 cluster with other prophetic controls such as Jeremiah/Ezekiel?
+4. Do content-free features tell the same story as content-heavy features?
+5. Does the result persist when chapter size thresholds change?
+6. Does the result persist when using windows instead of chapters?
+
+# 17. Optional next step: rolling windows instead of chapters
+
+Chapter divisions are not always ideal. A stronger method is fixed-length windows.
+
+```{r rolling-window-template, eval=FALSE}
+# Template only.
+# Build documents of approximately 500-word windows inside each book.
+
+window_size <- 500
+
+rolling_windows <- tokens %>%
+  group_by(book) %>%
+  mutate(token_index = row_number()) %>%
+  mutate(window_id = ceiling(token_index / window_size)) %>%
+  group_by(book, window_id) %>%
+  summarise(text = paste(word, collapse = " "), .groups = "drop") %>%
+  mutate(doc_id = paste(book, "window", window_id, sep = "_"))
+```
+

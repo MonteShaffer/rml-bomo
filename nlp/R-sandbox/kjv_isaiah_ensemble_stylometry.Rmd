@@ -1,0 +1,998 @@
+---
+title: "KJV Isaiah Stylometry Ensemble Framework"
+subtitle: "End-to-end data creation, caching, feature extraction, distances, nearest-neighbor voting"
+output:
+  html_notebook:
+    toc: true
+    toc_float: true
+---
+
+```{r setup}
+# Install once if needed:
+# install.packages(c("dplyr", "stringr", "readr", "tibble", "tidyr", "purrr", "ggplot2", "quanteda", "proxy", "udpipe", "scriptuRs"))
+
+library(dplyr)
+library(stringr)
+library(readr)
+library(tibble)
+library(tidyr)
+library(purrr)
+library(ggplot2)
+library(quanteda)
+library(proxy)
+library(udpipe)
+library(scriptuRs)
+
+set.seed(1234)
+
+DATA_DIR <- "data"
+CACHE_DIR <- "cache"
+RESULTS_DIR <- "results"
+
+for(d in c(DATA_DIR, CACHE_DIR, RESULTS_DIR)) {
+  dir.create(d, showWarnings = FALSE, recursive = TRUE)
+}
+
+# Future corpus plan:
+# KJV = English King James Version, implemented here.
+# WLC = Westminster Leningrad Codex / Masoretic Hebrew, planned.
+# LXX = Septuagint Greek, planned.
+
+corpus_registry <- tibble(
+  corpus_id = c("KJV", "WLC", "LXX"),
+  language = c("english", "hebrew", "greek"),
+  implemented = c(TRUE, FALSE, FALSE),
+  notes = c(
+    "KJV from scriptuRs::kjv_bible(); implemented in this notebook.",
+    "Planned: normalized CSV with book/chapter/verse/text columns.",
+    "Planned: normalized CSV with book/chapter/verse/text columns."
+  )
+)
+
+corpus_registry
+```
+
+```{r helper-functions}
+cache_rds <- function(path, expr, rebuild = FALSE) {
+  if(file.exists(path) && !rebuild) {
+    readRDS(path)
+  } else {
+    obj <- eval(expr, envir = parent.frame())
+    saveRDS(obj, path)
+    obj
+  }
+}
+
+safe_filename <- function(x) {
+  x %>%
+    str_replace_all("[^A-Za-z0-9_]+", "_") %>%
+    str_replace_all("_+", "_") %>%
+    str_remove("_$")
+}
+
+make_distance <- function(dfm_object, metric = "cosine") {
+  X <- as.matrix(dfm_weight(dfm_object, scheme = "prop"))
+  X[is.na(X)] <- 0
+  D <- as.matrix(proxy::dist(X, method = metric))
+  D
+}
+
+make_delta_distance <- function(dfm_object) {
+  X <- as.matrix(dfm_object)
+  X <- sweep(X, 1, rowSums(X), "/")
+  X[is.na(X)] <- 0
+  Z <- scale(X)
+  Z[is.na(Z)] <- 0
+  D <- matrix(0, nrow(Z), nrow(Z))
+  for(i in seq_len(nrow(Z))) {
+    for(j in seq_len(nrow(Z))) {
+      D[i, j] <- mean(abs(Z[i, ] - Z[j, ]))
+    }
+  }
+  D
+}
+
+nearest_neighbors <- function(doc, D, n = 5, include_self = FALSE) {
+  v <- sort(D[doc, ], decreasing = FALSE)
+  if(!include_self) v <- v[names(v) != doc]
+  head(v, n)
+}
+
+mean_distance <- function(group1, group2, D, metadata, group_col = "section") {
+  idx1 <- which(metadata[[group_col]] == group1)
+  idx2 <- which(metadata[[group_col]] == group2)
+  mean(D[idx1, idx2])
+}
+
+within_distance <- function(group, D, metadata, group_col = "section") {
+  idx <- which(metadata[[group_col]] == group)
+  subD <- D[idx, idx, drop = FALSE]
+  mean(subD[upper.tri(subD)])
+}
+
+section_distance_matrix <- function(D, metadata, group_col = "section") {
+  groups <- unique(metadata[[group_col]])
+  M <- matrix(NA, nrow = length(groups), ncol = length(groups))
+  rownames(M) <- groups
+  colnames(M) <- groups
+  for(i in seq_along(groups)) {
+    for(j in seq_along(groups)) {
+      M[i, j] <- mean_distance(groups[i], groups[j], D, metadata, group_col)
+    }
+  }
+  round(M, 4)
+}
+
+get_doc_metadata <- function(metadata, doc_ids) {
+  metadata %>%
+    select(doc_id, book, chapter, section, n_verses) %>%
+    filter(doc_id %in% doc_ids)
+}
+```
+
+```{r prepare-kjv-verses}
+target_books <- c(
+  "Isaiah",
+  "Jeremiah", "Ezekiel", "Hosea", "Amos",
+  "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+  "Psalms", "Job", "Proverbs"
+)
+
+kjv_selected <- cache_rds(
+  file.path(CACHE_DIR, "KJV_verses.rds"),
+  quote({
+    kjv_bible() %>%
+      filter(book_title %in% target_books) %>%
+      transmute(
+        corpus_id = "KJV",
+        translation = "KJV",
+        book = book_title,
+        chapter = as.integer(chapter_number),
+        verse = as.integer(verse_number),
+        text = str_squish(text)
+      ) %>%
+      arrange(match(book, target_books), chapter, verse)
+  })
+)
+
+write_csv(kjv_selected, file.path(DATA_DIR, "kjv.csv"))
+table(kjv_selected$book)
+```
+
+```{r make-kjv-chapters}
+kjv_chapters <- cache_rds(
+  file.path(CACHE_DIR, "KJV_chapters.rds"),
+  quote({
+    kjv_selected %>%
+      group_by(corpus_id, translation, book, chapter) %>%
+      summarize(
+        text = str_c(text, collapse = " "),
+        n_verses = n(),
+        .groups = "drop"
+      ) %>%
+      mutate(
+        doc_id = paste(book, chapter, sep = "_"),
+        section = case_when(
+          book == "Isaiah" & chapter <= 35 ~ "Isaiah_1_35",
+          book == "Isaiah" & chapter <= 39 ~ "Isaiah_36_39",
+          book == "Isaiah" & chapter <= 55 ~ "Isaiah_40_55",
+          book == "Isaiah" & chapter <= 66 ~ "Isaiah_56_66",
+          TRUE ~ book
+        ),
+        macro_genre = case_when(
+          book %in% c("1 Samuel", "2 Samuel", "1 Kings", "2 Kings") ~ "Narrative",
+          book %in% c("Psalms", "Job", "Proverbs") ~ "Poetic/Wisdom",
+          TRUE ~ "Prophetic"
+        )
+      ) %>%
+      select(corpus_id, doc_id, book, chapter, section, macro_genre, n_verses, text)
+  })
+)
+
+write_csv(kjv_chapters, file.path(DATA_DIR, "kjv_chapters.csv"))
+table(kjv_chapters$section)
+```
+
+```{r build-corpus}
+corp <- corpus(kjv_chapters, text_field = "text")
+
+docvars(corp, "corpus_id") <- kjv_chapters$corpus_id
+docvars(corp, "doc_id") <- kjv_chapters$doc_id
+docvars(corp, "book") <- kjv_chapters$book
+docvars(corp, "chapter") <- kjv_chapters$chapter
+docvars(corp, "section") <- kjv_chapters$section
+docvars(corp, "macro_genre") <- kjv_chapters$macro_genre
+
+summary(corp, 5)
+```
+
+```{r feature-builders}
+build_dfm_char_ngram <- function(corp, n = 3, min_docfreq = 5) {
+  chars <- tokens(
+    corp,
+    what = "character",
+    remove_punct = TRUE,
+    remove_numbers = TRUE
+  )
+  tokens_ngrams(chars, n = n, concatenator = "") %>%
+    dfm() %>%
+    dfm_trim(min_docfreq = min_docfreq)
+}
+
+build_dfm_word_ngram <- function(corp, n = 3, min_docfreq = 5) {
+  toks <- tokens(
+    corp,
+    remove_punct = TRUE,
+    remove_numbers = TRUE
+  ) %>%
+    tokens_tolower()
+  tokens_ngrams(toks, n = n, concatenator = "_") %>%
+    dfm() %>%
+    dfm_trim(min_docfreq = min_docfreq)
+}
+
+build_dfm_function_words <- function(corp, min_docfreq = 5) {
+  function_words <- c(
+    stopwords::stopwords("en"),
+    "unto", "ye", "thou", "thee", "thy", "thine",
+    "hath", "doth", "shall", "shalt", "wilt", "art"
+  ) %>% unique()
+
+  toks <- tokens(
+    corp,
+    remove_punct = TRUE,
+    remove_numbers = TRUE
+  ) %>%
+    tokens_tolower() %>%
+    tokens_select(pattern = function_words, selection = "keep")
+
+  dfm(toks) %>%
+    dfm_trim(min_docfreq = min_docfreq)
+}
+
+build_pos_df <- function(chapters, rebuild = FALSE) {
+  model_path <- file.path(CACHE_DIR, "english-ewt-ud-2.5-191206.udpipe")
+
+  if(!file.exists(model_path)) {
+    model_file <- udpipe_download_model(language = "english-ewt", model_dir = CACHE_DIR)
+    model_path <- model_file$file_model
+  }
+
+  ud_model <- udpipe_load_model(model_path)
+
+  cache_rds(
+    file.path(CACHE_DIR, "KJV_pos_df.rds"),
+    quote({
+      pos_annot <- udpipe_annotate(
+        ud_model,
+        x = chapters$text,
+        doc_id = chapters$doc_id
+      )
+      as.data.frame(pos_annot)
+    }),
+    rebuild = rebuild
+  )
+}
+
+build_dfm_pos_ngram <- function(pos_df, n = 3, min_docfreq = 5) {
+  pos_docs <- pos_df %>%
+    filter(!is.na(upos)) %>%
+    group_by(doc_id) %>%
+    summarize(
+      pos_text = str_c(upos, collapse = " "),
+      .groups = "drop"
+    )
+
+  pos_corp <- corpus(pos_docs, text_field = "pos_text")
+  toks_pos <- tokens(pos_corp, what = "word")
+
+  tokens_ngrams(toks_pos, n = n, concatenator = "_") %>%
+    dfm() %>%
+    dfm_trim(min_docfreq = min_docfreq)
+}
+```
+
+```{r build-feature-sets}
+# Toggle this if you want to force re-tagging POS. It can take time.
+REBUILD_POS <- FALSE
+
+feature_specs <- tibble(
+  corpus_id = "KJV",
+  feature_set = c("char3", "char4", "word3", "function_words", "pos3"),
+  description = c(
+    "Character 3-grams",
+    "Character 4-grams",
+    "Word 3-grams",
+    "Function words",
+    "Universal Dependencies POS 3-grams"
+  )
+)
+
+# Character 3-grams
+dfm_char3 <- cache_rds(
+  file.path(CACHE_DIR, "KJV_dfm_char3.rds"),
+  quote(build_dfm_char_ngram(corp, n = 3, min_docfreq = 5))
+)
+
+# Character 4-grams
+dfm_char4 <- cache_rds(
+  file.path(CACHE_DIR, "KJV_dfm_char4.rds"),
+  quote(build_dfm_char_ngram(corp, n = 4, min_docfreq = 5))
+)
+
+# Word 3-grams
+dfm_word3 <- cache_rds(
+  file.path(CACHE_DIR, "KJV_dfm_word3.rds"),
+  quote(build_dfm_word_ngram(corp, n = 3, min_docfreq = 5))
+)
+
+# Function words
+dfm_function_words <- cache_rds(
+  file.path(CACHE_DIR, "KJV_dfm_function_words.rds"),
+  quote(build_dfm_function_words(corp, min_docfreq = 5))
+)
+
+# POS 3-grams
+pos_df <- build_pos_df(kjv_chapters, rebuild = REBUILD_POS)
+
+dfm_pos3 <- cache_rds(
+  file.path(CACHE_DIR, "KJV_dfm_pos3.rds"),
+  quote(build_dfm_pos_ngram(pos_df, n = 3, min_docfreq = 5))
+)
+
+feature_objects <- list(
+  char3 = dfm_char3,
+  char4 = dfm_char4,
+  word3 = dfm_word3,
+  function_words = dfm_function_words,
+  pos3 = dfm_pos3
+)
+
+feature_summary <- imap_dfr(feature_objects, function(x, nm) {
+  tibble(
+    corpus_id = "KJV",
+    feature_set = nm,
+    n_docs = ndoc(x),
+    n_features = nfeat(x),
+    top_features = paste(names(topfeatures(x, 10)), collapse = ", ")
+  )
+})
+
+feature_summary
+write_csv(feature_summary, file.path(RESULTS_DIR, "KJV_feature_summary.csv"))
+```
+
+```{r distance-matrices}
+# Distance metrics implemented for all features.
+# cosine = cosine distance; similarity = 1 - distance.
+# delta = Burrows-style Delta implemented above.
+
+metrics <- c("cosine", "delta")
+
+build_distance_cached <- function(corpus_id, feature_set, dfm_object, metric) {
+  path <- file.path(CACHE_DIR, paste0(corpus_id, "_D_", feature_set, "_", metric, ".rds"))
+
+  D <- cache_rds(
+    path,
+    quote({
+      if(metric == "delta") {
+        make_delta_distance(dfm_object)
+      } else {
+        make_distance(dfm_object, metric = metric)
+      }
+    })
+  )
+
+  rownames(D) <- kjv_chapters$doc_id
+  colnames(D) <- kjv_chapters$doc_id
+  D
+}
+
+distance_objects <- list()
+
+for(feature_set in names(feature_objects)) {
+  for(metric in metrics) {
+    key <- paste("KJV", feature_set, metric, sep = "__")
+    distance_objects[[key]] <- build_distance_cached(
+      corpus_id = "KJV",
+      feature_set = feature_set,
+      dfm_object = feature_objects[[feature_set]],
+      metric = metric
+    )
+  }
+}
+
+names(distance_objects)
+```
+
+```{r target-comparisons}
+comparison_pairs <- tribble(
+  ~comparison, ~group1, ~group2,
+  "Isaiah_1_35 vs Isaiah_40_55", "Isaiah_1_35", "Isaiah_40_55",
+  "Isaiah_40_55 vs Isaiah_56_66", "Isaiah_40_55", "Isaiah_56_66",
+  "Isaiah_40_55 vs Jeremiah", "Isaiah_40_55", "Jeremiah",
+  "Isaiah_40_55 vs Ezekiel", "Isaiah_40_55", "Ezekiel",
+  "Isaiah_1_35 vs Jeremiah", "Isaiah_1_35", "Jeremiah",
+  "Isaiah_36_39 vs 2 Kings", "Isaiah_36_39", "2 Kings"
+)
+
+results_table <- imap_dfr(distance_objects, function(D, key) {
+  parts <- str_split(key, "__", simplify = TRUE)
+  corpus_id <- parts[1]
+  feature_set <- parts[2]
+  metric <- parts[3]
+
+  comparison_pairs %>%
+    mutate(
+      corpus_id = corpus_id,
+      feature_set = feature_set,
+      metric = metric,
+      distance = map2_dbl(group1, group2, ~mean_distance(.x, .y, D, kjv_chapters))
+    ) %>%
+    select(corpus_id, feature_set, metric, comparison, group1, group2, distance)
+})
+
+results_table %>% arrange(comparison, distance)
+write_csv(results_table, file.path(RESULTS_DIR, "KJV_group_distance_results.csv"))
+```
+
+```{r within-group-cohesion}
+within_results <- imap_dfr(distance_objects, function(D, key) {
+  parts <- str_split(key, "__", simplify = TRUE)
+  corpus_id <- parts[1]
+  feature_set <- parts[2]
+  metric <- parts[3]
+
+  tibble(section = unique(kjv_chapters$section)) %>%
+    mutate(
+      corpus_id = corpus_id,
+      feature_set = feature_set,
+      metric = metric,
+      within_distance = map_dbl(section, ~within_distance(.x, D, kjv_chapters))
+    ) %>%
+    select(corpus_id, feature_set, metric, section, within_distance)
+})
+
+within_results %>% arrange(feature_set, metric, within_distance)
+write_csv(within_results, file.path(RESULTS_DIR, "KJV_within_group_cohesion.csv"))
+```
+
+```{r nearest-neighbor-tables}
+# Top-k neighbors for all Isaiah chapters, across all feature sets and metrics.
+TOP_K <- 5
+
+target_docs <- kjv_chapters %>%
+  filter(book == "Isaiah") %>%
+  pull(doc_id)
+
+neighbors_table <- imap_dfr(distance_objects, function(D, key) {
+  parts <- str_split(key, "__", simplify = TRUE)
+  corpus_id <- parts[1]
+  feature_set <- parts[2]
+  metric <- parts[3]
+
+  map_dfr(target_docs, function(doc) {
+    nn <- nearest_neighbors(doc, D, n = TOP_K, include_self = FALSE)
+
+    tibble(
+      corpus_id = corpus_id,
+      feature_set = feature_set,
+      metric = metric,
+      doc_id = doc,
+      neighbor_rank = seq_along(nn),
+      neighbor_doc_id = names(nn),
+      distance = as.numeric(nn),
+      similarity = if_else(metric == "cosine", 1 - distance, 1 / (1 + distance))
+    )
+  })
+}) %>%
+  left_join(
+    kjv_chapters %>%
+      select(doc_id, doc_book = book, doc_chapter = chapter, doc_section = section),
+    by = "doc_id"
+  ) %>%
+  left_join(
+    kjv_chapters %>%
+      select(neighbor_doc_id = doc_id, neighbor_book = book, neighbor_chapter = chapter, neighbor_section = section),
+    by = "neighbor_doc_id"
+  )
+
+neighbors_table %>%
+  filter(doc_id == "Isaiah_40") %>%
+  arrange(feature_set, metric, neighbor_rank)
+
+write_csv(neighbors_table, file.path(RESULTS_DIR, "KJV_top5_neighbors.csv"))
+```
+
+```{r ensemble-voting}
+# Two voting strategies are computed:
+# 1. Count voting: every top-5 neighbor gets one vote.
+# 2. Similarity-sum voting: closer neighbors get more weight.
+#
+# Recommendation for interpretation:
+# - Use count voting as the robust, easy-to-explain baseline.
+# - Use similarity-sum as a sensitivity analysis.
+# - If both agree, the ensemble conclusion is stronger.
+
+ensemble_votes_by_doc <- neighbors_table %>%
+  group_by(doc_id, doc_book, doc_chapter, doc_section, neighbor_section) %>%
+  summarize(
+    vote_count = n(),
+    similarity_sum = sum(similarity, na.rm = TRUE),
+    mean_rank = mean(neighbor_rank),
+    mean_distance = mean(distance),
+    .groups = "drop"
+  ) %>%
+  group_by(doc_id) %>%
+  mutate(
+    count_rank = rank(-vote_count, ties.method = "min"),
+    similarity_rank = rank(-similarity_sum, ties.method = "min")
+  ) %>%
+  ungroup() %>%
+  arrange(doc_id, count_rank, similarity_rank)
+
+ensemble_votes_by_doc %>%
+  filter(doc_id %in% c("Isaiah_35", "Isaiah_36", "Isaiah_40", "Isaiah_55", "Isaiah_56"))
+
+write_csv(ensemble_votes_by_doc, file.path(RESULTS_DIR, "KJV_ensemble_votes_by_doc.csv"))
+```
+
+```{r ensemble-winners}
+ensemble_winners_count <- ensemble_votes_by_doc %>%
+  group_by(doc_id) %>%
+  slice_max(vote_count, n = 1, with_ties = TRUE) %>%
+  ungroup() %>%
+  mutate(winner_method = "top5_count")
+
+ensemble_winners_similarity <- ensemble_votes_by_doc %>%
+  group_by(doc_id) %>%
+  slice_max(similarity_sum, n = 1, with_ties = TRUE) %>%
+  ungroup() %>%
+  mutate(winner_method = "similarity_sum")
+
+ensemble_winners <- bind_rows(
+  ensemble_winners_count,
+  ensemble_winners_similarity
+) %>%
+  arrange(doc_id, winner_method)
+
+ensemble_winners %>%
+  filter(doc_id %in% c("Isaiah_35", "Isaiah_36", "Isaiah_40", "Isaiah_55", "Isaiah_56"))
+
+write_csv(ensemble_winners, file.path(RESULTS_DIR, "KJV_ensemble_winners.csv"))
+```
+
+```{r section-level-ensemble-summary}
+section_ensemble_summary <- ensemble_votes_by_doc %>%
+  group_by(doc_section, neighbor_section) %>%
+  summarize(
+    total_votes = sum(vote_count),
+    total_similarity = sum(similarity_sum),
+    n_target_docs = n_distinct(doc_id),
+    .groups = "drop"
+  ) %>%
+  group_by(doc_section) %>%
+  mutate(
+    vote_share = total_votes / sum(total_votes),
+    similarity_share = total_similarity / sum(total_similarity)
+  ) %>%
+  ungroup() %>%
+  arrange(doc_section, desc(vote_share))
+
+section_ensemble_summary
+write_csv(section_ensemble_summary, file.path(RESULTS_DIR, "KJV_section_ensemble_summary.csv"))
+```
+
+```{r isaiah40-inspection}
+neighbors_table %>%
+  filter(doc_id == "Isaiah_40") %>%
+  arrange(feature_set, metric, neighbor_rank) %>%
+  select(feature_set, metric, neighbor_rank, neighbor_doc_id, neighbor_section, distance, similarity)
+
+ensemble_votes_by_doc %>%
+  filter(doc_id == "Isaiah_40") %>%
+  arrange(count_rank, similarity_rank)
+```
+
+```{r pca-char3-optional}
+# PCA is included for visualization only. The ensemble/distance tables above are the primary evidence.
+X_char3 <- as.matrix(dfm_weight(dfm_char3, scheme = "prop"))
+pca_char3 <- prcomp(X_char3, center = TRUE, scale. = FALSE)
+
+var_explained <- pca_char3$sdev^2 / sum(pca_char3$sdev^2)
+pc1_pct <- round(100 * var_explained[1], 1)
+pc2_pct <- round(100 * var_explained[2], 1)
+
+pca_df <- as_tibble(pca_char3$x[, 1:2]) %>%
+  mutate(
+    doc_id = kjv_chapters$doc_id,
+    book = kjv_chapters$book,
+    chapter = kjv_chapters$chapter,
+    section = kjv_chapters$section,
+    macro_genre = kjv_chapters$macro_genre
+  )
+
+ggplot(pca_df, aes(PC1, PC2, color = section)) +
+  geom_point(size = 2, alpha = 0.75) +
+  theme_minimal() +
+  labs(
+    title = "KJV Stylometry: Character 3-gram PCA",
+    subtitle = "Visualization only; distance/ensemble tables use full feature space",
+    x = paste0("PC1 (", pc1_pct, "% variance explained)"),
+    y = paste0("PC2 (", pc2_pct, "% variance explained)")
+  )
+```
+
+```{r isaiah-only-pca-optional}
+isaiah_pca <- pca_df %>%
+  filter(book == "Isaiah")
+
+ggplot(isaiah_pca, aes(PC1, PC2, color = section)) +
+  geom_path(aes(group = 1), color = "gray70", alpha = 0.5) +
+  geom_point(size = 3) +
+  geom_text(aes(label = chapter), size = 3, check_overlap = TRUE, vjust = -0.5) +
+  theme_minimal() +
+  labs(
+    title = "Isaiah Only: Character 3-gram PCA",
+    subtitle = "Chapters connected sequentially",
+    x = paste0("PC1 (", pc1_pct, "%)"),
+    y = paste0("PC2 (", pc2_pct, "%)")
+  )
+```
+
+```{r final-file-index}
+# Files created by this notebook:
+list.files(DATA_DIR, full.names = TRUE)
+list.files(RESULTS_DIR, full.names = TRUE)
+```
+
+
+
+
+```{r weighted-ensemble-from-distance-objects}
+
+library(dplyr)
+library(stringr)
+library(readr)
+library(tidyr)
+
+dir.create("results", showWarnings = FALSE)
+
+get_neighbors <- function(D, object_name, k = 5) {
+  
+  parts <- str_split(object_name, "__", simplify = TRUE)
+  
+  corpus_id <- parts[1]
+  feature_set <- parts[2]
+  metric <- parts[3]
+  
+  docs <- rownames(D)
+  
+  bind_rows(
+    lapply(
+      docs,
+      function(doc) {
+        
+        sorted_distances <- sort(D[doc, ])
+        
+        tibble(
+          neighbor_doc_id = names(sorted_distances),
+          distance = as.numeric(sorted_distances)
+        ) %>%
+          filter(neighbor_doc_id != doc) %>%
+          slice(1:k) %>%
+          mutate(
+            corpus_id = corpus_id,
+            feature_set = feature_set,
+            metric = metric,
+            doc_id = doc,
+            neighbor_rank = row_number(),
+            similarity = 1 - distance
+          )
+      }
+    )
+  )
+}
+
+ensemble_neighbors <- bind_rows(
+  lapply(
+    names(distance_objects),
+    function(object_name) {
+      get_neighbors(
+        D = distance_objects[[object_name]],
+        object_name = object_name,
+        k = 5
+      )
+    }
+  )
+)
+
+ensemble_neighbors <- ensemble_neighbors %>%
+  left_join(
+    kjv_chapters %>%
+      select(doc_id, doc_section = section),
+    by = "doc_id"
+  ) %>%
+  left_join(
+    kjv_chapters %>%
+      select(neighbor_doc_id = doc_id, neighbor_section = section),
+    by = "neighbor_doc_id"
+  ) %>%
+  mutate(
+    rank_weight = 6 - neighbor_rank,
+    weighted_similarity = similarity * rank_weight
+  )
+
+write_csv(
+  ensemble_neighbors,
+  "results/KJV_ensemble_neighbors_weighted.csv"
+)
+
+weighted_section_votes <- ensemble_neighbors %>%
+  group_by(
+    corpus_id,
+    doc_id,
+    doc_section,
+    neighbor_section
+  ) %>%
+  summarize(
+    top5_count = n(),
+    rank_weight_sum = sum(rank_weight, na.rm = TRUE),
+    similarity_sum = sum(similarity, na.rm = TRUE),
+    weighted_similarity_sum = sum(weighted_similarity, na.rm = TRUE),
+    mean_distance = mean(distance, na.rm = TRUE),
+    feature_sets = str_c(sort(unique(feature_set)), collapse = ";"),
+    metrics = str_c(sort(unique(metric)), collapse = ";"),
+    .groups = "drop"
+  )
+
+write_csv(
+  weighted_section_votes,
+  "results/KJV_weighted_section_votes.csv"
+)
+
+overall_ensemble_ranked <- weighted_section_votes %>%
+  group_by(corpus_id, doc_id, doc_section) %>%
+  arrange(
+    desc(weighted_similarity_sum),
+    desc(similarity_sum),
+    desc(top5_count),
+    mean_distance,
+    .by_group = TRUE
+  ) %>%
+  mutate(
+    ensemble_rank = row_number(),
+    max_score = max(weighted_similarity_sum, na.rm = TRUE),
+    margin_from_winner = max_score - weighted_similarity_sum
+  ) %>%
+  ungroup()
+
+overall_ensemble_winner <- overall_ensemble_ranked %>%
+  filter(ensemble_rank == 1) %>%
+  rename(
+    winning_section = neighbor_section
+  )
+
+write_csv(
+  overall_ensemble_ranked,
+  "results/KJV_overall_ensemble_ranked.csv"
+)
+
+write_csv(
+  overall_ensemble_winner,
+  "results/KJV_overall_ensemble_winner.csv"
+)
+
+overall_ensemble_winner
+
+
+
+isaiah_ensemble_winner <- overall_ensemble_winner %>%
+  filter(str_detect(doc_id, "^Isaiah_")) %>%
+  arrange(
+    as.integer(str_remove(doc_id, "Isaiah_"))
+  )
+
+write_csv(
+  isaiah_ensemble_winner,
+  "results/KJV_Isaiah_overall_ensemble_winner.csv"
+)
+
+isaiah_ensemble_winner
+```
+
+```{r feature-level-winners}
+
+feature_votes <- ensemble_neighbors %>%
+  group_by(
+    corpus_id,
+    doc_id,
+    feature_set,
+    neighbor_section
+  ) %>%
+  summarize(
+    top5_count = n(),
+    similarity_sum = sum(similarity),
+    weighted_similarity_sum = sum(weighted_similarity),
+    .groups = "drop"
+  )
+
+feature_winners <- feature_votes %>%
+  group_by(
+    corpus_id,
+    doc_id,
+    feature_set
+  ) %>%
+  arrange(
+    desc(weighted_similarity_sum),
+    desc(similarity_sum),
+    desc(top5_count),
+    .by_group = TRUE
+  ) %>%
+  slice(1) %>%
+  ungroup()
+
+head(feature_winners)
+
+write_csv(
+
+feature_winners,
+
+"results/KJV_feature_winners.csv"
+
+)
+
+feature_winners
+
+
+
+feature_agreement <- feature_winners %>%
+  group_by(
+    corpus_id,
+    doc_id,
+    neighbor_section
+  ) %>%
+  summarize(
+    agreement = n(),
+    .groups = "drop"
+  )
+
+head(feature_agreement)
+
+
+write_csv(
+
+feature_agreement,
+
+"results/KJV_feature_agreement.csv"
+
+)
+
+
+
+overall_ensemble <- feature_agreement %>%
+  group_by(
+    corpus_id,
+    doc_id
+  ) %>%
+  arrange(
+    desc(agreement),
+    .by_group = TRUE
+  ) %>%
+  mutate(
+    ensemble_rank = row_number()
+  ) %>%
+  ungroup()
+
+overall_ensemble_winner <- overall_ensemble %>%
+  filter(
+    ensemble_rank == 1
+  )
+
+head(overall_ensemble_winner)
+
+write_csv(
+
+overall_ensemble_winner,
+
+"results/KJV_overall_ensemble_winner.csv"
+
+)
+
+
+
+Isaiah_wide <- feature_winners %>%
+  filter(
+    grepl("^Isaiah_", doc_id)
+  ) %>%
+  select(
+    doc_id,
+    feature_set,
+    winner = neighbor_section
+  ) %>%
+  pivot_wider(
+    names_from = feature_set,
+    values_from = winner
+  )
+
+Isaiah_wide <- Isaiah_wide %>%
+  left_join(
+    overall_ensemble_winner %>%
+      select(
+        doc_id,
+        overall = neighbor_section,
+        agreement
+      ),
+    by = "doc_id"
+  )
+
+Isaiah_wide
+
+
+write_csv(
+
+Isaiah_wide,
+
+"results/KJV_Isaiah_feature_agreement_wide.csv"
+
+)
+
+
+
+
+
+
+```
+
+
+
+```{r feature-agreement}
+
+feature_agreement <-
+
+feature_winners %>%
+
+group_by(
+
+  corpus_id,
+
+  doc_id,
+
+  neighbor_section
+
+)
+
+%>%
+
+summarize(
+
+  agreement=
+
+    n(),
+
+  feature_sets=
+
+    str_c(
+
+      sort(
+        feature_set
+      ),
+
+      collapse=";"
+
+    ),
+
+  .groups="drop"
+
+)
+
+write_csv(
+
+feature_agreement,
+
+"results/KJV_feature_agreement.csv"
+
+)
+
+feature_agreement
+```

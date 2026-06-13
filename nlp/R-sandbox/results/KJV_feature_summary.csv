@@ -1,0 +1,6 @@
+corpus_id,feature_set,n_docs,n_features,top_features
+KJV,char3,514,4958,"the, and, eth, all, dth, tha, her, hat, nth, sha"
+KJV,char4,514,19580,"dthe, ofth, shal, fthe, that, andt, ther, hall, nthe, thel"
+KJV,word3,514,5241,"of_the_lord, saith_the_lord, the_son_of, and_i_will, the_house_of, thus_saith_the, the_lord_and, the_lord_god, out_of_the, the_king_of"
+KJV,function_words,514,126,"the, and, of, to, in, that, shall, i, he, for"
+KJV,pos3,514,1518,"adp_det_noun, det_noun_adp, noun_punct_cconj, det_noun_punct, noun_adp_det, pron_noun_punct, punct_cconj_pron, adp_pron_noun, pron_aux_verb, adp_propn_punct"

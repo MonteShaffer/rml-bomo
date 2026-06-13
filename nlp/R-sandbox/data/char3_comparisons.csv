@@ -1,0 +1,6 @@
+comparison,distance
+Isaiah_1_35 vs Isaiah_40_55,0.242748441446268
+Isaiah_40_55 vs Isaiah_56_66,0.23039056616392775
+Isaiah_40_55 vs Jeremiah,0.23228357852730264
+Isaiah_40_55 vs Ezekiel,0.24844418250426445
+Isaiah_1_35 vs Jeremiah,0.23416604695309087

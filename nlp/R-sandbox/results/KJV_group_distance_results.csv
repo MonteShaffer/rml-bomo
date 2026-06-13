@@ -1,0 +1,61 @@
+corpus_id,feature_set,metric,comparison,group1,group2,distance
+KJV,char3,cosine,Isaiah_1_35 vs Isaiah_40_55,Isaiah_1_35,Isaiah_40_55,0.242748441446268
+KJV,char3,cosine,Isaiah_40_55 vs Isaiah_56_66,Isaiah_40_55,Isaiah_56_66,0.23039056616392775
+KJV,char3,cosine,Isaiah_40_55 vs Jeremiah,Isaiah_40_55,Jeremiah,0.23228357852730264
+KJV,char3,cosine,Isaiah_40_55 vs Ezekiel,Isaiah_40_55,Ezekiel,0.24844418250426445
+KJV,char3,cosine,Isaiah_1_35 vs Jeremiah,Isaiah_1_35,Jeremiah,0.23416604695309087
+KJV,char3,cosine,Isaiah_36_39 vs 2 Kings,Isaiah_36_39,2 Kings,0.20839919310336488
+KJV,char3,delta,Isaiah_1_35 vs Isaiah_40_55,Isaiah_1_35,Isaiah_40_55,0.49768302205130505
+KJV,char3,delta,Isaiah_40_55 vs Isaiah_56_66,Isaiah_40_55,Isaiah_56_66,0.4784008843952402
+KJV,char3,delta,Isaiah_40_55 vs Jeremiah,Isaiah_40_55,Jeremiah,0.4794915115268674
+KJV,char3,delta,Isaiah_40_55 vs Ezekiel,Isaiah_40_55,Ezekiel,0.4793682306676688
+KJV,char3,delta,Isaiah_1_35 vs Jeremiah,Isaiah_1_35,Jeremiah,0.49176103089909073
+KJV,char3,delta,Isaiah_36_39 vs 2 Kings,Isaiah_36_39,2 Kings,0.4680039656257923
+KJV,char4,cosine,Isaiah_1_35 vs Isaiah_40_55,Isaiah_1_35,Isaiah_40_55,0.5208268813283495
+KJV,char4,cosine,Isaiah_40_55 vs Isaiah_56_66,Isaiah_40_55,Isaiah_56_66,0.5084170252252083
+KJV,char4,cosine,Isaiah_40_55 vs Jeremiah,Isaiah_40_55,Jeremiah,0.5181632542228621
+KJV,char4,cosine,Isaiah_40_55 vs Ezekiel,Isaiah_40_55,Ezekiel,0.5339139580116994
+KJV,char4,cosine,Isaiah_1_35 vs Jeremiah,Isaiah_1_35,Jeremiah,0.5250040952785718
+KJV,char4,cosine,Isaiah_36_39 vs 2 Kings,Isaiah_36_39,2 Kings,0.48980899015952994
+KJV,char4,delta,Isaiah_1_35 vs Isaiah_40_55,Isaiah_1_35,Isaiah_40_55,0.34445102611610734
+KJV,char4,delta,Isaiah_40_55 vs Isaiah_56_66,Isaiah_40_55,Isaiah_56_66,0.3400326608804132
+KJV,char4,delta,Isaiah_40_55 vs Jeremiah,Isaiah_40_55,Jeremiah,0.3373190130796129
+KJV,char4,delta,Isaiah_40_55 vs Ezekiel,Isaiah_40_55,Ezekiel,0.334622697168226
+KJV,char4,delta,Isaiah_1_35 vs Jeremiah,Isaiah_1_35,Jeremiah,0.3405181757360412
+KJV,char4,delta,Isaiah_36_39 vs 2 Kings,Isaiah_36_39,2 Kings,0.3342280295732136
+KJV,word3,cosine,Isaiah_1_35 vs Isaiah_40_55,Isaiah_1_35,Isaiah_40_55,0.9214392664914637
+KJV,word3,cosine,Isaiah_40_55 vs Isaiah_56_66,Isaiah_40_55,Isaiah_56_66,0.8872329411453752
+KJV,word3,cosine,Isaiah_40_55 vs Jeremiah,Isaiah_40_55,Jeremiah,0.8764689452448187
+KJV,word3,cosine,Isaiah_40_55 vs Ezekiel,Isaiah_40_55,Ezekiel,0.8946277604389967
+KJV,word3,cosine,Isaiah_1_35 vs Jeremiah,Isaiah_1_35,Jeremiah,0.9063089000862933
+KJV,word3,cosine,Isaiah_36_39 vs 2 Kings,Isaiah_36_39,2 Kings,0.8039970263428468
+KJV,word3,delta,Isaiah_1_35 vs Isaiah_40_55,Isaiah_1_35,Isaiah_40_55,0.21011505506299194
+KJV,word3,delta,Isaiah_40_55 vs Isaiah_56_66,Isaiah_40_55,Isaiah_56_66,0.21013628087584607
+KJV,word3,delta,Isaiah_40_55 vs Jeremiah,Isaiah_40_55,Jeremiah,0.24982817639096191
+KJV,word3,delta,Isaiah_40_55 vs Ezekiel,Isaiah_40_55,Ezekiel,0.23925391568999885
+KJV,word3,delta,Isaiah_1_35 vs Jeremiah,Isaiah_1_35,Jeremiah,0.24715513226869512
+KJV,word3,delta,Isaiah_36_39 vs 2 Kings,Isaiah_36_39,2 Kings,0.3010641542409296
+KJV,function_words,cosine,Isaiah_1_35 vs Isaiah_40_55,Isaiah_1_35,Isaiah_40_55,0.18038172197924734
+KJV,function_words,cosine,Isaiah_40_55 vs Isaiah_56_66,Isaiah_40_55,Isaiah_56_66,0.18145424973617555
+KJV,function_words,cosine,Isaiah_40_55 vs Jeremiah,Isaiah_40_55,Jeremiah,0.16914935245253815
+KJV,function_words,cosine,Isaiah_40_55 vs Ezekiel,Isaiah_40_55,Ezekiel,0.19255564814581336
+KJV,function_words,cosine,Isaiah_1_35 vs Jeremiah,Isaiah_1_35,Jeremiah,0.13407967936270623
+KJV,function_words,cosine,Isaiah_36_39 vs 2 Kings,Isaiah_36_39,2 Kings,0.11406620560895238
+KJV,function_words,delta,Isaiah_1_35 vs Isaiah_40_55,Isaiah_1_35,Isaiah_40_55,0.6518619292657055
+KJV,function_words,delta,Isaiah_40_55 vs Isaiah_56_66,Isaiah_40_55,Isaiah_56_66,0.6846489997227204
+KJV,function_words,delta,Isaiah_40_55 vs Jeremiah,Isaiah_40_55,Jeremiah,0.6501399583749634
+KJV,function_words,delta,Isaiah_40_55 vs Ezekiel,Isaiah_40_55,Ezekiel,0.6899031180251904
+KJV,function_words,delta,Isaiah_1_35 vs Jeremiah,Isaiah_1_35,Jeremiah,0.6404185183056427
+KJV,function_words,delta,Isaiah_36_39 vs 2 Kings,Isaiah_36_39,2 Kings,0.6034451236600684
+KJV,pos3,cosine,Isaiah_1_35 vs Isaiah_40_55,Isaiah_1_35,Isaiah_40_55,0.2865323792376266
+KJV,pos3,cosine,Isaiah_40_55 vs Isaiah_56_66,Isaiah_40_55,Isaiah_56_66,0.2602217518868562
+KJV,pos3,cosine,Isaiah_40_55 vs Jeremiah,Isaiah_40_55,Jeremiah,0.25513767345353433
+KJV,pos3,cosine,Isaiah_40_55 vs Ezekiel,Isaiah_40_55,Ezekiel,0.27410959165158916
+KJV,pos3,cosine,Isaiah_1_35 vs Jeremiah,Isaiah_1_35,Jeremiah,0.23633834916986882
+KJV,pos3,cosine,Isaiah_36_39 vs 2 Kings,Isaiah_36_39,2 Kings,0.3194816207407878
+KJV,pos3,delta,Isaiah_1_35 vs Isaiah_40_55,Isaiah_1_35,Isaiah_40_55,0.4388455231393222
+KJV,pos3,delta,Isaiah_40_55 vs Isaiah_56_66,Isaiah_40_55,Isaiah_56_66,0.4379747026954613
+KJV,pos3,delta,Isaiah_40_55 vs Jeremiah,Isaiah_40_55,Jeremiah,0.4283378628525769
+KJV,pos3,delta,Isaiah_40_55 vs Ezekiel,Isaiah_40_55,Ezekiel,0.43937461596500776
+KJV,pos3,delta,Isaiah_1_35 vs Jeremiah,Isaiah_1_35,Jeremiah,0.4215165568290606
+KJV,pos3,delta,Isaiah_36_39 vs 2 Kings,Isaiah_36_39,2 Kings,0.4456976873534684
