@@ -1,0 +1,17 @@
+Package: stylometryEnsemble
+Type: Project
+Title: Configurable Stylometry Feature Ensemble
+Version: 0.1.0
+Authors@R: person('Monte', 'Shaffer', email = 'example@example.com', role = c('aut', 'cre'))
+Description: A configurable R codebase for preparing corpus sections, extracting stylometry features, computing similarity matrices, and aggregating weighted ensemble similarity scores.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports:
+    dplyr,
+    stringr,
+    readr,
+    SnowballC,
+    udpipe,
+    quanteda,
+    quanteda.textstats

@@ -1,0 +1,59 @@
+---
+title: "Author Identification / Nearest Neighbors"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+source("notebooks/00_source_project.R")
+prepared_path <- "data/prepared/kjv_section_docs.csv"
+if(file.exists(prepared_path)){
+  section_docs <- readr::read_csv(prepared_path, show_col_types = FALSE)
+} else {
+  kjv <- readr::read_csv("data/raw/kjv.csv", show_col_types = FALSE)
+  section_docs <- prepare_kjv_sections(kjv)
+}
+```
+
+## 1. Run ensemble
+
+```{r run}
+config <- default_config(
+  include = c("char", "word", "stem", "function_words", "punctuation", "sentence", "lexical")
+)
+
+result <- run_stylometry_ensemble(section_docs, config, k_neighbors = 10)
+```
+
+## 2. Nearest-neighbor table
+
+```{r nn-table}
+result$nearest_neighbors
+```
+
+## 3. Focus on Isaiah sections
+
+```{r isaiah-focus}
+result$nearest_neighbors %>%
+  dplyr::filter(grepl("Isaiah", doc_id))
+```
+
+## 4. Feature-class agreement
+
+```{r class-agreement}
+class_nn <- lapply(names(result$class_similarity), function(cls){
+  nearest_neighbors(result$class_similarity[[cls]], k = 5) %>%
+    dplyr::mutate(feature_class = cls)
+}) %>% dplyr::bind_rows()
+
+class_nn %>%
+  dplyr::filter(grepl("Isaiah", doc_id)) %>%
+  dplyr::select(feature_class, doc_id, rank, neighbor_doc_id, similarity)
+```
+
+## 5. Vote counts for nearest neighbors
+
+```{r votes}
+class_nn %>%
+  dplyr::filter(rank == 1) %>%
+  dplyr::count(doc_id, neighbor_doc_id, sort = TRUE)
+```

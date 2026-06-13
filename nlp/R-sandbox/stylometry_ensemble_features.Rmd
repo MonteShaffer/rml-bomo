@@ -1,0 +1,946 @@
+---
+title: "Generic Stylometry Ensemble Feature Pipeline"
+author: "Monte J. Shaffer"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+
+library(dplyr)
+library(stringr)
+library(tidyr)
+library(purrr)
+library(tibble)
+
+# Optional packages used by specific feature classes.
+# Install if needed:
+# install.packages(c("SnowballC", "udpipe", "quanteda", "quanteda.textstats"))
+
+has_snowball <- requireNamespace("SnowballC", quietly = TRUE)
+has_udpipe <- requireNamespace("udpipe", quietly = TRUE)
+has_quanteda <- requireNamespace("quanteda", quietly = TRUE)
+has_quanteda_textstats <- requireNamespace("quanteda.textstats", quietly = TRUE)
+```
+
+# 1. Purpose
+
+This notebook builds a generic stylometry ensemble pipeline. It assumes the source data can be prepared with the following fields:
+
+```text
+corpus_id, translation, doc_id, book, chapter, section, macro_genre, n_verses, text
+```
+
+The main comparison unit is `section`. For Isaiah, sections may be `Isaiah_1_35`, `Isaiah_36_39`, `Isaiah_40_55`, and `Isaiah_56_66`. For other books, the section can simply be the book name or any custom grouping.
+
+# 2. Data Preparation
+
+## 2.1 Target Books
+
+```{r target-books}
+target_books <- c(
+  "Isaiah",
+  "Jeremiah", "Ezekiel", "Hosea", "Amos",
+  "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+  "Psalms", "Job", "Proverbs"
+)
+```
+
+## 2.2 Section Assignment
+
+This function is Isaiah-aware but not Isaiah-bound. All non-Isaiah books default to their book name as the section.
+
+```{r assign-sections}
+assign_sections_kjv <- function(data){
+
+  data %>%
+    mutate(
+      section = case_when(
+        book == "Isaiah" & chapter <= 35 ~ "Isaiah_1_35",
+        book == "Isaiah" & chapter <= 39 ~ "Isaiah_36_39",
+        book == "Isaiah" & chapter <= 55 ~ "Isaiah_40_55",
+        book == "Isaiah" & chapter <= 66 ~ "Isaiah_56_66",
+        TRUE ~ book
+      ),
+
+      macro_genre = case_when(
+        book %in% c("1 Samuel", "2 Samuel", "1 Kings", "2 Kings") ~ "Narrative",
+        book %in% c("Psalms", "Job", "Proverbs") ~ "Poetic/Wisdom",
+        TRUE ~ "Prophetic"
+      )
+    )
+}
+```
+
+## 2.3 Build Section Documents
+
+```{r build-section-docs}
+build_section_docs <- function(data, target_books = NULL){
+
+  if(!is.null(target_books)){
+    data <- data %>% filter(book %in% target_books)
+  }
+
+  grouping_vars <- c("corpus_id", "translation", "section", "macro_genre")
+  missing_vars <- setdiff(grouping_vars, names(data))
+
+  if(length(missing_vars) > 0){
+    stop("Missing required columns: ", paste(missing_vars, collapse = ", "))
+  }
+
+  data %>%
+    group_by(corpus_id, translation, section, macro_genre) %>%
+    summarize(
+      text = str_c(text, collapse = " "),
+      n_verses = if("n_verses" %in% names(data)) sum(n_verses, na.rm = TRUE) else n(),
+      n_chapters = n_distinct(chapter),
+      books = str_c(unique(book), collapse = "; "),
+      .groups = "drop"
+    ) %>%
+    mutate(
+      doc_id = paste(corpus_id, translation, section, sep = "__")
+    ) %>%
+    select(corpus_id, translation, doc_id, section, macro_genre, books, n_chapters, n_verses, text)
+}
+```
+
+## 2.4 Example Setup
+
+If your verse-level data frame is named `kjv_selected`, run:
+
+```{r example-data-prep, eval=FALSE}
+section_docs <- kjv_selected %>%
+  assign_sections_kjv() %>%
+  build_section_docs(target_books = target_books)
+
+docs <- section_docs$text
+names(docs) <- section_docs$section
+```
+
+For testing this notebook without external data, use the small demo below.
+
+```{r demo-docs}
+demo_docs <- c(
+  isa1  = "The vision of Isaiah the son of Amoz.",
+  isa2  = "And it shall come to pass in the last days.",
+  isa40 = "Comfort ye, comfort ye my people."
+)
+
+# Use demo docs unless you have already created docs.
+if(!exists("docs")){
+  docs <- demo_docs
+}
+```
+
+# 3. Shared Utility Functions
+
+## 3.1 Tokenizer
+
+```{r tokenizer}
+tokenize_text <- function(text, stem = FALSE, lowercase = TRUE, remove_punct = TRUE){
+
+  if(lowercase){
+    text <- tolower(text)
+  }
+
+  if(remove_punct){
+    text <- gsub("[^a-z ]", " ", text)
+  }
+
+  text <- gsub("\\s+", " ", text)
+  text <- trimws(text)
+
+  if(nchar(text) == 0){
+    return(character(0))
+  }
+
+  words <- unlist(strsplit(text, " "))
+  words <- words[words != ""]
+
+  if(stem){
+    if(!has_snowball){
+      stop("Package 'SnowballC' is required for stemming. Install it with install.packages('SnowballC').")
+    }
+    words <- SnowballC::wordStem(words, language = "en")
+  }
+
+  words
+}
+```
+
+## 3.2 TF-IDF Matrix
+
+```{r tfidf-matrix}
+tfidf_matrix <- function(features_by_doc){
+
+  vocab <- sort(unique(unlist(features_by_doc)))
+
+  if(length(vocab) == 0){
+    stop("No features found. Check input text or feature extractor.")
+  }
+
+  mat <- matrix(
+    0,
+    nrow = length(features_by_doc),
+    ncol = length(vocab),
+    dimnames = list(names(features_by_doc), vocab)
+  )
+
+  for(i in seq_along(features_by_doc)){
+    tab <- table(features_by_doc[[i]])
+    if(length(tab) > 0){
+      mat[i, names(tab)] <- as.numeric(tab)
+    }
+  }
+
+  rs <- rowSums(mat)
+  rs[rs == 0] <- 1
+
+  tf <- mat / rs
+
+  df <- colSums(tf > 0)
+  N <- nrow(tf)
+  idf <- log((N + 1) / (df + 1)) + 1
+
+  sweep(tf, 2, idf, "*")
+}
+```
+
+## 3.3 Cosine Similarity
+
+```{r cosine-sim}
+cosine_sim <- function(mat){
+
+  norm <- sqrt(rowSums(mat^2))
+  norm[norm == 0] <- 1
+
+  mat2 <- mat / norm
+  mat2 %*% t(mat2)
+}
+```
+
+## 3.4 Top Features
+
+```{r top-features}
+top_features <- function(mat, doc, k = 20){
+
+  if(!doc %in% rownames(mat)){
+    stop(
+      paste0(
+        "Document '", doc, "' not found. Available docs: ",
+        paste(rownames(mat), collapse = ", ")
+      )
+    )
+  }
+
+  sort(mat[doc, ], decreasing = TRUE)[1:min(k, ncol(mat))]
+}
+```
+
+## 3.5 Matrix Averaging
+
+```{r matrix-average}
+average_matrices <- function(mats){
+  Reduce("+", mats) / length(mats)
+}
+```
+
+# 4. Feature Class: Character N-Grams
+
+```{r character-ngrams}
+char_ngrams <- function(text, n){
+
+  text <- tolower(text)
+  text <- gsub("[^a-z ]", " ", text)
+  text <- gsub("\\s+", " ", text)
+  text <- trimws(text)
+
+  chars <- strsplit(text, "")[[1]]
+
+  if(length(chars) < n){
+    return(character(0))
+  }
+
+  sapply(
+    seq_len(length(chars) - n + 1),
+    function(i) paste(chars[i:(i + n - 1)], collapse = "")
+  )
+}
+
+char_tfidf <- function(docs, n){
+  features_by_doc <- lapply(docs, char_ngrams, n = n)
+  tfidf_matrix(features_by_doc)
+}
+```
+
+# 5. Feature Class: Word and Stem N-Grams
+
+```{r word-stem-ngrams}
+word_ngrams <- function(text, n = 1, stem = FALSE){
+
+  words <- tokenize_text(text, stem = stem)
+
+  if(length(words) < n){
+    return(character(0))
+  }
+
+  sapply(
+    seq_len(length(words) - n + 1),
+    function(i) paste(words[i:(i + n - 1)], collapse = "_")
+  )
+}
+
+ngram_tfidf <- function(docs, n = 1, stem = FALSE){
+  features_by_doc <- lapply(docs, word_ngrams, n = n, stem = stem)
+  tfidf_matrix(features_by_doc)
+}
+```
+
+# 6. Feature Class: Function Words
+
+## 6.1 Function Word Sets
+
+```{r function-word-sets}
+function_word_sets <- list(
+
+  basic = c(
+    "the","and","of","to","in",
+    "that","which","for","with","by",
+    "on","at","from","as","if",
+    "or","but","not","is","are",
+    "was","were","be","been","being"
+  ),
+
+  kjv = c(
+    "the","and","of","to","in",
+    "that","which","shall","unto",
+    "ye","thou","thee","thy","thine",
+    "hath","hast","had",
+    "doth","didst",
+    "saith",
+    "yea","nay","verily",
+    "for","with","by","from"
+  ),
+
+  pronouns = c(
+    "i","me","my","mine",
+    "thou","thee","thy","thine",
+    "he","him","his",
+    "she","her","hers",
+    "we","us","our","ours",
+    "ye","you","your","yours",
+    "they","them","their","theirs"
+  ),
+
+  conjunctions = c(
+    "and","or","but","nor",
+    "for","yet","so",
+    "if","because","therefore",
+    "though","although",
+    "wherefore","whereas"
+  ),
+
+  prepositions = c(
+    "of","to","in","unto",
+    "by","with","from","for",
+    "on","upon","at","into",
+    "through","over","under",
+    "before","after","against",
+    "among","between"
+  ),
+
+  auxiliaries = c(
+    "shall","will","should","would",
+    "may","might","can","could","must",
+    "is","are","was","were",
+    "be","been","being",
+    "hath","has","had",
+    "doth","does","did"
+  )
+)
+```
+
+## 6.2 Function Word Frequency and TF-IDF
+
+```{r function-word-features}
+function_word_freq <- function(docs, vocab){
+
+  vocab <- sort(unique(vocab))
+
+  mat <- matrix(
+    0,
+    nrow = length(docs),
+    ncol = length(vocab),
+    dimnames = list(names(docs), vocab)
+  )
+
+  for(i in seq_along(docs)){
+    words <- tokenize_text(docs[i], stem = FALSE)
+    n_words <- length(words)
+
+    if(n_words == 0){
+      next
+    }
+
+    tab <- table(words)
+    common <- intersect(names(tab), vocab)
+
+    mat[i, common] <- as.numeric(tab[common])
+    mat[i, ] <- mat[i, ] / n_words
+  }
+
+  mat
+}
+
+function_word_tfidf <- function(docs, vocab){
+
+  vocab <- sort(unique(vocab))
+
+  features_by_doc <- lapply(docs, function(x){
+    words <- tokenize_text(x, stem = FALSE)
+    words[words %in% vocab]
+  })
+
+  tfidf_matrix(features_by_doc)
+}
+```
+
+# 7. Feature Class: POS N-Grams
+
+```{r pos-functions}
+load_udpipe_model <- function(model_file = "english-ewt-ud-2.5-191206.udpipe"){
+
+  if(!has_udpipe){
+    stop("Package 'udpipe' is required for POS features. Install it with install.packages('udpipe').")
+  }
+
+  if(!file.exists(model_file)){
+    model_info <- udpipe::udpipe_download_model(language = "english")
+    model_file <- model_info$file_model
+  }
+
+  udpipe::udpipe_load_model(model_file)
+}
+
+pos_ngrams_from_pos <- function(pos, n){
+
+  pos <- pos[!is.na(pos)]
+
+  if(length(pos) < n){
+    return(character(0))
+  }
+
+  sapply(
+    seq_len(length(pos) - n + 1),
+    function(i) paste(pos[i:(i + n - 1)], collapse = "_")
+  )
+}
+
+pos_tfidf_set <- function(docs, n = 3, ud_model){
+
+  anno <- udpipe::udpipe_annotate(
+    ud_model,
+    x = docs,
+    doc_id = names(docs)
+  )
+
+  anno <- as.data.frame(anno)
+
+  pos_by_doc <- split(anno$upos, anno$doc_id)
+
+  # Ensure every document appears, even if udpipe drops an empty text.
+  pos_by_doc <- pos_by_doc[names(docs)]
+
+  features_by_doc <- lapply(pos_by_doc, pos_ngrams_from_pos, n = n)
+  names(features_by_doc) <- names(docs)
+
+  tfidf_matrix(features_by_doc)
+}
+```
+
+# 8. Feature Class: Punctuation Frequency
+
+```{r punctuation-features}
+count_regex <- function(pattern, text){
+  m <- gregexpr(pattern, text, perl = TRUE)[[1]]
+  if(m[1] == -1) 0 else length(m)
+}
+
+punctuation_features <- function(docs){
+
+  cols <- c(
+    "comma_per_word",
+    "semicolon_per_word",
+    "colon_per_word",
+    "quote_per_word",
+    "period_per_word",
+    "punct_total_per_word"
+  )
+
+  mat <- matrix(
+    0,
+    nrow = length(docs),
+    ncol = length(cols),
+    dimnames = list(names(docs), cols)
+  )
+
+  for(i in seq_along(docs)){
+
+    text <- docs[i]
+    words <- tokenize_text(text)
+    n_words <- length(words)
+    if(n_words == 0) n_words <- 1
+
+    comma_n <- count_regex(",", text)
+    semicolon_n <- count_regex(";", text)
+    colon_n <- count_regex(":", text)
+    quote_n <- count_regex("[\"'“”‘’]", text)
+    period_n <- count_regex("\\.", text)
+
+    total_n <- comma_n + semicolon_n + colon_n + quote_n + period_n
+
+    mat[i, ] <- c(
+      comma_n / n_words,
+      semicolon_n / n_words,
+      colon_n / n_words,
+      quote_n / n_words,
+      period_n / n_words,
+      total_n / n_words
+    )
+  }
+
+  mat
+}
+```
+
+# 9. Feature Class: Sentence Length
+
+```{r sentence-length-features}
+sentence_length_bins <- function(docs){
+
+  bins <- c(
+    "sent_lt10",
+    "sent_10_19",
+    "sent_20_29",
+    "sent_30_39",
+    "sent_ge40"
+  )
+
+  mat <- matrix(
+    0,
+    nrow = length(docs),
+    ncol = length(bins),
+    dimnames = list(names(docs), bins)
+  )
+
+  for(i in seq_along(docs)){
+
+    sents <- unlist(strsplit(docs[i], "[.!?]+"))
+    sents <- trimws(sents)
+    sents <- sents[sents != ""]
+
+    if(length(sents) == 0){
+      next
+    }
+
+    lens <- sapply(sents, function(s) length(tokenize_text(s)))
+
+    mat[i, "sent_lt10"]  <- mean(lens < 10)
+    mat[i, "sent_10_19"] <- mean(lens >= 10 & lens < 20)
+    mat[i, "sent_20_29"] <- mean(lens >= 20 & lens < 30)
+    mat[i, "sent_30_39"] <- mean(lens >= 30 & lens < 40)
+    mat[i, "sent_ge40"]  <- mean(lens >= 40)
+  }
+
+  mat
+}
+
+sentence_length_tfidf <- function(docs){
+
+  tf <- sentence_length_bins(docs)
+
+  df <- colSums(tf > 0)
+  N <- nrow(tf)
+  idf <- log((N + 1) / (df + 1)) + 1
+
+  sweep(tf, 2, idf, "*")
+}
+```
+
+# 10. Feature Class: Lexical Richness
+
+```{r lexical-features}
+lexical_features <- function(docs){
+
+  cols <- c(
+    "type_token_ratio",
+    "hapax_ratio",
+    "avg_word_length"
+  )
+
+  mat <- matrix(
+    0,
+    nrow = length(docs),
+    ncol = length(cols),
+    dimnames = list(names(docs), cols)
+  )
+
+  for(i in seq_along(docs)){
+
+    words <- tokenize_text(docs[i])
+    N <- length(words)
+
+    if(N == 0){
+      next
+    }
+
+    tab <- table(words)
+
+    mat[i, "type_token_ratio"] <- length(unique(words)) / N
+    mat[i, "hapax_ratio"] <- sum(tab == 1) / N
+    mat[i, "avg_word_length"] <- mean(nchar(words))
+  }
+
+  mat
+}
+```
+
+# 11. Feature Class: Readability
+
+```{r readability-features}
+readability_features <- function(docs){
+
+  if(!has_quanteda || !has_quanteda_textstats){
+    warning("Packages 'quanteda' and 'quanteda.textstats' are required for readability features. Returning NULL.")
+    return(NULL)
+  }
+
+  corp <- quanteda::corpus(docs)
+
+  r <- quanteda.textstats::textstat_readability(
+    corp,
+    measure = c(
+      "Flesch",
+      "Flesch.Kincaid",
+      "ARI",
+      "Coleman.Liau",
+      "SMOG"
+    )
+  )
+
+  mat <- as.matrix(r[, -1, drop = FALSE])
+  rownames(mat) <- names(docs)
+
+  mat
+}
+```
+
+# 12. Build All Feature Sets
+
+```{r build-all-features}
+build_feature_sets <- function(
+    docs,
+    include_pos = FALSE,
+    include_readability = FALSE,
+    ud_model = NULL
+){
+
+  feature_sets <- list(
+
+    character = list(
+      char3 = char_tfidf(docs, 3),
+      char4 = char_tfidf(docs, 4),
+      char5 = char_tfidf(docs, 5)
+    ),
+
+    word = list(
+      word1 = ngram_tfidf(docs, 1, stem = FALSE),
+      word2 = ngram_tfidf(docs, 2, stem = FALSE),
+      word3 = ngram_tfidf(docs, 3, stem = FALSE)
+    ),
+
+    stem = list(
+      stem1 = ngram_tfidf(docs, 1, stem = TRUE),
+      stem2 = ngram_tfidf(docs, 2, stem = TRUE),
+      stem3 = ngram_tfidf(docs, 3, stem = TRUE)
+    ),
+
+    function_words_freq = lapply(
+      function_word_sets,
+      function(vocab) function_word_freq(docs, vocab)
+    ),
+
+    function_words_tfidf = lapply(
+      function_word_sets,
+      function(vocab) function_word_tfidf(docs, vocab)
+    ),
+
+    punctuation = list(
+      punctuation_freq = punctuation_features(docs)
+    ),
+
+    sentence_length = list(
+      sentence_freq = sentence_length_bins(docs),
+      sentence_tfidf = sentence_length_tfidf(docs)
+    ),
+
+    lexical = list(
+      lexical_richness = lexical_features(docs)
+    )
+  )
+
+  names(feature_sets$function_words_freq) <- paste0("fw_freq_", names(function_word_sets))
+  names(feature_sets$function_words_tfidf) <- paste0("fw_tfidf_", names(function_word_sets))
+
+  if(include_pos){
+    if(is.null(ud_model)){
+      ud_model <- load_udpipe_model()
+    }
+
+    feature_sets$pos <- list(
+      pos3 = pos_tfidf_set(docs, 3, ud_model),
+      pos4 = pos_tfidf_set(docs, 4, ud_model),
+      pos5 = pos_tfidf_set(docs, 5, ud_model)
+    )
+  }
+
+  if(include_readability){
+    read_mat <- readability_features(docs)
+    if(!is.null(read_mat)){
+      feature_sets$readability <- list(
+        readability = read_mat
+      )
+    }
+  }
+
+  feature_sets
+}
+```
+
+Build features. For a quick run, POS is off by default because it requires model download/loading.
+
+```{r run-feature-build}
+feature_sets <- build_feature_sets(
+  docs,
+  include_pos = FALSE,
+  include_readability = FALSE
+)
+```
+
+To include POS:
+
+```{r run-feature-build-pos, eval=FALSE}
+ud_model <- load_udpipe_model()
+
+feature_sets <- build_feature_sets(
+  docs,
+  include_pos = TRUE,
+  include_readability = FALSE,
+  ud_model = ud_model
+)
+```
+
+# 13. Count Feature Variants and Raw Columns
+
+```{r count-features}
+feature_variant_count <- sum(lengths(feature_sets))
+feature_column_count <- sum(
+  unlist(
+    lapply(feature_sets, function(class_group){
+      lapply(class_group, ncol)
+    })
+  )
+)
+
+feature_summary <- tibble(
+  class = names(feature_sets),
+  variants = lengths(feature_sets),
+  raw_columns = sapply(feature_sets, function(class_group){
+    sum(sapply(class_group, ncol))
+  })
+)
+
+feature_variant_count
+feature_column_count
+feature_summary
+```
+
+# 14. Cosine Similarity for Every Variant
+
+```{r all-cosines}
+feature_cosines <- lapply(
+  feature_sets,
+  function(class_group){
+    lapply(class_group, cosine_sim)
+  }
+)
+```
+
+# 15. Class-Level Similarity
+
+Each feature class may contain several variants. We average those variants within the class first.
+
+```{r class-similarity}
+class_similarity <- lapply(
+  feature_cosines,
+  average_matrices
+)
+```
+
+# 16. Weighted Ensemble Similarity
+
+## 16.1 Default Class Weights
+
+These are starting weights. They can be changed after validation.
+
+```{r class-weights}
+class_weights <- c(
+  character = 0.25,
+  function_words_freq = 0.12,
+  function_words_tfidf = 0.08,
+  pos = 0.15,
+  word = 0.10,
+  stem = 0.10,
+  sentence_length = 0.07,
+  punctuation = 0.05,
+  lexical = 0.04,
+  readability = 0.04
+)
+```
+
+## 16.2 Ensemble Function
+
+```{r ensemble-function}
+build_overall_similarity <- function(class_similarity, class_weights){
+
+  active_weights <- class_weights[names(class_similarity)]
+  active_weights[is.na(active_weights)] <- 0
+
+  if(sum(active_weights) == 0){
+    active_weights <- rep(1 / length(class_similarity), length(class_similarity))
+    names(active_weights) <- names(class_similarity)
+  } else {
+    active_weights <- active_weights / sum(active_weights)
+  }
+
+  overall <- Reduce(
+    "+",
+    Map(
+      function(mat, w) mat * w,
+      class_similarity,
+      active_weights[names(class_similarity)]
+    )
+  )
+
+  list(
+    overall_similarity = overall,
+    active_weights = active_weights
+  )
+}
+```
+
+```{r run-ensemble}
+ensemble <- build_overall_similarity(
+  class_similarity,
+  class_weights
+)
+
+overall_similarity <- ensemble$overall_similarity
+active_weights <- ensemble$active_weights
+
+active_weights
+round(overall_similarity, 3)
+```
+
+# 17. Nearest-Neighbor Tables
+
+```{r nearest-neighbors}
+similarity_to_long <- function(sim_mat){
+
+  as.data.frame(as.table(sim_mat)) %>%
+    as_tibble() %>%
+    rename(
+      doc_a = Var1,
+      doc_b = Var2,
+      similarity = Freq
+    ) %>%
+    filter(doc_a != doc_b) %>%
+    arrange(doc_a, desc(similarity))
+}
+
+nearest_neighbors <- function(sim_mat, k = 5){
+
+  similarity_to_long(sim_mat) %>%
+    group_by(doc_a) %>%
+    slice_max(similarity, n = k, with_ties = FALSE) %>%
+    ungroup()
+}
+
+nn_overall <- nearest_neighbors(overall_similarity, k = 5)
+
+nn_overall
+```
+
+# 18. Class-Level Nearest Neighbors
+
+```{r class-nearest-neighbors}
+class_nn <- imap_dfr(
+  class_similarity,
+  function(mat, class_name){
+    nearest_neighbors(mat, k = 5) %>%
+      mutate(class = class_name, .before = 1)
+  }
+)
+
+class_nn
+```
+
+# 19. Export Results
+
+```{r export-results}
+out_dir <- "stylometry_outputs"
+if(!dir.exists(out_dir)) dir.create(out_dir)
+
+write.csv(
+  round(overall_similarity, 6),
+  file.path(out_dir, "overall_similarity.csv"),
+  row.names = TRUE
+)
+
+write.csv(
+  nn_overall,
+  file.path(out_dir, "overall_nearest_neighbors.csv"),
+  row.names = FALSE
+)
+
+write.csv(
+  class_nn,
+  file.path(out_dir, "class_nearest_neighbors.csv"),
+  row.names = FALSE
+)
+
+write.csv(
+  feature_summary,
+  file.path(out_dir, "feature_summary.csv"),
+  row.names = FALSE
+)
+```
+
+# 20. Notes on Interpretation
+
+The ensemble computes similarity in three levels:
+
+1. **Variant level**: each feature variant produces a document-by-document cosine similarity matrix.
+2. **Class level**: variants inside the same class are averaged.
+3. **Overall level**: class-level similarities are combined using class weights.
+
+The default weights should be treated as starting assumptions. For a research pipeline, weights should eventually be tuned by validation tasks, known-author controls, genre controls, or leave-one-out experiments.

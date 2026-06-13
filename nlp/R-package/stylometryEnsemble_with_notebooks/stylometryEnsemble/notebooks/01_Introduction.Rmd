@@ -1,0 +1,99 @@
+---
+title: "stylometryEnsemble: Introduction"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+source("./00_source_project.R")
+```
+
+## 1. Confirm the raw KJV file exists
+
+Place your raw file here:
+
+```text
+data/raw/kjv.csv
+```
+
+It should have this header:
+
+```text
+corpus_id,translation,book,chapter,verse,text
+```
+
+```{r check-file}
+raw_path <- "./../data/raw/kjv.csv"
+file.exists(raw_path)
+```
+
+## 2. Import raw verses
+
+```{r import}
+kjv <- readr::read_csv(raw_path, show_col_types = FALSE)
+dplyr::glimpse(kjv)
+```
+
+## 3. Prepare section-level documents
+
+```{r prepare-sections}
+section_docs <- prepare_kjv_sections(kjv)
+
+section_docs %>%
+  dplyr::select(doc_id, section, macro_genre, n_verses, n_chapters, books)
+```
+
+```{r prepare-chapter}
+chapter_docs <- prepare_kjv_chapters(kjv)
+
+chapter_docs %>%
+  dplyr::select(
+    doc_id,
+    book,
+    chapter,
+    section,
+    macro_genre,
+    n_verses
+  )
+```
+
+## 4. Save prepared documents
+
+```{r save-prepared}
+dir.create("./../data/prepared", recursive = TRUE, showWarnings = FALSE)
+readr::write_csv(section_docs, "./../data/prepared/kjv_section_docs.csv")
+readr::write_csv(chapter_docs, "./../data/prepared/kjv_chapter_docs.csv")
+```
+
+## 5. Run a lightweight ensemble
+
+This first example excludes POS and readability so it runs quickly without optional packages.
+
+```{r run-lightweight}
+config <- default_config(
+  include = c("char", "word", "stem", "function_words", "punctuation", "sentence", "lexical")
+)
+
+result <- run_stylometry_ensemble(section_docs, config = config)
+round(result$overall_similarity, 3)
+
+
+```
+
+```{r nearest-neighbors}
+result$nearest_neighbors
+```
+
+
+```{r run-lightweight chapters}
+config <- default_config(
+  include = c("char", "word", "stem", "function_words", "punctuation", "sentence", "lexical")
+)
+
+result <- run_stylometry_ensemble(chapter_docs, config = config)
+round(result$overall_similarity, 3)
+```
+
+
+```{r nearest-neighbors}
+result$nearest_neighbors
+```

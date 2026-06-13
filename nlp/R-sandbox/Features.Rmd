@@ -1,0 +1,1056 @@
+---
+title: "Features"
+output: html_document
+date: "2026-06-13"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+text <- "In the beginning God created the heaven and the earth."
+
+char_ngrams <- function(text, n){
+
+  # lowercase
+  text <- tolower(text)
+
+  # remove punctuation
+  text <- gsub("[^a-z ]", "", text)
+
+  # collapse multiple spaces
+  text <- gsub("\\s+", " ", text)
+
+  chars <- strsplit(text, "")[[1]]
+
+  grams <- sapply(
+    1:(length(chars) - n + 1),
+    function(i){
+      paste(chars[i:(i+n-1)], collapse="")
+    }
+  )
+
+  table(grams)
+}
+
+char3 <- char_ngrams(text, 3)
+
+head(sort(char3, decreasing=TRUE), 10)
+
+char3_freq <- prop.table(char3)
+
+head(sort(char3_freq, decreasing=TRUE), 10)
+
+
+char4 <- char_ngrams(text, 4)
+
+head(sort(char4, decreasing=TRUE), 10)
+
+
+char5 <- char_ngrams(text, 5)
+
+head(sort(char5, decreasing=TRUE), 10)
+
+
+```
+```{r}
+docs <- c(
+  isa1  = "The vision of Isaiah the son of Amoz.",
+  isa2  = "And it shall come to pass in the last days.",
+  isa40 = "Comfort ye, comfort ye my people."
+)
+
+char_tfidf <- function(docs, n){
+
+  grams_by_doc <- lapply(docs, char_ngrams, n = n)
+
+  vocab <- sort(unique(unlist(grams_by_doc)))
+
+  tf <- matrix(
+    0,
+    nrow = length(docs),
+    ncol = length(vocab),
+    dimnames = list(names(docs), vocab)
+  )
+
+  for(i in seq_along(grams_by_doc)){
+    tab <- table(grams_by_doc[[i]])
+    tf[i, names(tab)] <- as.numeric(tab)
+  }
+
+  # document-length normalization
+  tf <- tf / rowSums(tf)
+
+  # document frequency
+  df <- colSums(tf > 0)
+
+  # smoothed IDF
+  N <- nrow(tf)
+  idf <- log((N + 1) / (df + 1)) + 1
+
+  tfidf <- sweep(tf, 2, idf, `*`)
+
+  return(tfidf)
+}
+
+
+
+char3_tfidf <- char_tfidf(docs, 3)
+char4_tfidf <- char_tfidf(docs, 4)
+char5_tfidf <- char_tfidf(docs, 5)
+
+
+
+top_features <- function(mat, doc, k = 10){
+  sort(mat[doc, ], decreasing = TRUE)[1:k]
+}
+
+top_features(char3_tfidf, "isa40", 10)
+top_features(char4_tfidf, "isa40", 10)
+top_features(char5_tfidf, "isa40", 10)
+
+
+
+
+cosine_sim <- function(mat){
+  mat_norm <- mat / sqrt(rowSums(mat^2))
+  mat_norm %*% t(mat_norm)
+}
+
+char3_cosine <- cosine_sim(char3_tfidf)
+char4_cosine <- cosine_sim(char4_tfidf)
+char5_cosine <- cosine_sim(char5_tfidf)
+
+
+
+
+
+
+```
+
+
+
+
+```{r n-grams words}
+library(SnowballC)
+
+docs <- c(
+  isa1  = "The vision of Isaiah the son of Amoz.",
+  isa2  = "And it shall come to pass in the last days.",
+  isa40 = "Comfort ye, comfort ye my people."
+)
+
+
+
+tokenize_text <- function(text, stem = FALSE){
+  text <- tolower(text)
+  text <- gsub("[^a-z ]", " ", text)
+  text <- gsub("\\s+", " ", text)
+  text <- trimws(text)
+
+  words <- unlist(strsplit(text, " "))
+  words <- words[words != ""]
+
+  if(stem)
+    words <- wordStem(words, language = "en")
+
+  words
+}
+
+word_ngrams <- function(text, n = 1, stem = FALSE){
+  words <- tokenize_text(text, stem = stem)
+
+  if(length(words) < n)
+    return(character(0))
+
+  sapply(
+    1:(length(words) - n + 1),
+    function(i) paste(words[i:(i+n-1)], collapse = "_")
+  )
+}
+
+
+ngram_tfidf <- function(docs, n = 1, stem = FALSE){
+
+  grams <- lapply(docs, word_ngrams, n = n, stem = stem)
+
+  vocab <- sort(unique(unlist(grams)))
+
+  tf <- matrix(
+    0,
+    nrow = length(docs),
+    ncol = length(vocab),
+    dimnames = list(names(docs), vocab)
+  )
+
+  for(i in seq_along(grams)){
+    tab <- table(grams[[i]])
+    tf[i, names(tab)] <- as.numeric(tab)
+  }
+
+  tf <- tf / rowSums(tf)
+
+  df <- colSums(tf > 0)
+  N <- nrow(tf)
+
+  idf <- log((N + 1) / (df + 1)) + 1
+
+  sweep(tf, 2, idf, "*")
+}
+
+
+word1_tfidf <- ngram_tfidf(docs, n = 1, stem = FALSE)
+word2_tfidf <- ngram_tfidf(docs, n = 2, stem = FALSE)
+word3_tfidf <- ngram_tfidf(docs, n = 3, stem = FALSE)
+
+stem1_tfidf <- ngram_tfidf(docs, n = 1, stem = TRUE)
+stem2_tfidf <- ngram_tfidf(docs, n = 2, stem = TRUE)
+stem3_tfidf <- ngram_tfidf(docs, n = 3, stem = TRUE)
+
+
+round(word1_tfidf, 3)
+round(word2_tfidf, 3)
+round(word3_tfidf, 3)
+
+
+top_features <- function(mat, doc, k = 10){
+  sort(mat[doc, ], decreasing = TRUE)[1:k]
+}
+
+top_features(word1_tfidf, "isa1", 10)
+top_features(word1_tfidf, "isa2", 10)
+top_features(word1_tfidf, "isa40", 10)
+
+top_features(word2_tfidf, "isa40", 10)
+top_features(word3_tfidf, "isa40", 10)
+
+
+
+cosine_sim <- function(mat){
+  norm <- sqrt(rowSums(mat^2))
+  mat2 <- mat / norm
+  mat2 %*% t(mat2)
+}
+
+round(cosine_sim(word1_tfidf), 3)
+round(cosine_sim(word2_tfidf), 3)
+round(cosine_sim(word3_tfidf), 3)
+
+round(cosine_sim(stem1_tfidf), 3)
+round(cosine_sim(stem2_tfidf), 3)
+round(cosine_sim(stem3_tfidf), 3)
+
+
+
+
+
+
+
+```
+
+
+
+
+```{r features}
+feature_sets <- list(
+  word1 = ngram_tfidf(docs, n = 1, stem = FALSE),
+  word2 = ngram_tfidf(docs, n = 2, stem = FALSE),
+  word3 = ngram_tfidf(docs, n = 3, stem = FALSE),
+
+  stem1 = ngram_tfidf(docs, n = 1, stem = TRUE),
+  stem2 = ngram_tfidf(docs, n = 2, stem = TRUE),
+  stem3 = ngram_tfidf(docs, n = 3, stem = TRUE)
+)
+
+cosine_scores <- lapply(feature_sets, cosine_sim)
+
+
+names(feature_sets)
+names(cosine_scores)
+
+round(cosine_scores$word1, 3)
+round(cosine_scores$word2, 3)
+round(cosine_scores$stem1, 3)
+
+
+
+
+```
+
+```{r function-word-sets}
+
+docs <- c(
+  isa1  = "The vision of Isaiah the son of Amoz.",
+  isa2  = "And it shall come to pass in the last days.",
+  isa40 = "Comfort ye, comfort ye my people."
+)
+
+
+function_word_sets <- list(
+
+  basic = c(
+    "the","and","of","to","in","that","which","shall",
+    "unto","ye","he","his","it","for","with","by"
+  ),
+
+  kjv = c(
+    "the","and","of","to","in","that","which","shall",
+    "unto","ye","thou","thee","thy","thine",
+    "hath","doth","saith","yea","nay","verily"
+  ),
+
+  pronouns = c(
+    "i","me","my","mine",
+    "thou","thee","thy","thine",
+    "he","him","his",
+    "she","her",
+    "we","us","our",
+    "ye","you","your",
+    "they","them","their"
+  ),
+
+  conjunctions = c(
+    "and","but","or","nor","for","yet","so",
+    "if","though","although","because","therefore",
+    "wherefore","whereas"
+  ),
+
+  prepositions = c(
+    "of","to","in","unto","by","with","from","for",
+    "on","upon","at","into","through","over","under",
+    "before","after","against","among","between"
+  ),
+
+  auxiliaries = c(
+    "shall","will","would","should","may","might",
+    "can","could","must",
+    "is","are","was","were","be","being","been",
+    "hath","has","had","doth","does","did"
+  )
+
+)
+
+
+
+tokenize_text <- function(text){
+  text <- tolower(text)
+  text <- gsub("[^a-z ]", " ", text)
+  text <- gsub("\\s+", " ", text)
+  text <- trimws(text)
+
+  words <- unlist(strsplit(text, " "))
+  words[words != ""]
+}
+
+function_word_freq <- function(docs, vocab){
+
+  mat <- matrix(
+    0,
+    nrow = length(docs),
+    ncol = length(vocab),
+    dimnames = list(names(docs), vocab)
+  )
+
+  for(i in seq_along(docs)){
+    words <- tokenize_text(docs[i])
+    tab <- table(words)
+
+    common <- intersect(names(tab), vocab)
+
+    mat[i, common] <- as.numeric(tab[common])
+    mat[i, ] <- mat[i, ] / length(words)
+  }
+
+  mat
+}
+
+
+
+function_word_tfidf <- function(docs, vocab){
+
+  grams_by_doc <- lapply(docs, tokenize_text)
+
+  vocab <- sort(unique(vocab))
+
+  tf <- matrix(
+    0,
+    nrow = length(docs),
+    ncol = length(vocab),
+    dimnames = list(names(docs), vocab)
+  )
+
+  for(i in seq_along(grams_by_doc)){
+    words <- grams_by_doc[[i]]
+    tab <- table(words)
+
+    common <- intersect(names(tab), vocab)
+
+    tf[i, common] <- as.numeric(tab[common])
+  }
+
+  tf <- tf / rowSums(tf)
+
+  df <- colSums(tf > 0)
+  N <- nrow(tf)
+
+  idf <- log((N + 1) / (df + 1)) + 1
+
+  sweep(tf, 2, idf, "*")
+}
+
+top_features <- function(mat, doc, k = 10){
+  sort(mat[doc, ], decreasing = TRUE)[1:k]
+}
+
+
+cosine_sim <- function(mat){
+
+  norm <- sqrt(rowSums(mat^2))
+
+  mat2 <- mat / norm
+
+  mat2 %*% t(mat2)
+}
+
+
+fw_freq_features <- lapply(
+  function_word_sets,
+  function(vocab){
+    function_word_freq(docs, vocab)
+  }
+)
+
+names(fw_freq_features) <- paste0(
+  "fw_freq_",
+  names(function_word_sets)
+)
+
+
+fw_tfidf_features <- lapply(
+  function_word_sets,
+  function(vocab){
+    function_word_tfidf(docs, vocab)
+  }
+)
+
+names(fw_tfidf_features) <- paste0(
+  "fw_tfidf_",
+  names(function_word_sets)
+)
+
+fw_freq_cosines <- lapply(fw_freq_features, cosine_sim)
+fw_tfidf_cosines <- lapply(fw_tfidf_features, cosine_sim)
+
+
+round(fw_freq_features$fw_freq_basic, 3)
+round(fw_tfidf_features$fw_tfidf_basic, 3)
+
+top_features(fw_freq_features$fw_freq_kjv, "isa2", 10)
+top_features(fw_tfidf_features$fw_tfidf_kjv, "isa2", 10)
+
+round(fw_freq_cosines$fw_freq_basic, 3)
+round(fw_tfidf_cosines$fw_tfidf_basic, 3)
+
+
+feature_sets <- c(
+  fw_freq_features,
+  fw_tfidf_features
+)
+
+cosine_scores <- c(
+  fw_freq_cosines,
+  fw_tfidf_cosines
+)
+
+
+
+
+
+
+```
+```{r pos 3,4,5}
+library(udpipe)
+
+docs <- c(
+  isa1  = "The vision of Isaiah the son of Amoz.",
+  isa2  = "And it shall come to pass in the last days.",
+  isa40 = "Comfort ye, comfort ye my people."
+)
+
+# Download once if needed
+model_file <- "english-ewt-ud-2.5-191206.udpipe"
+
+if(!file.exists(model_file)){
+  ud_model_info <- udpipe_download_model(language = "english")
+  model_file <- ud_model_info$file_model
+}
+
+ud_model <- udpipe_load_model(model_file)
+
+# IMPORTANT: preserve document names
+anno <- udpipe_annotate(
+  ud_model,
+  x = docs,
+  doc_id = names(docs)
+)
+
+anno <- as.data.frame(anno)
+
+# POS n-gram function
+pos_ngrams <- function(pos, n){
+  pos <- pos[!is.na(pos)]
+
+  if(length(pos) < n)
+    return(character(0))
+
+  sapply(
+    1:(length(pos) - n + 1),
+    function(i){
+      paste(pos[i:(i+n-1)], collapse = "_")
+    }
+  )
+}
+
+# TF-IDF matrix
+tfidf_matrix <- function(grams_by_doc){
+
+  vocab <- sort(unique(unlist(grams_by_doc)))
+
+  mat <- matrix(
+    0,
+    nrow = length(grams_by_doc),
+    ncol = length(vocab),
+    dimnames = list(names(grams_by_doc), vocab)
+  )
+
+  for(i in seq_along(grams_by_doc)){
+    tab <- table(grams_by_doc[[i]])
+    mat[i, names(tab)] <- as.numeric(tab)
+  }
+
+  tf <- mat / rowSums(mat)
+
+  df <- colSums(tf > 0)
+  N <- nrow(tf)
+
+  idf <- log((N + 1) / (df + 1)) + 1
+
+  sweep(tf, 2, idf, "*")
+}
+
+# Top features
+top_features <- function(mat, doc, k = 10){
+
+  if(!doc %in% rownames(mat)){
+    stop(
+      paste0(
+        "Document '", doc, "' not found. Available docs: ",
+        paste(rownames(mat), collapse = ", ")
+      )
+    )
+  }
+
+  sort(mat[doc, ], decreasing = TRUE)[1:min(k, ncol(mat))]
+}
+
+# Cosine similarity
+cosine_sim <- function(mat){
+
+  norm <- sqrt(rowSums(mat^2))
+
+  mat2 <- mat / norm
+
+  mat2 %*% t(mat2)
+}
+
+# Build POS sequences by document
+pos_by_doc <- split(
+  anno$upos,
+  anno$doc_id
+)
+
+# Build POS 3, 4, 5 n-grams
+pos3 <- lapply(pos_by_doc, pos_ngrams, n = 3)
+pos4 <- lapply(pos_by_doc, pos_ngrams, n = 4)
+pos5 <- lapply(pos_by_doc, pos_ngrams, n = 5)
+
+# Build TF-IDF matrices
+pos3_tfidf <- tfidf_matrix(pos3)
+pos4_tfidf <- tfidf_matrix(pos4)
+pos5_tfidf <- tfidf_matrix(pos5)
+
+# View TF-IDF matrices
+round(pos3_tfidf, 3)
+round(pos4_tfidf, 3)
+round(pos5_tfidf, 3)
+
+# Top POS features
+top_features(pos3_tfidf, "isa1", 10)
+top_features(pos4_tfidf, "isa1", 10)
+top_features(pos5_tfidf, "isa1", 10)
+
+top_features(pos3_tfidf, "isa2", 10)
+top_features(pos4_tfidf, "isa2", 10)
+top_features(pos5_tfidf, "isa2", 10)
+
+top_features(pos3_tfidf, "isa40", 10)
+top_features(pos4_tfidf, "isa40", 10)
+top_features(pos5_tfidf, "isa40", 10)
+
+# Cosine similarity matrices
+pos3_cosine <- cosine_sim(pos3_tfidf)
+pos4_cosine <- cosine_sim(pos4_tfidf)
+pos5_cosine <- cosine_sim(pos5_tfidf)
+
+round(pos3_cosine, 3)
+round(pos4_cosine, 3)
+round(pos5_cosine, 3)
+
+# Feature-set object
+pos_features <- list(
+  pos3_tfidf = pos3_tfidf,
+  pos4_tfidf = pos4_tfidf,
+  pos5_tfidf = pos5_tfidf
+)
+
+pos_cosines <- lapply(pos_features, cosine_sim)
+
+
+
+```
+
+```{r punctuation}
+docs <- c(
+  isa1  = "The vision of Isaiah the son of Amoz.",
+  isa2  = "And it shall come to pass in the last days.",
+  isa40 = "Comfort ye, comfort ye my people."
+)
+
+tokenize_text <- function(text){
+  text <- tolower(text)
+  text <- gsub("[^a-z ]", " ", text)
+  text <- gsub("\\s+", " ", text)
+  text <- trimws(text)
+
+  words <- unlist(strsplit(text, " "))
+  words[words != ""]
+}
+
+
+punctuation_features <- function(docs){
+
+  mat <- matrix(
+    0,
+    nrow = length(docs),
+    ncol = 6,
+    dimnames = list(
+      names(docs),
+      c(
+        "comma_per_word",
+        "semicolon_per_word",
+        "colon_per_word",
+        "quote_per_word",
+        "period_per_word",
+        "punct_total_per_word"
+      )
+    )
+  )
+
+  for(i in seq_along(docs)){
+
+    text <- docs[i]
+    words <- tokenize_text(text)
+    n_words <- length(words)
+
+    comma <- gregexpr(",", text)[[1]]
+    semicolon <- gregexpr(";", text)[[1]]
+    colon <- gregexpr(":", text)[[1]]
+    quote <- gregexpr("[\"'“”‘’]", text)[[1]]
+    period <- gregexpr("\\.", text)[[1]]
+
+    comma_n <- ifelse(comma[1] == -1, 0, length(comma))
+    semicolon_n <- ifelse(semicolon[1] == -1, 0, length(semicolon))
+    colon_n <- ifelse(colon[1] == -1, 0, length(colon))
+    quote_n <- ifelse(quote[1] == -1, 0, length(quote))
+    period_n <- ifelse(period[1] == -1, 0, length(period))
+
+    total_n <- comma_n + semicolon_n + colon_n + quote_n + period_n
+
+    mat[i, ] <- c(
+      comma_n / n_words,
+      semicolon_n / n_words,
+      colon_n / n_words,
+      quote_n / n_words,
+      period_n / n_words,
+      total_n / n_words
+    )
+  }
+
+  mat
+}
+
+punct_features <- punctuation_features(docs)
+
+round(punct_features, 3)
+
+
+cosine_sim <- function(mat){
+
+  norm <- sqrt(rowSums(mat^2))
+
+  mat2 <- mat / norm
+
+  mat2 %*% t(mat2)
+}
+
+
+punct_cosine <- cosine_sim(punct_features)
+
+round(punct_cosine, 3)
+
+top_features <- function(mat, doc, k = 10){
+
+  if(!doc %in% rownames(mat)){
+    stop(
+      paste0(
+        "Document '", doc, "' not found. Available docs: ",
+        paste(rownames(mat), collapse = ", ")
+      )
+    )
+  }
+
+  sort(mat[doc, ], decreasing = TRUE)[1:min(k, ncol(mat))]
+}
+
+
+top_features(punct_features, "isa1")
+top_features(punct_features, "isa2")
+top_features(punct_features, "isa40")
+
+feature_sets <- list(
+  punctuation_freq = punct_features
+)
+
+cosine_scores <- list(
+  punctuation_freq = punct_cosine
+)
+
+
+
+
+
+```
+
+```{r sentence length}
+docs <- c(
+  isa1  = "The vision of Isaiah the son of Amoz.",
+  isa2  = "And it shall come to pass in the last days.",
+  isa40 = "Comfort ye, comfort ye my people."
+)
+
+
+tokenize_text <- function(text){
+  text <- tolower(text)
+  text <- gsub("[^a-z ]", " ", text)
+  text <- gsub("\\s+", " ", text)
+  text <- trimws(text)
+
+  words <- unlist(strsplit(text, " "))
+  words[words != ""]
+}
+
+sentence_length_bins <- function(docs){
+
+  bins <- c(
+    "sent_lt10",
+    "sent_10_19",
+    "sent_20_29",
+    "sent_30_39",
+    "sent_ge40"
+  )
+
+  mat <- matrix(
+    0,
+    nrow = length(docs),
+    ncol = length(bins),
+    dimnames = list(names(docs), bins)
+  )
+
+  for(i in seq_along(docs)){
+
+    sents <- unlist(strsplit(docs[i], "[.!?]+"))
+    sents <- trimws(sents)
+    sents <- sents[sents != ""]
+
+    lens <- sapply(sents, function(s){
+      length(tokenize_text(s))
+    })
+
+    mat[i, "sent_lt10"]  <- mean(lens < 10)
+    mat[i, "sent_10_19"] <- mean(lens >= 10 & lens < 20)
+    mat[i, "sent_20_29"] <- mean(lens >= 20 & lens < 30)
+    mat[i, "sent_30_39"] <- mean(lens >= 30 & lens < 40)
+    mat[i, "sent_ge40"]  <- mean(lens >= 40)
+  }
+
+  mat
+}
+
+sent_freq <- sentence_length_bins(docs)
+
+round(sent_freq, 3)
+
+sentence_length_tfidf <- function(docs){
+
+  tf <- sentence_length_bins(docs)
+
+  df <- colSums(tf > 0)
+  N <- nrow(tf)
+
+  idf <- log((N + 1) / (df + 1)) + 1
+
+  sweep(tf, 2, idf, "*")
+}
+
+
+sent_tfidf <- sentence_length_tfidf(docs)
+
+round(sent_tfidf, 3)
+
+
+top_features <- function(mat, doc, k = 10){
+
+  if(!doc %in% rownames(mat)){
+    stop(
+      paste0(
+        "Document '", doc, "' not found. Available docs: ",
+        paste(rownames(mat), collapse = ", ")
+      )
+    )
+  }
+
+  sort(mat[doc, ], decreasing = TRUE)[1:min(k, ncol(mat))]
+}
+
+
+top_features(sent_freq, "isa1")
+top_features(sent_tfidf, "isa1")
+
+cosine_sim <- function(mat){
+
+  norm <- sqrt(rowSums(mat^2))
+
+  mat2 <- mat / norm
+
+  mat2 %*% t(mat2)
+}
+
+
+sent_freq_cosine <- cosine_sim(sent_freq)
+sent_tfidf_cosine <- cosine_sim(sent_tfidf)
+
+round(sent_freq_cosine, 3)
+round(sent_tfidf_cosine, 3)
+
+
+sentence_features <- list(
+  sentence_length_freq  = sent_freq,
+  sentence_length_tfidf = sent_tfidf
+)
+
+sentence_cosines <- lapply(sentence_features, cosine_sim)
+
+
+
+
+```
+
+```{r readability}
+install.packages("quanteda.textstats")
+install.packages("quanteda")
+
+library(quanteda)
+library(quanteda.textstats)
+
+docs <- c(
+  isa1  = "The vision of Isaiah the son of Amoz.",
+  isa2  = "And it shall come to pass in the last days.",
+  isa40 = "Comfort ye, comfort ye my people."
+)
+
+readability_features <- function(docs){
+
+  corp <- corpus(docs)
+
+  r <- textstat_readability(
+    corp,
+    measure = c(
+      "Flesch",
+      "Flesch.Kincaid",
+      "ARI",
+      "Coleman.Liau",
+      "SMOG"
+    )
+  )
+
+  mat <- as.matrix(
+    r[, -1]
+  )
+
+  rownames(mat) <- names(docs)
+
+  mat
+}
+
+
+read_feats <- readability_features(docs)
+
+round(read_feats, 3)
+
+
+cosine_sim <- function(mat){
+
+  norm <- sqrt(rowSums(mat^2))
+  mat2 <- mat / norm
+
+  mat2 %*% t(mat2)
+}
+
+
+read_cosine <- cosine_sim(read_feats)
+
+round(read_cosine, 3)
+
+top_features <- function(mat, doc, k = 10){
+
+  sort(
+    mat[doc, ],
+    decreasing = TRUE
+  )[1:min(k, ncol(mat))]
+
+}
+
+
+top_features(read_feats, "isa1")
+top_features(read_feats, "isa2")
+top_features(read_feats, "isa40")
+
+
+feature_sets <- list(
+  readability = read_feats
+)
+
+cosine_scores <- list(
+  readability = read_cosine
+)
+
+
+
+
+
+
+
+
+
+```
+
+```{r other ratios}
+
+docs <- c(
+  isa1  = "The vision of Isaiah the son of Amoz.",
+  isa2  = "And it shall come to pass in the last days.",
+  isa40 = "Comfort ye, comfort ye my people."
+)
+
+tokenize_text <- function(text){
+  text <- tolower(text)
+  text <- gsub("[^a-z ]", " ", text)
+  text <- gsub("\\s+", " ", text)
+  text <- trimws(text)
+
+  words <- unlist(strsplit(text, " "))
+  words[words != ""]
+}
+
+lexical_features <- function(docs){
+
+  mat <- matrix(
+    0,
+    nrow = length(docs),
+    ncol = 3,
+    dimnames = list(
+      names(docs),
+      c(
+        "type_token_ratio",
+        "hapax_ratio",
+        "avg_word_length"
+      )
+    )
+  )
+
+  for(i in seq_along(docs)){
+
+    words <- tokenize_text(docs[i])
+    N <- length(words)
+    tab <- table(words)
+
+    mat[i, "type_token_ratio"] <- length(unique(words)) / N
+    mat[i, "hapax_ratio"]      <- sum(tab == 1) / N
+    mat[i, "avg_word_length"]  <- mean(nchar(words))
+  }
+
+  mat
+}
+
+cosine_sim <- function(mat){
+
+  norm <- sqrt(rowSums(mat^2))
+
+  mat2 <- mat / norm
+
+  mat2 %*% t(mat2)
+}
+
+top_features <- function(mat, doc, k = 10){
+
+  if(!doc %in% rownames(mat)){
+    stop(
+      paste0(
+        "Document '", doc, "' not found. Available docs: ",
+        paste(rownames(mat), collapse = ", ")
+      )
+    )
+  }
+
+  sort(mat[doc, ], decreasing = TRUE)[1:min(k, ncol(mat))]
+}
+
+lex <- lexical_features(docs)
+
+round(lex, 3)
+
+top_features(lex, "isa1")
+top_features(lex, "isa2")
+top_features(lex, "isa40")
+
+lex_cosine <- cosine_sim(lex)
+
+round(lex_cosine, 3)
+
+feature_sets <- list(
+  lexical_richness = lex
+)
+
+cosine_scores <- list(
+  lexical_richness = lex_cosine
+)
+
+
+
+
+
+```
+
+

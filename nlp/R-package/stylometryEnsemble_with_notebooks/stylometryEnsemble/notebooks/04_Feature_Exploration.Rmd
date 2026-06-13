@@ -1,0 +1,62 @@
+---
+title: "Feature Exploration"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+source("notebooks/00_source_project.R")
+prepared_path <- "data/prepared/kjv_section_docs.csv"
+if(file.exists(prepared_path)){
+  section_docs <- readr::read_csv(prepared_path, show_col_types = FALSE)
+} else {
+  kjv <- readr::read_csv("data/raw/kjv.csv", show_col_types = FALSE)
+  section_docs <- prepare_kjv_sections(kjv)
+}
+
+docs <- docs_from_table(section_docs)
+```
+
+## 1. Build selected feature matrices
+
+```{r build-features}
+char3 <- char_tfidf(docs, 3)
+char4 <- char_tfidf(docs, 4)
+word1 <- ngram_tfidf(docs, 1, stem = FALSE)
+stem1 <- ngram_tfidf(docs, 1, stem = TRUE)
+fw_kjv <- function_word_freq(docs, default_function_word_sets()$kjv)
+punct <- punctuation_features(docs)
+sent <- sentence_length_bins(docs)
+lex <- lexical_features(docs)
+```
+
+## 2. Helper for top features
+
+```{r top-helper}
+show_top <- function(mat, doc, k = 15){
+  sort(mat[doc, ], decreasing = TRUE)[1:min(k, ncol(mat))]
+}
+
+doc <- rownames(char3)[1]
+doc
+```
+
+## 3. Top features for one document
+
+```{r top-features}
+show_top(char3, doc)
+show_top(char4, doc)
+show_top(word1, doc)
+show_top(stem1, doc)
+show_top(fw_kjv, doc)
+show_top(punct, doc)
+show_top(sent, doc)
+show_top(lex, doc)
+```
+
+## 4. Cosine examples
+
+```{r cosine-examples}
+round(cosine_sim(char3), 3)
+round(cosine_sim(fw_kjv), 3)
+round(cosine_sim(lex), 3)
+```

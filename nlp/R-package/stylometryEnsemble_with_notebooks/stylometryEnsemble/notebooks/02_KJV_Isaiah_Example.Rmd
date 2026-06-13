@@ -1,0 +1,74 @@
+---
+title: "KJV Isaiah Example"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+source("notebooks/00_source_project.R")
+```
+
+## 1. Load or prepare section documents
+
+```{r load-prepare}
+prepared_path <- "data/prepared/kjv_section_docs.csv"
+
+if(file.exists(prepared_path)){
+  section_docs <- readr::read_csv(prepared_path, show_col_types = FALSE)
+} else {
+  kjv <- readr::read_csv("data/raw/kjv.csv", show_col_types = FALSE)
+  section_docs <- prepare_kjv_sections(kjv)
+  dir.create("data/prepared", recursive = TRUE, showWarnings = FALSE)
+  readr::write_csv(section_docs, prepared_path)
+}
+
+section_docs %>%
+  dplyr::select(doc_id, section, macro_genre, n_verses, n_chapters, books)
+```
+
+## 2. Run default non-POS ensemble
+
+POS requires `udpipe` and an English model. This version is fast and good for first testing.
+
+```{r run-default-no-pos}
+config_no_pos <- default_config(
+  include = c("char", "word", "stem", "function_words", "punctuation", "sentence", "lexical")
+)
+
+result_no_pos <- run_stylometry_ensemble(section_docs, config_no_pos, k_neighbors = 8)
+round(result_no_pos$overall_similarity, 3)
+```
+
+## 3. Isaiah rows only
+
+```{r isaiah-rows}
+isaiah_docs <- rownames(result_no_pos$overall_similarity)[grepl("Isaiah", rownames(result_no_pos$overall_similarity))]
+round(result_no_pos$overall_similarity[isaiah_docs, , drop = FALSE], 3)
+```
+
+## 4. Class-level similarities
+
+```{r class-sims}
+names(result_no_pos$class_similarity)
+round(result_no_pos$class_similarity$char, 3)
+round(result_no_pos$class_similarity$function_words, 3)
+```
+
+## 5. Export results
+
+```{r export}
+export_ensemble_results(result_no_pos, output_dir = "output")
+```
+
+## 6. Optional POS run
+
+Uncomment this chunk after installing `udpipe`.
+
+```{r optional-pos, eval=FALSE}
+# install.packages("udpipe")
+config_with_pos <- default_config(
+  include = c("char", "word", "stem", "function_words", "pos", "punctuation", "sentence", "lexical")
+)
+
+result_with_pos <- run_stylometry_ensemble(section_docs, config_with_pos, k_neighbors = 8)
+round(result_with_pos$overall_similarity, 3)
+```

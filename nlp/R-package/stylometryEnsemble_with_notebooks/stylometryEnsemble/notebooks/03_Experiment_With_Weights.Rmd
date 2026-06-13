@@ -1,0 +1,68 @@
+---
+title: "Experiment With Feature Weights"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+source("notebooks/00_source_project.R")
+prepared_path <- "data/prepared/kjv_section_docs.csv"
+if(file.exists(prepared_path)){
+  section_docs <- readr::read_csv(prepared_path, show_col_types = FALSE)
+} else {
+  kjv <- readr::read_csv("data/raw/kjv.csv", show_col_types = FALSE)
+  section_docs <- prepare_kjv_sections(kjv)
+}
+```
+
+## 1. Baseline configuration
+
+```{r baseline}
+baseline_config <- default_config(
+  include = c("char", "word", "stem", "function_words", "punctuation", "sentence", "lexical")
+)
+
+baseline <- run_stylometry_ensemble(section_docs, baseline_config)
+baseline$weights_used
+```
+
+## 2. Style-heavy configuration
+
+```{r style-heavy}
+style_config <- new_stylometry_config(
+  include = c("char", "function_words", "punctuation", "sentence", "lexical"),
+  weights = c(
+    char = 0.35,
+    function_words = 0.35,
+    punctuation = 0.10,
+    sentence = 0.10,
+    lexical = 0.10
+  )
+)
+
+style_result <- run_stylometry_ensemble(section_docs, style_config)
+style_result$weights_used
+round(style_result$overall_similarity, 3)
+```
+
+## 3. Character-only configuration
+
+```{r char-only}
+char_config <- new_stylometry_config(
+  include = c("char"),
+  weights = c(char = 1)
+)
+
+char_result <- run_stylometry_ensemble(section_docs, char_config)
+round(char_result$overall_similarity, 3)
+```
+
+## 4. Compare nearest neighbors
+
+```{r compare-nn}
+dplyr::bind_rows(
+  baseline$nearest_neighbors %>% dplyr::mutate(model = "baseline"),
+  style_result$nearest_neighbors %>% dplyr::mutate(model = "style_heavy"),
+  char_result$nearest_neighbors %>% dplyr::mutate(model = "char_only")
+) %>%
+  dplyr::select(model, doc_id, rank, neighbor_doc_id, similarity)
+```
