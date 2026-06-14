@@ -116,25 +116,236 @@ nearest_neighbors <- function(similarity_matrix, k = 5){
   dplyr::bind_rows(rows)
 }
 
-run_stylometry_ensemble <- function(section_docs, config = default_config(), text_col = "text", doc_id_col = "doc_id", k_neighbors = 5){
-  feature_sets <- build_feature_sets(section_docs, config, text_col = text_col, doc_id_col = doc_id_col)
-  variant_similarity <- compute_variant_similarity(feature_sets, similarity = config$similarity)
-  class_similarity <- compute_class_similarity(variant_similarity)
-  weights <- config$weights[names(class_similarity)]
-  weights <- weights / sum(weights)
-  overall_similarity <- compute_overall_similarity(class_similarity, weights)
-  nn <- nearest_neighbors(overall_similarity, k = k_neighbors)
 
-  structure(
-    list(
-      config = config,
-      feature_sets = feature_sets,
-      variant_similarity = variant_similarity,
-      class_similarity = class_similarity,
-      overall_similarity = overall_similarity,
-      nearest_neighbors = nn,
-      weights_used = weights
-    ),
-    class = "stylometry_ensemble_result"
+
+
+
+
+
+
+run_stylometry_ensemble <- function(
+    source_docs,
+    target_docs = NULL,
+    config = default_config(),
+    text_col = "text",
+    doc_id_col = "doc_id",
+    k_neighbors = 5,
+    use_cache = TRUE,
+    cache_dir = NULL){
+
+  if(is.null(target_docs)){
+    target_docs <- source_docs
+  }
+
+	if(is.null(cache_dir)){
+  cache_dir <- file.path(
+    getOption("stylometry.root", "."),
+    "cache",
+    "results"
   )
 }
+
+
+  dir.create(cache_dir, recursive = TRUE, showWarnings = FALSE)
+
+  cache_hash <- make_ensemble_hash(
+    source_docs,
+    target_docs,
+    config
+  )
+
+  cache_file <- file.path(
+    cache_dir,
+    paste0("ensemble_", cache_hash, ".rds")
+  )
+  
+  print(cache_file);
+
+  if(use_cache && file.exists(cache_file)){
+    message("Loading cached ensemble: ", cache_file)
+    return(readRDS(cache_file))
+  }
+
+  source_ids <- source_docs[[doc_id_col]]
+  target_ids <- target_docs[[doc_id_col]]
+
+  combined_docs <- dplyr::bind_rows(
+    source_docs %>% dplyr::mutate(.role = "source"),
+    target_docs %>% dplyr::mutate(.role = "target")
+  )
+
+  combined_docs <- combined_docs %>%
+    dplyr::distinct(.data[[doc_id_col]], .keep_all = TRUE)
+
+  feature_sets_combined <- build_feature_sets(
+    combined_docs,
+    config,
+    text_col = text_col,
+    doc_id_col = doc_id_col
+  )
+
+  variant_similarity <- lapply(
+    feature_sets_combined,
+    function(class_group){
+
+      lapply(
+        class_group,
+        function(mat){
+
+          source_mat <- mat[source_ids, , drop = FALSE]
+          target_mat <- mat[target_ids, , drop = FALSE]
+
+          cosine_between(source_mat, target_mat)
+        }
+      )
+    }
+  )
+
+  class_similarity <- compute_class_similarity(variant_similarity)
+
+  weights <- config$weights[names(class_similarity)]
+  weights <- weights / sum(weights)
+
+  overall_similarity <- compute_overall_similarity(
+    class_similarity,
+    weights
+  )
+
+  nn <- nearest_targets(
+    overall_similarity,
+    k = k_neighbors
+  )
+  
+  feature_rankings <- feature_rankings_from_variants(
+  variant_similarity,
+  k = k_neighbors
+)
+
+feature_votes <- feature_votes_from_rankings(
+  feature_rankings,
+  weights = weights,
+  rank_filter = 1
+)
+
+
+  
+  
+
+result <- structure(
+  list(
+    config = config,
+    source_docs = source_docs,
+    target_docs = target_docs,
+    feature_sets = feature_sets_combined,
+    variant_similarity = variant_similarity,
+    class_similarity = class_similarity,
+    overall_similarity = overall_similarity,
+
+    nearest_targets = nn,
+    nearest_neighbors = nn,
+
+    feature_rankings = feature_rankings,
+    feature_votes = feature_votes,
+
+    weights_used = weights,
+    cache_hash = cache_hash,
+    cache_file = cache_file
+  ),
+  class = "stylometry_ensemble_result"
+)
+  
+  
+  if(use_cache){
+  saveRDS(result, cache_file)
+  message("Saved ensemble cache: ", cache_file)
+}
+
+
+result
+}
+
+
+
+make_ensemble_hash <- function(source_docs, target_docs, config){
+
+  digest::digest(
+    list(
+      source_doc_ids = source_docs$doc_id,
+      source_text    = source_docs$text,
+      target_doc_ids = target_docs$doc_id,
+      target_text    = target_docs$text,
+      config         = config
+    ),
+    algo = "xxhash64"
+  )
+}
+
+
+
+feature_rankings_from_variants <- function(
+    variant_similarity,
+    k = 5){
+
+  out <- list()
+
+  idx <- 1
+
+  for(class_name in names(variant_similarity)){
+
+    for(variant_name in names(variant_similarity[[class_name]])){
+
+      sim <- variant_similarity[[class_name]][[variant_name]]
+
+      ranks <- nearest_targets(
+        sim,
+        k = k
+      )
+
+      ranks$feature_class <- class_name
+      ranks$feature_variant <- variant_name
+
+      out[[idx]] <- ranks
+
+      idx <- idx + 1
+    }
+  }
+
+  dplyr::bind_rows(out) %>%
+    dplyr::select(
+      feature_class,
+      feature_variant,
+      doc_id,
+      neighbor_doc_id,
+      similarity,
+      rank
+    )
+}
+
+
+
+
+feature_votes_from_rankings <- function(feature_rankings, weights, rank_filter = 1){
+
+  feature_rankings %>%
+    dplyr::filter(rank <= rank_filter) %>%
+    dplyr::mutate(
+      class_weight = weights[feature_class]
+    ) %>%
+    dplyr::group_by(doc_id, neighbor_doc_id) %>%
+    dplyr::summarize(
+      votes = dplyr::n(),
+      weighted_votes = sum(class_weight, na.rm = TRUE),
+      avg_similarity = mean(similarity, na.rm = TRUE),
+      .groups = "drop"
+    ) %>%
+    dplyr::arrange(
+      doc_id,
+      dplyr::desc(weighted_votes),
+      dplyr::desc(votes),
+      dplyr::desc(avg_similarity)
+    )
+}
+
+
+
+

@@ -1,74 +1,342 @@
 ---
-title: "KJV Isaiah Example"
+title: "02 - KJV Isaiah Example"
 output: html_document
 ---
 
 ```{r setup, message=FALSE, warning=FALSE}
-source("notebooks/00_source_project.R")
+# Run this notebook from inside the notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
 ```
 
-## 1. Load or prepare section documents
+## 1. Load prepared data if available
 
-```{r load-prepare}
-prepared_path <- "data/prepared/kjv_section_docs.csv"
+This notebook assumes `01_Introduction.Rmd` has already created:
 
-if(file.exists(prepared_path)){
-  section_docs <- readr::read_csv(prepared_path, show_col_types = FALSE)
+```text
+data/prepared/kjv_chapter_docs.csv
+data/prepared/kjv_section_docs.csv
+```
+
+If those files do not exist, this notebook will prepare them from:
+
+```text
+data/raw/kjv.csv
+```
+
+```{r load-or-prepare}
+chapter_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_chapter_docs.csv")
+section_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_section_docs.csv")
+raw_path     <- file.path(STYLO_ROOT, "data", "raw", "kjv.csv")
+
+if(file.exists(chapter_path) && file.exists(section_path)){
+
+  chapter_docs <- readr::read_csv(
+    chapter_path,
+    show_col_types = FALSE
+  )
+
+  section_docs <- readr::read_csv(
+    section_path,
+    show_col_types = FALSE
+  )
+
 } else {
-  kjv <- readr::read_csv("data/raw/kjv.csv", show_col_types = FALSE)
-  section_docs <- prepare_kjv_sections(kjv)
-  dir.create("data/prepared", recursive = TRUE, showWarnings = FALSE)
-  readr::write_csv(section_docs, prepared_path)
+
+  if(!file.exists(raw_path)){
+    stop("Could not find data/raw/kjv.csv. Run 01_Introduction.Rmd after placing kjv.csv in data/raw/.")
+  }
+
+  kjv <- readr::read_csv(
+    raw_path,
+    show_col_types = FALSE
+  )
+
+  prepared <- prepare_kjv_docs(kjv)
+
+  chapter_docs <- prepared$chapter_docs
+  section_docs <- prepared$section_docs
+
+  dir.create(
+    file.path(STYLO_ROOT, "data", "prepared"),
+    recursive = TRUE,
+    showWarnings = FALSE
+  )
+
+  readr::write_csv(chapter_docs, chapter_path)
+  readr::write_csv(section_docs, section_path)
 }
+```
 
+## 2. Inspect Isaiah chapter documents
+
+```{r inspect-isaiah-chapters}
+chapter_docs %>%
+  dplyr::filter(book == "Isaiah") %>%
+  dplyr::select(
+    doc_id,
+    book,
+    chapter,
+    section,
+    macro_genre,
+    n_verses
+  )
+```
+
+## 3. Inspect target sections
+
+```{r inspect-sections}
 section_docs %>%
-  dplyr::select(doc_id, section, macro_genre, n_verses, n_chapters, books)
+  dplyr::select(
+    doc_id,
+    section,
+    macro_genre,
+    n_verses,
+    n_chapters,
+    books
+  )
 ```
 
-## 2. Run default non-POS ensemble
+## 4. Configure a style-oriented ensemble
 
-POS requires `udpipe` and an English model. This version is fast and good for first testing.
+This example uses a lightweight style-oriented ensemble and excludes POS/readability for speed.
 
-```{r run-default-no-pos}
-config_no_pos <- default_config(
-  include = c("char", "word", "stem", "function_words", "punctuation", "sentence", "lexical")
+```{r config}
+config <- default_config(
+  include = c(
+    "char",
+    "word",
+    "stem",
+    "function_words",
+    "punctuation",
+    "sentence",
+    "lexical"
+  )
 )
 
-result_no_pos <- run_stylometry_ensemble(section_docs, config_no_pos, k_neighbors = 8)
-round(result_no_pos$overall_similarity, 3)
+show_weights_placeholder <- config$weights
+show_weights_placeholder
 ```
 
-## 3. Isaiah rows only
+## 5. Run chapter-to-section ensemble
 
-```{r isaiah-rows}
-isaiah_docs <- rownames(result_no_pos$overall_similarity)[grepl("Isaiah", rownames(result_no_pos$overall_similarity))]
-round(result_no_pos$overall_similarity[isaiah_docs, , drop = FALSE], 3)
-```
+Rows are chapters. Columns are sections/books.
 
-## 4. Class-level similarities
-
-```{r class-sims}
-names(result_no_pos$class_similarity)
-round(result_no_pos$class_similarity$char, 3)
-round(result_no_pos$class_similarity$function_words, 3)
-```
-
-## 5. Export results
-
-```{r export}
-export_ensemble_results(result_no_pos, output_dir = "output")
-```
-
-## 6. Optional POS run
-
-Uncomment this chunk after installing `udpipe`.
-
-```{r optional-pos, eval=FALSE}
-# install.packages("udpipe")
-config_with_pos <- default_config(
-  include = c("char", "word", "stem", "function_words", "pos", "punctuation", "sentence", "lexical")
+```{r run-chapter-to-section}
+result <- run_stylometry_ensemble(
+  source_docs = chapter_docs,
+  target_docs = section_docs,
+  config = config
 )
 
-result_with_pos <- run_stylometry_ensemble(section_docs, config_with_pos, k_neighbors = 8)
-round(result_with_pos$overall_similarity, 3)
+show_result_summary(result)
+show_weights(result)
+```
+
+## 6. Overall Isaiah chapter-to-section matrix
+
+```{r isaiah-section-matrix}
+isaiah_docs <- chapter_docs %>%
+  dplyr::filter(book == "Isaiah") %>%
+  dplyr::pull(doc_id)
+
+isaiah_targets <- c(
+  "Isaiah_1_35",
+  "Isaiah_36_39",
+  "Isaiah_40_55",
+  "Isaiah_56_66",
+  "Jeremiah",
+  "Ezekiel",
+  "Hosea",
+  "Amos"
+)
+
+show_overall_similarity(
+  result,
+  docs = isaiah_docs,
+  targets = isaiah_targets,
+  digits = 3
+)
+```
+
+## 7. Nearest target sections for Isaiah 40
+
+```{r isaiah-40-nearest}
+show_nearest_targets(
+  result,
+  doc_id = "Isaiah_40",
+  k = 10
+)
+```
+
+## 8. Feature votes for Isaiah 40
+
+```{r isaiah-40-votes}
+show_feature_votes(
+  result,
+  doc_id = "Isaiah_40"
+)
+```
+
+## 9. Top target by every feature variant for Isaiah 40
+
+```{r isaiah-40-feature-winners}
+show_top_feature_rankings(
+  result,
+  doc_id = "Isaiah_40"
+)
+```
+
+## 10. Full feature rankings for Isaiah 40
+
+```{r isaiah-40-all-rankings}
+show_feature_rankings(
+  result,
+  doc_id = "Isaiah_40",
+  rank_max = 5
+)
+```
+
+## 11. Explain Isaiah 40 in one object
+
+```{r explain-isaiah-40}
+isa40 <- explain_doc(
+  result,
+  "Isaiah_40",
+  k = 10
+)
+
+names(isa40)
+
+isa40$nearest_targets
+isa40$feature_votes
+isa40$top_feature_rankings
+```
+
+## 12. Compare all chapters in Isaiah 40-55
+
+```{r deutero-block-votes}
+deutero_docs <- chapter_docs %>%
+  dplyr::filter(section == "Isaiah_40_55") %>%
+  dplyr::pull(doc_id)
+
+result$feature_votes %>%
+  dplyr::filter(doc_id %in% deutero_docs) %>%
+  dplyr::arrange(doc_id, dplyr::desc(votes), dplyr::desc(avg_similarity))
+```
+
+## 13. Which target wins most often for Isaiah 40-55?
+
+```{r deutero-section-vote-summary}
+result$feature_votes %>%
+  dplyr::filter(doc_id %in% deutero_docs) %>%
+  dplyr::group_by(neighbor_doc_id) %>%
+  dplyr::summarize(
+    total_votes = sum(votes, na.rm = TRUE),
+    mean_avg_similarity = mean(avg_similarity, na.rm = TRUE),
+    n_chapters = dplyr::n_distinct(doc_id),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(
+    dplyr::desc(total_votes),
+    dplyr::desc(mean_avg_similarity)
+  )
+```
+
+## 14. Proto-Isaiah vs Deutero-Isaiah diagnostic table
+
+This table compares each Isaiah chapter against the four Isaiah target sections.
+
+```{r isaiah-diagnostic-table}
+diagnostic_targets <- c(
+  "Isaiah_1_35",
+  "Isaiah_36_39",
+  "Isaiah_40_55",
+  "Isaiah_56_66"
+)
+
+diag_mat <- show_overall_similarity(
+  result,
+  docs = isaiah_docs,
+  targets = diagnostic_targets,
+  digits = 4
+)
+
+diag_tbl <- as.data.frame(diag_mat) %>%
+  tibble::rownames_to_column("doc_id") %>%
+  dplyr::left_join(
+    chapter_docs %>%
+      dplyr::select(doc_id, chapter, section),
+    by = "doc_id"
+  ) %>%
+  dplyr::relocate(doc_id, chapter, section)
+
+diag_tbl
+```
+
+
+```{r show consensus}
+
+show_consensus(
+  result,
+  "Isaiah_40"
+)
+
+```
+
+
+## 15. Best Isaiah target per chapter
+
+```{r best-isaiah-target-per-chapter}
+diag_tbl %>%
+  tidyr::pivot_longer(
+    cols = dplyr::all_of(diagnostic_targets),
+    names_to = "target_section",
+    values_to = "similarity"
+  ) %>%
+  dplyr::group_by(doc_id, chapter, section) %>%
+  dplyr::slice_max(
+    order_by = similarity,
+    n = 1,
+    with_ties = FALSE
+  ) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(chapter)
+```
+
+## 16. Save Isaiah example outputs
+
+```{r save-outputs}
+out_dir <- file.path(STYLO_ROOT, "output", "summaries")
+
+dir.create(
+  out_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+readr::write_csv(
+  show_nearest_targets(result, doc_id = "Isaiah_40", k = 10),
+  file.path(out_dir, "isaiah_40_nearest_targets.csv")
+)
+
+readr::write_csv(
+  show_feature_votes(result, doc_id = "Isaiah_40"),
+  file.path(out_dir, "isaiah_40_feature_votes.csv")
+)
+
+readr::write_csv(
+  show_top_feature_rankings(result, doc_id = "Isaiah_40"),
+  file.path(out_dir, "isaiah_40_top_feature_rankings.csv")
+)
+
+readr::write_csv(
+  diag_tbl,
+  file.path(out_dir, "isaiah_diagnostic_table.csv")
+)
 ```

@@ -1,0 +1,478 @@
+---
+title: "05 - Genre Identification"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+
+options(
+  tibble.width = Inf,
+  tibble.print_max = 100
+)
+```
+
+## 1. Purpose
+
+This notebook tests whether the ensemble can identify **macro-genre** rather than section/book authorship.
+
+The target profiles are:
+
+```text
+Narrative
+Prophetic
+Poetic/Wisdom
+```
+
+This is useful because some Isaiah chapters, such as Isaiah 12 and Isaiah 26, behave like hymns/songs and may classify closer to Psalms or the broader Poetic/Wisdom profile.
+
+## 2. Load prepared documents
+
+```{r load-prepared}
+chapter_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_chapter_docs.csv")
+section_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_section_docs.csv")
+raw_path     <- file.path(STYLO_ROOT, "data", "raw", "kjv.csv")
+
+if(file.exists(chapter_path) && file.exists(section_path)){
+
+  chapter_docs <- readr::read_csv(
+    chapter_path,
+    show_col_types = FALSE
+  )
+
+  section_docs <- readr::read_csv(
+    section_path,
+    show_col_types = FALSE
+  )
+
+} else {
+
+  if(!file.exists(raw_path)){
+    stop("Could not find data/raw/kjv.csv. Run 01_Introduction.Rmd first.")
+  }
+
+  kjv <- readr::read_csv(
+    raw_path,
+    show_col_types = FALSE
+  )
+
+  prepared <- prepare_kjv_docs(kjv)
+
+  chapter_docs <- prepared$chapter_docs
+  section_docs <- prepared$section_docs
+
+  dir.create(
+    file.path(STYLO_ROOT, "data", "prepared"),
+    recursive = TRUE,
+    showWarnings = FALSE
+  )
+
+  readr::write_csv(chapter_docs, chapter_path)
+  readr::write_csv(section_docs, section_path)
+}
+```
+
+## 3. Build genre target profiles
+
+`chapter_docs` are the source documents.
+
+`genre_docs` are the target profiles, formed by concatenating all chapters within each macro genre.
+
+```{r build-genre-docs}
+genre_docs <- chapter_docs %>%
+  dplyr::group_by(
+    corpus_id,
+    translation,
+    macro_genre
+  ) %>%
+  dplyr::summarize(
+    text = stringr::str_c(text, collapse = " "),
+    n_verses = sum(n_verses, na.rm = TRUE),
+    n_chapters = dplyr::n(),
+    books = stringr::str_c(sort(unique(book)), collapse = "; "),
+    .groups = "drop"
+  ) %>%
+  dplyr::mutate(
+    doc_id = macro_genre,
+    section = macro_genre
+  ) %>%
+  dplyr::select(
+    corpus_id,
+    translation,
+    doc_id,
+    section,
+    macro_genre,
+    n_verses,
+    n_chapters,
+    books,
+    text
+  )
+
+genre_docs
+```
+
+## 4. Isaiah chapter source documents
+
+```{r isaiah-chapters}
+isaiah_chapters <- chapter_docs %>%
+  dplyr::filter(book == "Isaiah") %>%
+  dplyr::arrange(chapter)
+
+isaiah_doc_ids <- isaiah_chapters$doc_id
+
+isaiah_chapters %>%
+  dplyr::select(
+    doc_id,
+    chapter,
+    section,
+    macro_genre,
+    n_verses
+  )
+```
+
+## 5. Configure genre ensemble
+
+This configuration includes all major feature classes, including POS and readability, if available.
+
+If POS is too slow or unavailable, remove `"pos"` from `include`.
+
+```{r config}
+config_genre <- default_config(
+  include = c(
+    "char",
+    "word",
+    "stem",
+    "function_words",
+    "pos",
+    "punctuation",
+    "sentence",
+    "lexical",
+    "readability"
+  )
+)
+
+config_genre$pos_n <- c(3, 4, 5)
+
+if(exists("ud_model")){
+  config_genre$pos_model <- ud_model
+}
+
+config_genre$weights
+```
+
+## 6. Run chapter-to-genre ensemble
+
+```{r run-genre}
+result_genre <- run_stylometry_ensemble(
+  source_docs = chapter_docs,
+  target_docs = genre_docs,
+  config = config_genre,
+  k_neighbors = 3,
+  use_cache = TRUE
+)
+
+show_result_summary(result_genre)
+show_weights(result_genre)
+```
+
+## 7. Overall Isaiah chapter-to-genre matrix
+
+```{r isaiah-genre-matrix}
+show_overall_similarity(
+  result_genre,
+  docs = isaiah_doc_ids,
+  targets = genre_docs$doc_id,
+  digits = 3
+)
+```
+
+## 8. Consensus summaries for every Isaiah chapter
+
+```{r isaiah-genre-consensus}
+isaiah_genre_consensus <- purrr::map_dfr(
+  isaiah_doc_ids,
+  function(id){
+
+    cons <- show_consensus(
+      result_genre,
+      doc_id = id
+    )
+
+    attr(cons, "summary")
+  }
+) %>%
+  dplyr::left_join(
+    isaiah_chapters %>%
+      dplyr::select(
+        doc_id,
+        chapter,
+        isaiah_section = section,
+        assigned_macro_genre = macro_genre,
+        n_verses
+      ),
+    by = "doc_id"
+  ) %>%
+  dplyr::relocate(
+    doc_id,
+    chapter,
+    isaiah_section,
+    assigned_macro_genre,
+    winner
+  ) %>%
+  dplyr::arrange(chapter)
+
+isaiah_genre_consensus
+```
+
+## 9. Clean genre attribution table
+
+```{r clean-genre-attribution}
+isaiah_genre_attribution <- isaiah_genre_consensus %>%
+  dplyr::mutate(
+    winner_matches_assigned_macro_genre =
+      winner == assigned_macro_genre,
+
+    winner_pct_votes_pct =
+      100 * winner_pct_votes,
+
+    winner_weighted_pct_votes_pct =
+      100 * winner_weighted_pct_votes,
+
+    vote_margin_pct =
+      100 * vote_margin,
+
+    weighted_vote_margin_pct =
+      100 * weighted_vote_margin
+  ) %>%
+  dplyr::select(
+    chapter,
+    doc_id,
+    isaiah_section,
+    assigned_macro_genre,
+    winner,
+    winner_matches_assigned_macro_genre,
+    winner_pct_votes_pct,
+    winner_weighted_pct_votes_pct,
+    vote_margin_pct,
+    weighted_vote_margin_pct,
+    winner_dominance_ratio,
+    consensus_strength,
+    elbow_rank,
+    doc_entropy,
+    effective_targets,
+    n_targets
+  )
+
+isaiah_genre_attribution
+```
+
+## 10. Isaiah chapters not classified as Prophetic
+
+```{r non-prophetic-isaiah}
+isaiah_genre_attribution %>%
+  dplyr::filter(winner != "Prophetic") %>%
+  dplyr::arrange(chapter)
+```
+
+## 11. Genre winner counts across Isaiah
+
+```{r genre-winner-counts}
+isaiah_genre_attribution %>%
+  dplyr::count(
+    winner,
+    name = "n_chapters"
+  ) %>%
+  dplyr::mutate(
+    pct_chapters = n_chapters / sum(n_chapters)
+  ) %>%
+  dplyr::arrange(
+    dplyr::desc(n_chapters)
+  )
+```
+
+## 12. Genre winner counts by Isaiah section
+
+```{r genre-winner-counts-by-section}
+isaiah_genre_attribution %>%
+  dplyr::count(
+    isaiah_section,
+    winner,
+    name = "n_chapters"
+  ) %>%
+  dplyr::group_by(isaiah_section) %>%
+  dplyr::mutate(
+    pct_chapters = n_chapters / sum(n_chapters)
+  ) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(
+    isaiah_section,
+    dplyr::desc(n_chapters)
+  )
+```
+
+## 13. Section-level genre summary
+
+```{r section-level-genre-summary}
+isaiah_genre_attribution %>%
+  dplyr::group_by(isaiah_section) %>%
+  dplyr::summarize(
+    n_chapters = dplyr::n(),
+    n_prophetic = sum(winner == "Prophetic", na.rm = TRUE),
+    n_poetic_wisdom = sum(winner == "Poetic/Wisdom", na.rm = TRUE),
+    n_narrative = sum(winner == "Narrative", na.rm = TRUE),
+    pct_prophetic = n_prophetic / n_chapters,
+    pct_poetic_wisdom = n_poetic_wisdom / n_chapters,
+    pct_narrative = n_narrative / n_chapters,
+    mean_winner_pct_votes = mean(winner_pct_votes_pct, na.rm = TRUE),
+    mean_weighted_winner_pct_votes = mean(winner_weighted_pct_votes_pct, na.rm = TRUE),
+    mean_vote_margin = mean(vote_margin_pct, na.rm = TRUE),
+    mean_entropy = mean(doc_entropy, na.rm = TRUE),
+    mean_effective_targets = mean(effective_targets, na.rm = TRUE),
+    .groups = "drop"
+  )
+```
+
+## 14. Detailed findings for Isaiah 12 and Isaiah 26
+
+These chapters previously classified closer to Psalms in section/book attribution. Here we test whether they classify as Poetic/Wisdom at the broader genre level.
+
+```{r detailed-isaiah-12}
+summarize_findings(
+  result_genre,
+  doc_id = "Isaiah_12",
+  k = 3,
+  plot = TRUE
+)
+```
+
+```{r detailed-isaiah-26}
+summarize_findings(
+  result_genre,
+  doc_id = "Isaiah_26",
+  k = 3,
+  plot = TRUE
+)
+```
+
+## 15. Compare representative Isaiah chapters
+
+```{r representative-genre-scree}
+cons_isa1 <- show_consensus(result_genre, "Isaiah_1")
+plot_consensus_scree(cons_isa1)
+
+cons_isa12 <- show_consensus(result_genre, "Isaiah_12")
+plot_consensus_scree(cons_isa12)
+
+cons_isa26 <- show_consensus(result_genre, "Isaiah_26")
+plot_consensus_scree(cons_isa26)
+
+cons_isa40 <- show_consensus(result_genre, "Isaiah_40")
+plot_consensus_scree(cons_isa40)
+
+cons_isa53 <- show_consensus(result_genre, "Isaiah_53")
+plot_consensus_scree(cons_isa53)
+
+cons_isa66 <- show_consensus(result_genre, "Isaiah_66")
+plot_consensus_scree(cons_isa66)
+```
+
+## 16. Feature winners for Isaiah 12 and Isaiah 26
+
+```{r feature-winners-isaiah-12-26}
+result_genre$feature_rankings %>%
+  dplyr::filter(
+    doc_id %in% c("Isaiah_12", "Isaiah_26"),
+    rank == 1
+  ) %>%
+  dplyr::arrange(
+    doc_id,
+    feature_class,
+    feature_variant
+  )
+```
+
+## 17. Feature-class genre patterns for all Isaiah chapters
+
+```{r feature-class-genre-patterns}
+isaiah_genre_feature_winners <- result_genre$feature_rankings %>%
+  dplyr::filter(
+    doc_id %in% isaiah_doc_ids,
+    rank == 1
+  ) %>%
+  dplyr::left_join(
+    isaiah_chapters %>%
+      dplyr::select(
+        doc_id,
+        chapter,
+        isaiah_section = section
+      ),
+    by = "doc_id"
+  )
+
+isaiah_genre_feature_winners %>%
+  dplyr::count(
+    isaiah_section,
+    feature_class,
+    neighbor_doc_id,
+    name = "wins"
+  ) %>%
+  dplyr::group_by(
+    isaiah_section,
+    feature_class
+  ) %>%
+  dplyr::mutate(
+    pct_wins = wins / sum(wins)
+  ) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(
+    isaiah_section,
+    feature_class,
+    dplyr::desc(wins)
+  )
+```
+
+## 18. Export genre-identification outputs
+
+```{r export}
+out_dir <- file.path(STYLO_ROOT, "output", "genre_identification")
+
+dir.create(
+  out_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+readr::write_csv(
+  genre_docs,
+  file.path(out_dir, "genre_target_profiles.csv")
+)
+
+readr::write_csv(
+  isaiah_genre_consensus,
+  file.path(out_dir, "isaiah_genre_consensus_summary.csv")
+)
+
+readr::write_csv(
+  isaiah_genre_attribution,
+  file.path(out_dir, "isaiah_genre_attribution_table.csv")
+)
+
+readr::write_csv(
+  result_genre$feature_votes %>%
+    dplyr::filter(doc_id %in% isaiah_doc_ids),
+  file.path(out_dir, "isaiah_genre_feature_votes_all.csv")
+)
+
+readr::write_csv(
+  result_genre$feature_rankings %>%
+    dplyr::filter(doc_id %in% isaiah_doc_ids),
+  file.path(out_dir, "isaiah_genre_feature_rankings_all.csv")
+)
+```

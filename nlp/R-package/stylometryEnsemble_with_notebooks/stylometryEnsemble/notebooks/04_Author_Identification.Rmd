@@ -1,0 +1,566 @@
+---
+title: "04 - Author Identification / Attribution Mode"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+
+options(
+  tibble.width = Inf,
+  tibble.print_max = 100
+)
+```
+
+## 1. Purpose
+
+This notebook treats the stylometry ensemble as an attribution engine.
+
+The core question is:
+
+> For each Isaiah chapter, which section/book profile receives the strongest ensemble consensus?
+
+This notebook runs:
+
+```text
+source_docs = chapter_docs
+target_docs = section_docs
+```
+
+Then summarizes every Isaiah chapter using:
+
+- consensus winner
+- vote share
+- weighted vote share
+- vote margin
+- weighted vote margin
+- dominance ratio
+- consensus strength
+- entropy
+- effective targets
+
+## 2. Load prepared documents
+
+```{r load-prepared}
+chapter_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_chapter_docs.csv")
+section_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_section_docs.csv")
+raw_path     <- file.path(STYLO_ROOT, "data", "raw", "kjv.csv")
+
+if(file.exists(chapter_path) && file.exists(section_path)){
+
+  chapter_docs <- readr::read_csv(
+    chapter_path,
+    show_col_types = FALSE
+  )
+
+  section_docs <- readr::read_csv(
+    section_path,
+    show_col_types = FALSE
+  )
+
+} else {
+
+  if(!file.exists(raw_path)){
+    stop("Could not find data/raw/kjv.csv. Run 01_Introduction.Rmd first.")
+  }
+
+  kjv <- readr::read_csv(
+    raw_path,
+    show_col_types = FALSE
+  )
+
+  prepared <- prepare_kjv_docs(kjv)
+
+  chapter_docs <- prepared$chapter_docs
+  section_docs <- prepared$section_docs
+
+  dir.create(
+    file.path(STYLO_ROOT, "data", "prepared"),
+    recursive = TRUE,
+    showWarnings = FALSE
+  )
+
+  readr::write_csv(chapter_docs, chapter_path)
+  readr::write_csv(section_docs, section_path)
+}
+```
+
+## 3. Isaiah chapter list
+
+```{r isaiah-chapters}
+isaiah_chapters <- chapter_docs %>%
+  dplyr::filter(book == "Isaiah") %>%
+  dplyr::arrange(chapter)
+
+isaiah_doc_ids <- isaiah_chapters$doc_id
+
+isaiah_chapters %>%
+  dplyr::select(
+    doc_id,
+    chapter,
+    section,
+    macro_genre,
+    n_verses
+  )
+```
+
+## 4. Target profiles
+
+```{r targets}
+section_docs %>%
+  dplyr::select(
+    doc_id,
+    section,
+    macro_genre,
+    n_verses,
+    n_chapters,
+    books
+  )
+```
+
+## 5. Configure attribution ensemble
+
+This configuration includes POS and readability if your installation supports them.
+
+If POS is too slow or unavailable, remove `"pos"` from `include`.
+
+```{r config}
+config_author_id <- default_config(
+  include = c(
+    "char",
+    "word",
+    "stem",
+    "function_words",
+    "pos",
+    "punctuation",
+    "sentence",
+    "lexical",
+    "readability"
+  )
+)
+
+config_author_id$pos_n <- c(3, 4, 5)
+
+if(exists("ud_model")){
+  config_author_id$pos_model <- ud_model
+}
+
+config_author_id$weights
+```
+
+## 6. Run chapter-to-section attribution ensemble
+
+```{r run-attribution}
+result_author_id <- run_stylometry_ensemble(
+  source_docs = chapter_docs,
+  target_docs = section_docs,
+  config = config_author_id,
+  k_neighbors = 10,
+  use_cache = TRUE
+)
+
+show_result_summary(result_author_id)
+show_weights(result_author_id)
+```
+
+## 7. Build consensus summary for each Isaiah chapter
+
+```{r all-isaiah-consensus}
+isaiah_consensus <- purrr::map_dfr(
+  isaiah_doc_ids,
+  function(id){
+
+    cons <- show_consensus(
+      result_author_id,
+      doc_id = id
+    )
+
+    attr(cons, "summary")
+  }
+) %>%
+  dplyr::left_join(
+    isaiah_chapters %>%
+      dplyr::select(
+        doc_id,
+        chapter,
+        actual_section = section,
+        n_verses
+      ),
+    by = "doc_id"
+  ) %>%
+  dplyr::relocate(
+    doc_id,
+    chapter,
+    actual_section,
+    winner
+  ) %>%
+  dplyr::arrange(chapter)
+
+isaiah_consensus
+```
+
+## 8. Clean attribution table
+
+```{r clean-attribution-table}
+isaiah_attribution <- isaiah_consensus %>%
+  dplyr::mutate(
+    winner_matches_actual_section = winner == actual_section,
+
+    winner_pct_votes_pct =
+      100 * winner_pct_votes,
+
+    winner_weighted_pct_votes_pct =
+      100 * winner_weighted_pct_votes,
+
+    vote_margin_pct =
+      100 * vote_margin,
+
+    weighted_vote_margin_pct =
+      100 * weighted_vote_margin
+  ) %>%
+  dplyr::select(
+    chapter,
+    doc_id,
+    actual_section,
+    winner,
+    winner_matches_actual_section,
+    winner_pct_votes_pct,
+    winner_weighted_pct_votes_pct,
+    vote_margin_pct,
+    weighted_vote_margin_pct,
+    winner_dominance_ratio,
+    consensus_strength,
+    elbow_rank,
+    doc_entropy,
+    effective_targets,
+    n_targets
+  )
+
+isaiah_attribution
+```
+
+
+```{r false matches}
+show_false_matches(
+  isaiah_attribution
+)
+
+summarize_findings(
+    result_author_id,
+    "Isaiah_12"
+)
+
+summarize_findings(
+    result_author_id,
+    "Isaiah_26"
+)
+```
+
+
+
+## 9. Winner counts by actual Isaiah section
+
+```{r winner-counts-by-section}
+isaiah_attribution %>%
+  dplyr::count(
+    actual_section,
+    winner,
+    name = "n_chapters"
+  ) %>%
+  dplyr::group_by(actual_section) %>%
+  dplyr::mutate(
+    pct_chapters = n_chapters / sum(n_chapters)
+  ) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(
+    actual_section,
+    dplyr::desc(n_chapters)
+  )
+```
+
+## 10. Overall winner counts across Isaiah
+
+```{r overall-winner-counts}
+isaiah_attribution %>%
+  dplyr::count(
+    winner,
+    name = "n_chapters"
+  ) %>%
+  dplyr::mutate(
+    pct_chapters = n_chapters / sum(n_chapters)
+  ) %>%
+  dplyr::arrange(
+    dplyr::desc(n_chapters),
+    winner
+  )
+```
+
+## 11. Isaiah section self-identification rate
+
+This measures how often a chapter's consensus winner is its own assigned Isaiah section.
+
+```{r self-identification-rate}
+isaiah_attribution %>%
+  dplyr::group_by(actual_section) %>%
+  dplyr::summarize(
+    n_chapters = dplyr::n(),
+    n_self_identified = sum(winner_matches_actual_section, na.rm = TRUE),
+    pct_self_identified = n_self_identified / n_chapters,
+    mean_winner_pct_votes = mean(winner_pct_votes_pct, na.rm = TRUE),
+    mean_weighted_winner_pct_votes = mean(winner_weighted_pct_votes_pct, na.rm = TRUE),
+    mean_vote_margin = mean(vote_margin_pct, na.rm = TRUE),
+    mean_weighted_vote_margin = mean(weighted_vote_margin_pct, na.rm = TRUE),
+    mean_entropy = mean(doc_entropy, na.rm = TRUE),
+    mean_effective_targets = mean(effective_targets, na.rm = TRUE),
+    .groups = "drop"
+  )
+```
+
+## 12. Consensus strength by Isaiah chapter
+
+```{r consensus-strength-by-chapter}
+isaiah_attribution %>%
+  dplyr::select(
+    chapter,
+    doc_id,
+    actual_section,
+    winner,
+    winner_pct_votes_pct,
+    vote_margin_pct,
+    winner_dominance_ratio,
+    consensus_strength,
+    doc_entropy,
+    effective_targets
+  ) %>%
+  dplyr::arrange(chapter)
+```
+
+## 13. Chapters with strongest consensus
+
+```{r strongest-consensus}
+isaiah_attribution %>%
+  dplyr::arrange(
+    dplyr::desc(winner_pct_votes_pct),
+    dplyr::desc(vote_margin_pct)
+  ) %>%
+  dplyr::select(
+    chapter,
+    doc_id,
+    actual_section,
+    winner,
+    winner_pct_votes_pct,
+    vote_margin_pct,
+    winner_dominance_ratio,
+    consensus_strength,
+    doc_entropy
+  ) %>%
+  dplyr::slice_head(n = 15)
+```
+
+## 14. Chapters with weakest consensus
+
+```{r weakest-consensus}
+isaiah_attribution %>%
+  dplyr::arrange(
+    winner_pct_votes_pct,
+    vote_margin_pct
+  ) %>%
+  dplyr::select(
+    chapter,
+    doc_id,
+    actual_section,
+    winner,
+    winner_pct_votes_pct,
+    vote_margin_pct,
+    winner_dominance_ratio,
+    consensus_strength,
+    doc_entropy,
+    effective_targets
+  ) %>%
+  dplyr::slice_head(n = 15)
+```
+
+## 15. Detailed findings for selected Isaiah chapters
+
+```{r selected-chapter-findings}
+summarize_findings(
+  result_author_id,
+  doc_id = "Isaiah_40",
+  k = 10,
+  plot = TRUE
+)
+```
+
+Try additional chapters:
+
+```{r selected-chapters-extra, eval=FALSE}
+summarize_findings(result_author_id, "Isaiah_1",  k = 10, plot = TRUE)
+summarize_findings(result_author_id, "Isaiah_35", k = 10, plot = TRUE)
+summarize_findings(result_author_id, "Isaiah_53", k = 10, plot = TRUE)
+summarize_findings(result_author_id, "Isaiah_66", k = 10, plot = TRUE)
+```
+
+## 16. Consensus scree plots for representative chapters
+
+```{r representative-scree-plots}
+cons_isa1 <- show_consensus(result_author_id, "Isaiah_1")
+plot_consensus_scree(cons_isa1)
+
+cons_isa40 <- show_consensus(result_author_id, "Isaiah_40")
+plot_consensus_scree(cons_isa40)
+
+cons_isa53 <- show_consensus(result_author_id, "Isaiah_53")
+plot_consensus_scree(cons_isa53)
+
+cons_isa66 <- show_consensus(result_author_id, "Isaiah_66")
+plot_consensus_scree(cons_isa66)
+```
+
+## 17. Feature winners for all Isaiah chapters
+
+```{r feature-winners-all-isaiah}
+isaiah_feature_winners <- result_author_id$feature_rankings %>%
+  dplyr::filter(
+    doc_id %in% isaiah_doc_ids,
+    rank == 1
+  ) %>%
+  dplyr::left_join(
+    isaiah_chapters %>%
+      dplyr::select(
+        doc_id,
+        chapter,
+        actual_section = section
+      ),
+    by = "doc_id"
+  ) %>%
+  dplyr::relocate(
+    doc_id,
+    chapter,
+    actual_section,
+    feature_class,
+    feature_variant,
+    neighbor_doc_id
+  ) %>%
+  dplyr::arrange(
+    chapter,
+    feature_class,
+    feature_variant
+  )
+
+isaiah_feature_winners
+```
+
+## 18. Feature-class winner patterns
+
+```{r feature-class-winner-patterns}
+isaiah_feature_winners %>%
+  dplyr::count(
+    actual_section,
+    feature_class,
+    neighbor_doc_id,
+    name = "wins"
+  ) %>%
+  dplyr::group_by(
+    actual_section,
+    feature_class
+  ) %>%
+  dplyr::mutate(
+    pct_wins = wins / sum(wins)
+  ) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(
+    actual_section,
+    feature_class,
+    dplyr::desc(wins)
+  )
+```
+
+## 19. Isaiah 40-55 attribution profile
+
+```{r deutero-attribution-profile}
+isaiah_attribution %>%
+  dplyr::filter(actual_section == "Isaiah_40_55") %>%
+  dplyr::select(
+    chapter,
+    doc_id,
+    winner,
+    winner_matches_actual_section,
+    winner_pct_votes_pct,
+    winner_weighted_pct_votes_pct,
+    vote_margin_pct,
+    weighted_vote_margin_pct,
+    winner_dominance_ratio,
+    consensus_strength,
+    doc_entropy,
+    effective_targets
+  ) %>%
+  dplyr::arrange(chapter)
+```
+
+## 20. Isaiah 1-35 attribution profile
+
+```{r proto-attribution-profile}
+isaiah_attribution %>%
+  dplyr::filter(actual_section == "Isaiah_1_35") %>%
+  dplyr::select(
+    chapter,
+    doc_id,
+    winner,
+    winner_matches_actual_section,
+    winner_pct_votes_pct,
+    winner_weighted_pct_votes_pct,
+    vote_margin_pct,
+    weighted_vote_margin_pct,
+    winner_dominance_ratio,
+    consensus_strength,
+    doc_entropy,
+    effective_targets
+  ) %>%
+  dplyr::arrange(chapter)
+```
+
+## 21. Export author-identification outputs
+
+```{r export}
+out_dir <- file.path(STYLO_ROOT, "output", "author_identification")
+
+dir.create(
+  out_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+readr::write_csv(
+  isaiah_consensus,
+  file.path(out_dir, "isaiah_consensus_summary.csv")
+)
+
+readr::write_csv(
+  isaiah_attribution,
+  file.path(out_dir, "isaiah_attribution_table.csv")
+)
+
+readr::write_csv(
+  isaiah_feature_winners,
+  file.path(out_dir, "isaiah_feature_winners.csv")
+)
+
+readr::write_csv(
+  result_author_id$feature_votes %>%
+    dplyr::filter(doc_id %in% isaiah_doc_ids),
+  file.path(out_dir, "isaiah_feature_votes_all.csv")
+)
+
+readr::write_csv(
+  result_author_id$nearest_targets %>%
+    dplyr::filter(doc_id %in% isaiah_doc_ids),
+  file.path(out_dir, "isaiah_nearest_targets_all.csv")
+)
+```

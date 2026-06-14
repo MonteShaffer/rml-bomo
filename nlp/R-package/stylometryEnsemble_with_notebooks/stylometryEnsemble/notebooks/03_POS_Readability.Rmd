@@ -1,0 +1,440 @@
+---
+title: "03 - POS and Readability Features"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+## 1. Purpose
+
+This notebook extends the earlier lightweight ensemble by adding:
+
+- POS n-grams: `pos3`, `pos4`, `pos5`
+- readability features
+
+POS tagging is usually slower than character, word, function-word, punctuation, sentence, and lexical features. Use cache when possible.
+
+## 2. Load prepared data
+
+```{r load-prepared}
+chapter_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_chapter_docs.csv")
+section_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_section_docs.csv")
+raw_path     <- file.path(STYLO_ROOT, "data", "raw", "kjv.csv")
+
+if(file.exists(chapter_path) && file.exists(section_path)){
+
+  chapter_docs <- readr::read_csv(
+    chapter_path,
+    show_col_types = FALSE
+  )
+
+  section_docs <- readr::read_csv(
+    section_path,
+    show_col_types = FALSE
+  )
+
+} else {
+
+  if(!file.exists(raw_path)){
+    stop("Could not find data/raw/kjv.csv. Run 01_Introduction.Rmd first.")
+  }
+
+  kjv <- readr::read_csv(
+    raw_path,
+    show_col_types = FALSE
+  )
+
+  prepared <- prepare_kjv_docs(kjv)
+
+  chapter_docs <- prepared$chapter_docs
+  section_docs <- prepared$section_docs
+
+  dir.create(
+    file.path(STYLO_ROOT, "data", "prepared"),
+    recursive = TRUE,
+    showWarnings = FALSE
+  )
+
+  readr::write_csv(chapter_docs, chapter_path)
+  readr::write_csv(section_docs, section_path)
+}
+
+chapter_docs %>%
+  dplyr::select(doc_id, book, chapter, section, macro_genre, n_verses) %>%
+  dplyr::slice_head(n = 10)
+
+section_docs %>%
+  dplyr::select(doc_id, section, macro_genre, n_verses, n_chapters, books)
+```
+
+## 3. Check packages
+
+The POS feature class normally requires `udpipe`.
+
+The readability feature class may require `quanteda` and `quanteda.textstats`, depending on how your `features_readability.R` is written.
+
+```{r check-packages}
+required_optional <- c(
+  "udpipe",
+  "quanteda",
+  "quanteda.textstats"
+)
+
+available_optional <- vapply(
+  required_optional,
+  requireNamespace,
+  logical(1),
+  quietly = TRUE
+)
+
+data.frame(
+  package = required_optional,
+  available = available_optional,
+  row.names = NULL
+)
+```
+
+## 4. POS model setup
+
+If your POS functions require a loaded `ud_model`, use this chunk.
+
+The model will be stored under:
+
+```text
+models/
+```
+
+```{r pos-model-setup}
+model_dir <- file.path(STYLO_ROOT, "models")
+
+dir.create(
+  model_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+if(requireNamespace("udpipe", quietly = TRUE)){
+
+  model_file <- file.path(
+    model_dir,
+    "english-ewt-ud-2.5-191206.udpipe"
+  )
+
+  if(!file.exists(model_file)){
+
+    message("Downloading udpipe English model...")
+
+    downloaded <- udpipe::udpipe_download_model(
+      language = "english",
+      model_dir = model_dir
+    )
+
+    model_file <- downloaded$file_model
+  }
+
+  ud_model <- udpipe::udpipe_load_model(model_file)
+
+} else {
+
+  ud_model <- NULL
+
+  warning("Package 'udpipe' is not installed. POS features will not run.")
+}
+```
+
+## 5. POS + readability configuration
+
+This configuration includes the earlier features plus POS and readability.
+
+```{r config-pos-readability}
+config_pos_readability <- default_config(
+  include = c(
+    "char",
+    "word",
+    "stem",
+    "function_words",
+    "pos",
+    "punctuation",
+    "sentence",
+    "lexical",
+    "readability"
+  )
+)
+
+config_pos_readability$pos_n <- c(3, 4, 5)
+
+show_weights_placeholder <- config_pos_readability$weights
+show_weights_placeholder
+```
+
+## 6. Ensure POS model is in config if needed
+
+Different versions of the codebase may expect the model in different places. This chunk supports the common pattern:
+
+```r
+config$pos_model <- ud_model
+```
+
+```{r attach-pos-model}
+if(!is.null(ud_model)){
+  config_pos_readability$pos_model <- ud_model
+}
+```
+
+## 7. Run chapter-to-section ensemble with POS/readability
+
+This may take longer the first time.
+
+```{r run-pos-readability}
+result_pos_readability <- run_stylometry_ensemble(
+  source_docs = chapter_docs,
+  target_docs = section_docs,
+  config = config_pos_readability,
+  k_neighbors = 10,
+  use_cache = TRUE
+)
+
+show_result_summary(result_pos_readability)
+show_weights(result_pos_readability)
+```
+
+## 8. Overall Isaiah 40 result
+
+```{r isaiah-40-nearest-pos-readability}
+show_nearest_targets(
+  result_pos_readability,
+  doc_id = "Isaiah_40",
+  k = 10
+)
+```
+
+## 9. Consensus votes for Isaiah 40
+
+```{r isaiah-40-votes-pos-readability}
+show_feature_votes(
+  result_pos_readability,
+  doc_id = "Isaiah_40"
+)
+```
+
+If your display helpers include `show_consensus()`, this gives vote percentages:
+
+```{r isaiah-40-consensus-pos-readability, eval=exists("show_consensus")}
+cons <- show_consensus(
+  result_pos_readability,
+  "Isaiah_40"
+)
+
+cons
+
+attr(cons, "summary")
+
+show_consensus_summary(cons)
+```
+
+## 10. Feature winners for Isaiah 40
+
+```{r isaiah-40-feature-winners-pos-readability}
+show_top_feature_rankings(
+  result_pos_readability,
+  doc_id = "Isaiah_40"
+)
+```
+
+## 11. POS-only class similarity
+
+This lets you inspect the POS class independent of the whole ensemble.
+
+```{r pos-class-similarity}
+if("pos" %in% names(result_pos_readability$class_similarity)){
+
+  show_class_similarity(
+    result_pos_readability,
+    class_name = "pos",
+    docs = "Isaiah_40",
+    digits = 3
+  )
+
+} else {
+
+  message("No POS class found in result_pos_readability$class_similarity.")
+}
+```
+
+## 12. POS 3, POS 4, POS 5 variants for Isaiah 40
+
+```{r pos-variant-similarity}
+if("pos" %in% names(result_pos_readability$variant_similarity)){
+
+  pos_variants <- names(result_pos_readability$variant_similarity$pos)
+
+  pos_variants
+
+  lapply(
+    pos_variants,
+    function(v){
+      show_variant_similarity(
+        result_pos_readability,
+        class_name = "pos",
+        variant_name = v,
+        docs = "Isaiah_40",
+        digits = 3
+      )
+    }
+  )
+
+} else {
+
+  message("No POS variants found.")
+}
+```
+
+## 13. Readability class similarity
+
+```{r readability-class-similarity}
+if("readability" %in% names(result_pos_readability$class_similarity)){
+
+  show_class_similarity(
+    result_pos_readability,
+    class_name = "readability",
+    docs = "Isaiah_40",
+    digits = 3
+  )
+
+} else {
+
+  message("No readability class found in result_pos_readability$class_similarity.")
+}
+```
+
+## 14. Compare Isaiah 40-55 consensus
+
+```{r deutero-consensus-pos-readability}
+deutero_docs <- chapter_docs %>%
+  dplyr::filter(section == "Isaiah_40_55") %>%
+  dplyr::pull(doc_id)
+
+result_pos_readability$feature_votes %>%
+  dplyr::filter(doc_id %in% deutero_docs) %>%
+  dplyr::group_by(doc_id) %>%
+  dplyr::mutate(
+    pct_votes = votes / sum(votes)
+  ) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(
+    doc_id,
+    dplyr::desc(votes),
+    dplyr::desc(avg_similarity)
+  )
+```
+
+## 15. Section-level vote summary for Isaiah 40-55
+
+```{r deutero-section-summary-pos-readability}
+result_pos_readability$feature_votes %>%
+  dplyr::filter(doc_id %in% deutero_docs) %>%
+  dplyr::group_by(neighbor_doc_id) %>%
+  dplyr::summarize(
+    total_votes = sum(votes, na.rm = TRUE),
+    mean_avg_similarity = mean(avg_similarity, na.rm = TRUE),
+    n_source_chapters = dplyr::n_distinct(doc_id),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(
+    dplyr::desc(total_votes),
+    dplyr::desc(mean_avg_similarity)
+  )
+```
+
+## 16. Diagnostic table: Isaiah chapters against Isaiah sections
+
+```{r isaiah-diagnostic-pos-readability}
+isaiah_docs <- chapter_docs %>%
+  dplyr::filter(book == "Isaiah") %>%
+  dplyr::pull(doc_id)
+
+diagnostic_targets <- c(
+  "Isaiah_1_35",
+  "Isaiah_36_39",
+  "Isaiah_40_55",
+  "Isaiah_56_66"
+)
+
+diag_mat <- show_overall_similarity(
+  result_pos_readability,
+  docs = isaiah_docs,
+  targets = diagnostic_targets,
+  digits = 4
+)
+
+diag_tbl <- as.data.frame(diag_mat) %>%
+  tibble::rownames_to_column("doc_id") %>%
+  dplyr::left_join(
+    chapter_docs %>%
+      dplyr::select(doc_id, chapter, section),
+    by = "doc_id"
+  ) %>%
+  dplyr::relocate(doc_id, chapter, section)
+
+diag_tbl
+```
+
+## 17. Best Isaiah section target per chapter
+
+```{r best-isaiah-target-pos-readability}
+diag_tbl %>%
+  tidyr::pivot_longer(
+    cols = dplyr::all_of(diagnostic_targets),
+    names_to = "target_section",
+    values_to = "similarity"
+  ) %>%
+  dplyr::group_by(doc_id, chapter, section) %>%
+  dplyr::slice_max(
+    order_by = similarity,
+    n = 1,
+    with_ties = FALSE
+  ) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(chapter)
+```
+
+## 18. Save POS/readability outputs
+
+```{r save-pos-readability-outputs}
+out_dir <- file.path(STYLO_ROOT, "output", "summaries")
+
+dir.create(
+  out_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+readr::write_csv(
+  show_nearest_targets(result_pos_readability, doc_id = "Isaiah_40", k = 10),
+  file.path(out_dir, "isaiah_40_nearest_targets_pos_readability.csv")
+)
+
+readr::write_csv(
+  show_feature_votes(result_pos_readability, doc_id = "Isaiah_40"),
+  file.path(out_dir, "isaiah_40_feature_votes_pos_readability.csv")
+)
+
+readr::write_csv(
+  show_top_feature_rankings(result_pos_readability, doc_id = "Isaiah_40"),
+  file.path(out_dir, "isaiah_40_top_feature_rankings_pos_readability.csv")
+)
+
+readr::write_csv(
+  diag_tbl,
+  file.path(out_dir, "isaiah_diagnostic_table_pos_readability.csv")
+)
+```

@@ -1,0 +1,7 @@
+doc_id,neighbor_doc_id,votes,avg_similarity
+Isaiah_40,Isaiah_40_55,14,0.7266783503299611
+Isaiah_40,Isaiah_1_35,4,0.9860067446947228
+Isaiah_40,Amos,3,0.9273370844587199
+Isaiah_40,2 Kings,2,0.8913630391007801
+Isaiah_40,Isaiah_36_39,1,0.9990384245551771
+Isaiah_40,Job,1,0.9895780485992886

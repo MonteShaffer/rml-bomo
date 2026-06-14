@@ -1,0 +1,30 @@
+feature_class,feature_variant,doc_id,neighbor_doc_id,similarity,rank
+char,char3,Isaiah_40,Isaiah_40_55,0.9185797842793149,1
+char,char4,Isaiah_40,Isaiah_40_55,0.7917954363914307,1
+char,char5,Isaiah_40,Isaiah_40_55,0.634620577582007,1
+function_words,auxiliaries_freq,Isaiah_40,Isaiah_40_55,0.9717903022991433,1
+function_words,auxiliaries_tfidf,Isaiah_40,Isaiah_40_55,0.9517038593226038,1
+function_words,basic_freq,Isaiah_40,Isaiah_40_55,0.9872152703900733,1
+function_words,basic_tfidf,Isaiah_40,Isaiah_40_55,0.983766134797034,1
+function_words,conjunctions_freq,Isaiah_40,Isaiah_1_35,0.997166007596223,1
+function_words,conjunctions_tfidf,Isaiah_40,Isaiah_1_35,0.9893757273183383,1
+function_words,kjv_freq,Isaiah_40,Isaiah_1_35,0.9822597035915874,1
+function_words,kjv_tfidf,Isaiah_40,Isaiah_1_35,0.9752255402727426,1
+function_words,prepositions_freq,Isaiah_40,Job,0.9895780485992886,1
+function_words,prepositions_tfidf,Isaiah_40,Isaiah_40_55,0.9788077149109392,1
+function_words,pronouns_freq,Isaiah_40,2 Kings,0.9158933295501993,1
+function_words,pronouns_tfidf,Isaiah_40,2 Kings,0.8668327486513608,1
+lexical,lexical_richness,Isaiah_40,Isaiah_36_39,0.9990384245551771,1
+pos,pos3,Isaiah_40,Isaiah_40_55,0.833451375524655,1
+pos,pos4,Isaiah_40,Isaiah_40_55,0.6183409344519704,1
+pos,pos5,Isaiah_40,Isaiah_40_55,0.4490307184271386,1
+punctuation,punctuation_freq,Isaiah_40,Amos,0.9998464767078811,1
+readability,readability,Isaiah_40,Proverbs,0.9995794169603005,1
+sentence,sentence_freq,Isaiah_40,Amos,0.9001651694240499,1
+sentence,sentence_tfidf,Isaiah_40,Amos,0.8819996072442287,1
+stem,stem1,Isaiah_40,Isaiah_40_55,0.8070518111661159,1
+stem,stem2,Isaiah_40,Isaiah_40_55,0.3812287059698563,1
+stem,stem3,Isaiah_40,Isaiah_40_55,0.29855753203725066,1
+word,word1,Isaiah_40,Isaiah_40_55,0.7936176875229626,1
+word,word2,Isaiah_40,Isaiah_40_55,0.37658296078990083,1
+word,word3,Isaiah_40,Isaiah_40_55,0.29817912716082207,1

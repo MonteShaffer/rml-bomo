@@ -4,7 +4,19 @@ output: html_document
 ---
 
 ```{r setup, message=FALSE, warning=FALSE}
+# This notebook assumes it is run from inside the notebooks/ folder.
+# Folder layout:
+#   stylometryEnsemble/
+#     R/
+#     data/
+#     notebooks/
+
 source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
 ```
 
 ## 1. Confirm the raw KJV file exists
@@ -23,26 +35,103 @@ corpus_id,translation,book,chapter,verse,text
 
 ```{r check-file}
 raw_path <- "./../data/raw/kjv.csv"
+
+if(!file.exists(raw_path)){
+  stop(
+    paste0(
+      "Could not find raw KJV file at: ", raw_path,
+      "\nPlace kjv.csv in data/raw/kjv.csv"
+    )
+  )
+}
+
 file.exists(raw_path)
 ```
 
 ## 2. Import raw verses
 
 ```{r import}
-kjv <- readr::read_csv(raw_path, show_col_types = FALSE)
+kjv <- readr::read_csv(
+  raw_path,
+  show_col_types = FALSE
+)
+
 dplyr::glimpse(kjv)
 ```
 
-## 3. Prepare section-level documents
+## 3. Target books
 
-```{r prepare-sections}
-section_docs <- prepare_kjv_sections(kjv)
-
-section_docs %>%
-  dplyr::select(doc_id, section, macro_genre, n_verses, n_chapters, books)
+```{r target-books}
+target_books <- c(
+  "Isaiah",
+  "Jeremiah", "Ezekiel", "Hosea", "Amos",
+  "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+  "Psalms", "Job", "Proverbs"
+)
 ```
 
-```{r prepare-chapter}
+## 4. Compatibility helper for chapter preparation
+
+The architecture uses two prepared datasets:
+
+- `chapter_docs`: source documents, usually one row per book chapter
+- `section_docs`: target/reference documents, usually one row per section/book
+
+If your local `R/prepare_data.R` does not yet include `prepare_kjv_chapters()`, this notebook defines it locally so the example can run.
+
+```{r compatibility-prepare-chapters}
+if(!exists("prepare_kjv_chapters")){
+
+  prepare_kjv_chapters <- function(kjv, target_books = NULL){
+
+    if(!is.null(target_books)){
+      kjv <- kjv %>%
+        dplyr::filter(book %in% target_books)
+    }
+
+    kjv <- kjv %>%
+      dplyr::mutate(
+        section = dplyr::case_when(
+          book == "Isaiah" & chapter <= 35 ~ "Isaiah_1_35",
+          book == "Isaiah" & chapter <= 39 ~ "Isaiah_36_39",
+          book == "Isaiah" & chapter <= 55 ~ "Isaiah_40_55",
+          book == "Isaiah" & chapter <= 66 ~ "Isaiah_56_66",
+          TRUE ~ book
+        ),
+
+        macro_genre = dplyr::case_when(
+          book %in% c("1 Samuel", "2 Samuel", "1 Kings", "2 Kings") ~ "Narrative",
+          book %in% c("Psalms", "Job", "Proverbs") ~ "Poetic/Wisdom",
+          TRUE ~ "Prophetic"
+        )
+      )
+
+    kjv %>%
+      dplyr::group_by(
+        corpus_id,
+        translation,
+        book,
+        chapter,
+        section,
+        macro_genre
+      ) %>%
+      dplyr::summarize(
+        text = stringr::str_c(text, collapse = " "),
+        n_verses = dplyr::n(),
+        .groups = "drop"
+      ) %>%
+      dplyr::mutate(
+        doc_id = paste(book, chapter, sep = "_")
+      )
+  }
+}
+```
+
+## 5. Prepare chapter-level source documents
+
+These are the documents being scored.
+
+```{r prepare-chapters}
 chapter_docs <- prepare_kjv_chapters(kjv)
 
 chapter_docs %>%
@@ -53,47 +142,219 @@ chapter_docs %>%
     section,
     macro_genre,
     n_verses
+  ) %>%
+  dplyr::arrange(book, chapter)
+```
+
+## 6. Prepare section-level target documents
+
+These are the reference targets.
+
+```{r prepare-sections}
+section_docs <- prepare_kjv_sections(kjv)
+
+section_docs %>%
+  dplyr::select(
+    doc_id,
+    section,
+    macro_genre,
+    n_verses,
+    n_chapters,
+    books
   )
 ```
 
-## 4. Save prepared documents
+## 7. Save prepared documents
 
 ```{r save-prepared}
-dir.create("./../data/prepared", recursive = TRUE, showWarnings = FALSE)
-readr::write_csv(section_docs, "./../data/prepared/kjv_section_docs.csv")
-readr::write_csv(chapter_docs, "./../data/prepared/kjv_chapter_docs.csv")
-```
-
-## 5. Run a lightweight ensemble
-
-This first example excludes POS and readability so it runs quickly without optional packages.
-
-```{r run-lightweight}
-config <- default_config(
-  include = c("char", "word", "stem", "function_words", "punctuation", "sentence", "lexical")
+dir.create(
+  "./../data/prepared",
+  recursive = TRUE,
+  showWarnings = FALSE
 )
 
-result <- run_stylometry_ensemble(section_docs, config = config)
-round(result$overall_similarity, 3)
-
-
-```
-
-```{r nearest-neighbors}
-result$nearest_neighbors
-```
-
-
-```{r run-lightweight chapters}
-config <- default_config(
-  include = c("char", "word", "stem", "function_words", "punctuation", "sentence", "lexical")
+readr::write_csv(
+  chapter_docs,
+  "./../data/prepared/kjv_chapter_docs.csv"
 )
 
-result <- run_stylometry_ensemble(chapter_docs, config = config)
-round(result$overall_similarity, 3)
+readr::write_csv(
+  section_docs,
+  "./../data/prepared/kjv_section_docs.csv"
+)
+```
+
+## 8. Run chapter-to-section ensemble
+
+This is the main introductory example.
+
+Each chapter is compared against each section/book target.
+
+```{r run-chapter-to-section-ensemble}
+config <- default_config(
+  include = c(
+    "char",
+    "word",
+    "stem",
+    "function_words",
+    "punctuation",
+    "sentence",
+    "lexical"
+  )
+)
+
+result <- run_stylometry_ensemble(
+  source_docs = chapter_docs,
+  target_docs = section_docs,
+  config = config
+)
 ```
 
 
-```{r nearest-neighbors}
-result$nearest_neighbors
+
+```{r display_results}
+
+show_nearest_targets(result)
+
+
+show_nearest_targets(
+  result,
+  doc_id = "Isaiah_40"
+);
+
+show_feature_votes(
+  result,
+  doc_id = "Isaiah_40"
+);
+
+show_feature_rankings(
+  result,
+  doc_id = "Isaiah_40"
+);
+
+show_top_feature_rankings(
+  result,
+  doc_id = "Isaiah_40"
+);
+
+show_weights(result);
+
+explain_doc(
+  result,
+  "Isaiah_40"
+);
+
+explain_isaiah_chapter(
+  result,
+  40
+);
+
+```
+
+
+## 9. Overall chapter-to-section similarity
+
+Rows are source chapters. Columns are target sections.
+
+```{r chapter-section-similarity-preview}
+sim <- round(
+  result$overall_similarity,
+  3
+)
+
+sim[1:min(10, nrow(sim)), 1:min(10, ncol(sim))]
+```
+
+## 10. Nearest target sections
+
+Depending on your local version of `run_stylometry_ensemble()`, this object may be named either `nearest_targets` or `nearest_neighbors`.
+
+```{r nearest-target-sections}
+nearest_tbl <- if("nearest_targets" %in% names(result)){
+  result$nearest_targets
+} else {
+  result$nearest_neighbors
+}
+
+nearest_tbl %>%
+  dplyr::arrange(doc_id, rank)
+```
+
+## 11. Isaiah example: target sections for Isaiah 40
+
+```{r isaiah-40-target-sections}
+nearest_tbl %>%
+  dplyr::filter(doc_id == "Isaiah_40") %>%
+  dplyr::arrange(rank)
+```
+
+## 12. Optional: chapter-to-chapter ensemble
+
+This mode compares chapters directly to other chapters.
+
+```{r run-chapter-to-chapter-ensemble}
+chapter_result <- run_stylometry_ensemble(
+  source_docs = chapter_docs,
+  config = config
+)
+
+round(
+  chapter_result$overall_similarity[1:10, 1:10],
+  3
+)
+```
+
+## 13. Optional: nearest chapter neighbors
+
+```{r nearest-chapter-neighbors}
+chapter_neighbors <- if("nearest_targets" %in% names(chapter_result)){
+  chapter_result$nearest_targets
+} else {
+  chapter_result$nearest_neighbors
+}
+
+chapter_neighbors %>%
+  dplyr::left_join(
+    chapter_docs %>%
+      dplyr::select(
+        doc_id,
+        section,
+        macro_genre
+      ),
+    by = "doc_id"
+  ) %>%
+  dplyr::left_join(
+    chapter_docs %>%
+      dplyr::select(
+        neighbor_doc_id = doc_id,
+        neighbor_section = section,
+        neighbor_macro_genre = macro_genre
+      ),
+    by = "neighbor_doc_id"
+  ) %>%
+  dplyr::arrange(doc_id, rank) %>%
+  dplyr::select(
+    doc_id,
+    section,
+    neighbor_doc_id,
+    neighbor_section,
+    similarity,
+    rank
+  )
+```
+
+## 14. Optional: section-to-section ensemble
+
+This mode compares whole sections/books directly.
+
+```{r run-section-to-section-ensemble}
+section_result <- run_stylometry_ensemble(
+  source_docs = section_docs,
+  config = config
+)
+
+round(
+  section_result$overall_similarity,
+  3
+)
 ```

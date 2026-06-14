@@ -35,3 +35,50 @@ tfidf_from_grams <- function(grams_by_doc){
   idf <- log((N + 1) / (df + 1)) + 1
   sweep(tf, 2, idf, "*")
 }
+
+
+cosine_between <- function(source_mat, target_mat){
+
+  source_norm <- sqrt(rowSums(source_mat^2))
+  target_norm <- sqrt(rowSums(target_mat^2))
+
+  source_norm[source_norm == 0] <- 1
+  target_norm[target_norm == 0] <- 1
+
+  source_scaled <- source_mat / source_norm
+  target_scaled <- target_mat / target_norm
+
+  source_scaled %*% t(target_scaled)
+}
+
+
+nearest_targets <- function(sim, k = 5){
+
+  source_ids <- rownames(sim)
+
+  out <- lapply(source_ids, function(id){
+
+    vals <- sim[id, ]
+
+    if(id %in% names(vals)){
+      vals[id] <- NA
+    }
+
+    vals <- sort(vals, decreasing = TRUE, na.last = NA)
+    vals <- head(vals, k)
+
+    data.frame(
+      doc_id = id,
+      neighbor_doc_id = names(vals),
+      similarity = as.numeric(vals),
+      rank = seq_along(vals),
+      row.names = NULL
+    )
+  })
+
+  dplyr::bind_rows(out)
+}
+
+
+
+
