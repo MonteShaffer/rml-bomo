@@ -1,0 +1,866 @@
+---
+title: "12 - PCA Loadings"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+options(tibble.width = Inf, tibble.print_max = 250)
+```
+
+## 1. Purpose
+
+This notebook interprets PCA/MDS axes using loadings and feature correlations.
+
+It asks:
+
+- What features push PC1 positive or negative?
+- Is positive PC1 a poetic/formulaic direction?
+- Which feature classes dominate each latent dimension?
+- Which target profiles define ensemble similarity PCA axes?
+- Which features correlate with square ensemble MDS axes?
+
+## 2. User parameters
+
+```{r parameters}
+top_n_loadings <- 25
+pcs_to_show <- 1:6
+focus_book <- "Isaiah"
+comparison_books <- c("Psalms", "Job", "Proverbs", "Hosea")
+
+include_feature_classes <- c(
+  "char", "word", "stem", "function_words", "pos",
+  "punctuation", "sentence", "word_length", "lexical", "readability"
+)
+
+pos_n <- c(3, 4, 5)
+```
+
+## 3. Load prepared documents
+
+```{r load-prepared}
+chapter_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_chapter_docs.csv")
+section_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_section_docs.csv")
+raw_path     <- file.path(STYLO_ROOT, "data", "raw", "kjv.csv")
+
+if(file.exists(chapter_path) && file.exists(section_path)){
+  chapter_docs <- readr::read_csv(chapter_path, show_col_types = FALSE)
+  section_docs <- readr::read_csv(section_path, show_col_types = FALSE)
+} else {
+  if(!file.exists(raw_path)) stop("Could not find data/raw/kjv.csv. Run 01_Introduction.Rmd first.")
+  kjv <- readr::read_csv(raw_path, show_col_types = FALSE)
+  prepared <- prepare_kjv_docs(kjv)
+  chapter_docs <- prepared$chapter_docs
+  section_docs <- prepared$section_docs
+  dir.create(file.path(STYLO_ROOT, "data", "prepared"), recursive = TRUE, showWarnings = FALSE)
+  readr::write_csv(chapter_docs, chapter_path)
+  readr::write_csv(section_docs, section_path)
+}
+```
+
+## 4. Configure analysis
+
+```{r config}
+config_loadings <- default_config(include = include_feature_classes)
+config_loadings$pos_n <- pos_n
+if(exists("ud_model")) config_loadings$pos_model <- ud_model
+config_loadings$weights
+```
+
+# Part A: Feature-space PCA loadings
+
+## 5. Build feature sets
+
+```{r build-features}
+feature_sets <- build_feature_sets(
+  chapter_docs,
+  config = config_loadings,
+  text_col = "text",
+  doc_id_col = "doc_id"
+)
+
+names(feature_sets)
+```
+
+## 6. Flatten feature sets
+
+```{r flatten-feature-sets}
+flatten_feature_sets <- function(feature_sets){
+  parts <- list()
+
+  for(class_name in names(feature_sets)){
+    obj <- feature_sets[[class_name]]
+
+    if(is.matrix(obj) || is.data.frame(obj)){
+      mat <- as.matrix(obj)
+      colnames(mat) <- paste(class_name, colnames(mat), sep = "__")
+      parts[[class_name]] <- mat
+    } else if(is.list(obj)){
+      for(i in seq_along(obj)){
+        mat <- as.matrix(obj[[i]])
+        suffix <- names(obj)[i]
+        if(is.null(suffix) || suffix == "") suffix <- paste0("variant", i)
+        colnames(mat) <- paste(class_name, suffix, colnames(mat), sep = "__")
+        parts[[paste(class_name, suffix, sep = "__")]] <- mat
+      }
+    }
+  }
+
+  common_docs <- Reduce(intersect, lapply(parts, rownames))
+
+  parts <- lapply(parts, function(m){
+    m[common_docs, , drop = FALSE]
+  })
+
+  X <- do.call(cbind, parts)
+  X[is.na(X)] <- 0
+  X[is.nan(X)] <- 0
+  X[is.infinite(X)] <- 0
+  X
+}
+
+X_features <- flatten_feature_sets(feature_sets)
+dim(X_features)
+```
+
+## 7. Filter zero-variance features
+
+```{r filter-features}
+feature_variance <- apply(X_features, 2, stats::var, na.rm = TRUE)
+keep_features <- is.finite(feature_variance) & feature_variance > 0
+X_features_filtered <- X_features[, keep_features, drop = FALSE]
+dim(X_features_filtered)
+```
+
+## 8. Feature-space PCA
+
+```{r feature-pca}
+feature_pca <- stats::prcomp(
+  X_features_filtered,
+  center = TRUE,
+  scale. = TRUE
+)
+
+feature_pca_var <- feature_pca$sdev^2
+
+feature_pca_variance <- data.frame(
+  pc = paste0("PC", seq_along(feature_pca_var)),
+  dimension = seq_along(feature_pca_var),
+  eigenvalue = feature_pca_var,
+  prop_variance = feature_pca_var / sum(feature_pca_var),
+  pct_variance = 100 * feature_pca_var / sum(feature_pca_var),
+  cumulative_prop_variance = cumsum(feature_pca_var / sum(feature_pca_var)),
+  cumulative_pct_variance = 100 * cumsum(feature_pca_var / sum(feature_pca_var))
+)
+
+feature_pca_variance %>% dplyr::slice_head(n = 12)
+```
+
+## 9. Feature PCA scores
+
+```{r feature-pca-scores}
+feature_pca_scores <- as.data.frame(feature_pca$x) %>%
+  tibble::rownames_to_column("doc_id") %>%
+  dplyr::left_join(
+    chapter_docs %>%
+      dplyr::select(doc_id, book, chapter, section, macro_genre, n_verses),
+    by = "doc_id"
+  ) %>%
+  dplyr::relocate(doc_id, book, chapter, section, macro_genre, n_verses)
+
+feature_pca_scores %>%
+  dplyr::filter(book == focus_book) %>%
+  dplyr::arrange(chapter) %>%
+  dplyr::select(doc_id, chapter, section, PC1, PC2, PC3, PC4)
+```
+
+## 10. Feature PCA plots
+
+```{r feature-pca-plot-12}
+plotPCA(
+  feature_pca_scores,
+  feature_pca_variance,
+  x = 1,
+  y = 2,
+  book = focus_book,
+  include_books = comparison_books,
+  aggregate_other_books = TRUE,
+  show_other_books = TRUE,
+  show_hulls = TRUE,
+  show_centroids = TRUE,
+  show_labels = TRUE,
+  title = "Feature-space PCA with comparison book centroids: PC1 vs PC2"
+)
+```
+
+```{r feature-pca-plot-23}
+plotPCA(
+  feature_pca_scores,
+  feature_pca_variance,
+  x = 2,
+  y = 3,
+  book = focus_book,
+  include_books = comparison_books,
+  aggregate_other_books = TRUE,
+  show_other_books = TRUE,
+  show_hulls = TRUE,
+  show_centroids = TRUE,
+  show_labels = TRUE,
+  title = "Feature-space PCA with comparison book centroids: PC2 vs PC3"
+)
+```
+
+## 11. Parse feature names
+
+```{r parse-feature-names}
+parse_feature_name <- function(feature){
+  parts <- strsplit(feature, "__", fixed = TRUE)[[1]]
+  feature_class <- parts[1]
+
+  if(length(parts) >= 3){
+    variant <- parts[2]
+    feature_name <- paste(parts[-c(1,2)], collapse = "__")
+  } else if(length(parts) == 2){
+    variant <- NA_character_
+    feature_name <- parts[2]
+  } else {
+    variant <- NA_character_
+    feature_name <- feature
+  }
+
+  data.frame(
+    feature = feature,
+    feature_class = feature_class,
+    variant = variant,
+    feature_name = feature_name,
+    stringsAsFactors = FALSE
+  )
+}
+
+feature_lookup <- purrr::map_dfr(colnames(X_features_filtered), parse_feature_name)
+feature_lookup %>% dplyr::slice_head(n = 20)
+```
+
+## 12. Feature PCA loadings table
+
+```{r feature-loadings-table}
+feature_loadings <- as.data.frame(feature_pca$rotation) %>%
+  tibble::rownames_to_column("feature") %>%
+  dplyr::left_join(feature_lookup, by = "feature") %>%
+  dplyr::relocate(feature, feature_class, variant, feature_name)
+
+feature_loadings %>%
+  dplyr::select(feature, feature_class, variant, feature_name, PC1, PC2, PC3, PC4) %>%
+  dplyr::slice_head(n = 20)
+```
+
+## 13. Show top positive and negative feature loadings
+
+```{r feature-loading-helper}
+show_feature_pc_loadings <- function(
+    loadings_tbl,
+    pc = 1,
+    n = top_n_loadings,
+    feature_class_filter = NULL){
+
+  pc_col <- paste0("PC", pc)
+  dat <- loadings_tbl
+
+  if(!is.null(feature_class_filter)){
+    dat <- dat %>% dplyr::filter(feature_class %in% feature_class_filter)
+  }
+
+  positive <- dat %>%
+    dplyr::select(feature, feature_class, variant, feature_name, loading = dplyr::all_of(pc_col)) %>%
+    dplyr::arrange(dplyr::desc(loading)) %>%
+    dplyr::slice_head(n = n) %>%
+    dplyr::mutate(direction = "positive")
+
+  negative <- dat %>%
+    dplyr::select(feature, feature_class, variant, feature_name, loading = dplyr::all_of(pc_col)) %>%
+    dplyr::arrange(loading) %>%
+    dplyr::slice_head(n = n) %>%
+    dplyr::mutate(direction = "negative")
+
+  dplyr::bind_rows(positive, negative) %>%
+    dplyr::arrange(direction, dplyr::desc(abs(loading)))
+}
+
+show_feature_pc_loadings(feature_loadings, pc = 1, n = top_n_loadings)
+```
+
+## 14. Loadings by PC
+
+```{r feature-loadings-by-pc}
+for(pc in pcs_to_show){
+  cat("\n============================================================\n")
+  cat("FEATURE-SPACE PC", pc, "\n", sep = "")
+  cat("Variance explained: ", round(feature_pca_variance$pct_variance[pc], 2), "%\n", sep = "")
+  cat("============================================================\n\n")
+
+  print(
+    show_feature_pc_loadings(feature_loadings, pc = pc, n = top_n_loadings),
+    width = 140
+  )
+}
+```
+
+## 15. Plot feature loadings
+
+```{r loading-plot-helper}
+plot_feature_pc_loadings <- function(
+    loadings_tbl,
+    pc = 1,
+    n = 15,
+    feature_class_filter = NULL,
+    title = NULL){
+
+  dat <- show_feature_pc_loadings(
+    loadings_tbl,
+    pc = pc,
+    n = n,
+    feature_class_filter = feature_class_filter
+  ) %>%
+    dplyr::mutate(
+      feature_label = paste0(direction, ": ", feature_class, " / ", feature_name),
+      feature_label = stringr::str_trunc(feature_label, width = 75)
+    )
+
+  if(is.null(title)) title <- paste0("Top feature loadings: PC", pc)
+
+  ggplot2::ggplot(
+    dat,
+    ggplot2::aes(
+      x = reorder(feature_label, loading),
+      y = loading,
+      fill = direction
+    )
+  ) +
+    ggplot2::geom_col() +
+    ggplot2::coord_flip() +
+    ggplot2::labs(
+      title = title,
+      subtitle = "Positive and negative features define opposite ends of the latent axis.",
+      x = "Feature",
+      y = paste0("PC", pc, " loading"),
+      fill = "Direction"
+    ) +
+    ggplot2::theme_minimal()
+}
+```
+
+```{r feature-loading-plots}
+plot_feature_pc_loadings(feature_loadings, pc = 1, n = 20, title = "Feature-space PC1 loadings")
+plot_feature_pc_loadings(feature_loadings, pc = 2, n = 20, title = "Feature-space PC2 loadings")
+plot_feature_pc_loadings(feature_loadings, pc = 3, n = 20, title = "Feature-space PC3 loadings")
+```
+
+## 16. Feature-class contribution to each PC
+
+```{r feature-class-contribution}
+feature_class_contribution <- purrr::map_dfr(
+  pcs_to_show,
+  function(pc){
+    pc_col <- paste0("PC", pc)
+
+    feature_loadings %>%
+      dplyr::mutate(
+        abs_loading = abs(.data[[pc_col]]),
+        squared_loading = .data[[pc_col]]^2
+      ) %>%
+      dplyr::group_by(feature_class) %>%
+      dplyr::summarize(
+        sum_abs_loading = sum(abs_loading, na.rm = TRUE),
+        mean_abs_loading = mean(abs_loading, na.rm = TRUE),
+        sum_squared_loading = sum(squared_loading, na.rm = TRUE),
+        n_features = dplyr::n(),
+        .groups = "drop"
+      ) %>%
+      dplyr::mutate(
+        pc = paste0("PC", pc),
+        dimension = pc,
+        pct_squared_loading = sum_squared_loading / sum(sum_squared_loading)
+      )
+  }
+)
+
+feature_class_contribution %>%
+  dplyr::arrange(dimension, dplyr::desc(pct_squared_loading))
+```
+
+```{r feature-class-contribution-plot}
+feature_class_contribution %>%
+  dplyr::filter(dimension %in% paste0("PC", 1:4)) %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = feature_class,
+      y = pct_squared_loading,
+      fill = feature_class
+    )
+  ) +
+  ggplot2::geom_col(show.legend = FALSE) +
+  ggplot2::facet_wrap(~ dimension, scales = "free_y") +
+  ggplot2::scale_y_continuous(labels = scales::percent_format()) +
+  ggplot2::coord_flip() +
+  ggplot2::labs(
+    title = "Feature-class contribution to PCA dimensions",
+    subtitle = "Contribution computed as share of squared loadings by feature class.",
+    x = "Feature class",
+    y = "Share of squared loading"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+# Part B: Similarity-profile PCA loadings
+
+## 17. Run chapter-to-section ensemble
+
+```{r run-chapter-section}
+result_chapter_section <- run_stylometry_ensemble(
+  source_docs = chapter_docs,
+  target_docs = section_docs,
+  config = config_loadings,
+  k_neighbors = 10,
+  use_cache = TRUE
+)
+
+show_result_summary(result_chapter_section)
+show_weights(result_chapter_section)
+```
+
+## 18. Similarity-profile PCA
+
+```{r similarity-profile-pca}
+S_rect <- as.matrix(result_chapter_section$overall_similarity)
+S_rect[is.na(S_rect)] <- 0
+S_rect[is.nan(S_rect)] <- 0
+S_rect[is.infinite(S_rect)] <- 0
+
+similarity_pca <- stats::prcomp(S_rect, center = TRUE, scale. = TRUE)
+similarity_pca_var <- similarity_pca$sdev^2
+
+similarity_pca_variance <- data.frame(
+  pc = paste0("PC", seq_along(similarity_pca_var)),
+  dimension = seq_along(similarity_pca_var),
+  eigenvalue = similarity_pca_var,
+  prop_variance = similarity_pca_var / sum(similarity_pca_var),
+  pct_variance = 100 * similarity_pca_var / sum(similarity_pca_var),
+  cumulative_prop_variance = cumsum(similarity_pca_var / sum(similarity_pca_var)),
+  cumulative_pct_variance = 100 * cumsum(similarity_pca_var / sum(similarity_pca_var))
+)
+
+similarity_pca_variance %>% dplyr::slice_head(n = 12)
+```
+
+## 19. Similarity-profile scores and plot
+
+```{r similarity-scores}
+similarity_pca_scores <- as.data.frame(similarity_pca$x) %>%
+  tibble::rownames_to_column("doc_id") %>%
+  dplyr::left_join(
+    chapter_docs %>%
+      dplyr::select(doc_id, book, chapter, section, macro_genre, n_verses),
+    by = "doc_id"
+  ) %>%
+  dplyr::relocate(doc_id, book, chapter, section, macro_genre, n_verses)
+```
+
+```{r similarity-pca-plot}
+plotPCA(
+  similarity_pca_scores,
+  similarity_pca_variance,
+  x = 1,
+  y = 2,
+  book = focus_book,
+  include_books = comparison_books,
+  aggregate_other_books = TRUE,
+  show_other_books = TRUE,
+  show_hulls = TRUE,
+  show_centroids = TRUE,
+  show_labels = TRUE,
+  title = "Similarity-profile PCA with comparison book centroids: PC1 vs PC2"
+)
+```
+
+## 20. Similarity-profile loadings
+
+```{r similarity-loadings}
+similarity_loadings <- as.data.frame(similarity_pca$rotation) %>%
+  tibble::rownames_to_column("target_profile")
+
+similarity_loadings %>%
+  dplyr::select(target_profile, PC1, PC2, PC3, PC4) %>%
+  dplyr::arrange(dplyr::desc(abs(PC1)))
+```
+
+## 21. Show target-profile loadings
+
+```{r similarity-loading-helper}
+show_similarity_pc_loadings <- function(loadings_tbl, pc = 1, n = top_n_loadings){
+  pc_col <- paste0("PC", pc)
+
+  positive <- loadings_tbl %>%
+    dplyr::select(target_profile, loading = dplyr::all_of(pc_col)) %>%
+    dplyr::arrange(dplyr::desc(loading)) %>%
+    dplyr::slice_head(n = n) %>%
+    dplyr::mutate(direction = "positive")
+
+  negative <- loadings_tbl %>%
+    dplyr::select(target_profile, loading = dplyr::all_of(pc_col)) %>%
+    dplyr::arrange(loading) %>%
+    dplyr::slice_head(n = n) %>%
+    dplyr::mutate(direction = "negative")
+
+  dplyr::bind_rows(positive, negative) %>%
+    dplyr::arrange(direction, dplyr::desc(abs(loading)))
+}
+
+for(pc in pcs_to_show){
+  cat("\n============================================================\n")
+  cat("SIMILARITY-PROFILE PC", pc, "\n", sep = "")
+  cat("Variance explained: ", round(similarity_pca_variance$pct_variance[pc], 2), "%\n", sep = "")
+  cat("============================================================\n\n")
+
+  print(show_similarity_pc_loadings(similarity_loadings, pc = pc, n = top_n_loadings), width = 120)
+}
+```
+
+## 22. Plot target-profile loadings
+
+```{r similarity-loading-plot-helper}
+plot_similarity_pc_loadings <- function(loadings_tbl, pc = 1, n = 20, title = NULL){
+  dat <- show_similarity_pc_loadings(loadings_tbl, pc = pc, n = n) %>%
+    dplyr::mutate(target_label = paste0(direction, ": ", target_profile))
+
+  if(is.null(title)) title <- paste0("Similarity-profile PC", pc, " loadings")
+
+  ggplot2::ggplot(
+    dat,
+    ggplot2::aes(
+      x = reorder(target_label, loading),
+      y = loading,
+      fill = direction
+    )
+  ) +
+    ggplot2::geom_col() +
+    ggplot2::coord_flip() +
+    ggplot2::labs(
+      title = title,
+      subtitle = "Positive and negative target profiles define opposite ends of the latent axis.",
+      x = "Target profile",
+      y = paste0("PC", pc, " loading"),
+      fill = "Direction"
+    ) +
+    ggplot2::theme_minimal()
+}
+```
+
+```{r similarity-loading-plots}
+plot_similarity_pc_loadings(similarity_loadings, pc = 1, n = 20, title = "Similarity-profile PC1 loadings")
+plot_similarity_pc_loadings(similarity_loadings, pc = 2, n = 20, title = "Similarity-profile PC2 loadings")
+plot_similarity_pc_loadings(similarity_loadings, pc = 3, n = 20, title = "Similarity-profile PC3 loadings")
+```
+
+# Part C: Square ensemble MDS axis interpretation
+
+## 23. Run chapter-to-chapter ensemble
+
+```{r run-chapter-chapter}
+result_chapter_chapter <- run_stylometry_ensemble(
+  source_docs = chapter_docs,
+  target_docs = chapter_docs,
+  config = config_loadings,
+  k_neighbors = 10,
+  use_cache = TRUE
+)
+
+show_result_summary(result_chapter_chapter)
+```
+
+## 24. MDS helper
+
+```{r mds-helper}
+mds_from_similarity <- function(sim, metadata, k = 9){
+  S <- as.matrix(sim)
+  S[is.na(S)] <- 0
+  S[is.nan(S)] <- 0
+  S[is.infinite(S)] <- 0
+
+  D <- 1 - S
+  D[D < 0] <- 0
+  D <- (D + t(D)) / 2
+  diag(D) <- 0
+
+  fit <- stats::cmdscale(as.dist(D), k = k, eig = TRUE)
+
+  scores <- as.data.frame(fit$points)
+  colnames(scores) <- paste0("PC", seq_len(ncol(scores)))
+
+  scores <- scores %>%
+    tibble::rownames_to_column("doc_id") %>%
+    dplyr::left_join(metadata, by = "doc_id")
+
+  eig <- fit$eig[fit$eig > 0]
+
+  variance <- data.frame(
+    pc = paste0("PC", seq_along(eig)),
+    dimension = seq_along(eig),
+    eigenvalue = eig,
+    prop_variance = eig / sum(eig),
+    pct_variance = 100 * eig / sum(eig),
+    cumulative_prop_variance = cumsum(eig / sum(eig)),
+    cumulative_pct_variance = 100 * cumsum(eig / sum(eig))
+  )
+
+  list(fit = fit, scores = scores, variance = variance)
+}
+```
+
+## 25. Square ensemble MDS
+
+```{r square-mds}
+metadata <- chapter_docs %>%
+  dplyr::select(doc_id, book, chapter, section, macro_genre, n_verses)
+
+overall_mds <- mds_from_similarity(
+  result_chapter_chapter$overall_similarity,
+  metadata = metadata,
+  k = 9
+)
+
+overall_mds$variance %>% dplyr::slice_head(n = 9)
+```
+
+```{r square-mds-plot}
+plotPCA(
+  overall_mds$scores,
+  overall_mds$variance,
+  x = 2,
+  y = 3,
+  book = focus_book,
+  include_books = comparison_books,
+  aggregate_other_books = TRUE,
+  show_other_books = TRUE,
+  show_hulls = TRUE,
+  show_centroids = TRUE,
+  show_labels = TRUE,
+  title = "Square ensemble MDS with comparison book centroids: Dim2 vs Dim3"
+)
+```
+
+## 26. Interpret MDS axes by feature correlations
+
+MDS axes do not have native feature loadings. We therefore correlate each MDS axis with the original feature values.
+
+```{r mds-feature-correlations}
+mds_scores_for_corr <- overall_mds$scores %>%
+  dplyr::select(doc_id, dplyr::starts_with("PC"))
+
+feature_df_for_corr <- as.data.frame(X_features_filtered) %>%
+  tibble::rownames_to_column("doc_id")
+
+mds_feature_data <- mds_scores_for_corr %>%
+  dplyr::inner_join(feature_df_for_corr, by = "doc_id")
+
+feature_cols_for_corr <- setdiff(colnames(feature_df_for_corr), "doc_id")
+
+compute_axis_feature_correlations <- function(data, axis = "PC1", feature_cols = feature_cols_for_corr){
+  purrr::map_dfr(
+    feature_cols,
+    function(f){
+      x <- data[[axis]]
+      y <- data[[f]]
+
+      if(stats::sd(y, na.rm = TRUE) == 0 || stats::sd(x, na.rm = TRUE) == 0){
+        r <- NA_real_
+      } else {
+        r <- stats::cor(x, y, use = "pairwise.complete.obs")
+      }
+
+      data.frame(axis = axis, feature = f, correlation = r, stringsAsFactors = FALSE)
+    }
+  ) %>%
+    dplyr::left_join(feature_lookup, by = "feature") %>%
+    dplyr::relocate(axis, feature, feature_class, variant, feature_name, correlation) %>%
+    dplyr::arrange(dplyr::desc(abs(correlation)))
+}
+
+mds_axis_correlations <- purrr::map_dfr(
+  paste0("PC", pcs_to_show),
+  function(axis){
+    compute_axis_feature_correlations(mds_feature_data, axis = axis)
+  }
+)
+
+mds_axis_correlations %>% dplyr::slice_head(n = 30)
+```
+
+## 27. Show MDS axis feature correlations
+
+```{r show-mds-axis-correlations}
+show_mds_axis_correlations <- function(
+    corr_tbl,
+    axis = "PC1",
+    n = top_n_loadings,
+    feature_class_filter = NULL){
+
+  dat <- corr_tbl %>% dplyr::filter(.data$axis == !!axis)
+
+  if(!is.null(feature_class_filter)){
+    dat <- dat %>% dplyr::filter(feature_class %in% feature_class_filter)
+  }
+
+  positive <- dat %>%
+    dplyr::arrange(dplyr::desc(correlation)) %>%
+    dplyr::slice_head(n = n) %>%
+    dplyr::mutate(direction = "positive")
+
+  negative <- dat %>%
+    dplyr::arrange(correlation) %>%
+    dplyr::slice_head(n = n) %>%
+    dplyr::mutate(direction = "negative")
+
+  dplyr::bind_rows(positive, negative) %>%
+    dplyr::arrange(direction, dplyr::desc(abs(correlation)))
+}
+
+for(pc in pcs_to_show){
+  axis <- paste0("PC", pc)
+
+  cat("\n============================================================\n")
+  cat("MDS ", axis, " feature correlations\n", sep = "")
+  cat("============================================================\n\n")
+
+  print(
+    show_mds_axis_correlations(mds_axis_correlations, axis = axis, n = top_n_loadings),
+    width = 140
+  )
+}
+```
+
+## 28. Plot MDS axis correlations
+
+```{r plot-mds-corr-helper}
+plot_mds_axis_correlations <- function(
+    corr_tbl,
+    axis = "PC1",
+    n = 20,
+    feature_class_filter = NULL,
+    title = NULL){
+
+  dat <- show_mds_axis_correlations(
+    corr_tbl,
+    axis = axis,
+    n = n,
+    feature_class_filter = feature_class_filter
+  ) %>%
+    dplyr::mutate(
+      feature_label = paste0(direction, ": ", feature_class, " / ", feature_name),
+      feature_label = stringr::str_trunc(feature_label, width = 75)
+    )
+
+  if(is.null(title)) title <- paste0("MDS ", axis, " feature correlations")
+
+  ggplot2::ggplot(
+    dat,
+    ggplot2::aes(
+      x = reorder(feature_label, correlation),
+      y = correlation,
+      fill = direction
+    )
+  ) +
+    ggplot2::geom_col() +
+    ggplot2::coord_flip() +
+    ggplot2::labs(
+      title = title,
+      subtitle = "Features most associated with the positive and negative ends of the axis.",
+      x = "Feature",
+      y = "Correlation",
+      fill = "Direction"
+    ) +
+    ggplot2::theme_minimal()
+}
+```
+
+```{r mds-corr-plots}
+plot_mds_axis_correlations(mds_axis_correlations, axis = "PC1", n = 20, title = "MDS PC1 feature correlations")
+plot_mds_axis_correlations(mds_axis_correlations, axis = "PC2", n = 20, title = "MDS PC2 feature correlations")
+plot_mds_axis_correlations(mds_axis_correlations, axis = "PC3", n = 20, title = "MDS PC3 feature correlations")
+```
+
+# Part D: Interpretive summary
+
+## 29. Candidate interpretation table
+
+```{r interpretation-table}
+candidate_interpretations <- data.frame(
+  axis = c(
+    "Feature PCA PC1", "Feature PCA PC2",
+    "Similarity PCA PC1", "Similarity PCA PC2",
+    "Square MDS PC1", "Square MDS PC2", "Square MDS PC3"
+  ),
+  tentative_interpretation = c(
+    "Inspect top positive/negative feature loadings.",
+    "Inspect top positive/negative feature loadings.",
+    "Inspect target-profile loadings.",
+    "Inspect target-profile loadings.",
+    "Inspect feature correlations with MDS axis.",
+    "Inspect feature correlations with MDS axis.",
+    "Inspect feature correlations with MDS axis."
+  ),
+  notes = c(
+    "May reflect broad feature-space variance; often sparse.",
+    "May reflect secondary feature-space contrast.",
+    "Often interpretable as similarity to target sections/books.",
+    "May separate genre or section structure.",
+    "May reflect poetic/formulaic direction if Psalms/Job/Proverbs lie positive.",
+    "May reflect narrative vs prophecy or prophetic vs wisdom style.",
+    "Often captures subtler section or genre effects."
+  )
+)
+
+candidate_interpretations
+```
+
+## 30. Final summary
+
+```{r final-summary}
+cat("\nPCA Loadings Summary\n")
+cat("====================\n\n")
+
+cat("Feature-space variance explained:\n")
+print(feature_pca_variance %>% dplyr::slice_head(n = 8), width = 120)
+
+cat("\nSimilarity-profile variance explained:\n")
+print(similarity_pca_variance %>% dplyr::slice_head(n = 8), width = 120)
+
+cat("\nTop feature-space PC1 loadings:\n")
+print(show_feature_pc_loadings(feature_loadings, pc = 1, n = 12), width = 140)
+
+cat("\nTop similarity-profile PC1 loadings:\n")
+print(show_similarity_pc_loadings(similarity_loadings, pc = 1, n = 12), width = 120)
+
+cat("\nTop MDS PC1 feature correlations:\n")
+print(show_mds_axis_correlations(mds_axis_correlations, axis = "PC1", n = 12), width = 140)
+```
+
+## 31. Export outputs
+
+```{r export}
+out_dir <- file.path(STYLO_ROOT, "output", "pca_loadings")
+dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+
+readr::write_csv(feature_pca_variance, file.path(out_dir, "feature_pca_variance.csv"))
+readr::write_csv(feature_pca_scores, file.path(out_dir, "feature_pca_scores.csv"))
+readr::write_csv(feature_loadings, file.path(out_dir, "feature_pca_loadings.csv"))
+readr::write_csv(feature_class_contribution, file.path(out_dir, "feature_class_contribution.csv"))
+readr::write_csv(similarity_pca_variance, file.path(out_dir, "similarity_profile_pca_variance.csv"))
+readr::write_csv(similarity_pca_scores, file.path(out_dir, "similarity_profile_pca_scores.csv"))
+readr::write_csv(similarity_loadings, file.path(out_dir, "similarity_profile_pca_loadings.csv"))
+readr::write_csv(overall_mds$variance, file.path(out_dir, "square_mds_variance.csv"))
+readr::write_csv(overall_mds$scores, file.path(out_dir, "square_mds_scores.csv"))
+readr::write_csv(mds_axis_correlations, file.path(out_dir, "mds_axis_feature_correlations.csv"))
+```

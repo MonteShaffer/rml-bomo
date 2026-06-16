@@ -141,6 +141,7 @@ config_author_id <- default_config(
     "pos",
     "punctuation",
     "sentence",
+    "word_length",
     "lexical",
     "readability"
   )
@@ -412,6 +413,12 @@ summarize_findings(result_author_id, "Isaiah_66", k = 10, plot = TRUE)
 ```{r representative-scree-plots}
 cons_isa1 <- show_consensus(result_author_id, "Isaiah_1")
 plot_consensus_scree(cons_isa1)
+
+cons_isa5 <- show_consensus(result_author_id, "Isaiah_5")
+plot_consensus_scree(cons_isa5)
+
+cons_isa6 <- show_consensus(result_author_id, "Isaiah_6")
+plot_consensus_scree(cons_isa6)
 
 cons_isa40 <- show_consensus(result_author_id, "Isaiah_40")
 plot_consensus_scree(cons_isa40)

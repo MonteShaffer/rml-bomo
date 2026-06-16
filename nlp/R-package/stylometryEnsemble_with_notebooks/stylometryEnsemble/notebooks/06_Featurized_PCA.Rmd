@@ -1,0 +1,588 @@
+---
+title: "06 - Featurized PCA"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+
+options(
+  tibble.width = Inf,
+  tibble.print_max = 150
+)
+```
+
+## 1. Purpose
+
+This notebook performs PCA on the **raw weighted feature matrix**.
+
+This is different from the ensemble similarity analysis.
+
+Featurized PCA answers:
+
+> What broad stylistic dimensions emerge directly from the combined feature space?
+
+Because the feature matrix is very large and sparse, individual PCs may explain small percentages of total variance. That is expected.
+
+The companion notebook `07_Ensemble_MDS.Rmd` analyzes the compressed ensemble similarity space using:
+
+```r
+result$overall_similarity
+result$class_similarity
+```
+
+## 2. Load prepared documents
+
+```{r load-prepared}
+chapter_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_chapter_docs.csv")
+section_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_section_docs.csv")
+raw_path     <- file.path(STYLO_ROOT, "data", "raw", "kjv.csv")
+
+if(file.exists(chapter_path) && file.exists(section_path)){
+
+  chapter_docs <- readr::read_csv(chapter_path, show_col_types = FALSE)
+  section_docs <- readr::read_csv(section_path, show_col_types = FALSE)
+
+} else {
+
+  if(!file.exists(raw_path)){
+    stop("Could not find data/raw/kjv.csv. Run 01_Introduction.Rmd first.")
+  }
+
+  kjv <- readr::read_csv(raw_path, show_col_types = FALSE)
+  prepared <- prepare_kjv_docs(kjv)
+
+  chapter_docs <- prepared$chapter_docs
+  section_docs <- prepared$section_docs
+
+  dir.create(file.path(STYLO_ROOT, "data", "prepared"), recursive = TRUE, showWarnings = FALSE)
+
+  readr::write_csv(chapter_docs, chapter_path)
+  readr::write_csv(section_docs, section_path)
+}
+```
+
+## 3. Configure feature set
+
+```{r config}
+config_pca <- default_config(
+  include = c(
+    "char",
+    "word",
+    "stem",
+    "function_words",
+    "pos",
+    "punctuation",
+    "sentence",
+    "word_length",
+    "lexical",
+    "readability"
+  )
+)
+
+config_pca$pos_n <- c(3, 4, 5)
+
+if(exists("ud_model")){
+  config_pca$pos_model <- ud_model
+}
+
+config_pca$weights
+```
+
+## 4. Build weighted feature matrix
+
+```{r feature-matrix-functions}
+scale_feature_block <- function(mat){
+
+  mat <- as.matrix(mat)
+  mat[is.na(mat)] <- 0
+  mat[is.nan(mat)] <- 0
+  mat[is.infinite(mat)] <- 0
+
+  if(ncol(mat) == 0){
+    return(mat)
+  }
+
+  scaled <- scale(mat)
+
+  scaled[is.na(scaled)] <- 0
+  scaled[is.nan(scaled)] <- 0
+  scaled[is.infinite(scaled)] <- 0
+
+  as.matrix(scaled)
+}
+
+
+build_pca_feature_matrix <- function(
+    docs,
+    config,
+    text_col = "text",
+    doc_id_col = "doc_id"){
+
+  feature_sets <- build_feature_sets(
+    docs,
+    config,
+    text_col = text_col,
+    doc_id_col = doc_id_col
+  )
+
+  active_classes <- names(feature_sets)
+
+  weights <- config$weights[active_classes]
+  weights <- weights / sum(weights, na.rm = TRUE)
+
+  blocks <- list()
+
+  for(class_name in active_classes){
+
+    class_variants <- feature_sets[[class_name]]
+
+    for(variant_name in names(class_variants)){
+
+      mat <- class_variants[[variant_name]]
+      mat <- scale_feature_block(mat)
+
+      mat <- mat * sqrt(weights[[class_name]]) / sqrt(length(class_variants))
+
+      colnames(mat) <- paste(
+        class_name,
+        variant_name,
+        colnames(mat),
+        sep = "__"
+      )
+
+      blocks[[paste(class_name, variant_name, sep = "__")]] <- mat
+    }
+  }
+
+  feature_matrix <- do.call(cbind, blocks)
+
+  feature_matrix[is.na(feature_matrix)] <- 0
+  feature_matrix[is.nan(feature_matrix)] <- 0
+  feature_matrix[is.infinite(feature_matrix)] <- 0
+
+  list(
+    feature_matrix = feature_matrix,
+    feature_sets = feature_sets,
+    weights_used = weights
+  )
+}
+```
+
+```{r build-feature-matrix}
+pca_input <- build_pca_feature_matrix(
+  chapter_docs,
+  config = config_pca
+)
+
+X <- pca_input$feature_matrix
+
+dim(X)
+
+pca_input$weights_used
+```
+
+## 5. Run feature-space PCA
+
+```{r run-pca}
+pca_features <- stats::prcomp(
+  X,
+  center = FALSE,
+  scale. = FALSE
+)
+
+ pca_features$sdev^2
+```
+
+## 6. Variance explained
+
+```{r variance-table}
+pca_var <- pca_features$sdev^2
+
+pca_variance <- data.frame(
+  pc = paste0("PC", seq_along(pca_var)),
+  dimension = seq_along(pca_var),
+  eigenvalue = pca_var,
+  prop_variance = pca_var / sum(pca_var),
+  pct_variance = 100 * pca_var / sum(pca_var),
+  cumulative_prop_variance = cumsum(pca_var / sum(pca_var)),
+  cumulative_pct_variance = 100 * cumsum(pca_var / sum(pca_var))
+)
+
+pca_variance %>%
+  dplyr::slice_head(n = 20)
+```
+
+## 7. Feature-space scree plot
+
+```{r pca-scree}
+pca_variance %>%
+  dplyr::slice_head(n = 25) %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = dimension,
+      y = pct_variance
+    )
+  ) +
+  ggplot2::geom_col() +
+  ggplot2::geom_line(
+    ggplot2::aes(
+      y = cumulative_pct_variance,
+      group = 1
+    )
+  ) +
+  ggplot2::geom_point(
+    ggplot2::aes(
+      y = cumulative_pct_variance
+    )
+  ) +
+  ggplot2::scale_x_continuous(
+    breaks = 1:25
+  ) +
+  ggplot2::labs(
+    title = "Feature-space PCA scree plot",
+    subtitle = "Low individual variance is expected in a high-dimensional sparse feature matrix.",
+    x = "Principal component",
+    y = "Percent variance"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+## 8. PCA scores
+
+```{r scores}
+pca_scores <- as.data.frame(pca_features$x) %>%
+  tibble::rownames_to_column("doc_id") %>%
+  dplyr::left_join(
+    chapter_docs %>%
+      dplyr::select(
+        doc_id,
+        book,
+        chapter,
+        section,
+        macro_genre,
+        n_verses
+      ),
+    by = "doc_id"
+  ) %>%
+  dplyr::relocate(
+    doc_id,
+    book,
+    chapter,
+    section,
+    macro_genre,
+    n_verses
+  )
+
+isaiah_pca_scores <- pca_scores %>%
+  dplyr::filter(book == "Isaiah") %>%
+  dplyr::arrange(chapter)
+
+isaiah_pca_scores %>%
+  dplyr::select(
+    doc_id,
+    chapter,
+    section,
+    PC1,
+    PC2,
+    PC3,
+    PC4,
+    PC5,
+    PC6,
+    PC7,
+    PC8,
+    PC9
+  )
+```
+
+## 9. PC1 vs PC2
+
+```{r pc1-pc2}
+plotPCA(
+  pca_scores,
+  pca_variance,
+  x = 1,
+  y = 2,
+  book = "Isaiah",
+  color = "section",
+  label = "chapter",
+  show_labels = TRUE,
+  show_centroids = TRUE,
+  show_hulls = TRUE,
+  title = "Feature-space PCA: Isaiah PC1 vs PC2"
+)
+```
+
+## 10. PC2 vs PC3
+
+```{r pc2-pc3}
+plotPCA(
+  pca_scores,
+  pca_variance,
+  x = 2,
+  y = 3,
+  book = "Isaiah",
+  color = "section",
+  label = "chapter",
+  show_labels = TRUE,
+  show_centroids = TRUE,
+  show_hulls = TRUE,
+  title = "Feature-space PCA: Isaiah PC2 vs PC3"
+)
+```
+
+## 11. PC3 vs PC4
+
+```{r pc3-pc4}
+plotPCA(
+  pca_scores,
+  pca_variance,
+  x = 3,
+  y = 4,
+  book = "Isaiah",
+  color = "section",
+  label = "chapter",
+  show_labels = TRUE,
+  show_centroids = TRUE,
+  show_hulls = TRUE,
+  title = "Feature-space PCA: Isaiah PC3 vs PC4"
+)
+```
+
+## 12. Generate PC1–PC9 adjacent pair plots
+
+```{r all-pair-plots}
+pc_pairs <- tibble::tibble(
+  pc_x = 1:8,
+  pc_y = 2:9
+)
+
+pca_pair_plots <- purrr::pmap(
+  pc_pairs,
+  function(pc_x, pc_y){
+
+    plotPCA(
+      pca_scores,
+      pca_variance,
+      x = pc_x,
+      y = pc_y,
+      book = "Isaiah",
+      color = "section",
+      label = "chapter",
+      show_labels = TRUE,
+      show_centroids = TRUE,
+      show_hulls = TRUE,
+      title = paste0(
+        "Feature-space PCA: Isaiah PC",
+        pc_x,
+        " vs PC",
+        pc_y
+      )
+    )
+  }
+)
+
+pca_pair_plots[[1]]
+```
+
+```{r print-all-pairs, eval=FALSE}
+for(i in seq_along(pca_pair_plots)){
+  print(pca_pair_plots[[i]])
+}
+```
+
+## 13. Interactive 3D feature-space PCA
+
+These are disabled for knitting. Run interactively in RStudio.
+
+```{r pca3d-123, eval=FALSE}
+plotPCA3d(
+  pca_scores,
+  pca_variance,
+  x = 1,
+  y = 2,
+  z = 3,
+  book = "Isaiah",
+  color = "section",
+  label = "chapter",
+  show_labels = TRUE,
+  show_centroids = TRUE,
+  title = "Feature-space PCA: Isaiah PC1 vs PC2 vs PC3"
+)
+```
+
+```{r pca3d-234, eval=FALSE}
+plotPCA3d(
+  pca_scores,
+  pca_variance,
+  x = 2,
+  y = 3,
+  z = 4,
+  book = "Isaiah",
+  color = "section",
+  label = "chapter",
+  show_labels = TRUE,
+  show_centroids = TRUE,
+  title = "Feature-space PCA: Isaiah PC2 vs PC3 vs PC4"
+)
+```
+
+## 14. Section centroids and outliers
+
+```{r centroids}
+pc_cols <- paste0("PC", 1:9)
+
+section_centroids <- isaiah_pca_scores %>%
+  dplyr::group_by(section) %>%
+  dplyr::summarize(
+    dplyr::across(
+      dplyr::all_of(pc_cols),
+      ~ mean(.x, na.rm = TRUE)
+    ),
+    n_chapters = dplyr::n(),
+    .groups = "drop"
+  )
+
+section_centroids
+```
+
+```{r centroid-distance}
+centroid_lookup <- section_centroids %>%
+  dplyr::select(section, dplyr::all_of(pc_cols))
+
+isaiah_pca_distances <- isaiah_pca_scores %>%
+  dplyr::left_join(
+    centroid_lookup,
+    by = "section",
+    suffix = c("", "_centroid")
+  ) %>%
+  dplyr::rowwise() %>%
+  dplyr::mutate(
+    distance_to_section_centroid = sqrt(
+      sum(
+        (
+          c_across(dplyr::all_of(pc_cols)) -
+          c_across(dplyr::all_of(paste0(pc_cols, "_centroid")))
+        )^2,
+        na.rm = TRUE
+      )
+    )
+  ) %>%
+  dplyr::ungroup() %>%
+  dplyr::select(
+    doc_id,
+    chapter,
+    section,
+    distance_to_section_centroid,
+    dplyr::all_of(pc_cols)
+  ) %>%
+  dplyr::arrange(
+    dplyr::desc(distance_to_section_centroid)
+  )
+
+isaiah_pca_distances %>%
+  dplyr::slice_head(n = 15)
+```
+
+## 15. Findings
+
+```{r findings}
+cat("\nFeature-space PCA Findings\n")
+cat("==========================\n\n")
+
+cat("Top nine components explain: ")
+cat(
+  round(
+    pca_variance$cumulative_pct_variance[9],
+    2
+  ),
+  "% cumulative variance.\n\n"
+)
+
+cat("This value may be low because the ensemble feature space is high-dimensional and sparse.\n")
+cat("Use 07_Ensemble_MDS.Rmd for the compressed ensemble-similarity view.\n\n")
+
+cat("Most PCA-distinct Isaiah chapters from assigned-section centroid:\n")
+print(
+  isaiah_pca_distances %>%
+    dplyr::slice_head(n = 10) %>%
+    dplyr::select(
+      chapter,
+      doc_id,
+      section,
+      distance_to_section_centroid
+    ),
+  width = 120
+)
+```
+
+## 16. Export outputs
+
+```{r export}
+out_dir <- file.path(STYLO_ROOT, "output", "featurized_pca")
+
+dir.create(
+  out_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+readr::write_csv(
+  pca_variance,
+  file.path(out_dir, "feature_pca_variance.csv")
+)
+
+readr::write_csv(
+  isaiah_pca_scores,
+  file.path(out_dir, "isaiah_feature_pca_scores.csv")
+)
+
+readr::write_csv(
+  section_centroids,
+  file.path(out_dir, "isaiah_feature_pca_section_centroids.csv")
+)
+
+readr::write_csv(
+  isaiah_pca_distances,
+  file.path(out_dir, "isaiah_feature_pca_distance_to_centroid.csv")
+)
+```
+
+## 17. Save plots
+
+```{r save-plots}
+plot_dir <- file.path(STYLO_ROOT, "output", "featurized_pca", "plots")
+
+dir.create(
+  plot_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+for(i in seq_along(pca_pair_plots)){
+
+  ggplot2::ggsave(
+    filename = file.path(
+      plot_dir,
+      paste0(
+        "feature_pca_isaiah_pc",
+        pc_pairs$pc_x[i],
+        "_pc",
+        pc_pairs$pc_y[i],
+        ".png"
+      )
+    ),
+    plot = pca_pair_plots[[i]],
+    width = 9,
+    height = 6,
+    dpi = 300
+  )
+}
+```

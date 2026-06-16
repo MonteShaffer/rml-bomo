@@ -1,0 +1,670 @@
+---
+title: "30 - Prepare Book of Mormon TSV Editions"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+
+options(
+  tibble.width = Inf,
+  tibble.print_max = 300
+)
+```
+
+## 1. Purpose
+
+This notebook downloads and parses the BYU ODH OpenScripture Book of Mormon TSV files.
+
+The source files are token-level TSVs, with one row per word/punctuation token and one column per Book of Mormon edition:
+
+```text
+Citation    wID    1830    1837    1840    1841    1879    1920    1981    2013
+1 Nephi 1:1 1      I       I       I       I       I       I       I       I
+1 Nephi 1:1 1.01   ,       ,       ,       ,       ,       ,       ,       ,
+1 Nephi 1:1 1.02   ⌴       ⌴       ⌴       ⌴       ⌴       ⌴       ⌴       ⌴
+1 Nephi 1:1 2      Nephi   Nephi   Nephi   Nephi   Nephi   Nephi   Nephi   Nephi
+```
+
+The notebook collapses these token rows into verse-level CSV files:
+
+```text
+data/raw/bom_1830.csv
+data/raw/bom_1837.csv
+data/raw/bom_1840.csv
+data/raw/bom_1841.csv
+data/raw/bom_1879.csv
+data/raw/bom_1920.csv
+data/raw/bom_1981.csv
+data/raw/bom_2013.csv
+```
+
+Each output file has normalized columns:
+
+```text
+corpus_id
+translation
+book
+chapter
+verse
+text
+```
+
+These outputs can then be consumed by `31_Introduction_BOM.Rmd`.
+
+## 2. Packages
+
+```{r packages}
+library(dplyr)
+library(stringr)
+library(readr)
+library(tidyr)
+library(purrr)
+library(tibble)
+```
+
+## 3. Parameters
+
+```{r parameters}
+openscripture_base_url <- "https://raw.githubusercontent.com/BYU-ODH/OpenScripture/refs/heads/main/book-of-mormon"
+
+bom_tsv_dir <- file.path(
+  STYLO_ROOT,
+  "data",
+  "raw",
+  "bom_tsv"
+)
+
+raw_dir <- file.path(
+  STYLO_ROOT,
+  "data",
+  "raw"
+)
+
+dir.create(
+  bom_tsv_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+dir.create(
+  raw_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+edition_cols <- c(
+  "1830",
+  "1837",
+  "1840",
+  "1841",
+  "1879",
+  "1920",
+  "1981",
+  "2013"
+)
+
+download_tsvs <- TRUE
+overwrite_tsvs <- FALSE
+```
+
+## 4. Canonical Book of Mormon order
+
+```{r bom-book-order}
+bom_book_order <- tibble::tribble(
+  ~book,               ~book_order, ~file_name,
+  "1 Nephi",            1L,          "1 Nephi.tsv",
+  "2 Nephi",            2L,          "2 Nephi.tsv",
+  "Jacob",              3L,          "Jacob.tsv",
+  "Enos",               4L,          "Enos.tsv",
+  "Jarom",              5L,          "Jarom.tsv",
+  "Omni",               6L,          "Omni.tsv",
+  "Words of Mormon",    7L,          "Words of Mormon.tsv",
+  "Mosiah",             8L,          "Mosiah.tsv",
+  "Alma",               9L,          "Alma.tsv",
+  "Helaman",           10L,          "Helaman.tsv",
+  "3 Nephi",           11L,          "3 Nephi.tsv",
+  "4 Nephi",           12L,          "4 Nephi.tsv",
+  "Mormon",            13L,          "Mormon.tsv",
+  "Ether",             14L,          "Ether.tsv",
+  "Moroni",            15L,          "Moroni.tsv"
+)
+
+bom_book_order
+```
+
+## 5. Download TSV files
+
+```{r download-tsv-files}
+bom_tsv_sources <- bom_book_order %>%
+  dplyr::mutate(
+    url = paste0(
+      openscripture_base_url,
+      "/",
+      utils::URLencode(file_name, reserved = TRUE)
+    ),
+    local_path = file.path(
+      bom_tsv_dir,
+      file_name
+    )
+  )
+
+bom_tsv_sources
+
+if(isTRUE(download_tsvs)){
+
+  purrr::pwalk(
+    bom_tsv_sources %>%
+      dplyr::select(url, local_path),
+    function(url, local_path){
+
+      if(!file.exists(local_path) || isTRUE(overwrite_tsvs)){
+
+        message("Downloading: ", url)
+
+        download.file(
+          url = url,
+          destfile = local_path,
+          mode = "wb",
+          quiet = FALSE
+        )
+
+      } else {
+
+        message("Already exists: ", local_path)
+
+      }
+
+    }
+  )
+
+}
+
+missing_tsvs <- bom_tsv_sources %>%
+  dplyr::filter(!file.exists(local_path))
+
+missing_tsvs
+
+if(nrow(missing_tsvs) > 0){
+  stop(
+    "Some TSV files are missing. Check missing_tsvs."
+  )
+}
+```
+
+## 6. Helper functions
+
+```{r helper-functions}
+normalize_bom_book <- function(x){
+
+  x <- as.character(x)
+  x <- stringr::str_squish(x)
+  x <- stringr::str_replace_all(x, "_", " ")
+
+  y <- stringr::str_to_lower(x)
+
+  dplyr::case_when(
+    stringr::str_detect(y, "1\\s*nephi|first\\s+nephi") ~ "1 Nephi",
+    stringr::str_detect(y, "2\\s*nephi|second\\s+nephi") ~ "2 Nephi",
+    stringr::str_detect(y, "3\\s*nephi|third\\s+nephi") ~ "3 Nephi",
+    stringr::str_detect(y, "4\\s*nephi|fourth\\s+nephi") ~ "4 Nephi",
+    stringr::str_detect(y, "words\\s+of\\s+mormon") ~ "Words of Mormon",
+    stringr::str_detect(y, "mosiah") ~ "Mosiah",
+    stringr::str_detect(y, "alma") ~ "Alma",
+    stringr::str_detect(y, "helaman") ~ "Helaman",
+    stringr::str_detect(y, "mormon") ~ "Mormon",
+    stringr::str_detect(y, "ether") ~ "Ether",
+    stringr::str_detect(y, "moroni") ~ "Moroni",
+    stringr::str_detect(y, "jacob") ~ "Jacob",
+    stringr::str_detect(y, "enos") ~ "Enos",
+    stringr::str_detect(y, "jarom") ~ "Jarom",
+    stringr::str_detect(y, "omni") ~ "Omni",
+    TRUE ~ stringr::str_to_title(x)
+  )
+}
+
+
+clean_bom_token <- function(x){
+
+  x <- as.character(x)
+
+  x <- dplyr::na_if(x, "")
+  x <- dplyr::na_if(x, "NA")
+  x <- dplyr::na_if(x, "⌴")
+  x <- dplyr::na_if(x, "∅")
+
+  x
+}
+
+
+collapse_tokens_to_text <- function(tokens){
+
+  text <- paste(tokens, collapse = " ")
+
+  text <- stringr::str_replace_all(text, "\\s+([,.;:!?])", "\\1")
+  text <- stringr::str_replace_all(text, "\\s+([\\)\\]\\}])", "\\1")
+  text <- stringr::str_replace_all(text, "([\\(\\[\\{])\\s+", "\\1")
+  text <- stringr::str_replace_all(text, "\\s+'", "'")
+  text <- stringr::str_replace_all(text, "\\s+", " ")
+  text <- stringr::str_squish(text)
+
+  text
+}
+
+
+parse_bom_word_tsv <- function(path, expected_book = NULL){
+
+  x <- readr::read_tsv(
+    path,
+    show_col_types = FALSE,
+    col_types = readr::cols(.default = readr::col_character())
+  )
+
+  required <- c("Citation", "wID")
+
+  missing_required <- setdiff(
+    required,
+    names(x)
+  )
+
+  if(length(missing_required) > 0){
+    stop(
+      "TSV file is missing required columns: ",
+      paste(missing_required, collapse = ", "),
+      "\nFile: ",
+      path
+    )
+  }
+
+  editions_found <- intersect(
+    edition_cols,
+    names(x)
+  )
+
+  if(length(editions_found) == 0){
+    stop(
+      "No edition columns found in TSV file: ",
+      path
+    )
+  }
+
+  x_long <- x %>%
+    tidyr::pivot_longer(
+      cols = dplyr::all_of(editions_found),
+      names_to = "translation",
+      values_to = "token"
+    ) %>%
+    dplyr::mutate(
+      token = clean_bom_token(token)
+    ) %>%
+    dplyr::filter(!is.na(token)) %>%
+    tidyr::extract(
+      Citation,
+      into = c("book", "chapter", "verse"),
+      regex = "^(.*)\\s+(\\d+):(\\d+)$",
+      remove = FALSE,
+      convert = TRUE
+    ) %>%
+    dplyr::mutate(
+      book = normalize_bom_book(book),
+      chapter = as.integer(chapter),
+      verse = as.integer(verse),
+      wID_num = suppressWarnings(as.numeric(wID))
+    )
+
+  if(!is.null(expected_book)){
+
+    unexpected_books <- x_long %>%
+      dplyr::filter(book != expected_book) %>%
+      dplyr::distinct(book)
+
+    if(nrow(unexpected_books) > 0){
+      warning(
+        "Unexpected book labels in ",
+        path,
+        ": ",
+        paste(unexpected_books$book, collapse = ", ")
+      )
+    }
+
+  }
+
+  x_long %>%
+    dplyr::arrange(
+      translation,
+      book,
+      chapter,
+      verse,
+      wID_num,
+      wID
+    ) %>%
+    dplyr::group_by(
+      translation,
+      book,
+      chapter,
+      verse
+    ) %>%
+    dplyr::summarise(
+      text = collapse_tokens_to_text(token),
+      n_tokens = dplyr::n(),
+      .groups = "drop"
+    ) %>%
+    dplyr::mutate(
+      corpus_id = "BOM"
+    ) %>%
+    dplyr::select(
+      corpus_id,
+      translation,
+      book,
+      chapter,
+      verse,
+      text,
+      n_tokens
+    )
+}
+```
+
+## 7. Parse all TSV files
+
+```{r parse-all-tsv}
+bom_all_versions <- purrr::map2_dfr(
+  bom_tsv_sources$local_path,
+  bom_tsv_sources$book,
+  parse_bom_word_tsv
+) %>%
+  dplyr::left_join(
+    bom_book_order %>%
+      dplyr::select(book, book_order),
+    by = "book"
+  ) %>%
+  dplyr::arrange(
+    translation,
+    book_order,
+    chapter,
+    verse
+  ) %>%
+  dplyr::select(
+    corpus_id,
+    translation,
+    book,
+    chapter,
+    verse,
+    text
+  )
+
+bom_all_versions %>%
+  dplyr::slice_head(n = 30)
+
+bom_all_versions %>%
+  dplyr::count(translation, name = "n_verses")
+```
+
+## 8. Sanity checks
+
+```{r sanity-checks}
+expected_chapters <- tibble::tribble(
+  ~book,              ~expected_chapters,
+  "1 Nephi",           22L,
+  "2 Nephi",           33L,
+  "Jacob",              7L,
+  "Enos",               1L,
+  "Jarom",              1L,
+  "Omni",               1L,
+  "Words of Mormon",    1L,
+  "Mosiah",            29L,
+  "Alma",              63L,
+  "Helaman",           16L,
+  "3 Nephi",           30L,
+  "4 Nephi",            1L,
+  "Mormon",             9L,
+  "Ether",             15L,
+  "Moroni",            10L
+)
+
+chapter_check <- bom_all_versions %>%
+  dplyr::distinct(translation, book, chapter) %>%
+  dplyr::count(translation, book, name = "observed_chapters") %>%
+  dplyr::left_join(
+    expected_chapters,
+    by = "book"
+  ) %>%
+  dplyr::mutate(
+    matches_expected = observed_chapters == expected_chapters
+  ) %>%
+  dplyr::left_join(
+    bom_book_order %>%
+      dplyr::select(book, book_order),
+    by = "book"
+  ) %>%
+  dplyr::arrange(
+    translation,
+    book_order
+  )
+
+chapter_check
+
+if(any(!chapter_check$matches_expected, na.rm = TRUE)){
+  warning(
+    "Some BOM edition/book chapter counts do not match expected LDS chapter counts. Inspect chapter_check."
+  )
+}
+
+empty_verses <- bom_all_versions %>%
+  dplyr::filter(is.na(text) | text == "")
+
+empty_verses
+
+verse_counts <- bom_all_versions %>%
+  dplyr::count(
+    translation,
+    book,
+    chapter,
+    name = "n_verses"
+  ) %>%
+  dplyr::left_join(
+    bom_book_order %>%
+      dplyr::select(book, book_order),
+    by = "book"
+  ) %>%
+  dplyr::arrange(
+    translation,
+    book_order,
+    chapter
+  )
+
+verse_counts %>%
+  dplyr::slice_head(n = 40)
+```
+
+## 9. Preview selected verses
+
+```{r preview-verses}
+bom_all_versions %>%
+  dplyr::filter(
+    book == "1 Nephi",
+    chapter == 1,
+    verse == 1
+  ) %>%
+  dplyr::arrange(translation)
+
+bom_all_versions %>%
+  dplyr::filter(
+    book == "Moroni",
+    chapter == 10,
+    verse == 34
+  ) %>%
+  dplyr::arrange(translation)
+```
+
+## 10. Write one CSV per edition
+
+```{r write-edition-csvs}
+bom_all_versions %>%
+  dplyr::group_split(translation) %>%
+  purrr::walk(function(df){
+
+    ed <- unique(df$translation)
+
+    out_path <- file.path(
+      raw_dir,
+      paste0("bom_", ed, ".csv")
+    )
+
+    readr::write_csv(
+      df %>%
+        dplyr::arrange(
+          book,
+          chapter,
+          verse
+        ) %>%
+        dplyr::select(
+          corpus_id,
+          translation,
+          book,
+          chapter,
+          verse,
+          text
+        ),
+      out_path
+    )
+
+    message("Wrote: ", out_path)
+
+  })
+```
+
+## 11. Write combined edition CSV
+
+```{r write-combined}
+combined_path <- file.path(
+  raw_dir,
+  "bom_all_editions.csv"
+)
+
+readr::write_csv(
+  bom_all_versions,
+  combined_path
+)
+
+cat("Wrote combined BOM edition file to:\n")
+cat(combined_path, "\n")
+```
+
+## 12. Create default bom.csv alias
+
+By default, downstream notebooks such as `31_Introduction_BOM.Rmd` look for:
+
+```text
+data/raw/bom.csv
+```
+
+This chunk writes the 2013 edition to `bom.csv` as the default modern edition.
+
+Change `default_bom_edition` if you want another default.
+
+```{r write-default-bom}
+default_bom_edition <- "1830"
+
+default_bom <- bom_all_versions %>%
+  dplyr::filter(translation == default_bom_edition) %>%
+  dplyr::arrange(
+    book,
+    chapter,
+    verse
+  ) %>%
+  dplyr::select(
+    corpus_id,
+    translation,
+    book,
+    chapter,
+    verse,
+    text
+  )
+
+readr::write_csv(
+  default_bom,
+  file.path(raw_dir, "bom.csv")
+)
+
+cat("Wrote default BOM edition to:\n")
+cat(file.path(raw_dir, "bom.csv"), "\n")
+```
+
+## 13. Output summary
+
+```{r output-summary}
+bom_summary_by_edition <- bom_all_versions %>%
+  dplyr::group_by(
+    translation
+  ) %>%
+  dplyr::summarise(
+    n_books = dplyr::n_distinct(book),
+    n_chapters = dplyr::n_distinct(paste(book, chapter)),
+    n_verses = dplyr::n(),
+    total_words = sum(stringr::str_count(text, "\\S+")),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(translation)
+
+bom_summary_by_edition
+
+bom_summary_by_book_edition <- bom_all_versions %>%
+  dplyr::group_by(
+    translation,
+    book
+  ) %>%
+  dplyr::summarise(
+    n_chapters = dplyr::n_distinct(chapter),
+    n_verses = dplyr::n(),
+    total_words = sum(stringr::str_count(text, "\\S+")),
+    .groups = "drop"
+  ) %>%
+  dplyr::left_join(
+    bom_book_order %>%
+      dplyr::select(book, book_order),
+    by = "book"
+  ) %>%
+  dplyr::arrange(
+    translation,
+    book_order
+  )
+
+bom_summary_by_book_edition
+```
+
+## 14. Next notebook
+
+After this notebook succeeds, run:
+
+```text
+31_Introduction_BOM.Rmd
+```
+
+That notebook consumes:
+
+```text
+data/raw/bom.csv
+```
+
+or one of the edition-specific files:
+
+```text
+data/raw/bom_1830.csv
+data/raw/bom_2013.csv
+```
+
+and produces:
+
+```text
+data/prepared/bom_chapter_docs.csv
+data/prepared/bom_book_docs.csv
+data/prepared/bom_mosiah_priority_docs.csv
+data/prepared/bom_target_collections.csv
+```

@@ -1,0 +1,15 @@
+author,work,short_work,year,source_type,gutenberg_id,local_file,doc_unit,expected_genre
+Jane Austen,Pride and Prejudice,Pride_and_Prejudice,1813,gutenberg,1342,NA,chapter,Fiction
+Jane Austen,Emma,Emma,1815,gutenberg,158,NA,chapter,Fiction
+Jane Austen,Persuasion,Persuasion,1817,gutenberg,105,NA,chapter,Fiction
+James Fenimore Cooper,The Pioneers,The_Pioneers,1823,gutenberg,2275,NA,chapter,Frontier_Fiction
+James Fenimore Cooper,The Last of the Mohicans,Last_of_the_Mohicans,1826,gutenberg,940,NA,chapter,Frontier_Fiction
+James Fenimore Cooper,The Prairie,The_Prairie,1827,gutenberg,6450,NA,chapter,Frontier_Fiction
+Walter Scott,Ivanhoe,Ivanhoe,1819,gutenberg,82,NA,chapter,Historical_Romance
+Walter Scott,Rob Roy,Rob_Roy,1817,gutenberg,7025,NA,chapter,Historical_Romance
+Walter Scott,The Talisman,The_Talisman,1825,gutenberg,1377,NA,chapter,Historical_Romance
+Ethan Smith,View of the Hebrews,View_of_the_Hebrews,1823,local,NA,ethan_smith/view_of_the_hebrews.txt,chapter,Religious_Prose
+Solomon Spaulding,Manuscript Story,Manuscript_Story,1812,local,NA,spaulding/manuscript_story.txt,chapter,Biblical_Imitation
+Solomon Spaulding,Conneaut Creek Manuscript,Conneaut_Creek,1812,local,NA,spaulding/conneaut_creek.txt,chapter,Biblical_Imitation
+Jonathan Edwards,Selected Sermons,Selected_Sermons,1741,local,NA,edwards/selected_sermons.txt,sermon,Sermon
+Alexander Campbell,The Christian Baptist,Christian_Baptist,1823,local_folder,NA,campbell/christian_baptist,article,Restoration_Prose

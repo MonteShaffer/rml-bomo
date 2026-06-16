@@ -165,6 +165,7 @@ config_pos_readability <- default_config(
     "pos",
     "punctuation",
     "sentence",
+    "word_length",
     "lexical",
     "readability"
   )
@@ -239,7 +240,21 @@ cons
 attr(cons, "summary")
 
 show_consensus_summary(cons)
+
+plot_consensus_scree(cons)
 ```
+
+```{r summarize findings}
+
+isa40_findings <- summarize_findings(
+  result_pos_readability,
+  doc_id = "Isaiah_40",
+  k = 10
+)
+
+```
+
+
 
 ## 10. Feature winners for Isaiah 40
 

@@ -153,6 +153,7 @@ config_genre <- default_config(
     "pos",
     "punctuation",
     "sentence",
+    "word_length",
     "lexical",
     "readability"
   )

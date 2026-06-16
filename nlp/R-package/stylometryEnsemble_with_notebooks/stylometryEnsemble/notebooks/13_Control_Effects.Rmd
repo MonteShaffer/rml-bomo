@@ -1,0 +1,1134 @@
+---
+title: "13 - Control Effects"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+
+options(
+  tibble.width = Inf,
+  tibble.print_max = 250
+)
+```
+
+## 1. Purpose
+
+This notebook tests whether Isaiah chapter attributions are better explained by:
+
+1. **Specific book / section collections**, or
+2. **Macro-genre control collections**.
+
+The target set allows both collection types to compete directly:
+
+```text
+d = source document, such as Isaiah_12
+c = target collection, such as Psalms, Isaiah_40_55, or GENRE_Poetic_Wisdom
+```
+
+If a genre collection wins, the result is likely a **genre effect**.
+
+If a specific book or Isaiah section wins, the result may reflect a more specific **book/section/authorship-style effect**.
+
+## 2. User parameters
+
+```{r parameters}
+target_books <- c(
+  "1 Samuel",
+  "2 Samuel",
+  "1 Kings",
+  "2 Kings",
+  "Psalms",
+  "Proverbs",
+  "Job",
+  "Song of Solomon",
+  "Ecclesiastes",
+  "Jeremiah",
+  "Ezekiel",
+  "Hosea",
+  "Amos"
+)
+
+narrative_books <- c(
+  "1 Samuel",
+  "2 Samuel",
+  "1 Kings",
+  "2 Kings"
+)
+
+poetic_wisdom_books <- c(
+  "Psalms",
+  "Proverbs",
+  "Job",
+  "Song of Solomon",
+  "Ecclesiastes"
+)
+
+prophetic_books <- c(
+  "Jeremiah",
+  "Ezekiel",
+  "Hosea",
+  "Amos"
+)
+
+isaiah_sections_to_include <- c(
+  "Isaiah_1_35",
+  "Isaiah_36_39",
+  "Isaiah_40_55",
+  "Isaiah_56_66"
+)
+
+include_feature_classes <- c(
+  "char",
+  "word",
+  "stem",
+  "function_words",
+  "pos",
+  "punctuation",
+  "sentence",
+  "word_length",
+  "lexical",
+  "readability"
+)
+
+pos_n <- c(3, 4, 5)
+
+k_neighbors <- 10
+```
+
+## 3. Load prepared documents
+
+```{r load-prepared}
+chapter_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_chapter_docs.csv")
+section_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_section_docs.csv")
+raw_path     <- file.path(STYLO_ROOT, "data", "raw", "kjv.csv")
+
+if(file.exists(chapter_path) && file.exists(section_path)){
+
+  chapter_docs <- readr::read_csv(chapter_path, show_col_types = FALSE)
+  section_docs <- readr::read_csv(section_path, show_col_types = FALSE)
+
+} else {
+
+  if(!file.exists(raw_path)){
+    stop("Could not find data/raw/kjv.csv. Run 01_Introduction.Rmd first.")
+  }
+
+  kjv <- readr::read_csv(raw_path, show_col_types = FALSE)
+  prepared <- prepare_kjv_docs(kjv)
+
+  chapter_docs <- prepared$chapter_docs
+  section_docs <- prepared$section_docs
+
+  dir.create(file.path(STYLO_ROOT, "data", "prepared"), recursive = TRUE, showWarnings = FALSE)
+
+  readr::write_csv(chapter_docs, chapter_path)
+  readr::write_csv(section_docs, section_path)
+}
+```
+
+## 4. Macro-genre lookup
+
+```{r macro-genre-lookup}
+macro_genre_lookup <- tibble::tibble(
+  book = c(
+    narrative_books,
+    poetic_wisdom_books,
+    prophetic_books
+  ),
+  macro_genre_control = c(
+    rep("Narrative", length(narrative_books)),
+    rep("Poetic_Wisdom", length(poetic_wisdom_books)),
+    rep("Prophetic", length(prophetic_books))
+  )
+)
+
+macro_genre_lookup
+```
+
+## 5. Attach macro genre to chapters
+
+```{r attach-genre}
+chapter_docs_genre <- chapter_docs %>%
+  dplyr::left_join(
+    macro_genre_lookup,
+    by = "book"
+  )
+
+chapter_docs_genre %>%
+  dplyr::count(book, macro_genre_control) %>%
+  dplyr::arrange(macro_genre_control, book)
+```
+
+## 6. Build collection targets
+
+We create three kinds of target collections:
+
+1. Isaiah section collections.
+2. Book collections.
+3. Macro-genre control collections.
+
+These are **concatenated collections**, not centroids.
+
+```{r collection-builders}
+make_collection_docs <- function(
+    docs,
+    group_cols,
+    id_prefix = "",
+    collection_type = "collection"){
+
+  docs %>%
+    dplyr::group_by(dplyr::across(dplyr::all_of(group_cols))) %>%
+    dplyr::summarize(
+      text = paste(text, collapse = " "),
+      n_source_docs = dplyr::n(),
+      n_verses = sum(n_verses, na.rm = TRUE),
+      .groups = "drop"
+    ) %>%
+    dplyr::mutate(
+      doc_id = paste0(
+        id_prefix,
+        do.call(
+          paste,
+          c(
+            dplyr::across(dplyr::all_of(group_cols)),
+            sep = "_"
+          )
+        )
+      ),
+      book = doc_id,
+      chapter = NA_integer_,
+      section = doc_id,
+      macro_genre = NA_character_,
+      collection_type = collection_type
+    ) %>%
+    dplyr::relocate(
+      doc_id,
+      book,
+      chapter,
+      section,
+      macro_genre,
+      collection_type,
+      n_source_docs,
+      n_verses,
+      text
+    )
+}
+```
+
+### 6.1 Isaiah section targets
+
+```{r isaiah-section-targets}
+
+if("books" %in% names(section_docs)){
+
+  section_docs <- section_docs %>%
+    dplyr::rename(
+      book = books
+    )
+
+}
+
+
+target_cols <- c(
+  "corpus_id",
+  "translation",
+  "doc_id",
+  "book",
+  "chapter",
+  "section",
+  "macro_genre",
+  "collection_type",
+  "n_source_docs",
+  "n_verses",
+  "text"
+)
+
+
+isaiah_section_targets <- section_docs %>%
+  dplyr::filter(doc_id %in% isaiah_sections_to_include) %>%
+  dplyr::mutate(
+    chapter = NA_integer_,
+    collection_type = "isaiah_section",
+    n_source_docs = n_chapters
+  ) %>%
+  dplyr::select(
+    corpus_id,
+    translation,
+    doc_id,
+    book,
+    chapter,
+    section,
+    macro_genre,
+    collection_type,
+    n_source_docs,
+    n_verses,
+    text
+  )
+
+
+isaiah_section_targets <- isaiah_section_targets %>%
+  dplyr::select(
+    dplyr::all_of(target_cols)
+  )
+
+isaiah_section_targets
+```
+
+### 6.2 Book-level targets
+
+```{r book-targets}
+book_targets <- chapter_docs_genre %>%
+  dplyr::filter(book %in% target_books) %>%
+  make_collection_docs(
+    group_cols = c("book"),
+    id_prefix = "BOOK_",
+    collection_type = "book"
+  )
+
+
+
+book_targets <- book_targets %>%
+  dplyr::mutate(
+    corpus_id = "KJV",
+    translation = "KJV"
+  ) %>%
+  dplyr::select(
+    dplyr::all_of(target_cols)
+  )
+
+
+
+
+
+book_targets
+```
+
+### 6.3 Macro-genre control targets
+
+Isaiah is excluded from the macro-genre controls to avoid circularity.
+
+```{r genre-targets}
+genre_targets <- chapter_docs_genre %>%
+  dplyr::filter(
+    book %in% target_books,
+    !is.na(macro_genre_control)
+  ) %>%
+  make_collection_docs(
+    group_cols = c("macro_genre_control"),
+    id_prefix = "GENRE_",
+    collection_type = "genre_control"
+  )
+
+genre_targets <- genre_targets %>%
+  dplyr::mutate(
+    corpus_id = "KJV",
+    translation = "KJV",
+    macro_genre = macro_genre_control
+  ) %>%
+  dplyr::select(
+    dplyr::all_of(target_cols)
+  )
+
+
+genre_targets
+```
+
+### 6.4 Combined target collections
+
+```{r combined-targets}
+target_collections <- dplyr::bind_rows(
+  isaiah_section_targets,
+  book_targets,
+  genre_targets
+)
+
+target_collections
+```
+
+## 7. Configure ensemble
+
+```{r config}
+config_control <- default_config(
+  include = include_feature_classes
+)
+
+config_control$pos_n <- pos_n
+
+if(exists("ud_model")){
+  config_control$pos_model <- ud_model
+}
+
+config_control$weights
+
+
+
+```
+
+## 8. Run control-effect ensemble
+
+```{r run-control-ensemble}
+
+chapter_docs <- chapter_docs %>%
+  dplyr::select(
+    -dplyr::any_of("books")
+  )
+
+source_cols <- c(
+  "corpus_id",
+  "translation",
+  "doc_id",
+  "book",
+  "chapter",
+  "section",
+  "macro_genre",
+  "n_verses",
+  "text"
+)
+
+chapter_docs_for_control <- chapter_docs %>%
+  dplyr::select(
+    dplyr::all_of(source_cols)
+  )
+
+target_collections_for_control <- target_collections %>%
+  dplyr::select(
+    dplyr::all_of(source_cols)
+  )
+```
+
+
+```{r work}
+
+result_control_effects <- run_stylometry_ensemble(
+  source_docs = chapter_docs_for_control,
+  target_docs = target_collections_for_control,
+  config = config_control,
+  k_neighbors = k_neighbors,
+  use_cache = TRUE
+)
+
+show_result_summary(result_control_effects)
+show_weights(result_control_effects)
+```
+
+## 9. Isaiah chapter consensus against competing collections
+
+```{r isaiah-control-consensus}
+isaiah_doc_ids <- chapter_docs %>%
+  dplyr::filter(book == "Isaiah") %>%
+  dplyr::arrange(chapter) %>%
+  dplyr::pull(doc_id)
+
+isaiah_chapters <- chapter_docs %>%
+  dplyr::filter(book == "Isaiah") %>%
+  dplyr::arrange(chapter) %>%
+  dplyr::select(
+    doc_id,
+    chapter,
+    actual_section = section,
+    n_verses
+  )
+
+
+target_collections <- target_collections %>%
+  dplyr::mutate(
+    target_family = dplyr::case_when(
+      collection_type == "genre_control"  ~ "GENRE_CONTROL",
+      collection_type == "book"           ~ "BOOK_COLLECTION",
+      collection_type == "isaiah_section" ~ "ISAIAH_SECTION",
+      TRUE                                ~ "OTHER"
+    )
+  )
+
+control_consensus <- purrr::map_dfr(
+  isaiah_doc_ids,
+  function(id){
+
+    cons <- show_consensus(
+      result_control_effects,
+      doc_id = id
+    )
+
+    attr(cons, "summary")
+  }
+) %>%
+  dplyr::left_join(
+    isaiah_chapters,
+    by = "doc_id"
+  ) %>%
+  dplyr::left_join(
+    target_collections %>%
+      dplyr::select(
+        winner = doc_id,
+        winner_collection_type = collection_type,
+        winner_target_family = target_family
+      ),
+    by = "winner"
+  ) %>%
+  dplyr::relocate(
+    doc_id,
+    chapter,
+    actual_section,
+    winner,
+    winner_collection_type,
+    winner_target_family
+  ) %>%
+  dplyr::mutate(
+    winner_pct_votes_pct = 100 * winner_pct_votes,
+    winner_weighted_pct_votes_pct = 100 * winner_weighted_pct_votes,
+    vote_margin_pct = 100 * vote_margin,
+    weighted_vote_margin_pct = 100 * weighted_vote_margin
+  ) %>%
+  dplyr::arrange(chapter)
+
+control_consensus
+```
+
+## 10. Winner-family summary
+
+```{r winner-family-summary}
+control_consensus %>%
+  dplyr::count(
+    actual_section,
+    winner_target_family,
+    winner_collection_type,
+    name = "n_chapters"
+  ) %>%
+  dplyr::group_by(actual_section) %>%
+  dplyr::mutate(
+    pct_chapters = n_chapters / sum(n_chapters)
+  ) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(
+    actual_section,
+    dplyr::desc(n_chapters)
+  )
+```
+
+## 11. Genre-control wins
+
+```{r genre-control-wins}
+genre_control_wins <- control_consensus %>%
+  dplyr::filter(winner_target_family == "GENRE_CONTROL") %>%
+  dplyr::select(
+    chapter,
+    doc_id,
+    actual_section,
+    winner,
+    winner_pct_votes_pct,
+    vote_margin_pct,
+    doc_entropy,
+    effective_targets
+  )
+
+genre_control_wins
+```
+
+## 12. Isaiah-section wins
+
+```{r isaiah-section-wins}
+isaiah_section_wins <- control_consensus %>%
+  dplyr::filter(winner_target_family == "ISAIAH_SECTION") %>%
+  dplyr::select(
+    chapter,
+    doc_id,
+    actual_section,
+    winner,
+    winner_pct_votes_pct,
+    vote_margin_pct,
+    doc_entropy,
+    effective_targets
+  )
+
+isaiah_section_wins
+```
+
+## 13. Book-collection wins
+
+```{r book-collection-wins}
+book_collection_wins <- control_consensus %>%
+  dplyr::filter(winner_target_family == "BOOK_COLLECTION") %>%
+  dplyr::select(
+    chapter,
+    doc_id,
+    actual_section,
+    winner,
+    winner_pct_votes_pct,
+    vote_margin_pct,
+    doc_entropy,
+    effective_targets
+  )
+
+book_collection_wins
+```
+
+## 14. Nearest target table for selected chapters
+
+```{r selected-nearest}
+selected_docs <- c(
+  "Isaiah_12",
+  "Isaiah_14",
+  "Isaiah_36",
+  "Isaiah_37",
+  "Isaiah_40",
+  "Isaiah_53",
+  "Isaiah_55",
+  "Isaiah_56",
+  "Isaiah_61",
+  "Isaiah_66"
+)
+
+result_control_effects$nearest_targets %>%
+  dplyr::filter(doc_id %in% selected_docs) %>%
+  dplyr::left_join(
+    target_collections %>%
+      dplyr::select(
+        neighbor_doc_id = doc_id,
+        collection_type,
+        target_family
+      ),
+    by = "neighbor_doc_id"
+  ) %>%
+  dplyr::arrange(doc_id, rank)
+```
+
+
+```{r similarity}
+nearest_targets_aug <- result_control_effects$nearest_targets %>%
+
+  dplyr::left_join(
+
+    target_collections %>%
+
+      dplyr::select(
+
+        neighbor_doc_id = doc_id,
+
+        collection_type,
+
+        target_family
+
+      ),
+
+    by = "neighbor_doc_id"
+
+  )
+
+family_similarity <- nearest_targets_aug %>%
+
+  dplyr::group_by(
+
+    doc_id,
+
+    target_family
+
+  ) %>%
+
+  dplyr::summarise(
+
+    similarity = sum(similarity),
+
+    .groups="drop"
+
+  ) %>%
+
+  dplyr::group_by(
+
+    doc_id
+
+  ) %>%
+
+  dplyr::mutate(
+
+    pct_similarity =
+
+      similarity /
+
+      sum(similarity)
+
+  ) %>%
+
+  dplyr::ungroup()
+
+
+family_similarity
+
+
+control_vote_table <- result_control_effects$nearest_targets %>%
+
+  dplyr::left_join(
+
+    target_collections %>%
+
+      dplyr::select(
+
+        neighbor_doc_id = doc_id,
+
+        collection_type,
+
+        target_family
+
+      ),
+
+    by="neighbor_doc_id"
+
+  )
+
+control_vote_table %>%
+
+  group_by(
+
+    doc_id,
+
+    target_family
+
+  )
+
+control_vote_table
+
+
+```
+
+
+## 15. Detailed findings for selected chapters
+
+```{r detailed-findings-selected}
+for(id in selected_docs){
+
+  if(id %in% isaiah_doc_ids){
+
+    cat("\n\n============================================================\n")
+    cat(id, "\n")
+    cat("============================================================\n\n")
+
+    print(
+      summarize_findings(
+        result_control_effects,
+        doc_id = id,
+        k = k_neighbors,
+        plot = TRUE
+      )
+    )
+  }
+}
+```
+
+## 16. Genre-control profile table
+
+For each Isaiah chapter, show vote shares going to target-family classes.
+
+```{r target-family-vote-profile}
+control_vote_table <- purrr::map_dfr(
+  isaiah_doc_ids,
+  function(id){
+
+    show_consensus(
+      result_control_effects,
+      doc_id = id
+    ) %>%
+      dplyr::mutate(doc_id = id)
+  }
+) %>%
+  dplyr::left_join(
+    target_collections %>%
+      dplyr::select(
+        neighbor_doc_id = doc_id,
+        collection_type,
+        target_family
+      ),
+    by = "neighbor_doc_id"
+  ) %>%
+  dplyr::left_join(
+    isaiah_chapters %>%
+      dplyr::select(doc_id, chapter, actual_section),
+    by = "doc_id"
+  )
+
+target_family_vote_profile <- control_vote_table %>%
+  dplyr::group_by(
+    doc_id,
+    chapter,
+    actual_section,
+    target_family
+  ) %>%
+  dplyr::summarize(
+    votes = sum(votes, na.rm = TRUE),
+    weighted_votes = sum(weighted_votes, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::group_by(doc_id) %>%
+  dplyr::mutate(
+    pct_votes = votes / sum(votes),
+    weighted_pct_votes = weighted_votes / sum(weighted_votes)
+  ) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(chapter, dplyr::desc(pct_votes))
+
+target_family_vote_profile
+```
+
+
+```{r bar}
+
+target_family_vote_profile <- target_family_vote_profile %>%
+
+  dplyr::mutate(
+
+    target_family = factor(
+
+      target_family,
+
+      levels = c(
+
+        "ISAIAH_SECTION",
+
+        "BOOK_COLLECTION",
+
+        "GENRE_CONTROL"
+
+      )
+
+    )
+
+  )
+
+
+
+target_family_vote_profile %>%
+
+  ggplot2::ggplot(
+
+    ggplot2::aes(
+
+      x = factor(chapter),
+
+      y = pct_votes,
+
+      fill = target_family
+
+    )
+
+  ) +
+
+  ggplot2::geom_col(
+
+    width = 0.9
+
+  ) +
+
+  ggplot2::facet_grid(
+
+    actual_section ~ .,
+
+    scales = "free_x",
+
+    space = "free_x"
+
+  ) +
+
+  ggplot2::scale_y_continuous(
+
+    labels = scales::percent_format()
+
+  ) +
+
+  ggplot2::labs(
+
+    title =
+
+      "Control-effect vote profile by Isaiah chapter",
+
+    subtitle =
+
+      "Genre controls, book collections, and Isaiah sections compete as targets.",
+
+    x =
+
+      "Isaiah chapter",
+
+    y =
+
+      "Vote share",
+
+    fill =
+
+      "Target family"
+
+  ) +
+
+  ggplot2::theme_minimal() +
+
+  ggplot2::theme(
+
+    legend.position = "top",
+
+    panel.grid.minor = ggplot2::element_blank(),
+
+    
+
+  )
+
+
+
+target_family_vote_profile %>%
+
+group_by(
+
+   actual_section,
+
+   target_family
+
+) %>%
+
+summarise(
+
+   avg_vote_share = mean(pct_votes),
+
+   .groups="drop"
+
+) %>%
+
+mutate(
+
+   avg_vote_share =
+
+      scales::percent(
+
+         avg_vote_share,
+
+         accuracy=1
+
+      )
+
+)
+
+```
+
+
+
+## 17. Target-family vote heatmap
+
+```{r target-family-heatmap}
+target_family_vote_profile %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = target_family,
+      y = factor(chapter),
+      fill = pct_votes
+    )
+  ) +
+  ggplot2::geom_tile() +
+  ggplot2::scale_fill_viridis_c(
+    labels = scales::percent_format()
+  ) +
+  ggplot2::facet_grid(
+    actual_section ~ .,
+    scales = "free_y",
+    space = "free_y"
+  ) +
+  ggplot2::labs(
+    title = "Control-effect vote profile by target family",
+    subtitle = "Genre controls, Isaiah sections, and book collections compete as target collections.",
+    x = "Target family",
+    y = "Isaiah chapter",
+    fill = "Vote share"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+## 18. Winner trajectory across Isaiah
+
+```{r winner-trajectory}
+control_consensus %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = chapter,
+      y = winner_pct_votes_pct,
+      color = winner_target_family,
+      shape = winner_collection_type
+    )
+  ) +
+  ggplot2::geom_point(size = 3) +
+  ggplot2::geom_line(alpha = 0.45) +
+  ggplot2::facet_grid(
+    actual_section ~ .,
+    scales = "free_x",
+    space = "free_x"
+  ) +
+  ggplot2::labs(
+    title = "Winning control target across Isaiah",
+    subtitle = "Point color indicates whether the winner is genre, book, or Isaiah section.",
+    x = "Isaiah chapter",
+    y = "Winner vote share (%)",
+    color = "Target family",
+    shape = "Collection type"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+## 19. Compare control-effect result to Isaiah-section-only result
+
+```{r section-only-comparison}
+result_section_only <- run_stylometry_ensemble(
+  source_docs = chapter_docs,
+  target_docs = section_docs,
+  config = config_control,
+  k_neighbors = k_neighbors,
+  use_cache = TRUE
+)
+
+section_only_consensus <- purrr::map_dfr(
+  isaiah_doc_ids,
+  function(id){
+
+    cons <- show_consensus(
+      result_section_only,
+      doc_id = id
+    )
+
+    attr(cons, "summary")
+  }
+) %>%
+  dplyr::left_join(
+    isaiah_chapters,
+    by = "doc_id"
+  ) %>%
+  dplyr::relocate(
+    doc_id,
+    chapter,
+    actual_section,
+    winner
+  ) %>%
+  dplyr::mutate(
+    section_only_winner = winner,
+    section_only_vote_pct = 100 * winner_pct_votes
+  ) %>%
+  dplyr::select(
+    doc_id,
+    chapter,
+    actual_section,
+    section_only_winner,
+    section_only_vote_pct
+  )
+
+control_vs_section_only <- control_consensus %>%
+  dplyr::select(
+    doc_id,
+    chapter,
+    actual_section,
+    control_winner = winner,
+    control_winner_family = winner_target_family,
+    control_winner_type = winner_collection_type,
+    control_vote_pct = winner_pct_votes_pct
+  ) %>%
+  dplyr::left_join(
+    section_only_consensus,
+    by = c("doc_id", "chapter", "actual_section")
+  ) %>%
+  dplyr::arrange(chapter)
+
+control_vs_section_only
+```
+
+## 20. Chapters where control changes interpretation
+
+```{r control-changes}
+control_vs_section_only %>%
+  dplyr::filter(
+    control_winner_family != "ISAIAH_SECTION"
+  )
+```
+
+## 21. Final summary
+
+```{r final-summary}
+cat("\nControl Effects Summary\n")
+cat("=======================\n\n")
+
+cat("Target collections:\n")
+print(
+  target_collections %>%
+    dplyr::select(doc_id, collection_type, target_family, n_source_docs, n_verses) %>%
+    dplyr::arrange(target_family, doc_id),
+  width = 120
+)
+
+cat("\nWinner-family summary:\n")
+print(
+  control_consensus %>%
+    dplyr::count(actual_section, winner_target_family, winner_collection_type, name = "n_chapters") %>%
+    dplyr::group_by(actual_section) %>%
+    dplyr::mutate(pct_chapters = n_chapters / sum(n_chapters)) %>%
+    dplyr::ungroup(),
+  width = 120
+)
+
+cat("\nGenre-control wins:\n")
+print(genre_control_wins, width = 120)
+
+cat("\nBook-collection wins:\n")
+print(book_collection_wins, width = 120)
+
+cat("\nIsaiah-section wins:\n")
+print(isaiah_section_wins, width = 120)
+```
+
+## 22. Export outputs
+
+```{r export}
+out_dir <- file.path(STYLO_CACHE, "output", "control_effects")
+
+dir.create(
+  out_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+readr::write_csv(
+  target_collections,
+  file.path(out_dir, "target_collections.csv")
+)
+
+readr::write_csv(
+  control_consensus,
+  file.path(out_dir, "control_consensus.csv")
+)
+
+readr::write_csv(
+  control_vote_table,
+  file.path(out_dir, "control_vote_table.csv")
+)
+
+readr::write_csv(
+  target_family_vote_profile,
+  file.path(out_dir, "target_family_vote_profile.csv")
+)
+
+readr::write_csv(
+  control_vs_section_only,
+  file.path(out_dir, "control_vs_section_only.csv")
+)
+
+readr::write_csv(
+  genre_control_wins,
+  file.path(out_dir, "genre_control_wins.csv")
+)
+
+readr::write_csv(
+  book_collection_wins,
+  file.path(out_dir, "book_collection_wins.csv")
+)
+
+readr::write_csv(
+  isaiah_section_wins,
+  file.path(out_dir, "isaiah_section_wins.csv")
+)
+```

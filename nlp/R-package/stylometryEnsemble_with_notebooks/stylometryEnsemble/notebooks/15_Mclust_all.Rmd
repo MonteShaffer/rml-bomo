@@ -1,0 +1,1155 @@
+---
+title: "15 - Mclust All Chapters"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+
+options(
+  tibble.width = Inf,
+  tibble.print_max = 300
+)
+```
+
+## 1. Purpose
+
+This notebook extends the `mclust` experiment beyond Isaiah and examines **all available chapters** in the current analysis corpus.
+
+The question is:
+
+```text
+Across 520+ biblical chapters, how many broad stylometric populations are naturally supported?
+```
+
+We test:
+
+```text
+G = 1 through G = 9
+```
+
+and evaluate whether clusters align with:
+
+- macro genre,
+- book,
+- Isaiah sections,
+- poetic/wisdom books,
+- narrative books,
+- prophetic books.
+
+This provides a broader control context for the Isaiah-only result.
+
+## 2. Parameters
+
+```{r parameters}
+include_feature_classes <- c(
+  "function_words",
+  #"pos",
+  "punctuation",
+  "sentence",
+  "word_length",
+  "lexical",
+  "readability"
+)
+
+# where is char/word pos
+
+pos_n <- c(3, 4, 5)
+
+mclust_G <- 1:9
+
+max_pcs_for_mclust <- 12
+
+preferred_n_pcs <- 6
+
+comparison_books <- c(
+  "Isaiah",
+  "Psalms",
+  "Job",
+  "Proverbs",
+  "Song of Solomon",
+  "Ecclesiastes",
+  "Jeremiah",
+  "Ezekiel",
+  "Hosea",
+  "Amos",
+  "1 Samuel",
+  "2 Samuel",
+  "1 Kings",
+  "2 Kings"
+)
+
+set.seed(1234)
+mclust_G
+```
+
+## 3. Packages
+
+```{r packages}
+if(!requireNamespace("mclust", quietly = TRUE)){
+  install.packages("mclust")
+}
+
+if(!requireNamespace("cluster", quietly = TRUE)){
+  install.packages("cluster")
+}
+
+library(mclust)
+library(cluster)
+```
+
+## 4. Load prepared documents
+
+```{r load-prepared}
+chapter_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_chapter_docs.csv")
+section_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_section_docs.csv")
+raw_path     <- file.path(STYLO_ROOT, "data", "raw", "kjv.csv")
+
+if(file.exists(chapter_path) && file.exists(section_path)){
+
+  chapter_docs <- readr::read_csv(chapter_path, show_col_types = FALSE)
+  section_docs <- readr::read_csv(section_path, show_col_types = FALSE)
+
+} else {
+
+  if(!file.exists(raw_path)){
+    stop("Could not find data/raw/kjv.csv. Run 01_Introduction.Rmd first.")
+  }
+
+  kjv <- readr::read_csv(raw_path, show_col_types = FALSE)
+  prepared <- prepare_kjv_docs(kjv)
+
+  chapter_docs <- prepared$chapter_docs
+  section_docs <- prepared$section_docs
+
+  dir.create(file.path(STYLO_ROOT, "data", "prepared"), recursive = TRUE, showWarnings = FALSE)
+
+  readr::write_csv(chapter_docs, chapter_path)
+  readr::write_csv(section_docs, section_path)
+}
+
+if("books" %in% names(chapter_docs)){
+  chapter_docs <- chapter_docs %>%
+    dplyr::select(-books)
+}
+
+if("books" %in% names(section_docs)){
+  section_docs <- section_docs %>%
+    dplyr::rename(book = books)
+}
+```
+
+## 5. Macro genre normalization
+
+```{r macro-genre}
+macro_genre_lookup <- tibble::tribble(
+  ~book,              ~macro_genre_control,
+  "1 Samuel",         "Narrative",
+  "2 Samuel",         "Narrative",
+  "1 Kings",          "Narrative",
+  "2 Kings",          "Narrative",
+
+  "Psalms",           "Poetic_Wisdom",
+  "Job",              "Poetic_Wisdom",
+  "Proverbs",         "Poetic_Wisdom",
+  "Song of Solomon",  "Poetic_Wisdom",
+  "Ecclesiastes",     "Poetic_Wisdom",
+
+  "Isaiah",           "Prophetic",
+  "Jeremiah",         "Prophetic",
+  "Ezekiel",          "Prophetic",
+  "Hosea",            "Prophetic",
+  "Amos",             "Prophetic"
+)
+
+chapter_docs <- chapter_docs %>%
+  dplyr::left_join(
+    macro_genre_lookup,
+    by = "book"
+  ) %>%
+  dplyr::mutate(
+    macro_genre = dplyr::coalesce(
+      macro_genre_control,
+      macro_genre
+    )
+  ) %>%
+  dplyr::select(-dplyr::any_of("macro_genre_control"))
+
+chapter_docs %>%
+  dplyr::count(book, macro_genre) %>%
+  dplyr::arrange(macro_genre, book)
+```
+
+## 6. Analysis corpus
+
+```{r analysis-corpus}
+analysis_docs <- chapter_docs %>%
+  dplyr::filter(book %in% comparison_books) %>%
+  dplyr::arrange(book, chapter)
+
+analysis_meta <- analysis_docs %>%
+  dplyr::select(
+    doc_id,
+    corpus_id,
+    translation,
+    book,
+    chapter,
+    section,
+    macro_genre,
+    n_verses
+  ) %>%
+  dplyr::mutate(
+    is_isaiah = book == "Isaiah",
+    isaiah_section = dplyr::if_else(
+      book == "Isaiah",
+      section,
+      NA_character_
+    )
+  )
+
+analysis_meta %>%
+  dplyr::count(book, macro_genre)
+
+nrow(analysis_docs)
+```
+
+## 7. Configure ensemble
+
+```{r config}
+config_all_mclust <- default_config(
+  include = include_feature_classes
+)
+
+config_all_mclust$pos_n <- pos_n
+
+if(exists("ud_model")){
+  config_all_mclust$pos_model <- ud_model
+}
+
+config_all_mclust$weights
+
+config_equal <- config_all_mclust
+
+config_equal$weights <- c(
+  function_words = 1,
+  punctuation    = 1,
+  sentence       = 1,
+  word_length    = 1,
+  lexical        = 1,
+  readability    = 1
+)
+
+
+config_equal$weights <- config_equal$weights / sum(config_equal$weights)
+config_equal$weights
+
+
+config_byfeature <- config_all_mclust
+config_byfeature$weights <- c(
+  function_words = 0.832,
+  punctuation    = 0.071,
+  sentence       = 0.031,
+  word_length    = 0.031,
+  lexical        = 0.019,
+  readability    = 0.016
+)
+
+config_byfeature$weights <- config_byfeature$weights / sum(config_byfeature$weights)
+config_byfeature$weights
+
+
+
+
+config_freq_only <- config_all_mclust
+
+config_freq_only$use_tfidf_function_words <- FALSE
+
+
+
+```
+
+# Part A: All-chapter similarity space
+
+## 8. Run chapter-to-chapter ensemble
+
+```{r count features}
+count_features <- function(x){
+
+  if(is.matrix(x) || is.data.frame(x)){
+
+    return(ncol(x))
+
+  }
+
+  if(is.list(x)){
+
+    return(
+
+      sum(
+
+        purrr::map_int(
+
+          x,
+
+          count_features
+
+        )
+
+      )
+
+    )
+
+  }
+
+  0L
+
+}
+
+
+show_feature_counts <- function(feature_sets){
+
+  out <- tibble::tibble(
+
+    feature_class = names(feature_sets),
+
+    n_features = purrr::map_int(
+
+      feature_sets,
+
+      count_features
+
+    )
+
+  ) %>%
+
+  dplyr::mutate(
+
+    pct_features =
+
+      n_features /
+
+      sum(n_features),
+
+    pct_features =
+
+      scales::percent(
+
+        pct_features,
+
+        accuracy = 0.1
+
+      )
+
+  ) %>%
+
+  dplyr::arrange(
+
+    dplyr::desc(n_features)
+
+  )
+
+  total_row <- tibble::tibble(
+
+    feature_class = "TOTAL",
+
+    n_features = sum(out$n_features),
+
+    pct_features = "100.0%"
+
+  )
+
+  dplyr::bind_rows(
+
+    out,
+
+    total_row
+
+  )
+
+}
+```
+
+```{r run-ensemble}
+result_all_mclust <- run_stylometry_ensemble(
+  source_docs = analysis_docs,
+  target_docs = analysis_docs,
+  config = config_all_mclust,
+  #config = config_equal,
+  #config = config_byfeature,
+  #config = config_freq_only,
+  k_neighbors = 10,
+  use_cache = TRUE
+)
+
+show_result_summary(result_all_mclust)
+show_feature_counts(
+  result_all_mclust$feature_sets
+)
+```
+
+## 9. Build similarity matrix
+
+```{r similarity-matrix}
+S_all <- as.matrix(result_all_mclust$overall_similarity)
+
+S_all[is.na(S_all)] <- 0
+S_all[is.nan(S_all)] <- 0
+S_all[is.infinite(S_all)] <- 0
+
+S_all <- S_all[analysis_meta$doc_id, analysis_meta$doc_id, drop = FALSE]
+
+dim(S_all)
+```
+
+## 10. PCA helper
+
+```{r pca-helper}
+processPCA <- function(
+    X,
+    metadata = NULL,
+    center = TRUE,
+    scale. = TRUE){
+
+  X <- as.matrix(X)
+
+  X[is.na(X)] <- 0
+  X[is.nan(X)] <- 0
+  X[is.infinite(X)] <- 0
+
+  feature_var <- apply(X, 2, stats::var, na.rm = TRUE)
+  keep <- is.finite(feature_var) & feature_var > 0
+
+  X <- X[, keep, drop = FALSE]
+
+  pca <- stats::prcomp(
+    X,
+    center = center,
+    scale. = scale.
+  )
+
+  eig <- pca$sdev^2
+
+  variance <- tibble::tibble(
+    pc = paste0("PC", seq_along(eig)),
+    dimension = seq_along(eig),
+    eigenvalue = eig,
+    prop_variance = eig / sum(eig),
+    pct_variance = 100 * eig / sum(eig),
+    cumulative_prop_variance = cumsum(eig / sum(eig)),
+    cumulative_pct_variance = 100 * cumsum(eig / sum(eig))
+  )
+
+  scores <- as.data.frame(pca$x) %>%
+    tibble::rownames_to_column("doc_id")
+
+  if(!is.null(metadata)){
+    scores <- scores %>%
+      dplyr::left_join(
+        metadata,
+        by = "doc_id"
+      )
+  }
+
+  loadings <- as.data.frame(pca$rotation) %>%
+    tibble::rownames_to_column("feature")
+
+  list(
+    X = X,
+    pca = pca,
+    scores = scores,
+    loadings = loadings,
+    variance = variance
+  )
+}
+```
+
+## 11. PCA on all-chapter similarity profiles
+
+```{r all-similarity-pca}
+all_sim_pca <- processPCA(
+  S_all,
+  metadata = analysis_meta,
+  center = TRUE,
+  scale. = TRUE
+)
+
+all_sim_pca$variance %>%
+  dplyr::slice_head(n = 15)
+```
+
+## 12. PCA plots by macro genre and book
+
+```{r pca-by-genre}
+ggplot2::ggplot(
+  all_sim_pca$scores,
+  ggplot2::aes(
+    x = PC1,
+    y = PC2,
+    color = macro_genre,
+    label = ifelse(book == "Isaiah", chapter, "")
+  )
+) +
+  ggplot2::geom_hline(yintercept = 0, color = "grey60", linewidth = 0.3) +
+  ggplot2::geom_vline(xintercept = 0, color = "grey60", linewidth = 0.3) +
+  ggplot2::geom_point(alpha = 0.75, size = 2.5) +
+  ggrepel::geom_text_repel(size = 2.6, max.overlaps = Inf, show.legend = FALSE) +
+  ggplot2::labs(
+    title = "All-chapter similarity-profile PCA: PC1 vs PC2",
+    subtitle = "Isaiah chapters are labeled; all chapters are colored by macro genre.",
+    x = paste0("PC1 (", round(all_sim_pca$variance$pct_variance[1], 2), "%)"),
+    y = paste0("PC2 (", round(all_sim_pca$variance$pct_variance[2], 2), "%)"),
+    color = "Macro genre"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+```{r pca-by-book}
+ggplot2::ggplot(
+  all_sim_pca$scores,
+  ggplot2::aes(
+    x = PC1,
+    y = PC2,
+    color = book,
+    label = ifelse(book == "Isaiah", chapter, "")
+  )
+) +
+  ggplot2::geom_hline(yintercept = 0, color = "grey60", linewidth = 0.3) +
+  ggplot2::geom_vline(xintercept = 0, color = "grey60", linewidth = 0.3) +
+  ggplot2::geom_point(alpha = 0.7, size = 2.3) +
+  ggrepel::geom_text_repel(size = 2.5, max.overlaps = Inf, show.legend = FALSE) +
+  ggplot2::labs(
+    title = "All-chapter similarity-profile PCA colored by book",
+    subtitle = "Isaiah chapters are labeled.",
+    x = paste0("PC1 (", round(all_sim_pca$variance$pct_variance[1], 2), "%)"),
+    y = paste0("PC2 (", round(all_sim_pca$variance$pct_variance[2], 2), "%)"),
+    color = "Book"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+# Part B: Mclust on all chapters
+
+## 13. Mclust helpers
+
+```{r mclust-helpers}
+run_mclust_on_pcs <- function(
+    pca_obj,
+    metadata,
+    n_pcs = 3,
+    G = mclust_G,
+    modelNames = NULL){
+
+  pc_cols <- paste0("PC", seq_len(n_pcs))
+
+  X <- pca_obj$scores %>%
+    dplyr::select(dplyr::all_of(pc_cols)) %>%
+    as.matrix()
+
+  rownames(X) <- pca_obj$scores$doc_id
+
+  fit <- mclust::Mclust(
+    X,
+    G = G,
+    modelNames = modelNames
+  )
+
+  classified <- tibble::tibble(
+    doc_id = rownames(X),
+    mclust_cluster = fit$classification,
+    uncertainty = fit$uncertainty
+  ) %>%
+    dplyr::left_join(
+      metadata,
+      by = "doc_id"
+    ) %>%
+    dplyr::arrange(book, chapter)
+
+  list(
+    fit = fit,
+    classified = classified,
+    n_pcs = n_pcs,
+    pc_cols = pc_cols
+  )
+}
+
+summarize_mclust_fit <- function(mc_obj){
+
+  fit <- mc_obj$fit
+
+  tibble::tibble(
+    n_pcs = mc_obj$n_pcs,
+    selected_G = fit$G,
+    selected_model = fit$modelName,
+    bic = fit$bic,
+    loglik = fit$loglik,
+    df = fit$df,
+    n = fit$n,
+    mean_uncertainty = mean(fit$uncertainty, na.rm = TRUE),
+    max_uncertainty = max(fit$uncertainty, na.rm = TRUE)
+  )
+}
+```
+
+## 14. Mclust sweep across PC dimensions
+
+```{r mclust-sweep}
+pc_max_available <- min(
+  max_pcs_for_mclust,
+  sum(grepl("^PC", names(all_sim_pca$scores)))
+)
+
+mclust_sweep_all <- purrr::map(
+  1:pc_max_available,
+  function(k){
+    run_mclust_on_pcs(
+      all_sim_pca,
+      metadata = analysis_meta,
+      n_pcs = k,
+      G = mclust_G
+    )
+  }
+)
+
+mclust_sweep_all_summary <- purrr::map_dfr(
+  mclust_sweep_all,
+  summarize_mclust_fit
+)
+
+mclust_sweep_all_summary
+```
+
+```{r selected-g-plot}
+mclust_sweep_all_summary %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = n_pcs,
+      y = selected_G
+    )
+  ) +
+  ggplot2::geom_point(size = 3) +
+  ggplot2::geom_line() +
+  ggplot2::scale_x_continuous(breaks = 1:pc_max_available) +
+  ggplot2::scale_y_continuous(breaks = mclust_G) +
+  ggplot2::labs(
+    title = "Selected mclust G by PCA dimensionality",
+    subtitle = "All available chapters, tested over G = 1 through 6.",
+    x = "Number of PCs used",
+    y = "Selected G"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+## 15. Preferred all-chapter model
+
+```{r preferred-model}
+preferred_n_pcs <- min(preferred_n_pcs, pc_max_available)
+
+mc_all <- run_mclust_on_pcs(
+  all_sim_pca,
+  metadata = analysis_meta,
+  n_pcs = preferred_n_pcs,
+  G = mclust_G
+)
+
+summary(mc_all$fit)
+
+mc_all$classified
+```
+
+## 16. Forced G = 1 through G = 9
+
+```{r forced-g}
+forced_mclust_all <- purrr::map_dfr(
+  mclust_G,
+  function(g){
+
+    pc_cols <- paste0("PC", seq_len(preferred_n_pcs))
+
+    X <- all_sim_pca$scores %>%
+      dplyr::select(dplyr::all_of(pc_cols)) %>%
+      as.matrix()
+
+    rownames(X) <- all_sim_pca$scores$doc_id
+
+    fit <- mclust::Mclust(
+      X,
+      G = g
+    )
+
+    tibble::tibble(
+      forced_G = g,
+      bic = fit$bic,
+      model = fit$modelName,
+      loglik = fit$loglik,
+      df = fit$df,
+      mean_uncertainty = mean(fit$uncertainty, na.rm = TRUE),
+      max_uncertainty = max(fit$uncertainty, na.rm = TRUE)
+    )
+  }
+)
+
+forced_mclust_all
+```
+
+```{r forced-g-plot}
+forced_mclust_all %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = forced_G,
+      y = bic
+    )
+  ) +
+  ggplot2::geom_point(size = 3) +
+  ggplot2::geom_line() +
+  ggplot2::scale_x_continuous(breaks = mclust_G) +
+  ggplot2::labs(
+    title = "All-chapter mclust BIC under forced cluster counts",
+    subtitle = "Higher BIC is preferred.",
+    x = "Forced number of clusters",
+    y = "BIC"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+## 17. Silhouette diagnostics
+
+```{r silhouette}
+silhouette_summary_all <- purrr::map_dfr(
+  2:6,
+  function(k){
+
+    pc_cols <- paste0("PC", seq_len(preferred_n_pcs))
+
+    X <- all_sim_pca$scores %>%
+      dplyr::select(dplyr::all_of(pc_cols)) %>%
+      as.matrix()
+
+    km <- stats::kmeans(
+      X,
+      centers = k,
+      nstart = 100
+    )
+
+    sil <- cluster::silhouette(
+      km$cluster,
+      dist(X)
+    )
+
+    tibble::tibble(
+      k = k,
+      avg_silhouette = mean(sil[, "sil_width"])
+    )
+  }
+)
+
+silhouette_summary_all
+```
+
+```{r silhouette-plot}
+silhouette_summary_all %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = k,
+      y = avg_silhouette
+    )
+  ) +
+  ggplot2::geom_point(size = 3) +
+  ggplot2::geom_line() +
+  ggplot2::scale_x_continuous(breaks = 2:6) +
+  ggplot2::labs(
+    title = "All-chapter forced k-means silhouette diagnostics",
+    subtitle = "Low silhouette values suggest weak discrete separation.",
+    x = "Number of clusters",
+    y = "Average silhouette width"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+# Part C: Cluster interpretation
+
+## 18. Cluster profile by macro genre
+
+```{r cluster-by-genre}
+cluster_genre_table <- mc_all$classified %>%
+  dplyr::count(
+    mclust_cluster,
+    macro_genre,
+    name = "n_chapters"
+  ) %>%
+  dplyr::group_by(mclust_cluster) %>%
+  dplyr::mutate(
+    pct_cluster = n_chapters / sum(n_chapters)
+  ) %>%
+  dplyr::ungroup()
+
+cluster_genre_table
+```
+
+
+
+```{r cluster-by-genre-plot}
+cluster_genre_table %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = factor(mclust_cluster),
+      y = pct_cluster,
+      fill = macro_genre
+    )
+  ) +
+  ggplot2::geom_col() +
+  ggplot2::scale_y_continuous(labels = scales::percent_format()) +
+  ggplot2::labs(
+    title = "All-chapter mclust clusters by macro genre",
+    subtitle = "Each bar shows the genre composition of a selected cluster.",
+    x = "Mclust cluster",
+    y = "Cluster share",
+    fill = "Macro genre"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+## 19. Cluster profile by book
+
+```{r cluster-by-book}
+cluster_book_table <- mc_all$classified %>%
+  dplyr::count(
+    mclust_cluster,
+    book,
+    name = "n_chapters"
+  ) %>%
+  dplyr::group_by(mclust_cluster) %>%
+  dplyr::mutate(
+    pct_cluster = n_chapters / sum(n_chapters)
+  ) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(mclust_cluster, dplyr::desc(n_chapters))
+
+cluster_book_table
+```
+
+```{r cluster-by-book-plot}
+cluster_book_table %>%
+  dplyr::group_by(mclust_cluster) %>%
+  dplyr::slice_max(order_by = n_chapters, n = 8, with_ties = FALSE) %>%
+  dplyr::ungroup() %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = reorder(book, n_chapters),
+      y = n_chapters,
+      fill = factor(mclust_cluster)
+    )
+  ) +
+  ggplot2::geom_col(show.legend = FALSE) +
+  ggplot2::coord_flip() +
+  ggplot2::facet_wrap(~ mclust_cluster, scales = "free_y") +
+  ggplot2::labs(
+    title = "Top books represented in each mclust cluster",
+    subtitle = "Only the top eight books per cluster are shown.",
+    x = "Book",
+    y = "Chapter count"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+## 20. Isaiah chapters by all-chapter cluster
+
+```{r isaiah-cluster-table}
+isaiah_cluster_table <- mc_all$classified %>%
+  dplyr::filter(book == "Isaiah") %>%
+  dplyr::count(
+    section,
+    mclust_cluster,
+    name = "n_chapters"
+  ) %>%
+  dplyr::group_by(section) %>%
+  dplyr::mutate(
+    pct_section = n_chapters / sum(n_chapters)
+  ) %>%
+  dplyr::ungroup()
+
+isaiah_cluster_table
+```
+
+```{r isaiah-cluster-plot}
+isaiah_cluster_table %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = section,
+      y = pct_section,
+      fill = factor(mclust_cluster)
+    )
+  ) +
+  ggplot2::geom_col() +
+  ggplot2::scale_y_continuous(labels = scales::percent_format()) +
+  ggplot2::labs(
+    title = "Isaiah section distribution across all-chapter mclust clusters",
+    subtitle = "Tests whether all-chapter clusters reproduce traditional Isaiah divisions.",
+    x = "Isaiah section",
+    y = "Section share",
+    fill = "Mclust cluster"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+## 21. PCA colored by mclust cluster
+
+```{r pca-cluster-plot}
+all_scores_clustered <- all_sim_pca$scores %>%
+  dplyr::left_join(
+    mc_all$classified %>%
+      dplyr::select(doc_id, mclust_cluster, uncertainty),
+    by = "doc_id"
+  ) %>%
+  dplyr::mutate(
+    mclust_cluster = factor(mclust_cluster)
+  )
+
+ggplot2::ggplot(
+  all_scores_clustered,
+  ggplot2::aes(
+    x = PC1,
+    y = PC2,
+    color = mclust_cluster,
+    label = ifelse(book == "Isaiah", chapter, "")
+  )
+) +
+  ggplot2::geom_hline(yintercept = 0, color = "grey60", linewidth = 0.3) +
+  ggplot2::geom_vline(xintercept = 0, color = "grey60", linewidth = 0.3) +
+  ggplot2::geom_point(size = 2.5, alpha = 0.75) +
+  ggrepel::geom_text_repel(size = 2.6, max.overlaps = Inf, show.legend = FALSE) +
+  ggplot2::labs(
+    title = "All-chapter PCA colored by mclust cluster",
+    subtitle = paste0(
+      "Selected G = ",
+      mc_all$fit$G,
+      "; model = ",
+      mc_all$fit$modelName,
+      "; PCs used = ",
+      preferred_n_pcs
+    ),
+    x = paste0("PC1 (", round(all_sim_pca$variance$pct_variance[1], 2), "%)"),
+    y = paste0("PC2 (", round(all_sim_pca$variance$pct_variance[2], 2), "%)"),
+    color = "Cluster"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+## 22. Classification uncertainty by book
+
+```{r uncertainty-by-book}
+mc_all$classified %>%
+  dplyr::group_by(book, macro_genre) %>%
+  dplyr::summarise(
+    mean_uncertainty = mean(uncertainty, na.rm = TRUE),
+    median_uncertainty = median(uncertainty, na.rm = TRUE),
+    n_chapters = dplyr::n(),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(mean_uncertainty))
+```
+
+```{r uncertainty-plot}
+mc_all$classified %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = reorder(book, uncertainty, FUN = median),
+      y = uncertainty,
+      fill = macro_genre
+    )
+  ) +
+  ggplot2::geom_boxplot(outlier.alpha = 0.35) +
+  ggplot2::coord_flip() +
+  ggplot2::labs(
+    title = "Mclust uncertainty by book",
+    subtitle = "Higher values indicate weaker assignment to a discrete cluster.",
+    x = "Book",
+    y = "Classification uncertainty",
+    fill = "Macro genre"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+# Part D: Alignment metrics
+
+## 23. Adjusted Rand Index against macro genre and book
+
+```{r ari}
+ari_macro_genre <- mclust::adjustedRandIndex(
+  mc_all$classified$macro_genre,
+  mc_all$classified$mclust_cluster
+)
+
+ari_book <- mclust::adjustedRandIndex(
+  mc_all$classified$book,
+  mc_all$classified$mclust_cluster
+)
+
+ari_isaiah_section <- mclust::adjustedRandIndex(
+  mc_all$classified %>%
+    dplyr::filter(book == "Isaiah") %>%
+    dplyr::pull(section),
+  mc_all$classified %>%
+    dplyr::filter(book == "Isaiah") %>%
+    dplyr::pull(mclust_cluster)
+)
+
+tibble::tibble(
+  comparison = c(
+    "cluster_vs_macro_genre",
+    "cluster_vs_book",
+    "cluster_vs_isaiah_section"
+  ),
+  adjusted_rand_index = c(
+    ari_macro_genre,
+    ari_book,
+    ari_isaiah_section
+  )
+)
+```
+
+## 24. Interpretive guide
+
+```{r interpretive-guide}
+interpretive_guide <- tibble::tribble(
+  ~finding, ~interpretation,
+  "G = 1 selected", "The all-chapter corpus does not support broad discrete stylistic populations.",
+  "G = 2 or 3 selected and clusters align with macro genre", "The model is largely detecting genre structure.",
+  "G > 1 selected and clusters align with books", "The model is detecting book-level style or topic/register effects.",
+  "Isaiah chapters scatter across many clusters", "Isaiah is internally diverse in the broader biblical corpus.",
+  "Isaiah chapters remain concentrated in one cluster", "Isaiah remains stylistically cohesive even in the broader corpus.",
+  "Low ARI with Isaiah section", "All-chapter clusters do not reproduce traditional Isaiah divisions.",
+  "High uncertainty", "The selected clusters overlap substantially."
+)
+
+interpretive_guide
+```
+
+## 25. Final summary
+
+```{r final-summary}
+cat("\nAll-Chapter Mclust Summary\n")
+cat("==========================\n\n")
+
+cat("Number of chapters analyzed:\n")
+print(nrow(analysis_docs))
+
+cat("\nBooks included:\n")
+print(sort(unique(analysis_docs$book)))
+
+cat("\nPCA variance:\n")
+print(
+  all_sim_pca$variance %>%
+    dplyr::slice_head(n = 12),
+  width = 120
+)
+
+cat("\nMclust sweep summary:\n")
+print(
+  mclust_sweep_all_summary,
+  width = 120
+)
+
+cat("\nPreferred model:\n")
+print(
+  summarize_mclust_fit(mc_all),
+  width = 120
+)
+
+cat("\nForced G results:\n")
+print(
+  forced_mclust_all,
+  width = 120
+)
+
+cat("\nSilhouette results:\n")
+print(
+  silhouette_summary_all,
+  width = 120
+)
+
+cat("\nARI metrics:\n")
+print(
+  tibble::tibble(
+    comparison = c(
+      "cluster_vs_macro_genre",
+      "cluster_vs_book",
+      "cluster_vs_isaiah_section"
+    ),
+    adjusted_rand_index = c(
+      ari_macro_genre,
+      ari_book,
+      ari_isaiah_section
+    )
+  ),
+  width = 120
+)
+```
+
+## 26. Export outputs
+
+```{r export}
+out_dir <- file.path(STYLO_CACHE, "output", "mclust_all_nopos")
+
+dir.create(
+  out_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+readr::write_csv(
+  analysis_meta,
+  file.path(out_dir, "analysis_meta.csv")
+)
+
+readr::write_csv(
+  all_sim_pca$variance,
+  file.path(out_dir, "all_similarity_pca_variance.csv")
+)
+
+readr::write_csv(
+  all_sim_pca$scores,
+  file.path(out_dir, "all_similarity_pca_scores.csv")
+)
+
+readr::write_csv(
+  mclust_sweep_all_summary,
+  file.path(out_dir, "mclust_sweep_all_summary.csv")
+)
+
+readr::write_csv(
+  mc_all$classified,
+  file.path(out_dir, "mclust_all_classified.csv")
+)
+
+readr::write_csv(
+  forced_mclust_all,
+  file.path(out_dir, "forced_mclust_all.csv")
+)
+
+readr::write_csv(
+  silhouette_summary_all,
+  file.path(out_dir, "silhouette_summary_all.csv")
+)
+
+readr::write_csv(
+  cluster_genre_table,
+  file.path(out_dir, "cluster_genre_table.csv")
+)
+
+readr::write_csv(
+  cluster_book_table,
+  file.path(out_dir, "cluster_book_table.csv")
+)
+
+readr::write_csv(
+  isaiah_cluster_table,
+  file.path(out_dir, "isaiah_cluster_table.csv")
+)
+```

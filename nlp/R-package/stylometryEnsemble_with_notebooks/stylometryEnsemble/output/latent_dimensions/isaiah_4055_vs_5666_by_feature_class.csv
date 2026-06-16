@@ -1,0 +1,11 @@
+feature_class,section_a,section_b,distance
+word_length,Isaiah_40_55,Isaiah_56_66,5.379035640791409e-4
+punctuation,Isaiah_40_55,Isaiah_56_66,0.006271699118935706
+readability,Isaiah_40_55,Isaiah_56_66,0.007617439941147766
+function_words,Isaiah_40_55,Isaiah_56_66,0.010929777007784029
+lexical,Isaiah_40_55,Isaiah_56_66,0.011535949593110389
+char,Isaiah_40_55,Isaiah_56_66,0.01986261334266974
+word,Isaiah_40_55,Isaiah_56_66,0.0376574083474135
+stem,Isaiah_40_55,Isaiah_56_66,0.03780600372283655
+pos,Isaiah_40_55,Isaiah_56_66,0.04377865227760957
+sentence,Isaiah_40_55,Isaiah_56_66,0.14236290538823398

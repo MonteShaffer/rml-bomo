@@ -1,0 +1,4 @@
+mosiah_priority,mosiah_priority_label,books,n_books,n_chapters,n_verses,total_chars,total_words,mean_words_per_chapter
+MP-1,MP-1_Mosiah_Alma_Helaman,Mosiah; Alma; Helaman,3,108,3257,732373,137266,1270.9814814814815
+MP-2,MP-2_3Nephi_to_Moroni,3 Nephi; 4 Nephi; Mormon; Ether; Moroni,5,65,1657,332022,63014,969.4461538461538
+MP-3,MP-3_1Nephi_to_WordsOfMormon,1 Nephi; 2 Nephi; Jacob; Enos; Jarom; Omni; Words of Mormon,7,66,1690,358772,68136,1032.3636363636363

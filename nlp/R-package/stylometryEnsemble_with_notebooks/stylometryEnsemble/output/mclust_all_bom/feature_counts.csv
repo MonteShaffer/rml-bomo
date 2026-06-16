@@ -1,0 +1,8 @@
+feature_class,n_features,pct_features_raw,pct_features
+function_words,268,0.8322981366459627,83.2%
+word_length,23,0.07142857142857142,7.1%
+sentence,10,0.031055900621118012,3.1%
+lexical,10,0.031055900621118012,3.1%
+punctuation,6,0.018633540372670808,1.9%
+readability,5,0.015527950310559006,1.6%
+TOTAL,322,1,100.0%

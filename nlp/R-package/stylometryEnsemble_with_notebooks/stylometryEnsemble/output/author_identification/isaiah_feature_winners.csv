@@ -14,7 +14,7 @@ Isaiah_1,1,Isaiah_1_35,function_words,prepositions_freq,Isaiah_1_35,0.9647527025
 Isaiah_1,1,Isaiah_1_35,function_words,prepositions_tfidf,Isaiah_1_35,0.9555143601642386,1
 Isaiah_1,1,Isaiah_1_35,function_words,pronouns_freq,Amos,0.7930413222740453,1
 Isaiah_1,1,Isaiah_1_35,function_words,pronouns_tfidf,Amos,0.8105064231378964,1
-Isaiah_1,1,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9979425125073095,1
+Isaiah_1,1,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.7913808036077782,1
 Isaiah_1,1,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.8095042433969425,1
 Isaiah_1,1,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.5588082236960215,1
 Isaiah_1,1,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.38114632254361724,1
@@ -28,6 +28,7 @@ Isaiah_1,1,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.21567924092504817,1
 Isaiah_1,1,Isaiah_1_35,word,word1,Isaiah_1_35,0.7558431340582024,1
 Isaiah_1,1,Isaiah_1_35,word,word2,Isaiah_1_35,0.30160398452826875,1
 Isaiah_1,1,Isaiah_1_35,word,word3,Isaiah_1_35,0.21491061589426835,1
+Isaiah_1,1,Isaiah_1_35,word_length,word_length,Psalms,0.9998387655254183,1
 Isaiah_2,2,Isaiah_1_35,char,char3,Isaiah_1_35,0.8979536148090786,1
 Isaiah_2,2,Isaiah_1_35,char,char4,Isaiah_1_35,0.7670886137680085,1
 Isaiah_2,2,Isaiah_1_35,char,char5,Isaiah_1_35,0.6024429066327118,1
@@ -43,7 +44,7 @@ Isaiah_2,2,Isaiah_1_35,function_words,prepositions_freq,Amos,0.9689249151347553,
 Isaiah_2,2,Isaiah_1_35,function_words,prepositions_tfidf,Amos,0.953576079404161,1
 Isaiah_2,2,Isaiah_1_35,function_words,pronouns_freq,Isaiah_1_35,0.8387973810887808,1
 Isaiah_2,2,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_1_35,0.8105148602278677,1
-Isaiah_2,2,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9994288468041066,1
+Isaiah_2,2,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.7944993232461971,1
 Isaiah_2,2,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.8339344833664781,1
 Isaiah_2,2,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.5911867611281229,1
 Isaiah_2,2,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.4171127031275372,1
@@ -57,6 +58,7 @@ Isaiah_2,2,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.23628939844262875,1
 Isaiah_2,2,Isaiah_1_35,word,word1,Isaiah_1_35,0.8262034073658211,1
 Isaiah_2,2,Isaiah_1_35,word,word2,Isaiah_1_35,0.35971990905769297,1
 Isaiah_2,2,Isaiah_1_35,word,word3,Isaiah_1_35,0.2338921101925362,1
+Isaiah_2,2,Isaiah_1_35,word_length,word_length,2 Kings,0.9998980320550372,1
 Isaiah_3,3,Isaiah_1_35,char,char3,Isaiah_1_35,0.9055150605915305,1
 Isaiah_3,3,Isaiah_1_35,char,char4,Isaiah_1_35,0.7773410162792856,1
 Isaiah_3,3,Isaiah_1_35,char,char5,Isaiah_1_35,0.6064427921415146,1
@@ -72,7 +74,7 @@ Isaiah_3,3,Isaiah_1_35,function_words,prepositions_freq,Isaiah_1_35,0.9775554371
 Isaiah_3,3,Isaiah_1_35,function_words,prepositions_tfidf,Isaiah_1_35,0.9665995865734792,1
 Isaiah_3,3,Isaiah_1_35,function_words,pronouns_freq,Isaiah_1_35,0.7775916909768719,1
 Isaiah_3,3,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_1_35,0.7765168470207117,1
-Isaiah_3,3,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9981168118953934,1
+Isaiah_3,3,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.742099106823538,1
 Isaiah_3,3,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.7869920160416082,1
 Isaiah_3,3,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.550387973084023,1
 Isaiah_3,3,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.3733435531527735,1
@@ -86,6 +88,7 @@ Isaiah_3,3,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.20344877176519233,1
 Isaiah_3,3,Isaiah_1_35,word,word1,Isaiah_1_35,0.8171087227903164,1
 Isaiah_3,3,Isaiah_1_35,word,word2,Isaiah_1_35,0.32052885631712585,1
 Isaiah_3,3,Isaiah_1_35,word,word3,Isaiah_1_35,0.20099650691031049,1
+Isaiah_3,3,Isaiah_1_35,word_length,word_length,Isaiah_1_35,0.9997759085269023,1
 Isaiah_4,4,Isaiah_1_35,char,char3,Isaiah_1_35,0.8044148452638208,1
 Isaiah_4,4,Isaiah_1_35,char,char4,Isaiah_1_35,0.6163206083331207,1
 Isaiah_4,4,Isaiah_1_35,char,char5,Isaiah_1_35,0.44952229314110614,1
@@ -101,7 +104,7 @@ Isaiah_4,4,Isaiah_1_35,function_words,prepositions_freq,Amos,0.9275614173691398,
 Isaiah_4,4,Isaiah_1_35,function_words,prepositions_tfidf,Amos,0.8963781233343898,1
 Isaiah_4,4,Isaiah_1_35,function_words,pronouns_freq,2 Kings,0.4241665202163484,1
 Isaiah_4,4,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_56_66,0.38245927525569295,1
-Isaiah_4,4,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9964193301843586,1
+Isaiah_4,4,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.6233755183321659,1
 Isaiah_4,4,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.7766263141411516,1
 Isaiah_4,4,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.49554950519206986,1
 Isaiah_4,4,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.3122657471440155,1
@@ -115,6 +118,7 @@ Isaiah_4,4,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.15847996836557712,1
 Isaiah_4,4,Isaiah_1_35,word,word1,Isaiah_1_35,0.6931505819570065,1
 Isaiah_4,4,Isaiah_1_35,word,word2,Isaiah_1_35,0.25051534755099997,1
 Isaiah_4,4,Isaiah_1_35,word,word3,Isaiah_1_35,0.15713971409757854,1
+Isaiah_4,4,Isaiah_1_35,word_length,word_length,Amos,0.9999301471750993,1
 Isaiah_5,5,Isaiah_1_35,char,char3,Isaiah_1_35,0.9152997878261954,1
 Isaiah_5,5,Isaiah_1_35,char,char4,Isaiah_1_35,0.7913121681922027,1
 Isaiah_5,5,Isaiah_1_35,char,char5,Isaiah_1_35,0.6319270662475913,1
@@ -130,7 +134,7 @@ Isaiah_5,5,Isaiah_1_35,function_words,prepositions_freq,Jeremiah,0.9901037803925
 Isaiah_5,5,Isaiah_1_35,function_words,prepositions_tfidf,Jeremiah,0.9854009483277166,1
 Isaiah_5,5,Isaiah_1_35,function_words,pronouns_freq,Hosea,0.8599886275563552,1
 Isaiah_5,5,Isaiah_1_35,function_words,pronouns_tfidf,Hosea,0.8022313630303317,1
-Isaiah_5,5,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9988477352033414,1
+Isaiah_5,5,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.8335856822333324,1
 Isaiah_5,5,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.8529900112491743,1
 Isaiah_5,5,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.6292794149373072,1
 Isaiah_5,5,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.42717379050955406,1
@@ -144,6 +148,7 @@ Isaiah_5,5,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.26761702159732775,1
 Isaiah_5,5,Isaiah_1_35,word,word1,Isaiah_1_35,0.8011098607198135,1
 Isaiah_5,5,Isaiah_1_35,word,word2,Isaiah_1_35,0.37353752767787485,1
 Isaiah_5,5,Isaiah_1_35,word,word3,Isaiah_1_35,0.26719771782626095,1
+Isaiah_5,5,Isaiah_1_35,word_length,word_length,Jeremiah,0.999936952317557,1
 Isaiah_6,6,Isaiah_1_35,char,char3,Isaiah_1_35,0.8297357723692871,1
 Isaiah_6,6,Isaiah_1_35,char,char4,Isaiah_1_35,0.6328671002856132,1
 Isaiah_6,6,Isaiah_1_35,char,char5,Isaiah_1_35,0.4349318420756356,1
@@ -159,7 +164,7 @@ Isaiah_6,6,Isaiah_1_35,function_words,prepositions_freq,Job,0.895553497073364,1
 Isaiah_6,6,Isaiah_1_35,function_words,prepositions_tfidf,Isaiah_1_35,0.8788866948304412,1
 Isaiah_6,6,Isaiah_1_35,function_words,pronouns_freq,Amos,0.8422618322233866,1
 Isaiah_6,6,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_1_35,0.7869165301119116,1
-Isaiah_6,6,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9967172993277549,1
+Isaiah_6,6,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.7100488829466565,1
 Isaiah_6,6,Isaiah_1_35,pos,pos3,Ezekiel,0.7210365318301417,1
 Isaiah_6,6,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.4299380073889711,1
 Isaiah_6,6,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.2611910053003082,1
@@ -173,6 +178,7 @@ Isaiah_6,6,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.15633035767015985,1
 Isaiah_6,6,Isaiah_1_35,word,word1,Isaiah_1_35,0.6756203134043401,1
 Isaiah_6,6,Isaiah_1_35,word,word2,Isaiah_1_35,0.21982989263211972,1
 Isaiah_6,6,Isaiah_1_35,word,word3,Isaiah_1_35,0.1561647057373542,1
+Isaiah_6,6,Isaiah_1_35,word_length,word_length,2 Kings,0.9994876893943133,1
 Isaiah_7,7,Isaiah_1_35,char,char3,Isaiah_1_35,0.8935181557054489,1
 Isaiah_7,7,Isaiah_1_35,char,char4,Isaiah_1_35,0.7497897451725183,1
 Isaiah_7,7,Isaiah_1_35,char,char5,Isaiah_1_35,0.5985042710030807,1
@@ -188,7 +194,7 @@ Isaiah_7,7,Isaiah_1_35,function_words,prepositions_freq,Isaiah_1_35,0.9944953398
 Isaiah_7,7,Isaiah_1_35,function_words,prepositions_tfidf,Isaiah_1_35,0.9895478284109612,1
 Isaiah_7,7,Isaiah_1_35,function_words,pronouns_freq,Isaiah_1_35,0.8246127697668073,1
 Isaiah_7,7,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_1_35,0.7821479047339276,1
-Isaiah_7,7,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9991124180858174,1
+Isaiah_7,7,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.8119550678917824,1
 Isaiah_7,7,Isaiah_1_35,pos,pos3,Jeremiah,0.813608163697778,1
 Isaiah_7,7,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.5695056682307673,1
 Isaiah_7,7,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.39836941594578434,1
@@ -202,6 +208,7 @@ Isaiah_7,7,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.2505916717311414,1
 Isaiah_7,7,Isaiah_1_35,word,word1,Isaiah_1_35,0.8062131963292766,1
 Isaiah_7,7,Isaiah_1_35,word,word2,Isaiah_1_35,0.3503123194884444,1
 Isaiah_7,7,Isaiah_1_35,word,word3,Isaiah_1_35,0.24929080868808384,1
+Isaiah_7,7,Isaiah_1_35,word_length,word_length,2 Kings,0.9998577255967067,1
 Isaiah_8,8,Isaiah_1_35,char,char3,Isaiah_1_35,0.8766826231449226,1
 Isaiah_8,8,Isaiah_1_35,char,char4,Isaiah_1_35,0.7215856732717902,1
 Isaiah_8,8,Isaiah_1_35,char,char5,Isaiah_1_35,0.5554003469679496,1
@@ -217,7 +224,7 @@ Isaiah_8,8,Isaiah_1_35,function_words,prepositions_freq,Isaiah_56_66,0.962291013
 Isaiah_8,8,Isaiah_1_35,function_words,prepositions_tfidf,Isaiah_56_66,0.9386579781964756,1
 Isaiah_8,8,Isaiah_1_35,function_words,pronouns_freq,Isaiah_1_35,0.8890723401807294,1
 Isaiah_8,8,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_1_35,0.8628921030616945,1
-Isaiah_8,8,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9985326830113709,1
+Isaiah_8,8,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.7696450345102854,1
 Isaiah_8,8,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.7944009055050826,1
 Isaiah_8,8,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.5232733199048261,1
 Isaiah_8,8,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.3467726008199581,1
@@ -231,6 +238,7 @@ Isaiah_8,8,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.2195601361494644,1
 Isaiah_8,8,Isaiah_1_35,word,word1,Isaiah_1_35,0.7576590200144121,1
 Isaiah_8,8,Isaiah_1_35,word,word2,Isaiah_1_35,0.3038856495562967,1
 Isaiah_8,8,Isaiah_1_35,word,word3,Isaiah_1_35,0.21822737263830924,1
+Isaiah_8,8,Isaiah_1_35,word_length,word_length,Job,0.999984136346085,1
 Isaiah_9,9,Isaiah_1_35,char,char3,Isaiah_1_35,0.9177736605091341,1
 Isaiah_9,9,Isaiah_1_35,char,char4,Isaiah_1_35,0.7845055504351195,1
 Isaiah_9,9,Isaiah_1_35,char,char5,Isaiah_1_35,0.6040604566819184,1
@@ -246,7 +254,7 @@ Isaiah_9,9,Isaiah_1_35,function_words,prepositions_freq,Isaiah_1_35,0.9810363466
 Isaiah_9,9,Isaiah_1_35,function_words,prepositions_tfidf,Isaiah_1_35,0.973449360166408,1
 Isaiah_9,9,Isaiah_1_35,function_words,pronouns_freq,2 Kings,0.7747971095520514,1
 Isaiah_9,9,Isaiah_1_35,function_words,pronouns_tfidf,2 Kings,0.7616312102561554,1
-Isaiah_9,9,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9985733391171304,1
+Isaiah_9,9,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.763100752894336,1
 Isaiah_9,9,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.8074965198317303,1
 Isaiah_9,9,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.5566553263483809,1
 Isaiah_9,9,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.38257540591505396,1
@@ -260,6 +268,7 @@ Isaiah_9,9,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.22701403323927266,1
 Isaiah_9,9,Isaiah_1_35,word,word1,Isaiah_1_35,0.8238644234243365,1
 Isaiah_9,9,Isaiah_1_35,word,word2,Isaiah_1_35,0.31594931850119623,1
 Isaiah_9,9,Isaiah_1_35,word,word3,Isaiah_1_35,0.22697195118186408,1
+Isaiah_9,9,Isaiah_1_35,word_length,word_length,Isaiah_56_66,0.9998449645803176,1
 Isaiah_10,10,Isaiah_1_35,char,char3,Isaiah_1_35,0.9347557791892744,1
 Isaiah_10,10,Isaiah_1_35,char,char4,Isaiah_1_35,0.8234576042079695,1
 Isaiah_10,10,Isaiah_1_35,char,char5,Isaiah_1_35,0.6783425758186625,1
@@ -275,7 +284,7 @@ Isaiah_10,10,Isaiah_1_35,function_words,prepositions_freq,Jeremiah,0.98349868096
 Isaiah_10,10,Isaiah_1_35,function_words,prepositions_tfidf,Jeremiah,0.9690505840914199,1
 Isaiah_10,10,Isaiah_1_35,function_words,pronouns_freq,Isaiah_1_35,0.8949128271030107,1
 Isaiah_10,10,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_1_35,0.8683459737045565,1
-Isaiah_10,10,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9991331729923284,1
+Isaiah_10,10,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.8560083985707735,1
 Isaiah_10,10,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.8604057917283884,1
 Isaiah_10,10,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.6560734589967511,1
 Isaiah_10,10,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.4778175141208203,1
@@ -289,6 +298,7 @@ Isaiah_10,10,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.29099964817293705,1
 Isaiah_10,10,Isaiah_1_35,word,word1,Isaiah_1_35,0.8597418472272135,1
 Isaiah_10,10,Isaiah_1_35,word,word2,Isaiah_1_35,0.40066049053038116,1
 Isaiah_10,10,Isaiah_1_35,word,word3,Isaiah_1_35,0.2900982661049784,1
+Isaiah_10,10,Isaiah_1_35,word_length,word_length,Job,0.9999593966510941,1
 Isaiah_11,11,Isaiah_1_35,char,char3,Isaiah_1_35,0.9007675590180106,1
 Isaiah_11,11,Isaiah_1_35,char,char4,Isaiah_1_35,0.7978625099925241,1
 Isaiah_11,11,Isaiah_1_35,char,char5,Isaiah_1_35,0.6594951837209668,1
@@ -304,7 +314,7 @@ Isaiah_11,11,Isaiah_1_35,function_words,prepositions_freq,Isaiah_1_35,0.94739344
 Isaiah_11,11,Isaiah_1_35,function_words,prepositions_tfidf,Isaiah_1_35,0.9337638119582776,1
 Isaiah_11,11,Isaiah_1_35,function_words,pronouns_freq,Proverbs,0.8203355037660549,1
 Isaiah_11,11,Isaiah_1_35,function_words,pronouns_tfidf,2 Kings,0.7794621271915262,1
-Isaiah_11,11,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9991054230059884,1
+Isaiah_11,11,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.7532610482721775,1
 Isaiah_11,11,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.8718484964075761,1
 Isaiah_11,11,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.6643497682117139,1
 Isaiah_11,11,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.4628295370109394,1
@@ -318,6 +328,7 @@ Isaiah_11,11,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.20857766838653774,1
 Isaiah_11,11,Isaiah_1_35,word,word1,Isaiah_1_35,0.8437657462596763,1
 Isaiah_11,11,Isaiah_1_35,word,word2,Isaiah_1_35,0.362566331253997,1
 Isaiah_11,11,Isaiah_1_35,word,word3,Isaiah_1_35,0.20764240518148758,1
+Isaiah_11,11,Isaiah_1_35,word_length,word_length,1 Kings,0.999905930495896,1
 Isaiah_12,12,Isaiah_1_35,char,char3,Psalms,0.7261310161339017,1
 Isaiah_12,12,Isaiah_1_35,char,char4,Psalms,0.5011582070242417,1
 Isaiah_12,12,Isaiah_1_35,char,char5,Psalms,0.3346151307332348,1
@@ -333,7 +344,7 @@ Isaiah_12,12,Isaiah_1_35,function_words,prepositions_freq,Psalms,0.9355254781438
 Isaiah_12,12,Isaiah_1_35,function_words,prepositions_tfidf,Psalms,0.9096717396519053,1
 Isaiah_12,12,Isaiah_1_35,function_words,pronouns_freq,Job,0.8251799337096293,1
 Isaiah_12,12,Isaiah_1_35,function_words,pronouns_tfidf,Job,0.80569331588543,1
-Isaiah_12,12,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9931980872743441,1
+Isaiah_12,12,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.5997408063391254,1
 Isaiah_12,12,Isaiah_1_35,pos,pos3,Psalms,0.5020666547040089,1
 Isaiah_12,12,Isaiah_1_35,pos,pos4,Psalms,0.24218620951893308,1
 Isaiah_12,12,Isaiah_1_35,pos,pos5,Psalms,0.1306544996531675,1
@@ -347,6 +358,7 @@ Isaiah_12,12,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.10921190265703141,1
 Isaiah_12,12,Isaiah_1_35,word,word1,Psalms,0.5750863568061925,1
 Isaiah_12,12,Isaiah_1_35,word,word2,Isaiah_1_35,0.15223435588583556,1
 Isaiah_12,12,Isaiah_1_35,word,word3,Isaiah_1_35,0.10947142829628388,1
+Isaiah_12,12,Isaiah_1_35,word_length,word_length,Isaiah_36_39,0.9999002711746527,1
 Isaiah_13,13,Isaiah_1_35,char,char3,Isaiah_1_35,0.9166831412282217,1
 Isaiah_13,13,Isaiah_1_35,char,char4,Isaiah_1_35,0.7988919938132029,1
 Isaiah_13,13,Isaiah_1_35,char,char5,Isaiah_1_35,0.6349915032452931,1
@@ -362,7 +374,7 @@ Isaiah_13,13,Isaiah_1_35,function_words,prepositions_freq,2 Kings,0.987572003672
 Isaiah_13,13,Isaiah_1_35,function_words,prepositions_tfidf,2 Kings,0.9819335579772663,1
 Isaiah_13,13,Isaiah_1_35,function_words,pronouns_freq,Hosea,0.8451399189621562,1
 Isaiah_13,13,Isaiah_1_35,function_words,pronouns_tfidf,Hosea,0.8304479721628529,1
-Isaiah_13,13,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9981044059964619,1
+Isaiah_13,13,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.7377858073659112,1
 Isaiah_13,13,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.8487631761355311,1
 Isaiah_13,13,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.6098950585849363,1
 Isaiah_13,13,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.41653388349469334,1
@@ -376,6 +388,7 @@ Isaiah_13,13,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.20763864419546754,1
 Isaiah_13,13,Isaiah_1_35,word,word1,Isaiah_1_35,0.8204264782247077,1
 Isaiah_13,13,Isaiah_1_35,word,word2,Isaiah_1_35,0.3436596800345321,1
 Isaiah_13,13,Isaiah_1_35,word,word3,Isaiah_1_35,0.20798483167830925,1
+Isaiah_13,13,Isaiah_1_35,word_length,word_length,Isaiah_1_35,0.9998693142705029,1
 Isaiah_14,14,Isaiah_1_35,char,char3,Isaiah_1_35,0.9338416741344214,1
 Isaiah_14,14,Isaiah_1_35,char,char4,Isaiah_1_35,0.8215771718026408,1
 Isaiah_14,14,Isaiah_1_35,char,char5,Isaiah_1_35,0.6570360529401451,1
@@ -391,7 +404,7 @@ Isaiah_14,14,Isaiah_1_35,function_words,prepositions_freq,Isaiah_1_35,0.98576732
 Isaiah_14,14,Isaiah_1_35,function_words,prepositions_tfidf,Isaiah_1_35,0.9727437587717002,1
 Isaiah_14,14,Isaiah_1_35,function_words,pronouns_freq,Ezekiel,0.8741530442797412,1
 Isaiah_14,14,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_36_39,0.8502640477104444,1
-Isaiah_14,14,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9990730577655464,1
+Isaiah_14,14,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.8491731413149601,1
 Isaiah_14,14,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.8792219173998335,1
 Isaiah_14,14,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.6770044633217648,1
 Isaiah_14,14,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.4859655058630086,1
@@ -405,6 +418,7 @@ Isaiah_14,14,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.24950768997767486,1
 Isaiah_14,14,Isaiah_1_35,word,word1,Isaiah_1_35,0.8451378315146472,1
 Isaiah_14,14,Isaiah_1_35,word,word2,Isaiah_1_35,0.3574989306894475,1
 Isaiah_14,14,Isaiah_1_35,word,word3,Isaiah_1_35,0.24841534735845952,1
+Isaiah_14,14,Isaiah_1_35,word_length,word_length,2 Samuel,0.9998578890110291,1
 Isaiah_15,15,Isaiah_1_35,char,char3,Isaiah_1_35,0.7361242079028812,1
 Isaiah_15,15,Isaiah_1_35,char,char4,Isaiah_1_35,0.533545929154013,1
 Isaiah_15,15,Isaiah_1_35,char,char5,Isaiah_1_35,0.3716482318670267,1
@@ -420,7 +434,7 @@ Isaiah_15,15,Isaiah_1_35,function_words,prepositions_freq,Hosea,0.96501935720646
 Isaiah_15,15,Isaiah_1_35,function_words,prepositions_tfidf,1 Kings,0.9454906125787237,1
 Isaiah_15,15,Isaiah_1_35,function_words,pronouns_freq,Hosea,0.7196553580022889,1
 Isaiah_15,15,Isaiah_1_35,function_words,pronouns_tfidf,Hosea,0.6572157266103249,1
-Isaiah_15,15,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9970861915937382,1
+Isaiah_15,15,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.6533555752485266,1
 Isaiah_15,15,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.6516284241692833,1
 Isaiah_15,15,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.39425930634797174,1
 Isaiah_15,15,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.24605876091799675,1
@@ -434,6 +448,7 @@ Isaiah_15,15,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.11814732682165446,1
 Isaiah_15,15,Isaiah_1_35,word,word1,Isaiah_1_35,0.5479089203340939,1
 Isaiah_15,15,Isaiah_1_35,word,word2,Isaiah_1_35,0.17841949848018052,1
 Isaiah_15,15,Isaiah_1_35,word,word3,Isaiah_1_35,0.11708737104038985,1
+Isaiah_15,15,Isaiah_1_35,word_length,word_length,Ezekiel,0.9997477920642647,1
 Isaiah_16,16,Isaiah_1_35,char,char3,Isaiah_1_35,0.8486868424937551,1
 Isaiah_16,16,Isaiah_1_35,char,char4,Isaiah_1_35,0.6661374997603543,1
 Isaiah_16,16,Isaiah_1_35,char,char5,Isaiah_1_35,0.4988685910238352,1
@@ -449,7 +464,7 @@ Isaiah_16,16,Isaiah_1_35,function_words,prepositions_freq,Isaiah_1_35,0.98212129
 Isaiah_16,16,Isaiah_1_35,function_words,prepositions_tfidf,Isaiah_1_35,0.9753080692059489,1
 Isaiah_16,16,Isaiah_1_35,function_words,pronouns_freq,Isaiah_1_35,0.9376153519219732,1
 Isaiah_16,16,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_1_35,0.9036411855496291,1
-Isaiah_16,16,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9970262373238663,1
+Isaiah_16,16,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.6912822875998241,1
 Isaiah_16,16,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.8106034196977158,1
 Isaiah_16,16,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.5507825497665527,1
 Isaiah_16,16,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.363853190289123,1
@@ -463,6 +478,7 @@ Isaiah_16,16,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.1673282624606883,1
 Isaiah_16,16,Isaiah_1_35,word,word1,Isaiah_1_35,0.6965019749783063,1
 Isaiah_16,16,Isaiah_1_35,word,word2,Isaiah_1_35,0.25623081914691437,1
 Isaiah_16,16,Isaiah_1_35,word,word3,Isaiah_1_35,0.16340531049922763,1
+Isaiah_16,16,Isaiah_1_35,word_length,word_length,Isaiah_56_66,0.9999070492560505,1
 Isaiah_17,17,Isaiah_1_35,char,char3,Isaiah_1_35,0.879726127823425,1
 Isaiah_17,17,Isaiah_1_35,char,char4,Isaiah_1_35,0.7150377257839956,1
 Isaiah_17,17,Isaiah_1_35,char,char5,Isaiah_1_35,0.5576040992335181,1
@@ -478,7 +494,7 @@ Isaiah_17,17,Isaiah_1_35,function_words,prepositions_freq,2 Kings,0.979374608348
 Isaiah_17,17,Isaiah_1_35,function_words,prepositions_tfidf,2 Kings,0.9663097279985594,1
 Isaiah_17,17,Isaiah_1_35,function_words,pronouns_freq,Proverbs,0.7581849036099428,1
 Isaiah_17,17,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_1_35,0.6982275716611271,1
-Isaiah_17,17,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9984064390213254,1
+Isaiah_17,17,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.7188410798582124,1
 Isaiah_17,17,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.8264732028565965,1
 Isaiah_17,17,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.5872737488529413,1
 Isaiah_17,17,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.3965432769667727,1
@@ -492,6 +508,7 @@ Isaiah_17,17,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.21607539511829843,1
 Isaiah_17,17,Isaiah_1_35,word,word1,Isaiah_1_35,0.7668781311760138,1
 Isaiah_17,17,Isaiah_1_35,word,word2,Isaiah_1_35,0.3208204088600699,1
 Isaiah_17,17,Isaiah_1_35,word,word3,Isaiah_1_35,0.2130151152273585,1
+Isaiah_17,17,Isaiah_1_35,word_length,word_length,Isaiah_1_35,0.9999330143737184,1
 Isaiah_18,18,Isaiah_1_35,char,char3,Isaiah_1_35,0.8039856968738097,1
 Isaiah_18,18,Isaiah_1_35,char,char4,Isaiah_1_35,0.5857929578638925,1
 Isaiah_18,18,Isaiah_1_35,char,char5,Isaiah_1_35,0.405311536855902,1
@@ -507,7 +524,7 @@ Isaiah_18,18,Isaiah_1_35,function_words,prepositions_freq,Ezekiel,0.974747178071
 Isaiah_18,18,Isaiah_1_35,function_words,prepositions_tfidf,Ezekiel,0.9488235751537291,1
 Isaiah_18,18,Isaiah_1_35,function_words,pronouns_freq,Isaiah_1_35,0.7391714909701216,1
 Isaiah_18,18,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_1_35,0.7179264440412532,1
-Isaiah_18,18,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9978465574265465,1
+Isaiah_18,18,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.687884421539236,1
 Isaiah_18,18,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.7435516135016754,1
 Isaiah_18,18,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.4807385111013165,1
 Isaiah_18,18,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.3050607157219386,1
@@ -521,6 +538,7 @@ Isaiah_18,18,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.1389961746069462,1
 Isaiah_18,18,Isaiah_1_35,word,word1,Isaiah_1_35,0.6453162007375721,1
 Isaiah_18,18,Isaiah_1_35,word,word2,Isaiah_1_35,0.19999885501724549,1
 Isaiah_18,18,Isaiah_1_35,word,word3,Isaiah_1_35,0.13911153534979528,1
+Isaiah_18,18,Isaiah_1_35,word_length,word_length,Isaiah_56_66,0.9999389675453055,1
 Isaiah_19,19,Isaiah_1_35,char,char3,Isaiah_1_35,0.8544449739330201,1
 Isaiah_19,19,Isaiah_1_35,char,char4,Isaiah_1_35,0.7544409307322308,1
 Isaiah_19,19,Isaiah_1_35,char,char5,Isaiah_1_35,0.638649292596277,1
@@ -536,7 +554,7 @@ Isaiah_19,19,Isaiah_1_35,function_words,prepositions_freq,Ezekiel,0.980015373849
 Isaiah_19,19,Isaiah_1_35,function_words,prepositions_tfidf,Isaiah_36_39,0.9668286859504124,1
 Isaiah_19,19,Isaiah_1_35,function_words,pronouns_freq,Hosea,0.7808596906208396,1
 Isaiah_19,19,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_1_35,0.7127621211858229,1
-Isaiah_19,19,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9994537616110429,1
+Isaiah_19,19,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.7936891148433537,1
 Isaiah_19,19,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.8664860654119653,1
 Isaiah_19,19,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.6661388015499703,1
 Isaiah_19,19,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.4804456656454837,1
@@ -550,6 +568,7 @@ Isaiah_19,19,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.2829691282901107,1
 Isaiah_19,19,Isaiah_1_35,word,word1,Isaiah_1_35,0.8137152903649549,1
 Isaiah_19,19,Isaiah_1_35,word,word2,Isaiah_1_35,0.4213456093720246,1
 Isaiah_19,19,Isaiah_1_35,word,word3,Isaiah_1_35,0.28251183193563817,1
+Isaiah_19,19,Isaiah_1_35,word_length,word_length,1 Kings,0.999852670440333,1
 Isaiah_20,20,Isaiah_1_35,char,char3,2 Kings,0.6469359712758183,1
 Isaiah_20,20,Isaiah_1_35,char,char4,Isaiah_1_35,0.4290126023330293,1
 Isaiah_20,20,Isaiah_1_35,char,char5,Isaiah_1_35,0.2994449751768896,1
@@ -565,7 +584,7 @@ Isaiah_20,20,Isaiah_1_35,function_words,prepositions_freq,Amos,0.965209219667668
 Isaiah_20,20,Isaiah_1_35,function_words,prepositions_tfidf,Amos,0.9484594643254739,1
 Isaiah_20,20,Isaiah_1_35,function_words,pronouns_freq,Isaiah_56_66,0.6280783342961914,1
 Isaiah_20,20,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_56_66,0.6166422645925573,1
-Isaiah_20,20,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9940195962298528,1
+Isaiah_20,20,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.5988407494401974,1
 Isaiah_20,20,Isaiah_1_35,pos,pos3,2 Kings,0.5159417663883288,1
 Isaiah_20,20,Isaiah_1_35,pos,pos4,2 Kings,0.28326973580611686,1
 Isaiah_20,20,Isaiah_1_35,pos,pos5,2 Kings,0.16119924313805511,1
@@ -579,6 +598,7 @@ Isaiah_20,20,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.11237011803020629,1
 Isaiah_20,20,Isaiah_1_35,word,word1,Isaiah_1_35,0.5025456112029965,1
 Isaiah_20,20,Isaiah_1_35,word,word2,Isaiah_1_35,0.1538719802243946,1
 Isaiah_20,20,Isaiah_1_35,word,word3,Isaiah_1_35,0.11157620553999809,1
+Isaiah_20,20,Isaiah_1_35,word_length,word_length,Isaiah_56_66,0.9998070149045921,1
 Isaiah_21,21,Isaiah_1_35,char,char3,Isaiah_1_35,0.7885909595436039,1
 Isaiah_21,21,Isaiah_1_35,char,char4,Isaiah_1_35,0.5792234853579092,1
 Isaiah_21,21,Isaiah_1_35,char,char5,Isaiah_1_35,0.39852245604088765,1
@@ -594,7 +614,7 @@ Isaiah_21,21,Isaiah_1_35,function_words,prepositions_freq,Amos,0.966573331677772
 Isaiah_21,21,Isaiah_1_35,function_words,prepositions_tfidf,Isaiah_1_35,0.9565054274712345,1
 Isaiah_21,21,Isaiah_1_35,function_words,pronouns_freq,Job,0.7936161918404346,1
 Isaiah_21,21,Isaiah_1_35,function_words,pronouns_tfidf,Job,0.7735397630903386,1
-Isaiah_21,21,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9971751251741098,1
+Isaiah_21,21,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.6870353934007852,1
 Isaiah_21,21,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.8007102450863187,1
 Isaiah_21,21,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.5283184948040448,1
 Isaiah_21,21,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.3339352310964505,1
@@ -608,6 +628,7 @@ Isaiah_21,21,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.15572297190099743,1
 Isaiah_21,21,Isaiah_1_35,word,word1,Isaiah_1_35,0.6698097738739176,1
 Isaiah_21,21,Isaiah_1_35,word,word2,Isaiah_1_35,0.21176455318539555,1
 Isaiah_21,21,Isaiah_1_35,word,word3,Isaiah_1_35,0.15449381117971905,1
+Isaiah_21,21,Isaiah_1_35,word_length,word_length,Proverbs,0.9999200656430667,1
 Isaiah_22,22,Isaiah_1_35,char,char3,Isaiah_1_35,0.911997264527295,1
 Isaiah_22,22,Isaiah_1_35,char,char4,Isaiah_1_35,0.7555835821037948,1
 Isaiah_22,22,Isaiah_1_35,char,char5,Isaiah_1_35,0.5806957431699958,1
@@ -623,7 +644,7 @@ Isaiah_22,22,Isaiah_1_35,function_words,prepositions_freq,Proverbs,0.99210409810
 Isaiah_22,22,Isaiah_1_35,function_words,prepositions_tfidf,Proverbs,0.9872623315482492,1
 Isaiah_22,22,Isaiah_1_35,function_words,pronouns_freq,Isaiah_36_39,0.8744877548590151,1
 Isaiah_22,22,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_36_39,0.8580279960983974,1
-Isaiah_22,22,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9984924305133681,1
+Isaiah_22,22,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.7858777772811464,1
 Isaiah_22,22,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.861677438161588,1
 Isaiah_22,22,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.629857816389685,1
 Isaiah_22,22,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.42426217006491873,1
@@ -637,6 +658,7 @@ Isaiah_22,22,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.24332207619031246,1
 Isaiah_22,22,Isaiah_1_35,word,word1,Isaiah_1_35,0.8039051221911172,1
 Isaiah_22,22,Isaiah_1_35,word,word2,Isaiah_1_35,0.3357442535446352,1
 Isaiah_22,22,Isaiah_1_35,word,word3,Isaiah_1_35,0.24003796050525655,1
+Isaiah_22,22,Isaiah_1_35,word_length,word_length,Isaiah_36_39,0.9999577503150572,1
 Isaiah_23,23,Isaiah_1_35,char,char3,Isaiah_1_35,0.8226257541463264,1
 Isaiah_23,23,Isaiah_1_35,char,char4,Isaiah_1_35,0.6057457505773752,1
 Isaiah_23,23,Isaiah_1_35,char,char5,Isaiah_1_35,0.4392495974647092,1
@@ -652,7 +674,7 @@ Isaiah_23,23,Isaiah_1_35,function_words,prepositions_freq,Isaiah_36_39,0.9491992
 Isaiah_23,23,Isaiah_1_35,function_words,prepositions_tfidf,2 Samuel,0.9249025806890421,1
 Isaiah_23,23,Isaiah_1_35,function_words,pronouns_freq,Isaiah_1_35,0.6202643434033506,1
 Isaiah_23,23,Isaiah_1_35,function_words,pronouns_tfidf,Hosea,0.629926161293973,1
-Isaiah_23,23,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.998372797447978,1
+Isaiah_23,23,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.752366255557765,1
 Isaiah_23,23,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.7694781699769807,1
 Isaiah_23,23,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.5083153006517945,1
 Isaiah_23,23,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.32170630108186365,1
@@ -666,6 +688,7 @@ Isaiah_23,23,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.1913702383301886,1
 Isaiah_23,23,Isaiah_1_35,word,word1,Isaiah_1_35,0.6408381463799818,1
 Isaiah_23,23,Isaiah_1_35,word,word2,Isaiah_1_35,0.24695577841430047,1
 Isaiah_23,23,Isaiah_1_35,word,word3,Isaiah_1_35,0.1906010475379241,1
+Isaiah_23,23,Isaiah_1_35,word_length,word_length,Isaiah_56_66,0.9998159990198793,1
 Isaiah_24,24,Isaiah_1_35,char,char3,Isaiah_1_35,0.8993906585392133,1
 Isaiah_24,24,Isaiah_1_35,char,char4,Isaiah_1_35,0.7750907174340973,1
 Isaiah_24,24,Isaiah_1_35,char,char5,Isaiah_1_35,0.6200332783102883,1
@@ -681,7 +704,7 @@ Isaiah_24,24,Isaiah_1_35,function_words,prepositions_freq,Job,0.9426155817393744
 Isaiah_24,24,Isaiah_1_35,function_words,prepositions_tfidf,Job,0.9292331845596827,1
 Isaiah_24,24,Isaiah_1_35,function_words,pronouns_freq,Hosea,0.7831703457761472,1
 Isaiah_24,24,Isaiah_1_35,function_words,pronouns_tfidf,Hosea,0.7595221570923089,1
-Isaiah_24,24,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9985588921389376,1
+Isaiah_24,24,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.7463224106161224,1
 Isaiah_24,24,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.8093956775181125,1
 Isaiah_24,24,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.6021018259347133,1
 Isaiah_24,24,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.41806055070815673,1
@@ -695,6 +718,7 @@ Isaiah_24,24,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.23542539009690802,1
 Isaiah_24,24,Isaiah_1_35,word,word1,Isaiah_1_35,0.8049879210719281,1
 Isaiah_24,24,Isaiah_1_35,word,word2,Isaiah_1_35,0.35674298972887697,1
 Isaiah_24,24,Isaiah_1_35,word,word3,Isaiah_1_35,0.23316417516296786,1
+Isaiah_24,24,Isaiah_1_35,word_length,word_length,Isaiah_56_66,0.9998819598113249,1
 Isaiah_25,25,Isaiah_1_35,char,char3,Isaiah_1_35,0.8643283290583373,1
 Isaiah_25,25,Isaiah_1_35,char,char4,Isaiah_1_35,0.6740159044886074,1
 Isaiah_25,25,Isaiah_1_35,char,char5,Isaiah_1_35,0.49019963921336906,1
@@ -710,7 +734,7 @@ Isaiah_25,25,Isaiah_1_35,function_words,prepositions_freq,Isaiah_1_35,0.98063927
 Isaiah_25,25,Isaiah_1_35,function_words,prepositions_tfidf,Isaiah_1_35,0.9665388274635051,1
 Isaiah_25,25,Isaiah_1_35,function_words,pronouns_freq,1 Kings,0.900810878169172,1
 Isaiah_25,25,Isaiah_1_35,function_words,pronouns_tfidf,1 Kings,0.8468159661634371,1
-Isaiah_25,25,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9980629012972467,1
+Isaiah_25,25,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.7189549527326443,1
 Isaiah_25,25,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.7982413529137968,1
 Isaiah_25,25,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.5448595904481129,1
 Isaiah_25,25,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.3570636414238449,1
@@ -724,6 +748,7 @@ Isaiah_25,25,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.172292564200554,1
 Isaiah_25,25,Isaiah_1_35,word,word1,Isaiah_1_35,0.7125327737442816,1
 Isaiah_25,25,Isaiah_1_35,word,word2,Isaiah_1_35,0.2564226304921754,1
 Isaiah_25,25,Isaiah_1_35,word,word3,Isaiah_1_35,0.17016006154939425,1
+Isaiah_25,25,Isaiah_1_35,word_length,word_length,1 Samuel,0.9997826191248327,1
 Isaiah_26,26,Isaiah_1_35,char,char3,Psalms,0.8884823125117592,1
 Isaiah_26,26,Isaiah_1_35,char,char4,Psalms,0.7103353083818945,1
 Isaiah_26,26,Isaiah_1_35,char,char5,Psalms,0.4986485849304729,1
@@ -739,7 +764,7 @@ Isaiah_26,26,Isaiah_1_35,function_words,prepositions_freq,Psalms,0.9503943285777
 Isaiah_26,26,Isaiah_1_35,function_words,prepositions_tfidf,Psalms,0.9375772912981778,1
 Isaiah_26,26,Isaiah_1_35,function_words,pronouns_freq,Isaiah_56_66,0.8255612967692649,1
 Isaiah_26,26,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_56_66,0.8041865172652798,1
-Isaiah_26,26,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9979753873173205,1
+Isaiah_26,26,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.7546673154078634,1
 Isaiah_26,26,Isaiah_1_35,pos,pos3,Psalms,0.7817623276739861,1
 Isaiah_26,26,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.48621767491770496,1
 Isaiah_26,26,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.31167760103408126,1
@@ -753,6 +778,7 @@ Isaiah_26,26,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.17120034301157902,1
 Isaiah_26,26,Isaiah_1_35,word,word1,Psalms,0.7176401972076539,1
 Isaiah_26,26,Isaiah_1_35,word,word2,Isaiah_1_35,0.2275660081394255,1
 Isaiah_26,26,Isaiah_1_35,word,word3,Isaiah_1_35,0.17045094164070648,1
+Isaiah_26,26,Isaiah_1_35,word_length,word_length,Amos,0.999926374487797,1
 Isaiah_27,27,Isaiah_1_35,char,char3,Isaiah_1_35,0.8954434076348118,1
 Isaiah_27,27,Isaiah_1_35,char,char4,Isaiah_1_35,0.7298820482300251,1
 Isaiah_27,27,Isaiah_1_35,char,char5,Isaiah_1_35,0.5472627812767076,1
@@ -768,7 +794,7 @@ Isaiah_27,27,Isaiah_1_35,function_words,prepositions_freq,Job,0.9186519933523649
 Isaiah_27,27,Isaiah_1_35,function_words,prepositions_tfidf,Proverbs,0.9041877907890646,1
 Isaiah_27,27,Isaiah_1_35,function_words,pronouns_freq,2 Kings,0.8473205314045875,1
 Isaiah_27,27,Isaiah_1_35,function_words,pronouns_tfidf,2 Kings,0.8247495578320565,1
-Isaiah_27,27,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9971815054160779,1
+Isaiah_27,27,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.6993889773489561,1
 Isaiah_27,27,Isaiah_1_35,pos,pos3,Hosea,0.7642411708581223,1
 Isaiah_27,27,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.49743925762819813,1
 Isaiah_27,27,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.3221400618809765,1
@@ -782,6 +808,7 @@ Isaiah_27,27,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.202178955598459,1
 Isaiah_27,27,Isaiah_1_35,word,word1,Isaiah_1_35,0.7538198068567596,1
 Isaiah_27,27,Isaiah_1_35,word,word2,Isaiah_1_35,0.28218125947075545,1
 Isaiah_27,27,Isaiah_1_35,word,word3,Isaiah_1_35,0.20207544095700425,1
+Isaiah_27,27,Isaiah_1_35,word_length,word_length,Isaiah_36_39,0.9998991617167479,1
 Isaiah_28,28,Isaiah_1_35,char,char3,Isaiah_1_35,0.8780135597436292,1
 Isaiah_28,28,Isaiah_1_35,char,char4,Isaiah_1_35,0.6945178290677373,1
 Isaiah_28,28,Isaiah_1_35,char,char5,Isaiah_1_35,0.5209794169044605,1
@@ -797,7 +824,7 @@ Isaiah_28,28,Isaiah_1_35,function_words,prepositions_freq,Isaiah_40_55,0.9600332
 Isaiah_28,28,Isaiah_1_35,function_words,prepositions_tfidf,Job,0.91206672054374,1
 Isaiah_28,28,Isaiah_1_35,function_words,pronouns_freq,2 Kings,0.8997636986356837,1
 Isaiah_28,28,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_1_35,0.8356623034303019,1
-Isaiah_28,28,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9992630501815125,1
+Isaiah_28,28,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.8598527441860723,1
 Isaiah_28,28,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.8395334250416977,1
 Isaiah_28,28,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.582831163472558,1
 Isaiah_28,28,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.39284802105024624,1
@@ -811,6 +838,7 @@ Isaiah_28,28,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.2295282831522169,1
 Isaiah_28,28,Isaiah_1_35,word,word1,Isaiah_1_35,0.7152306687257614,1
 Isaiah_28,28,Isaiah_1_35,word,word2,Isaiah_1_35,0.3039694880311328,1
 Isaiah_28,28,Isaiah_1_35,word,word3,Isaiah_1_35,0.22966431486944658,1
+Isaiah_28,28,Isaiah_1_35,word_length,word_length,Isaiah_56_66,0.9999735340992133,1
 Isaiah_29,29,Isaiah_1_35,char,char3,Isaiah_1_35,0.9102974053883529,1
 Isaiah_29,29,Isaiah_1_35,char,char4,Isaiah_1_35,0.7595425201836215,1
 Isaiah_29,29,Isaiah_1_35,char,char5,Isaiah_1_35,0.5896138441723903,1
@@ -826,7 +854,7 @@ Isaiah_29,29,Isaiah_1_35,function_words,prepositions_freq,Isaiah_1_35,0.97963183
 Isaiah_29,29,Isaiah_1_35,function_words,prepositions_tfidf,Isaiah_1_35,0.9641986324120622,1
 Isaiah_29,29,Isaiah_1_35,function_words,pronouns_freq,Isaiah_1_35,0.8804731674293607,1
 Isaiah_29,29,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_1_35,0.8663866755676125,1
-Isaiah_29,29,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9988949018298348,1
+Isaiah_29,29,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.8284709291430187,1
 Isaiah_29,29,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.8146115554845859,1
 Isaiah_29,29,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.5673315512812369,1
 Isaiah_29,29,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.3778831489279737,1
@@ -840,6 +868,7 @@ Isaiah_29,29,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.22699235822724623,1
 Isaiah_29,29,Isaiah_1_35,word,word1,Isaiah_1_35,0.7856771900635711,1
 Isaiah_29,29,Isaiah_1_35,word,word2,Isaiah_1_35,0.33326384109637663,1
 Isaiah_29,29,Isaiah_1_35,word,word3,Isaiah_1_35,0.22561186578508854,1
+Isaiah_29,29,Isaiah_1_35,word_length,word_length,Isaiah_1_35,0.9999711148099287,1
 Isaiah_30,30,Isaiah_1_35,char,char3,Isaiah_1_35,0.9502608514840224,1
 Isaiah_30,30,Isaiah_1_35,char,char4,Isaiah_1_35,0.8498804538411304,1
 Isaiah_30,30,Isaiah_1_35,char,char5,Isaiah_1_35,0.6958928824357399,1
@@ -855,7 +884,7 @@ Isaiah_30,30,Isaiah_1_35,function_words,prepositions_freq,Proverbs,0.98930832250
 Isaiah_30,30,Isaiah_1_35,function_words,prepositions_tfidf,Proverbs,0.9806313852586294,1
 Isaiah_30,30,Isaiah_1_35,function_words,pronouns_freq,Isaiah_1_35,0.8707172406596456,1
 Isaiah_30,30,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_1_35,0.8347179338015169,1
-Isaiah_30,30,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.999045944841411,1
+Isaiah_30,30,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.8696681058935253,1
 Isaiah_30,30,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.8965147749894147,1
 Isaiah_30,30,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.6921841922867633,1
 Isaiah_30,30,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.48964134379608687,1
@@ -869,6 +898,7 @@ Isaiah_30,30,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.26055742491840556,1
 Isaiah_30,30,Isaiah_1_35,word,word1,Isaiah_1_35,0.8796615851816607,1
 Isaiah_30,30,Isaiah_1_35,word,word2,Isaiah_1_35,0.38181352524837014,1
 Isaiah_30,30,Isaiah_1_35,word,word3,Isaiah_1_35,0.2592410114595995,1
+Isaiah_30,30,Isaiah_1_35,word_length,word_length,Job,0.9999379851151982,1
 Isaiah_31,31,Isaiah_1_35,char,char3,Isaiah_1_35,0.8458620892066322,1
 Isaiah_31,31,Isaiah_1_35,char,char4,Isaiah_1_35,0.6652403015555048,1
 Isaiah_31,31,Isaiah_1_35,char,char5,Isaiah_1_35,0.4893980260549806,1
@@ -884,7 +914,7 @@ Isaiah_31,31,Isaiah_1_35,function_words,prepositions_freq,Psalms,0.9516417858785
 Isaiah_31,31,Isaiah_1_35,function_words,prepositions_tfidf,Psalms,0.9203363029803516,1
 Isaiah_31,31,Isaiah_1_35,function_words,pronouns_freq,2 Kings,0.9107485895171019,1
 Isaiah_31,31,Isaiah_1_35,function_words,pronouns_tfidf,2 Kings,0.8812779016275498,1
-Isaiah_31,31,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.996617763109915,1
+Isaiah_31,31,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.6743253441729313,1
 Isaiah_31,31,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.6934572195970574,1
 Isaiah_31,31,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.41372385595951244,1
 Isaiah_31,31,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.2477055949554637,1
@@ -898,6 +928,7 @@ Isaiah_31,31,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.15976639558514524,1
 Isaiah_31,31,Isaiah_1_35,word,word1,Isaiah_1_35,0.7340459882984725,1
 Isaiah_31,31,Isaiah_1_35,word,word2,Isaiah_1_35,0.24629689592282497,1
 Isaiah_31,31,Isaiah_1_35,word,word3,Isaiah_1_35,0.15989615390752862,1
+Isaiah_31,31,Isaiah_1_35,word_length,word_length,2 Samuel,0.9997251215972082,1
 Isaiah_32,32,Isaiah_1_35,char,char3,Isaiah_1_35,0.8404983746968386,1
 Isaiah_32,32,Isaiah_1_35,char,char4,Isaiah_1_35,0.6568502484915686,1
 Isaiah_32,32,Isaiah_1_35,char,char5,Isaiah_1_35,0.49663823389339834,1
@@ -913,7 +944,7 @@ Isaiah_32,32,Isaiah_1_35,function_words,prepositions_freq,Psalms,0.9698738552009
 Isaiah_32,32,Isaiah_1_35,function_words,prepositions_tfidf,Isaiah_56_66,0.9571375328248448,1
 Isaiah_32,32,Isaiah_1_35,function_words,pronouns_freq,Isaiah_1_35,0.5782714916420431,1
 Isaiah_32,32,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_1_35,0.5800234677019693,1
-Isaiah_32,32,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9973932963381364,1
+Isaiah_32,32,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.6929283214096508,1
 Isaiah_32,32,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.7200913430630197,1
 Isaiah_32,32,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.4726149847412108,1
 Isaiah_32,32,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.31382605085322857,1
@@ -927,6 +958,7 @@ Isaiah_32,32,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.1569458541816966,1
 Isaiah_32,32,Isaiah_1_35,word,word1,Isaiah_1_35,0.7206101607771285,1
 Isaiah_32,32,Isaiah_1_35,word,word2,Isaiah_1_35,0.25687101432409015,1
 Isaiah_32,32,Isaiah_1_35,word,word3,Isaiah_1_35,0.1574498384371449,1
+Isaiah_32,32,Isaiah_1_35,word_length,word_length,Isaiah_56_66,0.9998375722140855,1
 Isaiah_33,33,Isaiah_1_35,char,char3,Isaiah_1_35,0.8817983199427788,1
 Isaiah_33,33,Isaiah_1_35,char,char4,Isaiah_1_35,0.7124471398697598,1
 Isaiah_33,33,Isaiah_1_35,char,char5,Isaiah_1_35,0.5419479896039101,1
@@ -942,7 +974,7 @@ Isaiah_33,33,Isaiah_1_35,function_words,prepositions_freq,Isaiah_1_35,0.96708428
 Isaiah_33,33,Isaiah_1_35,function_words,prepositions_tfidf,Isaiah_1_35,0.9517452642986721,1
 Isaiah_33,33,Isaiah_1_35,function_words,pronouns_freq,Isaiah_1_35,0.8664595285293313,1
 Isaiah_33,33,Isaiah_1_35,function_words,pronouns_tfidf,Isaiah_1_35,0.8099278029283534,1
-Isaiah_33,33,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9976059668601756,1
+Isaiah_33,33,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.7211179711168024,1
 Isaiah_33,33,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.6985930835259394,1
 Isaiah_33,33,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.4423209636313657,1
 Isaiah_33,33,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.2965655560561545,1
@@ -956,6 +988,7 @@ Isaiah_33,33,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.17339269761887685,1
 Isaiah_33,33,Isaiah_1_35,word,word1,Isaiah_1_35,0.7347617294679598,1
 Isaiah_33,33,Isaiah_1_35,word,word2,Isaiah_1_35,0.24551591627865502,1
 Isaiah_33,33,Isaiah_1_35,word,word3,Isaiah_1_35,0.17378859483266001,1
+Isaiah_33,33,Isaiah_1_35,word_length,word_length,Proverbs,0.9994448418463252,1
 Isaiah_34,34,Isaiah_1_35,char,char3,Isaiah_1_35,0.9029020221492365,1
 Isaiah_34,34,Isaiah_1_35,char,char4,Isaiah_1_35,0.7710756894158894,1
 Isaiah_34,34,Isaiah_1_35,char,char5,Isaiah_1_35,0.6070346076894405,1
@@ -971,7 +1004,7 @@ Isaiah_34,34,Isaiah_1_35,function_words,prepositions_freq,Isaiah_40_55,0.9558281
 Isaiah_34,34,Isaiah_1_35,function_words,prepositions_tfidf,Isaiah_40_55,0.9393490367983268,1
 Isaiah_34,34,Isaiah_1_35,function_words,pronouns_freq,Isaiah_1_35,0.7407313770727225,1
 Isaiah_34,34,Isaiah_1_35,function_words,pronouns_tfidf,Hosea,0.7301234016067083,1
-Isaiah_34,34,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9990486058136901,1
+Isaiah_34,34,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.7525478708834109,1
 Isaiah_34,34,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.8003460222023739,1
 Isaiah_34,34,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.5750250181281341,1
 Isaiah_34,34,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.3922753329700155,1
@@ -985,6 +1018,7 @@ Isaiah_34,34,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.17629770348902318,1
 Isaiah_34,34,Isaiah_1_35,word,word1,Isaiah_1_35,0.7783524196953996,1
 Isaiah_34,34,Isaiah_1_35,word,word2,Isaiah_1_35,0.3153068799973939,1
 Isaiah_34,34,Isaiah_1_35,word,word3,Isaiah_1_35,0.17609084158437185,1
+Isaiah_34,34,Isaiah_1_35,word_length,word_length,Ezekiel,0.9999221400861827,1
 Isaiah_35,35,Isaiah_1_35,char,char3,Isaiah_1_35,0.8445758883586044,1
 Isaiah_35,35,Isaiah_1_35,char,char4,Isaiah_1_35,0.6809491418098298,1
 Isaiah_35,35,Isaiah_1_35,char,char5,Isaiah_1_35,0.513171971445147,1
@@ -1000,7 +1034,7 @@ Isaiah_35,35,Isaiah_1_35,function_words,prepositions_freq,Isaiah_1_35,0.95951661
 Isaiah_35,35,Isaiah_1_35,function_words,prepositions_tfidf,Isaiah_1_35,0.944917713499647,1
 Isaiah_35,35,Isaiah_1_35,function_words,pronouns_freq,Isaiah_1_35,0.6622862731089781,1
 Isaiah_35,35,Isaiah_1_35,function_words,pronouns_tfidf,Amos,0.6234914341281018,1
-Isaiah_35,35,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.9960687823777916,1
+Isaiah_35,35,Isaiah_1_35,lexical,lexical_richness,Isaiah_36_39,0.6213142908375422,1
 Isaiah_35,35,Isaiah_1_35,pos,pos3,Isaiah_1_35,0.67727419962333,1
 Isaiah_35,35,Isaiah_1_35,pos,pos4,Isaiah_1_35,0.4178003792928139,1
 Isaiah_35,35,Isaiah_1_35,pos,pos5,Isaiah_1_35,0.2764340924278247,1
@@ -1014,6 +1048,7 @@ Isaiah_35,35,Isaiah_1_35,stem,stem3,Isaiah_1_35,0.1325310858422156,1
 Isaiah_35,35,Isaiah_1_35,word,word1,Isaiah_1_35,0.722505024757509,1
 Isaiah_35,35,Isaiah_1_35,word,word2,Isaiah_1_35,0.24615321247363697,1
 Isaiah_35,35,Isaiah_1_35,word,word3,Isaiah_1_35,0.13259365752615423,1
+Isaiah_35,35,Isaiah_1_35,word_length,word_length,Isaiah_1_35,0.9998477951035649,1
 Isaiah_36,36,Isaiah_36_39,char,char3,Isaiah_36_39,0.9281425129273846,1
 Isaiah_36,36,Isaiah_36_39,char,char4,Isaiah_36_39,0.8491610073626644,1
 Isaiah_36,36,Isaiah_36_39,char,char5,Isaiah_36_39,0.7754153862738509,1
@@ -1029,7 +1064,7 @@ Isaiah_36,36,Isaiah_36_39,function_words,prepositions_freq,Isaiah_36_39,0.988000
 Isaiah_36,36,Isaiah_36_39,function_words,prepositions_tfidf,Isaiah_36_39,0.9812170483627095,1
 Isaiah_36,36,Isaiah_36_39,function_words,pronouns_freq,Isaiah_36_39,0.8997882796595524,1
 Isaiah_36,36,Isaiah_36_39,function_words,pronouns_tfidf,Isaiah_36_39,0.8554538946451898,1
-Isaiah_36,36,Isaiah_36_39,lexical,lexical_richness,Isaiah_36_39,0.9994472716271107,1
+Isaiah_36,36,Isaiah_36_39,lexical,lexical_richness,Isaiah_36_39,0.8417614108830327,1
 Isaiah_36,36,Isaiah_36_39,pos,pos3,Isaiah_36_39,0.8691360150943331,1
 Isaiah_36,36,Isaiah_36_39,pos,pos4,Isaiah_36_39,0.7084658324948236,1
 Isaiah_36,36,Isaiah_36_39,pos,pos5,Isaiah_36_39,0.6091322094945522,1
@@ -1043,6 +1078,7 @@ Isaiah_36,36,Isaiah_36_39,stem,stem3,Isaiah_36_39,0.5616468834716535,1
 Isaiah_36,36,Isaiah_36_39,word,word1,Isaiah_36_39,0.8625709762816947,1
 Isaiah_36,36,Isaiah_36_39,word,word2,Isaiah_36_39,0.6278714346081762,1
 Isaiah_36,36,Isaiah_36_39,word,word3,Isaiah_36_39,0.561186973250389,1
+Isaiah_36,36,Isaiah_36_39,word_length,word_length,Isaiah_36_39,0.999963907831896,1
 Isaiah_37,37,Isaiah_36_39,char,char3,Isaiah_36_39,0.9701582045714657,1
 Isaiah_37,37,Isaiah_36_39,char,char4,Isaiah_36_39,0.9221466529389276,1
 Isaiah_37,37,Isaiah_36_39,char,char5,Isaiah_36_39,0.8626456219908095,1
@@ -1058,7 +1094,7 @@ Isaiah_37,37,Isaiah_36_39,function_words,prepositions_freq,Isaiah_36_39,0.986892
 Isaiah_37,37,Isaiah_36_39,function_words,prepositions_tfidf,Isaiah_36_39,0.9828831355667571,1
 Isaiah_37,37,Isaiah_36_39,function_words,pronouns_freq,Isaiah_36_39,0.9643713926065376,1
 Isaiah_37,37,Isaiah_36_39,function_words,pronouns_tfidf,Isaiah_36_39,0.9573173718071194,1
-Isaiah_37,37,Isaiah_36_39,lexical,lexical_richness,Isaiah_36_39,0.9995074396275964,1
+Isaiah_37,37,Isaiah_36_39,lexical,lexical_richness,Isaiah_36_39,0.8990955924301428,1
 Isaiah_37,37,Isaiah_36_39,pos,pos3,Isaiah_36_39,0.9403311873937279,1
 Isaiah_37,37,Isaiah_36_39,pos,pos4,Isaiah_36_39,0.8234758062561813,1
 Isaiah_37,37,Isaiah_36_39,pos,pos5,Isaiah_36_39,0.723744169027608,1
@@ -1072,6 +1108,7 @@ Isaiah_37,37,Isaiah_36_39,stem,stem3,Isaiah_36_39,0.6778459869788706,1
 Isaiah_37,37,Isaiah_36_39,word,word1,Isaiah_36_39,0.9374327804212115,1
 Isaiah_37,37,Isaiah_36_39,word,word2,Isaiah_36_39,0.7358485855462354,1
 Isaiah_37,37,Isaiah_36_39,word,word3,Isaiah_36_39,0.6715660653516634,1
+Isaiah_37,37,Isaiah_36_39,word_length,word_length,Jeremiah,0.9999786723759818,1
 Isaiah_38,38,Isaiah_36_39,char,char3,Isaiah_36_39,0.9018752348727139,1
 Isaiah_38,38,Isaiah_36_39,char,char4,Isaiah_36_39,0.7829594287920766,1
 Isaiah_38,38,Isaiah_36_39,char,char5,Isaiah_36_39,0.6699723627794469,1
@@ -1087,7 +1124,7 @@ Isaiah_38,38,Isaiah_36_39,function_words,prepositions_freq,Jeremiah,0.9893521542
 Isaiah_38,38,Isaiah_36_39,function_words,prepositions_tfidf,Jeremiah,0.9818189195646787,1
 Isaiah_38,38,Isaiah_36_39,function_words,pronouns_freq,Isaiah_40_55,0.8946794538048004,1
 Isaiah_38,38,Isaiah_36_39,function_words,pronouns_tfidf,Isaiah_40_55,0.8819423667314631,1
-Isaiah_38,38,Isaiah_36_39,lexical,lexical_richness,Isaiah_36_39,0.9984148948323486,1
+Isaiah_38,38,Isaiah_36_39,lexical,lexical_richness,Isaiah_36_39,0.8010593317786904,1
 Isaiah_38,38,Isaiah_36_39,pos,pos3,Isaiah_36_39,0.8402568170545617,1
 Isaiah_38,38,Isaiah_36_39,pos,pos4,Isaiah_36_39,0.6524434611370016,1
 Isaiah_38,38,Isaiah_36_39,pos,pos5,Isaiah_36_39,0.5344737573791976,1
@@ -1101,6 +1138,7 @@ Isaiah_38,38,Isaiah_36_39,stem,stem3,Isaiah_36_39,0.49028249691251924,1
 Isaiah_38,38,Isaiah_36_39,word,word1,Isaiah_36_39,0.8077227777369557,1
 Isaiah_38,38,Isaiah_36_39,word,word2,Isaiah_36_39,0.5251276945852605,1
 Isaiah_38,38,Isaiah_36_39,word,word3,Isaiah_36_39,0.49078217392687923,1
+Isaiah_38,38,Isaiah_36_39,word_length,word_length,1 Samuel,0.9994698561688785,1
 Isaiah_39,39,Isaiah_36_39,char,char3,Isaiah_36_39,0.8317239798713643,1
 Isaiah_39,39,Isaiah_36_39,char,char4,Isaiah_36_39,0.7137959855972607,1
 Isaiah_39,39,Isaiah_36_39,char,char5,Isaiah_36_39,0.6121303054334947,1
@@ -1116,7 +1154,7 @@ Isaiah_39,39,Isaiah_36_39,function_words,prepositions_freq,Psalms,0.926184443081
 Isaiah_39,39,Isaiah_36_39,function_words,prepositions_tfidf,Psalms,0.9108000606493266,1
 Isaiah_39,39,Isaiah_36_39,function_words,pronouns_freq,Isaiah_1_35,0.856536344046964,1
 Isaiah_39,39,Isaiah_36_39,function_words,pronouns_tfidf,2 Kings,0.8029348773419173,1
-Isaiah_39,39,Isaiah_36_39,lexical,lexical_richness,Isaiah_36_39,0.9986642937193753,1
+Isaiah_39,39,Isaiah_36_39,lexical,lexical_richness,Isaiah_36_39,0.6929618258598979,1
 Isaiah_39,39,Isaiah_36_39,pos,pos3,Isaiah_36_39,0.7093668207446834,1
 Isaiah_39,39,Isaiah_36_39,pos,pos4,Isaiah_36_39,0.4751688969217806,1
 Isaiah_39,39,Isaiah_36_39,pos,pos5,Isaiah_36_39,0.37272576039187455,1
@@ -1130,6 +1168,7 @@ Isaiah_39,39,Isaiah_36_39,stem,stem3,Isaiah_36_39,0.31871759891889057,1
 Isaiah_39,39,Isaiah_36_39,word,word1,Isaiah_36_39,0.7043748601942865,1
 Isaiah_39,39,Isaiah_36_39,word,word2,Isaiah_36_39,0.3768919913942293,1
 Isaiah_39,39,Isaiah_36_39,word,word3,Isaiah_36_39,0.31869704069155713,1
+Isaiah_39,39,Isaiah_36_39,word_length,word_length,2 Samuel,0.9993776659750754,1
 Isaiah_40,40,Isaiah_40_55,char,char3,Isaiah_40_55,0.9185797842793149,1
 Isaiah_40,40,Isaiah_40_55,char,char4,Isaiah_40_55,0.7917954363914307,1
 Isaiah_40,40,Isaiah_40_55,char,char5,Isaiah_40_55,0.634620577582007,1
@@ -1145,7 +1184,7 @@ Isaiah_40,40,Isaiah_40_55,function_words,prepositions_freq,Job,0.989578048599288
 Isaiah_40,40,Isaiah_40_55,function_words,prepositions_tfidf,Isaiah_40_55,0.9788077149109392,1
 Isaiah_40,40,Isaiah_40_55,function_words,pronouns_freq,2 Kings,0.9158933295501993,1
 Isaiah_40,40,Isaiah_40_55,function_words,pronouns_tfidf,2 Kings,0.8668327486513608,1
-Isaiah_40,40,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.9990384245551771,1
+Isaiah_40,40,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.8304810247886975,1
 Isaiah_40,40,Isaiah_40_55,pos,pos3,Isaiah_40_55,0.833451375524655,1
 Isaiah_40,40,Isaiah_40_55,pos,pos4,Isaiah_40_55,0.6183409344519704,1
 Isaiah_40,40,Isaiah_40_55,pos,pos5,Isaiah_40_55,0.4490307184271386,1
@@ -1159,6 +1198,7 @@ Isaiah_40,40,Isaiah_40_55,stem,stem3,Isaiah_40_55,0.29855753203725066,1
 Isaiah_40,40,Isaiah_40_55,word,word1,Isaiah_40_55,0.7936176875229626,1
 Isaiah_40,40,Isaiah_40_55,word,word2,Isaiah_40_55,0.37658296078990083,1
 Isaiah_40,40,Isaiah_40_55,word,word3,Isaiah_40_55,0.29817912716082207,1
+Isaiah_40,40,Isaiah_40_55,word_length,word_length,Isaiah_56_66,0.9999537257534302,1
 Isaiah_41,41,Isaiah_40_55,char,char3,Isaiah_40_55,0.9425757415676334,1
 Isaiah_41,41,Isaiah_40_55,char,char4,Isaiah_40_55,0.8349185706638022,1
 Isaiah_41,41,Isaiah_40_55,char,char5,Isaiah_40_55,0.6834719837860315,1
@@ -1174,7 +1214,7 @@ Isaiah_41,41,Isaiah_40_55,function_words,prepositions_freq,Isaiah_40_55,0.975671
 Isaiah_41,41,Isaiah_40_55,function_words,prepositions_tfidf,Isaiah_40_55,0.9688244183997993,1
 Isaiah_41,41,Isaiah_40_55,function_words,pronouns_freq,Jeremiah,0.8936831853804371,1
 Isaiah_41,41,Isaiah_40_55,function_words,pronouns_tfidf,Isaiah_40_55,0.8680202171687381,1
-Isaiah_41,41,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.9990266270683622,1
+Isaiah_41,41,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.8329970798816507,1
 Isaiah_41,41,Isaiah_40_55,pos,pos3,Isaiah_40_55,0.8461233702132166,1
 Isaiah_41,41,Isaiah_40_55,pos,pos4,Isaiah_40_55,0.6230287570524118,1
 Isaiah_41,41,Isaiah_40_55,pos,pos5,Isaiah_40_55,0.4453307997688844,1
@@ -1188,6 +1228,7 @@ Isaiah_41,41,Isaiah_40_55,stem,stem3,Isaiah_40_55,0.34336700862690467,1
 Isaiah_41,41,Isaiah_40_55,word,word1,Isaiah_40_55,0.8469143404000238,1
 Isaiah_41,41,Isaiah_40_55,word,word2,Isaiah_40_55,0.44087272985331566,1
 Isaiah_41,41,Isaiah_40_55,word,word3,Isaiah_40_55,0.3420905953653507,1
+Isaiah_41,41,Isaiah_40_55,word_length,word_length,1 Samuel,0.9998937374987238,1
 Isaiah_42,42,Isaiah_40_55,char,char3,Isaiah_40_55,0.9137644785462423,1
 Isaiah_42,42,Isaiah_40_55,char,char4,Isaiah_40_55,0.7671232598797247,1
 Isaiah_42,42,Isaiah_40_55,char,char5,Isaiah_40_55,0.6021569255002744,1
@@ -1203,7 +1244,7 @@ Isaiah_42,42,Isaiah_40_55,function_words,prepositions_freq,Isaiah_56_66,0.934851
 Isaiah_42,42,Isaiah_40_55,function_words,prepositions_tfidf,Isaiah_56_66,0.92991110482904,1
 Isaiah_42,42,Isaiah_40_55,function_words,pronouns_freq,Isaiah_40_55,0.8688477467144831,1
 Isaiah_42,42,Isaiah_40_55,function_words,pronouns_tfidf,Isaiah_40_55,0.8501475240240569,1
-Isaiah_42,42,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.9986471075040431,1
+Isaiah_42,42,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.8021973627369381,1
 Isaiah_42,42,Isaiah_40_55,pos,pos3,Isaiah_40_55,0.8484479652878122,1
 Isaiah_42,42,Isaiah_40_55,pos,pos4,Isaiah_40_55,0.6075287503595528,1
 Isaiah_42,42,Isaiah_40_55,pos,pos5,Isaiah_40_55,0.41653692042151713,1
@@ -1217,6 +1258,7 @@ Isaiah_42,42,Isaiah_40_55,stem,stem3,Isaiah_40_55,0.27304854651617944,1
 Isaiah_42,42,Isaiah_40_55,word,word1,Isaiah_40_55,0.7994085567708334,1
 Isaiah_42,42,Isaiah_40_55,word,word2,Isaiah_40_55,0.3653963192856398,1
 Isaiah_42,42,Isaiah_40_55,word,word3,Isaiah_40_55,0.2713400570034613,1
+Isaiah_42,42,Isaiah_40_55,word_length,word_length,1 Samuel,0.9999373031459745,1
 Isaiah_43,43,Isaiah_40_55,char,char3,Isaiah_40_55,0.9142563345303469,1
 Isaiah_43,43,Isaiah_40_55,char,char4,Isaiah_40_55,0.7861772965281706,1
 Isaiah_43,43,Isaiah_40_55,char,char5,Isaiah_40_55,0.644338402759726,1
@@ -1232,7 +1274,7 @@ Isaiah_43,43,Isaiah_40_55,function_words,prepositions_freq,Isaiah_40_55,0.914384
 Isaiah_43,43,Isaiah_40_55,function_words,prepositions_tfidf,Isaiah_40_55,0.8782037634729476,1
 Isaiah_43,43,Isaiah_40_55,function_words,pronouns_freq,Isaiah_36_39,0.901982573125926,1
 Isaiah_43,43,Isaiah_40_55,function_words,pronouns_tfidf,Isaiah_36_39,0.9077124387721586,1
-Isaiah_43,43,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.9992378557869904,1
+Isaiah_43,43,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.8323053250920469,1
 Isaiah_43,43,Isaiah_40_55,pos,pos3,Isaiah_40_55,0.8508492113288754,1
 Isaiah_43,43,Isaiah_40_55,pos,pos4,Isaiah_40_55,0.6334852618332221,1
 Isaiah_43,43,Isaiah_40_55,pos,pos5,Isaiah_40_55,0.4569340731098518,1
@@ -1246,6 +1288,7 @@ Isaiah_43,43,Isaiah_40_55,stem,stem3,Isaiah_40_55,0.32411310529744364,1
 Isaiah_43,43,Isaiah_40_55,word,word1,Isaiah_40_55,0.8135138850875181,1
 Isaiah_43,43,Isaiah_40_55,word,word2,Isaiah_40_55,0.4275394786369516,1
 Isaiah_43,43,Isaiah_40_55,word,word3,Isaiah_40_55,0.3227297082971128,1
+Isaiah_43,43,Isaiah_40_55,word_length,word_length,Amos,0.9999624128468421,1
 Isaiah_44,44,Isaiah_40_55,char,char3,Isaiah_40_55,0.9245614278342025,1
 Isaiah_44,44,Isaiah_40_55,char,char4,Isaiah_40_55,0.8012083188364698,1
 Isaiah_44,44,Isaiah_40_55,char,char5,Isaiah_40_55,0.652665681677159,1
@@ -1261,7 +1304,7 @@ Isaiah_44,44,Isaiah_40_55,function_words,prepositions_freq,Isaiah_40_55,0.979504
 Isaiah_44,44,Isaiah_40_55,function_words,prepositions_tfidf,Hosea,0.9689120987367936,1
 Isaiah_44,44,Isaiah_40_55,function_words,pronouns_freq,Isaiah_40_55,0.9473535355728652,1
 Isaiah_44,44,Isaiah_40_55,function_words,pronouns_tfidf,Isaiah_40_55,0.9375101945050509,1
-Isaiah_44,44,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.9993781523944681,1
+Isaiah_44,44,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.8630834251425988,1
 Isaiah_44,44,Isaiah_40_55,pos,pos3,Isaiah_40_55,0.8746650175282653,1
 Isaiah_44,44,Isaiah_40_55,pos,pos4,Isaiah_40_55,0.6619147589578995,1
 Isaiah_44,44,Isaiah_40_55,pos,pos5,Isaiah_40_55,0.4742322552318469,1
@@ -1275,6 +1318,7 @@ Isaiah_44,44,Isaiah_40_55,stem,stem3,Isaiah_40_55,0.34054767996115926,1
 Isaiah_44,44,Isaiah_40_55,word,word1,Isaiah_40_55,0.8249182029697374,1
 Isaiah_44,44,Isaiah_40_55,word,word2,Isaiah_40_55,0.43593034930345204,1
 Isaiah_44,44,Isaiah_40_55,word,word3,Isaiah_40_55,0.3408279247173312,1
+Isaiah_44,44,Isaiah_40_55,word_length,word_length,Psalms,0.9999422910215642,1
 Isaiah_45,45,Isaiah_40_55,char,char3,Isaiah_40_55,0.9259942764013278,1
 Isaiah_45,45,Isaiah_40_55,char,char4,Isaiah_40_55,0.8019179933330605,1
 Isaiah_45,45,Isaiah_40_55,char,char5,Isaiah_40_55,0.6611315080489376,1
@@ -1290,7 +1334,7 @@ Isaiah_45,45,Isaiah_40_55,function_words,prepositions_freq,1 Kings,0.97857683532
 Isaiah_45,45,Isaiah_40_55,function_words,prepositions_tfidf,1 Kings,0.9685510024978028,1
 Isaiah_45,45,Isaiah_40_55,function_words,pronouns_freq,Isaiah_40_55,0.9304315207028796,1
 Isaiah_45,45,Isaiah_40_55,function_words,pronouns_tfidf,Isaiah_40_55,0.9236445085115459,1
-Isaiah_45,45,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.999372096248363,1
+Isaiah_45,45,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.8415360524143177,1
 Isaiah_45,45,Isaiah_40_55,pos,pos3,Isaiah_40_55,0.8001255859693586,1
 Isaiah_45,45,Isaiah_40_55,pos,pos4,Isaiah_40_55,0.561972734959392,1
 Isaiah_45,45,Isaiah_40_55,pos,pos5,Isaiah_40_55,0.4165784008955117,1
@@ -1304,6 +1348,7 @@ Isaiah_45,45,Isaiah_40_55,stem,stem3,Isaiah_40_55,0.34432929260964973,1
 Isaiah_45,45,Isaiah_40_55,word,word1,Isaiah_40_55,0.8356608319407012,1
 Isaiah_45,45,Isaiah_40_55,word,word2,Isaiah_40_55,0.4539292857888813,1
 Isaiah_45,45,Isaiah_40_55,word,word3,Isaiah_40_55,0.34372640477371896,1
+Isaiah_45,45,Isaiah_40_55,word_length,word_length,Isaiah_40_55,0.9999279484757518,1
 Isaiah_46,46,Isaiah_40_55,char,char3,Isaiah_40_55,0.79305975872796,1
 Isaiah_46,46,Isaiah_40_55,char,char4,Isaiah_40_55,0.5941133554172665,1
 Isaiah_46,46,Isaiah_40_55,char,char5,Isaiah_40_55,0.4333483445644307,1
@@ -1319,7 +1364,7 @@ Isaiah_46,46,Isaiah_40_55,function_words,prepositions_freq,Isaiah_40_55,0.809149
 Isaiah_46,46,Isaiah_40_55,function_words,prepositions_tfidf,Isaiah_40_55,0.7872695214201554,1
 Isaiah_46,46,Isaiah_40_55,function_words,pronouns_freq,Amos,0.8788937113641845,1
 Isaiah_46,46,Isaiah_40_55,function_words,pronouns_tfidf,Amos,0.8587278248933118,1
-Isaiah_46,46,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.9972561672330782,1
+Isaiah_46,46,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.708006262430256,1
 Isaiah_46,46,Isaiah_40_55,pos,pos3,Isaiah_40_55,0.7641244818132584,1
 Isaiah_46,46,Isaiah_40_55,pos,pos4,Isaiah_40_55,0.512783680800016,1
 Isaiah_46,46,Isaiah_40_55,pos,pos5,Isaiah_40_55,0.3477901081536513,1
@@ -1333,6 +1378,7 @@ Isaiah_46,46,Isaiah_40_55,stem,stem3,Isaiah_40_55,0.2152291473650867,1
 Isaiah_46,46,Isaiah_40_55,word,word1,Isaiah_40_55,0.6481097271148359,1
 Isaiah_46,46,Isaiah_40_55,word,word2,Isaiah_40_55,0.2690031858767494,1
 Isaiah_46,46,Isaiah_40_55,word,word3,Isaiah_40_55,0.21478235222292766,1
+Isaiah_46,46,Isaiah_40_55,word_length,word_length,Psalms,0.9998073511360187,1
 Isaiah_47,47,Isaiah_40_55,char,char3,Isaiah_40_55,0.8458944852291449,1
 Isaiah_47,47,Isaiah_40_55,char,char4,Isaiah_40_55,0.6477327700790859,1
 Isaiah_47,47,Isaiah_40_55,char,char5,Isaiah_40_55,0.4883435645258448,1
@@ -1348,7 +1394,7 @@ Isaiah_47,47,Isaiah_40_55,function_words,prepositions_freq,Isaiah_40_55,0.966629
 Isaiah_47,47,Isaiah_40_55,function_words,prepositions_tfidf,Isaiah_40_55,0.952927896658135,1
 Isaiah_47,47,Isaiah_40_55,function_words,pronouns_freq,Isaiah_36_39,0.7685437125524086,1
 Isaiah_47,47,Isaiah_40_55,function_words,pronouns_tfidf,Isaiah_36_39,0.772295817247117,1
-Isaiah_47,47,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.9984606152194699,1
+Isaiah_47,47,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.7395673154088517,1
 Isaiah_47,47,Isaiah_40_55,pos,pos3,Isaiah_40_55,0.721926126571807,1
 Isaiah_47,47,Isaiah_40_55,pos,pos4,Isaiah_40_55,0.46387787663213215,1
 Isaiah_47,47,Isaiah_40_55,pos,pos5,Isaiah_40_55,0.32416468842152985,1
@@ -1362,6 +1408,7 @@ Isaiah_47,47,Isaiah_40_55,stem,stem3,Isaiah_40_55,0.23501785521114585,1
 Isaiah_47,47,Isaiah_40_55,word,word1,Isaiah_40_55,0.6345256103069505,1
 Isaiah_47,47,Isaiah_40_55,word,word2,Isaiah_40_55,0.2905095970443367,1
 Isaiah_47,47,Isaiah_40_55,word,word3,Isaiah_40_55,0.23519564170102006,1
+Isaiah_47,47,Isaiah_40_55,word_length,word_length,Isaiah_56_66,0.9997979827208885,1
 Isaiah_48,48,Isaiah_40_55,char,char3,Isaiah_40_55,0.904564886694327,1
 Isaiah_48,48,Isaiah_40_55,char,char4,Isaiah_40_55,0.7579655216445516,1
 Isaiah_48,48,Isaiah_40_55,char,char5,Isaiah_40_55,0.5974931738401283,1
@@ -1377,7 +1424,7 @@ Isaiah_48,48,Isaiah_40_55,function_words,prepositions_freq,Isaiah_40_55,0.948943
 Isaiah_48,48,Isaiah_40_55,function_words,prepositions_tfidf,Isaiah_40_55,0.9351050723817768,1
 Isaiah_48,48,Isaiah_40_55,function_words,pronouns_freq,Isaiah_40_55,0.9460229230854821,1
 Isaiah_48,48,Isaiah_40_55,function_words,pronouns_tfidf,Isaiah_40_55,0.9350645037039683,1
-Isaiah_48,48,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.9991066730206838,1
+Isaiah_48,48,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.8255104761732771,1
 Isaiah_48,48,Isaiah_40_55,pos,pos3,Isaiah_40_55,0.780117130869162,1
 Isaiah_48,48,Isaiah_40_55,pos,pos4,Isaiah_40_55,0.5371781043657383,1
 Isaiah_48,48,Isaiah_40_55,pos,pos5,Isaiah_40_55,0.3822067570257556,1
@@ -1391,6 +1438,7 @@ Isaiah_48,48,Isaiah_40_55,stem,stem3,Isaiah_40_55,0.29044159958877047,1
 Isaiah_48,48,Isaiah_40_55,word,word1,Isaiah_40_55,0.7951441572697706,1
 Isaiah_48,48,Isaiah_40_55,word,word2,Isaiah_40_55,0.3772084754594701,1
 Isaiah_48,48,Isaiah_40_55,word,word3,Isaiah_40_55,0.288247797685564,1
+Isaiah_48,48,Isaiah_40_55,word_length,word_length,Isaiah_40_55,0.9998692996564078,1
 Isaiah_49,49,Isaiah_40_55,char,char3,Isaiah_40_55,0.9450654586832072,1
 Isaiah_49,49,Isaiah_40_55,char,char4,Isaiah_40_55,0.8434480553198761,1
 Isaiah_49,49,Isaiah_40_55,char,char5,Isaiah_40_55,0.6979785379536207,1
@@ -1406,7 +1454,7 @@ Isaiah_49,49,Isaiah_40_55,function_words,prepositions_freq,Isaiah_40_55,0.968167
 Isaiah_49,49,Isaiah_40_55,function_words,prepositions_tfidf,Isaiah_40_55,0.9633547392677061,1
 Isaiah_49,49,Isaiah_40_55,function_words,pronouns_freq,Psalms,0.9359191389648716,1
 Isaiah_49,49,Isaiah_40_55,function_words,pronouns_tfidf,Psalms,0.9242437575653174,1
-Isaiah_49,49,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.9993108019197341,1
+Isaiah_49,49,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.8546515646682336,1
 Isaiah_49,49,Isaiah_40_55,pos,pos3,Isaiah_40_55,0.8659137375729582,1
 Isaiah_49,49,Isaiah_40_55,pos,pos4,Isaiah_40_55,0.6297869070363189,1
 Isaiah_49,49,Isaiah_40_55,pos,pos5,Isaiah_40_55,0.45446612229438166,1
@@ -1420,6 +1468,7 @@ Isaiah_49,49,Isaiah_40_55,stem,stem3,Isaiah_40_55,0.32904773256389575,1
 Isaiah_49,49,Isaiah_40_55,word,word1,Isaiah_40_55,0.8565640018280124,1
 Isaiah_49,49,Isaiah_40_55,word,word2,Isaiah_40_55,0.4362439188037567,1
 Isaiah_49,49,Isaiah_40_55,word,word3,Isaiah_40_55,0.3278077290718559,1
+Isaiah_49,49,Isaiah_40_55,word_length,word_length,Isaiah_36_39,0.9999448780348651,1
 Isaiah_50,50,Isaiah_40_55,char,char3,Isaiah_40_55,0.8279846058101794,1
 Isaiah_50,50,Isaiah_40_55,char,char4,Isaiah_40_55,0.6058236891611801,1
 Isaiah_50,50,Isaiah_40_55,char,char5,Isaiah_40_55,0.42720971840141064,1
@@ -1435,7 +1484,7 @@ Isaiah_50,50,Isaiah_40_55,function_words,prepositions_freq,Isaiah_56_66,0.919716
 Isaiah_50,50,Isaiah_40_55,function_words,prepositions_tfidf,Isaiah_56_66,0.9040913693217034,1
 Isaiah_50,50,Isaiah_40_55,function_words,pronouns_freq,Amos,0.868956120152321,1
 Isaiah_50,50,Isaiah_40_55,function_words,pronouns_tfidf,Amos,0.8672613469050904,1
-Isaiah_50,50,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.9973718788372927,1
+Isaiah_50,50,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.7137945004065747,1
 Isaiah_50,50,Isaiah_40_55,pos,pos3,Isaiah_40_55,0.7164943400536411,1
 Isaiah_50,50,Isaiah_40_55,pos,pos4,Isaiah_40_55,0.4307269210714997,1
 Isaiah_50,50,Isaiah_40_55,pos,pos5,Isaiah_40_55,0.2917527378673549,1
@@ -1449,6 +1498,7 @@ Isaiah_50,50,Isaiah_40_55,stem,stem3,Isaiah_40_55,0.19908317960877786,1
 Isaiah_50,50,Isaiah_40_55,word,word1,Isaiah_40_55,0.6508513595508837,1
 Isaiah_50,50,Isaiah_40_55,word,word2,Isaiah_40_55,0.2493129046265426,1
 Isaiah_50,50,Isaiah_40_55,word,word3,Isaiah_40_55,0.19915809686946978,1
+Isaiah_50,50,Isaiah_40_55,word_length,word_length,Psalms,0.9997132746296487,1
 Isaiah_51,51,Isaiah_40_55,char,char3,Isaiah_40_55,0.9216586464602341,1
 Isaiah_51,51,Isaiah_40_55,char,char4,Isaiah_40_55,0.7974576085625275,1
 Isaiah_51,51,Isaiah_40_55,char,char5,Isaiah_40_55,0.6418434007537256,1
@@ -1464,7 +1514,7 @@ Isaiah_51,51,Isaiah_40_55,function_words,prepositions_freq,Jeremiah,0.9819455574
 Isaiah_51,51,Isaiah_40_55,function_words,prepositions_tfidf,1 Kings,0.9697538355658833,1
 Isaiah_51,51,Isaiah_40_55,function_words,pronouns_freq,Psalms,0.92456039372315,1
 Isaiah_51,51,Isaiah_40_55,function_words,pronouns_tfidf,Isaiah_56_66,0.8959070193618297,1
-Isaiah_51,51,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.9989783670620631,1
+Isaiah_51,51,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.8352157275914868,1
 Isaiah_51,51,Isaiah_40_55,pos,pos3,Isaiah_1_35,0.860689058416867,1
 Isaiah_51,51,Isaiah_40_55,pos,pos4,Isaiah_40_55,0.6377113953594654,1
 Isaiah_51,51,Isaiah_40_55,pos,pos5,Isaiah_40_55,0.459204902714492,1
@@ -1478,6 +1528,7 @@ Isaiah_51,51,Isaiah_40_55,stem,stem3,Isaiah_40_55,0.3017112569229356,1
 Isaiah_51,51,Isaiah_40_55,word,word1,Isaiah_40_55,0.8217472104972016,1
 Isaiah_51,51,Isaiah_40_55,word,word2,Isaiah_40_55,0.3845512030171888,1
 Isaiah_51,51,Isaiah_40_55,word,word3,Isaiah_40_55,0.30116787925659555,1
+Isaiah_51,51,Isaiah_40_55,word_length,word_length,Isaiah_40_55,0.9999194086529881,1
 Isaiah_52,52,Isaiah_40_55,char,char3,Isaiah_40_55,0.8583813212985216,1
 Isaiah_52,52,Isaiah_40_55,char,char4,Isaiah_40_55,0.6747471516330478,1
 Isaiah_52,52,Isaiah_40_55,char,char5,Isaiah_40_55,0.5024140038071327,1
@@ -1493,7 +1544,7 @@ Isaiah_52,52,Isaiah_40_55,function_words,prepositions_freq,Isaiah_40_55,0.917944
 Isaiah_52,52,Isaiah_40_55,function_words,prepositions_tfidf,Isaiah_40_55,0.8969206591338051,1
 Isaiah_52,52,Isaiah_40_55,function_words,pronouns_freq,Isaiah_1_35,0.8330155758573495,1
 Isaiah_52,52,Isaiah_40_55,function_words,pronouns_tfidf,Isaiah_1_35,0.8108099531460535,1
-Isaiah_52,52,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.9978562481435943,1
+Isaiah_52,52,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.7372112581655338,1
 Isaiah_52,52,Isaiah_40_55,pos,pos3,Isaiah_40_55,0.6894231932554497,1
 Isaiah_52,52,Isaiah_40_55,pos,pos4,Isaiah_40_55,0.4270557620699037,1
 Isaiah_52,52,Isaiah_40_55,pos,pos5,Isaiah_40_55,0.2804007416513737,1
@@ -1507,6 +1558,7 @@ Isaiah_52,52,Isaiah_40_55,stem,stem3,Isaiah_40_55,0.22075097906425323,1
 Isaiah_52,52,Isaiah_40_55,word,word1,Isaiah_40_55,0.6747386696264083,1
 Isaiah_52,52,Isaiah_40_55,word,word2,Isaiah_40_55,0.2797909532139738,1
 Isaiah_52,52,Isaiah_40_55,word,word3,Isaiah_40_55,0.22038536471027934,1
+Isaiah_52,52,Isaiah_40_55,word_length,word_length,Isaiah_56_66,0.9998558423540194,1
 Isaiah_53,53,Isaiah_40_55,char,char3,Job,0.7450843446978536,1
 Isaiah_53,53,Isaiah_40_55,char,char4,Job,0.5370202386326955,1
 Isaiah_53,53,Isaiah_40_55,char,char5,Isaiah_40_55,0.40057525294151547,1
@@ -1522,7 +1574,7 @@ Isaiah_53,53,Isaiah_40_55,function_words,prepositions_freq,Isaiah_40_55,0.959874
 Isaiah_53,53,Isaiah_40_55,function_words,prepositions_tfidf,Isaiah_40_55,0.9512181461415734,1
 Isaiah_53,53,Isaiah_40_55,function_words,pronouns_freq,2 Kings,0.8337412141430657,1
 Isaiah_53,53,Isaiah_40_55,function_words,pronouns_tfidf,2 Kings,0.752602807203654,1
-Isaiah_53,53,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.9972123460437257,1
+Isaiah_53,53,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.6737209157239493,1
 Isaiah_53,53,Isaiah_40_55,pos,pos3,Isaiah_40_55,0.7709033269343293,1
 Isaiah_53,53,Isaiah_40_55,pos,pos4,Isaiah_40_55,0.517790986793041,1
 Isaiah_53,53,Isaiah_40_55,pos,pos5,Isaiah_40_55,0.35715822272446723,1
@@ -1536,6 +1588,7 @@ Isaiah_53,53,Isaiah_40_55,stem,stem3,Isaiah_40_55,0.18771907697037796,1
 Isaiah_53,53,Isaiah_40_55,word,word1,Job,0.6036305278889577,1
 Isaiah_53,53,Isaiah_40_55,word,word2,Isaiah_40_55,0.226315319509307,1
 Isaiah_53,53,Isaiah_40_55,word,word3,Isaiah_40_55,0.188198956251235,1
+Isaiah_53,53,Isaiah_40_55,word_length,word_length,Proverbs,0.9917078156594172,1
 Isaiah_54,54,Isaiah_40_55,char,char3,Isaiah_40_55,0.89260367326489,1
 Isaiah_54,54,Isaiah_40_55,char,char4,Isaiah_40_55,0.7362206775192396,1
 Isaiah_54,54,Isaiah_40_55,char,char5,Isaiah_40_55,0.5898653847181915,1
@@ -1551,7 +1604,7 @@ Isaiah_54,54,Isaiah_40_55,function_words,prepositions_freq,Isaiah_40_55,0.916014
 Isaiah_54,54,Isaiah_40_55,function_words,prepositions_tfidf,Isaiah_40_55,0.8982192226417651,1
 Isaiah_54,54,Isaiah_40_55,function_words,pronouns_freq,Isaiah_36_39,0.7791278872599783,1
 Isaiah_54,54,Isaiah_40_55,function_words,pronouns_tfidf,Isaiah_36_39,0.7795993000667423,1
-Isaiah_54,54,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.9988294578870547,1
+Isaiah_54,54,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.745783750340155,1
 Isaiah_54,54,Isaiah_40_55,pos,pos3,Isaiah_40_55,0.7574442490088704,1
 Isaiah_54,54,Isaiah_40_55,pos,pos4,Isaiah_40_55,0.5070498740282344,1
 Isaiah_54,54,Isaiah_40_55,pos,pos5,Isaiah_40_55,0.3538440087175073,1
@@ -1565,6 +1618,7 @@ Isaiah_54,54,Isaiah_40_55,stem,stem3,Isaiah_40_55,0.25234302219179483,1
 Isaiah_54,54,Isaiah_40_55,word,word1,Isaiah_40_55,0.7393078672404034,1
 Isaiah_54,54,Isaiah_40_55,word,word2,Isaiah_40_55,0.3375242369590564,1
 Isaiah_54,54,Isaiah_40_55,word,word3,Isaiah_40_55,0.2521624410152275,1
+Isaiah_54,54,Isaiah_40_55,word_length,word_length,Isaiah_56_66,0.9999086045463709,1
 Isaiah_55,55,Isaiah_40_55,char,char3,Isaiah_40_55,0.8592162745653932,1
 Isaiah_55,55,Isaiah_40_55,char,char4,Isaiah_40_55,0.6685637152593821,1
 Isaiah_55,55,Isaiah_40_55,char,char5,Isaiah_40_55,0.5046713999673393,1
@@ -1580,7 +1634,7 @@ Isaiah_55,55,Isaiah_40_55,function_words,prepositions_freq,Isaiah_56_66,0.858128
 Isaiah_55,55,Isaiah_40_55,function_words,prepositions_tfidf,Isaiah_56_66,0.8542700256369229,1
 Isaiah_55,55,Isaiah_40_55,function_words,pronouns_freq,Isaiah_40_55,0.7206004773784482,1
 Isaiah_55,55,Isaiah_40_55,function_words,pronouns_tfidf,Amos,0.7302836031098303,1
-Isaiah_55,55,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.9977035395135598,1
+Isaiah_55,55,Isaiah_40_55,lexical,lexical_richness,Isaiah_36_39,0.719261734562375,1
 Isaiah_55,55,Isaiah_40_55,pos,pos3,Isaiah_40_55,0.759907574409873,1
 Isaiah_55,55,Isaiah_40_55,pos,pos4,Isaiah_40_55,0.46442358832136854,1
 Isaiah_55,55,Isaiah_40_55,pos,pos5,Isaiah_40_55,0.3112857244260229,1
@@ -1594,6 +1648,7 @@ Isaiah_55,55,Isaiah_40_55,stem,stem3,Isaiah_40_55,0.2099292330027681,1
 Isaiah_55,55,Isaiah_40_55,word,word1,Isaiah_40_55,0.696752228403831,1
 Isaiah_55,55,Isaiah_40_55,word,word2,Isaiah_40_55,0.27092008234787857,1
 Isaiah_55,55,Isaiah_40_55,word,word3,Isaiah_40_55,0.21005789787914422,1
+Isaiah_55,55,Isaiah_40_55,word_length,word_length,2 Samuel,0.9999767913273734,1
 Isaiah_56,56,Isaiah_56_66,char,char3,Isaiah_56_66,0.8318605477367936,1
 Isaiah_56,56,Isaiah_56_66,char,char4,Isaiah_56_66,0.6352891923697974,1
 Isaiah_56,56,Isaiah_56_66,char,char5,Isaiah_56_66,0.4740677109621649,1
@@ -1609,7 +1664,7 @@ Isaiah_56,56,Isaiah_56_66,function_words,prepositions_freq,1 Samuel,0.9366393300
 Isaiah_56,56,Isaiah_56_66,function_words,prepositions_tfidf,1 Samuel,0.9181539808314771,1
 Isaiah_56,56,Isaiah_56_66,function_words,pronouns_freq,Jeremiah,0.8091588743339775,1
 Isaiah_56,56,Isaiah_56_66,function_words,pronouns_tfidf,Jeremiah,0.7610141208995154,1
-Isaiah_56,56,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.9973036237804747,1
+Isaiah_56,56,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.7002406083041354,1
 Isaiah_56,56,Isaiah_56_66,pos,pos3,Isaiah_56_66,0.738907223193023,1
 Isaiah_56,56,Isaiah_56_66,pos,pos4,Isaiah_56_66,0.47650475366040607,1
 Isaiah_56,56,Isaiah_56_66,pos,pos5,Isaiah_56_66,0.3456533718768635,1
@@ -1623,6 +1678,7 @@ Isaiah_56,56,Isaiah_56_66,stem,stem3,Isaiah_56_66,0.2630437555824593,1
 Isaiah_56,56,Isaiah_56_66,word,word1,Isaiah_56_66,0.6734067823184954,1
 Isaiah_56,56,Isaiah_56_66,word,word2,Isaiah_56_66,0.30232832624041883,1
 Isaiah_56,56,Isaiah_56_66,word,word3,Isaiah_56_66,0.26013106041510703,1
+Isaiah_56,56,Isaiah_56_66,word_length,word_length,Jeremiah,0.9999366424202979,1
 Isaiah_57,57,Isaiah_56_66,char,char3,Isaiah_56_66,0.8803175425704924,1
 Isaiah_57,57,Isaiah_56_66,char,char4,Isaiah_56_66,0.7099180276791315,1
 Isaiah_57,57,Isaiah_56_66,char,char5,Isaiah_56_66,0.5484096573935805,1
@@ -1638,7 +1694,7 @@ Isaiah_57,57,Isaiah_56_66,function_words,prepositions_freq,Isaiah_56_66,0.976934
 Isaiah_57,57,Isaiah_56_66,function_words,prepositions_tfidf,Isaiah_56_66,0.9569812169209521,1
 Isaiah_57,57,Isaiah_56_66,function_words,pronouns_freq,Isaiah_36_39,0.8941974846266726,1
 Isaiah_57,57,Isaiah_56_66,function_words,pronouns_tfidf,Isaiah_36_39,0.8849957540109175,1
-Isaiah_57,57,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.9980334388982628,1
+Isaiah_57,57,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.756891523303813,1
 Isaiah_57,57,Isaiah_56_66,pos,pos3,Isaiah_56_66,0.7892079267714116,1
 Isaiah_57,57,Isaiah_56_66,pos,pos4,Isaiah_56_66,0.5408008556896748,1
 Isaiah_57,57,Isaiah_56_66,pos,pos5,Isaiah_56_66,0.40318884670353544,1
@@ -1652,6 +1708,7 @@ Isaiah_57,57,Isaiah_56_66,stem,stem3,Isaiah_56_66,0.31349678409872817,1
 Isaiah_57,57,Isaiah_56_66,word,word1,Isaiah_56_66,0.7365892851358511,1
 Isaiah_57,57,Isaiah_56_66,word,word2,Isaiah_56_66,0.34981892879674553,1
 Isaiah_57,57,Isaiah_56_66,word,word3,Isaiah_56_66,0.3129384375577304,1
+Isaiah_57,57,Isaiah_56_66,word_length,word_length,Isaiah_56_66,0.99997874787466,1
 Isaiah_58,58,Isaiah_56_66,char,char3,Isaiah_56_66,0.8931251660445135,1
 Isaiah_58,58,Isaiah_56_66,char,char4,Isaiah_56_66,0.7334826487398762,1
 Isaiah_58,58,Isaiah_56_66,char,char5,Isaiah_56_66,0.5720036238541063,1
@@ -1667,7 +1724,7 @@ Isaiah_58,58,Isaiah_56_66,function_words,prepositions_freq,1 Samuel,0.9387082645
 Isaiah_58,58,Isaiah_56_66,function_words,prepositions_tfidf,1 Samuel,0.918485617400236,1
 Isaiah_58,58,Isaiah_56_66,function_words,pronouns_freq,Isaiah_56_66,0.803622634026736,1
 Isaiah_58,58,Isaiah_56_66,function_words,pronouns_tfidf,Isaiah_56_66,0.8116324527605154,1
-Isaiah_58,58,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.9985150738197432,1
+Isaiah_58,58,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.765635642732512,1
 Isaiah_58,58,Isaiah_56_66,pos,pos3,Isaiah_56_66,0.7747115686817784,1
 Isaiah_58,58,Isaiah_56_66,pos,pos4,Isaiah_56_66,0.5356010200584018,1
 Isaiah_58,58,Isaiah_56_66,pos,pos5,Isaiah_56_66,0.40403376243949696,1
@@ -1681,6 +1738,7 @@ Isaiah_58,58,Isaiah_56_66,stem,stem3,Isaiah_56_66,0.3060091201377767,1
 Isaiah_58,58,Isaiah_56_66,word,word1,Isaiah_56_66,0.752523539299472,1
 Isaiah_58,58,Isaiah_56_66,word,word2,Isaiah_56_66,0.3540364723061906,1
 Isaiah_58,58,Isaiah_56_66,word,word3,Isaiah_56_66,0.30490678246918856,1
+Isaiah_58,58,Isaiah_56_66,word_length,word_length,Amos,0.9999764938763087,1
 Isaiah_59,59,Isaiah_56_66,char,char3,Isaiah_56_66,0.8548512016196593,1
 Isaiah_59,59,Isaiah_56_66,char,char4,Isaiah_56_66,0.7001652684187971,1
 Isaiah_59,59,Isaiah_56_66,char,char5,Isaiah_56_66,0.5497478506772832,1
@@ -1696,7 +1754,7 @@ Isaiah_59,59,Isaiah_56_66,function_words,prepositions_freq,Psalms,0.937959344320
 Isaiah_59,59,Isaiah_56_66,function_words,prepositions_tfidf,Psalms,0.9216633787422279,1
 Isaiah_59,59,Isaiah_56_66,function_words,pronouns_freq,Isaiah_1_35,0.7817330386883361,1
 Isaiah_59,59,Isaiah_56_66,function_words,pronouns_tfidf,Isaiah_1_35,0.6766095619651927,1
-Isaiah_59,59,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.998550447660931,1
+Isaiah_59,59,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.7662373761630817,1
 Isaiah_59,59,Isaiah_56_66,pos,pos3,Isaiah_56_66,0.8158093413351187,1
 Isaiah_59,59,Isaiah_56_66,pos,pos4,Isaiah_56_66,0.6027476352870921,1
 Isaiah_59,59,Isaiah_56_66,pos,pos5,Isaiah_56_66,0.45552253282635335,1
@@ -1710,6 +1768,7 @@ Isaiah_59,59,Isaiah_56_66,stem,stem3,Isaiah_56_66,0.32592678015838106,1
 Isaiah_59,59,Isaiah_56_66,word,word1,Isaiah_56_66,0.7005141521612805,1
 Isaiah_59,59,Isaiah_56_66,word,word2,Isaiah_56_66,0.3632854654983747,1
 Isaiah_59,59,Isaiah_56_66,word,word3,Isaiah_56_66,0.3254218704977034,1
+Isaiah_59,59,Isaiah_56_66,word_length,word_length,Proverbs,0.9997123553678152,1
 Isaiah_60,60,Isaiah_56_66,char,char3,Isaiah_56_66,0.9028784393862164,1
 Isaiah_60,60,Isaiah_56_66,char,char4,Isaiah_56_66,0.7957988849349004,1
 Isaiah_60,60,Isaiah_56_66,char,char5,Isaiah_56_66,0.6643944540975112,1
@@ -1725,7 +1784,7 @@ Isaiah_60,60,Isaiah_56_66,function_words,prepositions_freq,Jeremiah,0.9531161629
 Isaiah_60,60,Isaiah_56_66,function_words,prepositions_tfidf,Jeremiah,0.9406264090720791,1
 Isaiah_60,60,Isaiah_56_66,function_words,pronouns_freq,Isaiah_56_66,0.7555862132753879,1
 Isaiah_60,60,Isaiah_56_66,function_words,pronouns_tfidf,Isaiah_56_66,0.7196214608779553,1
-Isaiah_60,60,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.999104896504897,1
+Isaiah_60,60,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.7887282471945407,1
 Isaiah_60,60,Isaiah_56_66,pos,pos3,Isaiah_56_66,0.7726855169290577,1
 Isaiah_60,60,Isaiah_56_66,pos,pos4,Isaiah_56_66,0.5829870002359089,1
 Isaiah_60,60,Isaiah_56_66,pos,pos5,Isaiah_56_66,0.4664926025404524,1
@@ -1739,6 +1798,7 @@ Isaiah_60,60,Isaiah_56_66,stem,stem3,Isaiah_56_66,0.35587929805478813,1
 Isaiah_60,60,Isaiah_56_66,word,word1,Isaiah_56_66,0.7955775778592727,1
 Isaiah_60,60,Isaiah_56_66,word,word2,Isaiah_56_66,0.4385994611839502,1
 Isaiah_60,60,Isaiah_56_66,word,word3,Isaiah_56_66,0.35632694713327173,1
+Isaiah_60,60,Isaiah_56_66,word_length,word_length,Ezekiel,0.9998790320015427,1
 Isaiah_61,61,Isaiah_56_66,char,char3,Isaiah_56_66,0.8886796500732975,1
 Isaiah_61,61,Isaiah_56_66,char,char4,Isaiah_56_66,0.7452446797560119,1
 Isaiah_61,61,Isaiah_56_66,char,char5,Isaiah_56_66,0.5888534099487379,1
@@ -1754,7 +1814,7 @@ Isaiah_61,61,Isaiah_56_66,function_words,prepositions_freq,Isaiah_56_66,0.981022
 Isaiah_61,61,Isaiah_56_66,function_words,prepositions_tfidf,Isaiah_56_66,0.9677764771492783,1
 Isaiah_61,61,Isaiah_56_66,function_words,pronouns_freq,Hosea,0.8672285039227582,1
 Isaiah_61,61,Isaiah_56_66,function_words,pronouns_tfidf,Jeremiah,0.8237407422965332,1
-Isaiah_61,61,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.9980972741533622,1
+Isaiah_61,61,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.6739810466837141,1
 Isaiah_61,61,Isaiah_56_66,pos,pos3,Isaiah_56_66,0.7655011864302694,1
 Isaiah_61,61,Isaiah_56_66,pos,pos4,Isaiah_56_66,0.5163741507721219,1
 Isaiah_61,61,Isaiah_56_66,pos,pos5,Isaiah_56_66,0.37092606106124254,1
@@ -1768,6 +1828,7 @@ Isaiah_61,61,Isaiah_56_66,stem,stem3,Isaiah_56_66,0.279741288814531,1
 Isaiah_61,61,Isaiah_56_66,word,word1,Isaiah_56_66,0.7494756759069585,1
 Isaiah_61,61,Isaiah_56_66,word,word2,Isaiah_56_66,0.35388638162418623,1
 Isaiah_61,61,Isaiah_56_66,word,word3,Isaiah_56_66,0.276578155471459,1
+Isaiah_61,61,Isaiah_56_66,word_length,word_length,Proverbs,0.9997669066392546,1
 Isaiah_62,62,Isaiah_56_66,char,char3,Isaiah_56_66,0.8885677740375925,1
 Isaiah_62,62,Isaiah_56_66,char,char4,Isaiah_56_66,0.7195039576315715,1
 Isaiah_62,62,Isaiah_56_66,char,char5,Isaiah_56_66,0.5560294329047738,1
@@ -1783,7 +1844,7 @@ Isaiah_62,62,Isaiah_56_66,function_words,prepositions_freq,Amos,0.92955333857248
 Isaiah_62,62,Isaiah_56_66,function_words,prepositions_tfidf,Isaiah_1_35,0.8697253911979677,1
 Isaiah_62,62,Isaiah_56_66,function_words,pronouns_freq,Isaiah_56_66,0.8453399107567098,1
 Isaiah_62,62,Isaiah_56_66,function_words,pronouns_tfidf,Isaiah_56_66,0.8143578596198532,1
-Isaiah_62,62,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.9980781265605019,1
+Isaiah_62,62,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.720850967106973,1
 Isaiah_62,62,Isaiah_56_66,pos,pos3,Isaiah_56_66,0.7545947692047579,1
 Isaiah_62,62,Isaiah_56_66,pos,pos4,Isaiah_56_66,0.505252862134663,1
 Isaiah_62,62,Isaiah_56_66,pos,pos5,Isaiah_56_66,0.36259681370706287,1
@@ -1797,6 +1858,7 @@ Isaiah_62,62,Isaiah_56_66,stem,stem3,Isaiah_56_66,0.26277621180044897,1
 Isaiah_62,62,Isaiah_56_66,word,word1,Isaiah_56_66,0.7560398128700044,1
 Isaiah_62,62,Isaiah_56_66,word,word2,Isaiah_56_66,0.33377391338962803,1
 Isaiah_62,62,Isaiah_56_66,word,word3,Isaiah_56_66,0.2630650853673955,1
+Isaiah_62,62,Isaiah_56_66,word_length,word_length,Job,0.9999770684554933,1
 Isaiah_63,63,Isaiah_56_66,char,char3,Isaiah_56_66,0.8810815678410335,1
 Isaiah_63,63,Isaiah_56_66,char,char4,Isaiah_56_66,0.7133918918378814,1
 Isaiah_63,63,Isaiah_56_66,char,char5,Isaiah_56_66,0.546101097845514,1
@@ -1812,7 +1874,7 @@ Isaiah_63,63,Isaiah_56_66,function_words,prepositions_freq,Proverbs,0.9689791486
 Isaiah_63,63,Isaiah_56_66,function_words,prepositions_tfidf,Proverbs,0.9600553854169058,1
 Isaiah_63,63,Isaiah_56_66,function_words,pronouns_freq,Psalms,0.8871395492808076,1
 Isaiah_63,63,Isaiah_56_66,function_words,pronouns_tfidf,Psalms,0.8743593002111563,1
-Isaiah_63,63,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.9986641244814225,1
+Isaiah_63,63,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.7640538304449125,1
 Isaiah_63,63,Isaiah_56_66,pos,pos3,Isaiah_56_66,0.7956013612126002,1
 Isaiah_63,63,Isaiah_56_66,pos,pos4,Isaiah_56_66,0.5846872998074184,1
 Isaiah_63,63,Isaiah_56_66,pos,pos5,Isaiah_56_66,0.43381195290302754,1
@@ -1826,6 +1888,7 @@ Isaiah_63,63,Isaiah_56_66,stem,stem3,Isaiah_56_66,0.30700725042968274,1
 Isaiah_63,63,Isaiah_56_66,word,word1,Isaiah_56_66,0.7296703400837974,1
 Isaiah_63,63,Isaiah_56_66,word,word2,Isaiah_56_66,0.3442991592612974,1
 Isaiah_63,63,Isaiah_56_66,word,word3,Isaiah_56_66,0.307137744834157,1
+Isaiah_63,63,Isaiah_56_66,word_length,word_length,Proverbs,0.9999496747407944,1
 Isaiah_64,64,Isaiah_56_66,char,char3,Isaiah_56_66,0.7965557409725396,1
 Isaiah_64,64,Isaiah_56_66,char,char4,Isaiah_56_66,0.56035275705386,1
 Isaiah_64,64,Isaiah_56_66,char,char5,Isaiah_56_66,0.4171740221260557,1
@@ -1841,7 +1904,7 @@ Isaiah_64,64,Isaiah_56_66,function_words,prepositions_freq,Isaiah_56_66,0.822153
 Isaiah_64,64,Isaiah_56_66,function_words,prepositions_tfidf,Isaiah_56_66,0.7886714072564196,1
 Isaiah_64,64,Isaiah_56_66,function_words,pronouns_freq,Isaiah_56_66,0.5509299202396306,1
 Isaiah_64,64,Isaiah_56_66,function_words,pronouns_tfidf,Isaiah_56_66,0.5557431387611694,1
-Isaiah_64,64,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.9967078605303308,1
+Isaiah_64,64,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.6690147898557883,1
 Isaiah_64,64,Isaiah_56_66,pos,pos3,Isaiah_56_66,0.650691863664591,1
 Isaiah_64,64,Isaiah_56_66,pos,pos4,Isaiah_56_66,0.3907143423352117,1
 Isaiah_64,64,Isaiah_56_66,pos,pos5,Isaiah_56_66,0.288143028147318,1
@@ -1855,6 +1918,7 @@ Isaiah_64,64,Isaiah_56_66,stem,stem3,Isaiah_56_66,0.23140591108422182,1
 Isaiah_64,64,Isaiah_56_66,word,word1,Isaiah_56_66,0.5368505203183533,1
 Isaiah_64,64,Isaiah_56_66,word,word2,Isaiah_56_66,0.24506384968384734,1
 Isaiah_64,64,Isaiah_56_66,word,word3,Isaiah_56_66,0.2307192461688406,1
+Isaiah_64,64,Isaiah_56_66,word_length,word_length,Proverbs,0.9997418716875748,1
 Isaiah_65,65,Isaiah_56_66,char,char3,Isaiah_56_66,0.8980245829950417,1
 Isaiah_65,65,Isaiah_56_66,char,char4,Isaiah_56_66,0.7780967720978607,1
 Isaiah_65,65,Isaiah_56_66,char,char5,Isaiah_56_66,0.6432742286903591,1
@@ -1870,7 +1934,7 @@ Isaiah_65,65,Isaiah_56_66,function_words,prepositions_freq,Psalms,0.959634737494
 Isaiah_65,65,Isaiah_56_66,function_words,prepositions_tfidf,Psalms,0.9468582614749693,1
 Isaiah_65,65,Isaiah_56_66,function_words,pronouns_freq,Jeremiah,0.8408469609950113,1
 Isaiah_65,65,Isaiah_56_66,function_words,pronouns_tfidf,Jeremiah,0.8236321609513525,1
-Isaiah_65,65,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.9992843802680981,1
+Isaiah_65,65,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.837821624871784,1
 Isaiah_65,65,Isaiah_56_66,pos,pos3,Isaiah_56_66,0.8672004561020699,1
 Isaiah_65,65,Isaiah_56_66,pos,pos4,Isaiah_56_66,0.6644483228332244,1
 Isaiah_65,65,Isaiah_56_66,pos,pos5,Isaiah_56_66,0.509099179795798,1
@@ -1884,6 +1948,7 @@ Isaiah_65,65,Isaiah_56_66,stem,stem3,Isaiah_56_66,0.3821287064666366,1
 Isaiah_65,65,Isaiah_56_66,word,word1,Isaiah_56_66,0.7954695608975216,1
 Isaiah_65,65,Isaiah_56_66,word,word2,Isaiah_56_66,0.44006790825165487,1
 Isaiah_65,65,Isaiah_56_66,word,word3,Isaiah_56_66,0.3824358966304362,1
+Isaiah_65,65,Isaiah_56_66,word_length,word_length,Isaiah_1_35,0.9999658615539151,1
 Isaiah_66,66,Isaiah_56_66,char,char3,Isaiah_56_66,0.9170647324896579,1
 Isaiah_66,66,Isaiah_56_66,char,char4,Isaiah_56_66,0.7986372778473086,1
 Isaiah_66,66,Isaiah_56_66,char,char5,Isaiah_56_66,0.6752746252302564,1
@@ -1899,7 +1964,7 @@ Isaiah_66,66,Isaiah_56_66,function_words,prepositions_freq,Isaiah_56_66,0.946638
 Isaiah_66,66,Isaiah_56_66,function_words,prepositions_tfidf,Isaiah_56_66,0.9326391913602856,1
 Isaiah_66,66,Isaiah_56_66,function_words,pronouns_freq,Hosea,0.8605902407179294,1
 Isaiah_66,66,Isaiah_56_66,function_words,pronouns_tfidf,Hosea,0.8423246037629474,1
-Isaiah_66,66,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.9991310332793856,1
+Isaiah_66,66,Isaiah_56_66,lexical,lexical_richness,Isaiah_36_39,0.8288173686394222,1
 Isaiah_66,66,Isaiah_56_66,pos,pos3,Isaiah_56_66,0.8821364297632169,1
 Isaiah_66,66,Isaiah_56_66,pos,pos4,Isaiah_56_66,0.6834215666979498,1
 Isaiah_66,66,Isaiah_56_66,pos,pos5,Isaiah_56_66,0.5371916405731184,1
@@ -1913,3 +1978,4 @@ Isaiah_66,66,Isaiah_56_66,stem,stem3,Isaiah_56_66,0.40067862393875964,1
 Isaiah_66,66,Isaiah_56_66,word,word1,Isaiah_56_66,0.8198741644886809,1
 Isaiah_66,66,Isaiah_56_66,word,word2,Isaiah_56_66,0.471346354484527,1
 Isaiah_66,66,Isaiah_56_66,word,word3,Isaiah_56_66,0.3996763449732744,1
+Isaiah_66,66,Isaiah_56_66,word_length,word_length,Ezekiel,0.9999767607870722,1

@@ -1,0 +1,67 @@
+doc_id,chapter,actual_section,winner,winner_pct_votes,winner_weighted_pct_votes,vote_margin,weighted_vote_margin,second_pct_votes,winner_dominance_ratio,doc_entropy,effective_targets,consensus_strength,elbow_rank,n_targets,n_verses,winner_matches_actual_section,winner_pct_votes_pct,winner_weighted_pct_votes_pct,vote_margin_pct,weighted_vote_margin_pct
+Isaiah_1,1,Isaiah_1_35,Hosea,1,1,1,1,NA,NA,-0,1,1,1,1,31,FALSE,100,100,100,100
+Isaiah_2,2,Isaiah_1_35,Jeremiah,1,1,1,1,NA,NA,-0,1,1,1,1,22,FALSE,100,100,100,100
+Isaiah_3,3,Isaiah_1_35,Amos,1,1,1,1,NA,NA,-0,1,1,1,1,26,FALSE,100,100,100,100
+Isaiah_4,4,Isaiah_1_35,Ezekiel,1,1,1,1,NA,NA,-0,1,1,1,1,6,FALSE,100,100,100,100
+Isaiah_5,5,Isaiah_1_35,Amos,1,1,1,1,NA,NA,-0,1,1,1,1,30,FALSE,100,100,100,100
+Isaiah_6,6,Isaiah_1_35,Isaiah_36_39,1,1,1,1,NA,NA,-0,1,1,1,1,13,FALSE,100,100,100,100
+Isaiah_7,7,Isaiah_1_35,Isaiah_1_35,1,1,1,1,NA,NA,-0,1,1,1,1,25,TRUE,100,100,100,100
+Isaiah_8,8,Isaiah_1_35,Isaiah_40_55,0.5,0.5,0,0,0.5,1,1,2,1,1,2,22,FALSE,50,50,0,0
+Isaiah_9,9,Isaiah_1_35,2 Samuel,1,1,1,1,NA,NA,-0,1,1,1,1,21,FALSE,100,100,100,100
+Isaiah_10,10,Isaiah_1_35,Amos,1,1,1,1,NA,NA,-0,1,1,1,1,34,FALSE,100,100,100,100
+Isaiah_11,11,Isaiah_1_35,Ezekiel,0.5,0.5,0,0,0.5,1,1,2,1,1,2,16,FALSE,50,50,0,0
+Isaiah_12,12,Isaiah_1_35,Hosea,1,1,1,1,NA,NA,-0,1,1,1,1,6,FALSE,100,100,100,100
+Isaiah_13,13,Isaiah_1_35,Hosea,1,1,1,1,NA,NA,-0,1,1,1,1,22,FALSE,100,100,100,100
+Isaiah_14,14,Isaiah_1_35,2 Samuel,1,1,1,1,NA,NA,-0,1,1,1,1,32,FALSE,100,100,100,100
+Isaiah_15,15,Isaiah_1_35,Isaiah_36_39,0.5,0.5,0,0,0.5,1,1,2,1,1,2,9,FALSE,50,50,0,0
+Isaiah_16,16,Isaiah_1_35,Isaiah_56_66,1,1,1,1,NA,NA,-0,1,1,1,1,14,FALSE,100,100,100,100
+Isaiah_17,17,Isaiah_1_35,Isaiah_56_66,1,1,1,1,NA,NA,-0,1,1,1,1,14,FALSE,100,100,100,100
+Isaiah_18,18,Isaiah_1_35,Ezekiel,1,1,1,1,NA,NA,-0,1,1,1,1,7,FALSE,100,100,100,100
+Isaiah_19,19,Isaiah_1_35,Isaiah_56_66,0.5,0.5,0,0,0.5,1,1,2,1,1,2,25,FALSE,50,50,0,0
+Isaiah_20,20,Isaiah_1_35,Amos,1,1,1,1,NA,NA,-0,1,1,1,1,6,FALSE,100,100,100,100
+Isaiah_21,21,Isaiah_1_35,Job,1,1,1,1,NA,NA,-0,1,1,1,1,17,FALSE,100,100,100,100
+Isaiah_22,22,Isaiah_1_35,Isaiah_56_66,1,1,1,1,NA,NA,-0,1,1,1,1,25,FALSE,100,100,100,100
+Isaiah_23,23,Isaiah_1_35,Hosea,1,1,1,1,NA,NA,-0,1,1,1,1,18,FALSE,100,100,100,100
+Isaiah_24,24,Isaiah_1_35,2 Samuel,1,1,1,1,NA,NA,-0,1,1,1,1,23,FALSE,100,100,100,100
+Isaiah_25,25,Isaiah_1_35,Ezekiel,1,1,1,1,NA,NA,-0,1,1,1,1,12,FALSE,100,100,100,100
+Isaiah_26,26,Isaiah_1_35,Hosea,1,1,1,1,NA,NA,-0,1,1,1,1,21,FALSE,100,100,100,100
+Isaiah_27,27,Isaiah_1_35,Isaiah_1_35,1,1,1,1,NA,NA,-0,1,1,1,1,13,TRUE,100,100,100,100
+Isaiah_28,28,Isaiah_1_35,Amos,1,1,1,1,NA,NA,-0,1,1,1,1,29,FALSE,100,100,100,100
+Isaiah_29,29,Isaiah_1_35,Isaiah_36_39,1,1,1,1,NA,NA,-0,1,1,1,1,24,FALSE,100,100,100,100
+Isaiah_30,30,Isaiah_1_35,Ezekiel,1,1,1,1,NA,NA,-0,1,1,1,1,33,FALSE,100,100,100,100
+Isaiah_31,31,Isaiah_1_35,Isaiah_56_66,1,1,1,1,NA,NA,-0,1,1,1,1,9,FALSE,100,100,100,100
+Isaiah_32,32,Isaiah_1_35,2 Samuel,1,1,1,1,NA,NA,-0,1,1,1,1,20,FALSE,100,100,100,100
+Isaiah_33,33,Isaiah_1_35,Hosea,0.5,0.5,0,0,0.5,1,1,2,1,1,2,24,FALSE,50,50,0,0
+Isaiah_34,34,Isaiah_1_35,Isaiah_56_66,1,1,1,1,NA,NA,-0,1,1,1,1,17,FALSE,100,100,100,100
+Isaiah_35,35,Isaiah_1_35,Ezekiel,1,1,1,1,NA,NA,-0,1,1,1,1,10,FALSE,100,100,100,100
+Isaiah_36,36,Isaiah_36_39,Hosea,1,1,1,1,NA,NA,-0,1,1,1,1,22,FALSE,100,100,100,100
+Isaiah_37,37,Isaiah_36_39,Ezekiel,1,1,1,1,NA,NA,-0,1,1,1,1,38,FALSE,100,100,100,100
+Isaiah_38,38,Isaiah_36_39,Isaiah_36_39,1,1,1,1,NA,NA,-0,1,1,1,1,22,TRUE,100,100,100,100
+Isaiah_39,39,Isaiah_36_39,1 Samuel,1,1,1,1,NA,NA,-0,1,1,1,1,8,FALSE,100,100,100,100
+Isaiah_40,40,Isaiah_40_55,Amos,1,1,1,1,NA,NA,-0,1,1,1,1,31,FALSE,100,100,100,100
+Isaiah_41,41,Isaiah_40_55,Isaiah_40_55,0.5,0.5,0,0,0.5,1,1,2,1,1,2,29,TRUE,50,50,0,0
+Isaiah_42,42,Isaiah_40_55,2 Samuel,1,1,1,1,NA,NA,-0,1,1,1,1,25,FALSE,100,100,100,100
+Isaiah_43,43,Isaiah_40_55,2 Samuel,1,1,1,1,NA,NA,-0,1,1,1,1,28,FALSE,100,100,100,100
+Isaiah_44,44,Isaiah_40_55,Jeremiah,1,1,1,1,NA,NA,-0,1,1,1,1,28,FALSE,100,100,100,100
+Isaiah_45,45,Isaiah_40_55,2 Kings,1,1,1,1,NA,NA,-0,1,1,1,1,25,FALSE,100,100,100,100
+Isaiah_46,46,Isaiah_40_55,Amos,1,1,1,1,NA,NA,-0,1,1,1,1,13,FALSE,100,100,100,100
+Isaiah_47,47,Isaiah_40_55,Isaiah_56_66,1,1,1,1,NA,NA,-0,1,1,1,1,15,FALSE,100,100,100,100
+Isaiah_48,48,Isaiah_40_55,Isaiah_56_66,1,1,1,1,NA,NA,-0,1,1,1,1,22,FALSE,100,100,100,100
+Isaiah_49,49,Isaiah_40_55,Amos,1,1,1,1,NA,NA,-0,1,1,1,1,26,FALSE,100,100,100,100
+Isaiah_50,50,Isaiah_40_55,Job,1,1,1,1,NA,NA,-0,1,1,1,1,11,FALSE,100,100,100,100
+Isaiah_51,51,Isaiah_40_55,Ezekiel,1,1,1,1,NA,NA,-0,1,1,1,1,23,FALSE,100,100,100,100
+Isaiah_52,52,Isaiah_40_55,Hosea,1,1,1,1,NA,NA,-0,1,1,1,1,15,FALSE,100,100,100,100
+Isaiah_53,53,Isaiah_40_55,Isaiah_36_39,1,1,1,1,NA,NA,-0,1,1,1,1,12,FALSE,100,100,100,100
+Isaiah_54,54,Isaiah_40_55,Ezekiel,1,1,1,1,NA,NA,-0,1,1,1,1,17,FALSE,100,100,100,100
+Isaiah_55,55,Isaiah_40_55,Amos,1,1,1,1,NA,NA,-0,1,1,1,1,13,FALSE,100,100,100,100
+Isaiah_56,56,Isaiah_56_66,Ezekiel,1,1,1,1,NA,NA,-0,1,1,1,1,12,FALSE,100,100,100,100
+Isaiah_57,57,Isaiah_56_66,2 Samuel,1,1,1,1,NA,NA,-0,1,1,1,1,21,FALSE,100,100,100,100
+Isaiah_58,58,Isaiah_56_66,1 Samuel,1,1,1,1,NA,NA,-0,1,1,1,1,14,FALSE,100,100,100,100
+Isaiah_59,59,Isaiah_56_66,Hosea,1,1,1,1,NA,NA,-0,1,1,1,1,21,FALSE,100,100,100,100
+Isaiah_60,60,Isaiah_56_66,Isaiah_56_66,1,1,1,1,NA,NA,-0,1,1,1,1,22,TRUE,100,100,100,100
+Isaiah_61,61,Isaiah_56_66,Ezekiel,1,1,1,1,NA,NA,-0,1,1,1,1,11,FALSE,100,100,100,100
+Isaiah_62,62,Isaiah_56_66,Ezekiel,1,1,1,1,NA,NA,-0,1,1,1,1,12,FALSE,100,100,100,100
+Isaiah_63,63,Isaiah_56_66,2 Samuel,1,1,1,1,NA,NA,-0,1,1,1,1,19,FALSE,100,100,100,100
+Isaiah_64,64,Isaiah_56_66,Isaiah_56_66,1,1,1,1,NA,NA,-0,1,1,1,1,12,TRUE,100,100,100,100
+Isaiah_65,65,Isaiah_56_66,Ezekiel,1,1,1,1,NA,NA,-0,1,1,1,1,25,FALSE,100,100,100,100
+Isaiah_66,66,Isaiah_56_66,Amos,1,1,1,1,NA,NA,-0,1,1,1,1,24,FALSE,100,100,100,100

@@ -115,6 +115,7 @@ config <- default_config(
     "function_words",
     "punctuation",
     "sentence",
+    "word_length",
     "lexical"
   )
 )

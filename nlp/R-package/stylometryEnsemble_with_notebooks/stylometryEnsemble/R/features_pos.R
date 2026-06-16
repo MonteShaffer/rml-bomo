@@ -20,7 +20,12 @@ pos_ngrams_from_pos <- function(pos, n){
 
 pos_tfidf_all <- function(docs, n_values = c(3,4,5), model_file = NULL, ud_model = NULL){
   if(is.null(ud_model)) ud_model <- load_udpipe_model(model_file)
-  anno <- udpipe::udpipe_annotate(ud_model, x = docs, doc_id = names(docs))
+ # anno <- udpipe::udpipe_annotate(ud_model, x = docs, doc_id = names(docs))
+ anno <- annotate_docs_pos_cached(
+    docs = docs,
+    ud_model = ud_model
+)
+
   anno <- as.data.frame(anno)
   pos_by_doc <- split(anno$upos, anno$doc_id)
   # Ensure all docs represented

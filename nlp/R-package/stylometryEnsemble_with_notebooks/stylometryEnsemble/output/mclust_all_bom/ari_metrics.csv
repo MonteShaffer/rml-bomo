@@ -1,0 +1,7 @@
+comparison,adjusted_rand_index
+cluster_vs_corpus_family,0.1404656474200144
+cluster_vs_macro_genre,0.4290983085637625
+cluster_vs_book,0.23994919041117815
+cluster_vs_source_family,0.1404656474200144
+cluster_vs_bom_mosiah_priority,0.06094599080781447
+cluster_vs_isaiah_section,0.07596831434138948

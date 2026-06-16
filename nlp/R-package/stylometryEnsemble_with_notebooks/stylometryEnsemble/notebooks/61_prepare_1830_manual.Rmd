@@ -1,0 +1,462 @@
+---
+title: "61 - Prepare 1830 Comparator Corpus: Download, Manual, Parse"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+source("./00_source_project.R")
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+options(tibble.width = Inf, tibble.print_max = 300)
+```
+
+## 1. Purpose
+
+This notebook separates 1830-corpus preparation into three explicit steps:
+
+```text
+STEP 1: Download raw source texts.
+STEP 2: Copy each raw source into a manual-coding bin.
+STEP 3: Parse only the manually coded files into chapter/document CSV.
+```
+
+The target output is:
+
+```text
+data/prepared/corpus_1830_chapter_docs.csv
+```
+
+The source texts remain untouched. Manual chapter boundaries are made only in the manual bin.
+
+## 2. Packages
+
+```{r packages}
+library(dplyr)
+library(stringr)
+library(readr)
+library(tidyr)
+library(purrr)
+library(tibble)
+```
+
+## 3. Directories
+
+```{r directories}
+raw_1830_dir <- file.path(STYLO_ROOT, "data", "raw", "1830")
+download_dir <- file.path(raw_1830_dir, "downloaded")
+manual_dir <- file.path(raw_1830_dir, "manual")
+diagnostic_dir <- file.path(raw_1830_dir, "diagnostics")
+prepared_dir <- file.path(STYLO_ROOT, "data", "prepared")
+
+dir.create(download_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(manual_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(diagnostic_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(prepared_dir, recursive = TRUE, showWarnings = FALSE)
+
+out_path <- file.path(prepared_dir, "corpus_1830_chapter_docs.csv")
+manifest_path <- file.path(raw_1830_dir, "corpus_1830_manifest.csv")
+```
+
+## 4. Manifest
+
+Project Gutenberg IDs are used where available. Local/manual works can be placed directly into the manual bin.
+
+```{r manifest}
+text_manifest <- tibble::tribble(
+  ~author, ~work, ~short_work, ~year, ~source_type, ~gutenberg_id, ~doc_unit, ~expected_genre,
+
+  "Jane Austen", "Pride and Prejudice", "Pride_and_Prejudice", 1813, "gutenberg", 1342, "chapter", "Fiction",
+  "Jane Austen", "Emma", "Emma", 1815, "gutenberg", 158, "chapter", "Fiction",
+  "Jane Austen", "Persuasion", "Persuasion", 1817, "gutenberg", 105, "chapter", "Fiction",
+
+  "James Fenimore Cooper", "The Pioneers", "The_Pioneers", 1823, "gutenberg", 2275, "chapter", "Frontier_Fiction",
+  "James Fenimore Cooper", "The Last of the Mohicans", "Last_of_the_Mohicans", 1826, "gutenberg", 940, "chapter", "Frontier_Fiction",
+  "James Fenimore Cooper", "The Prairie", "The_Prairie", 1827, "gutenberg", 6450, "chapter", "Frontier_Fiction",
+
+  "Walter Scott", "Ivanhoe", "Ivanhoe", 1819, "gutenberg", 82, "chapter", "Historical_Romance",
+  "Walter Scott", "Rob Roy", "Rob_Roy", 1817, "gutenberg", 7025, "chapter", "Historical_Romance",
+  "Walter Scott", "The Talisman", "The_Talisman", 1825, "gutenberg", 1377, "chapter", "Historical_Romance",
+
+  "Ethan Smith", "View of the Hebrews", "View_of_the_Hebrews", 1823, "manual", NA, "chapter", "Religious_Prose",
+  "Solomon Spaulding", "Manuscript Story", "Manuscript_Story", 1812, "manual", NA, "chapter", "Biblical_Imitation",
+  "Solomon Spaulding", "Conneaut Creek Manuscript", "Conneaut_Creek", 1812, "manual", NA, "chapter", "Biblical_Imitation",
+  "Jonathan Edwards", "Selected Sermons", "Selected_Sermons", 1741, "manual", NA, "sermon", "Sermon",
+  "Alexander Campbell", "The Christian Baptist", "Christian_Baptist", 1823, "manual_folder", NA, "article", "Restoration_Prose"
+) %>%
+  dplyr::mutate(
+    author_slug = stringr::str_replace_all(author, "[^A-Za-z0-9]+", "_") %>%
+      stringr::str_replace_all("^_+|_+$", ""),
+    raw_file = paste0(author_slug, "__", short_work, "__raw.txt"),
+    manual_file = paste0(author_slug, "__", short_work, "__manual.txt")
+  )
+
+readr::write_csv(text_manifest, manifest_path)
+text_manifest
+```
+
+## 5. General helpers
+
+```{r helpers}
+safe_slug <- function(x){
+  x %>%
+    stringr::str_replace_all("[^A-Za-z0-9]+", "_") %>%
+    stringr::str_replace_all("^_+|_+$", "")
+}
+
+clean_text_basic <- function(x){
+  x %>%
+    stringr::str_replace_all("\uFEFF", "") %>%
+    stringr::str_replace_all("\r", "\n") %>%
+    stringr::str_replace_all("\u00A0", " ") %>%
+    stringr::str_replace_all("[ \t]+", " ") %>%
+    stringr::str_replace_all("\n{3,}", "\n\n") %>%
+    stringr::str_trim()
+}
+
+normalize_document_text <- function(x){
+  x %>%
+    stringr::str_replace_all("\\s+", " ") %>%
+    stringr::str_replace_all("\\s+([,.;:!?])", "\\1") %>%
+    stringr::str_squish()
+}
+
+read_text_file <- function(path){
+  if(!file.exists(path)) return(NA_character_)
+  paste(readr::read_lines(path, locale = readr::locale(encoding = "UTF-8"), progress = FALSE), collapse = "\n")
+}
+
+make_1830_doc_id <- function(author, work, doc_number){
+  paste0("1830__", safe_slug(author), "__", safe_slug(work), "__", stringr::str_pad(doc_number, width = 3, pad = "0"))
+}
+```
+
+## 6. STEP 1 — Download raw source texts
+
+Downloaded texts go here:
+
+```text
+data/raw/1830/downloaded/
+```
+
+```{r step-1-download}
+gutenberg_candidate_urls <- function(id){
+  id <- as.integer(id)
+  c(
+    paste0("https://www.gutenberg.org/files/", id, "/", id, "-0.txt"),
+    paste0("https://www.gutenberg.org/files/", id, "/", id, ".txt"),
+    paste0("https://www.gutenberg.org/cache/epub/", id, "/pg", id, ".txt"),
+    paste0("https://www.gutenberg.org/cache/epub/", id, "/pg", id, "-0.txt")
+  )
+}
+
+download_gutenberg_text <- function(id, destfile){
+  urls <- gutenberg_candidate_urls(id)
+  for(u in urls){
+    ok <- tryCatch({
+      download.file(url = u, destfile = destfile, mode = "wb", quiet = TRUE)
+      file.exists(destfile) && file.info(destfile)$size > 1000
+    }, error = function(e) FALSE)
+    if(isTRUE(ok)) return(tibble::tibble(path = destfile, url = u, ok = TRUE))
+  }
+  tibble::tibble(path = destfile, url = NA_character_, ok = FALSE)
+}
+
+download_results <- text_manifest %>%
+  dplyr::filter(source_type == "gutenberg") %>%
+  purrr::pmap_dfr(function(author, work, short_work, year, source_type, gutenberg_id,
+                           doc_unit, expected_genre, author_slug, raw_file, manual_file){
+    destfile <- file.path(download_dir, raw_file)
+    if(file.exists(destfile) && file.info(destfile)$size > 1000){
+      return(tibble::tibble(author = author, work = work, gutenberg_id = gutenberg_id,
+                            path = destfile, url = NA_character_, ok = TRUE, status = "already_exists"))
+    }
+    download_gutenberg_text(gutenberg_id, destfile) %>%
+      dplyr::mutate(author = author, work = work, gutenberg_id = gutenberg_id,
+                    status = dplyr::if_else(ok, "downloaded", "failed")) %>%
+      dplyr::select(author, work, gutenberg_id, path, url, ok, status)
+  })
+
+download_results
+readr::write_csv(download_results, file.path(diagnostic_dir, "download_results.csv"))
+```
+
+## 7. STEP 2 — Create manual-coding bin
+
+This copies raw downloaded files into:
+
+```text
+data/raw/1830/manual/
+```
+
+Manual coding should happen in the copied file, not the downloaded raw file.
+
+Recommended manual marker format:
+
+```text
+### CHAPTER 1
+Chapter text...
+
+### CHAPTER 2
+Chapter text...
+```
+
+```{r step-2-copy-to-manual}
+manual_copy_results <- text_manifest %>%
+  dplyr::mutate(
+    downloaded_path = file.path(download_dir, raw_file),
+    manual_path = file.path(manual_dir, manual_file)
+  ) %>%
+  dplyr::rowwise() %>%
+  dplyr::mutate(
+    copied = {
+      if(file.exists(manual_path)) FALSE
+      else if(file.exists(downloaded_path)) file.copy(downloaded_path, manual_path, overwrite = FALSE)
+      else FALSE
+    },
+    needs_manual_file = !file.exists(manual_path)
+  ) %>%
+  dplyr::ungroup()
+
+manual_copy_results %>%
+  dplyr::select(author, work, source_type, downloaded_path, manual_path, copied, needs_manual_file)
+
+readr::write_csv(manual_copy_results, file.path(diagnostic_dir, "manual_copy_results.csv"))
+```
+
+## 8. Manual coding instructions
+
+Edit files in:
+
+```text
+data/raw/1830/manual/
+```
+
+Insert chapter/document markers. The parser only trusts these markers.
+
+Recommended marker format:
+
+```text
+### CHAPTER 1
+### CHAPTER 2
+### CHAPTER 3
+```
+
+Acceptable alternatives:
+
+```text
+### 1
+### 2
+### SERMON 1
+### ARTICLE 1
+### CHAPTER FIRST
+### CHAPTER SECOND
+```
+
+If you want to exclude front matter, introductions, appendices, illustrations, editorial introductions, or Gutenberg boilerplate, either delete it from the manual file or leave it before the first `###` marker. The parser ignores text before the first marker.
+
+## 9. STEP 3 — Parse manually coded files
+
+```{r step-3-parser-helpers}
+ordinal_words <- c(
+  FIRST=1L, SECOND=2L, THIRD=3L, FOURTH=4L, FIFTH=5L,
+  SIXTH=6L, SEVENTH=7L, EIGHTH=8L, NINTH=9L, TENTH=10L,
+  ELEVENTH=11L, TWELFTH=12L, THIRTEENTH=13L, FOURTEENTH=14L,
+  FIFTEENTH=15L, SIXTEENTH=16L, SEVENTEENTH=17L, EIGHTEENTH=18L, NINETEENTH=19L,
+  TWENTIETH=20L, `TWENTY-FIRST`=21L, `TWENTY-SECOND`=22L, `TWENTY-THIRD`=23L,
+  `TWENTY-FOURTH`=24L, `TWENTY-FIFTH`=25L, `TWENTY-SIXTH`=26L, `TWENTY-SEVENTH`=27L,
+  `TWENTY-EIGHTH`=28L, `TWENTY-NINTH`=29L, THIRTIETH=30L, `THIRTY-FIRST`=31L,
+  `THIRTY-SECOND`=32L, `THIRTY-THIRD`=33L, `THIRTY-FOURTH`=34L, `THIRTY-FIFTH`=35L,
+  `THIRTY-SIXTH`=36L, `THIRTY-SEVENTH`=37L, `THIRTY-EIGHTH`=38L, `THIRTY-NINTH`=39L,
+  FORTIETH=40L, `FORTY-FIRST`=41L, `FORTY-SECOND`=42L, `FORTY-THIRD`=43L,
+  `FORTY-FOURTH`=44L, `FORTY-FIFTH`=45L, `FORTY-SIXTH`=46L, `FORTY-SEVENTH`=47L,
+  `FORTY-EIGHTH`=48L, `FORTY-NINTH`=49L, FIFTIETH=50L, `FIFTY-FIRST`=51L,
+  `FIFTY-SECOND`=52L, `FIFTY-THIRD`=53L, `FIFTY-FOURTH`=54L, `FIFTY-FIFTH`=55L,
+  `FIFTY-SIXTH`=56L, `FIFTY-SEVENTH`=57L, `FIFTY-EIGHTH`=58L, `FIFTY-NINTH`=59L,
+  SIXTIETH=60L, `SIXTY-FIRST`=61L
+)
+
+parse_marker_number <- function(marker_text, fallback_number){
+  x <- marker_text %>%
+    stringr::str_replace("^###\\s*", "") %>%
+    stringr::str_replace(regex("^(CHAPTER|SERMON|ARTICLE)\\s+", ignore_case = TRUE), "") %>%
+    stringr::str_replace("\\.$", "") %>%
+    stringr::str_squish() %>%
+    toupper()
+
+  if(stringr::str_detect(x, "^[0-9]+$")) return(as.integer(x))
+  if(x %in% names(ordinal_words)) return(as.integer(ordinal_words[[x]]))
+  fallback_number
+}
+
+parse_manual_marked_file <- function(path){
+  x <- read_text_file(path)
+  if(is.na(x)) return(tibble::tibble())
+  x <- clean_text_basic(x)
+  lines <- stringr::str_split(x, "\n")[[1]]
+  marker_idx <- which(stringr::str_detect(lines, "^\\s*###\\s+"))
+
+  if(length(marker_idx) == 0){
+    warning("No manual chapter markers found in: ", path)
+    return(tibble::tibble())
+  }
+
+  marker_end <- c(marker_idx[-1] - 1L, length(lines))
+
+  purrr::map2_dfr(marker_idx, marker_end, function(s, e){
+    marker <- lines[s] %>% stringr::str_squish()
+    body <- if(s < e) paste(lines[(s + 1L):e], collapse = "\n") else ""
+    tibble::tibble(
+      marker = marker,
+      chapter_title = marker %>% stringr::str_replace("^###\\s*", "") %>% stringr::str_squish(),
+      text = normalize_document_text(body)
+    )
+  }) %>%
+    dplyr::mutate(
+      doc_number = dplyr::row_number(),
+      chapter = purrr::map2_int(marker, doc_number, parse_marker_number)
+    ) %>%
+    dplyr::filter(!is.na(text), text != "")
+}
+```
+
+## 10. Parse corpus from manual bin
+
+```{r step-3-parse-corpus}
+parse_manifest_row_manual <- function(row){
+  manual_path <- file.path(manual_dir, row$manual_file)
+
+  if(!file.exists(manual_path)){
+    warning("Missing manual file: ", manual_path)
+    return(tibble::tibble())
+  }
+
+  docs <- parse_manual_marked_file(manual_path)
+  if(nrow(docs) == 0) return(tibble::tibble())
+
+  docs %>%
+    dplyr::mutate(
+      corpus_id = "1830",
+      translation = as.character(row$year),
+      corpus_family = "1830",
+      source_family = paste0("1830_", safe_slug(row$author)),
+      author = row$author,
+      work = row$work,
+      short_work = row$short_work,
+      year = as.integer(row$year),
+      book = paste0(row$author, " - ", row$work),
+      section = row$expected_genre,
+      macro_genre = row$expected_genre,
+      doc_unit = row$doc_unit,
+      n_verses = NA_integer_,
+      n_words = stringr::str_count(text, "\\S+"),
+      doc_id = make_1830_doc_id(row$author, row$short_work, chapter),
+      doc_id_original = doc_id
+    ) %>%
+    dplyr::select(
+      corpus_id, translation, corpus_family, source_family, doc_id, doc_id_original,
+      author, work, short_work, year, book, chapter, doc_number, marker, chapter_title,
+      section, macro_genre, doc_unit, n_verses, n_words, text
+    )
+}
+
+corpus_1830_docs <- purrr::pmap_dfr(
+  text_manifest,
+  function(author, work, short_work, year, source_type, gutenberg_id,
+           doc_unit, expected_genre, author_slug, raw_file, manual_file){
+    row <- tibble::tibble(
+      author = author, work = work, short_work = short_work, year = year,
+      source_type = source_type, gutenberg_id = gutenberg_id,
+      doc_unit = doc_unit, expected_genre = expected_genre,
+      author_slug = author_slug, raw_file = raw_file, manual_file = manual_file
+    )
+    parse_manifest_row_manual(row)
+  }
+)
+
+corpus_1830_docs %>%
+  dplyr::count(author, work, macro_genre, name = "n_docs") %>%
+  dplyr::arrange(author, work)
+```
+
+## 11. Filter tiny documents
+
+```{r filter-tiny}
+min_words_1830 <- 100
+
+corpus_1830_docs_raw_parsed <- corpus_1830_docs
+
+corpus_1830_chapter_docs <- corpus_1830_docs %>%
+  dplyr::filter(n_words >= min_words_1830) %>%
+  dplyr::arrange(author, work, chapter)
+
+corpus_1830_docs_raw_parsed %>%
+  dplyr::count(author, work, name = "n_docs_raw") %>%
+  dplyr::left_join(
+    corpus_1830_chapter_docs %>% dplyr::count(author, work, name = "n_docs_kept"),
+    by = c("author", "work")
+  ) %>%
+  dplyr::mutate(
+    n_docs_kept = dplyr::coalesce(n_docs_kept, 0L),
+    n_dropped = n_docs_raw - n_docs_kept
+  ) %>%
+  dplyr::arrange(author, work)
+```
+
+## 12. Sanity checks
+
+```{r sanity-checks}
+corpus_1830_chapter_docs %>%
+  dplyr::count(author, work, macro_genre, name = "n_docs") %>%
+  dplyr::arrange(author, work)
+
+corpus_1830_chapter_docs %>%
+  dplyr::group_by(author, work) %>%
+  dplyr::summarise(
+    n_docs = dplyr::n(),
+    min_chapter = min(chapter, na.rm = TRUE),
+    max_chapter = max(chapter, na.rm = TRUE),
+    min_words = min(n_words, na.rm = TRUE),
+    median_words = median(n_words, na.rm = TRUE),
+    mean_words = mean(n_words, na.rm = TRUE),
+    max_words = max(n_words, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(author, work)
+
+corpus_1830_chapter_docs %>%
+  dplyr::arrange(n_words) %>%
+  dplyr::select(author, work, chapter, doc_number, marker, n_words) %>%
+  dplyr::slice_head(n = 30)
+
+corpus_1830_chapter_docs %>%
+  dplyr::arrange(dplyr::desc(n_words)) %>%
+  dplyr::select(author, work, chapter, doc_number, marker, n_words) %>%
+  dplyr::slice_head(n = 30)
+```
+
+## 13. Write outputs
+
+```{r write-outputs}
+raw_parsed_path <- file.path(raw_1830_dir, "corpus_1830_docs_raw_parsed.csv")
+
+readr::write_csv(corpus_1830_docs_raw_parsed, raw_parsed_path)
+readr::write_csv(corpus_1830_chapter_docs, out_path)
+
+cat("Wrote raw parsed 1830 corpus to:\n")
+cat(raw_parsed_path, "\n\n")
+
+cat("Wrote prepared 1830 chapter corpus to:\n")
+cat(out_path, "\n")
+```
+
+## 14. Notes
+
+This notebook deliberately separates:
+
+```text
+downloaded source
+manual-coded source
+parsed corpus
+```
+
+That gives a clean audit trail and avoids fragile chapter-heading regexes.

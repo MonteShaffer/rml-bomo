@@ -58,6 +58,18 @@ build_feature_sets <- function(section_docs, config, text_col = "text", doc_id_c
       sentence_tfidf = sentence_length_tfidf(docs)
     )
   }
+  
+  if("word_length" %in% config$include){
+
+  feature_sets$word_length <- list(
+    word_length = build_word_length_features(
+      docs,
+      text_col = text_col,
+      doc_id_col = doc_id_col
+    )
+  )
+
+}
 
   if("lexical" %in% config$include){
     feature_sets$lexical <- list(lexical_richness = lexical_features(docs))
@@ -137,12 +149,18 @@ run_stylometry_ensemble <- function(
     target_docs <- source_docs
   }
 
-	if(is.null(cache_dir)){
+if(is.null(cache_dir)){
+
   cache_dir <- file.path(
-    getOption("stylometry.root", "."),
-    "cache",
-    "results"
+
+    getOption(
+      "stylometry.cache",
+      "."
+    ),
+
+    "ensemble"
   )
+
 }
 
 

@@ -1,0 +1,801 @@
+---
+title: "08 - Latent Dimensions"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+
+options(tibble.width = Inf, tibble.print_max = 200)
+```
+
+## 1. Purpose
+
+This notebook interprets the **latent dimensions** discovered in the ensemble similarity space.
+
+It analyzes:
+
+- `result$overall_similarity`
+- `result$class_similarity`
+- similarity-profile PCA loadings
+- section centroid distances
+- class-specific separation
+- heatmaps and clustering
+- author-identification false matches
+
+The central question is whether the latent structure separates Isaiah by author-like section breaks, genre effects, or both.
+
+## 2. Load prepared documents
+
+```{r load-prepared}
+chapter_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_chapter_docs.csv")
+section_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_section_docs.csv")
+raw_path     <- file.path(STYLO_ROOT, "data", "raw", "kjv.csv")
+
+if(file.exists(chapter_path) && file.exists(section_path)){
+
+  chapter_docs <- readr::read_csv(chapter_path, show_col_types = FALSE)
+  section_docs <- readr::read_csv(section_path, show_col_types = FALSE)
+
+} else {
+
+  if(!file.exists(raw_path)){
+    stop("Could not find data/raw/kjv.csv. Run 01_Introduction.Rmd first.")
+  }
+
+  kjv <- readr::read_csv(raw_path, show_col_types = FALSE)
+
+  prepared <- prepare_kjv_docs(kjv)
+
+  chapter_docs <- prepared$chapter_docs
+  section_docs <- prepared$section_docs
+
+  dir.create(file.path(STYLO_ROOT, "data", "prepared"), recursive = TRUE, showWarnings = FALSE)
+
+  readr::write_csv(chapter_docs, chapter_path)
+  readr::write_csv(section_docs, section_path)
+}
+```
+
+## 3. Configure ensemble
+
+```{r config}
+config_latent <- default_config(
+  include = c(
+    "char",
+    "word",
+    "stem",
+    "function_words",
+    "pos",
+    "punctuation",
+    "sentence",
+    "word_length",
+    "lexical",
+    "readability"
+  )
+)
+
+config_latent$pos_n <- c(3, 4, 5)
+
+if(exists("ud_model")){
+  config_latent$pos_model <- ud_model
+}
+
+config_latent$weights
+```
+
+## 4. Run chapter-to-section ensemble
+
+```{r run-chapter-section}
+result_chapter_section <- run_stylometry_ensemble(
+  source_docs = chapter_docs,
+  target_docs = section_docs,
+  config = config_latent,
+  k_neighbors = 10,
+  use_cache = TRUE
+)
+
+show_result_summary(result_chapter_section)
+show_weights(result_chapter_section)
+```
+
+## 5. PCA on ensemble similarity profiles
+
+Each chapter is represented by its similarity to each target profile.
+
+```{r similarity-profile-pca}
+S_rect <- as.matrix(result_chapter_section$overall_similarity)
+
+S_rect[is.na(S_rect)] <- 0
+S_rect[is.nan(S_rect)] <- 0
+S_rect[is.infinite(S_rect)] <- 0
+
+pca_similarity_profiles <- stats::prcomp(
+  S_rect,
+  center = TRUE,
+  scale. = TRUE
+)
+
+sim_pca_var <- pca_similarity_profiles$sdev^2
+
+sim_pca_variance <- data.frame(
+  pc = paste0("PC", seq_along(sim_pca_var)),
+  dimension = seq_along(sim_pca_var),
+  eigenvalue = sim_pca_var,
+  prop_variance = sim_pca_var / sum(sim_pca_var),
+  pct_variance = 100 * sim_pca_var / sum(sim_pca_var),
+  cumulative_prop_variance = cumsum(sim_pca_var / sum(sim_pca_var)),
+  cumulative_pct_variance = 100 * cumsum(sim_pca_var / sum(sim_pca_var))
+)
+
+sim_pca_variance %>%
+  dplyr::slice_head(n = 12)
+```
+
+## 6. Similarity-profile PCA loadings
+
+```{r pca-loadings}
+profile_loadings <- as.data.frame(pca_similarity_profiles$rotation) %>%
+  tibble::rownames_to_column("target_profile")
+
+profile_loadings %>%
+  dplyr::select(target_profile, PC1, PC2, PC3, PC4, PC5) %>%
+  dplyr::arrange(dplyr::desc(abs(PC1)))
+```
+
+## 7. Top positive and negative loadings by dimension
+
+```{r loading-helper}
+show_pc_loadings <- function(loadings_tbl, pc = 1, n = 8){
+
+  pc_col <- paste0("PC", pc)
+
+  positive <- loadings_tbl %>%
+    dplyr::select(target_profile, loading = dplyr::all_of(pc_col)) %>%
+    dplyr::arrange(dplyr::desc(loading)) %>%
+    dplyr::slice_head(n = n) %>%
+    dplyr::mutate(direction = "positive")
+
+  negative <- loadings_tbl %>%
+    dplyr::select(target_profile, loading = dplyr::all_of(pc_col)) %>%
+    dplyr::arrange(loading) %>%
+    dplyr::slice_head(n = n) %>%
+    dplyr::mutate(direction = "negative")
+
+  dplyr::bind_rows(positive, negative) %>%
+    dplyr::arrange(direction, dplyr::desc(abs(loading)))
+}
+
+show_pc_loadings(profile_loadings, pc = 1, n = 8)
+show_pc_loadings(profile_loadings, pc = 2, n = 8)
+show_pc_loadings(profile_loadings, pc = 3, n = 8)
+show_pc_loadings(profile_loadings, pc = 4, n = 8)
+```
+
+## 8. Interpret PC1-PC4 from loadings
+
+```{r interpret-loadings}
+for(pc in 1:4){
+
+  cat("\n============================================================\n")
+  cat("PC", pc, " loadings\n", sep = "")
+  cat("Variance explained: ", round(sim_pca_variance$pct_variance[pc], 2), "%\n", sep = "")
+  cat("============================================================\n\n")
+
+  print(show_pc_loadings(profile_loadings, pc = pc, n = 6), width = 120)
+}
+```
+
+## 9. Similarity-profile PCA scores
+
+```{r pca-scores}
+sim_pca_scores <- as.data.frame(pca_similarity_profiles$x) %>%
+  tibble::rownames_to_column("doc_id") %>%
+  dplyr::left_join(
+    chapter_docs %>%
+      dplyr::select(doc_id, book, chapter, section, macro_genre, n_verses),
+    by = "doc_id"
+  ) %>%
+  dplyr::relocate(doc_id, book, chapter, section, macro_genre, n_verses)
+
+isaiah_sim_pca_scores <- sim_pca_scores %>%
+  dplyr::filter(book == "Isaiah") %>%
+  dplyr::arrange(chapter)
+
+isaiah_sim_pca_scores %>%
+  dplyr::select(doc_id, chapter, section, PC1, PC2, PC3, PC4)
+```
+
+## 10. Plot interpreted dimensions
+
+```{r pc1-pc2}
+plotPCA(
+  sim_pca_scores,
+  sim_pca_variance,
+  x = 1,
+  y = 2,
+  book = "Isaiah",
+  color = "section",
+  label = "chapter",
+  show_labels = TRUE,
+  show_centroids = TRUE,
+  show_hulls = TRUE,
+  title = "Latent dimensions: PC1 vs PC2"
+)
+```
+
+```{r pc2-pc3}
+plotPCA(
+  sim_pca_scores,
+  sim_pca_variance,
+  x = 3,
+  y = 2,
+  book = "Isaiah",
+  color = "section",
+  label = "chapter",
+  show_labels = TRUE,
+  show_centroids = TRUE,
+  show_hulls = TRUE,
+  title = "Latent dimensions: PC2 vs PC3"
+)
+```
+
+```{r pc3-pc4}
+plotPCA(
+  sim_pca_scores,
+  sim_pca_variance,
+  x = 3,
+  y = 4,
+  book = "Isaiah",
+  color = "section",
+  label = "chapter",
+  show_labels = TRUE,
+  show_centroids = TRUE,
+  show_hulls = TRUE,
+  title = "Latent dimensions: PC3 vs PC4"
+)
+```
+
+## 11. Isaiah section centroids in latent space
+
+```{r section-centroids}
+pc_cols <- paste0("PC", 1:9)
+
+section_centroids <- isaiah_sim_pca_scores %>%
+  dplyr::group_by(section) %>%
+  dplyr::summarize(
+    dplyr::across(dplyr::all_of(pc_cols), ~ mean(.x, na.rm = TRUE)),
+    n_chapters = dplyr::n(),
+    .groups = "drop"
+  )
+
+section_centroids
+```
+
+## 12. Pairwise centroid distances
+
+```{r centroid-distance-function}
+centroid_distance_table <- function(centroids, dims = paste0("PC", 1:4)){
+
+  mat <- centroids %>%
+    dplyr::select(dplyr::all_of(dims)) %>%
+    as.matrix()
+
+  rownames(mat) <- centroids$section
+
+  d <- as.matrix(stats::dist(mat))
+
+  expand.grid(
+    section_a = rownames(d),
+    section_b = colnames(d),
+    stringsAsFactors = FALSE
+  ) %>%
+    dplyr::filter(section_a < section_b) %>%
+    dplyr::rowwise() %>%
+    dplyr::mutate(distance = d[section_a, section_b]) %>%
+    dplyr::ungroup() %>%
+    dplyr::arrange(distance)
+}
+
+centroid_distances_pc1_pc4 <- centroid_distance_table(
+  section_centroids,
+  dims = paste0("PC", 1:4)
+)
+
+centroid_distances_pc1_pc4
+```
+
+## 13. Centroid distances by number of dimensions
+
+```{r centroid-distances-by-dim}
+centroid_distances_by_dim <- purrr::map_dfr(
+  1:9,
+  function(k){
+
+    centroid_distance_table(section_centroids, dims = paste0("PC", 1:k)) %>%
+      dplyr::mutate(n_dimensions = k)
+  }
+) %>%
+  dplyr::relocate(n_dimensions)
+
+centroid_distances_by_dim %>%
+  dplyr::filter(
+    section_a %in% c("Isaiah_40_55", "Isaiah_56_66") |
+      section_b %in% c("Isaiah_40_55", "Isaiah_56_66")
+  )
+```
+
+## 14. Plot centroid distance stability
+
+```{r centroid-distance-plot}
+centroid_distances_by_dim %>%
+  dplyr::mutate(pair = paste(section_a, section_b, sep = " ↔ ")) %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = n_dimensions,
+      y = distance,
+      color = pair
+    )
+  ) +
+  ggplot2::geom_line() +
+  ggplot2::geom_point() +
+  ggplot2::scale_x_continuous(breaks = 1:9) +
+  ggplot2::labs(
+    title = "Isaiah section centroid distances by latent dimensionality",
+    subtitle = "Smaller distance indicates stronger latent-space proximity.",
+    x = "Number of PCs used",
+    y = "Centroid distance",
+    color = "Section pair"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+## 15. Closest section pairs by dimensionality
+
+```{r closest-section-summary}
+centroid_distances_by_dim %>%
+  dplyr::group_by(n_dimensions) %>%
+  dplyr::slice_min(order_by = distance, n = 1, with_ties = TRUE) %>%
+  dplyr::ungroup()
+```
+
+## 16. Run chapter-to-chapter ensemble
+
+```{r run-chapter-chapter}
+result_chapter_chapter <- run_stylometry_ensemble(
+  source_docs = chapter_docs,
+  target_docs = chapter_docs,
+  config = config_latent,
+  k_neighbors = 10,
+  use_cache = TRUE
+)
+
+dim(result_chapter_chapter$overall_similarity)
+names(result_chapter_chapter$class_similarity)
+```
+
+## 17. MDS helper from similarity matrix
+
+```{r mds-helper}
+mds_from_similarity <- function(sim, metadata, k = 9){
+
+  S <- as.matrix(sim)
+
+  S[is.na(S)] <- 0
+  S[is.nan(S)] <- 0
+  S[is.infinite(S)] <- 0
+
+  D <- 1 - S
+  D[D < 0] <- 0
+  D <- (D + t(D)) / 2
+  diag(D) <- 0
+
+  fit <- stats::cmdscale(as.dist(D), k = k, eig = TRUE)
+
+  scores <- as.data.frame(fit$points)
+  colnames(scores) <- paste0("PC", seq_len(ncol(scores)))
+
+  scores <- scores %>%
+    tibble::rownames_to_column("doc_id") %>%
+    dplyr::left_join(metadata, by = "doc_id")
+
+  eig <- fit$eig[fit$eig > 0]
+
+  variance <- data.frame(
+    pc = paste0("PC", seq_along(eig)),
+    dimension = seq_along(eig),
+    eigenvalue = eig,
+    prop_variance = eig / sum(eig),
+    pct_variance = 100 * eig / sum(eig),
+    cumulative_prop_variance = cumsum(eig / sum(eig)),
+    cumulative_pct_variance = 100 * cumsum(eig / sum(eig))
+  )
+
+  list(fit = fit, scores = scores, variance = variance)
+}
+```
+
+## 18. Overall square ensemble MDS
+
+```{r overall-square-mds}
+metadata <- chapter_docs %>%
+  dplyr::select(doc_id, book, chapter, section, macro_genre, n_verses)
+
+overall_mds <- mds_from_similarity(
+  result_chapter_chapter$overall_similarity,
+  metadata = metadata,
+  k = 9
+)
+
+overall_mds$variance %>%
+  dplyr::slice_head(n = 9)
+```
+
+```{r overall-mds-plot}
+plotPCA(
+  overall_mds$scores,
+  overall_mds$variance,
+  x = 1,
+  y = 2,
+  book = "Isaiah",
+  color = "section",
+  label = "chapter",
+  show_labels = TRUE,
+  show_centroids = TRUE,
+  show_hulls = TRUE,
+  title = "Overall ensemble MDS: Isaiah Dim1 vs Dim2"
+)
+```
+
+## 19. Feature-class-specific MDS objects
+
+```{r class-mds}
+class_mds <- lapply(
+  result_chapter_chapter$class_similarity,
+  mds_from_similarity,
+  metadata = metadata,
+  k = 9
+)
+
+names(class_mds)
+```
+
+## 20. Class-specific centroid distances
+
+```{r class-centroid-distance}
+section_centroid_distances_for_scores <- function(scores, dims = paste0("PC", 1:4)){
+
+  isaiah_scores <- scores %>%
+    dplyr::filter(book == "Isaiah")
+
+  centroids <- isaiah_scores %>%
+    dplyr::group_by(section) %>%
+    dplyr::summarize(
+      dplyr::across(dplyr::all_of(dims), ~ mean(.x, na.rm = TRUE)),
+      n_chapters = dplyr::n(),
+      .groups = "drop"
+    )
+
+  centroid_distance_table(centroids, dims = dims)
+}
+
+class_centroid_distances <- purrr::imap_dfr(
+  class_mds,
+  function(obj, class_name){
+
+    section_centroid_distances_for_scores(obj$scores, dims = paste0("PC", 1:4)) %>%
+      dplyr::mutate(feature_class = class_name)
+  }
+) %>%
+  dplyr::relocate(feature_class)
+
+class_centroid_distances
+```
+
+## 21. Isaiah_40_55 vs other sections by feature class
+
+```{r class-focus-4055}
+class_centroid_distances %>%
+  dplyr::filter(
+    section_a == "Isaiah_40_55" |
+      section_b == "Isaiah_40_55"
+  ) %>%
+  dplyr::arrange(feature_class, distance)
+```
+
+## 22. Isaiah_40_55 vs Isaiah_56_66 by feature class
+
+```{r class-4055-5666}
+dist_4055_5666_by_class <- class_centroid_distances %>%
+  dplyr::filter(
+    (section_a == "Isaiah_40_55" & section_b == "Isaiah_56_66") |
+      (section_a == "Isaiah_56_66" & section_b == "Isaiah_40_55")
+  ) %>%
+  dplyr::arrange(distance)
+
+dist_4055_5666_by_class
+```
+
+## 23. Plot 40-55 vs 56-66 distance by feature class
+
+```{r class-distance-plot}
+dist_4055_5666_by_class %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = reorder(feature_class, distance),
+      y = distance
+    )
+  ) +
+  ggplot2::geom_col() +
+  ggplot2::coord_flip() +
+  ggplot2::labs(
+    title = "Latent-space distance: Isaiah_40_55 vs Isaiah_56_66",
+    subtitle = "Computed separately for each feature class using class-specific MDS.",
+    x = "Feature class",
+    y = "Centroid distance"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+## 24. Class-specific plots
+
+```{r class-pos-plot}
+if("pos" %in% names(class_mds)){
+
+  plotPCA(
+    class_mds$pos$scores,
+    class_mds$pos$variance,
+    x = 1,
+    y = 2,
+    book = "Isaiah",
+    color = "section",
+    label = "chapter",
+    show_labels = TRUE,
+    show_centroids = TRUE,
+    show_hulls = TRUE,
+    title = "Class-specific latent space: POS"
+  )
+  
+  
+  
+  section_overlap(
+    class_mds$pos$scores
+)
+  
+}
+```
+
+```{r class-function-plot}
+if("function_words" %in% names(class_mds)){
+
+  plotPCA(
+    class_mds$function_words$scores,
+    class_mds$function_words$variance,
+    x = 1,
+    y = 2,
+    book = "Isaiah",
+    color = "section",
+    label = "chapter",
+    show_labels = TRUE,
+    show_centroids = TRUE,
+    show_hulls = TRUE,
+    title = "Class-specific latent space: Function words"
+  )
+  
+  section_overlap(
+    class_mds$function_words$scores
+)
+  
+}
+```
+
+```{r class-lexical-plot}
+if("lexical" %in% names(class_mds)){
+
+  plotPCA(
+    class_mds$lexical$scores,
+    class_mds$lexical$variance,
+    x = 1,
+    y = 2,
+    book = "Isaiah",
+    color = "section",
+    label = "chapter",
+    show_labels = TRUE,
+    show_centroids = TRUE,
+    show_hulls = TRUE,
+    title = "Class-specific latent space: Lexical richness"
+  )
+}
+```
+
+```{r class-word-length-plot}
+if("word_length" %in% names(class_mds)){
+
+  plotPCA(
+    class_mds$word_length$scores,
+    class_mds$word_length$variance,
+    x = 1,
+    y = 2,
+    book = "Isaiah",
+    color = "section",
+    label = "chapter",
+    show_labels = TRUE,
+    show_centroids = TRUE,
+    show_hulls = TRUE,
+    title = "Class-specific latent space: Word length"
+  )
+}
+```
+
+## 25. Overall similarity heatmap
+
+```{r heatmap-data}
+overall_sim <- as.matrix(result_chapter_chapter$overall_similarity)
+
+isaiah_ids <- chapter_docs %>%
+  dplyr::filter(book == "Isaiah") %>%
+  dplyr::pull(doc_id)
+
+isaiah_sim <- overall_sim[isaiah_ids, isaiah_ids, drop = FALSE]
+
+hc <- stats::hclust(
+  stats::as.dist(1 - isaiah_sim),
+  method = "average"
+)
+
+ordered_ids <- hc$labels[hc$order]
+
+isaiah_sim_long <- as.data.frame(isaiah_sim[ordered_ids, ordered_ids]) %>%
+  tibble::rownames_to_column("doc_a") %>%
+  tidyr::pivot_longer(
+    cols = -doc_a,
+    names_to = "doc_b",
+    values_to = "similarity"
+  ) %>%
+  dplyr::mutate(
+    doc_a = factor(doc_a, levels = ordered_ids),
+    doc_b = factor(doc_b, levels = ordered_ids)
+  )
+
+isaiah_sim_long %>%
+  dplyr::slice_head(n = 10)
+```
+
+```{r heatmap}
+isaiah_sim_long %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = doc_b,
+      y = doc_a,
+      fill = similarity
+    )
+  ) +
+  ggplot2::geom_tile() +
+  ggplot2::scale_fill_viridis_c() +
+  ggplot2::labs(
+    title = "Overall ensemble similarity heatmap",
+    subtitle = "Isaiah chapters reordered by hierarchical clustering.",
+    x = "Chapter",
+    y = "Chapter",
+    fill = "Similarity"
+  ) +
+  ggplot2::theme_minimal() +
+  ggplot2::theme(
+    axis.text.x = ggplot2::element_text(angle = 90, hjust = 1, vjust = 0.5, size = 6),
+    axis.text.y = ggplot2::element_text(size = 6)
+  )
+```
+
+## 26. Dendrogram order
+
+```{r dendrogram-order}
+dendrogram_order <- data.frame(
+  order = seq_along(ordered_ids),
+  doc_id = ordered_ids
+) %>%
+  dplyr::left_join(
+    chapter_docs %>%
+      dplyr::select(doc_id, chapter, section),
+    by = "doc_id"
+  )
+
+dendrogram_order
+```
+
+## 27. Author-identification false matches
+
+```{r false-matches}
+isaiah_doc_ids <- chapter_docs %>%
+  dplyr::filter(book == "Isaiah") %>%
+  dplyr::pull(doc_id)
+
+isaiah_chapters <- chapter_docs %>%
+  dplyr::filter(book == "Isaiah") %>%
+  dplyr::arrange(chapter)
+
+isaiah_consensus <- purrr::map_dfr(
+  isaiah_doc_ids,
+  function(id){
+
+    cons <- show_consensus(result_chapter_section, doc_id = id)
+
+    attr(cons, "summary")
+  }
+) %>%
+  dplyr::left_join(
+    isaiah_chapters %>%
+      dplyr::select(doc_id, chapter, actual_section = section, n_verses),
+    by = "doc_id"
+  ) %>%
+  dplyr::relocate(doc_id, chapter, actual_section, winner) %>%
+  dplyr::arrange(chapter)
+
+isaiah_attribution <- isaiah_consensus %>%
+  dplyr::mutate(
+    winner_matches_actual_section = winner == actual_section,
+    winner_pct_votes_pct = 100 * winner_pct_votes,
+    winner_weighted_pct_votes_pct = 100 * winner_weighted_pct_votes,
+    vote_margin_pct = 100 * vote_margin,
+    weighted_vote_margin_pct = 100 * weighted_vote_margin
+  )
+
+show_false_matches(isaiah_attribution)
+```
+
+## 28. Summarize latent findings
+
+```{r final-summary}
+cat("\nLatent Dimension Findings\n")
+cat("=========================\n\n")
+
+cat("Similarity-profile PCA cumulative variance PC1-PC3: ")
+cat(round(sim_pca_variance$cumulative_pct_variance[3], 2), "%\n\n")
+
+cat("Closest Isaiah section pair using PC1-PC4 centroids:\n")
+print(
+  centroid_distances_pc1_pc4 %>%
+    dplyr::slice_head(n = 1),
+  width = 120
+)
+
+cat("\nIsaiah_40_55 vs Isaiah_56_66 distance by feature class:\n")
+print(dist_4055_5666_by_class, width = 120)
+
+cat("\nAuthor-identification false matches:\n")
+print(show_false_matches(isaiah_attribution), width = 120)
+```
+
+```{r sentence info}
+#
+#colnames(sentence_features)
+
+
+#plot_sentence_features_by_section()
+
+#show_sentence_summary()
+
+#plot_sentence_distributions()
+
+```
+
+
+
+## 29. Export outputs
+
+```{r export}
+out_dir <- file.path(STYLO_ROOT, "output", "latent_dimensions")
+
+dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+
+readr::write_csv(sim_pca_variance, file.path(out_dir, "similarity_profile_pca_variance.csv"))
+readr::write_csv(profile_loadings, file.path(out_dir, "similarity_profile_pca_loadings.csv"))
+readr::write_csv(isaiah_sim_pca_scores, file.path(out_dir, "isaiah_similarity_profile_pca_scores.csv"))
+readr::write_csv(section_centroids, file.path(out_dir, "isaiah_section_centroids_similarity_pca.csv"))
+readr::write_csv(centroid_distances_by_dim, file.path(out_dir, "isaiah_centroid_distances_by_dimension.csv"))
+readr::write_csv(class_centroid_distances, file.path(out_dir, "class_specific_centroid_distances.csv"))
+readr::write_csv(dist_4055_5666_by_class, file.path(out_dir, "isaiah_4055_vs_5666_by_feature_class.csv"))
+readr::write_csv(dendrogram_order, file.path(out_dir, "isaiah_similarity_dendrogram_order.csv"))
+readr::write_csv(isaiah_attribution, file.path(out_dir, "isaiah_attribution_summary.csv"))
+```

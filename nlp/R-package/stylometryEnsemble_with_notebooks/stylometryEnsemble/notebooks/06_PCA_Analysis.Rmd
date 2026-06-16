@@ -1,0 +1,770 @@
+---
+title: "06 - PCA Analysis"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+
+options(tibble.width = Inf, tibble.print_max = 150)
+```
+
+## 1. Purpose
+
+This notebook performs PCA exploratory analysis on the ensemble feature space.
+
+It analyzes:
+
+```text
+PC1 vs PC2
+PC2 vs PC3
+PC3 vs PC4
+...
+PC8 vs PC9
+```
+
+It shows:
+
+- variance explained by each dimension,
+- cumulative variance through PC9,
+- Isaiah chapters colored by assigned section,
+- chapter labels,
+- section centroids,
+- PCA outliers,
+- relationship to ensemble attribution findings.
+
+PCA is exploratory. The ensemble consensus results remain the attribution model.
+
+## 2. Load prepared documents
+
+```{r load-prepared}
+chapter_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_chapter_docs.csv")
+section_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_section_docs.csv")
+raw_path     <- file.path(STYLO_ROOT, "data", "raw", "kjv.csv")
+
+if(file.exists(chapter_path) && file.exists(section_path)){
+
+  chapter_docs <- readr::read_csv(chapter_path, show_col_types = FALSE)
+  section_docs <- readr::read_csv(section_path, show_col_types = FALSE)
+
+} else {
+
+  if(!file.exists(raw_path)){
+    stop("Could not find data/raw/kjv.csv. Run 01_Introduction.Rmd first.")
+  }
+
+  kjv <- readr::read_csv(raw_path, show_col_types = FALSE)
+  prepared <- prepare_kjv_docs(kjv)
+
+  chapter_docs <- prepared$chapter_docs
+  section_docs <- prepared$section_docs
+
+  dir.create(file.path(STYLO_ROOT, "data", "prepared"), recursive = TRUE, showWarnings = FALSE)
+
+  readr::write_csv(chapter_docs, chapter_path)
+  readr::write_csv(section_docs, section_path)
+}
+```
+
+## 3. Configure feature set
+
+```{r config}
+config_pca <- default_config(
+  include = c(
+    "char",
+    "word",
+    "stem",
+    "function_words",
+    "pos",
+    "punctuation",
+    "sentence",
+    "word_length",
+    "lexical",
+    "readability"
+  )
+)
+
+config_pca$pos_n <- c(3, 4, 5)
+
+if(exists("ud_model")){
+  config_pca$pos_model <- ud_model
+}
+
+config_pca$weights
+```
+
+## 4. Build a PCA feature matrix
+
+This builds all feature matrices from `chapter_docs`, scales each block, applies class weights, and combines the blocks.
+
+```{r feature-matrix-functions}
+scale_feature_block <- function(mat){
+
+  mat <- as.matrix(mat)
+  mat[is.na(mat)] <- 0
+  mat[is.nan(mat)] <- 0
+  mat[is.infinite(mat)] <- 0
+
+  if(ncol(mat) == 0){
+    return(mat)
+  }
+
+  scaled <- scale(mat)
+
+  scaled[is.na(scaled)] <- 0
+  scaled[is.nan(scaled)] <- 0
+  scaled[is.infinite(scaled)] <- 0
+
+  as.matrix(scaled)
+}
+
+
+build_pca_feature_matrix <- function(
+    docs,
+    config,
+    text_col = "text",
+    doc_id_col = "doc_id"){
+
+  feature_sets <- build_feature_sets(
+    docs,
+    config,
+    text_col = text_col,
+    doc_id_col = doc_id_col
+  )
+
+  active_classes <- names(feature_sets)
+
+  weights <- config$weights[active_classes]
+  weights <- weights / sum(weights, na.rm = TRUE)
+
+  blocks <- list()
+
+  for(class_name in active_classes){
+
+    class_variants <- feature_sets[[class_name]]
+
+    for(variant_name in names(class_variants)){
+
+      mat <- class_variants[[variant_name]]
+      mat <- scale_feature_block(mat)
+
+      mat <- mat * sqrt(weights[[class_name]]) / sqrt(length(class_variants))
+
+      colnames(mat) <- paste(
+        class_name,
+        variant_name,
+        colnames(mat),
+        sep = "__"
+      )
+
+      blocks[[paste(class_name, variant_name, sep = "__")]] <- mat
+    }
+  }
+
+  feature_matrix <- do.call(cbind, blocks)
+
+  feature_matrix[is.na(feature_matrix)] <- 0
+  feature_matrix[is.nan(feature_matrix)] <- 0
+  feature_matrix[is.infinite(feature_matrix)] <- 0
+
+  list(
+    feature_matrix = feature_matrix,
+    feature_sets = feature_sets,
+    weights_used = weights
+  )
+}
+```
+
+## 5. Run PCA
+
+```{r run-pca}
+pca_input <- build_pca_feature_matrix(
+  chapter_docs,
+  config = config_pca
+)
+
+X <- pca_input$feature_matrix
+
+dim(X)
+
+pca <- stats::prcomp(
+  X,
+  center = FALSE,
+  scale. = FALSE
+)
+
+pca
+```
+
+## 6. Variance explained
+
+```{r variance}
+pca_var <- pca$sdev^2
+
+pca_variance <- data.frame(
+  pc = paste0("PC", seq_along(pca_var)),
+  dimension = seq_along(pca_var),
+  eigenvalue = pca_var,
+  prop_variance = pca_var / sum(pca_var),
+  pct_variance = 100 * pca_var / sum(pca_var),
+  cumulative_prop_variance = cumsum(pca_var / sum(pca_var)),
+  cumulative_pct_variance = 100 * cumsum(pca_var / sum(pca_var))
+)
+
+pca_variance %>%
+  dplyr::slice_head(n = 15)
+```
+
+## 7. PCA scree plot
+
+```{r pca-scree}
+pca_variance %>%
+  dplyr::slice_head(n = 15) %>%
+  ggplot2::ggplot(
+    ggplot2::aes(x = dimension, y = pct_variance)
+  ) +
+  ggplot2::geom_col() +
+  ggplot2::geom_line(
+    ggplot2::aes(y = cumulative_pct_variance, group = 1)
+  ) +
+  ggplot2::geom_point(
+    ggplot2::aes(y = cumulative_pct_variance)
+  ) +
+  ggplot2::scale_x_continuous(breaks = 1:15) +
+  ggplot2::labs(
+    title = "PCA scree plot",
+    subtitle = "Bars show individual variance; line shows cumulative variance.",
+    x = "Principal component",
+    y = "Percent variance"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+## 8. PCA score table
+
+```{r scores}
+pca_scores <- as.data.frame(pca$x) %>%
+  tibble::rownames_to_column("doc_id") %>%
+  dplyr::left_join(
+    chapter_docs %>%
+      dplyr::select(
+        doc_id,
+        book,
+        chapter,
+        section,
+        macro_genre,
+        n_verses
+      ),
+    by = "doc_id"
+  ) %>%
+  dplyr::relocate(
+    doc_id,
+    book,
+    chapter,
+    section,
+    macro_genre,
+    n_verses
+  )
+
+isaiah_pca_scores <- pca_scores %>%
+  dplyr::filter(book == "Isaiah") %>%
+  dplyr::arrange(chapter)
+
+isaiah_pca_scores %>%
+  dplyr::select(
+    doc_id,
+    chapter,
+    section,
+    PC1,
+    PC2,
+    PC3,
+    PC4,
+    PC5,
+    PC6,
+    PC7,
+    PC8,
+    PC9
+  )
+```
+
+## 9. PCA plotting helper
+
+```{r plot-helper}
+plot_pca_pair <- function(
+    scores,
+    variance_tbl,
+    pc_x,
+    pc_y,
+    color_col = "section",
+    label_col = "chapter",
+    title = NULL,
+    show_labels = TRUE,
+    show_centroids = TRUE){
+
+  x_name <- paste0("PC", pc_x)
+  y_name <- paste0("PC", pc_y)
+
+  x_var <- variance_tbl$pct_variance[variance_tbl$dimension == pc_x]
+  y_var <- variance_tbl$pct_variance[variance_tbl$dimension == pc_y]
+
+  if(is.null(title)){
+    title <- paste0(x_name, " vs ", y_name)
+  }
+
+  plt <- ggplot2::ggplot(
+    scores,
+    ggplot2::aes(
+      x = .data[[x_name]],
+      y = .data[[y_name]],
+      color = .data[[color_col]]
+    )
+  ) +
+    ggplot2::geom_hline(yintercept = 0, linewidth = 0.25, alpha = 0.4) +
+    ggplot2::geom_vline(xintercept = 0, linewidth = 0.25, alpha = 0.4) +
+    ggplot2::geom_point(size = 2.8, alpha = 0.85) +
+    ggplot2::labs(
+      title = title,
+      subtitle = paste0(
+        x_name, " = ", round(x_var, 2), "% variance; ",
+        y_name, " = ", round(y_var, 2), "% variance"
+      ),
+      x = paste0(x_name, " (", round(x_var, 2), "%)"),
+      y = paste0(y_name, " (", round(y_var, 2), "%)"),
+      color = "Section"
+    ) +
+    ggplot2::theme_minimal()
+
+  if(show_labels){
+
+    if(requireNamespace("ggrepel", quietly = TRUE)){
+
+      plt <- plt +
+        ggrepel::geom_text_repel(
+          ggplot2::aes(label = .data[[label_col]]),
+          size = 3,
+          max.overlaps = 100,
+          show.legend = FALSE
+        )
+
+    } else {
+
+      plt <- plt +
+        ggplot2::geom_text(
+          ggplot2::aes(label = .data[[label_col]]),
+          size = 3,
+          vjust = -0.8,
+          show.legend = FALSE
+        )
+    }
+  }
+
+  if(show_centroids){
+
+    centroids <- scores %>%
+      dplyr::group_by(.data[[color_col]]) %>%
+      dplyr::summarize(
+        x = mean(.data[[x_name]], na.rm = TRUE),
+        y = mean(.data[[y_name]], na.rm = TRUE),
+        .groups = "drop"
+      )
+
+    plt <- plt +
+      ggplot2::geom_point(
+        data = centroids,
+        ggplot2::aes(
+          x = x,
+          y = y,
+          color = .data[[color_col]]
+        ),
+        inherit.aes = FALSE,
+        shape = 4,
+        size = 5,
+        stroke = 1.2,
+        show.legend = FALSE
+      )
+  }
+
+  plt
+}
+```
+
+## 10. PC1 vs PC2
+
+```{r pc1-pc2}
+plot_pca_pair(
+  isaiah_pca_scores,
+  pca_variance,
+  pc_x = 1,
+  pc_y = 2,
+  title = "Isaiah chapters: PC1 vs PC2"
+)
+```
+
+## 11. PC2 vs PC3
+
+```{r pc2-pc3}
+plot_pca_pair(
+  isaiah_pca_scores,
+  pca_variance,
+  pc_x = 3,
+  pc_y = 2,
+  title = "Isaiah chapters: PC2 vs PC3"
+)
+```
+
+## 12. PC3 vs PC4
+
+```{r pc3-pc4}
+plot_pca_pair(
+  isaiah_pca_scores,
+  pca_variance,
+  pc_x = 3,
+  pc_y = 4,
+  title = "Isaiah chapters: PC3 vs PC4"
+)
+```
+
+## 13. PC4 vs PC5
+
+```{r pc4-pc5}
+plot_pca_pair(
+  isaiah_pca_scores,
+  pca_variance,
+  pc_x = 4,
+  pc_y = 5,
+  title = "Isaiah chapters: PC4 vs PC5"
+)
+```
+
+## 14. PC5 vs PC6
+
+```{r pc5-pc6}
+plot_pca_pair(
+  isaiah_pca_scores,
+  pca_variance,
+  pc_x = 5,
+  pc_y = 6,
+  title = "Isaiah chapters: PC5 vs PC6"
+)
+```
+
+## 15. PC6 vs PC7
+
+```{r pc6-pc7}
+plot_pca_pair(
+  isaiah_pca_scores,
+  pca_variance,
+  pc_x = 6,
+  pc_y = 7,
+  title = "Isaiah chapters: PC6 vs PC7"
+)
+```
+
+## 16. PC7 vs PC8
+
+```{r pc7-pc8}
+plot_pca_pair(
+  isaiah_pca_scores,
+  pca_variance,
+  pc_x = 7,
+  pc_y = 8,
+  title = "Isaiah chapters: PC7 vs PC8"
+)
+```
+
+## 17. PC8 vs PC9
+
+```{r pc8-pc9}
+plot_pca_pair(
+  isaiah_pca_scores,
+  pca_variance,
+  pc_x = 8,
+  pc_y = 9,
+  title = "Isaiah chapters: PC8 vs PC9"
+)
+```
+
+## 18. Generate all PC pair plots
+
+```{r all-pairs}
+pc_pairs <- tibble::tibble(
+  pc_x = 1:8,
+  pc_y = 2:9
+)
+
+pca_pair_plots <- purrr::pmap(
+  pc_pairs,
+  function(pc_x, pc_y){
+
+    plot_pca_pair(
+      isaiah_pca_scores,
+      pca_variance,
+      pc_x = pc_x,
+      pc_y = pc_y,
+      title = paste0("Isaiah chapters: PC", pc_x, " vs PC", pc_y)
+    )
+  }
+)
+
+pca_pair_plots[[1]]
+```
+
+## 19. Section centroids
+
+```{r section-centroids}
+section_centroids <- isaiah_pca_scores %>%
+  dplyr::group_by(section) %>%
+  dplyr::summarize(
+    dplyr::across(
+      PC1:PC9,
+      ~ mean(.x, na.rm = TRUE)
+    ),
+    n_chapters = dplyr::n(),
+    .groups = "drop"
+  )
+
+section_centroids
+```
+
+## 20. Distance to assigned-section centroid
+
+```{r centroid-distance}
+pc_cols <- paste0("PC", 1:9)
+
+centroid_lookup <- section_centroids %>%
+  dplyr::select(section, dplyr::all_of(pc_cols))
+
+isaiah_pca_distances <- isaiah_pca_scores %>%
+  dplyr::left_join(
+    centroid_lookup,
+    by = "section",
+    suffix = c("", "_centroid")
+  ) %>%
+  dplyr::rowwise() %>%
+  dplyr::mutate(
+    distance_to_section_centroid = sqrt(
+      sum(
+        (
+          c_across(dplyr::all_of(pc_cols)) -
+          c_across(dplyr::all_of(paste0(pc_cols, "_centroid")))
+        )^2,
+        na.rm = TRUE
+      )
+    )
+  ) %>%
+  dplyr::ungroup() %>%
+  dplyr::select(
+    doc_id,
+    chapter,
+    section,
+    distance_to_section_centroid,
+    dplyr::all_of(pc_cols)
+  ) %>%
+  dplyr::arrange(dplyr::desc(distance_to_section_centroid))
+
+isaiah_pca_distances
+```
+
+## 21. Most PCA-distinct Isaiah chapters
+
+```{r distinct-chapters}
+isaiah_pca_distances %>%
+  dplyr::slice_head(n = 15)
+```
+
+## 22. Build or load author-identification findings
+
+This reconstructs the key author-identification table if it is not already available.
+
+```{r author-findings}
+if(!exists("isaiah_attribution")){
+
+  result_author_id <- run_stylometry_ensemble(
+    source_docs = chapter_docs,
+    target_docs = section_docs,
+    config = config_pca,
+    k_neighbors = 10,
+    use_cache = TRUE
+  )
+
+  isaiah_doc_ids <- isaiah_pca_scores$doc_id
+
+  isaiah_chapters <- chapter_docs %>%
+    dplyr::filter(book == "Isaiah") %>%
+    dplyr::arrange(chapter)
+
+  isaiah_consensus <- purrr::map_dfr(
+    isaiah_doc_ids,
+    function(id){
+
+      cons <- show_consensus(result_author_id, doc_id = id)
+
+      attr(cons, "summary")
+    }
+  ) %>%
+    dplyr::left_join(
+      isaiah_chapters %>%
+        dplyr::select(
+          doc_id,
+          chapter,
+          actual_section = section,
+          n_verses
+        ),
+      by = "doc_id"
+    ) %>%
+    dplyr::relocate(
+      doc_id,
+      chapter,
+      actual_section,
+      winner
+    ) %>%
+    dplyr::arrange(chapter)
+
+  isaiah_attribution <- isaiah_consensus %>%
+    dplyr::mutate(
+      winner_matches_actual_section = winner == actual_section,
+      winner_pct_votes_pct = 100 * winner_pct_votes,
+      winner_weighted_pct_votes_pct = 100 * winner_weighted_pct_votes,
+      vote_margin_pct = 100 * vote_margin,
+      weighted_vote_margin_pct = 100 * weighted_vote_margin
+    )
+}
+```
+
+## 23. PCA versus attribution findings
+
+```{r pca-vs-attribution}
+pca_vs_attribution <- isaiah_pca_distances %>%
+  dplyr::left_join(
+    isaiah_attribution %>%
+      dplyr::select(
+        doc_id,
+        winner,
+        winner_matches_actual_section,
+        winner_pct_votes_pct,
+        vote_margin_pct,
+        winner_dominance_ratio,
+        consensus_strength,
+        doc_entropy,
+        effective_targets
+      ),
+    by = "doc_id"
+  ) %>%
+  dplyr::arrange(dplyr::desc(distance_to_section_centroid))
+
+pca_vs_attribution
+```
+
+## 24. False matches in PCA context
+
+```{r false-matches}
+pca_vs_attribution %>%
+  dplyr::filter(!winner_matches_actual_section)
+```
+
+Expected finding from prior author-identification experiments:
+
+```text
+Isaiah_12 → Psalms
+Isaiah_26 → Psalms
+```
+
+If these chapters are also PCA-distinct from `Isaiah_1_35`, that supports the interpretation that the mismatches are genre-driven hymn/song chapters.
+
+## 25. PCA findings summary
+
+```{r findings-summary}
+cat("\nPCA Findings Summary\n")
+cat("====================\n\n")
+
+cat("Top nine components explain: ")
+cat(round(pca_variance$cumulative_pct_variance[9], 2), "% cumulative variance.\n\n")
+
+cat("Most distant Isaiah chapters from assigned-section centroid:\n")
+print(
+  isaiah_pca_distances %>%
+    dplyr::slice_head(n = 10) %>%
+    dplyr::select(
+      chapter,
+      doc_id,
+      section,
+      distance_to_section_centroid
+    ),
+  width = 120
+)
+
+cat("\nFalse matches from author-identification model:\n")
+print(
+  pca_vs_attribution %>%
+    dplyr::filter(!winner_matches_actual_section) %>%
+    dplyr::select(
+      chapter,
+      doc_id,
+      section,
+      winner,
+      winner_pct_votes_pct,
+      vote_margin_pct,
+      distance_to_section_centroid
+    ),
+  width = 120
+)
+```
+
+## 26. Export PCA outputs
+
+```{r export}
+out_dir <- file.path(STYLO_ROOT, "output", "pca_analysis")
+
+dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+
+readr::write_csv(
+  pca_variance,
+  file.path(out_dir, "pca_variance.csv")
+)
+
+readr::write_csv(
+  isaiah_pca_scores,
+  file.path(out_dir, "isaiah_pca_scores.csv")
+)
+
+readr::write_csv(
+  section_centroids,
+  file.path(out_dir, "isaiah_section_centroids_pc1_pc9.csv")
+)
+
+readr::write_csv(
+  isaiah_pca_distances,
+  file.path(out_dir, "isaiah_pca_distance_to_section_centroid.csv")
+)
+
+readr::write_csv(
+  pca_vs_attribution,
+  file.path(out_dir, "isaiah_pca_vs_attribution.csv")
+)
+```
+
+## 27. Save PCA plots
+
+```{r save-plots}
+plot_dir <- file.path(STYLO_ROOT, "output", "pca_analysis", "plots")
+
+dir.create(plot_dir, recursive = TRUE, showWarnings = FALSE)
+
+for(i in seq_along(pca_pair_plots)){
+
+  ggplot2::ggsave(
+    filename = file.path(
+      plot_dir,
+      paste0("isaiah_pc", pc_pairs$pc_x[i], "_pc", pc_pairs$pc_y[i], ".png")
+    ),
+    plot = pca_pair_plots[[i]],
+    width = 9,
+    height = 6,
+    dpi = 300
+  )
+}
+```

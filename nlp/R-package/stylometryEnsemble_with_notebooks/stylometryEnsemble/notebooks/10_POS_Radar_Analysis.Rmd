@@ -1,0 +1,1200 @@
+---
+title: "10 - POS Radar Analysis"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+
+options(
+  tibble.width = Inf,
+  tibble.print_max = 250
+)
+
+
+
+
+## User parameters
+
+top_n <- 12
+
+# alternative:
+# top_n <- 12
+# top_n <- 30
+# top_n <- 20
+
+```
+
+## 1. Purpose
+
+This notebook analyzes **POS-5 profiles** across Isaiah sections.
+
+Goals:
+
+1. Build POS-5 feature profiles.
+2. Select the top 20 POS-5 bins.
+3. Compare section-level POS-5 profiles using:
+   - radar/star charts,
+   - heatmaps,
+   - difference charts.
+4. Map selected POS-5 patterns back to original word phrases and count examples.
+
+This bridges:
+
+```text
+abstract POS stylometry
+        ↓
+actual repeated phrase structures
+```
+
+## 2. Load prepared documents
+
+```{r load-prepared}
+chapter_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_chapter_docs.csv")
+section_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_section_docs.csv")
+raw_path     <- file.path(STYLO_ROOT, "data", "raw", "kjv.csv")
+
+if(file.exists(chapter_path) && file.exists(section_path)){
+
+  chapter_docs <- readr::read_csv(chapter_path, show_col_types = FALSE)
+  section_docs <- readr::read_csv(section_path, show_col_types = FALSE)
+
+} else {
+
+  if(!file.exists(raw_path)){
+    stop("Could not find data/raw/kjv.csv. Run 01_Introduction.Rmd first.")
+  }
+
+  kjv <- readr::read_csv(raw_path, show_col_types = FALSE)
+  prepared <- prepare_kjv_docs(kjv)
+
+  chapter_docs <- prepared$chapter_docs
+  section_docs <- prepared$section_docs
+
+  dir.create(file.path(STYLO_ROOT, "data", "prepared"), recursive = TRUE, showWarnings = FALSE)
+
+  readr::write_csv(chapter_docs, chapter_path)
+  readr::write_csv(section_docs, section_path)
+}
+```
+
+## 3. POS configuration
+
+This notebook focuses on POS-5 only.
+
+```{r config-pos5}
+config_pos5 <- default_config(
+  include = c("pos")
+)
+
+config_pos5$pos_n <- c(5)
+
+if(exists("ud_model")){
+  config_pos5$pos_model <- ud_model
+}
+
+config_pos5$weights <- c(pos = 1)
+
+config_pos5
+```
+
+## 4. Build POS-5 features
+
+The code below uses `build_feature_sets()` so it follows the same pipeline as the ensemble.
+
+```{r build-pos5}
+pos5_feature_sets <- build_feature_sets(
+  chapter_docs,
+  config = config_pos5,
+  text_col = "text",
+  doc_id_col = "doc_id"
+)
+
+names(pos5_feature_sets)
+names(pos5_feature_sets$pos)
+
+pos5_mat <- pos5_feature_sets$pos[[1]]
+
+dim(pos5_mat)
+
+pos5_df <- as.data.frame(pos5_mat) %>%
+  tibble::rownames_to_column("doc_id")
+
+pos5_df %>%
+  dplyr::slice_head(n = 5)
+```
+
+## 5. Join metadata
+
+```{r join-metadata}
+pos5_with_meta <- pos5_df %>%
+  dplyr::left_join(
+    chapter_docs %>%
+      dplyr::select(
+        doc_id,
+        book,
+        chapter,
+        section,
+        macro_genre,
+        n_verses
+      ),
+    by = "doc_id"
+  ) %>%
+  dplyr::relocate(
+    doc_id,
+    book,
+    chapter,
+    section,
+    macro_genre,
+    n_verses
+  )
+
+isaiah_pos5 <- pos5_with_meta %>%
+  dplyr::filter(book == "Isaiah") %>%
+  dplyr::arrange(chapter)
+
+pos5_cols <- setdiff(
+  colnames(isaiah_pos5),
+  c("doc_id", "book", "chapter", "section", "macro_genre", "n_verses")
+)
+
+length(pos5_cols)
+```
+
+## 6. Section-level POS-5 profiles
+
+```{r section-pos5-profile}
+section_pos5_profile <- isaiah_pos5 %>%
+  dplyr::group_by(section) %>%
+  dplyr::summarize(
+    dplyr::across(
+      dplyr::all_of(pos5_cols),
+      ~ mean(.x, na.rm = TRUE)
+    ),
+    n_chapters = dplyr::n(),
+    .groups = "drop"
+  )
+
+section_pos5_profile
+```
+
+## 7. Select top 20 POS-5 patterns
+
+We rank POS-5 patterns by section-level variance and also compute the direct 40–55 vs 56–66 difference.
+
+```{r top-pos5}
+## 7. Select top-N POS-5 patterns
+
+overall_freq <- isaiah_pos5 %>%
+
+  summarise(
+
+    across(
+
+      all_of(pos5_cols),
+
+      mean,
+
+      na.rm = TRUE
+
+    )
+
+  ) %>%
+
+  tidyr::pivot_longer(
+
+    everything(),
+
+    names_to = "pos5",
+
+    values_to = "overall_freq"
+
+  ) %>%
+
+  arrange(
+
+    desc(overall_freq)
+
+  )
+
+
+top_pos5 <- overall_freq %>%
+
+  slice_head(
+
+    n = top_n
+
+  ) %>%
+
+  pull(pos5)
+
+
+overall_freq %>%
+
+  slice_head(
+
+    n = top_n
+
+  )
+```
+
+## 8. Top-20 POS-5 section profile table
+
+```{r top-profile-table}
+top_pos5_profile <- pos5_section_long %>%
+  dplyr::filter(pos5 %in% top_pos5) %>%
+  dplyr::mutate(
+    pos5 = factor(pos5, levels = top_pos5)
+  ) %>%
+  dplyr::arrange(pos5, section)
+
+top_pos5_profile
+```
+
+## 9. Top-20 POS-5 heatmap
+
+```{r top-heatmap}
+top_pos5_profile %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = section,
+      y = pos5,
+      fill = mean_freq
+    )
+  ) +
+  ggplot2::geom_tile() +
+  ggplot2::scale_fill_viridis_c() +
+  ggplot2::labs(
+    title = "Top 20 POS-5 profiles by Isaiah section",
+    subtitle = "POS-5 patterns ranked by variance across Isaiah sections.",
+    x = "Section",
+    y = "POS-5 pattern",
+    fill = "Mean frequency"
+  ) +
+  ggplot2::theme_minimal() +
+  ggplot2::theme(
+    axis.text.x = ggplot2::element_text(angle = 45, hjust = 1),
+    axis.text.y = ggplot2::element_text(size = 7)
+  )
+```
+
+## 10. Top-20 POS-5 grouped bar chart
+
+```{r top-bar}
+top_pos5_profile %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = pos5,
+      y = mean_freq,
+      fill = section
+    )
+  ) +
+  ggplot2::geom_col(
+    position = "dodge"
+  ) +
+  ggplot2::coord_flip() +
+  ggplot2::labs(
+    title = "Top 20 POS-5 profiles by section",
+    x = "POS-5 pattern",
+    y = "Mean frequency",
+    fill = "Section"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+## 11. POS-5 radar/star helper
+
+This creates a true spider/star chart using Cartesian coordinates.
+
+```{r radar-helper}
+
+isaiah_section_colors <- c(
+
+  Isaiah_1_35  = "#F8766D",
+
+  Isaiah_36_39 = "#7CAE00",
+
+  Isaiah_40_55 = "#00BFC4",
+
+  Isaiah_56_66 = "#C77CFF"
+
+)
+
+
+plot_pos5_radar <- function(
+    profile_long,
+    pos5_levels,
+    sections = unique(profile_long$section),
+    value_col = "mean_freq",
+    colors = NULL,
+    title = "POS-5 radar chart"){
+
+  n_bins <- length(pos5_levels)
+
+  angle_tbl <- tibble::tibble(
+    pos5 = factor(pos5_levels, levels = pos5_levels),
+    angle = seq(0, 2 * pi, length.out = n_bins + 1)[1:n_bins],
+    x_axis = sin(angle),
+    y_axis = cos(angle)
+  )
+
+  dat <- profile_long %>%
+    dplyr::filter(section %in% sections) %>%
+    dplyr::mutate(
+      pos5 = factor(pos5, levels = pos5_levels)
+    ) %>%
+    dplyr::left_join(
+      angle_tbl,
+      by = "pos5"
+    ) %>%
+    dplyr::mutate(
+      r = .data[[value_col]],
+      x = r * x_axis,
+      y = r * y_axis
+    ) %>%
+    dplyr::arrange(section, pos5)
+
+  dat_closed <- dat %>%
+    dplyr::group_by(section) %>%
+    dplyr::arrange(pos5) %>%
+    dplyr::group_modify(
+      ~ dplyr::bind_rows(.x, .x[1, ])
+    ) %>%
+    dplyr::ungroup()
+
+  max_r <- max(dat[[value_col]], na.rm = TRUE)
+
+  rings <- tibble::tibble(
+    r = pretty(c(0, max_r), n = 4)
+  ) %>%
+    dplyr::filter(r > 0)
+
+  ring_lines <- purrr::map_dfr(
+    rings$r,
+    function(rr){
+      tibble::tibble(
+        r = rr,
+        angle = seq(0, 2 * pi, length.out = 250),
+        x = rr * sin(angle),
+        y = rr * cos(angle)
+      )
+    }
+  )
+
+  spokes <- angle_tbl %>%
+    dplyr::mutate(
+      x0 = 0,
+      y0 = 0,
+      x1 = max_r * 1.10 * x_axis,
+      y1 = max_r * 1.10 * y_axis
+    )
+
+  labels <- angle_tbl %>%
+    dplyr::mutate(
+      x = max_r * 1.25 * x_axis,
+      y = max_r * 1.25 * y_axis,
+      label = as.character(pos5)
+    )
+
+  ggplot2::ggplot() +
+    ggplot2::geom_path(
+      data = ring_lines,
+      ggplot2::aes(x = x, y = y, group = r),
+      color = "grey85"
+    ) +
+    ggplot2::geom_segment(
+      data = spokes,
+      ggplot2::aes(x = x0, y = y0, xend = x1, yend = y1),
+      color = "grey80"
+    ) +
+    ggplot2::geom_polygon(
+      data = dat_closed,
+      ggplot2::aes(
+        x = x,
+        y = y,
+        group = section,
+        color = section,
+        fill = section
+      ),
+      alpha = 0.12,
+      linewidth = 0.8
+    ) +
+    ggplot2::geom_point(
+      data = dat,
+      ggplot2::aes(
+        x = x,
+        y = y,
+        color = section
+      ),
+      size = 2
+    ) +
+    ggplot2::geom_text(
+      data = labels,
+      ggplot2::aes(
+        x = x,
+        y = y,
+        label = label
+      ),
+      size = 2.2
+    ) +
+    ggplot2::coord_equal() +
+    ggplot2::labs(
+      title = title,
+      x = NULL,
+      y = NULL,
+      color = "Section",
+      fill = "Section"
+    ) +
+    
+    scale_color_manual(
+
+    values = colors
+
+) +
+
+scale_fill_manual(
+
+    values = colors
+
+) +
+    
+    ggplot2::theme_void() +
+    ggplot2::theme(
+      legend.position = "right",
+      plot.title = ggplot2::element_text(hjust = 0.5)
+    )
+}
+```
+
+## 12. Radar chart: all Isaiah sections
+
+```{r radar-all}
+plot_pos5_radar(
+  top_pos5_profile,
+  pos5_levels = top_pos5,
+  colors = isaiah_section_colors,
+  title = "Top N=12 POS-5 profiles by Isaiah section"
+)
+```
+
+## 13. Radar chart: Isaiah 40–55 vs 56–66
+
+```{r radar-late}
+plot_pos5_radar(
+  top_pos5_profile,
+  pos5_levels = top_pos5,
+  sections = c("Isaiah_40_55", "Isaiah_56_66"),
+  colors = isaiah_section_colors,
+  title = "Top N=12 POS-5 profile: Isaiah_40_55 vs Isaiah_56_66"
+)
+```
+
+## 14. Top POS-5 differences: Isaiah 56–66 minus 40–55
+
+```{r late-diff-table}
+top_pos5_late_diff <- pos5_late_diff %>%
+  dplyr::arrange(
+    dplyr::desc(abs_late_diff)
+  ) %>%
+  dplyr::slice_head(n = 30)
+
+top_pos5_late_diff
+```
+
+```{r late-diff-plot}
+top_pos5_late_diff %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = reorder(pos5, diff_56_66_minus_40_55),
+      y = diff_56_66_minus_40_55
+    )
+  ) +
+  ggplot2::geom_col() +
+  ggplot2::coord_flip() +
+  ggplot2::labs(
+    title = "POS-5 difference: Isaiah_56_66 minus Isaiah_40_55",
+    subtitle = "Positive values mean the pattern is more frequent in Isaiah_56_66.",
+    x = "POS-5 pattern",
+    y = "Mean frequency difference"
+  ) +
+  ggplot2::theme_minimal()
+```
+
+## 15. POS-5 phrase recovery
+
+The next functions map POS-5 patterns back to original word phrases.
+
+This depends on the POS tagger used in your `features_pos.R`. The helper below uses `udpipe` if `ud_model` exists.
+
+```{r phrase-recovery-helpers}
+tag_text_for_pos_examples <- function(text, doc_id = "doc"){
+
+  if(!exists("ud_model")){
+    stop("ud_model not found. Load the udpipe model in 00_source_project.R or setup.")
+  }
+
+  ann <- udpipe::udpipe_annotate(
+    ud_model,
+    x = text,
+    doc_id = doc_id
+  )
+
+  as.data.frame(ann)
+}
+
+
+extract_pos_ngrams_with_phrases <- function(
+    docs,
+    n = 5,
+    text_col = "text",
+    doc_id_col = "doc_id"){
+
+  rows <- list()
+  k <- 1
+
+  for(i in seq_len(nrow(docs))){
+
+    doc_id <- docs[[doc_id_col]][i]
+    text <- docs[[text_col]][i]
+
+    ann <- tag_text_for_pos_examples(
+      text,
+      doc_id = doc_id
+    )
+
+    if(!all(c("sentence_id", "token", "upos") %in% names(ann))){
+      stop("POS annotation must include sentence_id, token, and upos columns.")
+    }
+
+    ann <- ann %>%
+      dplyr::filter(
+        !is.na(token),
+        !is.na(upos)
+      ) %>%
+      dplyr::arrange(
+        sentence_id,
+        token_id
+      )
+
+    sentence_ids <- unique(ann$sentence_id)
+
+    for(sid in sentence_ids){
+
+      sent <- ann %>%
+        dplyr::filter(sentence_id == sid)
+
+      if(nrow(sent) < n){
+        next
+      }
+
+      for(j in seq_len(nrow(sent) - n + 1)){
+
+        window <- sent[j:(j+n-1), ]
+
+        pos_ngram <- paste(window$upos, collapse = "_")
+        phrase <- paste(window$token, collapse = " ")
+
+        rows[[k]] <- data.frame(
+          doc_id = doc_id,
+          sentence_id = sid,
+          start_token = window$token_id[1],
+          pos_ngram = pos_ngram,
+          phrase = phrase,
+          stringsAsFactors = FALSE
+        )
+
+        k <- k + 1
+      }
+    }
+  }
+
+  dplyr::bind_rows(rows) %>%
+    dplyr::left_join(
+      docs %>%
+        dplyr::select(
+          doc_id,
+          book,
+          chapter,
+          section,
+          macro_genre
+        ),
+      by = "doc_id"
+    )
+}
+
+
+show_pos5_examples <- function(
+    pos_phrase_table,
+    pos5_pattern,
+    sections = NULL,
+    top_n = 20){
+
+  dat <- pos_phrase_table %>%
+    dplyr::filter(
+      pos_ngram == pos5_pattern
+    )
+
+  if(!is.null(sections)){
+    dat <- dat %>%
+      dplyr::filter(section %in% sections)
+  }
+
+  dat %>%
+    dplyr::count(
+      section,
+      phrase,
+      name = "frequency"
+    ) %>%
+    dplyr::arrange(
+      section,
+      dplyr::desc(frequency),
+      phrase
+    ) %>%
+    dplyr::group_by(section) %>%
+    dplyr::slice_head(n = top_n) %>%
+    dplyr::ungroup()
+}
+
+
+show_top_pos5_examples <- function(
+    pos_phrase_table,
+    pos5_patterns,
+    sections = c("Isaiah_40_55", "Isaiah_56_66"),
+    top_n = 10){
+
+  purrr::map_dfr(
+    pos5_patterns,
+    function(pattern){
+
+      show_pos5_examples(
+        pos_phrase_table,
+        pos5_pattern = pattern,
+        sections = sections,
+        top_n = top_n
+      ) %>%
+        dplyr::mutate(
+          pos5_pattern = pattern
+        ) %>%
+        dplyr::relocate(pos5_pattern)
+    }
+  )
+}
+```
+
+## 16. Build POS-5 phrase table for Isaiah only
+
+This can take time. It is cached to `output/pos_radar/isaiah_pos5_phrase_table.csv`.
+
+```{r build-phrase-table}
+out_dir <- file.path(STYLO_ROOT, "output", "pos_radar")
+
+dir.create(
+  out_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+phrase_cache <- file.path(
+  out_dir,
+  "isaiah_pos5_phrase_table.csv"
+)
+
+if(file.exists(phrase_cache)){
+
+  isaiah_pos5_phrases <- readr::read_csv(
+    phrase_cache,
+    show_col_types = FALSE
+  )
+
+} else {
+
+  isaiah_docs <- chapter_docs %>%
+    dplyr::filter(book == "Isaiah") %>%
+    dplyr::arrange(chapter)
+
+  isaiah_pos5_phrases <- extract_pos_ngrams_with_phrases(
+    isaiah_docs,
+    n = 5,
+    text_col = "text",
+    doc_id_col = "doc_id"
+  )
+
+  readr::write_csv(
+    isaiah_pos5_phrases,
+    phrase_cache
+  )
+}
+
+isaiah_pos5_phrases %>%
+  dplyr::slice_head(n = 20)
+```
+
+## 17. Phrase examples for top late-difference POS-5 patterns
+
+```{r phrase-examples-late-diff}
+top_late_diff_patterns <- top_pos5_late_diff %>%
+  dplyr::slice_head(n = 10) %>%
+  dplyr::pull(pos5)
+
+top_late_diff_patterns
+
+top_late_diff_examples <- show_top_pos5_examples(
+  isaiah_pos5_phrases,
+  pos5_patterns = top_late_diff_patterns,
+  sections = c("Isaiah_40_55", "Isaiah_56_66"),
+  top_n = 8
+)
+
+top_late_diff_examples
+```
+
+## 18. Phrase examples for radar top-20 patterns
+
+```{r phrase-examples-top}
+top_examples <- show_top_pos5_examples(
+  isaiah_pos5_phrases,
+  pos5_patterns = top_pos5,
+  sections = c("Isaiah_1_35", "Isaiah_36_39", "Isaiah_40_55", "Isaiah_56_66"),
+  top_n = 5
+)
+
+top_examples
+
+
+
+show_top <- function(
+    pos5_pattern,
+    sections = c(
+      "Isaiah_1_35",
+      "Isaiah_36_39",
+      "Isaiah_40_55",
+      "Isaiah_56_66"
+    ),
+    top_n = 10,
+    phrase_table = isaiah_pos5_phrases,
+    wide = TRUE,
+    sort_by = "total"
+){
+
+  out <- phrase_table %>%
+
+    dplyr::filter(
+
+      pos_ngram == pos5_pattern,
+
+      section %in% sections
+
+    ) %>%
+
+    dplyr::count(
+
+      section,
+
+      phrase,
+
+      name = "frequency"
+
+    )
+
+
+  #
+  # LONG FORMAT
+  #
+
+  if(!wide){
+
+    out <- out %>%
+
+      dplyr::arrange(
+
+        section,
+
+        dplyr::desc(frequency),
+
+        phrase
+
+      ) %>%
+
+      dplyr::group_by(
+
+        section
+
+      ) %>%
+
+      dplyr::slice_head(
+
+        n = top_n
+
+      ) %>%
+
+      dplyr::ungroup() %>%
+
+      dplyr::mutate(
+
+        pos5_pattern = pos5_pattern
+
+      ) %>%
+
+      dplyr::select(
+
+        pos5_pattern,
+
+        section,
+
+        phrase,
+
+        frequency
+
+      )
+
+    return(out)
+
+  }
+
+
+  #
+  # WIDE FORMAT
+  #
+
+  out <- out %>%
+
+    tidyr::pivot_wider(
+
+      names_from = section,
+
+      values_from = frequency,
+
+      values_fill = 0
+
+    )
+
+
+  #
+  # total frequency
+  #
+
+  out <- out %>%
+
+    dplyr::mutate(
+
+      total_frequency =
+
+        rowSums(
+
+          dplyr::across(
+
+            dplyr::all_of(sections)
+
+          )
+
+        )
+
+    )
+
+
+  #
+  # sorting
+  #
+
+  if(sort_by == "total"){
+
+    out <- out %>%
+
+      dplyr::arrange(
+
+        dplyr::desc(total_frequency),
+
+        phrase
+
+      )
+
+  }
+
+  else{
+
+    if(!(sort_by %in% names(out))){
+
+      stop(
+
+        paste(
+
+          "sort_by must be one of:",
+
+          paste(
+
+            c("total", sections),
+
+            collapse=", "
+
+          )
+
+        )
+
+      )
+
+    }
+
+
+    out <- out %>%
+
+      dplyr::arrange(
+
+        dplyr::desc(
+
+          .data[[sort_by]]
+
+        ),
+
+        dplyr::desc(total_frequency),
+
+        phrase
+
+      )
+
+  }
+
+
+  out %>%
+
+    dplyr::slice_head(
+
+      n = top_n
+
+    ) %>%
+
+    dplyr::relocate(
+
+      phrase,
+
+      total_frequency
+
+    )
+
+}
+
+show_top(
+
+  "DET_NOUN_ADP_DET_NOUN"
+
+)
+
+show_top(
+  "DET_NOUN_ADP_DET_NOUN",
+  sort_by = "Isaiah_40_55"
+)
+
+show_top(
+  "DET_NOUN_ADP_DET_NOUN",
+  sort_by = "Isaiah_56_66"
+)
+
+```
+
+## 19. POS-5 phrase count by section
+
+```{r phrase-count-by-section}
+pos5_phrase_counts_by_section <- isaiah_pos5_phrases %>%
+  dplyr::filter(pos_ngram %in% top_pos5) %>%
+  dplyr::count(
+    section,
+    pos_ngram,
+    name = "n_occurrences"
+  ) %>%
+  dplyr::group_by(section) %>%
+  dplyr::mutate(
+    section_total_pos5 = sum(n_occurrences),
+    pct_occurrences = n_occurrences / section_total_pos5
+  ) %>%
+  dplyr::ungroup()
+
+pos5_phrase_counts_by_section
+```
+
+## 20. POS-5 phrase count heatmap
+
+```{r phrase-count-heatmap}
+pos5_phrase_counts_by_section %>%
+  dplyr::mutate(
+    pos_ngram = factor(pos_ngram, levels = top_pos5)
+  ) %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = section,
+      y = pos_ngram,
+      fill = pct_occurrences
+    )
+  ) +
+  ggplot2::geom_tile() +
+  ggplot2::scale_fill_viridis_c(
+    labels = scales::percent_format()
+  ) +
+  ggplot2::labs(
+    title = "Top POS-5 phrase occurrences by section",
+    subtitle = "Computed from recovered POS-5 windows in Isaiah.",
+    x = "Section",
+    y = "POS-5 pattern",
+    fill = "Share"
+  ) +
+  ggplot2::theme_minimal() +
+  ggplot2::theme(
+    axis.text.x = ggplot2::element_text(angle = 45, hjust = 1),
+    axis.text.y = ggplot2::element_text(size = 7)
+  )
+```
+
+## 21. POS-5-only ensemble
+
+```{r pos5-only-ensemble}
+result_pos5_section <- run_stylometry_ensemble(
+  source_docs = chapter_docs,
+  target_docs = section_docs,
+  config = config_pos5,
+  k_neighbors = 10,
+  use_cache = TRUE
+)
+
+show_result_summary(result_pos5_section)
+show_weights(result_pos5_section)
+```
+
+## 22. POS-5 attribution for Isaiah chapters
+
+```{r pos5-attribution}
+isaiah_doc_ids <- chapter_docs %>%
+  dplyr::filter(book == "Isaiah") %>%
+  dplyr::arrange(chapter) %>%
+  dplyr::pull(doc_id)
+
+isaiah_chapters <- chapter_docs %>%
+  dplyr::filter(book == "Isaiah") %>%
+  dplyr::arrange(chapter)
+
+isaiah_pos5_consensus <- purrr::map_dfr(
+  isaiah_doc_ids,
+  function(id){
+
+    cons <- show_consensus(
+      result_pos5_section,
+      doc_id = id
+    )
+
+    attr(cons, "summary")
+  }
+) %>%
+  dplyr::left_join(
+    isaiah_chapters %>%
+      dplyr::select(
+        doc_id,
+        chapter,
+        actual_section = section,
+        n_verses
+      ),
+    by = "doc_id"
+  ) %>%
+  dplyr::relocate(
+    doc_id,
+    chapter,
+    actual_section,
+    winner
+  ) %>%
+  dplyr::arrange(chapter)
+
+isaiah_pos5_attribution <- isaiah_pos5_consensus %>%
+  dplyr::mutate(
+    winner_matches_actual_section = winner == actual_section,
+    winner_pct_votes_pct = 100 * winner_pct_votes,
+    winner_weighted_pct_votes_pct = 100 * winner_weighted_pct_votes,
+    vote_margin_pct = 100 * vote_margin,
+    weighted_vote_margin_pct = 100 * weighted_vote_margin
+  )
+
+isaiah_pos5_attribution
+```
+
+## 23. POS-5 false matches
+
+```{r pos5-false-matches}
+show_false_matches(
+  isaiah_pos5_attribution
+)
+```
+
+## 24. Final summary
+
+```{r final-summary}
+cat("\nPOS-5 Radar Analysis Findings\n")
+cat("=============================\n\n")
+
+cat("Top 20 POS-5 patterns by section-level variance:\n")
+print(
+  pos5_ranked %>%
+    dplyr::slice_head(n = 20),
+  width = 120
+)
+
+cat("\nTop POS-5 differences: Isaiah_56_66 minus Isaiah_40_55:\n")
+print(
+  top_pos5_late_diff,
+  width = 120
+)
+
+cat("\nPOS-5-only attribution false matches:\n")
+print(
+  show_false_matches(isaiah_pos5_attribution),
+  width = 120
+)
+```
+
+## 25. Export outputs
+
+```{r export}
+out_dir <- file.path(STYLO_ROOT, "output", "pos_radar")
+
+dir.create(
+  out_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+readr::write_csv(
+  pos5_ranked,
+  file.path(out_dir, "pos5_ranked_patterns.csv")
+)
+
+readr::write_csv(
+  top_pos5_profile,
+  file.path(out_dir, "top_pos5_section_profile.csv")
+)
+
+readr::write_csv(
+  top_pos5_late_diff,
+  file.path(out_dir, "top_pos5_5666_minus_4055.csv")
+)
+
+readr::write_csv(
+  top_late_diff_examples,
+  file.path(out_dir, "top_late_diff_pos5_phrase_examples.csv")
+)
+
+readr::write_csv(
+  top_examples,
+  file.path(out_dir, "top_pos5_phrase_examples.csv")
+)
+
+readr::write_csv(
+  pos5_phrase_counts_by_section,
+  file.path(out_dir, "top_pos5_phrase_counts_by_section.csv")
+)
+
+readr::write_csv(
+  isaiah_pos5_attribution,
+  file.path(out_dir, "pos5_only_attribution.csv")
+)
+```

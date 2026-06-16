@@ -1,0 +1,596 @@
+---
+title: "31 - Introduction to Book of Mormon Stylometry"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+
+options(
+  tibble.width = Inf,
+  tibble.print_max = 300
+)
+```
+
+## 1. Purpose
+
+This notebook prepares Book of Mormon documents in a structure parallel to the KJV preparation notebooks.
+
+It creates:
+
+1. verse-level BOM data,
+2. chapter-level BOM documents,
+3. book-level BOM documents,
+4. Mosiah Priority section documents,
+5. combined target collections for later stylometry.
+
+The Mosiah Priority grouping used here is:
+
+```text
+MP-1 = Mosiah, Alma, Helaman
+MP-2 = 3 Nephi through Moroni
+MP-3 = 1 Nephi through Words of Mormon
+```
+
+## 2. Packages
+
+```{r packages}
+library(dplyr)
+library(stringr)
+library(readr)
+library(tidyr)
+library(purrr)
+library(tibble)
+```
+
+## 3. Parameters
+
+```{r parameters}
+BOM_TRANSLATION <- "1830"
+
+bom_raw_candidates <- c(
+  file.path(STYLO_ROOT, "data", "raw", "bom.csv"),
+  file.path(STYLO_ROOT, "data", "raw", "book_of_mormon.csv"),
+  file.path(STYLO_ROOT, "data", "raw", "Book_of_Mormon.csv")
+)
+
+bom_prepared_dir <- file.path(STYLO_ROOT, "data", "prepared")
+
+dir.create(
+  bom_prepared_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+bom_verse_path   <- file.path(bom_prepared_dir, "bom_verse_docs.csv")
+bom_chapter_path <- file.path(bom_prepared_dir, "bom_chapter_docs.csv")
+bom_book_path    <- file.path(bom_prepared_dir, "bom_book_docs.csv")
+bom_mp_path      <- file.path(bom_prepared_dir, "bom_mosiah_priority_docs.csv")
+bom_targets_path <- file.path(bom_prepared_dir, "bom_target_collections.csv")
+```
+
+## 4. Canonical Book of Mormon order
+
+```{r bom-book-order}
+bom_book_order <- tibble::tribble(
+  ~book,               ~book_order,
+  "1 Nephi",            1L,
+  "2 Nephi",            2L,
+  "Jacob",              3L,
+  "Enos",               4L,
+  "Jarom",              5L,
+  "Omni",               6L,
+  "Words of Mormon",    7L,
+  "Mosiah",             8L,
+  "Alma",               9L,
+  "Helaman",           10L,
+  "3 Nephi",           11L,
+  "4 Nephi",           12L,
+  "Mormon",            13L,
+  "Ether",             14L,
+  "Moroni",            15L
+)
+
+bom_book_order
+```
+
+## 5. Mosiah Priority mapping
+
+```{r mosiah-priority-map}
+mosiah_priority_map <- bom_book_order %>%
+  dplyr::mutate(
+    mosiah_priority = dplyr::case_when(
+      book %in% c("Mosiah", "Alma", "Helaman") ~ "MP-1",
+      book %in% c("3 Nephi", "4 Nephi", "Mormon", "Ether", "Moroni") ~ "MP-2",
+      book %in% c("1 Nephi", "2 Nephi", "Jacob", "Enos", "Jarom", "Omni", "Words of Mormon") ~ "MP-3",
+      TRUE ~ NA_character_
+    ),
+    mosiah_priority_label = dplyr::case_when(
+      mosiah_priority == "MP-1" ~ "MP-1_Mosiah_Alma_Helaman",
+      mosiah_priority == "MP-2" ~ "MP-2_3Nephi_to_Moroni",
+      mosiah_priority == "MP-3" ~ "MP-3_1Nephi_to_WordsOfMormon",
+      TRUE ~ NA_character_
+    )
+  )
+
+mosiah_priority_map
+```
+
+## 6. Helper functions
+
+```{r helper-functions}
+
+
+make_doc_id <- function(book, chapter = NULL, prefix = NULL){
+
+  clean_book <- book %>%
+    stringr::str_replace_all("[^A-Za-z0-9]+", "_") %>%
+    stringr::str_replace_all("^_|_$", "")
+
+  if(is.null(chapter)){
+    id <- clean_book
+  } else {
+    id <- paste0(clean_book, "_", chapter)
+  }
+
+  if(!is.null(prefix)){
+    id <- paste0(prefix, "_", id)
+  }
+
+  id
+}
+
+
+collapse_text <- function(x){
+
+  x %>%
+    as.character() %>%
+    stringr::str_squish() %>%
+    paste(collapse = " ") %>%
+    stringr::str_squish()
+}
+```
+
+## 7. Read raw BOM data
+
+The raw CSV should contain these conceptual columns:
+
+```text
+book
+chapter
+verse
+text
+```
+
+Common alternatives such as `book_name`, `chapter_number`, `verse_number`, and `verse_text` are normalized.
+
+```{r read-raw-bom}
+bom_raw_path <- bom_raw_candidates[file.exists(bom_raw_candidates)][1]
+
+if(is.na(bom_raw_path)){
+  stop(
+    "Could not find a BOM raw CSV. Expected one of: ",
+    paste(bom_raw_candidates, collapse = ", ")
+  )
+}
+
+bom_raw <- readr::read_csv(
+  bom_raw_path,
+  show_col_types = FALSE
+)
+
+names(bom_raw)
+```
+
+## 8. Normalize raw columns
+
+```{r normalize-columns}
+bom <- bom_raw
+
+names(bom) <- names(bom) %>%
+  stringr::str_replace_all("\\s+", "_") %>%
+  stringr::str_to_lower()
+
+if(!"book" %in% names(bom) && "book_title" %in% names(bom)){
+  bom <- bom %>% dplyr::rename(book = book_title)
+}
+
+if(!"book" %in% names(bom) && "book_name" %in% names(bom)){
+  bom <- bom %>% dplyr::rename(book = book_name)
+}
+
+if(!"chapter" %in% names(bom) && "chapter_number" %in% names(bom)){
+  bom <- bom %>% dplyr::rename(chapter = chapter_number)
+}
+
+if(!"verse" %in% names(bom) && "verse_number" %in% names(bom)){
+  bom <- bom %>% dplyr::rename(verse = verse_number)
+}
+
+if(!"text" %in% names(bom) && "verse_text" %in% names(bom)){
+  bom <- bom %>% dplyr::rename(text = verse_text)
+}
+
+if(!"text" %in% names(bom) && "scripture_text" %in% names(bom)){
+  bom <- bom %>% dplyr::rename(text = scripture_text)
+}
+
+required_cols <- c("book", "chapter", "verse", "text")
+
+missing_cols <- setdiff(required_cols, names(bom))
+
+if(length(missing_cols) > 0){
+  stop(
+    "BOM raw data is missing required columns: ",
+    paste(missing_cols, collapse = ", ")
+  )
+}
+
+bom <- bom %>%
+  dplyr::mutate(
+    corpus_id = "BOM",
+    translation = BOM_TRANSLATION,
+    book = stringr::str_squish(book),
+    chapter = as.integer(chapter),
+    verse = as.integer(verse),
+    text = as.character(text)
+  ) %>%
+  dplyr::left_join(
+    mosiah_priority_map,
+    by = "book"
+  ) %>%
+  dplyr::arrange(
+    book_order,
+    chapter,
+    verse
+  ) %>%
+  dplyr::select(
+    corpus_id,
+    translation,
+    book,
+    book_order,
+    chapter,
+    verse,
+    mosiah_priority,
+    mosiah_priority_label,
+    text
+  )
+
+bom %>%
+  dplyr::count(book, book_order, mosiah_priority) %>%
+  dplyr::arrange(book_order)
+```
+
+## 9. Verse-level documents
+
+```{r verse-docs}
+bom_verse_docs <- bom %>%
+  dplyr::mutate(
+    doc_id = paste0(make_doc_id(book, chapter), "_", verse),
+    section = mosiah_priority,
+    collection_type = "verse",
+    n_verses = 1L,
+    n_chapters = 1L
+  ) %>%
+  dplyr::select(
+    corpus_id,
+    translation,
+    doc_id,
+    book,
+    book_order,
+    chapter,
+    verse,
+    section,
+    mosiah_priority,
+    mosiah_priority_label,
+    collection_type,
+    n_verses,
+    n_chapters,
+    text
+  )
+
+bom_verse_docs %>%
+  dplyr::slice_head(n = 20)
+```
+
+## 10. Chapter-level documents
+
+```{r chapter-docs}
+bom_chapter_docs <- bom %>%
+  dplyr::group_by(
+    corpus_id,
+    translation,
+    book,
+    book_order,
+    chapter,
+    mosiah_priority,
+    mosiah_priority_label
+  ) %>%
+  dplyr::summarise(
+    text = collapse_text(text),
+    n_verses = dplyr::n(),
+    .groups = "drop"
+  ) %>%
+  dplyr::mutate(
+    doc_id = make_doc_id(book, chapter),
+    section = mosiah_priority,
+    collection_type = "chapter",
+    n_chapters = 1L
+  ) %>%
+  dplyr::select(
+    corpus_id,
+    translation,
+    doc_id,
+    book,
+    book_order,
+    chapter,
+    section,
+    mosiah_priority,
+    mosiah_priority_label,
+    collection_type,
+    n_verses,
+    n_chapters,
+    text
+  ) %>%
+  dplyr::arrange(book_order, chapter)
+
+bom_chapter_docs %>%
+  dplyr::count(book, book_order, mosiah_priority, name = "n_chapters") %>%
+  dplyr::arrange(book_order)
+```
+
+## 11. Book-level documents
+
+These are analogous to using Psalms, Job, Proverbs, Jeremiah, and other books as target collections in the KJV analysis.
+
+```{r book-docs}
+bom_book_docs <- bom_chapter_docs %>%
+  dplyr::group_by(
+    corpus_id,
+    translation,
+    book,
+    book_order,
+    mosiah_priority,
+    mosiah_priority_label
+  ) %>%
+  dplyr::summarise(
+    text = collapse_text(text),
+    n_verses = sum(n_verses),
+    n_chapters = dplyr::n(),
+    .groups = "drop"
+  ) %>%
+  dplyr::mutate(
+    doc_id = paste0("BOOK_", make_doc_id(book)),
+    chapter = NA_integer_,
+    section = mosiah_priority,
+    collection_type = "book"
+  ) %>%
+  dplyr::select(
+    corpus_id,
+    translation,
+    doc_id,
+    book,
+    book_order,
+    chapter,
+    section,
+    mosiah_priority,
+    mosiah_priority_label,
+    collection_type,
+    n_verses,
+    n_chapters,
+    text
+  ) %>%
+  dplyr::arrange(book_order)
+
+bom_book_docs
+```
+
+## 12. Mosiah Priority documents
+
+```{r mosiah-priority-docs}
+bom_mp_docs <- bom_chapter_docs %>%
+  dplyr::group_by(
+    corpus_id,
+    translation,
+    mosiah_priority,
+    mosiah_priority_label
+  ) %>%
+  dplyr::summarise(
+    text = collapse_text(text),
+    n_verses = sum(n_verses),
+    n_chapters = dplyr::n(),
+    books = paste(unique(book), collapse = "; "),
+    min_book_order = min(book_order),
+    max_book_order = max(book_order),
+    .groups = "drop"
+  ) %>%
+  dplyr::mutate(
+    doc_id = mosiah_priority_label,
+    book = books,
+    book_order = min_book_order,
+    chapter = NA_integer_,
+    section = mosiah_priority,
+    collection_type = "mosiah_priority"
+  ) %>%
+  dplyr::select(
+    corpus_id,
+    translation,
+    doc_id,
+    book,
+    book_order,
+    chapter,
+    section,
+    mosiah_priority,
+    mosiah_priority_label,
+    collection_type,
+    n_verses,
+    n_chapters,
+    books,
+    text
+  ) %>%
+  dplyr::arrange(book_order)
+
+bom_mp_docs
+```
+
+## 13. Combined target collections
+
+```{r target-collections}
+bom_target_collections <- dplyr::bind_rows(
+  bom_book_docs,
+  bom_mp_docs %>%
+    dplyr::select(-dplyr::any_of("books"))
+) %>%
+  dplyr::mutate(
+    target_family = dplyr::case_when(
+      collection_type == "book" ~ "BOOK_COLLECTION",
+      collection_type == "mosiah_priority" ~ "MOSIAH_PRIORITY",
+      TRUE ~ stringr::str_to_upper(collection_type)
+    )
+  )
+
+bom_target_collections %>%
+  dplyr::select(
+    doc_id,
+    collection_type,
+    target_family,
+    book,
+    section,
+    n_chapters,
+    n_verses
+  )
+```
+
+## 14. Basic summaries
+
+```{r summaries}
+bom_summary_by_book <- bom_chapter_docs %>%
+  dplyr::group_by(
+    book,
+    book_order,
+    mosiah_priority
+  ) %>%
+  dplyr::summarise(
+    n_chapters = dplyr::n(),
+    n_verses = sum(n_verses),
+    total_chars = sum(nchar(text)),
+    total_words = sum(stringr::str_count(text, "\\S+")),
+    mean_words_per_chapter = mean(stringr::str_count(text, "\\S+")),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(book_order)
+
+bom_summary_by_book
+
+bom_summary_by_mp <- bom_chapter_docs %>%
+  dplyr::group_by(
+    mosiah_priority,
+    mosiah_priority_label
+  ) %>%
+  dplyr::summarise(
+    books = paste(unique(book), collapse = "; "),
+    n_books = dplyr::n_distinct(book),
+    n_chapters = dplyr::n(),
+    n_verses = sum(n_verses),
+    total_chars = sum(nchar(text)),
+    total_words = sum(stringr::str_count(text, "\\S+")),
+    mean_words_per_chapter = mean(stringr::str_count(text, "\\S+")),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(mosiah_priority)
+
+bom_summary_by_mp
+```
+
+## 15. Sanity checks
+
+```{r sanity-checks}
+expected_chapters <- tibble::tribble(
+  ~book,              ~expected_chapters,
+  "1 Nephi",           22L,
+  "2 Nephi",           33L,
+  "Jacob",              7L,
+  "Enos",               1L,
+  "Jarom",              1L,
+  "Omni",               1L,
+  "Words of Mormon",    1L,
+  "Mosiah",            29L,
+  "Alma",              63L,
+  "Helaman",           16L,
+  "3 Nephi",           30L,
+  "4 Nephi",            1L,
+  "Mormon",             9L,
+  "Ether",             15L,
+  "Moroni",            10L
+)
+
+chapter_check <- bom_chapter_docs %>%
+  dplyr::count(book, name = "observed_chapters") %>%
+  dplyr::left_join(
+    expected_chapters,
+    by = "book"
+  ) %>%
+  dplyr::mutate(
+    matches_expected = observed_chapters == expected_chapters
+  ) %>%
+  dplyr::left_join(
+    bom_book_order,
+    by = "book"
+  ) %>%
+  dplyr::arrange(book_order)
+
+chapter_check
+
+if(any(!chapter_check$matches_expected, na.rm = TRUE)){
+  warning("Some BOM books do not match expected LDS chapter counts. Inspect chapter_check.")
+}
+
+missing_mp <- bom_chapter_docs %>%
+  dplyr::filter(is.na(mosiah_priority)) %>%
+  dplyr::distinct(book)
+
+missing_mp
+```
+
+## 16. Write prepared files
+
+```{r write-prepared}
+readr::write_csv(bom_verse_docs, bom_verse_path)
+readr::write_csv(bom_chapter_docs, bom_chapter_path)
+readr::write_csv(bom_book_docs, bom_book_path)
+readr::write_csv(bom_mp_docs, bom_mp_path)
+readr::write_csv(bom_target_collections, bom_targets_path)
+
+readr::write_csv(
+  bom_summary_by_book,
+  file.path(bom_prepared_dir, "bom_summary_by_book.csv")
+)
+
+readr::write_csv(
+  bom_summary_by_mp,
+  file.path(bom_prepared_dir, "bom_summary_by_mosiah_priority.csv")
+)
+
+cat("Prepared BOM files written to:\n")
+cat(bom_prepared_dir, "\n")
+```
+
+## 17. Objects created
+
+```{r objects-created}
+objects_created <- tibble::tribble(
+  ~object, ~description,
+  "bom", "Normalized verse-level Book of Mormon data.",
+  "bom_verse_docs", "One row per verse.",
+  "bom_chapter_docs", "One row per chapter.",
+  "bom_book_docs", "One row per BOM book.",
+  "bom_mp_docs", "One row per Mosiah Priority section.",
+  "bom_target_collections", "Book and Mosiah Priority collections for ensemble target comparisons.",
+  "bom_summary_by_book", "Book-level counts and word totals.",
+  "bom_summary_by_mp", "Mosiah Priority group summaries."
+)
+
+objects_created
+```

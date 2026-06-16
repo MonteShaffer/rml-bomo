@@ -1,0 +1,636 @@
+---
+title: "41 - Prepare Book of Commandments 1833 from Wikisource"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+
+options(
+  tibble.width = Inf,
+  tibble.print_max = 300
+)
+```
+
+## 1. Purpose
+
+This notebook downloads and parses the **Book of Commandments (1833)** from Wikisource.
+
+The Wikisource structure is approximately:
+
+```text
+Ch 3, February 1829
+
+A Revelation given to Joseph, the father of Joseph,
+in Harmony, Pennsylvania, February 1829. saying:
+
+3:1 Now, behold, a marvelous work is about to come forth...
+
+3:2 Remember temperance, patience, humility...
+```
+
+The notebook produces:
+
+```text
+data/raw/boc_1833_verses.csv
+data/prepared/boc_1833_chapter_docs.csv
+```
+
+The chapter-level file is designed to be appended to the KJV/BOM chapter corpus in later PCA and mclust notebooks.
+
+## 2. Packages
+
+```{r packages}
+library(dplyr)
+library(stringr)
+library(readr)
+library(tidyr)
+library(purrr)
+library(tibble)
+library(rvest)
+library(xml2)
+```
+
+## 3. Parameters
+
+```{r parameters}
+boc_url <- "https://en.wikisource.org/wiki/Book_of_Commandments"
+
+raw_dir <- file.path(STYLO_ROOT, "data", "raw")
+prepared_dir <- file.path(STYLO_ROOT, "data", "prepared")
+
+dir.create(raw_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(prepared_dir, recursive = TRUE, showWarnings = FALSE)
+
+boc_html_path <- file.path(raw_dir, "boc_1833_wikisource.html")
+boc_raw_text_path <- file.path(raw_dir, "boc_1833_wikisource_raw.txt")
+boc_verses_path <- file.path(raw_dir, "boc_1833_verses.csv")
+boc_chapters_path <- file.path(prepared_dir, "boc_1833_chapter_docs.csv")
+```
+
+## 4. Download Wikisource page
+
+```{r download}
+if(!file.exists(boc_html_path)){
+
+  download.file(
+    url = boc_url,
+    destfile = boc_html_path,
+    mode = "wb",
+    quiet = FALSE
+  )
+
+}
+
+boc_html <- xml2::read_html(boc_html_path)
+
+boc_text_raw <- boc_html %>%
+  rvest::html_element(".mw-parser-output") %>%
+  rvest::html_text2()
+
+readr::write_lines(boc_text_raw, boc_raw_text_path)
+
+cat("Wrote raw Wikisource text to:\n")
+cat(boc_raw_text_path, "\n")
+```
+
+## 5. Initial text cleanup
+```{r debug}
+## Diagnostic: detect chapter headings
+
+boc_lines_debug <- readr::read_lines(
+  boc_raw_text_path,
+  locale = readr::locale(encoding = "UTF-8")
+) %>%
+  stringr::str_replace_all("\uFEFF", "") %>%
+  stringr::str_replace_all("\r", "") %>%
+  stringr::str_replace_all("\u00A0", " ") %>%
+  stringr::str_squish()
+
+boc_lines_debug <- boc_lines_debug[boc_lines_debug != ""]
+
+chapter_heading_debug <- tibble::tibble(
+  line_no = seq_along(boc_lines_debug),
+  line = boc_lines_debug
+) %>%
+  dplyr::filter(
+    stringr::str_detect(
+      line,
+      regex("^\\s*ch(?:apter)?\\.?\\s*[0-9]+", ignore_case = TRUE)
+    )
+  ) %>%
+  dplyr::mutate(
+    detected_chapter = as.integer(
+      stringr::str_match(
+        line,
+        regex("^\\s*ch(?:apter)?\\.?\\s*([0-9]+)", ignore_case = TRUE)
+      )[, 2]
+    )
+  )
+
+chapter_heading_debug %>%
+  print(n = 100)
+
+chapter_heading_debug %>%
+  dplyr::summarise(
+    n_headings = dplyr::n(),
+    first_chapter = min(detected_chapter, na.rm = TRUE),
+    last_chapter = max(detected_chapter, na.rm = TRUE),
+    missing_chapters = paste(
+      setdiff(1:65, detected_chapter),
+      collapse = ", "
+    )
+  )
+
+
+```
+
+
+```{r cleanup-text}
+boc_lines <- readr::read_lines(
+  boc_raw_text_path,
+  locale = readr::locale(encoding = "UTF-8")
+)
+
+boc_lines <- boc_lines %>%
+  stringr::str_replace_all("\uFEFF", "") %>%
+  stringr::str_replace_all("\r", "") %>%
+  stringr::str_replace_all("\u00A0", " ") %>%
+  stringr::str_squish()
+
+boc_lines <- boc_lines[boc_lines != ""]
+
+length(boc_lines)
+
+boc_lines[1:80]
+```
+
+## 6. Detect useful text boundaries
+
+```{r boundaries}
+chapter_heading_debug <- tibble::tibble(
+  line_no = seq_along(boc_lines_debug),
+  line = boc_lines_debug
+) %>%
+  dplyr::filter(
+    stringr::str_detect(
+      line,
+      regex("^\\s*ch(?:apter)?\\.?\\s*[0-9]+", ignore_case = TRUE)
+    )
+  ) %>%
+  dplyr::mutate(
+    detected_chapter = as.integer(
+      stringr::str_match(
+        line,
+        regex("^\\s*ch(?:apter)?\\.?\\s*([0-9]+)", ignore_case = TRUE)
+      )[, 2]
+    )
+  )
+
+body_start <- min(chapter_heading_debug$line_no)
+body_end <- max(chapter_heading_debug$line_no)
+
+# include everything after chapter 1 through the end of the page text
+boc_body <- boc_lines_debug[body_start:length(boc_lines_debug)]
+```
+
+## 7. Helper functions
+
+```{r helpers}
+
+
+detect_chapter <- function(line){
+
+  line <- stringr::str_squish(line)
+
+  m <- stringr::str_match(
+    line,
+    regex("^\\s*ch(?:apter)?\\.?\\s*([0-9]+)\\s*,?\\s*(.*)$",
+          ignore_case = TRUE)
+  )
+
+  if(!is.na(m[1, 2])){
+    return(list(
+      chapter = as.integer(m[1, 2]),
+      chapter_date = stringr::str_squish(m[1, 3])
+    ))
+  }
+
+  NULL
+}
+
+
+
+
+detect_verse <- function(line){
+
+  line <- stringr::str_squish(line)
+
+  m <- stringr::str_match(
+    line,
+    regex("^([0-9]+):([0-9]+)\\s+(.*)$", ignore_case = TRUE)
+  )
+
+  if(!is.na(m[1, 2])){
+    return(
+      list(
+        chapter = as.integer(m[1, 2]),
+        verse = as.integer(m[1, 3]),
+        text = stringr::str_squish(m[1, 4])
+      )
+    )
+  }
+
+  # Fallback for sources using only verse numbers after a chapter heading.
+  m2 <- stringr::str_match(
+    line,
+    regex("^([0-9]+)\\s+(.*)$", ignore_case = TRUE)
+  )
+
+  if(!is.na(m2[1, 2])){
+    return(
+      list(
+        chapter = NA_integer_,
+        verse = as.integer(m2[1, 2]),
+        text = stringr::str_squish(m2[1, 3])
+      )
+    )
+  }
+
+  NULL
+}
+
+
+clean_revelation_text <- function(x){
+
+  x %>%
+    stringr::str_replace_all("\\s+", " ") %>%
+    stringr::str_replace_all("\\s+([,.;:!?])", "\\1") %>%
+    stringr::str_squish()
+}
+
+
+make_doc_id <- function(corpus_id, translation, book, chapter){
+
+  paste0(
+    corpus_id,
+    "_",
+    translation,
+    "__",
+    stringr::str_replace_all(book, "\\s+", "_"),
+    "_",
+    chapter
+  )
+
+}
+```
+
+## 8. Parse chapters, headers, and verses
+
+Important parsing rule:
+
+- `chapter_date` is taken from the `Ch X, Date` line.
+- `header` is the prose line(s) after the chapter heading but before the first verse.
+- `text` excludes the header.
+- `text_raw` preserves header + verse text for inspection.
+
+
+
+
+```{r parse}
+chapter_blocks <- chapter_heading_debug %>%
+  dplyr::arrange(line_no) %>%
+  dplyr::mutate(
+    start_line = line_no,
+    end_line = dplyr::lead(line_no, default = length(boc_lines_debug) + 1L) - 1L,
+    chapter = detected_chapter,
+    chapter_date = stringr::str_squish(
+      stringr::str_match(
+        line,
+        regex("^\\s*ch(?:apter)?\\.?\\s*[0-9]+\\s*,?\\s*(.*)$",
+              ignore_case = TRUE)
+      )[, 2]
+    )
+  )
+
+parse_chapter_block <- function(block){
+
+  lines <- boc_lines_debug[block$start_line:block$end_line]
+
+  # Remove chapter heading
+  lines <- lines[-1]
+  lines <- lines[lines != ""]
+
+  block_text <- clean_revelation_text(
+    paste(lines, collapse = " ")
+  )
+
+  marker_pattern <- paste0("\\b", block$chapter, ":([0-9]+)\\b")
+
+  marker_locs <- stringr::str_locate_all(
+    block_text,
+    marker_pattern
+  )[[1]]
+
+  if(nrow(marker_locs) == 0){
+    return(tibble::tibble())
+  }
+
+  first_marker_start <- marker_locs[1, "start"]
+
+  header_text <- stringr::str_sub(
+    block_text,
+    1,
+    first_marker_start - 1
+  ) %>%
+    clean_revelation_text()
+
+  verse_starts <- marker_locs[, "start"]
+  verse_ends <- c(
+    marker_locs[-1, "start"] - 1L,
+    stringr::str_length(block_text)
+  )
+
+  purrr::map2_dfr(
+    verse_starts,
+    verse_ends,
+    function(s, e){
+
+      verse_chunk <- stringr::str_sub(
+        block_text,
+        s,
+        e
+      ) %>%
+        clean_revelation_text()
+
+      m <- stringr::str_match(
+        verse_chunk,
+        paste0("^", block$chapter, ":([0-9]+)\\s*(.*)$")
+      )
+
+      tibble::tibble(
+        corpus_id = "BOC",
+        translation = "1833",
+        book = "Book of Commandments",
+        chapter = block$chapter,
+        chapter_date = block$chapter_date,
+        header = header_text,
+        verse = as.integer(m[1, 2]),
+        text = clean_revelation_text(m[1, 3]),
+        text_raw = clean_revelation_text(
+          paste(header_text, m[1, 3])
+        )
+      )
+    }
+  )
+}
+
+boc_verses <- purrr::map_dfr(
+  split(chapter_blocks, chapter_blocks$chapter),
+  parse_chapter_block
+) %>%
+  dplyr::arrange(chapter, verse)
+
+
+
+
+
+nrow(boc_verses)
+setdiff(1:65, unique(boc_verses$chapter))
+```
+
+## 9. Sanity checks
+
+```{r sanity-checks}
+boc_verses %>%
+  dplyr::count(chapter, name = "n_verses") %>%
+  dplyr::arrange(chapter)
+
+boc_verses %>%
+  dplyr::summarise(
+    n_chapters = dplyr::n_distinct(chapter),
+    n_verses = dplyr::n(),
+    first_chapter = min(chapter, na.rm = TRUE),
+    last_chapter = max(chapter, na.rm = TRUE),
+    empty_text = sum(is.na(text) | text == ""),
+    empty_header = sum(is.na(header) | header == "")
+  )
+
+verse_gaps <- boc_verses %>%
+  dplyr::group_by(chapter) %>%
+  dplyr::summarise(
+    min_verse = min(verse, na.rm = TRUE),
+    max_verse = max(verse, na.rm = TRUE),
+    n_verses = dplyr::n_distinct(verse),
+    expected_n = max_verse - min_verse + 1L,
+    has_gap = n_verses != expected_n,
+    .groups = "drop"
+  ) %>%
+  dplyr::filter(has_gap)
+
+verse_gaps
+```
+```{r debug}
+boc_verses %>%
+  dplyr::group_by(chapter) %>%
+  dplyr::summarise(
+    missing_verses = paste(
+      setdiff(min(verse):max(verse), verse),
+      collapse = ", "
+    ),
+    .groups = "drop"
+  ) %>%
+  dplyr::filter(missing_verses != "")
+
+inspect_block <- function(ch){
+
+  block <- chapter_blocks %>%
+    dplyr::filter(chapter == ch)
+
+  boc_lines_debug[block$start_line:block$end_line] %>%
+    tibble::tibble(
+      line_no = block$start_line:block$end_line,
+      line = .
+    )
+}
+
+inspect_block(16)
+inspect_block(44)
+inspect_block(54)
+
+
+
+boc_verses %>%
+  dplyr::count(chapter, verse) %>%
+  dplyr::filter(n > 1)
+
+boc_duplicate_verses <- boc_verses %>%
+  dplyr::count(chapter, verse, name = "n") %>%
+  dplyr::filter(n > 1)
+
+boc_duplicate_verses
+
+
+boc_missing_verses <- boc_verses %>%
+  dplyr::group_by(chapter) %>%
+  dplyr::summarise(
+    missing_verses = paste(
+      setdiff(min(verse):max(verse), verse),
+      collapse = ", "
+    ),
+    .groups = "drop"
+  ) %>%
+  dplyr::filter(missing_verses != "")
+
+boc_missing_verses
+
+readr::write_csv(
+  boc_missing_verses,
+  file.path(raw_dir, "boc_1833_missing_verse_numbers.csv")
+)
+
+readr::write_csv(
+  boc_duplicate_verses,
+  file.path(raw_dir, "boc_1833_duplicate_verse_numbers.csv")
+)
+
+
+
+```
+
+## 10. Build chapter documents
+
+```{r chapter-docs}
+boc_chapter_docs <- boc_verses %>%
+  dplyr::group_by(
+    corpus_id,
+    translation,
+    book,
+    chapter,
+    chapter_date,
+    header
+  ) %>%
+  dplyr::summarise(
+    n_verses = dplyr::n(),
+    text = clean_revelation_text(
+      paste(text, collapse = " ")
+    ),
+    text_raw = clean_revelation_text(
+      paste(unique(header), paste(text, collapse = " "), collapse = " ")
+    ),
+    .groups = "drop"
+  ) %>%
+  dplyr::mutate(
+    corpus_family = "BOC",
+    source_family = "BOC_1833",
+    macro_genre = "Modern_Revelation",
+    section = paste0("BOC_", chapter),
+    doc_id = make_doc_id(corpus_id, translation, book, chapter),
+    doc_id_original = doc_id
+  ) %>%
+  dplyr::select(
+    corpus_id,
+    translation,
+    corpus_family,
+    source_family,
+    doc_id,
+    doc_id_original,
+    book,
+    chapter,
+    section,
+    macro_genre,
+    chapter_date,
+    header,
+    n_verses,
+    text,
+    text_raw
+  ) %>%
+  dplyr::arrange(chapter)
+
+boc_chapter_docs %>%
+  dplyr::slice_head(n = 20)
+
+nrow(boc_chapter_docs)
+```
+
+## 11. Preview selected chapter
+
+```{r preview}
+boc_verses %>%
+  dplyr::filter(chapter == 3)
+
+boc_chapter_docs %>%
+  dplyr::filter(chapter == 3) %>%
+  dplyr::select(doc_id, chapter_date, header, n_verses, text)
+```
+
+## 12. Write CSV outputs
+
+```{r write-csvs}
+readr::write_csv(boc_verses, boc_verses_path)
+readr::write_csv(boc_chapter_docs, boc_chapters_path)
+
+cat("Wrote verse-level BOC CSV to:\n")
+cat(boc_verses_path, "\n\n")
+
+cat("Wrote chapter-level BOC document CSV to:\n")
+cat(boc_chapters_path, "\n")
+```
+
+## 13. Output summary
+
+```{r summary}
+boc_summary <- boc_chapter_docs %>%
+  dplyr::summarise(
+    corpus_id = dplyr::first(corpus_id),
+    translation = dplyr::first(translation),
+    n_chapters = dplyr::n(),
+    total_verses = sum(n_verses),
+    total_words = sum(stringr::str_count(text, "\\S+")),
+    mean_words_per_chapter = mean(stringr::str_count(text, "\\S+")),
+    median_words_per_chapter = median(stringr::str_count(text, "\\S+"))
+  )
+
+boc_summary
+
+boc_chapter_docs %>%
+  dplyr::mutate(
+    n_words = stringr::str_count(text, "\\S+")
+  ) %>%
+  dplyr::select(
+    chapter,
+    chapter_date,
+    n_verses,
+    n_words,
+    header
+  ) %>%
+  dplyr::arrange(chapter)
+```
+
+## 14. Next step
+
+After this notebook succeeds, add `boc_1833_chapter_docs.csv` to your combined analysis corpus.
+
+A later notebook can bind:
+
+```text
+data/prepared/kjv_chapter_docs.csv
+data/prepared/bom_chapter_docs.csv
+data/prepared/boc_1833_chapter_docs.csv
+```
+
+and then rerun:
+
+```text
+similarity matrix
+PCA
+mclust G = 1:9
+nearest-neighbor diagnostics
+```

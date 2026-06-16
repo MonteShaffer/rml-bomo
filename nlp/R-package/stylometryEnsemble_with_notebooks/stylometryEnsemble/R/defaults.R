@@ -32,7 +32,7 @@ default_function_word_sets <- function(){
 }
 
 new_stylometry_config <- function(
-    include = c("char", "word", "stem", "function_words", "pos", "punctuation", "sentence", "lexical", "readability"),
+    include = c("char", "word", "stem", "function_words", "pos", "punctuation", "sentence", "word_length", "lexical", "readability"),
     weights = NULL,
     char_n = c(3,4,5),
     word_n = c(1,2,3),
@@ -51,9 +51,10 @@ new_stylometry_config <- function(
       word = 0.10,
       stem = 0.10,
       sentence = 0.07,
-      punctuation = 0.05,
-      lexical = 0.04,
-      readability = 0.04
+	  word_length = 0.05,
+      punctuation = 0.03,
+      lexical = 0.03,
+      readability = 0.02
     )
   }
   missing_weights <- setdiff(include, names(weights))

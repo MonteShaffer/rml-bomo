@@ -698,3 +698,823 @@ summarize_findings <- function(result, doc_id, k = 10, plot = TRUE){
     )
   )
 }
+
+
+
+
+
+
+
+
+
+show_false_matches <- function(attribution_tbl){
+
+  attribution_tbl %>%
+
+    dplyr::filter(
+      winner != actual_section
+    ) %>%
+
+    dplyr::select(
+
+      chapter,
+
+      doc_id,
+
+      actual_section,
+
+      winner,
+
+      winner_pct_votes_pct,
+
+      winner_weighted_pct_votes_pct,
+
+      vote_margin_pct,
+
+      weighted_vote_margin_pct,
+
+      winner_dominance_ratio,
+
+      consensus_strength,
+
+      doc_entropy,
+
+      effective_targets
+
+    ) %>%
+
+    dplyr::arrange(chapter)
+
+}
+
+
+plotPCA <- function(
+    scores,
+    variance_tbl,
+    x = 1,
+    y = 2,
+    book = "Isaiah",
+    include_books = NULL,
+    color = "section",
+    label = "chapter",
+    show_labels = TRUE,
+    show_centroids = TRUE,
+    show_hulls = TRUE,
+    show_other_books = TRUE,
+    aggregate_other_books = FALSE,
+    show_other_centroids = TRUE,
+    other_alpha = 0.35,
+    other_size = 2,
+    point_size = 2.8,
+    centroid_size = 6,
+    other_centroid_size = 5,
+    title = NULL
+){
+
+  require(dplyr)
+  require(ggplot2)
+  require(ggrepel)
+
+  x_col <- paste0("PC", x)
+  y_col <- paste0("PC", y)
+
+  if(!(x_col %in% names(scores))){
+    stop("Missing column: ", x_col)
+  }
+
+  if(!(y_col %in% names(scores))){
+    stop("Missing column: ", y_col)
+  }
+
+  # ------------------------------------------------------------
+  # Select focus book and optional comparison books
+  # ------------------------------------------------------------
+
+  if(!is.null(book)){
+
+    plot_data <- scores %>%
+      dplyr::filter(.data$book == !!book)
+
+    if(!is.null(include_books)){
+
+      other_data <- scores %>%
+        dplyr::filter(.data$book %in% include_books)
+
+      plot_data <- dplyr::bind_rows(
+        plot_data,
+        other_data
+      )
+    }
+
+  } else {
+
+    plot_data <- scores
+  }
+
+  # ------------------------------------------------------------
+  # Display grouping
+  # ------------------------------------------------------------
+
+  plot_data <- plot_data %>%
+    dplyr::mutate(
+      .is_focus = dplyr::if_else(
+        !is.null(book) & .data$book == !!book,
+        TRUE,
+        FALSE
+      ),
+      .display_group = dplyr::if_else(
+        .is_focus,
+        as.character(.data[[color]]),
+        as.character(.data$book)
+      ),
+      .label_value = as.character(.data[[label]])
+    )
+
+  # ------------------------------------------------------------
+  # Aggregate comparison books to centroids only
+  # ------------------------------------------------------------
+
+  if(aggregate_other_books && !is.null(include_books)){
+
+    other_centroids <- plot_data %>%
+      dplyr::filter(!.is_focus) %>%
+      dplyr::group_by(book) %>%
+      dplyr::summarise(
+        dplyr::across(
+          dplyr::all_of(c(x_col, y_col)),
+          ~ mean(.x, na.rm = TRUE)
+        ),
+        .groups = "drop"
+      ) %>%
+      dplyr::mutate(
+        .is_focus = FALSE,
+        .display_group = book,
+        .label_value = book
+      )
+
+    # Preserve columns that may be expected downstream.
+    missing_cols <- setdiff(names(plot_data), names(other_centroids))
+
+    for(mc in missing_cols){
+      other_centroids[[mc]] <- NA
+    }
+
+    other_centroids <- other_centroids %>%
+      dplyr::select(dplyr::all_of(names(plot_data)))
+
+    plot_data <- plot_data %>%
+      dplyr::filter(.is_focus) %>%
+      dplyr::bind_rows(other_centroids)
+  }
+
+  # ------------------------------------------------------------
+  # Variance labels
+  # ------------------------------------------------------------
+
+  x_pct <- variance_tbl %>%
+    dplyr::filter(.data$dimension == x) %>%
+    dplyr::pull(.data$pct_variance)
+
+  y_pct <- variance_tbl %>%
+    dplyr::filter(.data$dimension == y) %>%
+    dplyr::pull(.data$pct_variance)
+
+  if(length(x_pct) == 0) x_pct <- NA_real_
+  if(length(y_pct) == 0) y_pct <- NA_real_
+
+  if(is.null(title)){
+
+    if(!is.null(book) && is.null(include_books)){
+      title <- paste0(book, ": PC", x, " vs PC", y)
+    } else if(!is.null(book) && !is.null(include_books)){
+      title <- paste0(
+        book,
+        " with comparison books: PC",
+        x,
+        " vs PC",
+        y
+      )
+    } else {
+      title <- paste0("PCA: PC", x, " vs PC", y)
+    }
+  }
+
+  subtitle <- paste0(
+    "PC",
+    x,
+    " = ",
+    round(x_pct, 2),
+    "% variance; PC",
+    y,
+    " = ",
+    round(y_pct, 2),
+    "% variance"
+  )
+
+  # ------------------------------------------------------------
+  # Base plot
+  # ------------------------------------------------------------
+
+  p <- ggplot2::ggplot(
+    plot_data,
+    ggplot2::aes(
+      x = .data[[x_col]],
+      y = .data[[y_col]]
+    )
+  ) +
+    ggplot2::geom_hline(
+      yintercept = 0,
+      color = "grey60",
+      linewidth = 0.3
+    ) +
+    ggplot2::geom_vline(
+      xintercept = 0,
+      color = "grey60",
+      linewidth = 0.3
+    )
+
+  # ------------------------------------------------------------
+  # Hulls for focus book only
+  # ------------------------------------------------------------
+
+  if(show_hulls){
+
+    hull_data <- plot_data %>%
+      dplyr::filter(.is_focus) %>%
+      dplyr::group_by(.display_group) %>%
+      dplyr::filter(dplyr::n() >= 3) %>%
+      dplyr::slice(chull(.data[[x_col]], .data[[y_col]])) %>%
+      dplyr::ungroup()
+
+    if(nrow(hull_data) > 0){
+
+      p <- p +
+        ggplot2::geom_polygon(
+          data = hull_data,
+          ggplot2::aes(
+            fill = .display_group,
+            group = .display_group
+          ),
+          alpha = 0.13,
+          color = NA
+        )
+    }
+  }
+
+  # ------------------------------------------------------------
+  # Other books
+  # ------------------------------------------------------------
+
+  if(show_other_books && any(!plot_data$.is_focus)){
+
+    other_plot_data <- plot_data %>%
+      dplyr::filter(!.is_focus)
+
+    if(aggregate_other_books){
+
+      p <- p +
+        ggplot2::geom_point(
+          data = other_plot_data,
+          ggplot2::aes(color = .display_group),
+          shape = 4,
+          stroke = 1.4,
+          size = other_centroid_size,
+          alpha = 0.95
+        )
+
+    } else {
+
+      p <- p +
+        ggplot2::geom_point(
+          data = other_plot_data,
+          ggplot2::aes(color = .display_group),
+          alpha = other_alpha,
+          size = other_size
+        )
+    }
+  }
+
+  # ------------------------------------------------------------
+  # Focus book points
+  # ------------------------------------------------------------
+
+  if(any(plot_data$.is_focus)){
+
+    p <- p +
+      ggplot2::geom_point(
+        data = plot_data %>% dplyr::filter(.is_focus),
+        ggplot2::aes(color = .display_group),
+        size = point_size,
+        alpha = 0.95
+      )
+  }
+
+  # If book is NULL, draw all points normally.
+  if(is.null(book)){
+
+    p <- p +
+      ggplot2::geom_point(
+        ggplot2::aes(color = .display_group),
+        size = point_size,
+        alpha = 0.9
+      )
+  }
+
+  # ------------------------------------------------------------
+  # Centroids for focus book
+  # ------------------------------------------------------------
+
+  if(show_centroids && any(plot_data$.is_focus)){
+
+    centroid_data <- plot_data %>%
+      dplyr::filter(.is_focus) %>%
+      dplyr::group_by(.display_group) %>%
+      dplyr::summarize(
+        x_val = mean(.data[[x_col]], na.rm = TRUE),
+        y_val = mean(.data[[y_col]], na.rm = TRUE),
+        .groups = "drop"
+      )
+
+    if(nrow(centroid_data) > 0){
+
+      p <- p +
+        ggplot2::geom_point(
+          data = centroid_data,
+          ggplot2::aes(
+            x = x_val,
+            y = y_val,
+            color = .display_group
+          ),
+          shape = 4,
+          stroke = 1.4,
+          size = centroid_size
+        )
+    }
+  }
+
+  # ------------------------------------------------------------
+  # Labels
+  # ------------------------------------------------------------
+
+  if(show_labels){
+
+    label_data <- plot_data
+
+    p <- p +
+      ggrepel::geom_text_repel(
+        data = label_data,
+        ggplot2::aes(
+          label = .label_value,
+          color = .display_group
+        ),
+        size = 2.7,
+        max.overlaps = Inf,
+        show.legend = FALSE
+      )
+  }
+
+  # ------------------------------------------------------------
+  # Final styling
+  # ------------------------------------------------------------
+
+  p +
+    ggplot2::labs(
+      title = title,
+      subtitle = subtitle,
+      x = paste0("PC", x, " (", round(x_pct, 2), "%)"),
+      y = paste0("PC", y, " (", round(y_pct, 2), "%)"),
+      color = "Group",
+      fill = "Group"
+    ) +
+    ggplot2::theme_minimal()
+}
+
+plotPCA3d <- function(
+    scores,
+    variance_tbl,
+    x = 1,
+    y = 2,
+    z = 3,
+    color = "section",
+    label = "chapter",
+    book = NULL,
+    section_filter = NULL,
+    show_labels = TRUE,
+    show_centroids = TRUE,
+    point_size = 8,
+    centroid_size = 12,
+    label_adj = c(1.2, 1.2),
+    title = NULL){
+
+  if(!requireNamespace("rgl", quietly = TRUE)){
+    stop("Package 'rgl' is required. Install with install.packages('rgl').")
+  }
+
+  plot_data <- scores
+
+  if(!is.null(book) && "book" %in% names(plot_data)){
+    plot_data <- plot_data %>%
+      dplyr::filter(.data$book == !!book)
+  }
+
+  if(!is.null(section_filter) && "section" %in% names(plot_data)){
+    plot_data <- plot_data %>%
+      dplyr::filter(.data$section %in% !!section_filter)
+  }
+
+  xname <- paste0("PC", x)
+  yname <- paste0("PC", y)
+  zname <- paste0("PC", z)
+
+  groups <- as.factor(plot_data[[color]])
+  group_levels <- levels(groups)
+
+  cols <- grDevices::rainbow(length(group_levels))
+  point_cols <- cols[as.integer(groups)]
+
+  xvar <- variance_tbl$pct_variance[variance_tbl$dimension == x]
+  yvar <- variance_tbl$pct_variance[variance_tbl$dimension == y]
+  zvar <- variance_tbl$pct_variance[variance_tbl$dimension == z]
+
+  if(is.null(title)){
+    title <- paste0(xname, " vs ", yname, " vs ", zname)
+  }
+
+  rgl::open3d()
+
+  rgl::plot3d(
+    x = plot_data[[xname]],
+    y = plot_data[[yname]],
+    z = plot_data[[zname]],
+    col = point_cols,
+    size = point_size,
+    #type = "s",
+    xlab = paste0(xname, " (", round(xvar, 1), "%)"),
+    ylab = paste0(yname, " (", round(yvar, 1), "%)"),
+    zlab = paste0(zname, " (", round(zvar, 1), "%)"),
+    main = title
+  )
+
+  if(show_labels){
+
+    rgl::texts3d(
+      x = plot_data[[xname]],
+      y = plot_data[[yname]],
+      z = plot_data[[zname]],
+      texts = plot_data[[label]],
+      adj = label_adj
+    )
+  }
+
+  if(show_centroids){
+
+    centroids <- plot_data %>%
+      dplyr::group_by(.data[[color]]) %>%
+      dplyr::summarize(
+        x = mean(.data[[xname]], na.rm = TRUE),
+        y = mean(.data[[yname]], na.rm = TRUE),
+        z = mean(.data[[zname]], na.rm = TRUE),
+        .groups = "drop"
+      )
+
+    centroid_groups <- as.factor(centroids[[color]])
+    centroid_cols <- cols[match(as.character(centroid_groups), group_levels)]
+
+    rgl::points3d(
+      x = centroids$x,
+      y = centroids$y,
+      z = centroids$z,
+      col = centroid_cols,
+      size = centroid_size
+    )
+
+    rgl::texts3d(
+      x = centroids$x,
+      y = centroids$y,
+      z = centroids$z,
+      texts = paste0(centroids[[color]], " centroid"),
+      adj = c(1.2, 1.2)
+    )
+  }
+
+  rgl::legend3d(
+    "topright",
+    legend = group_levels,
+    pch = 16,
+    col = cols,
+    cex = 1
+  )
+
+  #invisible(plot_data)
+  rgl::aspect3d(1, 1, 1)
+
+  rgl::rglwidget()
+}
+
+
+
+section_overlap <- function(
+    scores,
+    dims = c("PC1","PC2","PC3","PC4")
+){
+
+    require(dplyr)
+
+    dat <- scores %>%
+        dplyr::filter(
+            book == "Isaiah"
+        )
+
+    sections <- unique(dat$section)
+
+    out <- list()
+
+    k <- 1
+
+    for(i in 1:(length(sections)-1)){
+
+        for(j in (i+1):length(sections)){
+
+            s1 <- sections[i]
+            s2 <- sections[j]
+
+            X1 <- dat %>%
+                dplyr::filter(section == s1) %>%
+                dplyr::select(dplyr::all_of(dims)) %>%
+                as.matrix()
+
+            X2 <- dat %>%
+                dplyr::filter(section == s2) %>%
+                dplyr::select(dplyr::all_of(dims)) %>%
+                as.matrix()
+
+            mu1 <- colMeans(X1)
+            mu2 <- colMeans(X2)
+
+            pooled_cov <- cov(rbind(X1,X2))
+
+            md <- sqrt(
+                t(mu1-mu2) %*%
+                solve(pooled_cov) %*%
+                (mu1-mu2)
+            )
+
+            euclid <- sqrt(
+                sum(
+                    (mu1-mu2)^2
+                )
+            )
+
+            out[[k]] <- data.frame(
+
+                section_a = s1,
+
+                section_b = s2,
+
+                euclidean_distance =
+                    as.numeric(euclid),
+
+                mahalanobis_distance =
+                    as.numeric(md)
+
+            )
+
+            k <- k + 1
+
+        }
+
+    }
+
+    dplyr::bind_rows(out) %>%
+
+        dplyr::arrange(
+
+            mahalanobis_distance
+
+        )
+
+}
+
+
+
+
+plot_sentence_features_by_section <- function(
+    chapter_docs,
+    sentence_features,
+    feature = "sentence_length_mean"
+){
+
+    require(dplyr)
+    require(ggplot2)
+
+    stopifnot(
+        feature %in% colnames(sentence_features)
+    )
+
+    dat <- sentence_features %>%
+
+        dplyr::left_join(
+
+            chapter_docs %>%
+
+                dplyr::select(
+
+                    doc_id,
+                    book,
+                    chapter,
+                    section
+
+                ),
+
+            by = "doc_id"
+
+        ) %>%
+
+        dplyr::filter(
+
+            book == "Isaiah"
+
+        )
+
+    ggplot(
+
+        dat,
+
+        aes(
+
+            x = chapter,
+
+            y = .data[[feature]],
+
+            color = section
+
+        )
+
+    ) +
+
+    geom_line() +
+
+    geom_point() +
+
+    labs(
+
+        title = paste(
+
+            "Isaiah:",
+
+            feature
+
+        ),
+
+        x = "Chapter",
+
+        y = feature
+
+    ) +
+
+    theme_minimal()
+
+}
+
+
+
+show_sentence_summary <- function(
+    chapter_docs,
+    sentence_features
+){
+
+    sentence_features %>%
+
+        left_join(
+
+            chapter_docs %>%
+
+                select(
+
+                    doc_id,
+                    book,
+                    section
+
+                ),
+
+            by="doc_id"
+
+        ) %>%
+
+        filter(
+
+            book=="Isaiah"
+
+        ) %>%
+
+        group_by(
+
+            section
+
+        ) %>%
+
+        summarise(
+
+            across(
+
+                where(is.numeric),
+
+                list(
+
+                    mean=mean,
+
+                    sd=sd
+
+                ),
+
+                na.rm=TRUE
+
+            ),
+
+            .groups="drop"
+
+        )
+
+}
+
+
+plot_sentence_distributions <- function(
+
+    chapter_docs,
+
+    sentence_features,
+
+    feature="sentence_length_mean"
+
+){
+
+    require(dplyr)
+
+    require(ggplot2)
+
+    dat <- sentence_features %>%
+
+        left_join(
+
+            chapter_docs %>%
+
+                select(
+
+                    doc_id,
+
+                    book,
+
+                    section
+
+                ),
+
+            by="doc_id"
+
+        ) %>%
+
+        filter(
+
+            book=="Isaiah"
+
+        )
+
+    ggplot(
+
+        dat,
+
+        aes(
+
+            x=.data[[feature]],
+
+            fill=section
+
+        )
+
+    ) +
+
+    geom_density(
+
+        alpha=.35
+
+    ) +
+
+    labs(
+
+        title=paste(
+
+            "Distribution:",
+
+            feature
+
+        ),
+
+        x=feature,
+
+        y="Density"
+
+    ) +
+
+    theme_minimal()
+
+}
+

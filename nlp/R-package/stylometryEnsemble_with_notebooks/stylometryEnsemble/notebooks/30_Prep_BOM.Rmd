@@ -1,0 +1,561 @@
+---
+title: "30 - Prepare Book of Mormon from Project Gutenberg"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+
+options(
+  tibble.width = Inf,
+  tibble.print_max = 300
+)
+```
+
+## 1. Purpose
+
+This notebook prepares a raw Book of Mormon CSV from a Project Gutenberg plain-text file.
+
+It creates:
+
+```text
+data/raw/bom.csv
+```
+
+with columns:
+
+```text
+book
+chapter
+verse
+text
+```
+
+This file is then consumed by:
+
+```text
+31_Introduction_BOM.Rmd
+```
+
+which builds chapter documents, book collections, and Mosiah Priority collections.
+
+## 2. Packages
+
+```{r packages}
+library(dplyr)
+library(stringr)
+library(readr)
+library(tibble)
+library(purrr)
+```
+
+## 3. Parameters
+
+```{r parameters}
+bom_gutenberg_url <- "https://www.gutenberg.org/cache/epub/17/pg17.txt"
+
+raw_dir <- file.path(
+  STYLO_ROOT,
+  "data",
+  "raw"
+)
+
+dir.create(
+  raw_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+bom_txt_path <- file.path(
+  raw_dir,
+  "bom_gutenberg_pg17.txt"
+)
+
+bom_csv_path <- file.path(
+  raw_dir,
+  "bom.csv"
+)
+```
+
+## 4. Download Project Gutenberg text
+
+```{r download-gutenberg}
+if(!file.exists(bom_txt_path)){
+
+  download.file(
+    url = bom_gutenberg_url,
+    destfile = bom_txt_path,
+    mode = "wb",
+    quiet = FALSE
+  )
+
+}
+
+bom_lines_raw <- readr::read_lines(
+  bom_txt_path,
+  locale = readr::locale(encoding = "UTF-8")
+)
+
+length(bom_lines_raw)
+
+bom_lines_raw[1:40]
+```
+
+## 5. Canonical Book of Mormon order
+
+```{r bom-book-order}
+bom_book_order <- tibble::tribble(
+  ~book,               ~book_order,
+  "1 Nephi",            1L,
+  "2 Nephi",            2L,
+  "Jacob",              3L,
+  "Enos",               4L,
+  "Jarom",              5L,
+  "Omni",               6L,
+  "Words of Mormon",    7L,
+  "Mosiah",             8L,
+  "Alma",               9L,
+  "Helaman",           10L,
+  "3 Nephi",           11L,
+  "4 Nephi",           12L,
+  "Mormon",            13L,
+  "Ether",             14L,
+  "Moroni",            15L
+)
+
+bom_book_order
+```
+
+## 6. Gutenberg boundary detection
+
+Project Gutenberg files contain header and footer material that should not be analyzed.
+
+This chunk removes the Gutenberg wrapper and keeps only the Book of Mormon body.
+
+```{r strip-gutenberg-wrapper}
+start_candidates <- which(
+  stringr::str_detect(
+    bom_lines_raw,
+    regex("THE FIRST BOOK OF NEPHI|FIRST BOOK OF NEPHI|1 Nephi", ignore_case = TRUE)
+  )
+)
+
+end_candidates <- which(
+  stringr::str_detect(
+    bom_lines_raw,
+    regex("END OF THE PROJECT GUTENBERG|End of Project Gutenberg", ignore_case = TRUE)
+  )
+)
+
+if(length(start_candidates) == 0){
+  stop("Could not find the beginning of 1 Nephi in the Gutenberg text.")
+}
+
+body_start <- start_candidates[1]
+
+body_end <- if(length(end_candidates) > 0){
+  end_candidates[1] - 1L
+} else {
+  length(bom_lines_raw)
+}
+
+bom_lines <- bom_lines_raw[body_start:body_end]
+
+bom_lines <- bom_lines %>%
+  stringr::str_replace_all("\uFEFF", "") %>%
+  stringr::str_replace_all("\\r", "") %>%
+  stringr::str_squish()
+
+bom_lines <- bom_lines[bom_lines != ""]
+
+length(bom_lines)
+
+bom_lines[1:80]
+```
+
+## 7. Book and chapter recognizers
+
+```{r recognizers}
+canonical_book_from_line <- function(line){
+
+  x <- stringr::str_squish(line)
+  y <- stringr::str_to_upper(x)
+
+  dplyr::case_when(
+    stringr::str_detect(y, "^THE FIRST BOOK OF NEPHI|^FIRST BOOK OF NEPHI|^1 NEPHI$") ~ "1 Nephi",
+    stringr::str_detect(y, "^THE SECOND BOOK OF NEPHI|^SECOND BOOK OF NEPHI|^2 NEPHI$") ~ "2 Nephi",
+    stringr::str_detect(y, "^THE BOOK OF JACOB|^JACOB$") ~ "Jacob",
+    stringr::str_detect(y, "^THE BOOK OF ENOS|^ENOS$") ~ "Enos",
+    stringr::str_detect(y, "^THE BOOK OF JAROM|^JAROM$") ~ "Jarom",
+    stringr::str_detect(y, "^THE BOOK OF OMNI|^OMNI$") ~ "Omni",
+    stringr::str_detect(y, "^WORDS OF MORMON|^THE WORDS OF MORMON") ~ "Words of Mormon",
+    stringr::str_detect(y, "^THE BOOK OF MOSIAH|^MOSIAH$") ~ "Mosiah",
+    stringr::str_detect(y, "^THE BOOK OF ALMA|^ALMA$") ~ "Alma",
+    stringr::str_detect(y, "^THE BOOK OF HELAMAN|^HELAMAN$") ~ "Helaman",
+    stringr::str_detect(y, "^THIRD NEPHI|^THE THIRD BOOK OF NEPHI|^3 NEPHI$") ~ "3 Nephi",
+    stringr::str_detect(y, "^FOURTH NEPHI|^THE FOURTH BOOK OF NEPHI|^4 NEPHI$") ~ "4 Nephi",
+    stringr::str_detect(y, "^THE BOOK OF MORMON$|^MORMON$") ~ "Mormon",
+    stringr::str_detect(y, "^THE BOOK OF ETHER|^ETHER$") ~ "Ether",
+    stringr::str_detect(y, "^THE BOOK OF MORONI|^MORONI$") ~ "Moroni",
+    TRUE ~ NA_character_
+  )
+}
+
+
+is_chapter_line <- function(line){
+
+  stringr::str_detect(
+    line,
+    regex(
+      paste(
+        "^CHAPTER\\s+[0-9]+\\b",
+        "^[1-4]?\\s*Nephi\\s+Chapter\\s+[0-9]+\\b",
+        "^[A-Za-z ]+\\s+Chapter\\s+[0-9]+\\b",
+        sep = "|"
+      ),
+      ignore_case = TRUE
+    )
+  )
+
+}
+
+
+chapter_from_line <- function(line){
+
+  m <- stringr::str_match(
+    line,
+    regex("CHAPTER\\s+([0-9]+)", ignore_case = TRUE)
+  )
+
+  if(!is.na(m[1, 2])){
+    return(as.integer(m[1, 2]))
+  }
+
+  NA_integer_
+}
+```
+
+## 8. Parse into book/chapter blocks
+
+```{r parse-blocks}
+parsed_lines <- tibble::tibble(
+  line_no = seq_along(bom_lines),
+  line = bom_lines
+) %>%
+  dplyr::mutate(
+    book_detected = purrr::map_chr(
+      line,
+      canonical_book_from_line
+    ),
+    chapter_detected = dplyr::if_else(
+      is_chapter_line(line),
+      purrr::map_int(line, chapter_from_line),
+      NA_integer_
+    )
+  )
+
+parsed_lines %>%
+  dplyr::filter(!is.na(book_detected) | !is.na(chapter_detected)) %>%
+  dplyr::slice_head(n = 80)
+```
+
+## 9. Main parser
+
+This parser walks through the text line by line.
+
+It detects:
+
+- book headers,
+- chapter headers,
+- verse starts.
+
+Project Gutenberg editions may format verses as either:
+
+```text
+1 I, Nephi, having been born...
+```
+
+or:
+
+```text
+1. I, Nephi, having been born...
+```
+
+The parser handles both.
+
+```{r main-parser}
+verse_start_regex <- "^([0-9]+)[\\.|\\)]?\\s+(.*)$"
+
+current_book <- NA_character_
+current_chapter <- NA_integer_
+current_verse <- NA_integer_
+current_text <- character(0)
+
+records <- list()
+
+flush_verse <- function(){
+
+  if(!is.na(current_book) &&
+     !is.na(current_chapter) &&
+     !is.na(current_verse) &&
+     length(current_text) > 0){
+
+    tibble::tibble(
+      book = current_book,
+      chapter = current_chapter,
+      verse = current_verse,
+      text = stringr::str_squish(
+        paste(current_text, collapse = " ")
+      )
+    )
+
+  } else {
+
+    NULL
+
+  }
+
+}
+
+for(i in seq_along(bom_lines)){
+
+  line <- bom_lines[[i]]
+
+  detected_book <- canonical_book_from_line(line)
+
+  if(!is.na(detected_book)){
+
+    flushed <- flush_verse()
+
+    if(!is.null(flushed)){
+      records[[length(records) + 1L]] <- flushed
+    }
+
+    current_book <- detected_book
+    current_chapter <- NA_integer_
+    current_verse <- NA_integer_
+    current_text <- character(0)
+
+    next
+
+  }
+
+  if(is_chapter_line(line)){
+
+    flushed <- flush_verse()
+
+    if(!is.null(flushed)){
+      records[[length(records) + 1L]] <- flushed
+    }
+
+    current_chapter <- chapter_from_line(line)
+    current_verse <- NA_integer_
+    current_text <- character(0)
+
+    next
+
+  }
+
+  if(is.na(current_book) || is.na(current_chapter)){
+    next
+  }
+
+  verse_match <- stringr::str_match(line, verse_start_regex)
+
+  if(!is.na(verse_match[1, 2])){
+
+    flushed <- flush_verse()
+
+    if(!is.null(flushed)){
+      records[[length(records) + 1L]] <- flushed
+    }
+
+    current_verse <- as.integer(verse_match[1, 2])
+    current_text <- verse_match[1, 3]
+
+  } else {
+
+    if(!is.na(current_verse)){
+      current_text <- c(current_text, line)
+    }
+
+  }
+
+}
+
+flushed <- flush_verse()
+
+if(!is.null(flushed)){
+  records[[length(records) + 1L]] <- flushed
+}
+
+bom <- dplyr::bind_rows(records)
+
+bom <- bom %>%
+  dplyr::left_join(
+    bom_book_order,
+    by = "book"
+  ) %>%
+  dplyr::arrange(
+    book_order,
+    chapter,
+    verse
+  ) %>%
+  dplyr::select(
+    book,
+    chapter,
+    verse,
+    text
+  )
+
+bom %>%
+  dplyr::slice_head(n = 30)
+
+nrow(bom)
+```
+
+## 10. Sanity checks
+
+```{r sanity-checks}
+expected_chapters <- tibble::tribble(
+  ~book,              ~expected_chapters,
+  "1 Nephi",           22L,
+  "2 Nephi",           33L,
+  "Jacob",              7L,
+  "Enos",               1L,
+  "Jarom",              1L,
+  "Omni",               1L,
+  "Words of Mormon",    1L,
+  "Mosiah",            29L,
+  "Alma",              63L,
+  "Helaman",           16L,
+  "3 Nephi",           30L,
+  "4 Nephi",            1L,
+  "Mormon",             9L,
+  "Ether",             15L,
+  "Moroni",            10L
+)
+
+chapter_check <- bom %>%
+  dplyr::distinct(book, chapter) %>%
+  dplyr::count(book, name = "observed_chapters") %>%
+  dplyr::left_join(
+    expected_chapters,
+    by = "book"
+  ) %>%
+  dplyr::left_join(
+    bom_book_order,
+    by = "book"
+  ) %>%
+  dplyr::mutate(
+    matches_expected = observed_chapters == expected_chapters
+  ) %>%
+  dplyr::arrange(book_order)
+
+chapter_check
+
+verse_summary <- bom %>%
+  dplyr::group_by(book, chapter) %>%
+  dplyr::summarise(
+    n_verses = dplyr::n(),
+    min_verse = min(verse),
+    max_verse = max(verse),
+    .groups = "drop"
+  ) %>%
+  dplyr::left_join(
+    bom_book_order,
+    by = "book"
+  ) %>%
+  dplyr::arrange(book_order, chapter)
+
+verse_summary %>%
+  dplyr::slice_head(n = 40)
+
+if(any(!chapter_check$matches_expected, na.rm = TRUE)){
+  warning("Some books do not match expected BOM chapter counts. Inspect chapter_check.")
+}
+
+if(any(is.na(bom$text)) || any(bom$text == "")){
+  warning("Some verses have missing or empty text.")
+}
+```
+
+## 11. Preview parsed verses
+
+```{r preview}
+bom %>%
+  dplyr::filter(book == "1 Nephi", chapter == 1) %>%
+  dplyr::slice_head(n = 10)
+
+bom %>%
+  dplyr::filter(book == "Moroni", chapter == 10) %>%
+  dplyr::slice_tail(n = 10)
+```
+
+## 12. Write raw CSV
+
+```{r write-csv}
+readr::write_csv(
+  bom,
+  bom_csv_path
+)
+
+cat("Wrote BOM raw CSV to:\\n")
+cat(bom_csv_path, "\\n")
+
+readr::read_csv(
+  bom_csv_path,
+  show_col_types = FALSE
+) %>%
+  dplyr::slice_head(n = 10)
+```
+
+## 13. Output summary
+
+```{r output-summary}
+bom_summary <- bom %>%
+  dplyr::group_by(book) %>%
+  dplyr::summarise(
+    n_chapters = dplyr::n_distinct(chapter),
+    n_verses = dplyr::n(),
+    total_words = sum(stringr::str_count(text, "\\\\S+")),
+    .groups = "drop"
+  ) %>%
+  dplyr::left_join(
+    bom_book_order,
+    by = "book"
+  ) %>%
+  dplyr::arrange(book_order)
+
+bom_summary
+```
+
+## 14. Next notebook
+
+After this notebook succeeds, run:
+
+```text
+31_Introduction_BOM.Rmd
+```
+
+That notebook consumes:
+
+```text
+data/raw/bom.csv
+```
+
+and produces:
+
+```text
+data/prepared/bom_chapter_docs.csv
+data/prepared/bom_book_docs.csv
+data/prepared/bom_mosiah_priority_docs.csv
+data/prepared/bom_target_collections.csv
+```

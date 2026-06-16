@@ -14,7 +14,7 @@ function_words,prepositions_freq,Isaiah_40,Job,0.9895780485992886,1
 function_words,prepositions_tfidf,Isaiah_40,Isaiah_40_55,0.9788077149109392,1
 function_words,pronouns_freq,Isaiah_40,2 Kings,0.9158933295501993,1
 function_words,pronouns_tfidf,Isaiah_40,2 Kings,0.8668327486513608,1
-lexical,lexical_richness,Isaiah_40,Isaiah_36_39,0.9990384245551771,1
+lexical,lexical_richness,Isaiah_40,Isaiah_36_39,0.8304810247886975,1
 pos,pos3,Isaiah_40,Isaiah_40_55,0.833451375524655,1
 pos,pos4,Isaiah_40,Isaiah_40_55,0.6183409344519704,1
 pos,pos5,Isaiah_40,Isaiah_40_55,0.4490307184271386,1
@@ -28,3 +28,4 @@ stem,stem3,Isaiah_40,Isaiah_40_55,0.29855753203725066,1
 word,word1,Isaiah_40,Isaiah_40_55,0.7936176875229626,1
 word,word2,Isaiah_40,Isaiah_40_55,0.37658296078990083,1
 word,word3,Isaiah_40,Isaiah_40_55,0.29817912716082207,1
+word_length,word_length,Isaiah_40,Isaiah_56_66,0.9999537257534302,1
