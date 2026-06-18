@@ -1,0 +1,452 @@
+---
+title: "62 - Prepare DC and PoGP from LDS Scriptures CSV"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+
+options(
+  tibble.width = Inf,
+  tibble.print_max = 300
+)
+```
+
+## 1. Purpose
+
+This notebook prepares:
+
+```text
+Doctrine and Covenants = DC
+Pearl of Great Price   = PoGP
+```
+
+from the public LDS scriptures CSV:
+
+```text
+https://raw.githubusercontent.com/beandog/lds-scriptures/master/csv/lds-scriptures.csv
+```
+
+Target outputs:
+
+```text
+data/prepared/dc_chapter_docs.csv
+data/prepared/pogp_chapter_docs.csv
+data/prepared/dc_pogp_chapter_docs.csv
+```
+
+The source appears to be the modern LDS text, so these corpora are labeled:
+
+```text
+edition = modern
+```
+
+## 2. Packages
+
+```{r packages}
+library(dplyr)
+library(stringr)
+library(readr)
+library(tidyr)
+library(purrr)
+library(tibble)
+```
+
+## 3. Directories and paths
+
+```{r directories}
+raw_scripture_dir <- file.path(
+  STYLO_ROOT,
+  "data",
+  "raw",
+  "lds_scriptures"
+)
+
+prepared_dir <- file.path(
+  STYLO_ROOT,
+  "data",
+  "prepared"
+)
+
+dir.create(raw_scripture_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(prepared_dir, recursive = TRUE, showWarnings = FALSE)
+
+lds_csv_url <- "https://raw.githubusercontent.com/beandog/lds-scriptures/master/csv/lds-scriptures.csv"
+
+lds_raw_path <- file.path(
+  raw_scripture_dir,
+  "lds-scriptures.csv"
+)
+
+dc_out_path <- file.path(
+  prepared_dir,
+  "dc_chapter_docs.csv"
+)
+
+pogp_out_path <- file.path(
+  prepared_dir,
+  "pogp_chapter_docs.csv"
+)
+
+combined_out_path <- file.path(
+  prepared_dir,
+  "dc_pogp_chapter_docs.csv"
+)
+```
+
+## 4. Download source CSV
+
+```{r download}
+if(!file.exists(lds_raw_path)){
+
+  download.file(
+    url = lds_csv_url,
+    destfile = lds_raw_path,
+    mode = "wb",
+    quiet = TRUE
+  )
+
+}
+
+cat("Source CSV:\n")
+cat(lds_raw_path, "\n")
+```
+
+## 5. Read and inspect source
+
+```{r read-source}
+lds_raw <- readr::read_csv(
+  lds_raw_path,
+  show_col_types = FALSE
+)
+
+names(lds_raw)
+
+lds_raw %>%
+  dplyr::count(volume_title, book_title, name = "n_verses") %>%
+  dplyr::arrange(volume_title, book_title) %>%
+  print(n = 200)
+```
+
+## 6. Normalize columns
+
+The GitHub CSV has historically used fields like:
+
+```text
+volume_title
+book_title
+chapter_number
+verse_number
+scripture_text
+```
+
+```{r normalize-columns}
+required_cols <- c(
+  "volume_title",
+  "book_title",
+  "chapter_number",
+  "verse_number",
+  "scripture_text"
+)
+
+missing_cols <- setdiff(
+  required_cols,
+  names(lds_raw)
+)
+
+if(length(missing_cols) > 0){
+  stop(
+    "Missing expected columns: ",
+    paste(missing_cols, collapse = ", ")
+  )
+}
+
+lds <- lds_raw %>%
+  dplyr::transmute(
+    volume = volume_title,
+    book = book_title,
+    chapter = as.integer(chapter_number),
+    verse = as.integer(verse_number),
+    scripture_text = scripture_text
+  ) %>%
+  dplyr::mutate(
+    volume = stringr::str_squish(volume),
+    book = stringr::str_squish(book),
+    scripture_text = stringr::str_squish(scripture_text)
+  )
+
+lds %>%
+  dplyr::count(volume, book, name = "n_verses") %>%
+  dplyr::arrange(volume, book) %>%
+  print(n = 200)
+```
+
+## 7. Helpers
+
+```{r helpers}
+safe_slug <- function(x){
+
+  x %>%
+    stringr::str_replace_all("[^A-Za-z0-9]+", "_") %>%
+    stringr::str_replace_all("^_+|_+$", "")
+
+}
+
+normalize_text <- function(x){
+
+  x %>%
+    stringr::str_replace_all("\\s+", " ") %>%
+    stringr::str_replace_all("\\s+([,.;:!?])", "\\1") %>%
+    stringr::str_squish()
+
+}
+
+make_doc_id <- function(prefix, book, chapter){
+
+  paste0(
+    prefix,
+    "__",
+    safe_slug(book),
+    "_",
+    chapter
+  )
+
+}
+
+make_chapter_docs <- function(df, corpus_family_value, source_family_value, edition_value){
+
+  df %>%
+    dplyr::arrange(book, chapter, verse) %>%
+    dplyr::group_by(book, chapter) %>%
+    dplyr::summarise(
+      text = paste(scripture_text, collapse = " "),
+      n_verses = dplyr::n(),
+      min_verse = min(verse, na.rm = TRUE),
+      max_verse = max(verse, na.rm = TRUE),
+      .groups = "drop"
+    ) %>%
+    dplyr::mutate(
+      text = normalize_text(text),
+      n_words = stringr::str_count(text, "\\S+"),
+      corpus_id = corpus_family_value,
+      translation = edition_value,
+      corpus_family = corpus_family_value,
+      source_family = source_family_value,
+      edition = edition_value,
+      author = NA_character_,
+      work = book,
+      short_work = safe_slug(book),
+      section = NA_character_,
+      macro_genre = "Modern_Scripture",
+      doc_unit = "chapter",
+      chapter_title = paste0(book, " ", chapter),
+      doc_id = make_doc_id(corpus_family_value, book, chapter),
+      doc_id_original = doc_id
+    ) %>%
+    dplyr::select(
+      corpus_id,
+      translation,
+      corpus_family,
+      source_family,
+      edition,
+      doc_id,
+      doc_id_original,
+      author,
+      work,
+      short_work,
+      book,
+      chapter,
+      chapter_title,
+      section,
+      macro_genre,
+      doc_unit,
+      n_verses,
+      min_verse,
+      max_verse,
+      n_words,
+      text
+    )
+
+}
+```
+
+## 8. Filter DC and PoGP
+
+```{r filter-corpora}
+lds %>%
+  dplyr::distinct(volume) %>%
+  dplyr::arrange(volume)
+
+dc_verses <- lds %>%
+  dplyr::filter(volume == "Doctrine and Covenants")
+
+pogp_verses <- lds %>%
+  dplyr::filter(volume == "Pearl of Great Price")
+
+dc_verses %>%
+  dplyr::count(book, name = "n_verses") %>%
+  dplyr::arrange(book)
+
+pogp_verses %>%
+  dplyr::count(book, name = "n_verses") %>%
+  dplyr::arrange(book)
+```
+
+## 9. Build chapter documents
+
+```{r build-docs}
+dc_chapter_docs <- make_chapter_docs(
+  df = dc_verses,
+  corpus_family_value = "DC",
+  source_family_value = "DC",
+  edition_value = "modern"
+)
+
+pogp_chapter_docs <- make_chapter_docs(
+  df = pogp_verses,
+  corpus_family_value = "PoGP",
+  source_family_value = "PoGP",
+  edition_value = "modern"
+)
+
+dc_chapter_docs %>%
+  dplyr::count(book, name = "n_chapters") %>%
+  dplyr::arrange(book)
+
+pogp_chapter_docs %>%
+  dplyr::count(book, name = "n_chapters") %>%
+  dplyr::arrange(book)
+```
+
+## 10. Add PoGP subfamilies
+
+```{r pogp-subfamilies}
+pogp_chapter_docs <- pogp_chapter_docs %>%
+  dplyr::mutate(
+    source_family = dplyr::case_when(
+      book %in% c("Moses", "Abraham") ~ "PoGP_Translation",
+      book %in% c("Joseph Smith--Matthew", "Joseph Smith--History") ~ "PoGP_History",
+      book %in% c("Articles of Faith") ~ "PoGP_Doctrine",
+      TRUE ~ "PoGP"
+    )
+  )
+
+dc_pogp_chapter_docs <- dplyr::bind_rows(
+  dc_chapter_docs,
+  pogp_chapter_docs
+)
+
+pogp_chapter_docs %>%
+  dplyr::count(book, source_family, name = "n_chapters") %>%
+  dplyr::arrange(source_family, book)
+
+dc_pogp_chapter_docs %>%
+  dplyr::count(corpus_family, source_family, edition, name = "n_docs")
+```
+
+## 11. Sanity checks
+
+```{r sanity-checks}
+dc_pogp_chapter_docs %>%
+  dplyr::summarise(
+    n_docs = dplyr::n(),
+    n_corpora = dplyr::n_distinct(corpus_family),
+    n_books = dplyr::n_distinct(book),
+    min_words = min(n_words, na.rm = TRUE),
+    median_words = median(n_words, na.rm = TRUE),
+    mean_words = mean(n_words, na.rm = TRUE),
+    max_words = max(n_words, na.rm = TRUE)
+  )
+
+dc_pogp_chapter_docs %>%
+  dplyr::arrange(n_words) %>%
+  dplyr::select(corpus_family, book, chapter, n_verses, n_words, doc_id) %>%
+  dplyr::slice_head(n = 30)
+
+dc_pogp_chapter_docs %>%
+  dplyr::arrange(dplyr::desc(n_words)) %>%
+  dplyr::select(corpus_family, book, chapter, n_verses, n_words, doc_id) %>%
+  dplyr::slice_head(n = 30)
+
+dc_pogp_chapter_docs %>%
+  dplyr::count(corpus_family, source_family, book, name = "n_chapters") %>%
+  dplyr::arrange(corpus_family, source_family, book)
+```
+
+## 12. Optional: verse gaps
+
+```{r verse-gaps}
+verse_gaps <- lds %>%
+  dplyr::filter(volume %in% c("Doctrine and Covenants", "Pearl of Great Price")) %>%
+  dplyr::group_by(volume, book, chapter) %>%
+  dplyr::summarise(
+    min_verse = min(verse, na.rm = TRUE),
+    max_verse = max(verse, na.rm = TRUE),
+    n_verses = dplyr::n_distinct(verse),
+    expected_n = max_verse - min_verse + 1L,
+    has_gap = n_verses != expected_n,
+    missing_verses = paste(
+      setdiff(seq(min_verse, max_verse), sort(unique(verse))),
+      collapse = ", "
+    ),
+    .groups = "drop"
+  ) %>%
+  dplyr::filter(has_gap)
+
+verse_gaps
+```
+
+## 13. Write outputs
+
+```{r write-outputs}
+readr::write_csv(
+  dc_chapter_docs,
+  dc_out_path
+)
+
+readr::write_csv(
+  pogp_chapter_docs,
+  pogp_out_path
+)
+
+readr::write_csv(
+  dc_pogp_chapter_docs,
+  combined_out_path
+)
+
+cat("Wrote DC chapter docs to:\n")
+cat(dc_out_path, "\n\n")
+
+cat("Wrote PoGP chapter docs to:\n")
+cat(pogp_out_path, "\n\n")
+
+cat("Wrote combined DC + PoGP chapter docs to:\n")
+cat(combined_out_path, "\n")
+```
+
+## 14. Next step
+
+Add these prepared files to the larger analysis framework:
+
+```text
+KJV + BOM + BOC + DC + PoGP + SCR + 1830
+```
+
+Recommended top-level corpus families:
+
+```text
+KJV
+BOM
+BOC
+DC
+PoGP
+SCR
+1830
+```
