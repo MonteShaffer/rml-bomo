@@ -90,11 +90,16 @@ This notebook first crawls from Section 1 using same-domain links that contain:
 /sections/1835dcs/section-
 ```
 
-If the crawl misses anything, a fixed-range supplement tries `section-1` through `section-120`.
+If the crawl misses anything, a fixed-range supplement tries `section-1` through `section-134`.
+
+https://doctrineandcovenants.com/sections/1835dcs/sections-129-130-131-132-133/
+
+Apparently this is an attempt to map modern numbering?
 
 ```{r download-helpers}
 base_section_url <- "https://doctrineandcovenants.com/sections/1835dcs/section-1/"
-section_url_pattern <- "/sections/1835dcs/section-[^/]+/?$"
+#section_url_pattern <- "/sections/1835dcs/section-[^/]+/?$"
+section_url_pattern <- "/sections/1835dcs/sections?-[0-9-]+/?$"
 
 safe_slug <- function(x){
   x %>%
@@ -119,18 +124,19 @@ normalize_url <- function(url){
 section_id_from_url <- function(url){
   stringr::str_match(
     url,
-    regex("/section-([^/]+)/?$", ignore_case = TRUE)
+    regex("/sections?-([^/]+)/?$", ignore_case = TRUE)
   )[, 2]
+}
+
+section_numbers_from_id <- function(section_id){
+  stringr::str_extract_all(section_id, "[0-9]+")[[1]] %>%
+    as.integer()
 }
 
 section_number_from_url <- function(url){
   id <- section_id_from_url(url)
-
-  suppressWarnings(
-    as.integer(
-      stringr::str_extract(id, "[0-9]+")
-    )
-  )
+  nums <- section_numbers_from_id(id)
+  nums[[1]]
 }
 
 cache_path_for_url <- function(url){

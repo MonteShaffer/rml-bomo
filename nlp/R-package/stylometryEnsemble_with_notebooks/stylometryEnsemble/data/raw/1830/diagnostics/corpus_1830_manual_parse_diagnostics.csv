@@ -1,0 +1,14 @@
+author,work,short_work,source_file,macro_genre,n_chapters,total_words,min_words,median_words,mean_words,max_words
+Ethan Smith, View of the Hebrews ,_View_of_the_Hebrews_,Ethan_Smith__View_of_the_Hebrews__manual.txt,Religious_Nonfiction,7,54060,467,6629,7722.857142857143,17782
+James Fenimore Cooper, Last of the Mohicans ,_Last_of_the_Mohicans_,James_Fenimore_Cooper__Last_of_the_Mohicans__manual.txt,Frontier_Fiction,34,148285,1345,4444,4361.323529411765,5995
+James Fenimore Cooper, The Pioneers ,_The_Pioneers_,James_Fenimore_Cooper__The_Pioneers__manual.txt,Frontier_Fiction,42,171726,1938,4210,4088.714285714286,5890
+James Fenimore Cooper, The Prairie ,_The_Prairie_,James_Fenimore_Cooper__The_Prairie__manual.txt,Frontier_Fiction,35,166355,870,4879,4753,6534
+Jane Austen, Emma ,_Emma_,Jane_Austen__Emma__manual.txt,Fiction,55,157321,1151,2923,2860.3818181818183,6393
+Jane Austen, Persuasion ,_Persuasion_,Jane_Austen__Persuasion__manual.txt,Fiction,24,83233,1578,3150,3468.0416666666665,6985
+Jane Austen, Pride and Prejudice ,_Pride_and_Prejudice_,Jane_Austen__Pride_and_Prejudice__manual.txt,Fiction,61,121570,673,1823,1992.950819672131,5167
+Walter Scott, Ivanhoe ,_Ivanhoe_,Walter_Scott__Ivanhoe__manual.txt,Historical_Romance,44,175024,1605,3632.5,3977.818181818182,6695
+Walter Scott, Rob Roy ,_Rob_Roy_,Walter_Scott__Rob_Roy__manual.txt,Historical_Romance,40,184942,2303,3854,4623.55,26102
+Walter Scott, The Talisman ,_The_Talisman_,Walter_Scott__The_Talisman__manual.txt,Historical_Romance,28,124649,1879,4392,4451.75,8754
+Washington Irving,Bracebridge Hall ,Bracebridge_Hall_,Washington_Irving_Bracebridge_Hall__manual.txt,American_Prose,50,132704,389,1583,2654.08,25833
+Washington Irving,Sketch Book ,Sketch_Book_,Washington_Irving_Sketch_Book__manual.txt,American_Prose,34,125916,684,3345.5,3703.4117647058824,12203
+Washington Irving,Tales Traveller ,Tales_Traveller_,Washington_Irving_Tales_Traveller__manual.txt,American_Prose,29,116238,44,2947,4008.206896551724,19543

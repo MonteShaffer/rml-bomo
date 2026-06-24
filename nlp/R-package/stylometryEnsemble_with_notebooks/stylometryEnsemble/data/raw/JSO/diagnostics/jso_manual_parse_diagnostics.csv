@@ -1,0 +1,4 @@
+author,author_code,source_file,macro_genre,n_chapters,total_words,min_words,median_words,mean_words,max_words
+Joseph Smith,JS,Joseph_Smith__manual.txt,Early_LDS_Writing,1,4364,4364,4364,4364,4364
+Oliver Cowdery,OC,Oliver_Cowdery__manual.txt,Early_LDS_Writing,7,15900,1286,2012,2271.4285714285716,3131
+Sidney Rigdon,SR,Sidney_Rigdon__manual.txt,Early_LDS_Writing,45,105623,193,1860,2347.177777777778,8720

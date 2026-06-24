@@ -1,0 +1,351 @@
+source_doc,short_name,source_header,target_corpus,target_book,votes,weighted_votes,mean_similarity,max_similarity,pct_votes,weighted_pct_votes
+SR-1,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",DC,Doctrine and Covenants,12,10.270389182377864,0.8558657651981554,0.8835830550271251,0.6,0.6000947671956978
+SR-1,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",BOC,Book of Commandments,5,4.293782309224467,0.8587564618448934,0.8782513881988016,0.25,0.2508839976253455
+SR-1,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",KJV,Job,1,0.851207281130323,0.851207281130323,0.851207281130323,0.05,0.049735703889550106
+SR-1,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",BOM,Moroni,1,0.8509042561998343,0.8509042561998343,0.8509042561998343,0.05,0.04971799826302642
+SR-1,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",KJV,Jeremiah,1,0.8483291020354414,0.8483291020354414,0.8483291020354414,0.05,0.049567533026380284
+SR-10,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",BOM,Alma,13,12.182571873576123,0.9371209133520095,0.9486441887318801,0.65,0.6496866782677378
+SR-10,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",BOM,Mosiah,4,3.754481093186138,0.9386202732965345,0.9488516968214072,0.2,0.20022343191274797
+SR-10,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",BOM,3 Nephi,1,0.9401229385470367,0.9401229385470367,0.9401229385470367,0.05,0.05013599389737369
+SR-10,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",BOM,Helaman,1,0.9376793557318797,0.9376793557318797,0.9376793557318797,0.05,0.05000567960752371
+SR-10,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",BOM,1 Nephi,1,0.9366018352603231,0.9366018352603231,0.9366018352603231,0.05,0.04994821631461678
+SR-11,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",DC,Doctrine and Covenants,9,8.237912927184443,0.9153236585760492,0.9278507616937132,0.45,0.4512704418774557
+SR-11,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",BOM,2 Nephi,2,1.8488472672246927,0.9244236336123464,0.93133427546998,0.1,0.1012793083174249
+SR-11,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",KJV,Jeremiah,2,1.8210094294517503,0.9105047147258751,0.9184199484701857,0.1,0.09975435976992889
+SR-11,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",BOM,Alma,2,1.8066766334605004,0.9033383167302502,0.9044694293673295,0.1,0.09896921343037884
+SR-11,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",BOC,Book of Commandments,1,0.9151112214749946,0.9151112214749946,0.9151112214749946,0.05,0.05012952296683009
+SR-11,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",KJV,2 Kings,1,0.9089821166292238,0.9089821166292238,0.9089821166292238,0.05,0.04979377241004319
+SR-11,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",BOM,Jarom,1,0.9066172215910738,0.9066172215910738,0.9066172215910738,0.05,0.04966422415694888
+SR-11,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",BOM,1 Nephi,1,0.9053786626840841,0.9053786626840841,0.9053786626840841,0.05,0.049596376265111604
+SR-11,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",BOM,Omni,1,0.9044002810187075,0.9044002810187075,0.9044002810187075,0.05,0.04954278080587795
+SR-12,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",BOM,Alma,5,4.612380587040381,0.9224761174080761,0.9245082107023326,0.25,0.24883741827116174
+SR-12,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",BOM,Mosiah,4,3.6985604772214073,0.9246401193053518,0.9280511074784246,0.2,0.19953692526099287
+SR-12,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",DC,Doctrine and Covenants,3,2.8010285701476727,0.9336761900492243,0.9391662414118971,0.15,0.15111517897237398
+SR-12,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",BOM,1 Nephi,2,1.8690285591195408,0.9345142795597704,0.9453853021354856,0.1,0.10083388231949997
+SR-12,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",KJV,Jeremiah,2,1.8417736214139562,0.9208868107069781,0.9220066266857205,0.1,0.09936348146991378
+SR-12,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",BOC,Book of Commandments,1,0.9354320580782471,0.9354320580782471,0.9354320580782471,0.05,0.05046645520846577
+SR-12,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",BOM,Mormon,1,0.9273779334205299,0.9273779334205299,0.9273779334205299,0.05,0.050031936081425026
+SR-12,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",BOM,Helaman,1,0.9263230197339098,0.9263230197339098,0.9263230197339098,0.05,0.04997502360568202
+SR-12,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",BOM,2 Nephi,1,0.9238146772882726,0.9238146772882726,0.9238146772882726,0.05,0.04983969881048492
+SR-13,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",DC,Doctrine and Covenants,6,5.575724632646566,0.9292874387744278,0.9402092291828028,0.3,0.302317943938835
+SR-13,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",BOC,Book of Commandments,2,1.8670326973458726,0.9335163486729363,0.9416445404433541,0.1,0.10123123423695086
+SR-13,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",KJV,2 Kings,2,1.840034928341518,0.920017464170759,0.9236925526252289,0.1,0.09976740477009681
+SR-13,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",KJV,Jeremiah,2,1.8296417192838068,0.9148208596419034,0.9168229974996588,0.1,0.0992038809592442
+SR-13,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",BOM,Mosiah,2,1.8210093556527154,0.9105046778263577,0.9107251796046152,0.1,0.09873583086778098
+SR-13,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",KJV,Isaiah,1,0.9247104513225567,0.9247104513225567,0.9247104513225567,0.05,0.05013815796170219
+SR-13,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",BOM,2 Nephi,1,0.9216680702605312,0.9216680702605312,0.9216680702605312,0.05,0.04997319888499947
+SR-13,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",BOM,Alma,1,0.921170498477955,0.921170498477955,0.921170498477955,0.05,0.049946220350695666
+SR-13,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",KJV,1 Kings,1,0.9159759133428478,0.9159759133428478,0.9159759133428478,0.05,0.04966456793757866
+SR-13,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",KJV,1 Samuel,1,0.9143313593538203,0.9143313593538203,0.9143313593538203,0.05,0.04957539958486839
+SR-13,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",BOM,Helaman,1,0.9119477710718891,0.9119477710718891,0.9119477710718891,0.05,0.049446160507247705
+SR-14,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",DC,Doctrine and Covenants,5,4.593904866153413,0.9187809732306826,0.9359449371035722,0.25,0.2499285433945199
+SR-14,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",KJV,Jeremiah,4,3.665410341354212,0.916352585338553,0.9282983637408259,0.2,0.19941437497048842
+SR-14,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",KJV,Isaiah,3,2.789593923086193,0.9298646410287309,0.9377846824596009,0.15,0.15176612624172997
+SR-14,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",BOM,2 Nephi,3,2.7678883001234187,0.9226294333744729,0.9289008527570974,0.15,0.15058524529434128
+SR-14,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",BOM,Alma,2,1.828542093525491,0.9142710467627455,0.9144267950050166,0.1,0.09948069785629955
+SR-14,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",BOM,Mormon,2,1.8206116526403333,0.9103058263201667,0.9104696013033489,0.1,0.0990492471413518
+SR-14,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",KJV,Ezekiel,1,0.9149220269502167,0.9149220269502167,0.9149220269502167,0.05,0.0497757651012691
+SR-15,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",KJV,Ezekiel,7,6.64906360259822,0.9498662289426029,0.9619283426437135,0.35,0.3492777306358598
+SR-15,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",KJV,Jeremiah,6,5.724977968457801,0.9541629947429668,0.9634269982937307,0.3,0.30073517600010014
+SR-15,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",DC,Doctrine and Covenants,3,2.8649955288363933,0.9549985096121312,0.9604629482381195,0.15,0.15049925770041217
+SR-15,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",BOC,Book of Commandments,1,0.9552707036006364,0.9552707036006364,0.9552707036006364,0.05,0.05018071768273818
+SR-15,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",BOM,3 Nephi,1,0.9512138086603169,0.9512138086603169,0.9512138086603169,0.05,0.04996760751522088
+SR-15,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",KJV,Isaiah,1,0.9457544414220634,0.9457544414220634,0.9457544414220634,0.05,0.049680824967534044
+SR-15,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",BOM,2 Nephi,1,0.9453329809988756,0.9453329809988756,0.9453329809988756,0.05,0.04965868549813472
+SR-16,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",BOM,Alma,9,8.376093366118209,0.9306770406798011,0.9401450243449425,0.45,0.45015049099804755
+SR-16,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",BOM,Mosiah,4,3.7361860705437957,0.9340465176359489,0.9448565105950334,0.2,0.20079121860299717
+SR-16,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",DC,Doctrine and Covenants,4,3.7079850581228344,0.9269962645307086,0.9302570204291872,0.2,0.1992756314392618
+SR-16,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",KJV,2 Kings,2,1.8561296859605,0.92806484298025,0.9313661845758764,0.1,0.09975267143880824
+SR-16,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",BOM,Ether,1,0.9309238909226956,0.9309238909226956,0.9309238909226956,0.05,0.05002998752088532
+SR-17,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",BOM,Alma,5,4.735515414283271,0.9471030828566542,0.9572023502666706,0.25,0.2508173709767774
+SR-17,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",DC,Doctrine and Covenants,5,4.730358156110309,0.946071631222062,0.9523560431615447,0.25,0.2505442159296015
+SR-17,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",BOM,Mosiah,4,3.761949140097742,0.9404872850244355,0.9492895120887619,0.2,0.1992522693985305
+SR-17,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",KJV,1 Kings,1,0.9458347598079606,0.9458347598079606,0.9458347598079606,0.05,0.05009629725160337
+SR-17,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",BOM,1 Nephi,1,0.9431785296440491,0.9431785296440491,0.9431785296440491,0.05,0.049955609573887866
+SR-17,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",BOM,2 Nephi,1,0.9428576330991121,0.9428576330991121,0.9428576330991121,0.05,0.049938613234373506
+SR-17,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",BOC,Book of Commandments,1,0.942303090109059,0.942303090109059,0.942303090109059,0.05,0.049909241771567324
+SR-17,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",BOM,Ether,1,0.9411054167254057,0.9411054167254057,0.9411054167254057,0.05,0.049845806799215485
+SR-17,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",BOM,Jacob,1,0.9372305732896026,0.9372305732896026,0.9372305732896026,0.05,0.04964057506444309
+SR-18,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",BOM,Alma,12,11.30625491559056,0.9421879096325467,0.9544160954020086,0.6,0.6005468620157862
+SR-18,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",BOM,Mosiah,3,2.8345354680162917,0.9448451560054305,0.9525962903379828,0.15,0.15056014509652663
+SR-18,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",BOM,3 Nephi,2,1.8812751594030939,0.9406375797015469,0.9442383719457899,0.1,0.09992644797083663
+SR-18,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",DC,Doctrine and Covenants,2,1.8704310903697632,0.9352155451848816,0.9378894839950698,0.1,0.09935045073054187
+SR-18,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",BOM,Helaman,1,0.9341023061937324,0.9341023061937324,0.9341023061937324,0.05,0.04961609418630854
+SR-19,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",BOM,Alma,6,5.321354117895193,0.8868923529825321,0.8994537257012362,0.3,0.3007511161757218
+SR-19,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",BOM,Helaman,3,2.6375110833858812,0.8791703611286271,0.8849871532734224,0.15,0.1490662686000489
+SR-19,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",DC,Doctrine and Covenants,3,2.629289438132973,0.876429812710991,0.8783358907908735,0.15,0.14860159947038176
+SR-19,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",BOM,Mosiah,2,1.7883433984959367,0.8941716992479684,0.9059824861801317,0.1,0.10107319702599989
+SR-19,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",KJV,2 Kings,2,1.7776348627096397,0.8888174313548198,0.892545050866489,0.1,0.10046797436669481
+SR-19,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",KJV,2 Samuel,1,0.9083703902559834,0.9083703902559834,0.9083703902559834,0.05,0.051339076993906566
+SR-19,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",BOC,Book of Commandments,1,0.8880613091409963,0.8880613091409963,0.8880613091409963,0.05,0.05019125283514684
+SR-19,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",KJV,1 Kings,1,0.8720958884767378,0.8720958884767378,0.8720958884767378,0.05,0.04928892271792286
+SR-19,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",BOM,1 Nephi,1,0.8708868723950898,0.8708868723950898,0.8708868723950898,0.05,0.049220591814176526
+SR-2,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",KJV,1 Samuel,6,5.122782860553351,0.8537971434255586,0.8703555177451917,0.3,0.3001282935795559
+SR-2,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",KJV,2 Kings,4,3.457051906023206,0.8642629765058015,0.8743036908222444,0.2,0.20253817458478443
+SR-2,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",DC,Doctrine and Covenants,3,2.5344156014086963,0.8448052004695653,0.8465391748275507,0.15,0.14848371488266288
+SR-2,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",KJV,Isaiah,2,1.6972200608481465,0.8486100304240732,0.8550581887121697,0.1,0.09943497012409419
+SR-2,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",BOM,Alma,2,1.6952303347335853,0.8476151673667927,0.8513200774963178,0.1,0.0993183981124143
+SR-2,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",KJV,Job,1,0.8589711205378703,0.8589711205378703,0.8589711205378703,0.05,0.05032450987260914
+SR-2,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",KJV,2 Samuel,1,0.8556612833442054,0.8556612833442054,0.8556612833442054,0.05,0.050130596561035856
+SR-2,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",KJV,1 Kings,1,0.8473103764674021,0.8473103764674021,0.8473103764674021,0.05,0.04964134228284339
+SR-20,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",BOM,Alma,7,6.439101622101443,0.9198716603002062,0.9268621636159018,0.35,0.3495713267441547
+SR-20,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",BOM,Mosiah,4,3.693804350290577,0.9234510875726443,0.9347347128690958,0.2,0.20053233560289738
+SR-20,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",BOM,Ether,2,1.84691542746735,0.923457713733675,0.9236488607183421,0.1,0.10026688725457698
+SR-20,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",KJV,1 Samuel,2,1.8385420015652993,0.9192710007826497,0.9194297727025854,0.1,0.09981230371579158
+SR-20,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",BOM,1 Nephi,1,0.9231609510126447,0.9231609510126447,0.9231609510126447,0.05,0.05011733272483547
+SR-20,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",BOM,2 Nephi,1,0.9231243096261128,0.9231243096261128,0.9231243096261128,0.05,0.05011534350664085
+SR-20,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",DC,Doctrine and Covenants,1,0.9209617008339424,0.9209617008339424,0.9209617008339424,0.05,0.049997937994338826
+SR-20,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",KJV,Jeremiah,1,0.9201106755047214,0.9201106755047214,0.9201106755047214,0.05,0.04995173682049688
+SR-20,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",BOM,Jarom,1,0.9142726209008403,0.9142726209008403,0.9142726209008403,0.05,0.049634795636267284
+SR-21,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",BOM,Alma,6,5.4305162541404135,0.9050860423567355,0.9092122800903043,0.3,0.29948489900906955
+SR-21,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",DC,Doctrine and Covenants,3,2.73322680579314,0.9110756019310466,0.9255479497189967,0.15,0.15073339542584774
+SR-21,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",BOM,3 Nephi,3,2.718913556304466,0.9063045187681554,0.9214080688671871,0.15,0.1499440409930461
+SR-21,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",BOM,Mosiah,3,2.7112239955025825,0.9037413318341943,0.916426448514513,0.15,0.14951997314527557
+SR-21,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",BOC,Book of Commandments,1,0.9228711606734832,0.9228711606734832,0.9228711606734832,0.05,0.050894972672617396
+SR-21,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",BOM,Helaman,1,0.9106607643583747,0.9106607643583747,0.9106607643583747,0.05,0.05022158746646819
+SR-21,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",BOM,1 Nephi,1,0.9078196543436086,0.9078196543436086,0.9078196543436086,0.05,0.050064904472434765
+SR-21,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",BOM,Mormon,1,0.9013405959739115,0.9013405959739115,0.9013405959739115,0.05,0.04970759403439985
+SR-21,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",BOM,Ether,1,0.8962822320071818,0.8962822320071818,0.8962822320071818,0.05,0.04942863278084093
+SR-22,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",DC,Doctrine and Covenants,5,4.708267396741065,0.9416534793482131,0.9557267860705706,0.25,0.25215044703018186
+SR-22,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",BOM,Alma,5,4.650300833597661,0.9300601667195322,0.9342161095881538,0.25,0.24904605775536504
+SR-22,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",BOM,Mosiah,4,3.7173972313495556,0.9293493078373889,0.9375604752974575,0.2,0.19908456650579243
+SR-22,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",BOC,Book of Commandments,2,1.8711179520369898,0.9355589760184949,0.9363791640398316,0.1,0.10020739866620462
+SR-22,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",KJV,1 Kings,2,1.8623560040520015,0.9311780020260008,0.9352090554772751,0.1,0.09973815405558645
+SR-22,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",KJV,2 Kings,1,0.9354475868885624,0.9354475868885624,0.9354475868885624,0.05,0.05009773390749241
+SR-22,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",BOM,2 Nephi,1,0.9275660970234767,0.9275660970234767,0.9275660970234767,0.05,0.0496756420793773
+SR-23,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",BOM,Alma,11,10.244802433079293,0.9313456757344812,0.9381032850376013,0.55,0.549908315370188
+SR-23,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",BOM,Mosiah,5,4.67886494029414,0.935772988058828,0.94544800984502,0.25,0.2511465451841253
+SR-23,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",BOM,Helaman,2,1.8549321127627785,0.9274660563813892,0.9300165540232928,0.1,0.09956683888425631
+SR-23,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",BOM,Ether,1,0.9257212992866817,0.9257212992866817,0.9257212992866817,0.05,0.04968976644677289
+SR-23,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",BOM,3 Nephi,1,0.92569834091580006,0.92569834091580006,0.92569834091580006,0.05,0.0496885341146574
+SR-24,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",BOM,Alma,10,9.117157160301767,0.9117157160301768,0.9369553271076834,0.5,0.4992472185841745
+SR-24,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",BOM,Mosiah,4,3.6417299609744496,0.9104324902436124,0.9134416169322358,0.2,0.19941781433445976
+SR-24,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",BOC,Book of Commandments,1,0.9387685175725471,0.9387685175725471,0.9387685175725471,0.05,0.051406108620482546
+SR-24,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",DC,Doctrine and Covenants,1,0.9331649498533814,0.9331649498533814,0.9331649498533814,0.05,0.05109926235812757
+SR-24,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",BOM,Helaman,1,0.9206520719633209,0.9206520719633209,0.9206520719633209,0.05,0.050414068566547766
+SR-24,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",BOM,Jacob,1,0.9096845160298228,0.9096845160298228,0.9096845160298228,0.05,0.04981349519721868
+SR-24,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",BOM,3 Nephi,1,0.9016940464839204,0.9016940464839204,0.9016940464839204,0.05,0.04937594436576615
+SR-24,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",BOM,2 Nephi,1,0.8989573977226778,0.8989573977226778,0.8989573977226778,0.05,0.04922608797322296
+SR-25,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",BOM,Alma,7,6.276857158518045,0.8966938797882921,0.9056914820302123,0.35,0.3501561516988198
+SR-25,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",BOM,Mosiah,3,2.699076988435527,0.8996923294785091,0.9006383207278523,0.15,0.15056873010514074
+SR-25,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",BOM,Ether,3,2.6735676460835114,0.8911892153611706,0.8929105730001726,0.15,0.1491456846343309
+SR-25,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",BOM,Helaman,2,1.800006440818625,0.9000032204093125,0.9031392401278449,0.1,0.10041383967051243
+SR-25,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",KJV,1 Kings,2,1.7869768571540812,0.8934884285770406,0.8964706171282998,0.1,0.09968698086856836
+SR-25,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",KJV,2 Kings,1,0.9009080694745873,0.9009080694745873,0.9009080694745873,0.05,0.05025739708184051
+SR-25,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",BOM,Jacob,1,0.8979390577673886,0.8979390577673886,0.8979390577673886,0.05,0.050091769971411425
+SR-25,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",KJV,2 Samuel,1,0.8905477871835382,0.8905477871835382,0.8905477871835382,0.05,0.04967944596937586
+SR-26,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",KJV,1 Samuel,6,5.200692773732783,0.8667821289554638,0.8754097838667122,0.3,0.30089528683218414
+SR-26,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",KJV,2 Samuel,4,3.4658785665634895,0.8664696416408724,0.8702215136926457,0.2,0.20052453986108582
+SR-26,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",BOM,Alma,4,3.4337569955307012,0.8584392488826753,0.8613245240048566,0.2,0.1986660895065047
+SR-26,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",BOM,1 Nephi,2,1.7161497228384084,0.8580748614192042,0.8588116029240265,0.1,0.09929088018975689
+SR-26,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",KJV,Job,1,0.8707272167740757,0.8707272167740757,0.8707272167740757,0.05,0.050377464511478294
+SR-26,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",BOM,Helaman,1,0.8685185406525083,0.8685185406525083,0.8685185406525083,0.05,0.05024967764460644
+SR-26,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",BOM,Omni,1,0.8658636016166231,0.8658636016166231,0.8658636016166231,0.05,0.05009607144683997
+SR-26,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",KJV,2 Kings,1,0.8624745178754093,0.8624745178754093,0.8624745178754093,0.05,0.049899990007543776
+SR-27,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",BOM,Alma,7,6.263515904147495,0.8947879863067849,0.9083670415674301,0.35,0.35107598344129315
+SR-27,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",DC,Doctrine and Covenants,5,4.458649437469786,0.8917298874939573,0.9216368531179128,0.25,0.24991151296401545
+SR-27,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",BOM,Mosiah,4,3.559170435712531,0.8897926089281327,0.9027616472086989,0.2,0.19949486519632667
+SR-27,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",BOM,Jacob,2,1.788793220865931,0.8943966104329655,0.896931536779503,0.1,0.10026354986546493
+SR-27,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",BOM,Mormon,1,0.8916993021681353,0.8916993021681353,0.8916993021681353,0.05,0.049980588256397444
+SR-27,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",BOM,1 Nephi,1,0.8790842073835481,0.8790842073835481,0.8790842073835481,0.05,0.04927350027650241
+SR-28,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",BOM,Alma,7,6.515586699656867,0.9307980999509811,0.9409650106517182,0.35,0.34906066363254096
+SR-28,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",BOM,Mosiah,6,5.598041082506959,0.9330068470844931,0.9431050218226185,0.3,0.29990483211665564
+SR-28,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",DC,Doctrine and Covenants,4,3.7609053295856523,0.9402263323964131,0.9548130059336701,0.2,0.20148363773188124
+SR-28,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",BOC,Book of Commandments,1,0.9472813798890337,0.9472813798890337,0.9472813798890337,0.05,0.05074887072383349
+SR-28,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",BOM,Ether,1,0.9232532425428457,0.9232532425428457,0.9232532425428457,0.05,0.049461607127393906
+SR-28,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",BOM,Helaman,1,0.92099057170635,0.92099057170635,0.92099057170635,0.05,0.049340388667694676
+SR-29,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",BOM,Alma,12,11.074535605477074,0.9228779671230894,0.9413865235485134,0.6,0.5993867913244044
+SR-29,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",BOM,Mosiah,3,2.7922802643823434,0.9307600881274477,0.9382254176613081,0.15,0.151126509297497
+SR-29,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",DC,Doctrine and Covenants,2,1.8455333389308546,0.9227666694654273,0.9234077582024632,0.1,0.09988575103383097
+SR-29,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",BOM,3 Nephi,1,0.9291865004804317,0.9291865004804317,0.9291865004804317,0.05,0.05029033585746695
+SR-29,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",BOM,1 Nephi,1,0.9181300641270603,0.9181300641270603,0.9181300641270603,0.05,0.049691928651475196
+SR-29,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",BOC,Book of Commandments,1,0.9167767604905654,0.9167767604905654,0.9167767604905654,0.05,0.04961868383532551
+SR-3,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",DC,Doctrine and Covenants,5,4.493001397718387,0.8986002795436774,0.9135931890204755,0.25,0.25097773157952047
+SR-3,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",KJV,Jeremiah,3,2.6793614611772005,0.8931204870590669,0.8995824570754436,0.15,0.14966834017664193
+SR-3,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",KJV,Isaiah,2,1.7975489354569267,0.8987744677284634,0.9056517913209572,0.1,0.10041055283295913
+SR-3,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",BOM,Mosiah,2,1.7946439259864435,0.8973219629932218,0.9058214743538192,0.1,0.10024827986160213
+SR-3,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",BOM,2 Nephi,2,1.7789218754989944,0.8894609377494972,0.8921932861917331,0.1,0.09937005076309297
+SR-3,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",KJV,Amos,1,0.9147223396011651,0.9147223396011651,0.9147223396011651,0.05,0.05109611983089828
+SR-3,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",KJV,1 Kings,1,0.8914783677191065,0.8914783677191065,0.8914783677191065,0.05,0.04979771842403033
+SR-3,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",BOC,Book of Commandments,1,0.8905984617125513,0.8905984617125513,0.8905984617125513,0.05,0.049748567134284334
+SR-3,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",KJV,2 Kings,1,0.8903720424578315,0.8903720424578315,0.8903720424578315,0.05,0.04973591942156287
+SR-3,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",BOM,Jacob,1,0.8882029209867783,0.8882029209867783,0.8882029209867783,0.05,0.0496147529365932
+SR-3,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",BOM,Alma,1,0.8831404900452812,0.8831404900452812,0.8831404900452812,0.05,0.049331967038814456
+SR-30,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",DC,Doctrine and Covenants,4,3.587656153102995,0.8969140382757488,0.9136519231178443,0.2,0.20318882632691676
+SR-30,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",BOM,Alma,4,3.5420458294081048,0.8855114573520262,0.897398655319433,0.2,0.20060566123403573
+SR-30,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",KJV,2 Kings,3,2.63276274554308,0.8775875818476935,0.8906198927743211,0.15,0.14910792713550552
+SR-30,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",BOC,Book of Commandments,2,1.7865699857918966,0.8932849928959483,0.9086062664713753,0.1,0.1011833473087939
+SR-30,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",BOM,Mosiah,2,1.7569838344518383,0.8784919172259191,0.88640667031529,0.1,0.09950771979328701
+SR-30,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",KJV,1 Kings,1,0.8731589707758651,0.8731589707758651,0.8731589707758651,0.05,0.04945182562027799
+SR-30,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",BOM,2 Nephi,1,0.8710470246601514,0.8710470246601514,0.8710470246601514,0.05,0.04933221442171136
+SR-30,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",KJV,2 Samuel,1,0.8701810496683589,0.8701810496683589,0.8701810496683589,0.05,0.049283169464585636
+SR-30,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",KJV,1 Samuel,1,0.8700328144660129,0.8700328144660129,0.8700328144660129,0.05,0.04927477408456602
+SR-30,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",KJV,Isaiah,1,0.8663206667212838,0.8663206667212838,0.8663206667212838,0.05,0.04906453461032007
+SR-31,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",BOM,Alma,7,6.407536397468264,0.9153623424954663,0.9271918326161024,0.35,0.3500674552580378
+SR-31,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",DC,Doctrine and Covenants,4,3.680829855259153,0.9202074638147882,0.9418899228131985,0.2,0.20109737358300592
+SR-31,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",BOM,2 Nephi,2,1.8393024350355471,0.9196512175177736,0.9281301172685608,0.1,0.1004879071989689
+SR-31,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",BOM,Omni,1,0.9225452071896058,0.9225452071896058,0.9225452071896058,0.05,0.05040206297836548
+SR-31,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",KJV,1 Samuel,1,0.9174154322146961,0.9174154322146961,0.9174154322146961,0.05,0.05012180436411516
+SR-31,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",BOM,1 Nephi,1,0.9095892713357138,0.9095892713357138,0.9095892713357138,0.05,0.049694232196998346
+SR-31,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",BOC,Book of Commandments,1,0.9081077807290876,0.9081077807290876,0.9081077807290876,0.05,0.04961329287578665
+SR-31,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",BOM,Mosiah,1,0.9067264407963745,0.9067264407963745,0.9067264407963745,0.05,0.04953782515697943
+SR-31,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",KJV,2 Kings,1,0.9063646591674801,0.9063646591674801,0.9063646591674801,0.05,0.04951805968608234
+SR-31,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",BOM,Mormon,1,0.9053017075682771,0.9053017075682771,0.9053017075682771,0.05,0.04945998670166005
+SR-32,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",DC,Doctrine and Covenants,9,8.055673362858615,0.8950748180954017,0.9106464242893706,0.45,0.44971100621737603
+SR-32,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",BOC,Book of Commandments,3,2.6958584767987244,0.8986194922662414,0.9109251502332747,0.15,0.15049731705985941
+SR-32,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",BOM,Alma,3,2.6871188290332397,0.8957062763444132,0.9050573123955761,0.15,0.15000942292443897
+SR-32,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",KJV,2 Kings,1,0.9072445570046718,0.9072445570046718,0.9072445570046718,0.05,0.05064726984797053
+SR-32,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",KJV,Jeremiah,1,0.8997855756361408,0.8997855756361408,0.8997855756361408,0.05,0.050230869397566914
+SR-32,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",BOM,1 Nephi,1,0.8914132534886755,0.8914132534886755,0.8914132534886755,0.05,0.049763481353424996
+SR-32,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",KJV,1 Samuel,1,0.8900518392855157,0.8900518392855157,0.8900518392855157,0.05,0.049687479891647214
+SR-32,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",BOM,Omni,1,0.8858543471310263,0.8858543471310263,0.8858543471310263,0.05,0.04945315330771592
+SR-33,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",BOM,Mosiah,5,4.571558551649286,0.9143117103298571,0.9307944691034646,0.25,0.24957429835049333
+SR-33,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",BOM,Alma,5,4.570531794019085,0.914106358803817,0.9298288837997841,0.25,0.24951824475033962
+SR-33,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",DC,Doctrine and Covenants,4,3.6858465894997297,0.9214616473749324,0.935149321546086,0.2,0.2012207797426292
+SR-33,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",BOC,Book of Commandments,2,1.8464031154893918,0.9232015577446959,0.9292165752445577,0.1,0.1008003631177777
+SR-33,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",BOM,2 Nephi,1,0.9195741998488021,0.9195741998488021,0.9195741998488021,0.05,0.050202153842190955
+SR-33,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",BOM,Jarom,1,0.9120504129710348,0.9120504129710348,0.9120504129710348,0.05,0.04979140905794664
+SR-33,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",KJV,2 Kings,1,0.9090304917279213,0.9090304917279213,0.9090304917279213,0.05,0.04962654302444656
+SR-33,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",KJV,1 Samuel,1,0.902430083947983,0.902430083947983,0.902430083947983,0.05,0.04926620811417598
+SR-34,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",DC,Doctrine and Covenants,10,9.12034967339484,0.912034967339484,0.9408294007831479,0.5,0.49987749176881546
+SR-34,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",BOM,Alma,5,4.583964308628655,0.9167928617257309,0.9273890804244433,0.25,0.25124262369450756
+SR-34,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",BOC,Book of Commandments,2,1.8208514316009958,0.9104257158004979,0.9118323762443461,0.1,0.09979909533156757
+SR-34,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",BOM,2 Nephi,1,0.9101206813562357,0.9101206813562357,0.9101206813562357,0.05,0.049882829024683245
+SR-34,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",BOM,Mosiah,1,0.9058027356445907,0.9058027356445907,0.9058027356445907,0.05,0.0496461666214612
+SR-34,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",BOM,Moroni,1,0.9040808831029442,0.9040808831029442,0.9040808831029442,0.05,0.04955179355896505
+SR-35,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",BOM,Alma,7,6.459233370581581,0.9227476243687973,0.928544559246735,0.35,0.3485049071402469
+SR-35,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",DC,Doctrine and Covenants,5,4.661896665941384,0.9323793331882768,0.9505069933090038,0.25,0.25153044818924747
+SR-35,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",BOM,Helaman,2,1.844875609507187,0.9224378047535935,0.9231271703296592,0.1,0.09953939826743222
+SR-35,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",BOC,Book of Commandments,1,0.9439381623252903,0.9439381623252903,0.9439381623252903,0.05,0.05092974084286582
+SR-35,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",BOM,1 Nephi,1,0.9347697013539357,0.9347697013539357,0.9347697013539357,0.05,0.05043506083114901
+SR-35,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",BOM,Mormon,1,0.9242703341568433,0.9242703341568433,0.9242703341568433,0.05,0.04986857239821528
+SR-35,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",KJV,Jeremiah,1,0.9236171013618658,0.9236171013618658,0.9236171013618658,0.05,0.049833327529127336
+SR-35,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",BOM,2 Nephi,1,0.9232616315635518,0.9232616315635518,0.9232616315635518,0.05,0.049814148322874036
+SR-35,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",KJV,Isaiah,1,0.9182620172767806,0.9182620172767806,0.9182620172767806,0.05,0.04954439647884191
+SR-36,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",DC,Doctrine and Covenants,9,8.381871017362617,0.9313190019291795,0.9564061138091191,0.45,0.45173374355146584
+SR-36,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",BOM,1 Nephi,2,1.861673332209532,0.930836666104766,0.9357931446200124,0.1,0.10033328619432287
+SR-36,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",BOC,Book of Commandments,2,1.861080460799629,0.9305402303998145,0.9339876195600895,0.1,0.10030133389860209
+SR-36,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",BOM,2 Nephi,2,1.8505754436414594,0.9252877218207297,0.9344190114659539,0.1,0.09973517501628307
+SR-36,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",KJV,Jeremiah,2,1.8343743392791754,0.9171871696395877,0.9179459335342204,0.1,0.09886203040357279
+SR-36,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",BOM,Alma,1,0.9261749967242731,0.9261749967242731,0.9261749967242731,0.05,0.049915406427438504
+SR-36,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",BOM,Mosiah,1,0.9215255006129103,0.9215255006129103,0.9215255006129103,0.05,0.04966482582560591
+SR-36,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",KJV,Ezekiel,1,0.9176173366341961,0.9176173366341961,0.9176173366341961,0.05,0.049454198682709
+SR-37,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",BOM,Alma,11,10.149345670774645,0.9226677882522405,0.9372891022596873,0.55,0.5489880535242622
+SR-37,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",DC,Doctrine and Covenants,4,3.71485271743661,0.9287131793591525,0.9451790081863922,0.2,0.20094002398079552
+SR-37,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",BOM,Mosiah,3,2.773716475960151,0.9245721586533837,0.9311650593322974,0.15,0.15003304238127468
+SR-37,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",BOC,Book of Commandments,1,0.9328240294669182,0.9328240294669182,0.9328240294669182,0.05,0.05045736590609352
+SR-37,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",BOM,3 Nephi,1,0.9166318344135954,0.9166318344135954,0.9166318344135954,0.05,0.049581514207574076
+SR-38,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",BOM,Alma,12,11.176958257814992,0.9314131881512492,0.943827802050008,0.6,0.6006957853047435
+SR-38,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",BOM,Mosiah,3,2.7905673971667158,0.9301891323889053,0.9369922336723541,0.15,0.1499765889270284
+SR-38,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",BOM,3 Nephi,1,0.9334365933189644,0.9334365933189644,0.9334365933189644,0.05,0.05016672823877349
+SR-38,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",DC,Doctrine and Covenants,1,0.9317757689145334,0.9317757689145334,0.9317757689145334,0.05,0.0500774686927628
+SR-38,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",BOC,Book of Commandments,1,0.9265055518413238,0.9265055518413238,0.9265055518413238,0.05,0.04979422551420797
+SR-38,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",BOM,Mormon,1,0.9242256257413165,0.9242256257413165,0.9242256257413165,0.05,0.049671692892407845
+SR-38,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",BOM,Helaman,1,0.9232174696420011,0.9232174696420011,0.9232174696420011,0.05,0.04961751043007606
+SR-39,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",BOM,Alma,6,5.477630908408933,0.9129384847348222,0.9227846035857911,0.3,0.2996163620849576
+SR-39,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",DC,Doctrine and Covenants,5,4.601126639233139,0.9202253278466278,0.9380940341985463,0.25,0.2516731864906993
+SR-39,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",BOM,Mosiah,4,3.6375859739172007,0.9093964934793002,0.9166822056986462,0.2,0.19896927969411368
+SR-39,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",BOM,Helaman,2,1.8150494492178377,0.9075247246089189,0.9118515654585281,0.1,0.0992798752000827
+SR-39,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",BOC,Book of Commandments,1,0.9302007873861294,0.9302007873861294,0.9302007873861294,0.05,0.050880276635168385
+SR-39,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",BOM,1 Nephi,1,0.913025349251808,0.913025349251808,0.913025349251808,0.05,0.04994081167722082
+SR-39,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",BOM,3 Nephi,1,0.9075296720822672,0.9075296720822672,0.9075296720822672,0.05,0.04964020821775746
+SR-4,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",BOM,Alma,6,5.50212180495822,0.91702030082637,0.9226549459835267,0.3,0.29807157382810434
+SR-4,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",DC,Doctrine and Covenants,5,4.650806397921965,0.9301612795843931,0.9396780762497935,0.25,0.25195247065399046
+SR-4,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",BOM,Mosiah,4,3.7134426199636223,0.9283606549909056,0.933889121642733,0.2,0.20117178886433632
+SR-4,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",BOC,Book of Commandments,2,1.8376767896156532,0.9188383948078266,0.9246240045819933,0.1,0.09955417787634298
+SR-4,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",KJV,2 Kings,1,0.9282177223004612,0.9282177223004612,0.9282177223004612,0.05,0.05028520399019732
+SR-4,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",KJV,1 Kings,1,0.9164767147789683,0.9164767147789683,0.9164767147789683,0.05,0.04964914744431982
+SR-4,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",BOM,Omni,1,0.910320430975446,0.910320430975446,0.910320430975446,0.05,0.049315637342708704
+SR-40,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",DC,Doctrine and Covenants,4,3.650353010273043,0.9125882525682607,0.9345057155645204,0.2,0.20298209614699275
+SR-40,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",KJV,Jeremiah,3,2.683979031780999,0.894659677260333,0.8985650067252651,0.15,0.14924575468517023
+SR-40,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",BOM,Alma,2,1.8133124391343953,0.9066562195671977,0.9230844851713518,0.1,0.10083133297767947
+SR-40,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",BOC,Book of Commandments,2,1.7989413954554268,0.8994706977277134,0.9022089771717615,0.1,0.10003221449199667
+SR-40,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",KJV,Isaiah,2,1.7807328498138282,0.8903664249069141,0.8905952160356667,0.1,0.0990197072764703
+SR-40,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",BOM,Omni,1,0.901220191118801,0.901220191118801,0.901220191118801,0.05,0.05011338984708346
+SR-40,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",BOM,Moroni,1,0.8974325792020993,0.8974325792020993,0.8974325792020993,0.05,0.04990277531087839
+SR-40,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",KJV,Amos,1,0.8962601980588896,0.8962601980588896,0.8962601980588896,0.05,0.04983758370303602
+SR-40,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",BOM,2 Nephi,1,0.8911539615057127,0.8911539615057127,0.8911539615057127,0.05,0.049553645520600154
+SR-40,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",BOM,Jarom,1,0.8902499275842539,0.8902499275842539,0.8902499275842539,0.05,0.049503375670027
+SR-40,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",BOM,Mosiah,1,0.8901491876934503,0.8901491876934503,0.8901491876934503,0.05,0.04949777391202075
+SR-40,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",KJV,1 Samuel,1,0.8898358509072132,0.8898358509072132,0.8898358509072132,0.05,0.049480350458044824
+SR-41,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",DC,Doctrine and Covenants,5,4.615688044138554,0.9231376088277108,0.9361990699103538,0.25,0.25307630340638837
+SR-41,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",BOM,Alma,3,2.7310622091807657,0.9103540697269219,0.9148519444946199,0.15,0.1497430332515785
+SR-41,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",BOM,Mosiah,3,2.7266740981221056,0.9088913660407019,0.9133635560421163,0.15,0.1495024349019841
+SR-41,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",BOC,Book of Commandments,2,1.8153660827081113,0.9076830413540556,0.9110889114752723,0.1,0.09953578602967511
+SR-41,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",BOM,Jacob,1,0.9219555846982473,0.9219555846982473,0.9219555846982473,0.05,0.050550450777670425
+SR-41,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",BOM,1 Nephi,1,0.9100041008352248,0.9100041008352248,0.9100041008352248,0.05,0.049895155764803203
+SR-41,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",BOM,2 Nephi,1,0.9046272984782044,0.9046272984782044,0.9046272984782044,0.05,0.04960034787231804
+SR-41,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",BOM,Mormon,1,0.9037846105693154,0.9037846105693154,0.9037846105693154,0.05,0.0495541436360552
+SR-41,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",BOM,Helaman,1,0.9035675783184878,0.9035675783184878,0.9035675783184878,0.05,0.04954224384576735
+SR-41,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",KJV,Jeremiah,1,0.9033026366478579,0.9033026366478579,0.9033026366478579,0.05,0.04952771720142308
+SR-41,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",BOM,Moroni,1,0.9022934391574011,0.9022934391574011,0.9022934391574011,0.05,0.04947238331233667
+SR-42,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",BOM,Alma,8,7.290200046309014,0.9112750057886267,0.9389202895422066,0.4,0.3996526975376574
+SR-42,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",DC,Doctrine and Covenants,4,3.699912933467951,0.9249782333669877,0.9378570300135431,0.2,0.20283122206825874
+SR-42,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",BOC,Book of Commandments,2,1.8054917266465194,0.9027458633232597,0.9058177892555376,0.1,0.09897803000639616
+SR-42,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",BOM,Jacob,1,0.9200401486640989,0.9200401486640989,0.9200401486640989,0.05,0.05043709705095364
+SR-42,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",KJV,2 Kings,1,0.9118016654841029,0.9118016654841029,0.9118016654841029,0.05,0.049985458960696984
+SR-42,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",BOM,2 Nephi,1,0.9073208355433863,0.9073208355433863,0.9073208355433863,0.05,0.04973981744720771
+SR-42,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",BOM,Mosiah,1,0.9040143887900433,0.9040143887900433,0.9040143887900433,0.05,0.04955855625329751
+SR-42,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",BOM,Mormon,1,0.9035158044095772,0.9035158044095772,0.9035158044095772,0.05,0.04953122358871524
+SR-42,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",BOM,1 Nephi,1,0.8990407207018458,0.8990407207018458,0.8990407207018458,0.05,0.04928589708681669
+SR-43,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",BOM,Alma,5,4.481048278635289,0.8962096557270579,0.9026769643867455,0.25,0.2500969896765446
+SR-43,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",KJV,2 Samuel,5,4.4692136123784785,0.8938427224756957,0.8989321402044198,0.25,0.2494364713735469
+SR-43,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",KJV,2 Kings,3,2.6994687236093124,0.8998229078697708,0.9033766292186793,0.15,0.15066318404100856
+SR-43,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",KJV,1 Samuel,3,2.6848400188789725,0.8949466729596576,0.8997234444658162,0.15,0.14984672441182573
+SR-43,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",KJV,1 Kings,2,1.7845297777917408,0.8922648888958704,0.8959537905698882,0.1,0.09959846394464433
+SR-43,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",BOM,Omni,1,0.9069788027286458,0.9069788027286458,0.9069788027286458,0.05,0.05062044730568116
+SR-43,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",BOM,Mosiah,1,0.8911627505078724,0.8911627505078724,0.8911627505078724,0.05,0.04973771924674868
+SR-44,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",DC,Doctrine and Covenants,5,3.86501226078473,0.773002452156946,0.7807895377534966,0.25,0.2492817509840096
+SR-44,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",KJV,2 Kings,3,2.31745360765413,0.77248453588471,0.7811529099777764,0.15,0.14946883843078387
+SR-44,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",KJV,1 Samuel,2,1.5817647752408721,0.7908823876204361,0.7929008521735627,0.1,0.10201910529950442
+SR-44,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",KJV,Job,2,1.5463747737324374,0.7731873868662187,0.7768664335062335,0.1,0.09973655586677424
+SR-44,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",BOC,Book of Commandments,2,1.5458982423957963,0.7729491211978982,0.7788713748417689,0.1,0.09970582101834907
+SR-44,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",KJV,Isaiah,2,1.5385934583236236,0.7692967291618118,0.7697633308852054,0.1,0.09923468425571909
+SR-44,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",KJV,Proverbs,1,0.7872676685432418,0.7872676685432418,0.7872676685432418,0.05,0.05077641406180493
+SR-44,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",BOM,Moroni,1,0.7746419366921096,0.7746419366921096,0.7746419366921096,0.05,0.04996209205428151
+SR-44,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",BOM,Alma,1,0.7742596892160873,0.7742596892160873,0.7742596892160873,0.05,0.04993743823336124
+SR-44,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",KJV,Psalms,1,0.7733272671711493,0.7733272671711493,0.7733272671711493,0.05,0.049877299795412
+SR-45,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",BOM,Alma,10,9.19652626487711,0.919652626487711,0.9347462151153594,0.5,0.5011533350339621
+SR-45,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",BOM,Mosiah,4,3.6630773141315704,0.9157693285328926,0.9169919350727355,0.2,0.19961487191912194
+SR-45,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",BOM,1 Nephi,2,1.8279611133423532,0.9139805566711766,0.9150707927281282,0.1,0.09961248213497667
+SR-45,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",KJV,1 Samuel,2,1.824784936498395,0.9123924682491975,0.9134808782463413,0.1,0.09943940030253669
+SR-45,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",BOM,Omni,1,0.9277674113995523,0.9277674113995523,0.9277674113995523,0.05,0.05055753868005994
+SR-45,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",KJV,1 Kings,1,0.910606424963278,0.910606424963278,0.910606424963278,0.05,0.049622371929342636
+SR-5,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",BOM,Alma,6,5.465008756142306,0.9108347926903844,0.916051160923521,0.3,0.2981820899813964
+SR-5,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",DC,Doctrine and Covenants,5,4.607510837486836,0.9215021674973672,0.9448747081231166,0.25,0.25139524426005944
+SR-5,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",BOM,Mosiah,3,2.7442714885372625,0.9147571628457541,0.9223904866287789,0.15,0.14973308267963747
+SR-5,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",BOM,2 Nephi,2,1.827943688377304,0.913971844188652,0.9169137849676127,0.1,0.09973635792550846
+SR-5,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",BOC,Book of Commandments,1,0.9397067476673545,0.9397067476673545,0.9397067476673545,0.05,0.05127232809538358
+SR-5,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",BOM,1 Nephi,1,0.9219843967070755,0.9219843967070755,0.9219843967070755,0.05,0.050305360267055704
+SR-5,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",BOM,Ether,1,0.9123969362074961,0.9123969362074961,0.9123969362074961,0.05,0.04978224875215363
+SR-5,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",BOM,Mormon,1,0.9089337102535814,0.9089337102535814,0.9089337102535814,0.05,0.049593288038805194
+SR-6,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",BOM,Mosiah,6,5.5576444884722935,0.9262740814120489,0.9353945649335492,0.3,0.29833892661528544
+SR-6,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",BOM,Alma,5,4.620632662135611,0.9241265324271221,0.9297703789860537,0.25,0.2480393612013852
+SR-6,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",DC,Doctrine and Covenants,4,3.7894565912713913,0.9473641478178478,0.964922205919163,0.2,0.2034211461780444
+SR-6,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",BOC,Book of Commandments,2,1.8835313959266193,0.9417656979633097,0.9562413608019066,0.1,0.10110951430457608
+SR-6,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",BOM,1 Nephi,2,1.846581323661004,0.923290661830502,0.9258595194064553,0.1,0.09912600403850091
+SR-6,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",BOM,Ether,1,0.9307802200220747,0.9307802200220747,0.9307802200220747,0.05,0.049965047662207863
+SR-7,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",DC,Doctrine and Covenants,7,6.560034099629174,0.9371477285184534,0.9452687322327712,0.35,0.3519625963482227
+SR-7,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",KJV,Isaiah,3,2.7898826572906525,0.9299608857635508,0.9393766751889612,0.15,0.14968433527234312
+SR-7,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",BOC,Book of Commandments,2,1.8600962244434622,0.9300481122217311,0.933499814056207,0.1,0.09979891669307868
+SR-7,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",BOM,Mormon,2,1.8527484129332994,0.9263742064666497,0.9281102145634164,0.1,0.0994046878251616
+SR-7,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",BOM,2 Nephi,2,1.8506716129206207,0.9253358064603103,0.927014354461328,0.1,0.09929326219635279
+SR-7,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",KJV,Ezekiel,1,0.9436984532882688,0.9436984532882688,0.9436984532882688,0.05,0.050631834033898794
+SR-7,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",BOM,Alma,1,0.9322928368270992,0.9322928368270992,0.9322928368270992,0.05,0.050019893558947266
+SR-7,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",KJV,1 Kings,1,0.9251599655556476,0.9251599655556476,0.9251599655556476,0.05,0.049637196784206465
+SR-7,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",BOM,Mosiah,1,0.9238567751442538,0.9238567751442538,0.9238567751442538,0.05,0.04956727728778858
+SR-8,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",DC,Doctrine and Covenants,9,8.489195475507973,0.9432439417231082,0.9567151690858078,0.45,0.4507332486567286
+SR-8,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",KJV,1 Kings,4,3.7576475127367313,0.9394118781841828,0.9481838742049161,0.2,0.19951203569397793
+SR-8,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",BOM,2 Nephi,2,1.8718350047706016,0.9359175023853008,0.9385573904778662,0.1,0.0993849505626034
+SR-8,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",BOC,Book of Commandments,1,0.9590213733825828,0.9590213733825828,0.9590213733825828,0.05,0.05091917371947469
+SR-8,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",KJV,Ezekiel,1,0.9452900303709879,0.9452900303709879,0.9452900303709879,0.05,0.050190109008702945
+SR-8,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",KJV,2 Kings,1,0.9415674732790007,0.9415674732790007,0.9415674732790007,0.05,0.04999246009648007
+SR-8,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",KJV,Isaiah,1,0.9377486473248862,0.9377486473248862,0.9377486473248862,0.05,0.049789699795657845
+SR-8,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",BOM,Alma,1,0.9318841076602264,0.9318841076602264,0.9318841076602264,0.05,0.04947832246637445
+SR-9,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",DC,Doctrine and Covenants,7,6.6028687295143715,0.9432669613591959,0.9499931537872294,0.35,0.3521650173506915
+SR-9,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",BOM,Mosiah,4,3.747384078447372,0.936846019611843,0.9429622786832735,0.2,0.19986730511651185
+SR-9,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",BOM,Alma,3,2.787722570136844,0.9292408567122814,0.9296103275115954,0.15,0.1486836112450415
+SR-9,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",BOM,1 Nephi,2,1.873237227983598,0.936618613991799,0.9446672853637529,0.1,0.09990939513094393
+SR-9,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",BOC,Book of Commandments,2,1.8649364865676308,0.9324682432838154,0.9339252234082874,0.1,0.09946667381320652
+SR-9,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",KJV,2 Kings,1,0.9384973079883984,0.9384973079883984,0.9384973079883984,0.05,0.05005489799819474
+SR-9,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",BOM,2 Nephi,1,0.9347137123770153,0.9347137123770153,0.9347137123770153,0.05,0.04985309934540997

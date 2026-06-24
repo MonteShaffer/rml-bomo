@@ -1,0 +1,310 @@
+---
+title: "63 - Prepare 1835 Doctrine and Covenants v5"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+source("./00_source_project.R")
+
+library(dplyr)
+library(stringr)
+library(readr)
+library(purrr)
+library(tibble)
+library(rvest)
+library(xml2)
+
+raw_dc1835_dir <- file.path(STYLO_ROOT, "data", "raw", "dc_1835")
+html_cache_dir <- file.path(raw_dc1835_dir, "html")
+diagnostic_dir <- file.path(raw_dc1835_dir, "diagnostics")
+prepared_dir <- file.path(STYLO_ROOT, "data", "prepared")
+
+for(d in c(raw_dc1835_dir, html_cache_dir, diagnostic_dir, prepared_dir)){
+  dir.create(d, recursive=TRUE, showWarnings=FALSE)
+}
+
+start_url <- "https://doctrineandcovenants.com/sections/1835dcs/section-1/"
+stop_url  <- "https://doctrineandcovenants.com/sections/1835dcs/section-134/"
+```
+
+## Helpers
+
+```{r}
+normalize_url <- function(url){
+  url <- str_replace(url, "^http://", "https://")
+  url <- str_replace(url, "#.*$", "")
+
+  if(str_starts(url, "/")){
+    url <- paste0("https://doctrineandcovenants.com", url)
+  }
+
+  if(!str_detect(url, "/$")){
+    url <- paste0(url, "/")
+  }
+
+  url
+}
+
+website_section_id_from_url <- function(url){
+  str_match(
+    url,
+    regex("/sections?-([^/]+)/?$", ignore_case=TRUE)
+  )[,2]
+}
+
+chapter_number_from_url <- function(url){
+  as.integer(
+    str_extract(
+      website_section_id_from_url(url),
+      "^[0-9]+"
+    )
+  )
+}
+
+cache_path_for_url <- function(url){
+  sid <- website_section_id_from_url(url)
+
+  file.path(
+    html_cache_dir,
+    paste0("sections_", sid, ".html")
+  )
+}
+
+read_cached_html <- function(path){
+  xml2::read_html(path)
+}
+
+extract_next_url <- function(page){
+
+  href <- page %>%
+    html_element("a.tessera-post-nav[rel='next']") %>%
+    html_attr("href")
+
+  if(length(href)==0 || is.na(href)) return(NA_character_)
+
+  href <- normalize_url(href)
+
+  if(!str_detect(href, fixed("/sections/1835dcs/"))){
+    return(NA_character_)
+  }
+
+  href
+}
+```
+
+## Crawl
+
+```{r}
+download_page <- function(url){
+
+  url <- normalize_url(url)
+
+  cache_path <- cache_path_for_url(url)
+
+  if(!file.exists(cache_path)){
+
+    download.file(
+      url,
+      cache_path,
+      mode="wb",
+      quiet=TRUE
+    )
+
+  }
+
+  cache_path
+}
+
+crawl_1835 <- function(start_url, stop_url){
+
+  current <- normalize_url(start_url)
+
+  out <- list()
+
+  i <- 1
+
+  repeat{
+
+    cache_path <- download_page(current)
+
+    page <- read_cached_html(cache_path)
+
+    out[[i]] <- tibble(
+      page_order=i,
+      source_url=current,
+      cache_path=cache_path,
+      website_section_id=website_section_id_from_url(current),
+      chapter=chapter_number_from_url(current)
+    )
+
+    if(current==normalize_url(stop_url)) break
+
+    nxt <- extract_next_url(page)
+
+    if(is.na(nxt)) break
+
+    current <- nxt
+
+    i <- i+1
+  }
+
+  bind_rows(out)
+}
+
+parseable_pages <- crawl_1835(start_url, stop_url)
+parseable_pages
+```
+
+## Parse page by splitting on h4
+
+```{r}
+parse_dc1835_simple <- function(cache_path, source_url, page_order){
+
+  html <- readr::read_file(cache_path)
+
+  stop_pos <- str_locate(html, 'rel="next"')[1]
+
+  if(!is.na(stop_pos)){
+    html <- substr(html, 1, stop_pos-1)
+  }
+
+  title <- str_match(
+    html,
+    "<h1[^>]*>(.*?)</h1>"
+  )[,2]
+
+  title <- xml2::read_html(
+    paste0("<div>", title, "</div>")
+  ) %>%
+    html_text2() %>%
+    str_squish()
+
+  blocks <- stringr::str_split(
+  html,
+  regex(
+    "<h4[^>]*class=[\"']wp-block-heading[\"'][^>]*>",
+    ignore_case = TRUE
+  )
+)[[1]]
+
+  if(length(blocks)<=1){
+
+    return(
+      tibble(
+        page_order=integer(),
+        chapter=integer(),
+        website_section_id=character(),
+        chapter_title=character(),
+        verse=integer(),
+        text=character(),
+        source_url=character()
+      )
+    )
+
+  }
+
+  blocks <- blocks[-1]
+
+  map_dfr(
+    blocks,
+    function(x){
+
+      verse <- str_match(
+        x,
+        "^\\s*([0-9]+)"
+      )[,2]
+
+      verse <- suppressWarnings(as.integer(verse))
+
+      if(is.na(verse)) return(NULL)
+
+      body <- str_replace(
+        x,
+        "^\\s*[0-9]+\\s*</h4>",
+        ""
+      )
+
+      body <- xml2::read_html(
+        paste0("<div>", body, "</div>")
+      ) %>%
+        html_text2() %>%
+        str_squish()
+
+      tibble(
+        verse=verse,
+        text=body
+      )
+
+    }
+  ) %>%
+    mutate(
+      page_order=page_order,
+      chapter=chapter_number_from_url(source_url),
+      website_section_id=website_section_id_from_url(source_url),
+      chapter_title=title,
+      source_url=source_url,
+      n_words=str_count(text, "\\S+")
+    ) %>%
+    select(
+      page_order,
+      chapter,
+      website_section_id,
+      chapter_title,
+      verse,
+      n_words,
+      text,
+      source_url
+    )
+}
+```
+
+## Parse all pages
+
+```{r}
+dc1835_verse_docs <- purrr::pmap_dfr(
+  parseable_pages,
+  function(page_order,
+           source_url,
+           cache_path,
+           website_section_id,
+           chapter){
+
+    parse_dc1835_simple(
+      cache_path,
+      source_url,
+      page_order
+    )
+  }
+)
+
+write_csv(
+  dc1835_verse_docs,
+  file.path(prepared_dir, "dc_1835_verse_docs.csv")
+)
+
+
+
+dc1835_chapter_docs <- dc1835_verse_docs %>%
+  group_by(
+    page_order,
+    chapter,
+    website_section_id,
+    chapter_title,
+    source_url
+  ) %>%
+  summarise(
+    n_verses=n(),
+    n_words=sum(n_words),
+    text=paste(text, collapse=" "),
+    .groups="drop"
+  )
+
+write_csv(
+  dc1835_chapter_docs,
+  file.path(prepared_dir, "dc_1835_chapter_docs.csv")
+)
+
+
+dc1835_chapter_docs
+dim(dc1835_chapter_docs)
+```

@@ -1,0 +1,492 @@
+---
+title: "43 - Mclust All BOM + BoC + DC 1835"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+options(tibble.width = Inf, tibble.print_max = 300)
+
+library(dplyr)
+library(stringr)
+library(readr)
+library(tibble)
+library(tidyr)
+library(purrr)
+library(ggplot2)
+library(mclust)
+library(quanteda)
+library(Matrix)
+```
+
+## 1. Purpose
+
+This notebook extends `42_Mclust_all_BOM_BoC.Rmd` by adding the 1835 Doctrine and Covenants chapter documents:
+
+```text
+data/prepared/dc_1835_chapter_docs.csv
+```
+
+It compares:
+
+```text
+BOM 1830 chapters
+BOC 1833 chapters
+DC 1835 chapters
+```
+
+and runs `mclust` with:
+
+```text
+G = 1:12
+```
+
+## 2. Input and output paths
+
+```{r paths}
+prepared_dir <- file.path(STYLO_ROOT, "data", "prepared")
+export_dir <- file.path(STYLO_ROOT, "export")
+
+dir.create(prepared_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(export_dir, recursive = TRUE, showWarnings = FALSE)
+
+bom_path <- file.path(prepared_dir, "bom_1830_chapter_docs.csv")
+boc_path <- file.path(prepared_dir, "boc_1833_chapter_docs.csv")
+dc1835_path <- file.path(prepared_dir, "dc_1835_chapter_docs.csv")
+
+out_docs_path <- file.path(prepared_dir, "mclust_all_BOM_BoC_DC1835_docs.csv")
+out_features_path <- file.path(prepared_dir, "mclust_all_BOM_BoC_DC1835_features.csv")
+out_assignments_path <- file.path(prepared_dir, "mclust_all_BOM_BoC_DC1835_assignments.csv")
+out_model_summary_path <- file.path(prepared_dir, "mclust_all_BOM_BoC_DC1835_model_summary.csv")
+```
+
+## 3. Read prepared chapter documents
+
+```{r read-docs}
+read_required_csv <- function(path){
+  if(!file.exists(path)){
+    stop("Missing required file: ", path)
+  }
+  readr::read_csv(path, show_col_types = FALSE)
+}
+
+bom_docs_raw <- read_required_csv(bom_path)
+boc_docs_raw <- read_required_csv(boc_path)
+dc1835_docs_raw <- read_required_csv(dc1835_path)
+
+list(
+  BOM = dim(bom_docs_raw),
+  BOC = dim(boc_docs_raw),
+  DC1835 = dim(dc1835_docs_raw)
+)
+```
+
+## 4. Standardize metadata
+
+```{r standardize-docs}
+standardize_chapter_docs <- function(df, corpus_family_default, source_family_default){
+  df %>%
+    mutate(
+      corpus_family = if("corpus_family" %in% names(.)) corpus_family else corpus_family_default,
+      source_family = if("source_family" %in% names(.)) source_family else source_family_default,
+      book = if("book" %in% names(.)) book else if("work" %in% names(.)) work else corpus_family_default,
+      chapter = if("chapter" %in% names(.)) as.integer(chapter) else row_number(),
+      chapter_title = if("chapter_title" %in% names(.)) chapter_title else paste0(book, " ", chapter),
+      doc_id = if("doc_id" %in% names(.)) doc_id else paste0(source_family_default, "__", stringr::str_pad(row_number(), 3, pad = "0")),
+      text = text %>%
+        stringr::str_replace_all("\r", " ") %>%
+        stringr::str_replace_all("\n", " ") %>%
+        stringr::str_squish(),
+      n_words = stringr::str_count(text, "\\S+")
+    ) %>%
+    select(
+      doc_id,
+      corpus_family,
+      source_family,
+      book,
+      chapter,
+      chapter_title,
+      n_words,
+      text,
+      everything()
+    )
+}
+
+bom_docs <- standardize_chapter_docs(bom_docs_raw, "BOM", "BOM_1830")
+boc_docs <- standardize_chapter_docs(boc_docs_raw, "BOC", "BOC_1833")
+dc1835_docs <- standardize_chapter_docs(dc1835_docs_raw, "DC", "DC_1835")
+
+all_docs <- bind_rows(
+  bom_docs,
+  boc_docs,
+  dc1835_docs
+) %>%
+  mutate(
+    analysis_id = paste0(corpus_family, "__", make.unique(doc_id)),
+    text = text %>%
+      str_replace_all("\r", " ") %>%
+      str_replace_all("\n", " ") %>%
+      str_squish(),
+    n_words = str_count(text, "\\S+")
+  ) %>%
+  filter(!is.na(text), text != "", n_words >= 50) %>%
+  distinct(analysis_id, .keep_all = TRUE)
+
+all_docs %>%
+  count(corpus_family, source_family, name = "n_docs") %>%
+  arrange(corpus_family, source_family)
+
+readr::write_csv(all_docs, out_docs_path)
+```
+
+## 5. Sanity checks
+
+```{r sanity-docs}
+all_docs %>%
+  summarise(
+    n_docs = n(),
+    n_families = n_distinct(corpus_family),
+    min_words = min(n_words),
+    median_words = median(n_words),
+    mean_words = mean(n_words),
+    max_words = max(n_words)
+  )
+
+all_docs %>%
+  arrange(n_words) %>%
+  select(analysis_id, corpus_family, source_family, book, chapter, chapter_title, n_words) %>%
+  print(n = 25)
+
+all_docs %>%
+  arrange(desc(n_words)) %>%
+  select(analysis_id, corpus_family, source_family, book, chapter, chapter_title, n_words) %>%
+  print(n = 25)
+
+if(!all(c("BOM", "BOC", "DC") %in% unique(all_docs$corpus_family))){
+  warning("Expected BOM, BOC, and DC corpus families are not all present.")
+}
+```
+
+## 6. Build stylometric features
+
+This version uses character 3-grams and 4-grams with tf-idf, then z-scales the feature matrix before mclust.
+
+```{r feature-build}
+tokens_to_dfm_char <- function(texts, n){
+  quanteda::tokens(
+    texts,
+    what = "character",
+    remove_punct = FALSE,
+    remove_symbols = FALSE,
+    remove_numbers = FALSE,
+    remove_separators = TRUE
+  ) %>%
+    quanteda::tokens_ngrams(n = n) %>%
+    quanteda::dfm()
+}
+
+corp <- quanteda::corpus(
+  all_docs,
+  text_field = "text",
+  docid_field = "analysis_id"
+)
+
+dfm_char3 <- tokens_to_dfm_char(quanteda::texts(corp), 3)
+dfm_char4 <- tokens_to_dfm_char(quanteda::texts(corp), 4)
+
+dfm_all <- dfm_char3 + dfm_char4
+
+dfm_trimmed <- quanteda::dfm_trim(
+  dfm_all,
+  min_termfreq = 5,
+  min_docfreq = 3
+)
+
+dfm_tfidf <- quanteda::dfm_tfidf(
+  dfm_trimmed,
+  scheme_tf = "prop"
+)
+
+X_sparse <- as(dfm_tfidf, "dgCMatrix")
+X <- as.matrix(X_sparse)
+
+feature_sd <- apply(X, 2, sd, na.rm = TRUE)
+X <- X[, feature_sd > 0, drop = FALSE]
+
+X_scaled <- scale(X)
+X_scaled <- as.matrix(X_scaled)
+
+feature_df <- as_tibble(X_scaled) %>%
+  mutate(analysis_id = rownames(X_scaled), .before = 1)
+
+readr::write_csv(feature_df, out_features_path)
+
+dim(X_scaled)
+```
+
+## 7. Sanity check feature matrix
+
+```{r sanity-features}
+feature_summary <- tibble(
+  n_docs = nrow(X_scaled),
+  n_features = ncol(X_scaled),
+  any_na = any(is.na(X_scaled)),
+  any_infinite = any(is.infinite(X_scaled))
+)
+
+feature_summary
+
+if(any(is.na(X_scaled))) stop("Feature matrix contains NA.")
+if(any(is.infinite(X_scaled))) stop("Feature matrix contains infinite values.")
+if(nrow(X_scaled) != nrow(all_docs)) stop("Feature matrix document count does not match all_docs.")
+```
+
+## 8. Run mclust G = 1:12
+
+```{r run-mclust}
+set.seed(1830)
+
+mclust_fit <- mclust::Mclust(
+  data = X_scaled,
+  G = 1:12
+)
+
+mclust_fit
+summary(mclust_fit)
+```
+
+## 9. Model summary
+
+```{r model-summary}
+bic_df <- as.data.frame(mclust_fit$BIC) %>%
+  tibble::rownames_to_column("model_name") %>%
+  tidyr::pivot_longer(
+    cols = -model_name,
+    names_to = "G",
+    values_to = "BIC"
+  ) %>%
+  mutate(G = as.integer(G)) %>%
+  filter(!is.na(BIC)) %>%
+  arrange(desc(BIC))
+
+best_model_summary <- tibble(
+  selected_G = mclust_fit$G,
+  selected_model = mclust_fit$modelName,
+  loglik = mclust_fit$loglik,
+  bic = mclust_fit$bic,
+  icl = mclust_fit$icl
+)
+
+best_model_summary
+
+readr::write_csv(best_model_summary, out_model_summary_path)
+
+bic_df %>% slice_head(n = 20)
+```
+
+## 10. Plot BIC by G
+
+```{r plot-bic, fig.width=9, fig.height=5}
+bic_by_g <- bic_df %>%
+  group_by(G) %>%
+  summarise(best_BIC = max(BIC, na.rm = TRUE), .groups = "drop")
+
+ggplot(bic_by_g, aes(x = G, y = best_BIC)) +
+  geom_line() +
+  geom_point() +
+  scale_x_continuous(breaks = 1:12) +
+  labs(
+    title = "Mclust BIC by Number of Clusters",
+    subtitle = "BOM 1830 + BOC 1833 + DC 1835",
+    x = "Number of clusters G",
+    y = "Best BIC"
+  )
+```
+
+## 11. Cluster assignments
+
+```{r assignments}
+cluster_assignments <- all_docs %>%
+  mutate(
+    mclust_cluster = mclust_fit$classification,
+    uncertainty = mclust_fit$uncertainty
+  ) %>%
+  select(
+    analysis_id,
+    doc_id,
+    corpus_family,
+    source_family,
+    book,
+    chapter,
+    chapter_title,
+    n_words,
+    mclust_cluster,
+    uncertainty,
+    text
+  ) %>%
+  arrange(mclust_cluster, corpus_family, source_family, book, chapter)
+
+cluster_assignments %>%
+  count(mclust_cluster, corpus_family, source_family, name = "n_docs") %>%
+  arrange(mclust_cluster, corpus_family, source_family) %>%
+  print(n = 200)
+
+readr::write_csv(cluster_assignments, out_assignments_path)
+```
+
+## 12. Cluster composition
+
+```{r cluster-composition}
+cluster_composition <- cluster_assignments %>%
+  count(mclust_cluster, corpus_family, name = "n") %>%
+  group_by(mclust_cluster) %>%
+  mutate(
+    cluster_total = sum(n),
+    pct_cluster = n / cluster_total
+  ) %>%
+  ungroup() %>%
+  arrange(mclust_cluster, desc(n))
+
+cluster_composition %>% print(n = 200)
+
+cluster_composition_wide <- cluster_composition %>%
+  select(mclust_cluster, corpus_family, n) %>%
+  tidyr::pivot_wider(
+    names_from = corpus_family,
+    values_from = n,
+    values_fill = 0
+  ) %>%
+  arrange(mclust_cluster)
+
+cluster_composition_wide
+```
+
+## 13. Plot cluster composition
+
+```{r plot-cluster-composition, fig.width=10, fig.height=6}
+ggplot(
+  cluster_composition,
+  aes(x = factor(mclust_cluster), y = n, fill = corpus_family)
+) +
+  geom_col() +
+  labs(
+    title = "Mclust Cluster Composition",
+    subtitle = "BOM 1830 + BOC 1833 + DC 1835",
+    x = "Mclust cluster",
+    y = "Number of chapter documents",
+    fill = "Corpus"
+  )
+```
+
+## 14. Uncertainty diagnostics
+
+```{r uncertainty-diagnostics}
+cluster_assignments %>%
+  arrange(desc(uncertainty)) %>%
+  select(corpus_family, source_family, book, chapter, chapter_title, mclust_cluster, uncertainty, n_words) %>%
+  print(n = 50)
+
+cluster_assignments %>%
+  group_by(corpus_family, source_family) %>%
+  summarise(
+    n_docs = n(),
+    mean_uncertainty = mean(uncertainty),
+    median_uncertainty = median(uncertainty),
+    max_uncertainty = max(uncertainty),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(mean_uncertainty))
+```
+
+## 15. Chapter chronology views
+
+```{r chronology-plots, fig.width=11, fig.height=5}
+cluster_assignments %>%
+  filter(corpus_family %in% c("BOC", "DC")) %>%
+  mutate(textual_order = chapter) %>%
+  ggplot(aes(x = textual_order, y = mclust_cluster, color = corpus_family)) +
+  geom_point(alpha = 0.8) +
+  geom_line(alpha = 0.3) +
+  scale_y_continuous(breaks = sort(unique(cluster_assignments$mclust_cluster))) +
+  labs(
+    title = "Cluster Assignment by Section/Chapter Order",
+    subtitle = "BOC 1833 and DC 1835",
+    x = "Section / chapter order",
+    y = "Mclust cluster",
+    color = "Corpus"
+  )
+```
+
+## 16. Cross-tab comparisons
+
+```{r cross-tabs}
+table_cluster_family <- table(
+  cluster_assignments$mclust_cluster,
+  cluster_assignments$corpus_family
+)
+
+table_cluster_family
+prop.table(table_cluster_family, margin = 1)
+
+table_cluster_source <- table(
+  cluster_assignments$mclust_cluster,
+  cluster_assignments$source_family
+)
+
+table_cluster_source
+```
+
+## 17. Adjusted Rand Index comparisons
+
+```{r ari}
+ari_safe <- function(x, y){
+  ok <- !is.na(x) & !is.na(y)
+  mclust::adjustedRandIndex(x[ok], y[ok])
+}
+
+ari_results <- tibble(
+  comparison = c(
+    "cluster_vs_corpus_family",
+    "cluster_vs_source_family",
+    "cluster_vs_book"
+  ),
+  adjusted_rand_index = c(
+    ari_safe(cluster_assignments$mclust_cluster, cluster_assignments$corpus_family),
+    ari_safe(cluster_assignments$mclust_cluster, cluster_assignments$source_family),
+    ari_safe(cluster_assignments$mclust_cluster, cluster_assignments$book)
+  )
+)
+
+ari_results
+```
+
+## 18. Save additional exports
+
+```{r save-extra}
+readr::write_csv(
+  cluster_composition,
+  file.path(prepared_dir, "mclust_all_BOM_BoC_DC1835_cluster_composition.csv")
+)
+
+readr::write_csv(
+  bic_df,
+  file.path(prepared_dir, "mclust_all_BOM_BoC_DC1835_bic_grid.csv")
+)
+
+readr::write_csv(
+  ari_results,
+  file.path(prepared_dir, "mclust_all_BOM_BoC_DC1835_ari_results.csv")
+)
+```
+
+## 19. Notes
+
+Interpretation guardrails:
+
+1. `mclust` assumes Gaussian mixture structure in the feature space.
+2. The tf-idf character n-gram matrix is z-scaled before clustering.
+3. Clusters are not authors by default; they are feature-space components.
+4. Compare cluster assignments with corpus family, source family, book, and chronology.
+5. Use this notebook as exploratory clustering before authorship claims.

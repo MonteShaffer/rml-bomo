@@ -1,0 +1,4 @@
+author,work,short_work,year,gutenberg_id,expected_genre,raw_path,url,ok,status
+Washington Irving,"The Sketch Book of Geoffrey Crayon, Gent.",Sketch_Book,1820,2048,American_Prose,C:\-git-\MonteShaffer\rml-bomo\nlp\R-package\stylometryEnsemble_with_notebooks\stylometryEnsemble/data/raw/corpus_1830/irving/Sketch_Book.txt,NA,TRUE,cached
+Washington Irving,Bracebridge Hall,Bracebridge_Hall,1822,13515,American_Prose,C:\-git-\MonteShaffer\rml-bomo\nlp\R-package\stylometryEnsemble_with_notebooks\stylometryEnsemble/data/raw/corpus_1830/irving/Bracebridge_Hall.txt,NA,TRUE,cached
+Washington Irving,Tales of a Traveller,Tales_Traveller,1824,13514,American_Prose,C:\-git-\MonteShaffer\rml-bomo\nlp\R-package\stylometryEnsemble_with_notebooks\stylometryEnsemble/data/raw/corpus_1830/irving/Tales_Traveller.txt,NA,TRUE,cached

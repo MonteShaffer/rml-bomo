@@ -1,0 +1,480 @@
+---
+title: "62 - Parse 1830 Manual Corpus"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+options(tibble.width = Inf, tibble.print_max = 300)
+
+library(dplyr)
+library(stringr)
+library(readr)
+library(purrr)
+library(tibble)
+library(tidyr)
+library(digest)
+```
+
+## 1. Purpose
+
+Parse every non-empty `*_manual.txt` / `*_incomplete.txt` file in:
+
+```text
+data/raw/1830/manual/
+```
+
+Ignore `_README.txt` and zero-byte files.
+
+Manual chapter dividers:
+
+```text
+### CHAPTER 33: L’ENVOY.
+### CHAPTER 2-24: THE AUTHOR'S FAREWELL.
+```
+
+Outputs:
+
+```text
+data/prepared/corpus_1830_manual_chapter_docs.csv
+data/prepared/corpus_1830_manual_book_docs.csv
+```
+
+The parser preserves original chapter labels while creating clean sequential chapter numbers:
+
+```text
+chapter = 1, 2, 3, ...
+chapter_original = "2-24"
+chapter_title = "THE AUTHOR'S FAREWELL"
+```
+
+## 2. Directories
+
+```{r dirs}
+manual_dir <- file.path(STYLO_ROOT, "data", "raw", "1830", "manual")
+prepared_dir <- file.path(STYLO_ROOT, "data", "prepared")
+diagnostic_dir <- file.path(STYLO_ROOT, "data", "raw", "1830", "diagnostics")
+
+dir.create(prepared_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(diagnostic_dir, recursive = TRUE, showWarnings = FALSE)
+
+chapter_out_path <- file.path(prepared_dir, "corpus_1830_manual_chapter_docs.csv")
+book_out_path <- file.path(prepared_dir, "corpus_1830_manual_book_docs.csv")
+manifest_out_path <- file.path(prepared_dir, "corpus_1830_manual_manifest.csv")
+parse_diag_path <- file.path(diagnostic_dir, "corpus_1830_manual_parse_diagnostics.csv")
+```
+
+## 3. Enumerate manual files
+
+```{r enumerate}
+manual_files <- list.files(
+  manual_dir,
+  pattern = "\\.txt$",
+  full.names = TRUE
+)
+
+manual_manifest <- tibble(
+  path = manual_files,
+  filename = basename(manual_files),
+  file_size = file.info(manual_files)$size
+) %>%
+  filter(
+    filename != "_README.txt",
+    file_size > 0
+  ) %>%
+  arrange(filename)
+
+manual_manifest
+
+readr::write_csv(manual_manifest, manifest_out_path)
+```
+
+## 4. Filename metadata parser
+
+Expected filename format:
+
+```text
+Author_Name_Work_Title_manual.txt
+Author_Name_Work_Title_incomplete.txt
+```
+
+Known multi-token author names are handled explicitly.
+
+```{r filename-parser}
+known_author_prefixes <- c(
+  "James_Fenimore_Cooper",
+  "Washington_Irving",
+  "Jane_Austen",
+  "Walter_Scott",
+  "Ethan_Smith",
+  "Gilbert_Hunt",
+  "Alexander_Campbell",
+  "Jonathan_Edwards",
+  "Solomon_Spaulding"
+)
+
+infer_macro_genre <- function(author, work){
+  dplyr::case_when(
+    author == "Jane Austen" ~ "Fiction",
+    author == "James Fenimore Cooper" ~ "Frontier_Fiction",
+    author == "Walter Scott" ~ "Historical_Romance",
+    author == "Washington Irving" ~ "American_Prose",
+    author %in% c("Ethan Smith", "Alexander Campbell", "Jonathan Edwards") ~ "Religious_Nonfiction",
+    author %in% c("Gilbert Hunt", "Solomon Spaulding") ~ "American_Prose",
+    TRUE ~ "1830_Prose"
+  )
+}
+
+parse_filename_metadata <- function(path){
+  fn <- basename(path)
+
+  stem <- fn %>%
+    str_remove("\\.txt$") %>%
+    str_remove("_manual$") %>%
+    str_remove("_incomplete$")
+
+  matched_prefix <- known_author_prefixes[
+    purrr::map_lgl(
+      known_author_prefixes,
+      ~str_starts(stem, paste0(.x, "_"))
+    )
+  ]
+
+  if(length(matched_prefix) > 0){
+    author_key <- matched_prefix[[which.max(nchar(matched_prefix))]]
+    work_key <- stem %>% str_remove(paste0("^", fixed(author_key), "_"))
+  } else {
+    parts <- str_split(stem, "_")[[1]]
+
+    if(length(parts) >= 3){
+      author_key <- paste(parts[1:2], collapse = "_")
+      work_key <- paste(parts[-c(1,2)], collapse = "_")
+    } else {
+      author_key <- parts[[1]]
+      work_key <- paste(parts[-1], collapse = "_")
+    }
+  }
+
+  author <- str_replace_all(author_key, "_", " ")
+  work <- str_replace_all(work_key, "_", " ")
+  short_work <- work_key
+
+  tibble(
+    author = author,
+    work = work,
+    short_work = short_work,
+    source_file = fn,
+    local_file = path,
+    macro_genre = infer_macro_genre(author, work)
+  )
+}
+
+file_metadata <- purrr::map_dfr(
+  manual_manifest$path,
+  parse_filename_metadata
+)
+
+file_metadata
+```
+
+## 5. Text helpers
+
+```{r text-helpers}
+normalize_doc_text <- function(x){
+  x %>%
+    str_replace_all("\r", "\n") %>%
+    str_replace_all("\uFEFF", "") %>%
+    str_replace_all("\u00A0", " ") %>%
+    str_replace_all("[ \t]+", " ") %>%
+    str_replace_all("\n{3,}", "\n\n") %>%
+    str_replace_all("\\s+", " ") %>%
+    str_replace_all("\\s+([,.;:!?])", "\\1") %>%
+    str_squish()
+}
+
+clean_heading <- function(x){
+  x %>%
+    str_replace_all("[\\*_]", "") %>%
+    str_replace_all("\\s+", " ") %>%
+    str_squish() %>%
+    str_remove("\\s*\\.$")
+}
+
+make_safe_id <- function(x){
+  x %>%
+    str_replace_all("[^A-Za-z0-9]+", "_") %>%
+    str_replace_all("^_+|_+$", "")
+}
+```
+
+## 6. Chapter divider parser
+
+Captures:
+
+```text
+### CHAPTER 33: L’ENVOY.
+### CHAPTER 2-24: THE AUTHOR'S FAREWELL.
+### CHAPTER 1
+```
+
+```{r chapter-parser}
+chapter_divider_pattern <- regex(
+  paste0(
+    "(?m)^\\s*",
+    "###\\s+",
+    "CHAPTER\\s+",
+    "([^:\\n]+?)",
+    "(?:\\s*:\\s*(.*?))?",
+    "\\s*$"
+  ),
+  ignore_case = TRUE
+)
+
+parse_manual_chapters <- function(path){
+  txt <- readr::read_file(path)
+
+  txt <- txt %>%
+    str_replace_all("\r", "\n") %>%
+    str_replace_all("\uFEFF", "")
+
+  locs <- str_locate_all(txt, chapter_divider_pattern)[[1]]
+
+  if(nrow(locs) == 0){
+    return(
+      tibble(
+        chapter = 1L,
+        chapter_original = "1",
+        chapter_title = "Whole Work",
+        chapter_heading_raw = NA_character_,
+        text = normalize_doc_text(txt)
+      ) %>%
+        filter(text != "")
+    )
+  }
+
+  matches <- str_match_all(txt, chapter_divider_pattern)[[1]]
+
+  purrr::map_dfr(seq_len(nrow(locs)), function(i){
+    heading_raw <- str_sub(txt, locs[i, 1], locs[i, 2])
+    chapter_original <- clean_heading(matches[i, 2])
+    title_raw <- matches[i, 3]
+
+    chapter_title <- ifelse(
+      is.na(title_raw) || str_squish(title_raw) == "",
+      paste0("Chapter ", chapter_original),
+      clean_heading(title_raw)
+    )
+
+    start <- locs[i, 2] + 1
+    end <- if(i < nrow(locs)) locs[i + 1, 1] - 1 else nchar(txt)
+    body <- str_sub(txt, start, end)
+
+    tibble(
+      chapter_original = chapter_original,
+      chapter_title = chapter_title,
+      chapter_heading_raw = heading_raw,
+      text = normalize_doc_text(body)
+    )
+  }) %>%
+    filter(text != "") %>%
+    mutate(chapter = row_number(), .before = chapter_original)
+}
+```
+
+## 7. Parse all manual files
+
+```{r parse-all}
+corpus_1830_manual_chapter_docs <- file_metadata %>%
+  mutate(chapters = purrr::map(local_file, parse_manual_chapters)) %>%
+  tidyr::unnest(chapters) %>%
+  group_by(source_file) %>%
+  mutate(
+    chapter = row_number(),
+    chapter_digest = digest::digest(
+      paste(author, work, chapter_original, chapter_title, text, sep = "||"),
+      algo = "xxhash64"
+    ),
+    duplicate_digest_in_work = duplicated(chapter_digest)
+  ) %>%
+  ungroup() %>%
+  filter(!duplicate_digest_in_work) %>%
+  group_by(source_file) %>%
+  mutate(chapter = row_number()) %>%
+  ungroup() %>%
+  mutate(
+    corpus_family = "1830",
+    source_family = "1830_Secular",
+    doc_unit = "chapter",
+    doc_id = paste0(
+      "1830__",
+      make_safe_id(author),
+      "__",
+      make_safe_id(short_work),
+      "__",
+      str_pad(chapter, width = 3, pad = "0")
+    ),
+    doc_id_original = doc_id,
+    n_words = str_count(text, "\\S+")
+  ) %>%
+  select(
+    corpus_family,
+    source_family,
+    author,
+    work,
+    short_work,
+    source_file,
+    local_file,
+    doc_id,
+    doc_id_original,
+    macro_genre,
+    doc_unit,
+    chapter,
+    chapter_original,
+    chapter_title,
+    chapter_heading_raw,
+    chapter_digest,
+    n_words,
+    text
+  )
+
+corpus_1830_manual_chapter_docs %>%
+  count(author, work, name = "n_chapters") %>%
+  arrange(author, work) %>%
+  print(n = 100)
+```
+
+## 8. Diagnostics
+
+```{r diagnostics}
+parse_diagnostics <- corpus_1830_manual_chapter_docs %>%
+  group_by(author, work, short_work, source_file, macro_genre) %>%
+  summarise(
+    n_chapters = n(),
+    total_words = sum(n_words),
+    min_words = min(n_words),
+    median_words = median(n_words),
+    mean_words = mean(n_words),
+    max_words = max(n_words),
+    .groups = "drop"
+  ) %>%
+  arrange(author, work)
+
+parse_diagnostics
+
+readr::write_csv(parse_diagnostics, parse_diag_path)
+
+corpus_1830_manual_chapter_docs %>%
+  arrange(n_words) %>%
+  select(author, work, chapter, chapter_original, chapter_title, n_words) %>%
+  print(n = 50)
+
+corpus_1830_manual_chapter_docs %>%
+  summarise(
+    n_chapter_docs = n(),
+    n_authors = n_distinct(author),
+    n_works = n_distinct(paste(author, work)),
+    total_words = sum(n_words),
+    min_words = min(n_words),
+    median_words = median(n_words),
+    mean_words = mean(n_words),
+    max_words = max(n_words)
+  )
+```
+
+## 9. Build book-level CSV
+
+```{r book-level}
+corpus_1830_manual_book_docs <- corpus_1830_manual_chapter_docs %>%
+  arrange(author, work, chapter) %>%
+  group_by(
+    corpus_family,
+    source_family,
+    author,
+    work,
+    short_work,
+    source_file,
+    local_file,
+    macro_genre
+  ) %>%
+  summarise(
+    n_chapters = n(),
+    min_chapter = min(chapter),
+    max_chapter = max(chapter),
+    text = paste(text, collapse = " "),
+    chapter_map = paste(
+      paste0(chapter, "=", chapter_original, ": ", chapter_title),
+      collapse = " | "
+    ),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    text = normalize_doc_text(text),
+    doc_unit = "book",
+    n_words = str_count(text, "\\S+"),
+    doc_id = paste0(
+      "1830__",
+      make_safe_id(author),
+      "__",
+      make_safe_id(short_work),
+      "__BOOK"
+    ),
+    doc_id_original = doc_id,
+    book_digest = digest::digest(
+      paste(author, work, text, sep = "||"),
+      algo = "xxhash64"
+    )
+  ) %>%
+  select(
+    corpus_family,
+    source_family,
+    author,
+    work,
+    short_work,
+    source_file,
+    local_file,
+    doc_id,
+    doc_id_original,
+    macro_genre,
+    doc_unit,
+    n_chapters,
+    min_chapter,
+    max_chapter,
+    chapter_map,
+    book_digest,
+    n_words,
+    text
+  )
+
+corpus_1830_manual_book_docs %>%
+  select(author, work, n_chapters, n_words) %>%
+  arrange(author, work) %>%
+  print(n = 100)
+```
+
+## 10. Write outputs
+
+```{r write}
+readr::write_csv(corpus_1830_manual_chapter_docs, chapter_out_path)
+readr::write_csv(corpus_1830_manual_book_docs, book_out_path)
+
+cat("Wrote chapter CSV:\n")
+cat(chapter_out_path, "\n\n")
+
+cat("Wrote book CSV:\n")
+cat(book_out_path, "\n")
+```
+
+## 11. Integration
+
+Use the chapter CSV for stylometry unless you intentionally want book-level aggregation:
+
+```r
+corpus_1830_manual_chapter_docs <- readr::read_csv(
+  file.path(STYLO_ROOT, "data", "prepared", "corpus_1830_manual_chapter_docs.csv"),
+  show_col_types = FALSE
+)
+```

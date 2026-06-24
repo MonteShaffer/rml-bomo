@@ -1,0 +1,1262 @@
+---
+title: "42 - Mclust All Chapters with Book of Mormon, Book of Commandments, and 1835 Doctrine & Covenants"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+source("./00_source_project.R")
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+options(tibble.width = Inf, tibble.print_max = 300)
+```
+
+## 1. Purpose
+
+This notebook extends the KJV + Book of Mormon mclust experiment by adding the **Book of Commandments (1833)**.
+
+The analysis loads prepared KJV, BOM, and BOC chapter documents, builds an all-document similarity matrix, performs similarity-profile PCA, and runs model-based clustering with `G = 1:12`.
+
+## 2. Packages
+
+```{r packages}
+if(!requireNamespace("mclust", quietly = TRUE)) install.packages("mclust")
+
+library(dplyr)
+library(stringr)
+library(readr)
+library(tidyr)
+library(purrr)
+library(tibble)
+library(ggplot2)
+library(mclust)
+
+if(requireNamespace("ggrepel", quietly = TRUE)) library(ggrepel)
+```
+
+## 3. Parameters
+
+```{r parameters}
+set.seed(1234)
+
+kjv_books_to_include <- c(
+  "Isaiah", "Psalms", "Job", "Proverbs", "Song of Solomon", "Ecclesiastes",
+  "Jeremiah", "Ezekiel", "Hosea", "Amos",
+  "1 Samuel", "2 Samuel", "1 Kings", "2 Kings"
+)
+
+bom_translation_to_include <- NULL
+
+include_feature_classes <- c(
+  "function_words", "punctuation", "sentence",
+  "word_length", "lexical", "readability"
+)
+
+use_pos_features <- FALSE
+if(isTRUE(use_pos_features)) include_feature_classes <- c(include_feature_classes, "pos")
+
+pos_n <- c(3, 4, 5)
+k_neighbors <- 10
+preferred_n_pcs <- 6
+G_values <- 1:12
+mclust_model_names <- NULL
+```
+
+## 4. Load and normalize KJV chapters
+
+```{r kjv}
+kjv_chapter_path <- file.path(STYLO_ROOT, "data", "prepared", "kjv_chapter_docs.csv")
+if(!file.exists(kjv_chapter_path)) stop("Could not find: ", kjv_chapter_path)
+
+kjv_chapter_docs_raw <- readr::read_csv(kjv_chapter_path, show_col_types = FALSE)
+
+kjv_macro_genre_lookup <- tibble::tribble(
+  ~book,              ~macro_genre_control,
+  "1 Samuel",         "Narrative",
+  "2 Samuel",         "Narrative",
+  "1 Kings",          "Narrative",
+  "2 Kings",          "Narrative",
+  "Psalms",           "Poetic_Wisdom",
+  "Job",              "Poetic_Wisdom",
+  "Proverbs",         "Poetic_Wisdom",
+  "Song of Solomon",  "Poetic_Wisdom",
+  "Ecclesiastes",     "Poetic_Wisdom",
+  "Isaiah",           "Prophetic",
+  "Jeremiah",         "Prophetic",
+  "Ezekiel",          "Prophetic",
+  "Hosea",            "Prophetic",
+  "Amos",             "Prophetic"
+)
+
+kjv_chapter_docs <- kjv_chapter_docs_raw %>%
+  filter(book %in% kjv_books_to_include) %>%
+  left_join(kjv_macro_genre_lookup, by = "book") %>%
+  mutate(
+    corpus_id = coalesce(corpus_id, "KJV"),
+    translation = coalesce(translation, "KJV"),
+    corpus_family = "KJV",
+    source_family = "KJV",
+    macro_genre = coalesce(macro_genre_control, macro_genre),
+    mosiah_priority = NA_character_,
+    mosiah_priority_label = NA_character_,
+    chapter_date = NA_character_,
+    header = NA_character_,
+    chapter = as.integer(chapter),
+    doc_id_original = doc_id,
+    doc_id = paste0("KJV__", doc_id)
+  ) %>%
+  select(corpus_id, translation, corpus_family, source_family, doc_id, doc_id_original,
+         book, chapter, section, macro_genre, mosiah_priority, mosiah_priority_label,
+         chapter_date, header, n_verses, text)
+
+dplyr::count(
+  kjv_chapter_docs,
+  book,
+  macro_genre,
+  name = "n_chapters"
+) %>%
+dplyr::arrange(
+  macro_genre,
+  book
+)
+```
+
+## 5. Load and normalize BOM chapters
+
+```{r bom}
+bom_chapter_path <- file.path(STYLO_ROOT, "data", "prepared", "bom_chapter_docs.csv")
+if(!file.exists(bom_chapter_path)) stop("Could not find: ", bom_chapter_path)
+
+bom_chapter_docs_raw <- readr::read_csv(bom_chapter_path, show_col_types = FALSE)
+
+bom_chapter_docs <- bom_chapter_docs_raw %>%
+  mutate(translation = as.character(translation))
+
+if(!is.null(bom_translation_to_include)){
+  bom_chapter_docs <- bom_chapter_docs %>% filter(translation == bom_translation_to_include)
+}
+
+bom_chapter_docs <- bom_chapter_docs %>%
+  mutate(
+    corpus_id = "BOM",
+    corpus_family = "BOM",
+    source_family = paste0("BOM_", translation),
+    macro_genre = "BOM",
+    section = coalesce(section, mosiah_priority),
+    chapter_date = NA_character_,
+    header = NA_character_,
+    doc_id_original = doc_id,
+    doc_id = paste0("BOM_", translation, "__", doc_id),
+    chapter = as.integer(chapter)
+  ) %>%
+  select(corpus_id, translation, corpus_family, source_family, doc_id, doc_id_original,
+         book, chapter, section, macro_genre, mosiah_priority, mosiah_priority_label,
+         chapter_date, header, n_verses, text)
+
+bom_chapter_docs %>% dplyr::count(translation, book, mosiah_priority, name = "n_chapters") %>% arrange(translation, mosiah_priority, book)
+```
+
+## 6. Load and normalize Book of Commandments chapters
+
+```{r boc}
+boc_chapter_path <- file.path(STYLO_ROOT, "data", "prepared", "boc_1833_chapter_docs.csv")
+if(!file.exists(boc_chapter_path)) stop("Could not find: ", boc_chapter_path, "\nRun 41_prepare_BC_Wiki.Rmd first.")
+
+boc_chapter_docs_raw <- readr::read_csv(boc_chapter_path, show_col_types = FALSE)
+
+boc_chapter_docs <- boc_chapter_docs_raw %>%
+  mutate(
+    translation = as.character(translation),
+    corpus_id = "BOC",
+    corpus_family = "BOC",
+    source_family = "BOC_1833",
+    macro_genre = "Modern_Revelation",
+    mosiah_priority = NA_character_,
+    mosiah_priority_label = NA_character_,
+    section = coalesce(section, paste0("BOC_", chapter)),
+    chapter = as.integer(chapter),
+    chapter_date = as.character(chapter_date),
+    header = as.character(header),
+    doc_id_original = doc_id,
+    doc_id = if_else(str_detect(doc_id, "^BOC_1833__"), doc_id, paste0("BOC_1833__", doc_id))
+  ) %>%
+  select(corpus_id, translation, corpus_family, source_family, doc_id, doc_id_original,
+         book, chapter, section, macro_genre, mosiah_priority, mosiah_priority_label,
+         chapter_date, header, n_verses, text)
+
+boc_chapter_docs %>% dplyr::count(corpus_family, source_family, book, name = "n_chapters")
+boc_chapter_docs %>% summarise(n_chapters = n_distinct(chapter), first_chapter = min(chapter), last_chapter = max(chapter))
+```
+
+
+## Load and normalize DC 1835 chapters
+
+```{r load-dc1835-chapters, message=FALSE, warning=FALSE}
+dc1835_chapter_path <- file.path(
+  STYLO_ROOT,
+  "data",
+  "prepared",
+  "dc_1835_chapter_docs.csv"
+)
+
+if(!file.exists(dc1835_chapter_path)){
+  stop("Could not find: ", dc1835_chapter_path)
+}
+
+dc1835_chapter_docs_raw <- readr::read_csv(
+  dc1835_chapter_path,
+  show_col_types = FALSE
+)
+
+if ("section_label" %in% names(dc1835_chapter_docs_raw)) {
+
+  dc1835_chapter_docs_raw$section <-
+    as.character(dc1835_chapter_docs_raw$section_label)
+
+} else {
+
+  dc1835_chapter_docs_raw$section <-
+    paste0("DC1835_", dc1835_chapter_docs_raw$chapter)
+
+}
+
+
+
+dc1835_chapter_docs <- dc1835_chapter_docs_raw %>%
+  mutate(
+    translation = "1835",
+    corpus_id = "DC",
+    corpus_family = "DC",
+    source_family = "DC_1835",
+    macro_genre = "Modern_Revelation",
+    mosiah_priority = NA_character_,
+    mosiah_priority_label = NA_character_,
+    isaiah_section = NA_character_,
+    chapter = as.integer(chapter),
+    chapter_date = NA_character_,
+    header = chapter_title,
+    doc_id_original = doc_id,
+    doc_id = if_else(
+      str_detect(doc_id, "^DC_1835__"),
+      doc_id,
+      paste0("DC_1835__", doc_id)
+    ),
+    text = str_squish(text)
+  ) %>%
+  dplyr::select(
+    corpus_id,
+    translation,
+    corpus_family,
+    source_family,
+    doc_id,
+    doc_id_original,
+    book,
+    chapter,
+    section,
+    macro_genre,
+    mosiah_priority,
+    mosiah_priority_label,
+    isaiah_section,
+    chapter_date,
+    header,
+    n_verses,
+    text
+  )
+
+dc1835_chapter_docs %>%
+  dplyr::summarise(
+    n_docs = dplyr::n(),
+    total_words = sum(stringr::str_count(text, "\\S+"), na.rm = TRUE),
+    min_words = min(stringr::str_count(text, "\\S+"), na.rm = TRUE),
+    median_words = median(stringr::str_count(text, "\\S+"), na.rm = TRUE),
+    max_words = max(stringr::str_count(text, "\\S+"), na.rm = TRUE)
+  )
+
+dc1835_chapter_docs %>%
+  dplyr::select(doc_id, book, chapter, section, n_verses, header) %>%
+  dplyr::slice_head(n = 10)
+```
+
+## 7. Combined corpus
+
+```{r combined-corpus}
+
+analysis_docs <- bind_rows(
+  kjv_chapter_docs,
+  bom_chapter_docs,
+  boc_chapter_docs,
+  dc1835_chapter_docs
+) %>%
+  mutate(
+    text = as.character(text),
+    chapter = as.integer(chapter),
+    n_verses = as.integer(n_verses)
+  ) %>%
+  filter(!is.na(text), text != "") %>%
+  arrange(corpus_family, source_family, book, chapter)
+
+analysis_docs %>%
+  dplyr::count(corpus_family, source_family, name = "n_docs") %>%
+  arrange(corpus_family, source_family)
+
+
+
+
+analysis_meta <- analysis_docs %>%
+  dplyr::select(
+    corpus_id,
+    translation,
+    corpus_family,
+    source_family,
+    doc_id,
+    doc_id_original,
+    book,
+    chapter,
+    section,
+    macro_genre,
+    mosiah_priority,
+    mosiah_priority_label,
+    chapter_date,
+    header,
+    n_verses,
+    text
+  ) %>%
+  dplyr::mutate(
+    is_kjv = corpus_family == "KJV",
+    is_bom = corpus_family == "BOM",
+    is_boc = corpus_family == "BOC",
+    is_dc1835 = corpus_family == "DC",
+    is_isaiah = corpus_family == "KJV" & book == "Isaiah",
+    is_bom_mp1 = corpus_family == "BOM" & mosiah_priority == "MP-1",
+    is_bom_mp2 = corpus_family == "BOM" & mosiah_priority == "MP-2",
+    is_bom_mp3 = corpus_family == "BOM" & mosiah_priority == "MP-3"
+  )
+
+analysis_docs %>% dplyr::count(corpus_family, source_family, name = "n_docs")
+analysis_docs %>% dplyr::count(corpus_family, macro_genre, name = "n_docs")
+analysis_docs %>% dplyr::count(corpus_family, book, name = "n_docs") %>% arrange(corpus_family, book)
+nrow(analysis_docs)
+```
+
+## 8. Configure stylometry ensemble
+
+```{r config} 
+config_all_boc <- default_config(include = include_feature_classes)
+config_all_boc$pos_n <- pos_n
+
+if(!isTRUE(use_pos_features)){
+  config_all_boc$weights <- c(
+    function_words = 0.500,
+    punctuation    = 0.075,
+    sentence       = 0.175,
+    word_length    = 0.125,
+    lexical        = 0.075,
+    readability    = 0.050
+  )
+} else {
+  config_all_boc$weights <- c(
+    function_words = 0.300,
+    pos            = 0.300,
+    punctuation    = 0.050,
+    sentence       = 0.150,
+    word_length    = 0.100,
+    lexical        = 0.050,
+    readability    = 0.050
+  )
+}
+
+config_all_boc$use_tfidf_function_words <- TRUE
+if(exists("ud_model")) config_all_boc$pos_model <- ud_model
+
+config_all_boc$include
+config_all_boc$weights
+```
+
+## 9. Feature count helpers
+
+```{r feature-count-helpers} 
+count_features <- function(x){
+  if(is.matrix(x) || is.data.frame(x)) return(ncol(x))
+  if(is.list(x)) return(sum(purrr::map_int(x, count_features)))
+  0L
+}
+
+show_feature_counts <- function(feature_sets){
+  out <- tibble(
+    feature_class = names(feature_sets),
+    n_features = purrr::map_int(feature_sets, count_features)
+  ) %>%
+    mutate(
+      pct_features_raw = n_features / sum(n_features),
+      pct_features = scales::percent(pct_features_raw, accuracy = 0.1)
+    ) %>%
+    arrange(desc(n_features))
+
+  bind_rows(
+    out,
+    tibble(feature_class = "TOTAL", n_features = sum(out$n_features), pct_features_raw = 1, pct_features = "100.0%")
+  )
+}
+
+show_feature_counts_recursive <- function(x, prefix = ""){
+  if(is.matrix(x) || is.data.frame(x)) return(tibble(feature = prefix, n_features = ncol(x)))
+  if(is.list(x)){
+    return(purrr::imap_dfr(x, ~show_feature_counts_recursive(.x, if(prefix == "") .y else paste0(prefix, "::", .y))))
+  }
+  tibble(feature = prefix, n_features = 0L)
+}
+```
+
+## 10. Run ensemble and build similarity matrix
+
+```{r run-ensemble} 
+result_all_boc_dc <- run_stylometry_ensemble(
+  source_docs = analysis_docs,
+  target_docs = analysis_docs,
+  config = config_all_boc,
+  k_neighbors = k_neighbors,
+  use_cache = TRUE
+)
+
+result_all_boc_dc$weights_used
+
+feature_counts <- show_feature_counts(result_all_boc_dc$feature_sets)
+feature_counts
+
+feature_counts_recursive <- show_feature_counts_recursive(result_all_boc_dc$feature_sets)
+feature_counts_recursive
+```
+
+```{r similarity-matrix}
+S_all <- as.matrix(result_all_boc_dc$overall_similarity)
+S_all[is.na(S_all)] <- 0
+S_all[is.nan(S_all)] <- 0
+S_all[is.infinite(S_all)] <- 0
+
+S_all <- S_all[analysis_meta$doc_id, analysis_meta$doc_id, drop = FALSE]
+
+dim(S_all)
+S_all[1:5, 1:5]
+
+s_test <- S_all[lower.tri(S_all)]
+hist(s_test)
+
+
+summary(s_test)
+library(moments)
+moments::skewness(s_test)
+moments::kurtosis(s_test)
+
+```
+
+## 11. PCA helper and PCA
+
+```{r pca-helper} 
+processPCA <- function(X, metadata = NULL, center = TRUE, scale. = TRUE){
+  X <- as.matrix(X)
+  X[is.na(X)] <- 0
+  X[is.nan(X)] <- 0
+  X[is.infinite(X)] <- 0
+
+  feature_var <- apply(X, 2, stats::var, na.rm = TRUE)
+  keep <- is.finite(feature_var) & feature_var > 0
+  X <- X[, keep, drop = FALSE]
+
+  pca <- stats::prcomp(X, center = center, scale. = scale.)
+  eig <- pca$sdev^2
+
+  variance <- tibble(
+    pc = paste0("PC", seq_along(eig)),
+    dimension = seq_along(eig),
+    eigenvalue = eig,
+    prop_variance = eig / sum(eig),
+    pct_variance = 100 * eig / sum(eig),
+    cumulative_prop_variance = cumsum(eig / sum(eig)),
+    cumulative_pct_variance = 100 * cumsum(eig / sum(eig))
+  )
+
+  scores <- as.data.frame(pca$x) %>% rownames_to_column("doc_id")
+  if(!is.null(metadata)) scores <- scores %>% left_join(metadata, by = "doc_id")
+
+  loadings <- as.data.frame(pca$rotation) %>% rownames_to_column("feature")
+
+  list(X = X, pca = pca, scores = scores, loadings = loadings, variance = variance)
+}
+```
+
+```{r pca} 
+sim_pca <- processPCA(S_all, metadata = analysis_meta, center = TRUE, scale. = TRUE)
+sim_pca$variance %>% slice_head(n = 20)
+```
+
+```{r scree-plot} 
+sim_pca$variance %>%
+  slice_head(n = 20) %>%
+  ggplot(aes(x = dimension, y = pct_variance)) +
+  geom_col() +
+  geom_line(aes(y = cumulative_pct_variance), linewidth = 0.8) +
+  geom_point(aes(y = cumulative_pct_variance), size = 2) +
+  scale_x_continuous(breaks = 1:20) +
+  labs(
+    title = "KJV + All + BOM + BOC + DC1835 similarity-profile PCA variance",
+    subtitle = "Bars show individual PC variance; line shows cumulative variance.",
+    x = "Principal component",
+    y = "Percent variance"
+  ) +
+  theme_minimal()
+```
+
+## 12. Mclust helpers
+
+```{r mclust-helpers} 
+run_mclust_on_pcs <- function(pca_obj, metadata, n_pcs = 6, G = 1:12, modelNames = NULL){
+  pc_cols <- paste0("PC", seq_len(n_pcs))
+
+  X <- pca_obj$scores %>% select(all_of(pc_cols)) %>% as.matrix()
+  rownames(X) <- pca_obj$scores$doc_id
+
+  fit <- mclust::Mclust(X, G = G, modelNames = modelNames)
+
+  classified <- tibble(
+    doc_id = rownames(X),
+    mclust_cluster = fit$classification,
+    uncertainty = fit$uncertainty
+  ) %>%
+    left_join(metadata, by = "doc_id") %>%
+    arrange(mclust_cluster, corpus_family, book, chapter)
+
+  list(fit = fit, classified = classified, n_pcs = n_pcs, pc_cols = pc_cols)
+}
+
+summarize_mclust_fit <- function(mc_obj){
+  fit <- mc_obj$fit
+  tibble(
+    n_pcs = mc_obj$n_pcs,
+    selected_G = fit$G,
+    selected_model = fit$modelName,
+    bic = fit$bic,
+    loglik = fit$loglik,
+    df = fit$df,
+    n = fit$n,
+    mean_uncertainty = mean(fit$uncertainty, na.rm = TRUE),
+    max_uncertainty = max(fit$uncertainty, na.rm = TRUE)
+  )
+}
+
+safe_ari <- function(a, b){
+  keep <- !is.na(a) & !is.na(b)
+  if(sum(keep) < 2) return(NA_real_)
+  mclust::adjustedRandIndex(a[keep], b[keep])
+}
+```
+
+## 13. Fit G = 1:12 over increasing PC counts
+
+```{r fit-over-pcs} 
+max_pcs_available <- sum(grepl("^PC", names(sim_pca$scores)))
+n_pcs_grid <- seq_len(min(10, max_pcs_available))
+
+mclust_by_pcs <- purrr::map(
+  n_pcs_grid,
+  ~run_mclust_on_pcs(
+    sim_pca,
+    metadata = analysis_meta,
+    n_pcs = .x,
+    G = G_values,
+    modelNames = mclust_model_names
+  )
+)
+
+mclust_fit_summary <- purrr::map_dfr(mclust_by_pcs, summarize_mclust_fit)
+mclust_fit_summary
+```
+
+```{r selected-g-plot} 
+mclust_fit_summary %>%
+  ggplot(aes(x = n_pcs, y = selected_G)) +
+  geom_line() +
+  geom_point(size = 2.5) +
+  scale_x_continuous(breaks = n_pcs_grid) +
+  scale_y_continuous(breaks = G_values) +
+  labs(
+    title = "Selected G by number of PCs",
+    subtitle = "KJV + All + BOM + BOC + DC1835 corpus; mclust tested G = 1:12.",
+    x = "Number of PCs used",
+    y = "Selected G"
+  ) +
+  theme_minimal()
+```
+
+## 14. Preferred model
+
+```{r preferred-model}
+preferred_n_pcs <- min(preferred_n_pcs, max_pcs_available) 
+
+mc_all_boc_dc1835 <- run_mclust_on_pcs(
+  sim_pca,
+  metadata = analysis_meta,
+  n_pcs = preferred_n_pcs,
+  G = G_values,
+  modelNames = mclust_model_names
+)
+
+summary(mc_all_boc_dc1835$fit)
+summarize_mclust_fit(mc_all_boc_dc1835)
+
+classified <- mc_all_boc_dc1835$classified
+classified
+```
+
+## 15. BIC values for preferred model
+
+```{r bic-preferred} 
+bic_matrix <- mc_all_boc_dc1835$fit$BIC
+
+bic_df <- as.data.frame(
+  as.table(bic_matrix)
+) %>%
+
+dplyr::rename(
+
+  G     = Var1,
+  model = Var2,
+  BIC   = Freq
+
+) %>%
+
+dplyr::mutate(
+
+  G = as.integer(as.character(G))
+
+) %>%
+
+dplyr::filter(
+
+  !is.na(BIC)
+
+) %>%
+
+dplyr::arrange(
+
+  G,
+  dplyr::desc(BIC)
+
+)
+
+bic_df
+
+
+best_bic_by_G <- bic_df %>%
+
+dplyr::group_by(
+  G
+) %>%
+
+dplyr::slice_max(
+
+  order_by = BIC,
+
+  n = 1,
+
+  with_ties = FALSE
+
+) %>%
+
+dplyr::ungroup()
+
+best_bic_by_G
+
+```
+
+```{r bic-plot} 
+best_bic_by_G %>%
+  ggplot(aes(x = G, y = BIC)) +
+  geom_line() +
+  geom_point(size = 2.5) +
+  scale_x_continuous(breaks = G_values) +
+  labs(title = paste0("Best BIC by G, using first ", preferred_n_pcs, " PCs"), x = "G", y = "BIC") +
+  theme_minimal()
+```
+
+## 16. Cluster composition
+
+```{r cluster-corpus} 
+cluster_corpus_table <- classified %>%
+  dplyr::count(mclust_cluster, corpus_family, name = "n_chapters") %>%
+  group_by(mclust_cluster) %>%
+  mutate(pct_cluster = n_chapters / sum(n_chapters)) %>%
+  ungroup() %>%
+  arrange(mclust_cluster, desc(n_chapters))
+
+cluster_corpus_table
+```
+
+```{r cluster-corpus-plot} 
+cluster_corpus_table %>%
+  ggplot(aes(x = factor(mclust_cluster), y = pct_cluster, fill = corpus_family)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(title = "Cluster composition by corpus", x = "Mclust cluster", y = "Cluster share", fill = "Corpus") +
+  theme_minimal()
+```
+
+```{r cluster-genre} 
+cluster_genre_table <- classified %>%
+  dplyr::count(mclust_cluster, macro_genre, name = "n_chapters") %>%
+  group_by(mclust_cluster) %>%
+  mutate(pct_cluster = n_chapters / sum(n_chapters)) %>%
+  ungroup() %>%
+  arrange(mclust_cluster, desc(n_chapters))
+
+cluster_genre_table
+```
+
+```{r cluster-book} 
+cluster_book_table <- classified %>%
+  dplyr::count(mclust_cluster, corpus_family, book, macro_genre, mosiah_priority, name = "n_chapters") %>%
+  group_by(mclust_cluster) %>%
+  mutate(pct_cluster = n_chapters / sum(n_chapters)) %>%
+  ungroup() %>%
+  arrange(mclust_cluster, desc(n_chapters))
+
+cluster_book_table
+```
+
+```{r cluster-book-plot, fig.height=11} 
+cluster_book_table %>%
+  group_by(mclust_cluster) %>%
+  slice_max(order_by = n_chapters, n = 12, with_ties = FALSE) %>%
+  ungroup() %>%
+  mutate(book_label = paste0(corpus_family, ": ", book)) %>%
+  ggplot(aes(x = reorder(book_label, n_chapters), y = n_chapters, fill = corpus_family)) +
+  geom_col() +
+  coord_flip() +
+  facet_wrap(~ mclust_cluster, scales = "free_y") +
+  labs(title = "Top books represented in each cluster", subtitle = "Top 12 books per cluster.", x = "Book", y = "Chapter count", fill = "Corpus") +
+  theme_minimal()
+```
+
+
+```{r cluster by corpus}
+
+cluster_corpus <- classified %>%
+  dplyr::count(
+    mclust_cluster,
+    corpus_family,
+    name = "n_docs"
+  ) %>%
+  group_by(mclust_cluster) %>%
+  mutate(
+    pct_cluster = n_docs / sum(n_docs)
+  ) %>%
+  ungroup()
+
+ggplot(
+  cluster_corpus,
+  aes(
+    x = factor(mclust_cluster),
+    y = n_docs,
+    fill = corpus_family
+  )
+) +
+  geom_col(position = "stack") +
+  labs(
+    title = "Corpus representation in each Mclust cluster",
+    subtitle = "KJV, BOM, BOC, and DC 1835",
+    x = "Cluster",
+    y = "Chapter count",
+    fill = "Corpus"
+  ) +
+  theme_bw()
+
+ggplot(
+  cluster_corpus,
+  aes(
+    x = factor(mclust_cluster),
+    y = pct_cluster,
+    fill = corpus_family
+  )
+) +
+  geom_col(position = "fill") +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    title = "Corpus composition of each Mclust cluster",
+    subtitle = "Each bar sums to 100%",
+    x = "Cluster",
+    y = "Percent of cluster",
+    fill = "Corpus"
+  ) +
+  theme_bw()
+
+
+ggplot(
+  cluster_corpus,
+  aes(
+    x = reorder(corpus_family, n_docs),
+    y = n_docs,
+    fill = corpus_family
+  )
+) +
+  geom_col() +
+  coord_flip() +
+  facet_wrap(~mclust_cluster) +
+  labs(
+    title = "Corpus representation in each cluster",
+    x = "Corpus",
+    y = "Chapter count"
+  ) +
+  theme_bw() +
+  theme(
+    legend.position = "none"
+  )
+
+
+
+```
+
+```{r more} 
+classified %>%
+dplyr::count(
+  mclust_cluster,
+  corpus_family,
+  book,
+  sort=TRUE
+)
+
+classified %>%
+filter(
+  corpus_family=="BOC"
+) %>%
+dplyr::count(
+  mclust_cluster,
+  chapter_date,
+  sort=TRUE
+)
+
+
+classified %>%
+filter(corpus_family=="BOC") %>%
+dplyr::count(
+  mclust_cluster,
+  chapter_date,
+  sort=TRUE
+)
+
+
+
+
+classified %>%
+  dplyr::filter(corpus_family == "BOC") %>%
+  dplyr::mutate(
+    n_words = stringr::str_count(.data$text, "\\S+")
+  ) %>%
+  dplyr::group_by(mclust_cluster) %>%
+  dplyr::summarise(
+    n = dplyr::n(),
+    mean_words = mean(n_words),
+    median_words = median(n_words),
+    min_words = min(n_words),
+    max_words = max(n_words),
+    .groups = "drop"
+  )
+
+
+classified %>%
+  dplyr::filter(
+    corpus_family == "BOC",
+    mclust_cluster == 4
+  ) %>%
+  dplyr::mutate(
+    n_words = stringr::str_count(text, "\\S+")
+  ) %>%
+  dplyr::select(
+    chapter,
+    chapter_date,
+    mclust_cluster,
+    n_verses,
+    n_words,
+    uncertainty,
+    header
+  ) %>%
+  dplyr::arrange(chapter)
+
+
+doc_id <- "BOC_1833__Book_of_Commandments_9"
+
+tibble::tibble(
+  neighbor = colnames(S_all),
+  cosine_similarity = as.numeric(S_all[doc_id, ])
+) %>%
+  dplyr::filter(
+    neighbor != doc_id
+  ) %>%
+  dplyr::arrange(
+    dplyr::desc(cosine_similarity)
+  ) %>%
+  dplyr::slice_head(n = 20) %>%
+  dplyr::left_join(
+
+    analysis_meta %>%
+
+      dplyr::select(
+        doc_id,
+        corpus_family,
+        book,
+        chapter,
+        macro_genre
+      ),
+
+    by = c(
+      "neighbor" = "doc_id"
+    )
+
+  )
+
+
+doc_id <- "BOC_1833__Book_of_Commandments_24"
+
+tibble::tibble(
+  neighbor = colnames(S_all),
+  cosine_similarity = as.numeric(S_all[doc_id, ])
+) %>%
+  dplyr::filter(
+    neighbor != doc_id
+  ) %>%
+  dplyr::arrange(
+    dplyr::desc(cosine_similarity)
+  ) %>%
+  dplyr::slice_head(n = 20) %>%
+  dplyr::left_join(
+
+    analysis_meta %>%
+
+      dplyr::select(
+        doc_id,
+        corpus_family,
+        book,
+        chapter,
+        macro_genre
+      ),
+
+    by = c(
+      "neighbor" = "doc_id"
+    )
+
+  )
+
+
+```
+
+
+## 17. BOC cluster distribution
+
+```{r boc-cluster-table} 
+boc_cluster_table <- classified %>%
+  filter(corpus_family == "BOC") %>%
+  dplyr::count(mclust_cluster, name = "n_chapters") %>%
+  mutate(pct_boc = n_chapters / sum(n_chapters)) %>%
+  arrange(mclust_cluster)
+
+boc_cluster_table
+```
+
+```{r boc-cluster-plot} 
+boc_cluster_table %>%
+  ggplot(aes(x = factor(mclust_cluster), y = pct_boc, fill = factor(mclust_cluster))) +
+  geom_col(show.legend = FALSE) +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(title = "BOC 1833 chapters across clusters", x = "Mclust cluster", y = "BOC share") +
+  theme_minimal()
+```
+
+```{r boc-chapters-by-cluster} 
+classified %>%
+  filter(corpus_family == "BOC") %>%
+  select(mclust_cluster, chapter, chapter_date, n_verses, uncertainty, header) %>%
+  arrange(mclust_cluster, chapter)
+```
+
+## 18. BOM Mosiah Priority distribution
+
+```{r bom-mp-table} 
+bom_mp_cluster_table <- classified %>%
+  filter(corpus_family == "BOM") %>%
+  dplyr::count(mosiah_priority, mosiah_priority_label, mclust_cluster, name = "n_chapters") %>%
+  group_by(mosiah_priority, mosiah_priority_label) %>%
+  mutate(pct_mp = n_chapters / sum(n_chapters)) %>%
+  ungroup() %>%
+  arrange(mosiah_priority, mclust_cluster)
+
+bom_mp_cluster_table
+```
+
+```{r bom-mp-plot} 
+bom_mp_cluster_table %>%
+  ggplot(aes(x = mosiah_priority, y = pct_mp, fill = factor(mclust_cluster))) +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(title = "BOM Mosiah Priority groups across clusters", x = "Mosiah Priority group", y = "Group share", fill = "Mclust cluster") +
+  theme_minimal()
+```
+
+## 19. Isaiah distribution across clusters
+
+```{r isaiah-cluster-table} 
+isaiah_cluster_table <- classified %>%
+  filter(is_isaiah) %>%
+  dplyr::count(section, mclust_cluster, name = "n_chapters") %>%
+  group_by(section) %>%
+  mutate(pct_section = n_chapters / sum(n_chapters)) %>%
+  ungroup() %>%
+  arrange(section, mclust_cluster)
+
+isaiah_cluster_table
+```
+
+```{r isaiah-cluster-plot} 
+isaiah_cluster_table %>%
+  ggplot(aes(x = section, y = pct_section, fill = factor(mclust_cluster))) +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(title = "Isaiah chapters across KJV+BOM+BOC clusters", subtitle = "Isaiah is treated as ordinary chapter documents; sections are diagnostic only.", x = "Isaiah section", y = "Section share", fill = "Mclust cluster") +
+  theme_minimal()
+```
+
+## 20. PCA plotting helper and plots
+
+```{r pca-plot-helper} 
+plotPCABoth <- function(scores, variance, x = 1, y = 2, color_var = "cluster", facet_var = "corpus_family", point_size = 2.5, alpha = 0.7, title = "KJV + All + BOM + BOC + DC1835 similarity-profile PCA", subtitle = "Panels separate corpora while preserving the same PCA space."){
+  x_col <- paste0("PC", x)
+  y_col <- paste0("PC", y)
+
+  stopifnot(x_col %in% names(scores), y_col %in% names(scores), color_var %in% names(scores), facet_var %in% names(scores))
+
+  x_lab <- paste0(x_col, " (", round(variance$pct_variance[variance$dimension == x], 2), "%)")
+  y_lab <- paste0(y_col, " (", round(variance$pct_variance[variance$dimension == y], 2), "%)")
+
+  ggplot(scores, aes(x = .data[[x_col]], y = .data[[y_col]], color = .data[[color_var]])) +
+    geom_hline(yintercept = 0, color = "grey70", linewidth = 0.3) +
+    geom_vline(xintercept = 0, color = "grey70", linewidth = 0.3) +
+    geom_point(alpha = alpha, size = point_size) +
+    facet_wrap(stats::as.formula(paste("~", facet_var))) +
+    labs(title = title, subtitle = subtitle, x = x_lab, y = y_lab, color = str_to_title(str_replace_all(color_var, "_", " "))) +
+    theme_minimal()
+}
+```
+
+```{r pc-plots} 
+scores_clustered <- sim_pca$scores %>%
+  left_join(classified %>% select(doc_id, mclust_cluster, uncertainty), by = "doc_id") %>%
+  mutate(cluster = factor(mclust_cluster))
+
+plotPCABoth(scores_clustered, sim_pca$variance, x = 1, y = 2, color_var = "cluster", facet_var = "corpus_family")
+plotPCABoth(scores_clustered, sim_pca$variance, x = 2, y = 3, color_var = "cluster", facet_var = "corpus_family")
+plotPCABoth(scores_clustered, sim_pca$variance, x = 3, y = 4, color_var = "cluster", facet_var = "corpus_family")
+```
+
+```{r pc-bom-mp} 
+plotPCABoth(
+  scores_clustered %>% filter(corpus_family == "BOM"),
+  sim_pca$variance,
+  x = 1,
+  y = 2,
+  color_var = "mosiah_priority",
+  facet_var = "corpus_family",
+  title = "BOM chapters in KJV+BOM+BOC PCA space",
+  subtitle = "Colored by Mosiah Priority group."
+)
+```
+
+```{r pc-boc} 
+plotPCABoth(
+  scores_clustered %>% filter(corpus_family == "BOC"),
+  sim_pca$variance,
+  x = 1,
+  y = 2,
+  color_var = "cluster",
+  facet_var = "corpus_family",
+  title = "BOC 1833 chapters in KJV+BOM+BOC PCA space",
+  subtitle = "Colored by mclust cluster."
+)
+```
+
+## 21. Book means for PCA interpretation
+
+```{r book-means} 
+book_pc_means <- scores_clustered %>%
+  group_by(corpus_family, book) %>%
+  summarise(
+    mean_PC1 = mean(PC1, na.rm = TRUE),
+    mean_PC2 = mean(PC2, na.rm = TRUE),
+    mean_PC3 = mean(PC3, na.rm = TRUE),
+    n = n(),
+    .groups = "drop"
+  )
+
+book_pc_means %>% arrange(desc(mean_PC1))
+book_pc_means %>% arrange(mean_PC1)
+book_pc_means %>% arrange(desc(mean_PC2))
+book_pc_means %>% arrange(mean_PC2)
+book_pc_means %>% arrange(desc(mean_PC3))
+book_pc_means %>% arrange(mean_PC3)
+```
+
+## 22. ARI metrics
+
+```{r ari-metrics} 
+ari_metrics <- tibble(
+  comparison = c(
+    "cluster_vs_corpus_family",
+    "cluster_vs_macro_genre",
+    "cluster_vs_book",
+    "cluster_vs_source_family",
+    "cluster_vs_bom_mosiah_priority",
+    "cluster_vs_isaiah_section",
+    "cluster_vs_boc_chapter_date"
+  ),
+  adjusted_rand_index = c(
+    safe_ari(classified$corpus_family, classified$mclust_cluster),
+    safe_ari(classified$macro_genre, classified$mclust_cluster),
+    safe_ari(paste(classified$corpus_family, classified$book, sep = "__"), classified$mclust_cluster),
+    safe_ari(classified$source_family, classified$mclust_cluster),
+    safe_ari(classified %>% filter(corpus_family == "BOM") %>% pull(mosiah_priority), classified %>% filter(corpus_family == "BOM") %>% pull(mclust_cluster)),
+    safe_ari(classified %>% filter(is_isaiah) %>% pull(section), classified %>% filter(is_isaiah) %>% pull(mclust_cluster)),
+    safe_ari(classified %>% filter(corpus_family == "BOC") %>% pull(chapter_date), classified %>% filter(corpus_family == "BOC") %>% pull(mclust_cluster))
+  )
+)
+
+ari_metrics
+```
+
+```{r ari-plot} 
+ari_metrics %>%
+  ggplot(aes(x = reorder(comparison, adjusted_rand_index), y = adjusted_rand_index)) +
+  geom_col() +
+  coord_flip() +
+  labs(title = "Adjusted Rand Index diagnostics", subtitle = "Which known labels best align with the latent clusters?", x = "Comparison", y = "Adjusted Rand Index") +
+  theme_minimal()
+```
+
+## 23. Nearest-neighbor helpers and BOC neighbors
+
+```{r nearest-neighbor-helpers} 
+get_neighbors <- function(doc_id, S, k = 20){
+  sims <- S[doc_id, ]
+
+  tb <- tibble(neighbor = names(sims), score = as.numeric(sims)) %>%
+    filter(neighbor != doc_id) %>%
+    arrange(desc(score)) %>%
+    slice_head(n = k)
+
+  out <- list()
+  for(i in seq_len(nrow(tb))){
+    out[[paste0("neighbor", i)]] <- tb$neighbor[i]
+    out[[paste0("neighbor", i, "_score")]] <- tb$score[i]
+  }
+  as_tibble(out)
+}
+
+nearest_neighbors_long <- function(doc_ids, S, k = 20){
+  purrr::map_dfr(doc_ids, function(id){
+    sims <- S[id, ]
+    tibble(doc_id = id, neighbor = names(sims), cosine_similarity = as.numeric(sims)) %>%
+      filter(neighbor != id) %>%
+      arrange(desc(cosine_similarity)) %>%
+      slice_head(n = k) %>%
+      mutate(rank = row_number())
+  })
+}
+```
+
+```{r boc-nearest-neighbors} 
+boc_ids <- analysis_meta %>% filter(corpus_family == "BOC") %>% pull(doc_id)
+
+boc_neighbors_long <- nearest_neighbors_long(boc_ids, S_all, k = 20)
+
+boc_neighbors_annotated <- boc_neighbors_long %>%
+  left_join(
+    analysis_meta %>% select(neighbor_doc_id = doc_id, neighbor_corpus = corpus_family, neighbor_book = book, neighbor_chapter = chapter, neighbor_section = section, neighbor_macro_genre = macro_genre),
+    by = c("neighbor" = "neighbor_doc_id")
+  ) %>%
+  arrange(doc_id, rank)
+
+boc_neighbors_annotated %>% slice_head(n = 200)
+```
+
+```{r boc-nearest-summary} 
+boc_neighbors_annotated %>%
+  filter(rank <= 10) %>%
+  dplyr::count(neighbor_corpus, neighbor_macro_genre, name = "n_top10_neighbors") %>%
+  arrange(desc(n_top10_neighbors))
+```
+
+## 24. Uncertainty diagnostics
+
+```{r uncertainty} 
+classified %>%
+  group_by(corpus_family, macro_genre) %>%
+  summarise(
+    n = n(),
+    mean_uncertainty = mean(uncertainty, na.rm = TRUE),
+    median_uncertainty = median(uncertainty, na.rm = TRUE),
+    max_uncertainty = max(uncertainty, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(mean_uncertainty))
+```
+
+```{r uncertainty-plot} 
+classified %>%
+  ggplot(aes(x = corpus_family, y = uncertainty, fill = corpus_family)) +
+  geom_boxplot(alpha = 0.75, show.legend = FALSE) +
+  labs(title = "Mclust classification uncertainty by corpus", x = "Corpus", y = "Uncertainty") +
+  theme_minimal()
+```
+
+## 25. Export outputs
+
+```{r export} 
+out_dir <- file.path(STYLO_ROOT, "output", "mclust_all_bom_boc")
+dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+
+write_csv(analysis_meta, file.path(out_dir, "analysis_meta.csv"))
+write_csv(sim_pca$variance, file.path(out_dir, "similarity_pca_variance.csv"))
+write_csv(sim_pca$scores, file.path(out_dir, "similarity_pca_scores.csv"))
+write_csv(classified, file.path(out_dir, "mclust_classified.csv"))
+write_csv(mclust_fit_summary, file.path(out_dir, "mclust_fit_summary_by_pcs.csv"))
+write_csv(bic_df, file.path(out_dir, "mclust_bic_preferred_model.csv"))
+write_csv(best_bic_by_G, file.path(out_dir, "mclust_best_bic_by_G.csv"))
+write_csv(cluster_corpus_table, file.path(out_dir, "cluster_corpus_table.csv"))
+write_csv(cluster_genre_table, file.path(out_dir, "cluster_genre_table.csv"))
+write_csv(cluster_book_table, file.path(out_dir, "cluster_book_table.csv"))
+write_csv(boc_cluster_table, file.path(out_dir, "boc_cluster_table.csv"))
+write_csv(bom_mp_cluster_table, file.path(out_dir, "bom_mosiah_priority_cluster_table.csv"))
+write_csv(isaiah_cluster_table, file.path(out_dir, "isaiah_cluster_table.csv"))
+write_csv(ari_metrics, file.path(out_dir, "ari_metrics.csv"))
+write_csv(feature_counts, file.path(out_dir, "feature_counts.csv"))
+write_csv(feature_counts_recursive, file.path(out_dir, "feature_counts_recursive.csv"))
+write_csv(book_pc_means, file.path(out_dir, "book_pc_means.csv"))
+write_csv(boc_neighbors_long, file.path(out_dir, "boc_nearest_neighbors_long.csv"))
+write_csv(boc_neighbors_annotated, file.path(out_dir, "boc_nearest_neighbors_annotated.csv"))
+
+cat("Exported outputs to:\n")
+cat(out_dir, "\n")
+```
+
+## 26. Interpretation notes
+
+```{r interpretation-notes} 
+interpretation_notes <- tibble::tribble(
+  ~question, ~what_to_check,
+  "Does BOC form its own cluster?", "Inspect boc_cluster_table and cluster_corpus_table.",
+  "Does BOC align with BOM distinctive clusters?", "Inspect BOC rows in cluster_book_table and BOC nearest neighbors.",
+  "Does BOC align with Isaiah / prophetic KJV?", "Inspect nearest-neighbor tables and PC3 positions.",
+  "Does adding BOC disturb the KJV+BOM six-cluster solution?", "Compare selected G and cluster composition to 31_Mclust_all_BOM.Rmd.",
+  "Does Isaiah still fail to split into traditional sections?", "Inspect isaiah_cluster_table and cluster_vs_isaiah_section ARI.",
+  "Does BOC date correspond to cluster structure?", "Inspect cluster_vs_boc_chapter_date ARI and BOC chapter-date means."
+)
+
+interpretation_notes
+```
+
+
+

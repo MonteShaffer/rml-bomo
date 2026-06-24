@@ -1,0 +1,772 @@
+---
+title: "61 - Prepare 1830 Corpus: Washington Irving"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+
+options(
+  tibble.width = Inf,
+  tibble.print_max = 300
+)
+
+library(dplyr)
+library(stringr)
+library(readr)
+library(purrr)
+library(tibble)
+library(tidyr)
+```
+
+## 1. Purpose
+
+Prepare Washington Irving chapter/essay-level documents for the 1830 secular control corpus.
+
+Yes: this notebook uses **Project Gutenberg** for the raw sources.
+
+Recommended Irving corpus:
+
+```text
+The Sketch Book of Geoffrey Crayon, Gent.   1819-1820
+Bracebridge Hall                            1822
+Tales of a Traveller                        1824
+```
+
+These are all pre-1830 and give a strong American prose control set.
+
+Outputs:
+
+```text
+data/prepared/corpus_1830_irving_chapter_docs.csv
+data/prepared/corpus_1830_irving_manifest.csv
+```
+
+Metadata convention:
+
+```text
+author = "Washington Irving"
+corpus_family = "1830"
+source_family = "1830_Secular"
+macro_genre = "American_Prose"
+doc_unit = "chapter"
+```
+
+## 2. Directories
+
+```{r dirs}
+raw_1830_dir <- file.path(STYLO_ROOT, "data", "raw", "corpus_1830")
+raw_irving_dir <- file.path(raw_1830_dir, "irving")
+manual_irving_dir <- file.path(raw_irving_dir, "manual")
+prepared_dir <- file.path(STYLO_ROOT, "data", "prepared")
+diagnostic_dir <- file.path(raw_irving_dir, "diagnostics")
+
+for(d in c(raw_1830_dir, raw_irving_dir, manual_irving_dir, prepared_dir, diagnostic_dir)){
+  dir.create(d, recursive = TRUE, showWarnings = FALSE)
+}
+
+irving_out_path <- file.path(prepared_dir, "corpus_1830_irving_chapter_docs.csv")
+irving_manifest_out_path <- file.path(prepared_dir, "corpus_1830_irving_manifest.csv")
+download_diag_path <- file.path(diagnostic_dir, "irving_download_results.csv")
+parse_diag_path <- file.path(diagnostic_dir, "irving_parse_diagnostics.csv")
+```
+
+## 3. Manifest
+
+Gutenberg IDs may vary by edition. These IDs are the common Project Gutenberg plain-text targets:
+
+```text
+2048   The Sketch Book
+13515  Bracebridge Hall
+13514  Tales of a Traveller
+```
+
+If a download fails, update the `gutenberg_id` value and rerun.
+
+```{r manifest}
+irving_manifest <- tibble::tribble(
+  ~author,               ~work,                                      ~short_work,          ~year, ~gutenberg_id, ~expected_genre,
+  "Washington Irving",   "The Sketch Book of Geoffrey Crayon, Gent.", "Sketch_Book",        1820,  2048,          "American_Prose",
+  "Washington Irving",   "Bracebridge Hall",                         "Bracebridge_Hall",   1822,  13515,         "American_Prose",
+  "Washington Irving",   "Tales of a Traveller",                     "Tales_Traveller",    1824,  13514,         "American_Prose"
+)
+
+irving_manifest
+```
+
+## 4. Download helpers
+
+```{r download-helpers}
+gutenberg_urls <- function(id){
+  c(
+    paste0("https://www.gutenberg.org/files/", id, "/", id, "-0.txt"),
+    paste0("https://www.gutenberg.org/files/", id, "/", id, ".txt"),
+    paste0("https://www.gutenberg.org/cache/epub/", id, "/pg", id, ".txt")
+  )
+}
+
+raw_path_for_work <- function(short_work){
+  file.path(raw_irving_dir, paste0(short_work, ".txt"))
+}
+
+manual_path_for_work <- function(short_work){
+  file.path(manual_irving_dir, paste0(short_work, "_manual.txt"))
+}
+
+download_gutenberg_text <- function(gutenberg_id, short_work, overwrite = FALSE){
+
+  raw_path <- raw_path_for_work(short_work)
+
+  if(file.exists(raw_path) && !overwrite){
+    return(
+      tibble::tibble(
+        short_work = short_work,
+        gutenberg_id = gutenberg_id,
+        raw_path = raw_path,
+        url = NA_character_,
+        ok = TRUE,
+        status = "cached"
+      )
+    )
+  }
+
+  urls <- gutenberg_urls(gutenberg_id)
+
+  for(u in urls){
+
+    ok <- tryCatch({
+
+      download.file(
+        url = u,
+        destfile = raw_path,
+        mode = "wb",
+        quiet = TRUE
+      )
+
+      file.exists(raw_path) && file.info(raw_path)$size > 1000
+
+    }, error = function(e){
+      FALSE
+    })
+
+    if(ok){
+      return(
+        tibble::tibble(
+          short_work = short_work,
+          gutenberg_id = gutenberg_id,
+          raw_path = raw_path,
+          url = u,
+          ok = TRUE,
+          status = "downloaded"
+        )
+      )
+    }
+  }
+
+  tibble::tibble(
+    short_work = short_work,
+    gutenberg_id = gutenberg_id,
+    raw_path = raw_path,
+    url = paste(urls, collapse = " | "),
+    ok = FALSE,
+    status = "failed"
+  )
+}
+```
+
+## 5. Download raw sources
+
+```{r download}
+download_results <- purrr::pmap_dfr(
+
+  irving_manifest,
+
+  function(author,
+           work,
+           short_work,
+           year,
+           gutenberg_id,
+           expected_genre){
+
+    out <- download_gutenberg_text(
+      gutenberg_id,
+      short_work
+    )
+
+    bind_cols(
+
+      tibble(
+        author=author,
+        work=work,
+        short_work=short_work,
+        year=year,
+        gutenberg_id=gutenberg_id,
+        expected_genre=expected_genre
+      ),
+
+      out
+
+    )
+
+  }
+
+)
+
+
+download_results <- download_results %>%
+  rename(
+    short_work = short_work...3,
+    gutenberg_id = gutenberg_id...5
+  ) %>%
+  select(
+    -short_work...7,
+    -gutenberg_id...8
+  )
+
+
+download_results
+
+readr::write_csv(download_results, download_diag_path)
+
+if(any(!download_results$ok)){
+  download_results %>% filter(!ok) %>% print(n = 20)
+  stop("One or more Irving Gutenberg downloads failed. Update Gutenberg IDs or provide manual text files.")
+}
+```
+
+## 6. Create manual copies
+
+This mirrors your existing 1830 workflow: raw downloads are copied to `manual/` so you can edit chapter markers if needed.
+
+```{r create-manual-copies}
+manual_copy_results <- download_results %>%
+  mutate(
+    manual_path = manual_path_for_work(short_work),
+    copied = purrr::map2_lgl(
+      raw_path,
+      manual_path,
+      ~{
+        if(!file.exists(.y)){
+          file.copy(.x, .y, overwrite = FALSE)
+        } else {
+          TRUE
+        }
+      }
+    )
+  )
+
+manual_copy_results %>%
+  select(short_work, raw_path, manual_path, copied)
+
+if(any(!manual_copy_results$copied)){
+  stop("One or more manual copies failed.")
+}
+
+################ let's stop here and review manual...
+```
+
+## 7. Text cleaning helpers
+
+```{r text-helpers}
+normalize_doc_text <- function(x){
+
+  x %>%
+    stringr::str_replace_all("\r", "\n") %>%
+    stringr::str_replace_all("\uFEFF", "") %>%
+    stringr::str_replace_all("\u00A0", " ") %>%
+    stringr::str_replace_all("[ \t]+", " ") %>%
+    stringr::str_replace_all("\n{3,}", "\n\n") %>%
+    stringr::str_replace_all("\\s+", " ") %>%
+    stringr::str_replace_all("\\s+([,.;:!?])", "\\1") %>%
+    stringr::str_squish()
+
+}
+
+strip_gutenberg_boilerplate <- function(txt){
+
+  start_patterns <- c(
+    "\\*\\*\\* START OF (THE|THIS) PROJECT GUTENBERG EBOOK .*?\\*\\*\\*",
+    "\\*\\*\\* START OF THE PROJECT GUTENBERG EBOOK .*?\\*\\*\\*",
+    "START OF (THE|THIS) PROJECT GUTENBERG EBOOK"
+  )
+
+  end_patterns <- c(
+    "\\*\\*\\* END OF (THE|THIS) PROJECT GUTENBERG EBOOK .*?\\*\\*\\*",
+    "\\*\\*\\* END OF THE PROJECT GUTENBERG EBOOK .*?\\*\\*\\*",
+    "END OF (THE|THIS) PROJECT GUTENBERG EBOOK"
+  )
+
+  for(p in start_patterns){
+    loc <- stringr::str_locate(txt, regex(p, ignore_case = TRUE, dotall = TRUE))[1,]
+    if(!is.na(loc[2])){
+      txt <- substr(txt, loc[2] + 1, nchar(txt))
+      break
+    }
+  }
+
+  for(p in end_patterns){
+    loc <- stringr::str_locate(txt, regex(p, ignore_case = TRUE, dotall = TRUE))[1,]
+    if(!is.na(loc[1])){
+      txt <- substr(txt, 1, loc[1] - 1)
+      break
+    }
+  }
+
+  txt
+}
+
+clean_heading <- function(x){
+
+  x %>%
+    stringr::str_replace_all("[\\*_]", "") %>%
+    stringr::str_replace_all("\\s+", " ") %>%
+    stringr::str_squish()
+
+}
+```
+
+## 8. Chapter heading parser
+
+This parser handles Irving essay/chapter headings in several forms:
+
+```text
+CHAPTER I.
+CHAPTER FIRST.
+THE AUTHOR'S ACCOUNT OF HIMSELF.
+RIP VAN WINKLE.
+THE LEGEND OF SLEEPY HOLLOW.
+```
+
+For Gutenberg Irving, not every unit is labeled `CHAPTER`. Therefore this parser also has a fallback list of known essay/story titles for each work.
+
+```{r heading-parser}
+roman_to_int <- function(x){
+
+  if(is.na(x) || x == "") return(NA_integer_)
+
+  vals <- c(I=1, V=5, X=10, L=50, C=100, D=500, M=1000)
+  chars <- strsplit(toupper(x), "")[[1]]
+  nums <- vals[chars]
+
+  if(any(is.na(nums))) return(NA_integer_)
+
+  total <- 0
+  i <- 1
+
+  while(i <= length(nums)){
+    if(i < length(nums) && nums[i] < nums[i+1]){
+      total <- total + nums[i+1] - nums[i]
+      i <- i + 2
+    } else {
+      total <- total + nums[i]
+      i <- i + 1
+    }
+  }
+
+  as.integer(total)
+}
+
+ordinal_words <- c(
+  FIRST=1, SECOND=2, THIRD=3, FOURTH=4, FIFTH=5,
+  SIXTH=6, SEVENTH=7, EIGHTH=8, NINTH=9, TENTH=10,
+  ELEVENTH=11, TWELFTH=12, THIRTEENTH=13, FOURTEENTH=14,
+  FIFTEENTH=15, SIXTEENTH=16, SEVENTEENTH=17, EIGHTEENTH=18,
+  NINETEENTH=19, TWENTIETH=20
+)
+
+chapter_heading_regex <- regex(
+  paste0(
+    "(?m)^\\s*",
+    "(?:CHAPTER|Chapter)\\s+",
+    "([0-9]+|[IVXLCDM]+|FIRST|SECOND|THIRD|FOURTH|FIFTH|SIXTH|SEVENTH|EIGHTH|NINTH|TENTH|ELEVENTH|TWELFTH|THIRTEENTH|FOURTEENTH|FIFTEENTH|SIXTEENTH|SEVENTEENTH|EIGHTEENTH|NINETEENTH|TWENTIETH)",
+    "\\.?",
+    "(?:\\s*[-—.:]\\s*(.*))?",
+    "\\s*$"
+  ),
+  ignore_case = FALSE
+)
+
+parse_chapter_number_token <- function(x){
+
+  x0 <- toupper(stringr::str_squish(x))
+
+  if(stringr::str_detect(x0, "^[0-9]+$")){
+    return(as.integer(x0))
+  }
+
+  if(x0 %in% names(ordinal_words)){
+    return(as.integer(ordinal_words[[x0]]))
+  }
+
+  roman_to_int(x0)
+}
+
+known_irving_titles <- list(
+
+  Sketch_Book = c(
+    "THE AUTHOR'S ACCOUNT OF HIMSELF",
+    "THE VOYAGE",
+    "ROSCOE",
+    "THE WIFE",
+    "RIP VAN WINKLE",
+    "ENGLISH WRITERS ON AMERICA",
+    "RURAL LIFE IN ENGLAND",
+    "THE BROKEN HEART",
+    "THE ART OF BOOK-MAKING",
+    "A ROYAL POET",
+    "THE COUNTRY CHURCH",
+    "THE WIDOW AND HER SON",
+    "A SUNDAY IN LONDON",
+    "THE BOAR'S HEAD TAVERN",
+    "THE MUTABILITY OF LITERATURE",
+    "RURAL FUNERALS",
+    "THE INN KITCHEN",
+    "THE SPECTRE BRIDEGROOM",
+    "WESTMINSTER ABBEY",
+    "CHRISTMAS",
+    "THE STAGE COACH",
+    "CHRISTMAS EVE",
+    "CHRISTMAS DAY",
+    "THE CHRISTMAS DINNER",
+    "LONDON ANTIQUES",
+    "LITTLE BRITAIN",
+    "STRATFORD-ON-AVON",
+    "TRAITS OF INDIAN CHARACTER",
+    "PHILIP OF POKANOKET",
+    "JOHN BULL",
+    "THE PRIDE OF THE VILLAGE",
+    "THE ANGLER",
+    "THE LEGEND OF SLEEPY HOLLOW",
+    "L'ENVOY"
+  ),
+
+  Bracebridge_Hall = c(
+    "THE HALL",
+    "THE BUSY MAN",
+    "FAMILY SERVANTS",
+    "THE WIDOW",
+    "THE LOVERS",
+    "FAMILY RELIQUES",
+    "AN OLD SOLDIER",
+    "THE WIDOW'S RETINUE",
+    "READY-MONEY JACK",
+    "BACHELORS",
+    "WIVES",
+    "STORY TELLING",
+    "THE STOUT GENTLEMAN",
+    "FOREST TREES",
+    "A LITERARY ANTIQUARY",
+    "THE FARM-HOUSE",
+    "HORSEMANSHIP",
+    "LOVE SYMPTOMS",
+    "FALCONRY",
+    "HAWKING",
+    "ST. MARK'S EVE",
+    "GENTILITY",
+    "FORTUNE-TELLING",
+    "LOVE-CHARMS",
+    "THE LIBRARY",
+    "THE STUDENT OF SALAMANCA",
+    "ENGLISH COUNTRY GENTLEMEN",
+    "A BACHELOR'S CONFESSION",
+    "ENGLISH GRAVITY",
+    "GIPSIES",
+    "MAY-DAY",
+    "THE MANUSCRIPT",
+    "ANNETTE DELARBRE",
+    "TRAVELLING",
+    "POPULAR SUPERSTITIONS",
+    "THE CULPRIT",
+    "FAMILY MISFORTUNES",
+    "LOVERS' TROUBLES",
+    "THE HISTORIAN",
+    "THE HAUNTED HOUSE",
+    "DOLPH HEYLIGER",
+    "THE STORM-SHIP",
+    "THE WEDDING"
+  ),
+
+  Tales_Traveller = c(
+    "STRANGE STORIES BY A NERVOUS GENTLEMAN",
+    "THE GREAT UNKNOWN",
+    "THE HUNTING DINNER",
+    "THE ADVENTURE OF MY UNCLE",
+    "THE ADVENTURE OF MY AUNT",
+    "THE BOLD DRAGOON",
+    "THE ADVENTURE OF THE GERMAN STUDENT",
+    "THE ADVENTURE OF THE MYSTERIOUS PICTURE",
+    "THE ADVENTURE OF THE MYSTERIOUS STRANGER",
+    "THE STORY OF THE YOUNG ITALIAN",
+    "BUCKTHORNE AND HIS FRIENDS",
+    "A LITERARY LIFE",
+    "A LITERARY DINNER",
+    "THE CLUB OF QUEER FELLOWS",
+    "THE POOR DEVIL AUTHOR",
+    "BUCKTHORNE, OR THE YOUNG MAN OF GREAT EXPECTATIONS",
+    "THE BOOBY SQUIRE",
+    "THE STROLLING MANAGER",
+    "THE CREOLE VILLAGE",
+    "THE GREAT MISSISSIPPI BUBBLE",
+    "DON JUAN",
+    "BROEK",
+    "SKETCHES IN PARIS",
+    "THE DEVIL AND TOM WALKER",
+    "KIDD THE PIRATE",
+    "WOLFERT WEBBER",
+    "THE ADVENTURE OF SAM, THE BLACK FISHERMAN",
+    "THE KNIGHT OF MALTA",
+    "THE STUDENT OF SALAMANCA",
+    "THE LEGEND OF THE ENGULPHED CONVENT",
+    "THE COUNT VAN HORN"
+  )
+)
+```
+
+## 9. Split by known headings
+
+This is the preferred method for Irving because these works are essay/story collections.
+
+```{r split-known-headings}
+heading_pattern_for_titles <- function(titles){
+
+  escaped <- stringr::str_replace_all(titles, "([\\^\\$\\.\\|\\?\\*\\+\\(\\)\\[\\]\\{\\}])", "\\\\\\1")
+
+  regex(
+    paste0(
+      "(?m)^\\s*(",
+      paste(escaped, collapse = "|"),
+      ")\\s*$"
+    ),
+    ignore_case = FALSE
+  )
+}
+
+split_text_by_headings <- function(txt, titles){
+
+  pattern <- heading_pattern_for_titles(titles)
+
+  locs <- stringr::str_locate_all(txt, pattern)[[1]]
+
+  if(nrow(locs) == 0){
+    return(tibble::tibble())
+  }
+
+  headings <- stringr::str_match_all(txt, pattern)[[1]][, 2]
+
+  pieces <- purrr::map_dfr(seq_len(nrow(locs)), function(i){
+
+    start <- locs[i, 2] + 1
+    end <- if(i < nrow(locs)) locs[i + 1, 1] - 1 else nchar(txt)
+
+    body <- substr(txt, start, end)
+
+    tibble::tibble(
+      chapter = i,
+      chapter_title = clean_heading(headings[[i]]),
+      text = normalize_doc_text(body)
+    )
+
+  })
+
+  pieces %>%
+    filter(text != "")
+
+}
+
+split_text_by_chapter_regex <- function(txt){
+
+  locs <- stringr::str_locate_all(txt, chapter_heading_regex)[[1]]
+
+  if(nrow(locs) == 0){
+    return(tibble::tibble())
+  }
+
+  matches <- stringr::str_match_all(txt, chapter_heading_regex)[[1]]
+
+  purrr::map_dfr(seq_len(nrow(locs)), function(i){
+
+    token <- matches[i, 2]
+    subtitle <- matches[i, 3]
+
+    start <- locs[i, 2] + 1
+    end <- if(i < nrow(locs)) locs[i + 1, 1] - 1 else nchar(txt)
+
+    chapter <- parse_chapter_number_token(token)
+
+    chapter_title <- ifelse(
+      is.na(subtitle) || subtitle == "",
+      paste0("Chapter ", token),
+      clean_heading(subtitle)
+    )
+
+    tibble::tibble(
+      chapter = chapter,
+      chapter_title = chapter_title,
+      text = normalize_doc_text(substr(txt, start, end))
+    )
+
+  }) %>%
+    filter(!is.na(chapter), text != "")
+}
+```
+
+## 10. Parse a manifest row
+
+```{r parse-row}
+parse_irving_row <- function(row){
+
+  short_work <- row$short_work[[1]]
+  manual_path <- manual_path_for_work(short_work)
+
+  txt <- readr::read_file(manual_path)
+
+  txt <- strip_gutenberg_boilerplate(txt)
+
+  titles <- known_irving_titles[[short_work]]
+
+  docs <- if(!is.null(titles)){
+    split_text_by_headings(txt, titles)
+  } else {
+    tibble::tibble()
+  }
+
+  # Fallback to CHAPTER pattern.
+  if(nrow(docs) == 0){
+    docs <- split_text_by_chapter_regex(txt)
+  }
+
+  if(nrow(docs) == 0){
+    warning("No Irving chapters parsed for: ", short_work)
+    return(tibble::tibble())
+  }
+
+  docs %>%
+    mutate(
+      author = row$author[[1]],
+      work = row$work[[1]],
+      short_work = row$short_work[[1]],
+      year = row$year[[1]],
+      gutenberg_id = row$gutenberg_id[[1]],
+      corpus_family = "1830",
+      source_family = "1830_Secular",
+      macro_genre = row$expected_genre[[1]],
+      doc_unit = "chapter",
+      doc_id = paste0(
+        "1830__Washington_Irving__",
+        short_work,
+        "__",
+        stringr::str_pad(chapter, width = 3, pad = "0")
+      ),
+      doc_id_original = doc_id,
+      n_words = stringr::str_count(text, "\\S+")
+    ) %>%
+    select(
+      corpus_family,
+      source_family,
+      author,
+      work,
+      short_work,
+      year,
+      gutenberg_id,
+      doc_id,
+      doc_id_original,
+      macro_genre,
+      doc_unit,
+      chapter,
+      chapter_title,
+      n_words,
+      text
+    )
+
+}
+```
+
+## 11. Parse all Irving works
+
+```{r parse-all}
+irving_docs <- purrr::pmap_dfr(
+  irving_manifest,
+  function(author, work, short_work, year, gutenberg_id, expected_genre){
+
+    row <- tibble::tibble(
+      author = author,
+      work = work,
+      short_work = short_work,
+      year = year,
+      gutenberg_id = gutenberg_id,
+      expected_genre = expected_genre
+    )
+
+    parse_irving_row(row)
+  }
+)
+
+irving_docs %>%
+  count(short_work, name = "n_docs")
+
+parse_diagnostics <- irving_docs %>%
+  group_by(short_work, work) %>%
+  summarise(
+    n_docs = n(),
+    total_words = sum(n_words),
+    min_words = min(n_words),
+    median_words = median(n_words),
+    mean_words = mean(n_words),
+    max_words = max(n_words),
+    .groups = "drop"
+  )
+
+parse_diagnostics
+
+readr::write_csv(parse_diagnostics, parse_diag_path)
+```
+
+## 12. Filter obvious non-text or tiny docs
+
+For stylometry, extremely short units can be unstable. This keeps them visible but lets you decide.
+
+```{r filter-check}
+irving_docs %>%
+  arrange(n_words) %>%
+  select(short_work, chapter, chapter_title, n_words) %>%
+  print(n = 50)
+
+# Optional:
+# irving_docs <- irving_docs %>% filter(n_words >= 100)
+```
+
+## 13. Write outputs
+
+```{r write}
+readr::write_csv(irving_docs, irving_out_path)
+readr::write_csv(irving_manifest, irving_manifest_out_path)
+
+cat("Wrote Irving docs to:\n")
+cat(irving_out_path, "\n\n")
+
+cat("Wrote Irving manifest to:\n")
+cat(irving_manifest_out_path, "\n")
+```
+
+## 14. Integration note
+
+Add to your master 1830 corpus after checking `doc_id` uniqueness:
+
+```r
+irving_docs <- readr::read_csv(
+  file.path(STYLO_ROOT, "data", "prepared", "corpus_1830_irving_chapter_docs.csv"),
+  show_col_types = FALSE
+)
+
+corpus_1830_docs <- bind_rows(
+  corpus_1830_docs,
+  irving_docs
+)
+```

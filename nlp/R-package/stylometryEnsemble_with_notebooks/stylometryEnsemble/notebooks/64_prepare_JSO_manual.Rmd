@@ -1,0 +1,676 @@
+---
+title: "64 - Prepare JSO Manual Corpus"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+options(tibble.width = Inf, tibble.print_max = 300)
+
+library(dplyr)
+library(stringr)
+library(readr)
+library(purrr)
+library(tibble)
+library(tidyr)
+library(digest)
+```
+
+## 1. Purpose
+
+Parse the JSO manual corpus from:
+
+```text
+data/raw/JSO/manual/
+```
+
+Only files ending with:
+
+```text
+__manual.txt
+```
+
+are considered. Each file is one author bundle. There is no separate book/work designation in the filename.
+
+Chapter/document dividers follow the same convention used for the 1830 manual corpus:
+
+```text
+### CHAPTER 1: Title
+### CHAPTER 2-24: Title
+```
+
+Outputs:
+
+```text
+data/prepared/jso_manual_chapter_docs.csv
+data/prepared/jso_manual_book_docs.csv
+data/prepared/jso_manual_manifest.csv
+```
+
+## 2. Directories
+
+```{r dirs}
+manual_dir <- file.path(STYLO_ROOT, "data", "raw", "JSO", "manual")
+prepared_dir <- file.path(STYLO_ROOT, "data", "prepared")
+diagnostic_dir <- file.path(STYLO_ROOT, "data", "raw", "JSO", "diagnostics")
+
+dir.create(prepared_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(diagnostic_dir, recursive = TRUE, showWarnings = FALSE)
+
+chapter_out_path <- file.path(prepared_dir, "jso_manual_chapter_docs.csv")
+book_out_path <- file.path(prepared_dir, "jso_manual_book_docs.csv")
+manifest_out_path <- file.path(prepared_dir, "jso_manual_manifest.csv")
+
+marker_diag_path <- file.path(diagnostic_dir, "jso_manual_marker_counts.csv")
+parse_diag_path <- file.path(diagnostic_dir, "jso_manual_parse_diagnostics.csv")
+diff_diag_path <- file.path(diagnostic_dir, "jso_manual_marker_vs_parsed_diff.csv")
+```
+
+## 3. Enumerate manual files
+
+```{r enumerate}
+manual_files <- list.files(
+  manual_dir,
+  pattern = "__manual\\.txt$",
+  full.names = TRUE
+)
+
+manual_manifest <- tibble(
+  path = manual_files,
+  filename = basename(manual_files),
+  file_size = file.info(manual_files)$size
+) %>%
+  filter(file_size > 0) %>%
+  arrange(filename)
+
+manual_manifest
+
+readr::write_csv(manual_manifest, manifest_out_path)
+```
+
+### Sanity check: file count
+
+```{r sanity-file-count}
+manual_manifest %>%
+  summarise(
+    n_files = n(),
+    min_size = min(file_size),
+    median_size = median(file_size),
+    max_size = max(file_size)
+  )
+
+if(nrow(manual_manifest) == 0){
+  stop("No non-empty JSO __manual.txt files found in: ", manual_dir)
+}
+```
+
+## 4. Filename metadata parser
+
+Expected form:
+
+```text
+Sidney_Rigdon__manual.txt
+Joseph_Smith__manual.txt
+Oliver_Cowdery__manual.txt
+```
+
+```{r filename-parser}
+make_safe_id <- function(x){
+  x %>%
+    str_replace_all("[^A-Za-z0-9]+", "_") %>%
+    str_replace_all("^_+|_+$", "")
+}
+
+infer_jso_author_code <- function(author){
+  case_when(
+    str_detect(author, regex("^Joseph\\s+Smith", ignore_case = TRUE)) ~ "JS",
+    str_detect(author, regex("^Sidney\\s+Rigdon", ignore_case = TRUE)) ~ "SR",
+    str_detect(author, regex("^Oliver\\s+Cowdery", ignore_case = TRUE)) ~ "OC",
+    TRUE ~ make_safe_id(author)
+  )
+}
+
+parse_jso_filename_metadata <- function(path){
+  fn <- basename(path)
+
+  author_key <- fn %>%
+    str_remove("__manual\\.txt$")
+
+  author <- author_key %>%
+    str_replace_all("_", " ") %>%
+    str_squish()
+
+  author_code <- infer_jso_author_code(author)
+
+  tibble(
+    author = author,
+    author_code = author_code,
+    work = paste0(author, " Manual Writings"),
+    short_work = paste0(author_code, "_Manual"),
+    source_file = fn,
+    local_file = path,
+    macro_genre = "Early_LDS_Writing"
+  )
+}
+
+file_metadata <- purrr::map_dfr(
+  manual_manifest$path,
+  parse_jso_filename_metadata
+)
+
+file_metadata
+```
+
+### Sanity check: author mapping
+
+```{r sanity-author-mapping}
+file_metadata %>%
+  count(author, author_code, source_file, name = "n_files") %>%
+  arrange(author)
+
+if(any(is.na(file_metadata$author) | file_metadata$author == "")){
+  stop("At least one JSO file has a missing author.")
+}
+
+if(any(duplicated(file_metadata$source_file))){
+  stop("Duplicate source_file entries detected.")
+}
+```
+
+## 5. Text helpers
+
+```{r text-helpers}
+normalize_doc_text <- function(x){
+  x %>%
+    str_replace_all("\r", "\n") %>%
+    str_replace_all("\uFEFF", "") %>%
+    str_replace_all("\u00A0", " ") %>%
+    str_replace_all("[ \t]+", " ") %>%
+    str_replace_all("\n{3,}", "\n\n") %>%
+    str_replace_all("\\s+", " ") %>%
+    str_replace_all("\\s+([,.;:!?])", "\\1") %>%
+    str_squish()
+}
+
+clean_heading <- function(x){
+  x %>%
+    str_replace_all("[\\*_]", "") %>%
+    str_replace_all("\\s+", " ") %>%
+    str_squish() %>%
+    str_remove("\\s*\\.$")
+}
+```
+
+## 6. Count chapter markers before parsing
+
+```{r marker-counts}
+chapter_divider_pattern <- regex(
+  "(?m)^\\s*###\\s+CHAPTER\\b.*$",
+  ignore_case = TRUE
+)
+
+marker_counts <- manual_manifest %>%
+  mutate(
+    n_markers = purrr::map_int(
+      path,
+      ~{
+        txt <- readr::read_file(.x)
+        stringr::str_count(txt, chapter_divider_pattern)
+      }
+    )
+  ) %>%
+  select(filename, path, n_markers) %>%
+  arrange(desc(n_markers), filename)
+
+marker_counts
+
+readr::write_csv(marker_counts, marker_diag_path)
+```
+
+### Sanity check: marker totals
+
+```{r sanity-marker-counts}
+marker_counts %>%
+  summarise(
+    n_files = n(),
+    total_markers = sum(n_markers),
+    min_markers = min(n_markers),
+    median_markers = median(n_markers),
+    max_markers = max(n_markers)
+  )
+
+zero_marker_files <- marker_counts %>%
+  filter(n_markers == 0)
+
+zero_marker_files
+
+if(nrow(zero_marker_files) > 0){
+  warning("At least one JSO manual file has zero chapter markers.")
+}
+```
+
+## 7. Chapter parser
+
+```{r chapter-parser}
+parse_manual_chapters <- function(path){
+
+  txt <- readr::read_file(path) %>%
+    str_replace_all("\r", "\n") %>%
+    str_replace_all("\uFEFF", "")
+
+  locs <- str_locate_all(txt, chapter_divider_pattern)[[1]]
+  headings <- str_extract_all(txt, chapter_divider_pattern)[[1]]
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  tibble(
+
+  heading = headings,
+
+  start = locs[,1],
+
+  stop = locs[,2],
+
+  matched_text =
+
+    purrr::map2_chr(
+
+      locs[,1],
+
+      locs[,2],
+
+      ~str_sub(
+        txt,
+        .x,
+        .y
+      )
+
+    )
+
+)
+
+  if(length(headings) == 0){
+    return(
+      tibble(
+        chapter = integer(),
+        chapter_original = character(),
+        chapter_title = character(),
+        chapter_heading_raw = character(),
+        text = character()
+      )
+    )
+  }
+
+  purrr::map_dfr(seq_along(headings), function(i){
+
+    heading_raw <- headings[[i]]
+
+    after_chapter <- heading_raw %>%
+      str_remove(regex("^\\s*###\\s+CHAPTER\\s*", ignore_case = TRUE)) %>%
+      str_squish()
+
+    chapter_original <- after_chapter %>%
+      str_replace("\\s*:.*$", "") %>%
+      str_remove("\\s*\\.$") %>%
+      str_squish()
+
+    chapter_title <- after_chapter %>%
+      str_replace("^[^:]+:?\\s*", "") %>%
+      str_remove("\\s*\\.$") %>%
+      str_squish()
+
+    if(is.na(chapter_title) || chapter_title == ""){
+      chapter_title <- paste0("Chapter ", chapter_original)
+    }
+
+    start <- locs[i, 2] + 1
+    end <- if(i < nrow(locs)) locs[i + 1, 1] - 1 else nchar(txt)
+
+    tibble(
+      chapter = i,
+      chapter_original = chapter_original,
+      chapter_title = chapter_title,
+      chapter_heading_raw = heading_raw,
+      text = normalize_doc_text(str_sub(txt, start, end))
+    )
+  }) %>%
+    filter(text != "")
+}
+```
+
+## 8. Parse all JSO manual files
+
+```{r parse-all}
+jso_manual_chapter_docs <- file_metadata %>%
+  mutate(
+    chapters = purrr::map(local_file, parse_manual_chapters)
+  ) %>%
+  tidyr::unnest(chapters) %>%
+
+  mutate(
+
+    text = text %>%
+      stringr::str_replace_all("\r", " ") %>%
+      stringr::str_replace_all("\n", " ") %>%
+      stringr::str_squish(),
+
+    chapter_title = chapter_title %>%
+      stringr::str_squish(),
+
+    chapter_heading_raw = chapter_heading_raw %>%
+      stringr::str_squish(),
+
+    chapter_original = chapter_original %>%
+      stringr::str_squish()
+
+  ) %>%
+
+  group_by(source_file) %>%
+  mutate(
+    chapter = row_number()
+  ) %>%
+  ungroup() %>%
+
+  mutate(
+    chapter_digest = purrr::pmap_chr(
+      list(author, work, chapter_original, chapter_title, text),
+      ~digest::digest(
+        paste(..., sep = "||"),
+        algo = "xxhash64"
+      )
+    )
+  ) %>%
+
+  group_by(source_file) %>%
+  mutate(
+    duplicate_digest_in_work = duplicated(chapter_digest)
+  ) %>%
+  ungroup() %>%
+
+  filter(
+    !duplicate_digest_in_work
+  ) %>%
+
+  group_by(source_file) %>%
+  mutate(
+    chapter = row_number()
+  ) %>%
+  ungroup() %>%
+
+  mutate(
+    corpus_family = "JSO",
+
+    source_family = "JSO",
+
+    doc_unit = "chapter",
+
+    doc_id = paste0(
+      "JSO__",
+      make_safe_id(author_code),
+      "__",
+      str_pad(chapter, width = 3, pad = "0")
+    ),
+
+    doc_id_original = doc_id,
+
+    n_words = stringr::str_count(
+      text,
+      "\\S+"
+    )
+
+  ) %>%
+
+  select(
+    corpus_family,
+    source_family,
+
+    author,
+    author_code,
+
+    work,
+    short_work,
+
+    source_file,
+    local_file,
+
+    doc_id,
+    doc_id_original,
+
+    macro_genre,
+
+    doc_unit,
+
+    chapter,
+    chapter_original,
+
+    chapter_title,
+
+    chapter_heading_raw,
+
+    chapter_digest,
+
+    n_words,
+
+    text
+  )
+
+jso_manual_chapter_docs %>%
+  count(author, source_file, name = "n_chapters") %>%
+  arrange(author, source_file) %>%
+  print(n = 100)
+```
+
+## 9. Sanity check: marker count versus parsed count
+
+```{r sanity-marker-vs-parsed}
+parsed_counts <- jso_manual_chapter_docs %>%
+  count(source_file, name = "n_parsed")
+
+marker_vs_parsed <- marker_counts %>%
+  left_join(
+    parsed_counts,
+    by = c("filename" = "source_file")
+  ) %>%
+  mutate(
+    n_parsed = ifelse(is.na(n_parsed), 0L, n_parsed),
+    diff = n_markers - n_parsed
+  ) %>%
+  arrange(desc(abs(diff)), filename)
+
+marker_vs_parsed
+
+readr::write_csv(marker_vs_parsed, diff_diag_path)
+
+marker_vs_parsed %>%
+  summarise(
+    total_markers = sum(n_markers),
+    total_parsed = sum(n_parsed),
+    total_diff = sum(diff),
+    files_with_diff = sum(diff != 0)
+  )
+```
+
+## 10. Parse diagnostics
+
+```{r parse-diagnostics}
+jso_parse_diagnostics <- jso_manual_chapter_docs %>%
+  group_by(author, author_code, source_file, macro_genre) %>%
+  summarise(
+    n_chapters = n(),
+    total_words = sum(n_words),
+    min_words = min(n_words),
+    median_words = median(n_words),
+    mean_words = mean(n_words),
+    max_words = max(n_words),
+    .groups = "drop"
+  ) %>%
+  arrange(author, source_file)
+
+jso_parse_diagnostics
+
+readr::write_csv(jso_parse_diagnostics, parse_diag_path)
+```
+
+### Sanity check: tiny and large documents
+
+```{r sanity-doc-lengths}
+jso_manual_chapter_docs %>%
+  arrange(n_words) %>%
+  select(author, source_file, chapter, chapter_original, chapter_title, n_words) %>%
+  print(n = 50)
+
+jso_manual_chapter_docs %>%
+  arrange(desc(n_words)) %>%
+  select(author, source_file, chapter, chapter_original, chapter_title, n_words) %>%
+  print(n = 30)
+
+jso_manual_chapter_docs %>%
+  summarise(
+    n_chapter_docs = n(),
+    n_authors = n_distinct(author),
+    total_words = sum(n_words),
+    min_words = min(n_words),
+    median_words = median(n_words),
+    mean_words = mean(n_words),
+    max_words = max(n_words)
+  )
+```
+
+## 11. Build book-level CSV
+
+Each source file becomes one book-level / author-bundle document.
+
+```{r book-level}
+jso_manual_book_docs <- jso_manual_chapter_docs %>%
+  arrange(author, source_file, chapter) %>%
+  group_by(
+    corpus_family,
+    source_family,
+    author,
+    author_code,
+    work,
+    short_work,
+    source_file,
+    local_file,
+    macro_genre
+  ) %>%
+  summarise(
+    n_chapters = n(),
+    min_chapter = min(chapter),
+    max_chapter = max(chapter),
+    text = paste(text, collapse = " "),
+    chapter_map = paste(
+      paste0(chapter, "=", chapter_original, ": ", chapter_title),
+      collapse = " | "
+    ),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    text = normalize_doc_text(text),
+    doc_unit = "book",
+    n_words = str_count(text, "\\S+"),
+    doc_id = paste0(
+      "JSO__",
+      make_safe_id(author_code),
+      "__BOOK"
+    ),
+    doc_id_original = doc_id,
+    book_digest = digest::digest(
+      paste(author, work, text, sep = "||"),
+      algo = "xxhash64"
+    )
+  ) %>%
+  select(
+    corpus_family,
+    source_family,
+    author,
+    author_code,
+    work,
+    short_work,
+    source_file,
+    local_file,
+    doc_id,
+    doc_id_original,
+    macro_genre,
+    doc_unit,
+    n_chapters,
+    min_chapter,
+    max_chapter,
+    chapter_map,
+    book_digest,
+    n_words,
+    text
+  )
+
+jso_manual_book_docs %>%
+  select(author, source_file, n_chapters, n_words) %>%
+  arrange(author, source_file) %>%
+  print(n = 100)
+```
+
+## 12. Final sanity checks
+
+```{r final-sanity}
+cat("Manual files:", nrow(manual_manifest), "\n")
+cat("Chapter docs:", nrow(jso_manual_chapter_docs), "\n")
+cat("Book docs:", nrow(jso_manual_book_docs), "\n")
+
+if(nrow(jso_manual_chapter_docs) == 0){
+  stop("No JSO chapter docs were parsed.")
+}
+
+if(nrow(jso_manual_book_docs) != nrow(file_metadata)){
+  warning("Book-doc count does not equal file count. This can happen if a file has zero parsed chapters.")
+}
+
+jso_manual_book_docs %>%
+  summarise(
+    n_books = n(),
+    total_chapters = sum(n_chapters),
+    total_words = sum(n_words),
+    min_words = min(n_words),
+    median_words = median(n_words),
+    mean_words = mean(n_words),
+    max_words = max(n_words)
+  )
+```
+
+## 13. Write outputs
+
+```{r write}
+readr::write_csv(
+  jso_manual_chapter_docs,
+  chapter_out_path
+)
+
+readr::write_csv(
+  jso_manual_book_docs,
+  book_out_path
+)
+
+cat("Wrote JSO chapter CSV:\n")
+cat(chapter_out_path, "\n\n")
+
+cat("Wrote JSO book CSV:\n")
+cat(book_out_path, "\n")
+```
+
+## 14. Integration
+
+Use the chapter CSV for stylometry:
+
+```r
+jso_manual_chapter_docs <- readr::read_csv(
+  file.path(STYLO_ROOT, "data", "prepared", "jso_manual_chapter_docs.csv"),
+  show_col_types = FALSE
+)
+```

@@ -1,0 +1,1010 @@
+---
+title: "45 - JSO Analytics: Nearest Neighbors and Ensemble Votes"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run from notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+
+options(
+  tibble.width = Inf,
+  tibble.print_max = 500
+)
+
+library(dplyr)
+library(stringr)
+library(readr)
+library(tibble)
+library(tidyr)
+library(purrr)
+library(ggplot2)
+library(scales)
+```
+
+## 1. Purpose
+
+This notebook builds from `44_Mclust_all_BOM_BoC_DC1835_JSO.Rmd`.
+
+The goal here is not merely clustering. The goal is to ask:
+
+```text
+For Joseph, Sidney, and Oliver writings, especially Sidney Rigdon,
+which documents are nearest neighbors?
+Which corpora/books receive the most votes?
+What does the ensemble say?
+```
+
+Primary focus:
+
+```text
+Sidney Rigdon nearest neighbors
+Sidney Rigdon vote counts
+Sidney Rigdon consensus
+```
+
+This notebook assumes the project library already defines:
+
+```r
+run_stylometry_ensemble()
+show_feature_votes()
+show_consensus()
+```
+
+from the package/project source files.
+
+## 2. Paths
+
+```{r paths}
+prepared_dir <- file.path(STYLO_ROOT, "data", "prepared")
+analytics_dir <- file.path(STYLO_ROOT, "export", "jso_analytics")
+
+dir.create(analytics_dir, recursive = TRUE, showWarnings = FALSE)
+
+kjv_path <- file.path(prepared_dir, "kjv_chapter_docs.csv")
+bom_path <- file.path(prepared_dir, "bom_chapter_docs.csv")
+boc_path <- file.path(prepared_dir, "boc_1833_chapter_docs.csv")
+dc1835_path <- file.path(prepared_dir, "dc_1835_chapter_docs.csv")
+jso_path <- file.path(prepared_dir, "jso_manual_chapter_docs.csv")
+
+out_sidney_neighbors <- file.path(analytics_dir, "sidney_nearest_neighbors.csv")
+out_sidney_corpus_votes <- file.path(analytics_dir, "sidney_corpus_votes.csv")
+out_sidney_book_votes <- file.path(analytics_dir, "sidney_book_votes.csv")
+out_jso_author_votes <- file.path(analytics_dir, "jso_author_corpus_votes.csv")
+```
+
+## 3. Read prepared corpora
+
+```{r read-corpora}
+read_required <- function(path){
+  if(!file.exists(path)){
+    stop("Missing required file: ", path)
+  }
+
+  readr::read_csv(path, show_col_types = FALSE)
+}
+
+kjv_raw <- read_required(kjv_path)
+bom_raw <- read_required(bom_path)
+boc_raw <- read_required(boc_path)
+dc1835_raw <- read_required(dc1835_path)
+jso_raw <- read_required(jso_path)
+
+list(
+  kjv = dim(kjv_raw),
+  bom = dim(bom_raw),
+  boc = dim(boc_raw),
+  dc1835 = dim(dc1835_raw),
+  jso = dim(jso_raw)
+)
+```
+
+## 4. Normalize document schemas
+
+```{r normalize-docs}
+clean_text_for_analysis <- function(x){
+  x %>%
+    as.character() %>%
+    stringr::str_replace_all("\r", " ") %>%
+    stringr::str_replace_all("\n", " ") %>%
+    stringr::str_squish()
+}
+
+safe_chr <- function(df, col, default = NA_character_){
+  if(col %in% names(df)) as.character(df[[col]]) else rep(default, nrow(df))
+}
+
+safe_int <- function(df, col, default = NA_integer_){
+  if(col %in% names(df)) suppressWarnings(as.integer(df[[col]])) else rep(default, nrow(df))
+}
+
+normalize_general_docs <- function(df,
+                                   corpus_id_default,
+                                   translation_default,
+                                   corpus_family_default,
+                                   source_family_default,
+                                   book_default,
+                                   macro_genre_default){
+
+  df %>%
+    mutate(
+      corpus_id = if("corpus_id" %in% names(.)) as.character(corpus_id) else corpus_id_default,
+      translation = if("translation" %in% names(.)) as.character(translation) else translation_default,
+      corpus_family = if("corpus_family" %in% names(.)) as.character(corpus_family) else corpus_family_default,
+      source_family = if("source_family" %in% names(.)) as.character(source_family) else source_family_default,
+      doc_id = if("doc_id" %in% names(.)) as.character(doc_id) else paste0(source_family_default, "__", stringr::str_pad(row_number(), 3, pad = "0")),
+      doc_id_original = if("doc_id_original" %in% names(.)) as.character(doc_id_original) else doc_id,
+      book = if("book" %in% names(.)) as.character(book) else if("work" %in% names(.)) as.character(work) else book_default,
+      chapter = if("chapter" %in% names(.)) suppressWarnings(as.integer(chapter)) else row_number(),
+      section = if("section" %in% names(.)) as.character(section) else if("section_label" %in% names(.)) as.character(section_label) else paste0(book, "_", chapter),
+      macro_genre = if("macro_genre" %in% names(.)) as.character(macro_genre) else macro_genre_default,
+      mosiah_priority = if("mosiah_priority" %in% names(.)) as.character(mosiah_priority) else NA_character_,
+      mosiah_priority_label = if("mosiah_priority_label" %in% names(.)) as.character(mosiah_priority_label) else NA_character_,
+      chapter_date = if("chapter_date" %in% names(.)) as.character(chapter_date) else NA_character_,
+      header = if("header" %in% names(.)) as.character(header) else if("chapter_title" %in% names(.)) as.character(chapter_title) else paste0(book, " ", chapter),
+      n_verses = if("n_verses" %in% names(.)) suppressWarnings(as.integer(n_verses)) else NA_integer_,
+      text = clean_text_for_analysis(text)
+    ) %>%
+    select(
+      corpus_id,
+      translation,
+      corpus_family,
+      source_family,
+      doc_id,
+      doc_id_original,
+      book,
+      chapter,
+      section,
+      macro_genre,
+      mosiah_priority,
+      mosiah_priority_label,
+      chapter_date,
+      header,
+      n_verses,
+      text
+    )
+}
+
+kjv_docs <- normalize_general_docs(
+  kjv_raw,
+  corpus_id_default = "KJV",
+  translation_default = "KJV",
+  corpus_family_default = "KJV",
+  source_family_default = "KJV",
+  book_default = "KJV",
+  macro_genre_default = "Biblical"
+)
+
+bom_docs <- normalize_general_docs(
+  bom_raw,
+  corpus_id_default = "BOM",
+  translation_default = "1830",
+  corpus_family_default = "BOM",
+  source_family_default = "BOM_1830",
+  book_default = "Book of Mormon",
+  macro_genre_default = "Modern_Scripture"
+)
+
+boc_docs <- normalize_general_docs(
+  boc_raw,
+  corpus_id_default = "BOC",
+  translation_default = "1833",
+  corpus_family_default = "BOC",
+  source_family_default = "BOC_1833",
+  book_default = "Book of Commandments",
+  macro_genre_default = "Modern_Revelation"
+)
+
+dc1835_docs <- normalize_general_docs(
+  dc1835_raw,
+  corpus_id_default = "DC",
+  translation_default = "1835",
+  corpus_family_default = "DC",
+  source_family_default = "DC_1835",
+  book_default = "Doctrine and Covenants",
+  macro_genre_default = "Modern_Revelation"
+)
+
+jso_docs <- jso_raw %>%
+  mutate(
+    author = as.character(author),
+    author_code = as.character(author_code),
+    corpus_id = "JSO",
+    translation = "JSO",
+    corpus_family = "JSO",
+    source_family = "JSO",
+    doc_id_original = as.character(doc_id),
+    doc_id = paste0(author_code, "-", chapter),
+    book = author,
+    section = paste0(author_code, "-", chapter_original),
+    macro_genre = "Early_LDS_Writing",
+    mosiah_priority = NA_character_,
+    mosiah_priority_label = NA_character_,
+    chapter_date = NA_character_,
+    header = as.character(chapter_title),
+    n_verses = NA_integer_,
+    text = clean_text_for_analysis(text)
+  ) %>%
+  select(
+    corpus_id,
+    translation,
+    corpus_family,
+    source_family,
+    doc_id,
+    doc_id_original,
+    book,
+    chapter,
+    section,
+    macro_genre,
+    mosiah_priority,
+    mosiah_priority_label,
+    chapter_date,
+    header,
+    n_verses,
+    text,
+    author,
+    author_code,
+    short_work,
+    source_file,
+    chapter_original,
+    chapter_title
+  )
+
+analysis_docs <- bind_rows(
+  kjv_docs,
+  bom_docs,
+  boc_docs,
+  dc1835_docs,
+  jso_docs %>%
+    select(
+      corpus_id,
+      translation,
+      corpus_family,
+      source_family,
+      doc_id,
+      doc_id_original,
+      book,
+      chapter,
+      section,
+      macro_genre,
+      mosiah_priority,
+      mosiah_priority_label,
+      chapter_date,
+      header,
+      n_verses,
+      text
+    )
+) %>%
+  mutate(
+    text = clean_text_for_analysis(text),
+    n_words = stringr::str_count(text, "\\S+")
+  ) %>%
+  filter(!is.na(text), text != "", n_words >= 50)
+
+analysis_docs %>%
+  dplyr::count(corpus_family, source_family, name = "n_docs") %>%
+  arrange(corpus_family, source_family)
+
+jso_docs %>%
+  dplyr::count(author, author_code, name = "n_docs")
+```
+
+## 5. JSO author map
+
+```{r jso-author-map}
+jso_author_map <- jso_docs %>%
+  transmute(
+    doc_id,
+    author,
+    author_code,
+    short_name = paste0(author_code, "-", chapter),
+    chapter,
+    chapter_original,
+    chapter_title,
+    source_file
+  )
+
+jso_author_map %>%
+  arrange(author, chapter) %>%
+  print(n = 100)
+```
+
+## 6. Create JSO ensemble
+
+The source documents are JSO chapters. The target documents are all non-JSO documents:
+
+```text
+KJV + BOM + BOC + DC 1835
+```
+
+This prevents a JSO chapter from voting for another JSO chapter and focuses the comparison on the larger target corpus.
+
+```{r ensemble-config}
+source_docs_jso <- jso_docs %>%
+  select(
+    doc_id,
+    corpus_id,
+    translation,
+    corpus_family,
+    source_family,
+    book,
+    chapter,
+    section,
+    macro_genre,
+    header,
+    text
+  )
+
+target_docs_all_non_jso <- analysis_docs %>%
+  filter(corpus_family != "JSO") %>%
+  select(
+    doc_id,
+    corpus_id,
+    translation,
+    corpus_family,
+    source_family,
+    book,
+    chapter,
+    section,
+    macro_genre,
+    header,
+    text
+  )
+
+source_docs_sidney <- source_docs_jso %>%
+  semi_join(
+    jso_author_map %>% filter(author == "Sidney Rigdon"),
+    by = "doc_id"
+  )
+
+target_docs_all_non_jso %>%
+  dplyr::count(corpus_family, source_family, name = "n_targets") %>%
+  arrange(corpus_family, source_family)
+
+source_docs_jso %>%
+  dplyr::count(book, name = "n_sources")
+
+source_docs_sidney %>%
+  summarise(n_sidney_sources = n())
+```
+
+The configuration below is intentionally conservative and notebook-local. If your project already has a preferred ensemble config object, replace `jso_config` with that object.
+
+```{r jso-config}
+include_feature_classes <- c(
+  "function_words", "punctuation", "sentence",
+  "word_length", "lexical", "readability"
+)
+
+
+jso_config  <- default_config(include = include_feature_classes)
+
+
+jso_config$weights <- c(
+    function_words = 0.500,
+    punctuation    = 0.075,
+    sentence       = 0.175,
+    word_length    = 0.125,
+    lexical        = 0.075,
+    readability    = 0.050
+  )
+
+
+
+```
+
+```{r run-jso-ensemble}
+result_jso <- run_stylometry_ensemble(
+  source_docs = source_docs_jso,
+  target_docs = target_docs_all_non_jso,
+  config = jso_config,
+  text_col = "text",
+  doc_id_col = "doc_id",
+  k_neighbors = 20,
+  use_cache = TRUE,
+  cache_dir = file.path(STYLO_CACHE, "ensemble")
+)
+
+names(result_jso)
+```
+
+```{r run-sidney-ensemble}
+result_sidney <- run_stylometry_ensemble(
+  source_docs = source_docs_sidney,
+  target_docs = target_docs_all_non_jso,
+  config = jso_config,
+  text_col = "text",
+  doc_id_col = "doc_id",
+  k_neighbors = 20,
+  use_cache = TRUE,
+  cache_dir = file.path(STYLO_CACHE, "ensemble")
+)
+
+names(result_sidney)
+```
+
+## 7. Built-in display functions
+
+These use your package/reporting layer.
+
+```{r show-feature-votes-jso}
+show_feature_votes(result_jso)
+```
+
+```{r show-consensus-jso}
+show_consensus(result_jso)
+```
+
+```{r show-feature-votes-sidney}
+show_feature_votes(result_sidney)
+```
+
+```{r show-consensus-sidney}
+show_consensus(result_sidney)
+```
+
+## 8. Extract nearest neighbors from ensemble result
+
+Different ensemble versions sometimes name the nearest-neighbor table slightly differently. This helper tries the common names.
+
+```{r extract-nearest-helper}
+extract_nearest_table <- function(result){
+
+  candidates <- c(
+    "nearest_neighbors",
+    "nearest_targets",
+    "feature_rankings",
+    "feature_votes"
+  )
+
+  found <- candidates[candidates %in% names(result)]
+
+  if(length(found) == 0){
+    stop(
+      "No nearest-neighbor-like table found. Available result names: ",
+      paste(names(result), collapse = ", ")
+    )
+  }
+
+  result[[found[[1]]]]
+}
+
+nn_jso_raw <- extract_nearest_table(result_jso)
+nn_sidney_raw <- extract_nearest_table(result_sidney)
+
+names(nn_jso_raw)
+names(nn_sidney_raw)
+```
+
+## 9. Normalize nearest-neighbor table
+
+This helper standardizes likely column names.
+
+```{r normalize-nearest-table}
+normalize_nearest_table <- function(nn){
+
+  nm <- names(nn)
+
+  source_col <- dplyr::case_when(
+    "source_doc_id" %in% nm ~ "source_doc_id",
+    "source_doc" %in% nm ~ "source_doc",
+    "doc_id" %in% nm ~ "doc_id",
+    "source_id" %in% nm ~ "source_id",
+    TRUE ~ NA_character_
+  )
+
+  target_col <- dplyr::case_when(
+    "target_doc_id" %in% nm ~ "target_doc_id",
+    "target_doc" %in% nm ~ "target_doc",
+    "neighbor_doc_id" %in% nm ~ "neighbor_doc_id",
+    "neighbor_doc" %in% nm ~ "neighbor_doc",
+    "nearest_doc_id" %in% nm ~ "nearest_doc_id",
+    TRUE ~ NA_character_
+  )
+
+  sim_col <- dplyr::case_when(
+    "similarity" %in% nm ~ "similarity",
+    "score" %in% nm ~ "score",
+    "avg_similarity" %in% nm ~ "avg_similarity",
+    TRUE ~ NA_character_
+  )
+
+  rank_col <- dplyr::case_when(
+    "rank" %in% nm ~ "rank",
+    "neighbor_rank" %in% nm ~ "neighbor_rank",
+    "target_rank" %in% nm ~ "target_rank",
+    TRUE ~ NA_character_
+  )
+
+  if(is.na(source_col) || is.na(target_col)){
+    stop(
+      "Could not identify source/target columns. Columns are: ",
+      paste(nm, collapse = ", ")
+    )
+  }
+
+  out <- nn %>%
+    transmute(
+      source_doc = as.character(.data[[source_col]]),
+      target_doc = as.character(.data[[target_col]]),
+      similarity = if(!is.na(sim_col)) as.numeric(.data[[sim_col]]) else NA_real_,
+      rank = if(!is.na(rank_col)) as.integer(.data[[rank_col]]) else NA_integer_
+    )
+
+  if(all(is.na(out$rank))){
+    out <- out %>%
+      group_by(source_doc) %>%
+      arrange(desc(similarity), .by_group = TRUE) %>%
+      mutate(rank = row_number()) %>%
+      ungroup()
+  }
+
+  out
+}
+
+nn_jso <- normalize_nearest_table(nn_jso_raw)
+nn_sidney <- normalize_nearest_table(nn_sidney_raw)
+
+nn_jso %>% slice_head(n = 10)
+nn_sidney %>% slice_head(n = 10)
+```
+
+## 10. Add metadata to nearest neighbors
+
+```{r nearest-metadata}
+target_meta <- target_docs_all_non_jso %>%
+  transmute(
+    target_doc = doc_id,
+    target_corpus = corpus_family,
+    target_source = source_family,
+    target_book = book,
+    target_chapter = chapter,
+    target_section = section,
+    target_genre = macro_genre,
+    target_header = header
+  )
+
+source_meta_jso <- source_docs_jso %>%
+  transmute(
+    source_doc = doc_id,
+    source_corpus = corpus_family,
+    source_book = book,
+    source_chapter = chapter,
+    source_header = header
+  ) %>%
+  left_join(
+    jso_author_map %>% select(source_doc = doc_id, author, author_code, short_name, chapter_original, chapter_title),
+    by = "source_doc"
+  )
+
+nn_jso_labeled <- nn_jso %>%
+  left_join(source_meta_jso, by = "source_doc") %>%
+  left_join(target_meta, by = "target_doc") %>%
+  arrange(author, source_doc, rank)
+
+nn_sidney_labeled <- nn_sidney %>%
+  left_join(source_meta_jso, by = "source_doc") %>%
+  left_join(target_meta, by = "target_doc") %>%
+  arrange(source_doc, rank)
+
+nn_sidney_labeled %>%
+  select(
+    short_name,
+    source_header,
+    rank,
+    target_corpus,
+    target_book,
+    target_chapter,
+    target_header,
+    similarity
+  )
+
+dplyr::glimpse(nn_sidney_labeled)
+
+readr::write_csv(nn_sidney_labeled, out_sidney_neighbors)
+```
+
+## 11. Sidney vote counts by corpus
+
+```{r sidney-corpus-votes}
+sidney_corpus_votes <- nn_sidney_labeled %>%
+  group_by(source_doc, short_name, source_header, target_corpus) %>%
+  summarise(
+    votes = n(),
+    weighted_votes = sum(similarity, na.rm = TRUE),
+    mean_similarity = mean(similarity, na.rm = TRUE),
+    max_similarity = max(similarity, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  group_by(source_doc, short_name, source_header) %>%
+  mutate(
+    pct_votes = votes / sum(votes),
+    weighted_pct_votes = weighted_votes / sum(weighted_votes)
+  ) %>%
+  ungroup() %>%
+  arrange(short_name, desc(weighted_votes))
+
+sidney_corpus_votes %>%
+  print(n = 300)
+
+readr::write_csv(sidney_corpus_votes, out_sidney_corpus_votes)
+```
+
+## 12. Sidney vote counts by book
+
+```{r sidney-book-votes}
+sidney_book_votes <- nn_sidney_labeled %>%
+  group_by(source_doc, short_name, source_header, target_corpus, target_book) %>%
+  summarise(
+    votes = n(),
+    weighted_votes = sum(similarity, na.rm = TRUE),
+    mean_similarity = mean(similarity, na.rm = TRUE),
+    max_similarity = max(similarity, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  group_by(source_doc, short_name, source_header) %>%
+  mutate(
+    pct_votes = votes / sum(votes),
+    weighted_pct_votes = weighted_votes / sum(weighted_votes)
+  ) %>%
+  ungroup() %>%
+  arrange(short_name, desc(weighted_votes))
+
+sidney_book_votes %>%
+  print(n = 500)
+
+readr::write_csv(sidney_book_votes, out_sidney_book_votes)
+```
+
+## 13. Aggregate JSO author vote profile
+
+```{r author-corpus-votes}
+jso_author_corpus_votes <- nn_jso_labeled %>%
+  group_by(author, author_code, target_corpus) %>%
+  summarise(
+    votes = n(),
+    weighted_votes = sum(similarity, na.rm = TRUE),
+    mean_similarity = mean(similarity, na.rm = TRUE),
+    max_similarity = max(similarity, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  group_by(author, author_code) %>%
+  mutate(
+    pct_votes = votes / sum(votes),
+    weighted_pct_votes = weighted_votes / sum(weighted_votes)
+  ) %>%
+  ungroup() %>%
+  arrange(author, desc(weighted_votes))
+
+jso_author_corpus_votes
+
+readr::write_csv(jso_author_corpus_votes, out_jso_author_votes)
+```
+
+## 14. Plots: JSO author vote profile
+
+```{r plot-author-corpus-votes, fig.width=9, fig.height=5}
+ggplot(
+  jso_author_corpus_votes,
+  aes(
+    x = author,
+    y = weighted_pct_votes,
+    fill = target_corpus
+  )
+) +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent) +
+  theme_bw() +
+  labs(
+    title = "Nearest-neighbor vote profile by JSO author",
+    subtitle = "Top nearest targets from KJV, BOM, BOC, and DC 1835; weighted by similarity",
+    x = "Author",
+    y = "Weighted vote share",
+    fill = "Neighbor corpus"
+  )
+```
+
+## 15. Plots: Sidney vote profile by chapter
+
+```{r plot-sidney-corpus-by-chapter, fig.width=12, fig.height=6}
+
+sidney_corpus_votes <- sidney_corpus_votes %>%
+  mutate(
+    chapter_num = as.integer(stringr::str_extract(short_name, "\\d+$"))
+  ) %>%
+  mutate(
+    short_name = factor(
+      short_name,
+      levels = short_name[order(chapter_num)] %>% unique()
+    )
+  )
+
+sidney_corpus_votes <- sidney_corpus_votes %>%
+  mutate(
+    target_corpus = factor(
+      target_corpus,
+      levels = c("BOC", "DC", "KJV", "BOM")
+    )
+  )
+
+
+ggplot(
+  sidney_corpus_votes,
+  aes(
+    x = short_name,
+    y = weighted_pct_votes,
+    fill = target_corpus
+  )
+) +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent) +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)
+  ) +
+  labs(
+    title = "Sidney Rigdon nearest-neighbor corpus votes by chapter",
+    subtitle = "Each Sidney chapter's nearest-neighbor votes, weighted by similarity",
+    x = "Sidney chapter",
+    y = "Weighted vote share",
+    fill = "Neighbor corpus"
+  )
+
+
+
+ggplot(
+  sidney_corpus_votes,
+  aes(
+    x = short_name,
+    y = weighted_pct_votes,
+    fill = target_corpus
+  )
+) +
+  geom_col() +
+  scale_fill_manual(
+    breaks = c("BOM", "KJV", "DC", "BOC"),
+    values = c(
+      "BOM" = "#7CAE00",   # green
+      "KJV" = "#C77CFF",   # purple
+      "DC"  = "#00BFC4",   # cyan
+      "BOC" = "#F8766D"    # salmon/red
+    ),
+    drop = FALSE
+  ) +
+  scale_y_continuous(labels = scales::percent) +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)
+  ) +
+  labs(
+    title = "Sidney Rigdon nearest-neighbor corpus votes by chapter",
+    subtitle = "Each Sidney chapter's nearest-neighbor votes, weighted by similarity",
+    x = "Sidney Chapter",
+    y = "Weighted vote share",
+    fill = "Neighbor corpus"
+  )
+```
+
+## 16. Top Sidney target books
+
+```{r plot-sidney-book-summary, fig.width=10, fig.height=7}
+sidney_book_summary <- sidney_book_votes %>%
+  group_by(target_corpus, target_book) %>%
+  summarise(
+    votes = sum(votes),
+    weighted_votes = sum(weighted_votes),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(weighted_votes)) %>%
+  slice_head(n = 25)
+
+sidney_book_summary %>%
+  print(n = 30)
+
+ggplot(
+  sidney_book_summary,
+  aes(
+    x = reorder(paste(target_corpus, target_book, sep = " / "), weighted_votes),
+    y = weighted_votes,
+    fill = target_corpus
+  )
+) +
+  geom_col() +
+  coord_flip() +
+  theme_bw() +
+  labs(
+    title = "Top target books for Sidney Rigdon nearest-neighbor votes",
+    subtitle = "Weighted votes aggregated across Sidney chapters",
+    x = "Target corpus / book",
+    y = "Weighted votes",
+    fill = "Corpus"
+  )
+```
+
+## 17. Top individual Sidney nearest neighbors
+
+```{r top-sidney-neighbors}
+nn_sidney_labeled %>%
+  group_by(source_doc, short_name, source_header) %>%
+  arrange(rank, .by_group = TRUE) %>%
+  slice_head(n = 10) %>%
+  ungroup() %>%
+  select(
+    short_name,
+    source_header,
+    rank,
+    target_corpus,
+    target_book,
+    target_chapter,
+    target_header,
+    similarity
+  ) %>%
+  print(n = 500)
+```
+
+## 18. Notes for interpretation
+
+The ensemble vote tables are better evidence than the Mclust cluster labels alone because they ask a more direct question:
+
+```text
+For each JSO chapter, which known texts are closest?
+```
+
+Recommended interpretation order:
+
+1. Read `show_feature_votes(result_sidney)`.
+2. Read `show_consensus(result_sidney)`.
+3. Inspect `sidney_corpus_votes`.
+4. Inspect `sidney_book_votes`.
+5. Inspect top individual nearest neighbors.
+6. Compare Sidney's author-level vote profile with Joseph and Oliver.
+
+
+```{r sidney chapter target book}
+## ------------------------------------------------------------------
+## Sidney Chapter × Target Book Matrix
+## ------------------------------------------------------------------
+
+sidney_book_matrix <- sidney_book_votes %>%
+  dplyr::group_by(
+    short_name,
+    target_book
+  ) %>%
+  dplyr::summarise(
+    weighted_votes = sum(weighted_votes),
+    votes = sum(votes),
+    .groups = "drop"
+  )
+
+
+book_order <- sidney_book_matrix %>%
+  group_by(target_book) %>%
+  summarise(
+    total = sum(weighted_votes)
+  ) %>%
+  arrange(desc(total)) %>%
+  pull(target_book)
+
+sidney_book_matrix <- sidney_book_matrix %>%
+  mutate(
+    target_book = factor(
+      target_book,
+      levels = book_order
+    )
+  )
+
+sidney_book_matrix
+
+library(tidyr)
+
+sidney_book_heat <- sidney_book_matrix %>%
+  tidyr::pivot_wider(
+    names_from = target_book,
+    values_from = weighted_votes,
+    values_fill = 0
+  )
+
+sidney_book_heat
+
+ggplot(
+  sidney_book_matrix,
+  aes(
+    x = target_book,
+    y = short_name,
+    fill = weighted_votes
+  )
+) +
+  geom_tile(color = "white") +
+  scale_fill_gradient(
+    low = "white",
+    high = "darkgreen"
+  ) +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(
+      angle = 60,
+      hjust = 1
+    )
+  ) +
+  labs(
+    title = "Sidney Rigdon Chapter × Target Book",
+    subtitle = "Weighted nearest-neighbor votes",
+    x = "Target Book",
+    y = "Sidney Chapter",
+    fill = "Weighted\nVotes"
+  )
+
+
+```
+
+```{r jacob 5}
+analysis_docs %>%
+  filter(
+    book == "Jacob",
+    chapter == 5
+  ) %>%
+  select(doc_id, book, chapter, header)
+
+
+show_target_neighbors <- function(result, target_doc){
+
+  nn <- result$nearest_neighbors
+
+  nn %>%
+    dplyr::filter(target_doc == !!target_doc) %>%
+    dplyr::arrange(desc(similarity))
+}
+
+
+show_target_neighbors(
+    result_jso,
+    "Jacob_5"
+)
+
+
+show_target_votes <- function(result, target_doc, author_map){
+
+  result$nearest_neighbors %>%
+    dplyr::filter(neighbor_doc_id == target_doc) %>%
+    dplyr::group_by(doc_id) %>%
+    dplyr::summarise(
+      votes = dplyr::n(),
+      weighted_votes = sum(similarity),
+      avg_similarity = mean(similarity),
+      max_similarity = max(similarity),
+      best_rank = min(rank),
+      .groups = "drop"
+    ) %>%
+    dplyr::left_join(author_map, by = "doc_id") %>%
+    dplyr::select(
+      short_name,
+      author,
+      chapter_original,
+      chapter_title,
+      votes,
+      weighted_votes,
+      avg_similarity,
+      best_rank
+    ) %>%
+    dplyr::arrange(dplyr::desc(weighted_votes))
+}
+
+
+
+show_target_votes(
+    result_jso,
+    "Jacob_5",
+    jso_author_map
+)
+
+```
+
+
+
+

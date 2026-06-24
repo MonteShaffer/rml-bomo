@@ -1,8 +1,8 @@
 comparison,adjusted_rand_index
-cluster_vs_corpus_family,0.17025484845035896
-cluster_vs_macro_genre,0.4752476548088038
-cluster_vs_book,0.23279314530595555
-cluster_vs_source_family,0.17025484845035896
-cluster_vs_bom_mosiah_priority,0.08851042945426173
-cluster_vs_isaiah_section,0.06992475031879522
-cluster_vs_boc_chapter_date,0.009523809523809518
+cluster_vs_corpus_family,0.16286243219739363
+cluster_vs_macro_genre,0.36726508258175466
+cluster_vs_book,0.21254450253700385
+cluster_vs_source_family,0.16286243219739363
+cluster_vs_bom_mosiah_priority,0.11415153887791099
+cluster_vs_isaiah_section,0.09655965119278016
+cluster_vs_boc_chapter_date,-0.0026735396510934625

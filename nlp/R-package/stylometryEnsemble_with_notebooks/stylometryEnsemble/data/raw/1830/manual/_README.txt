@@ -41,9 +41,11 @@ http://www.sidneyrigdon.com/dbroadhu/IL/whig1839.htm#rigdon
 
 
 
+https://sungwon-kim.com/blog/2025/random-cosine-similarity/
+distribution of cosine similarity scores
 
 
-
+https://archive.org/details/latewarbetweenun00inhunt/page/10/mode/2up
 
 
 

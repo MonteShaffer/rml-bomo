@@ -1,0 +1,993 @@
+---
+title: "63 - Prepare 1835 Doctrine and Covenants v4"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run this notebook from inside the notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+
+options(
+  tibble.width = Inf,
+  tibble.print_max = 300
+)
+```
+
+## 1. Purpose
+
+This notebook downloads, caches, parses, and prepares the **1835 Doctrine and Covenants** from:
+
+```text
+https://doctrineandcovenants.com/sections/1835dcs/section-1/
+```
+
+It follows the actual site navigation by repeatedly reading the `rel="next"` link:
+
+```html
+<a class="tessera-post-nav" href="..." rel="next">...</a>
+```
+
+This avoids false fixed-range URLs that redirect to other editions.
+
+The crawl stops after parsing:
+
+```text
+https://doctrineandcovenants.com/sections/1835dcs/section-134/
+```
+
+Target outputs:
+
+```text
+data/prepared/dc_1835_chapter_docs.csv
+data/prepared/dc_1835_verse_docs.csv
+```
+
+Metadata:
+
+```text
+corpus_family = "DC"
+source_family = "DC_1835"
+edition = "1835"
+```
+
+Each downloaded 1835 page is treated as one imported `chapter` / stylometric unit.
+
+The key v4 change is that verses are parsed from the DOM using:
+
+```html
+<h4 class="wp-block-heading">7</h4>
+```
+
+as the authoritative verse marker, instead of line-based text parsing. The parser stops after the last verse when it reaches post-navigation, dates, reading-time metadata, or next-post content.
+
+## 2. Packages
+
+```{r packages}
+library(dplyr)
+library(stringr)
+library(readr)
+library(purrr)
+library(tibble)
+library(rvest)
+library(xml2)
+library(tidyr)
+```
+
+## 3. Directories
+
+```{r directories}
+raw_dc1835_dir <- file.path(STYLO_ROOT, "data", "raw", "dc_1835")
+html_cache_dir <- file.path(raw_dc1835_dir, "html")
+diagnostic_dir <- file.path(raw_dc1835_dir, "diagnostics")
+prepared_dir <- file.path(STYLO_ROOT, "data", "prepared")
+
+dir.create(raw_dc1835_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(html_cache_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(diagnostic_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(prepared_dir, recursive = TRUE, showWarnings = FALSE)
+
+dc1835_verse_out_path <- file.path(prepared_dir, "dc_1835_verse_docs.csv")
+dc1835_chapter_out_path <- file.path(prepared_dir, "dc_1835_chapter_docs.csv")
+
+crawl_diag_path <- file.path(diagnostic_dir, "dc_1835_v4_crawl_results.csv")
+parse_diag_path <- file.path(diagnostic_dir, "dc_1835_v4_parse_diagnostics.csv")
+gap_diag_path <- file.path(diagnostic_dir, "dc_1835_v4_verse_gaps.csv")
+raw_verse_diag_path <- file.path(diagnostic_dir, "dc_1835_v4_raw_verses.csv")
+```
+
+## 4. URL and cache helpers
+
+```{r url-cache-helpers}
+start_url <- "https://doctrineandcovenants.com/sections/1835dcs/section-1/"
+stop_url <- "https://doctrineandcovenants.com/sections/1835dcs/section-134/"
+
+safe_slug <- function(x){
+  x %>%
+    stringr::str_replace_all("[^A-Za-z0-9]+", "_") %>%
+    stringr::str_replace_all("^_+|_+$", "")
+}
+
+normalize_url <- function(url){
+  url <- stringr::str_replace(url, "#.*$", "")
+
+  url <- stringr::str_replace(
+    url,
+    "^http://doctrineandcovenants\\.com",
+    "https://doctrineandcovenants.com"
+  )
+
+  if(stringr::str_starts(url, "/")){
+    url <- paste0("https://doctrineandcovenants.com", url)
+  }
+
+  if(!stringr::str_detect(url, "/$")){
+    url <- paste0(url, "/")
+  }
+
+  url
+}
+
+start_url <- normalize_url(start_url)
+stop_url <- normalize_url(stop_url)
+
+website_section_id_from_url <- function(url){
+  stringr::str_match(
+    url,
+    regex("/sections?-([^/]+)/?$", ignore_case = TRUE)
+  )[, 2]
+}
+
+section_numbers_from_id <- function(section_id){
+  nums <- stringr::str_extract_all(section_id, "[0-9]+")[[1]]
+  as.integer(nums)
+}
+
+section_numbers_from_url <- function(url){
+  section_id <- website_section_id_from_url(url)
+
+  if(is.na(section_id)){
+    return(integer())
+  }
+
+  section_numbers_from_id(section_id)
+}
+
+chapter_number_from_url <- function(url){
+  nums <- section_numbers_from_url(url)
+
+  if(length(nums) == 0){
+    return(NA_integer_)
+  }
+
+  nums[[1]]
+}
+
+cache_path_for_url <- function(url){
+  url <- normalize_url(url)
+  website_section_id <- website_section_id_from_url(url)
+
+  if(is.na(website_section_id) || website_section_id == ""){
+    website_section_id <- safe_slug(url)
+  }
+
+  file.path(
+    html_cache_dir,
+    paste0("sections_", website_section_id, ".html")
+  )
+}
+
+download_section_html <- function(url, overwrite = FALSE){
+  url <- normalize_url(url)
+  cache_path <- cache_path_for_url(url)
+
+  if(file.exists(cache_path) && !overwrite){
+    return(
+      tibble::tibble(
+        url = url,
+        cache_path = cache_path,
+        downloaded = FALSE,
+        ok = TRUE,
+        status = "cached"
+      )
+    )
+  }
+
+  ok <- tryCatch({
+    download.file(
+      url = url,
+      destfile = cache_path,
+      mode = "wb",
+      quiet = TRUE
+    )
+
+    file.exists(cache_path) && file.info(cache_path)$size > 1000
+  }, error = function(e){
+    FALSE
+  })
+
+  tibble::tibble(
+    url = url,
+    cache_path = cache_path,
+    downloaded = ok,
+    ok = ok,
+    status = dplyr::if_else(ok, "downloaded", "failed")
+  )
+}
+
+read_cached_html <- function(cache_path){
+  xml2::read_html(cache_path, encoding = "UTF-8")
+}
+```
+
+## 5. Next-link crawler
+
+Rules:
+
+1. Start at `section-1/`.
+2. Download/cache the current page.
+3. Record the current page.
+4. If current page is `section-134/`, stop immediately.
+5. Otherwise extract the `rel="next"` link and continue.
+6. Only accept next links inside `/sections/1835dcs/`.
+
+```{r crawl-by-next}
+extract_next_1835_url <- function(page){
+
+  next_href <- page %>%
+    rvest::html_element("a.tessera-post-nav[rel='next']") %>%
+    rvest::html_attr("href")
+
+  if(length(next_href) == 0 || is.na(next_href)){
+    return(NA_character_)
+  }
+
+  next_url <- normalize_url(next_href)
+
+  if(!stringr::str_detect(
+    next_url,
+    fixed("doctrineandcovenants.com/sections/1835dcs/")
+  )){
+    return(NA_character_)
+  }
+
+  next_url
+}
+
+crawl_1835_by_next <- function(start_url, stop_url, max_pages = 150, overwrite = FALSE){
+
+  current_url <- normalize_url(start_url)
+  stop_url <- normalize_url(stop_url)
+
+  out <- tibble::tibble()
+  visited <- character()
+
+  for(i in seq_len(max_pages)){
+
+    if(current_url %in% visited){
+      warning("Loop detected at: ", current_url)
+      break
+    }
+
+    dl <- download_section_html(current_url, overwrite = overwrite)
+
+    if(!isTRUE(dl$ok[[1]])){
+      warning("Failed to download: ", current_url)
+      break
+    }
+
+    page <- read_cached_html(dl$cache_path[[1]])
+
+    website_section_id <- website_section_id_from_url(current_url)
+    section_numbers <- section_numbers_from_url(current_url)
+
+    out <- dplyr::bind_rows(
+      out,
+      tibble::tibble(
+        page_order = i,
+        discovered_url = current_url,
+        website_section_id = website_section_id,
+        section_numbers = paste(section_numbers, collapse = ","),
+        chapter = chapter_number_from_url(current_url),
+        cache_path = dl$cache_path[[1]],
+        downloaded = dl$downloaded[[1]],
+        status = dl$status[[1]],
+        ok = dl$ok[[1]]
+      )
+    )
+
+    visited <- c(visited, current_url)
+
+    if(current_url == stop_url){
+      message("Reached stop URL: ", stop_url)
+      break
+    }
+
+    next_url <- extract_next_1835_url(page)
+
+    if(is.na(next_url)){
+      warning("No next 1835 link found after: ", current_url)
+      break
+    }
+
+    current_url <- next_url
+  }
+
+  out
+}
+
+section_url_index <- crawl_1835_by_next(
+  start_url = start_url,
+  stop_url = stop_url,
+  max_pages = 150,
+  overwrite = FALSE
+)
+
+section_url_index %>%
+  print(n = 150)
+
+readr::write_csv(section_url_index, crawl_diag_path)
+```
+
+## 6. Text helpers
+
+```{r text-helpers}
+clean_text <- function(x){
+  x %>%
+    stringr::str_replace_all("\uFEFF", "") %>%
+    stringr::str_replace_all("\r", "\n") %>%
+    stringr::str_replace_all("\u00A0", " ") %>%
+    stringr::str_replace_all("[ \t]+", " ") %>%
+    stringr::str_replace_all("\n{3,}", "\n\n") %>%
+    stringr::str_trim()
+}
+
+normalize_doc_text <- function(x){
+  x %>%
+    stringr::str_replace_all("\\s+", " ") %>%
+    stringr::str_replace_all("\\s+([,.;:!?])", "\\1") %>%
+    stringr::str_squish()
+}
+
+extract_title <- function(page, fallback_label){
+  title_candidates <- c(
+    page %>% rvest::html_elements("h1") %>% rvest::html_text2(),
+    page %>% rvest::html_elements("h2") %>% rvest::html_text2(),
+    page %>% rvest::html_elements("title") %>% rvest::html_text2()
+  )
+
+  title_candidates <- title_candidates %>%
+    stringr::str_squish()
+
+  title_candidates <- title_candidates[
+    !is.na(title_candidates) &
+      title_candidates != "" &
+      !stringr::str_detect(title_candidates, regex("Doctrine and Covenants.com", ignore_case = TRUE))
+  ]
+
+  if(length(title_candidates) > 0){
+    return(title_candidates[[1]])
+  }
+
+  fallback_label
+}
+
+extract_main_node <- function(page){
+  selectors <- c(
+    "article",
+    "main",
+    ".entry-content",
+    ".post-content",
+    ".content",
+    "#content"
+  )
+
+  for(sel in selectors){
+    node <- page %>% rvest::html_element(sel)
+
+    if(length(node) > 0 && !inherits(node, "xml_missing")){
+      return(node)
+    }
+  }
+
+  page %>% rvest::html_element("body")
+}
+```
+
+## 7. DOM verse parser
+
+The 1835 pages encode verse numbers as heading nodes, for example:
+
+```html
+<h4 class="wp-block-heading">7</h4>
+```
+
+This parser walks the direct child nodes of the content area in order.
+
+It starts a verse when it sees a numeric `h4`.
+
+It appends later paragraph/list/text blocks to that verse.
+
+It stops when it reaches navigation or later post metadata/content.
+
+```{r dom-verse-parser}
+is_verse_heading <- function(node){
+  tag <- xml2::xml_name(node)
+
+  txt <- rvest::html_text2(node) %>%
+    stringr::str_squish()
+
+  tag == "h4" &&
+    stringr::str_detect(txt, "^[0-9]{1,3}$")
+}
+
+is_stop_node <- function(node){
+
+  cls <- xml2::xml_attr(node, "class")
+  id <- xml2::xml_attr(node, "id")
+  tag <- xml2::xml_name(node)
+
+  txt <- rvest::html_text2(node) %>%
+    stringr::str_squish()
+
+  combined <- paste(
+    tag,
+    cls,
+    id,
+    txt,
+    sep = " "
+  )
+
+  stringr::str_detect(
+    combined,
+    regex(
+      paste(
+        c(
+          "tessera-post-nav",
+          "post-navigation",
+          "nav-links",
+          "wp-block-post-date",
+          "wp-block-post-title",
+          "Reading Time",
+          "^h\\d\\s+Introduction to the 1835 Doctrine and Covenants$",
+          "Introduction to the 1835 Doctrine and Covenants",
+          "^ON PRIESTHOOD AND CALLING",
+          "^Revelation to Joseph Smith",
+          "^December [0-9]{1,2}, [0-9]{4}$",
+          "^January [0-9]{1,2}, [0-9]{4}$",
+          "^February [0-9]{1,2}, [0-9]{4}$",
+          "^March [0-9]{1,2}, [0-9]{4}$",
+          "^April [0-9]{1,2}, [0-9]{4}$",
+          "^May [0-9]{1,2}, [0-9]{4}$",
+          "^June [0-9]{1,2}, [0-9]{4}$",
+          "^July [0-9]{1,2}, [0-9]{4}$",
+          "^August [0-9]{1,2}, [0-9]{4}$",
+          "^September [0-9]{1,2}, [0-9]{4}$",
+          "^October [0-9]{1,2}, [0-9]{4}$",
+          "^November [0-9]{1,2}, [0-9]{4}$"
+        ),
+        collapse = "|"
+      ),
+      ignore_case = TRUE
+    )
+  )
+}
+
+is_non_content_node <- function(node){
+
+  tag <- xml2::xml_name(node)
+
+  cls <- xml2::xml_attr(node, "class")
+  txt <- rvest::html_text2(node) %>%
+    stringr::str_squish()
+
+  combined <- paste(tag, cls, txt)
+
+  stringr::str_detect(
+    combined,
+    regex(
+      paste(
+        c(
+          "^script",
+          "^style",
+          "sharedaddy",
+          "jp-relatedposts",
+          "comments",
+          "comment-respond",
+          "wp-block-separator",
+          "tessera-post-nav",
+          "post-navigation",
+          "Previous",
+          "Next",
+          "Share this",
+          "Like this"
+        ),
+        collapse = "|"
+      ),
+      ignore_case = TRUE
+    )
+  )
+}
+
+
+parse_verses_dom <- function(main_node){
+
+  nodes <- rvest::html_elements(
+    main_node,
+    xpath = "./*"
+  )
+
+  verses <- list()
+
+  current_verse <- NULL
+  current_text <- character()
+
+  started <- FALSE
+
+  for(node in nodes){
+
+    # Stop once we've started verses and encounter
+    # navigation / metadata / next article
+    if(started && is_stop_node(node)){
+      break
+    }
+
+    # Ignore obvious non-content nodes
+    if(is_non_content_node(node)){
+      next
+    }
+
+    txt <- rvest::html_text2(node) %>%
+      stringr::str_squish()
+
+    if(txt == ""){
+      next
+    }
+
+    # Verse marker:
+    # <h4 class="wp-block-heading">7</h4>
+
+    if(is_verse_heading(node)){
+
+      # Save previous verse
+      if(!is.null(current_verse)){
+
+        verses[[length(verses) + 1L]] <-
+          tibble::tibble(
+            verse = current_verse,
+            text = paste(
+              current_text,
+              collapse = " "
+            ) %>%
+              normalize_doc_text()
+          )
+
+      }
+
+      current_verse <- as.integer(txt)
+
+      current_text <- character()
+
+      started <- TRUE
+
+      next
+    }
+
+    # Append text to current verse
+
+    if(!is.null(current_verse)){
+
+      current_text <- c(
+        current_text,
+        txt
+      )
+
+    }
+
+  }
+
+  # Save last verse
+
+  if(!is.null(current_verse)){
+
+    verses[[length(verses) + 1L]] <-
+      tibble::tibble(
+        verse = current_verse,
+        text = paste(
+          current_text,
+          collapse = " "
+        ) %>%
+          normalize_doc_text()
+      )
+
+  }
+
+  # IMPORTANT:
+  # bind_rows(list()) gives a 0-column tibble,
+  # so explicitly return verse/text columns.
+
+  if(length(verses) == 0){
+
+    return(
+      tibble::tibble(
+        verse = integer(),
+        text = character()
+      )
+    )
+
+  }
+
+  result <- dplyr::bind_rows(verses)
+
+  result %>%
+    dplyr::filter(
+      !is.na(verse),
+      text != ""
+    ) %>%
+    dplyr::arrange(verse)
+
+}
+
+
+parse_dc1835_page <- function(cache_path, url, page_order){
+
+  page <- read_cached_html(cache_path)
+
+  # Remove obvious non-content containers before parsing.
+  xml2::xml_find_all(
+    page,
+    ".//script|.//style|.//nav|.//footer|.//header|.//aside"
+  ) %>%
+    xml2::xml_remove()
+
+  website_section_id <- website_section_id_from_url(url)
+  section_numbers <- section_numbers_from_url(url)
+  chapter_number <- chapter_number_from_url(url)
+
+  fallback_label <- if(length(section_numbers) > 1){
+    paste0("Sections ", paste(section_numbers, collapse = ", "))
+  } else {
+    paste0("Section ", website_section_id)
+  }
+
+  title <- extract_title(page, fallback_label)
+
+  main_node <- extract_main_node(page)
+
+  verses <- parse_verses_dom(main_node)
+
+  if(nrow(verses) == 0){
+
+    warning("No DOM verses parsed for: ", url)
+
+    return(
+      tibble::tibble(
+        page_order = page_order,
+        chapter = chapter_number,
+        website_section_id = website_section_id,
+        section_numbers = paste(section_numbers, collapse = ","),
+        chapter_title = title,
+        verse = integer(),
+        text = character(),
+        source_url = url,
+        cache_path = cache_path
+      )
+    )
+  }
+
+  verses %>%
+    dplyr::mutate(
+      page_order = page_order,
+      chapter = chapter_number,
+      website_section_id = website_section_id,
+      section_numbers = paste(section_numbers, collapse = ","),
+      chapter_title = title,
+      source_url = url,
+      cache_path = cache_path
+    ) %>%
+    dplyr::select(
+      page_order,
+      chapter,
+      website_section_id,
+      section_numbers,
+      chapter_title,
+      verse,
+      text,
+      source_url,
+      cache_path
+    )
+}
+```
+
+## 8. Parse cached pages
+
+```{r parse-pages}
+parseable_pages <- section_url_index %>%
+  dplyr::filter(ok) %>%
+  dplyr::arrange(page_order)
+
+dc1835_verses_raw <- purrr::pmap_dfr(
+  parseable_pages %>%
+    dplyr::select(cache_path, discovered_url, page_order),
+  function(cache_path, discovered_url, page_order){
+    parse_dc1835_page(
+      cache_path = cache_path,
+      url = discovered_url,
+      page_order = page_order
+    )
+  }
+)
+
+readr::write_csv(dc1835_verses_raw, raw_verse_diag_path)
+
+dc1835_verses_raw %>%
+  dplyr::count(page_order, chapter, website_section_id, section_numbers, chapter_title, name = "n_verses") %>%
+  dplyr::arrange(page_order) %>%
+  print(n = 150)
+
+parse_diagnostics <- dc1835_verses_raw %>%
+  dplyr::group_by(page_order, chapter, website_section_id, section_numbers, chapter_title, source_url, cache_path) %>%
+  dplyr::summarise(
+    n_verses = dplyr::n(),
+    min_verse = min(verse, na.rm = TRUE),
+    max_verse = max(verse, na.rm = TRUE),
+    n_words = sum(stringr::str_count(text, "\\S+"), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(page_order)
+
+parse_diagnostics
+
+readr::write_csv(parse_diagnostics, parse_diag_path)
+```
+
+## 9. Section 1 check
+
+Section 1 should parse as 7 verses.
+
+```{r section-1-check}
+dc1835_verses_raw %>%
+  dplyr::filter(page_order == 1) %>%
+  dplyr::select(verse, text) %>%
+  print(n = 20)
+
+dc1835_verses_raw %>%
+  dplyr::filter(page_order == 1) %>%
+  dplyr::summarise(
+    n_verses = dplyr::n(),
+    min_verse = min(verse),
+    max_verse = max(verse)
+  )
+```
+
+## 10. Build verse-level structure
+
+```{r verse-structure}
+dc1835_verse_docs <- dc1835_verses_raw %>%
+  dplyr::filter(!is.na(chapter), !is.na(verse), text != "") %>%
+  dplyr::mutate(
+    corpus_id = "DC",
+    translation = "1835",
+    corpus_family = "DC",
+    source_family = "DC_1835",
+    edition = "1835",
+    author = NA_character_,
+    work = "Doctrine and Covenants",
+    short_work = "DC_1835",
+    book = "Doctrine and Covenants",
+    chapter = as.integer(chapter),
+    verse = as.integer(verse),
+    verse_id = paste0(
+      "DC_1835__",
+      stringr::str_pad(chapter, width = 3, pad = "0"),
+      "_",
+      stringr::str_pad(verse, width = 3, pad = "0")
+    ),
+    doc_id = verse_id,
+    doc_id_original = doc_id,
+    section_label = dplyr::if_else(
+      stringr::str_detect(website_section_id, "-"),
+      paste0("Sections ", website_section_id),
+      paste0("Section ", website_section_id)
+    ),
+    macro_genre = "Modern_Scripture",
+    doc_unit = "verse",
+    n_words = stringr::str_count(text, "\\S+")
+  ) %>%
+  dplyr::select(
+    corpus_id,
+    translation,
+    corpus_family,
+    source_family,
+    edition,
+    doc_id,
+    doc_id_original,
+    author,
+    work,
+    short_work,
+    book,
+    chapter,
+    page_order,
+    chapter_title,
+    verse,
+    verse_id,
+    website_section_id,
+    section_numbers,
+    section_label,
+    macro_genre,
+    doc_unit,
+    n_words,
+    text,
+    source_url,
+    cache_path
+  )
+
+dc1835_verse_docs %>%
+  dplyr::arrange(page_order, verse) %>%
+  dplyr::slice_head(n = 20)
+```
+
+## 11. Build chapter-level structure
+
+Each downloaded 1835 page is treated as one chapter/stylometric unit.
+
+```{r chapter-structure}
+dc1835_chapter_docs <- dc1835_verse_docs %>%
+  dplyr::arrange(page_order, verse) %>%
+  dplyr::group_by(
+    corpus_id,
+    translation,
+    corpus_family,
+    source_family,
+    edition,
+    author,
+    work,
+    short_work,
+    book,
+    chapter,
+    page_order,
+    chapter_title,
+    website_section_id,
+    section_numbers,
+    section_label
+  ) %>%
+  dplyr::summarise(
+    text = paste(text, collapse = " "),
+    n_verses = dplyr::n(),
+    min_verse = min(verse, na.rm = TRUE),
+    max_verse = max(verse, na.rm = TRUE),
+    source_url = dplyr::first(source_url),
+    cache_path = dplyr::first(cache_path),
+    .groups = "drop"
+  ) %>%
+  dplyr::mutate(
+    text = normalize_doc_text(text),
+    n_words = stringr::str_count(text, "\\S+"),
+    macro_genre = "Modern_Scripture",
+    doc_unit = "chapter",
+    doc_id = paste0(
+      "DC_1835__",
+      stringr::str_pad(page_order, width = 3, pad = "0"),
+      "__",
+      dplyr::if_else(
+        stringr::str_detect(website_section_id, "-"),
+        paste0("sections_", website_section_id),
+        paste0("section_", website_section_id)
+      )
+    ),
+    doc_id_original = doc_id
+  ) %>%
+  dplyr::select(
+    corpus_id,
+    translation,
+    corpus_family,
+    source_family,
+    edition,
+    doc_id,
+    doc_id_original,
+    author,
+    work,
+    short_work,
+    book,
+    chapter,
+    page_order,
+    chapter_title,
+    website_section_id,
+    section_numbers,
+    section_label,
+    macro_genre,
+    doc_unit,
+    n_verses,
+    min_verse,
+    max_verse,
+    n_words,
+    text,
+    source_url,
+    cache_path
+  )
+
+dc1835_chapter_docs %>%
+  dplyr::arrange(page_order) %>%
+  dplyr::select(page_order, chapter, website_section_id, section_numbers, chapter_title, n_verses, n_words, source_url) %>%
+  print(n = 150)
+```
+
+## 12. Diagnostics
+
+```{r diagnostics}
+verse_gaps <- dc1835_verse_docs %>%
+  dplyr::group_by(page_order, chapter, website_section_id, chapter_title) %>%
+  dplyr::summarise(
+    min_verse = min(verse, na.rm = TRUE),
+    max_verse = max(verse, na.rm = TRUE),
+    n_verses = dplyr::n_distinct(verse),
+    expected_n = max_verse - min_verse + 1L,
+    has_gap = n_verses != expected_n,
+    missing_verses = paste(
+      setdiff(seq(min_verse, max_verse), sort(unique(verse))),
+      collapse = ", "
+    ),
+    .groups = "drop"
+  ) %>%
+  dplyr::filter(has_gap)
+
+verse_gaps
+
+readr::write_csv(verse_gaps, gap_diag_path)
+
+dc1835_chapter_docs %>%
+  dplyr::filter(is.na(chapter) | n_words < 50) %>%
+  dplyr::select(page_order, chapter, website_section_id, chapter_title, n_verses, n_words, source_url) %>%
+  print(n = 100)
+
+parsed_section_numbers <- dc1835_chapter_docs %>%
+  tidyr::separate_rows(section_numbers, sep = ",") %>%
+  dplyr::mutate(section_number = as.integer(section_numbers)) %>%
+  dplyr::distinct(section_number) %>%
+  dplyr::arrange(section_number)
+
+parsed_section_numbers %>%
+  print(n = 150)
+
+setdiff(1:134, parsed_section_numbers$section_number)
+```
+
+## 13. Write outputs
+
+```{r write-outputs}
+readr::write_csv(dc1835_verse_docs, dc1835_verse_out_path)
+readr::write_csv(dc1835_chapter_docs, dc1835_chapter_out_path)
+
+cat("Wrote 1835 DC verse docs to:\n")
+cat(dc1835_verse_out_path, "\n\n")
+
+cat("Wrote 1835 DC chapter docs to:\n")
+cat(dc1835_chapter_out_path, "\n")
+```
+
+## 14. Next step
+
+Use:
+
+```text
+data/prepared/dc_1835_chapter_docs.csv
+```
+
+in the larger corpus:
+
+```text
+KJV + BOM + BOC + DC_1835 + DC_modern + PoGP + JSO + 1830
+```
+
+Recommended metadata:
+
+```text
+corpus_family = DC
+source_family = DC_1835 or DC_modern
+edition = 1835 or modern
+```

@@ -329,6 +329,16 @@ S_all <- S_all[analysis_meta$doc_id, analysis_meta$doc_id, drop = FALSE]
 
 dim(S_all)
 S_all[1:5, 1:5]
+
+s_test <- S_all[lower.tri(S_all)]
+hist(s_test)
+
+
+summary(s_test)
+library(moments)
+moments::skewness(s_test)
+moments::kurtosis(s_test)
+
 ```
 
 ## 11. PCA helper and PCA

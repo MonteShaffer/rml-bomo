@@ -1,0 +1,768 @@
+---
+title: "63 - Prepare 1835 Doctrine and Covenants v6"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+# Run from notebooks/ folder.
+
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+
+options(
+  tibble.width = Inf,
+  tibble.print_max = 300
+)
+
+library(dplyr)
+library(stringr)
+library(readr)
+library(purrr)
+library(tibble)
+library(rvest)
+library(xml2)
+library(tidyr)
+```
+
+## 1. Purpose
+
+This version deliberately separates the workflow into debugging stages:
+
+```text
+1. Crawl URL list from section 1 to section 134.
+2. Sanity-check the URL list count and stopping point.
+3. Download only the confirmed URLs.
+4. Sanity-check downloaded page count.
+5. Parse verses from cached HTML.
+6. Sanity-check parsed pages and verse counts.
+7. Save verse-level and chapter-level CSV files.
+```
+
+This avoids false fixed-range URLs and avoids redirects into other editions.
+
+The crawler follows only the site's actual `rel="next"` link.
+
+It allows both paths used by the site:
+
+```text
+/sections/1835dcs/
+/sections/1835dc/
+```
+
+and stops when the parsed website section id is `134`.
+
+Outputs:
+
+```text
+data/prepared/dc_1835_verse_docs.csv
+data/prepared/dc_1835_chapter_docs.csv
+```
+
+## 2. Directories
+
+```{r directories}
+raw_dc1835_dir <- file.path(STYLO_ROOT, "data", "raw", "dc_1835")
+html_cache_dir <- file.path(raw_dc1835_dir, "html")
+diagnostic_dir <- file.path(raw_dc1835_dir, "diagnostics")
+prepared_dir <- file.path(STYLO_ROOT, "data", "prepared")
+
+dir.create(raw_dc1835_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(html_cache_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(diagnostic_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(prepared_dir, recursive = TRUE, showWarnings = FALSE)
+
+url_index_path <- file.path(diagnostic_dir, "dc_1835_v6_url_index.csv")
+download_diag_path <- file.path(diagnostic_dir, "dc_1835_v6_download_results.csv")
+parse_diag_path <- file.path(diagnostic_dir, "dc_1835_v6_parse_diagnostics.csv")
+raw_verses_path <- file.path(diagnostic_dir, "dc_1835_v6_raw_verses.csv")
+
+verse_out_path <- file.path(prepared_dir, "dc_1835_verse_docs.csv")
+chapter_out_path <- file.path(prepared_dir, "dc_1835_chapter_docs.csv")
+```
+
+## 3. URL helpers
+
+```{r url-helpers}
+start_url <- "https://doctrineandcovenants.com/sections/1835dcs/section-1/"
+stop_section_id <- "134"
+
+normalize_url <- function(url){
+
+  url <- stringr::str_replace(url, "#.*$", "")
+
+  url <- stringr::str_replace(
+    url,
+    "^http://doctrineandcovenants\\.com",
+    "https://doctrineandcovenants.com"
+  )
+
+  if(stringr::str_starts(url, "/")){
+    url <- paste0("https://doctrineandcovenants.com", url)
+  }
+
+  if(!stringr::str_detect(url, "/$")){
+    url <- paste0(url, "/")
+  }
+
+  url
+}
+
+website_section_id_from_url <- function(url){
+
+  stringr::str_match(
+    url,
+    regex("/sections?-([^/]+)/?$", ignore_case = TRUE)
+  )[, 2]
+
+}
+
+section_numbers_from_id <- function(section_id){
+
+  nums <- stringr::str_extract_all(section_id, "[0-9]+")[[1]]
+
+  as.integer(nums)
+
+}
+
+section_numbers_from_url <- function(url){
+
+  sid <- website_section_id_from_url(url)
+
+  if(is.na(sid)){
+    return(integer())
+  }
+
+  section_numbers_from_id(sid)
+
+}
+
+chapter_number_from_url <- function(url){
+
+  nums <- section_numbers_from_url(url)
+
+  if(length(nums) == 0){
+    return(NA_integer_)
+  }
+
+  nums[[1]]
+
+}
+
+is_1835_url <- function(url){
+
+  stringr::str_detect(
+    url,
+    regex("doctrineandcovenants\\.com/sections/1835dcs?/", ignore_case = TRUE)
+  )
+
+}
+
+cache_path_for_url <- function(url){
+
+  sid <- website_section_id_from_url(url)
+
+  if(is.na(sid) || sid == ""){
+    sid <- stringr::str_replace_all(url, "[^A-Za-z0-9]+", "_")
+  }
+
+  file.path(
+    html_cache_dir,
+    paste0("sections_", sid, ".html")
+  )
+
+}
+```
+
+## 4. Crawl URL list only
+
+This stage does **not** parse verses. It only builds the authoritative URL list.
+
+```{r crawl-url-list}
+download_for_crawl <- function(url){
+
+  url <- normalize_url(url)
+  cache_path <- cache_path_for_url(url)
+
+  if(!file.exists(cache_path)){
+
+    download.file(
+      url = url,
+      destfile = cache_path,
+      mode = "wb",
+      quiet = TRUE
+    )
+
+  }
+
+  cache_path
+
+}
+
+extract_next_url_from_cache <- function(cache_path){
+
+  page <- xml2::read_html(cache_path, encoding = "UTF-8")
+
+  href <- page %>%
+    rvest::html_element("a.tessera-post-nav[rel='next']") %>%
+    rvest::html_attr("href")
+
+  if(length(href) == 0 || is.na(href)){
+    return(NA_character_)
+  }
+
+  href <- normalize_url(href)
+
+  if(!is_1835_url(href)){
+    return(NA_character_)
+  }
+
+  href
+
+}
+
+crawl_urls_1_to_134 <- function(start_url, stop_section_id = "134", max_pages = 200){
+
+  current_url <- normalize_url(start_url)
+  visited <- character()
+  rows <- list()
+
+  for(page_order in seq_len(max_pages)){
+
+    if(current_url %in% visited){
+      stop("Crawler loop detected at: ", current_url)
+    }
+
+    cache_path <- download_for_crawl(current_url)
+
+    website_section_id <- website_section_id_from_url(current_url)
+    section_numbers <- section_numbers_from_url(current_url)
+
+    rows[[page_order]] <- tibble::tibble(
+      page_order = page_order,
+      source_url = current_url,
+      website_section_id = website_section_id,
+      section_numbers = paste(section_numbers, collapse = ","),
+      chapter = chapter_number_from_url(current_url),
+      cache_path = cache_path
+    )
+
+    visited <- c(visited, current_url)
+
+    if(website_section_id == stop_section_id){
+      message("Reached stop section id: ", stop_section_id)
+      break
+    }
+
+    next_url <- extract_next_url_from_cache(cache_path)
+
+    if(is.na(next_url)){
+      stop("No next URL found before reaching section ", stop_section_id, ". Last URL: ", current_url)
+    }
+
+    current_url <- next_url
+  }
+
+  dplyr::bind_rows(rows)
+
+}
+
+url_index <- crawl_urls_1_to_134(
+  start_url = start_url,
+  stop_section_id = stop_section_id,
+  max_pages = 200
+)
+
+readr::write_csv(url_index, url_index_path)
+
+url_index %>%
+  dplyr::select(page_order, chapter, website_section_id, section_numbers, source_url) %>%
+  print(n = 200)
+```
+
+## 5. Sanity check URL list
+
+This chunk should pass before moving on.
+
+```{r sanity-url-list}
+url_summary <- url_index %>%
+  dplyr::summarise(
+    n_pages = dplyr::n(),
+    first_url = dplyr::first(source_url),
+    last_url = dplyr::last(source_url),
+    first_section_id = dplyr::first(website_section_id),
+    last_section_id = dplyr::last(website_section_id),
+    min_chapter = min(chapter, na.rm = TRUE),
+    max_chapter = max(chapter, na.rm = TRUE),
+    duplicate_urls = sum(duplicated(source_url))
+  )
+
+url_summary
+
+if(url_summary$first_section_id != "1"){
+  stop("URL crawl did not start at section id 1.")
+}
+
+if(url_summary$last_section_id != stop_section_id){
+  stop("URL crawl did not end at section id ", stop_section_id, ".")
+}
+
+if(url_summary$duplicate_urls > 0){
+  stop("URL crawl contains duplicate URLs.")
+}
+
+# Useful, but not fatal: the 1835 site uses grouped pages.
+parsed_section_numbers <- url_index %>%
+  tidyr::separate_rows(section_numbers, sep = ",") %>%
+  dplyr::mutate(section_number = as.integer(section_numbers)) %>%
+  dplyr::distinct(section_number) %>%
+  dplyr::arrange(section_number)
+
+parsed_section_numbers %>%
+  print(n = 150)
+
+missing_1_to_134 <- setdiff(1:134, parsed_section_numbers$section_number)
+
+missing_1_to_134
+```
+
+## 6. Download confirmed pages
+
+At this point, `url_index` is the authoritative download list.
+
+```{r download-confirmed-pages}
+download_confirmed_page <- function(source_url, cache_path){
+
+  source_url <- normalize_url(source_url)
+
+  ok <- tryCatch({
+
+    if(!file.exists(cache_path)){
+      download.file(
+        url = source_url,
+        destfile = cache_path,
+        mode = "wb",
+        quiet = TRUE
+      )
+    }
+
+    file.exists(cache_path) && file.info(cache_path)$size > 1000
+
+  }, error = function(e){
+    FALSE
+  })
+
+  tibble(
+    ok = ok,
+    file_size = ifelse(
+      file.exists(cache_path),
+      file.info(cache_path)$size,
+      NA_real_
+    )
+  )
+
+}
+
+download_results <- url_index %>%
+  dplyr::mutate(
+    download = purrr::map2(source_url, cache_path, download_confirmed_page)
+  ) %>%
+  tidyr::unnest(download)
+
+readr::write_csv(download_results, download_diag_path)
+
+download_results %>%
+  dplyr::count(ok)
+
+if(any(!download_results$ok)){
+  download_results %>%
+    dplyr::filter(!ok) %>%
+    print(n = 200)
+
+  stop("One or more confirmed URLs failed to download.")
+}
+
+if(nrow(download_results) != nrow(url_index)){
+  stop("Downloaded page count does not equal URL index count.")
+}
+```
+
+## 7. Parse helpers
+
+The parser is intentionally simple:
+
+1. Read cached HTML as a string.
+2. Extract `<h1>`.
+3. Extract all verse blocks that begin with `<h4 ...>NUMBER</h4>`.
+4. Strip HTML from the body.
+5. Return verse rows.
+
+No fixed-range URLs. No broad DOM walking.
+
+```{r parse-helpers}
+normalize_doc_text <- function(x){
+
+  x %>%
+    stringr::str_replace_all("\\s+", " ") %>%
+    stringr::str_replace_all("\\s+([,.;:!?])", "\\1") %>%
+    stringr::str_squish()
+
+}
+
+html_to_text <- function(x){
+
+  if(is.na(x) || x == ""){
+    return("")
+  }
+
+  xml2::read_html(paste0("<div>", x, "</div>")) %>%
+    rvest::html_text2() %>%
+    normalize_doc_text()
+
+}
+
+extract_h1_title <- function(html, fallback_title){
+
+  title_html <- stringr::str_match(
+    html,
+    regex("<h1[^>]*>(.*?)</h1>", dotall = TRUE, ignore_case = TRUE)
+  )[, 2]
+
+  title <- html_to_text(title_html)
+
+  if(is.na(title) || title == ""){
+    return(fallback_title)
+  }
+
+  title
+
+}
+
+extract_verse_rows <- function(html){
+
+  page <- xml2::read_html(html)
+
+  nodes <- rvest::html_elements(
+    page,
+    xpath = "//h4[normalize-space(text()) and number(normalize-space(text())) = number(normalize-space(text()))]"
+  )
+
+  purrr::map_dfr(nodes, function(h4){
+
+    verse <- h4 %>%
+      rvest::html_text2() %>%
+      stringr::str_squish() %>%
+      as.integer()
+
+    p <- xml2::xml_find_first(
+      h4,
+      "following-sibling::p[1]"
+    )
+
+    text <- p %>%
+      rvest::html_text2() %>%
+      normalize_doc_text()
+
+    tibble::tibble(
+      verse = verse,
+      text = text
+    )
+
+  }) %>%
+    dplyr::filter(!is.na(verse), text != "")
+}
+
+
+
+parse_dc1835_page_simple <- function(cache_path, source_url, page_order){
+
+  html <- readr::read_file(cache_path)
+
+  fallback_title <- paste0(
+    "Section ",
+    website_section_id_from_url(source_url)
+  )
+
+  chapter_title <- extract_h1_title(
+    html,
+    fallback_title
+  )
+
+  extract_verse_rows(html) %>%
+    dplyr::mutate(
+      page_order = page_order,
+      chapter = chapter_number_from_url(source_url),
+      website_section_id = website_section_id_from_url(source_url),
+      section_numbers = paste(section_numbers_from_url(source_url), collapse = ","),
+      chapter_title = chapter_title,
+      source_url = source_url,
+      cache_path = cache_path
+    ) %>%
+    dplyr::select(
+      page_order,
+      chapter,
+      website_section_id,
+      section_numbers,
+      chapter_title,
+      verse,
+      text,
+      source_url,
+      cache_path
+    )
+}
+```
+
+## 8. Parse confirmed pages
+
+```{r parse-confirmed-pages}
+dc1835_verses_raw <- purrr::pmap_dfr(
+  url_index %>%
+    dplyr::select(cache_path, source_url, page_order),
+  function(cache_path, source_url, page_order){
+
+    parse_dc1835_page_simple(
+      cache_path = cache_path,
+      source_url = source_url,
+      page_order = page_order
+    )
+
+  }
+)
+
+readr::write_csv(dc1835_verses_raw, raw_verses_path)
+
+dc1835_verses_raw %>%
+  dplyr::count(page_order, chapter, website_section_id, chapter_title, name = "n_verses") %>%
+  dplyr::arrange(page_order) %>%
+  print(n = 200)
+```
+
+## 9. Sanity check parsed pages
+
+```{r sanity-parsed-pages}
+parse_diagnostics <- dc1835_verses_raw %>%
+  dplyr::group_by(page_order, chapter, website_section_id, section_numbers, chapter_title, source_url, cache_path) %>%
+  dplyr::summarise(
+    n_verses = dplyr::n(),
+    min_verse = min(verse, na.rm = TRUE),
+    max_verse = max(verse, na.rm = TRUE),
+    n_words = sum(stringr::str_count(text, "\\S+"), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(page_order)
+
+readr::write_csv(parse_diagnostics, parse_diag_path)
+
+parse_diagnostics %>%
+  print(n = 200)
+
+parsed_page_count <- parse_diagnostics %>%
+  dplyr::summarise(n_pages = dplyr::n()) %>%
+  dplyr::pull(n_pages)
+
+if(parsed_page_count != nrow(url_index)){
+  stop("Parsed page count does not equal URL index count.")
+}
+
+zero_verse_pages <- parse_diagnostics %>%
+  dplyr::filter(n_verses == 0 | is.na(n_verses))
+
+if(nrow(zero_verse_pages) > 0){
+  zero_verse_pages %>% print(n = 200)
+  stop("At least one page parsed zero verses.")
+}
+
+tiny_pages <- parse_diagnostics %>%
+  dplyr::filter(n_words < 20)
+
+tiny_pages
+
+section_1_check <- parse_diagnostics %>%
+  dplyr::filter(page_order == 1)
+
+section_1_check
+
+# Section 1 should have 7 verses on this site.
+if(nrow(section_1_check) == 1 && section_1_check$n_verses != 7){
+  warning("Section 1 did not parse as 7 verses. Inspect page_order 1.")
+}
+```
+
+## 10. Build common verse-level CSV
+
+```{r build-verse-docs}
+dc1835_verse_docs <- dc1835_verses_raw %>%
+  dplyr::mutate(
+    corpus_id = "DC",
+    translation = "1835",
+    corpus_family = "DC",
+    source_family = "DC_1835",
+    edition = "1835",
+    author = NA_character_,
+    work = "Doctrine and Covenants",
+    short_work = "DC_1835",
+    book = "Doctrine and Covenants",
+    chapter = as.integer(chapter),
+    verse = as.integer(verse),
+    verse_id = paste0(
+      "DC_1835__",
+      stringr::str_pad(page_order, width = 3, pad = "0"),
+      "_",
+      stringr::str_pad(verse, width = 3, pad = "0")
+    ),
+    doc_id = verse_id,
+    doc_id_original = doc_id,
+    section_label = dplyr::if_else(
+      stringr::str_detect(website_section_id, "-"),
+      paste0("Sections ", website_section_id),
+      paste0("Section ", website_section_id)
+    ),
+    macro_genre = "Modern_Scripture",
+    doc_unit = "verse",
+    n_words = stringr::str_count(text, "\\S+")
+  ) %>%
+  dplyr::select(
+    corpus_id,
+    translation,
+    corpus_family,
+    source_family,
+    edition,
+    doc_id,
+    doc_id_original,
+    author,
+    work,
+    short_work,
+    book,
+    chapter,
+    page_order,
+    chapter_title,
+    verse,
+    verse_id,
+    website_section_id,
+    section_numbers,
+    section_label,
+    macro_genre,
+    doc_unit,
+    n_words,
+    text,
+    source_url,
+    cache_path
+  )
+
+readr::write_csv(dc1835_verse_docs, verse_out_path)
+
+dc1835_verse_docs %>%
+  dplyr::slice_head(n = 20)
+```
+
+## 11. Build common chapter-level CSV
+
+Each downloaded 1835 page is one stylometric unit.
+
+```{r build-chapter-docs}
+dc1835_chapter_docs <- dc1835_verse_docs %>%
+  dplyr::arrange(page_order, verse) %>%
+  dplyr::group_by(
+    corpus_id,
+    translation,
+    corpus_family,
+    source_family,
+    edition,
+    author,
+    work,
+    short_work,
+    book,
+    chapter,
+    page_order,
+    chapter_title,
+    website_section_id,
+    section_numbers,
+    section_label,
+    source_url,
+    cache_path
+  ) %>%
+  dplyr::summarise(
+    text = paste(text, collapse = " "),
+    n_verses = dplyr::n(),
+    min_verse = min(verse, na.rm = TRUE),
+    max_verse = max(verse, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::mutate(
+    text = normalize_doc_text(text),
+    n_words = stringr::str_count(text, "\\S+"),
+    macro_genre = "Modern_Scripture",
+    doc_unit = "chapter",
+    doc_id = paste0(
+      "DC_1835__",
+      stringr::str_pad(page_order, width = 3, pad = "0"),
+      "__",
+      dplyr::if_else(
+        stringr::str_detect(website_section_id, "-"),
+        paste0("sections_", website_section_id),
+        paste0("section_", website_section_id)
+      )
+    ),
+    doc_id_original = doc_id
+  ) %>%
+  dplyr::select(
+    corpus_id,
+    translation,
+    corpus_family,
+    source_family,
+    edition,
+    doc_id,
+    doc_id_original,
+    author,
+    work,
+    short_work,
+    book,
+    chapter,
+    page_order,
+    chapter_title,
+    website_section_id,
+    section_numbers,
+    section_label,
+    macro_genre,
+    doc_unit,
+    n_verses,
+    min_verse,
+    max_verse,
+    n_words,
+    text,
+    source_url,
+    cache_path
+  )
+
+readr::write_csv(dc1835_chapter_docs, chapter_out_path)
+
+dc1835_chapter_docs %>%
+  dplyr::select(page_order, chapter, website_section_id, chapter_title, n_verses, n_words, source_url) %>%
+  dplyr::arrange(page_order) %>%
+  print(n = 200)
+```
+
+## 12. Final checks
+
+```{r final-checks}
+cat("URL pages:", nrow(url_index), "\n")
+cat("Parsed chapter docs:", nrow(dc1835_chapter_docs), "\n")
+cat("Verse docs:", nrow(dc1835_verse_docs), "\n")
+
+if(nrow(dc1835_chapter_docs) != nrow(url_index)){
+  stop("Final chapter docs do not match URL index count.")
+}
+
+dc1835_chapter_docs %>%
+  dplyr::summarise(
+    n_pages = dplyr::n(),
+    total_verses = sum(n_verses),
+    min_words = min(n_words),
+    median_words = median(n_words),
+    mean_words = mean(n_words),
+    max_words = max(n_words)
+  )
+```
