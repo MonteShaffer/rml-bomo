@@ -51,7 +51,7 @@ export_dir <- file.path(STYLO_ROOT, "export", "sidney_mp_hypothesis")
 dir.create(export_dir, recursive = TRUE, showWarnings = FALSE)
 
 kjv_path <- file.path(prepared_dir, "kjv_chapter_docs.csv")
-bom_path <- file.path(prepared_dir, "bom_1830_chapter_docs.csv")
+bom_path <- file.path(prepared_dir, "bom_chapter_docs.csv")
 boc_path <- file.path(prepared_dir, "boc_1833_chapter_docs.csv")
 dc1835_path <- file.path(prepared_dir, "dc_1835_chapter_docs.csv")
 jso_path <- file.path(prepared_dir, "jso_manual_chapter_docs.csv")
@@ -459,15 +459,22 @@ target_docs_bom %>% dplyr::count(mosiah_priority, mosiah_priority_label, name = 
 
 ```{r feature-classes}
 include_feature_classes <- c(
-  "function_words",
-  "punctuation",
-  "sentence",
-  "word_length",
-  "lexical",
-  "readability"
+  "function_words", "punctuation", "sentence",
+  "word_length", "lexical", "readability"
 )
 
-include_feature_classes
+
+jso_config  <- default_config(include = include_feature_classes)
+
+
+jso_config$weights <- c(
+    function_words = 0.500,
+    punctuation    = 0.075,
+    sentence       = 0.175,
+    word_length    = 0.125,
+    lexical        = 0.075,
+    readability    = 0.050
+  )
 ```
 
 ## 10. Run ensemble: JSO to BOM
@@ -476,12 +483,11 @@ include_feature_classes
 result_jso_bom <- run_stylometry_ensemble(
   source_docs = source_docs_jso,
   target_docs = target_docs_bom,
-  include_feature_classes = include_feature_classes,
+  config = jso_config,
   text_col = "text",
   doc_id_col = "doc_id",
   k_neighbors = 20,
-  use_cache = TRUE,
-  cache_dir = file.path(STYLO_ROOT, "cache", "results")
+  use_cache = TRUE
 )
 
 names(result_jso_bom)
@@ -493,12 +499,11 @@ names(result_jso_bom)
 result_sidney_bom <- run_stylometry_ensemble(
   source_docs = source_docs_sidney,
   target_docs = target_docs_bom,
-  include_feature_classes = include_feature_classes,
+  config = jso_config,
   text_col = "text",
   doc_id_col = "doc_id",
   k_neighbors = 20,
-  use_cache = TRUE,
-  cache_dir = file.path(STYLO_ROOT, "cache", "results")
+  use_cache = TRUE
 )
 
 names(result_sidney_bom)
@@ -570,8 +575,9 @@ nn_sidney_bom <- get_nearest_neighbors(result_sidney_bom) %>%
 
 nn_sidney_bom %>%
   dplyr::select(short_name, chapter_title, rank, neighbor_doc_id, target_book, target_chapter, mosiah_priority, similarity) %>%
-  dplyr::arrange(short_name, rank) %>%
-  print(n = 200)
+  dplyr::arrange(short_name, rank) 
+
+head(nn_sidney_bom)
 
 readr::write_csv(nn_sidney_bom, out_sidney_bom_neighbors)
 ```
@@ -818,6 +824,317 @@ The hypothesis is weakened if:
 3. Joseph or Oliver show the same gradient with equal or greater strength.
 4. The MP-1 signal is driven by a small number of Sidney chapters.
 ```
+
+
+```{r book-size norm}
+## 17b. Normalize Sidney book votes by Book of Mormon book size
+
+bom_book_sizes <- target_docs_bom %>%
+  dplyr::count(
+    book,
+    mosiah_priority,
+    mosiah_priority_label,
+    name = "target_chapters"
+  ) %>%
+  dplyr::mutate(
+    expected_share = target_chapters / sum(target_chapters)
+  )
+
+sidney_bom_book_enrichment <- sidney_bom_book_votes %>%
+  dplyr::left_join(
+    bom_book_sizes,
+    by = c(
+      "target_book" = "book",
+      "mosiah_priority",
+      "mosiah_priority_label"
+    )
+  ) %>%
+  dplyr::mutate(
+    observed_share = weighted_votes / sum(weighted_votes),
+    enrichment = observed_share / expected_share
+  ) %>%
+  dplyr::arrange(dplyr::desc(enrichment))
+
+sidney_bom_book_enrichment %>%
+  dplyr::select(
+    target_book,
+    mosiah_priority,
+    target_chapters,
+    weighted_votes,
+    observed_share,
+    expected_share,
+    enrichment
+  ) %>%
+  print(n = 100)
+
+ggplot(
+  sidney_bom_book_enrichment,
+  aes(
+    x = reorder(target_book, enrichment),
+    y = enrichment,
+    fill = mosiah_priority
+  )
+) +
+  geom_col() +
+  geom_hline(yintercept = 1, linetype = "dashed") +
+  coord_flip() +
+  theme_bw() +
+  labs(
+    title = "Sidney Rigdon Book of Mormon vote enrichment by book",
+    subtitle = "Observed weighted vote share divided by expected share from book size",
+    x = "Book of Mormon book",
+    y = "Enrichment ratio",
+    fill = "Mosiah Priority"
+  )
+
+
+### standardized residual Pearson residual
+sidney_book_votes <- nn_sidney_bom %>%
+  dplyr::group_by(target_book) %>%
+  dplyr::summarise(
+    observed = sum(similarity),
+    .groups = "drop"
+  )
+
+bom_book_sizes <- target_docs_bom %>%
+  dplyr::count(
+    book,
+    name = "chapters"
+  )
+
+total_votes <- sum(sidney_book_votes$observed)
+
+expected_votes <- bom_book_sizes %>%
+  dplyr::mutate(
+    expected = total_votes * chapters / sum(chapters)
+  )
+
+sidney_stdres <- expected_votes %>%
+  dplyr::left_join(
+    sidney_book_votes,
+    by = c("book" = "target_book")
+  ) %>%
+  dplyr::mutate(
+    observed = tidyr::replace_na(observed, 0),
+    stdres = (observed - expected) / sqrt(expected)
+  ) %>%
+  dplyr::arrange(desc(stdres))
+
+sidney_stdres
+
+ggplot(
+  sidney_stdres,
+  aes(
+    x = reorder(book, stdres),
+    y = stdres,
+    fill = stdres > 0
+  )
+) +
+  geom_col() +
+  coord_flip() +
+  geom_hline(yintercept = 0, color = "black") +
+  geom_hline(yintercept = c(-2, 2),
+             linetype = "dashed",
+             color = "red") +
+  scale_fill_manual(
+    values = c(
+      "TRUE" = "forestgreen",
+      "FALSE" = "firebrick"
+    ),
+    guide = "none"
+  ) +
+  theme_bw() +
+  labs(
+    title = "Sidney Rigdon standardized residuals by Book of Mormon book",
+    subtitle = "Observed weighted nearest-neighbor votes versus expected from book size",
+    x = "Book of Mormon book",
+    y = "Standardized residual (O − E) / √E"
+  )
+
+
+sidney_stdres <- expected_votes %>%
+  left_join(
+    sidney_book_votes,
+    by = c("book" = "target_book")
+  ) %>%
+  mutate(
+    observed = replace_na(observed, 0),
+    residual = observed - expected,
+    stdres = residual / sqrt(expected * (1 - chapters / sum(chapters)))
+  ) %>%
+  arrange(desc(stdres))
+
+
+sidney_counts <- nn_sidney_bom %>%
+  dplyr::count(
+    target_book,
+    name = "observed"
+  )
+
+book_sizes <- target_docs_bom %>%
+  dplyr::count(
+    book,
+    name = "chapters"
+  ) %>%
+  dplyr::mutate(
+    expected = sum(sidney_counts$observed) *
+      chapters / sum(chapters)
+  )
+
+sidney_residuals <- book_sizes %>%
+  left_join(
+    sidney_counts,
+    by = c("book" = "target_book")
+  ) %>%
+  mutate(
+    observed = tidyr::replace_na(observed, 0L),
+    residual = observed - expected,
+    pearson = residual / sqrt(expected),
+    stdres = residual /
+      sqrt(expected * (1 - chapters / sum(chapters)))
+  ) %>%
+  arrange(desc(stdres))
+
+sidney_residuals
+
+chisq_sidney <- chisq.test(
+  x = sidney_residuals$observed,
+  p = sidney_residuals$chapters /
+      sum(sidney_residuals$chapters)
+)
+
+chisq_sidney
+
+
+sidney_residuals$chisq_stdres <- chisq_sidney$stdres
+sidney_residuals$chisq_residual <- chisq_sidney$residuals
+
+sidney_residuals %>%
+  arrange(desc(chisq_stdres))
+
+
+export_root <- file.path(STYLO_ROOT, "export")
+
+sidney_dir <- file.path(export_root, "sidney_mp_hypothesis")
+
+sidney_resid_path <- file.path(sidney_dir, "sidney_bom_book_chisq_residuals.csv")
+
+readr::write_csv(
+  sidney_residuals,
+  sidney_resid_path
+)
+
+
+ggplot(
+  sidney_residuals,
+  aes(
+    x = reorder(book, chisq_stdres),
+    y = chisq_stdres,
+    fill = chisq_stdres > 0
+  )
+) +
+  geom_col() +
+  coord_flip() +
+  geom_hline(yintercept = 0) +
+  geom_hline(
+    yintercept = c(-2, 2),
+    linetype = "dashed",
+    color = "red"
+  ) +
+  scale_fill_manual(
+    values = c(
+      "TRUE" = "forestgreen",
+      "FALSE" = "firebrick"
+    ),
+    guide = "none"
+  ) +
+  theme_bw() +
+  labs(
+    title = "Sidney Rigdon standardized residuals by Book of Mormon book",
+    subtitle = "Pearson standardized residuals from chi-square goodness-of-fit",
+    x = "Book of Mormon book",
+    y = "Standardized residual"
+  )
+
+
+```
+```{r block to match Oliver and Joseph}
+sidney_counts <- nn_sidney_bom %>%
+  dplyr::count(
+    target_book,
+    name = "observed"
+  )
+
+book_sizes <- target_docs_bom %>%
+  dplyr::count(
+    book,
+    mosiah_priority,
+    mosiah_priority_label,
+    name = "chapters"
+  )
+
+sidney_residuals <- book_sizes %>%
+  dplyr::left_join(
+    sidney_counts,
+    by = c("book" = "target_book")
+  ) %>%
+  dplyr::mutate(
+    observed = tidyr::replace_na(observed, 0L)
+  ) %>%
+  dplyr::arrange(book)
+
+chisq_sidney <- chisq.test(
+  x = sidney_residuals$observed,
+  p = sidney_residuals$chapters / sum(sidney_residuals$chapters)
+)
+
+chisq_sidney
+
+sidney_residuals <- sidney_residuals %>%
+  dplyr::mutate(
+    expected = as.numeric(chisq_sidney$expected),
+    pearson_residual = as.numeric(chisq_sidney$residuals),
+    chisq_stdres = as.numeric(chisq_sidney$stdres),
+    residual = observed - expected,
+    observed_share = observed / sum(observed),
+    expected_share = chapters / sum(chapters),
+    enrichment = observed_share / expected_share
+  ) %>%
+  dplyr::arrange(dplyr::desc(chisq_stdres))
+
+sidney_residuals %>%
+  dplyr::select(
+    book,
+    mosiah_priority,
+    mosiah_priority_label,
+    chapters,
+    observed,
+    expected,
+    pearson_residual,
+    chisq_stdres,
+    residual,
+    observed_share,
+    expected_share,
+    enrichment
+  ) %>%
+  print(n = 100)
+
+
+
+
+sidney_dir <- file.path(export_root, "sidney_mp_hypothesis")
+
+sidney_resid_path <- file.path(sidney_dir, "sidney_bom_book_chisq_residuals.csv")
+
+readr::write_csv(
+  sidney_residuals,
+  sidney_resid_path
+)
+
+
+
+```
+
 
 ## 21. Save session objects
 

@@ -1,0 +1,901 @@
+doc_id,neighbor_doc_id,similarity,rank,author,author_code,short_name,chapter_title,target_book,target_chapter,target_header,mosiah_priority,mosiah_priority_label
+SR-1,Moroni_3,0.8586290485436368,1,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",Moroni,3,Moroni 3,MP-2,MP-2_3Nephi_to_Moroni
+SR-1,2_Nephi_7,0.8366863814057353,2,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",2 Nephi,7,2 Nephi 7,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-1,Alma_41,0.8362520608146685,3,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",Alma,41,Alma 41,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-1,3_Nephi_9,0.8347855111680426,4,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",3 Nephi,9,3 Nephi 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-1,Alma_40,0.8340566380474386,5,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",Alma,40,Alma 40,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-1,Mosiah_13,0.8259064386374269,6,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",Mosiah,13,Mosiah 13,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-1,Alma_38,0.823838498515054,7,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",Alma,38,Alma 38,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-1,2_Nephi_20,0.8237064341768848,8,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",2 Nephi,20,2 Nephi 20,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-1,Alma_11,0.8234766552649317,9,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-1,Mosiah_12,0.8229890636932716,10,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",Mosiah,12,Mosiah 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-1,Alma_29,0.8223255562844279,11,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",Alma,29,Alma 29,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-1,2_Nephi_33,0.8197006028639,12,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",2 Nephi,33,2 Nephi 33,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-1,Alma_42,0.8196603013166684,13,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-1,Alma_54,0.8168495649873434,14,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",Alma,54,Alma 54,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-1,Helaman_7,0.8165957254745269,15,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",Helaman,7,Helaman 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-1,Ether_5,0.8145907381428479,16,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",Ether,5,Ether 5,MP-2,MP-2_3Nephi_to_Moroni
+SR-1,Moroni_4,0.8141132269734713,17,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",Moroni,4,Moroni 4,MP-2,MP-2_3Nephi_to_Moroni
+SR-1,Jacob_6,0.813077834006033,18,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",Jacob,6,Jacob 6,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-1,Jarom_1,0.8129688743476016,19,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",Jarom,1,Jarom 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-1,3_Nephi_24,0.8125511553856891,20,Sidney Rigdon,SR,SR-1,"To the Public. Ohio Star, Vol II, No.50: December 15, 1831",3 Nephi,24,3 Nephi 24,MP-2,MP-2_3Nephi_to_Moroni
+SR-2,Alma_11,0.8561031097326961,1,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-2,Alma_41,0.8488535043708199,2,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",Alma,41,Alma 41,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-2,Alma_42,0.8440040962464691,3,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-2,2_Nephi_7,0.8408445675046493,4,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",2 Nephi,7,2 Nephi 7,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-2,Alma_18,0.8404129556833467,5,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",Alma,18,Alma 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-2,Omni_1,0.8362223862894239,6,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",Omni,1,Omni 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-2,2_Nephi_20,0.8333008494485471,7,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",2 Nephi,20,2 Nephi 20,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-2,3_Nephi_24,0.8305409132381912,8,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",3 Nephi,24,3 Nephi 24,MP-2,MP-2_3Nephi_to_Moroni
+SR-2,Mosiah_13,0.8270628590673899,9,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",Mosiah,13,Mosiah 13,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-2,Jacob_6,0.825246971298313,10,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",Jacob,6,Jacob 6,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-2,Alma_30,0.824524756424093,11,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-2,2_Nephi_9,0.823709034175469,12,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-2,Helaman_2,0.8222019827689512,13,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",Helaman,2,Helaman 2,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-2,Moroni_3,0.820756269780027,14,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",Moroni,3,Moroni 3,MP-2,MP-2_3Nephi_to_Moroni
+SR-2,Alma_26,0.8185864365295515,15,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",Alma,26,Alma 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-2,Alma_39,0.8152423393236155,16,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",Alma,39,Alma 39,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-2,Mosiah_27,0.8150057062087068,17,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-2,2_Nephi_2,0.8129517890435519,18,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",2 Nephi,2,2 Nephi 2,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-2,Alma_21,0.8118796980284512,19,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",Alma,21,Alma 21,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-2,Mosiah_12,0.8114979580495174,20,Sidney Rigdon,SR,SR-2,"To the Public. Ohio Star, Vol III, No.5: January 12, 1832",Mosiah,12,Mosiah 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-3,Mosiah_15,0.9103560643545385,1,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",Mosiah,15,Mosiah 15,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-3,2_Nephi_20,0.8988702702560778,2,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",2 Nephi,20,2 Nephi 20,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-3,Jacob_6,0.8946563898913638,3,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",Jacob,6,Jacob 6,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-3,2_Nephi_9,0.8939065585936767,4,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-3,Mosiah_12,0.8921003088600709,5,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",Mosiah,12,Mosiah 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-3,Alma_41,0.888169684839081,6,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",Alma,41,Alma 41,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-3,3_Nephi_24,0.882850276638896,7,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",3 Nephi,24,3 Nephi 24,MP-2,MP-2_3Nephi_to_Moroni
+SR-3,Alma_11,0.8816546884508453,8,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-3,Jarom_1,0.8816273116761276,9,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",Jarom,1,Jarom 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-3,Alma_40,0.8761815563344704,10,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",Alma,40,Alma 40,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-3,Alma_21,0.876008922515547,11,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",Alma,21,Alma 21,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-3,2_Nephi_16,0.8746772962352517,12,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",2 Nephi,16,2 Nephi 16,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-3,Helaman_12,0.8723715803126194,13,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",Helaman,12,Helaman 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-3,Helaman_7,0.868322499735347,14,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",Helaman,7,Helaman 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-3,Alma_26,0.8679682691464904,15,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",Alma,26,Alma 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-3,Mosiah_13,0.8667522157740744,16,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",Mosiah,13,Mosiah 13,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-3,Mosiah_16,0.8655613514757994,17,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",Mosiah,16,Mosiah 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-3,2_Nephi_7,0.8636450373088581,18,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",2 Nephi,7,2 Nephi 7,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-3,Mormon_8,0.8628362977921673,19,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",Mormon,8,Mormon 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-3,1_Nephi_22,0.8619045655641158,20,Sidney Rigdon,SR,SR-3,"Series of 14 articles from Evening and Morning Star (Vol II, 15: Kirtland, OH December 1833) titled Millenium",1 Nephi,22,1 Nephi 22,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-4,Mosiah_27,0.9350227333114559,1,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-4,Mosiah_18,0.9289227610101974,2,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Mosiah,18,Mosiah 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-4,Mosiah_7,0.9266119018963601,3,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-4,Mosiah_23,0.9241477754976541,4,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Mosiah,23,Mosiah 23,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-4,Alma_42,0.9232357630819407,5,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-4,Alma_11,0.9210120825885247,6,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-4,Alma_21,0.9175513663148103,7,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Alma,21,Alma 21,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-4,Alma_55,0.9166763388160254,8,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Alma,55,Alma 55,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-4,Alma_27,0.9143960288542559,9,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-4,2_Nephi_9,0.91112480879884306,10,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-4,Omni_1,0.9107387768726823,11,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Omni,1,Omni 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-4,Alma_22,0.9091262497262661,12,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-4,Mosiah_15,0.9090881464240563,13,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Mosiah,15,Mosiah 15,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-4,Jarom_1,0.9086194028632125,14,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Jarom,1,Jarom 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-4,Alma_47,0.9075890612162508,15,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Alma,47,Alma 47,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-4,Alma_30,0.9073587225169576,16,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-4,Alma_18,0.9069383011365387,17,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Alma,18,Alma 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-4,Helaman_2,0.906617193333433,18,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Helaman,2,Helaman 2,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-4,Alma_26,0.9063963220178,19,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Alma,26,Alma 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-4,Mosiah_29,0.9046959199575751,20,Sidney Rigdon,SR,SR-4,"Series of 14 articles from Evening and Morning Star (Vol II, 16: Kirtland, OH January 1834) titled Millenium",Mosiah,29,Mosiah 29,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-5,Mosiah_29,0.925365027404377,1,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",Mosiah,29,Mosiah 29,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-5,1_Nephi_22,0.9248203622425709,2,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",1 Nephi,22,1 Nephi 22,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-5,Alma_46,0.9184432067473773,3,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",Alma,46,Alma 46,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-5,2_Nephi_25,0.9177769292051989,4,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",2 Nephi,25,2 Nephi 25,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-5,Alma_12,0.9174854578543085,5,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",Alma,12,Alma 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-5,Ether_13,0.9158136382991141,6,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",Ether,13,Ether 13,MP-2,MP-2_3Nephi_to_Moroni
+SR-5,Mosiah_27,0.9157964384426073,7,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-5,2_Nephi_28,0.9139867061359352,8,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",2 Nephi,28,2 Nephi 28,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-5,Mormon_5,0.9125404023956257,9,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",Mormon,5,Mormon 5,MP-2,MP-2_3Nephi_to_Moroni
+SR-5,Alma_13,0.912223366632099,10,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",Alma,13,Alma 13,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-5,Mosiah_7,0.9111916841699225,11,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-5,Alma_37,0.911097315244311,12,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",Alma,37,Alma 37,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-5,Alma_17,0.9108958414979219,13,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",Alma,17,Alma 17,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-5,Mosiah_3,0.9092257713999701,14,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",Mosiah,3,Mosiah 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-5,3_Nephi_1,0.9089877834825338,15,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",3 Nephi,1,3 Nephi 1,MP-2,MP-2_3Nephi_to_Moroni
+SR-5,Alma_50,0.9088376074816022,16,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",Alma,50,Alma 50,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-5,Helaman_16,0.9086596264730568,17,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",Helaman,16,Helaman 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-5,Alma_27,0.9083115129421923,18,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-5,Alma_9,0.9080951483654709,19,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",Alma,9,Alma 9,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-5,Jacob_4,0.9071542339061449,20,Sidney Rigdon,SR,SR-5,"Series of 14 articles from Evening and Morning Star (Vol II, 17: Kirtland, OH February 1834) titled Millenium",Jacob,4,Jacob 4,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-6,Mosiah_7,0.9368494216794911,1,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-6,Mosiah_27,0.9360153162616607,2,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-6,Ether_13,0.9311403019235689,3,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",Ether,13,Ether 13,MP-2,MP-2_3Nephi_to_Moroni
+SR-6,Alma_46,0.9287108557060388,4,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",Alma,46,Alma 46,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-6,1_Nephi_22,0.928303239245477,5,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",1 Nephi,22,1 Nephi 22,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-6,Mosiah_29,0.9259443753523593,6,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",Mosiah,29,Mosiah 29,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-6,Alma_22,0.9256066895915998,7,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-6,Alma_12,0.9255126839762968,8,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",Alma,12,Alma 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-6,Mosiah_8,0.9239717254314259,9,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",Mosiah,8,Mosiah 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-6,Mosiah_3,0.9237346778620183,10,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",Mosiah,3,Mosiah 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-6,1_Nephi_14,0.9215181794915536,11,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",1 Nephi,14,1 Nephi 14,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-6,Alma_30,0.919460507328124,12,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-6,Alma_11,0.918939290870355,13,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-6,Alma_42,0.9178389723836097,14,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-6,2_Nephi_9,0.9171786698163846,15,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-6,Mosiah_18,0.9168902079248594,16,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",Mosiah,18,Mosiah 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-6,2_Nephi_27,0.9127412486710792,17,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",2 Nephi,27,2 Nephi 27,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-6,Helaman_1,0.9115636956674102,18,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",Helaman,1,Helaman 1,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-6,Alma_37,0.9113800905505223,19,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",Alma,37,Alma 37,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-6,2_Nephi_28,0.9113002696589759,20,Sidney Rigdon,SR,SR-6,"Series of 14 articles from Evening and Morning Star (Vol II, 19: Kirtland, OH April 1834) titled Millenium",2 Nephi,28,2 Nephi 28,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-7,Alma_45,0.9344784291261623,1,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",Alma,45,Alma 45,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-7,Mormon_9,0.9297415214361187,2,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",Mormon,9,Mormon 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-7,2_Nephi_27,0.929417100532057,3,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",2 Nephi,27,2 Nephi 27,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-7,Mosiah_3,0.926853336043921,4,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",Mosiah,3,Mosiah 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-7,Mormon_8,0.9263000694340282,5,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",Mormon,8,Mormon 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-7,2_Nephi_20,0.9260753303236866,6,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",2 Nephi,20,2 Nephi 20,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-7,2_Nephi_12,0.9233401987958525,7,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",2 Nephi,12,2 Nephi 12,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-7,2_Nephi_1,0.9221146922108516,8,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",2 Nephi,1,2 Nephi 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-7,Alma_22,0.9219007972566899,9,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-7,2_Nephi_9,0.9194846089725798,10,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-7,2_Nephi_28,0.91825966545069,11,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",2 Nephi,28,2 Nephi 28,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-7,Ether_8,0.918007453210752,12,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",Ether,8,Ether 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-7,1_Nephi_22,0.9176926242579785,13,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",1 Nephi,22,1 Nephi 22,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-7,Alma_12,0.9157373289792576,14,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",Alma,12,Alma 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-7,Ether_2,0.9131101004672378,15,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",Ether,2,Ether 2,MP-2,MP-2_3Nephi_to_Moroni
+SR-7,Ether_13,0.9128881204929685,16,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",Ether,13,Ether 13,MP-2,MP-2_3Nephi_to_Moroni
+SR-7,Alma_46,0.9121129918292009,17,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",Alma,46,Alma 46,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-7,Alma_11,0.9121111831993466,18,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-7,3_Nephi_20,0.912092838516146,19,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",3 Nephi,20,3 Nephi 20,MP-2,MP-2_3Nephi_to_Moroni
+SR-7,Alma_42,0.9102856183936903,20,Sidney Rigdon,SR,SR-7,"Series of 14 articles from Evening and Morning Star (Vol II, 20: Kirtland, OH May 1834) titled Millenium",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-8,2_Nephi_9,0.9409842036849987,1,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-8,2_Nephi_2,0.9355220701085057,2,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",2 Nephi,2,2 Nephi 2,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-8,Alma_11,0.932745776554892,3,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-8,Alma_22,0.9325577157273134,4,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-8,Mormon_8,0.9303968559711563,5,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",Mormon,8,Mormon 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-8,Mormon_9,0.9291703383054508,6,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",Mormon,9,Mormon 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-8,2_Nephi_1,0.9286059510494757,7,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",2 Nephi,1,2 Nephi 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-8,3_Nephi_20,0.9257009962594276,8,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",3 Nephi,20,3 Nephi 20,MP-2,MP-2_3Nephi_to_Moroni
+SR-8,Mosiah_26,0.9254231786913083,9,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",Mosiah,26,Mosiah 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-8,2_Nephi_20,0.9228402295632852,10,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",2 Nephi,20,2 Nephi 20,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-8,Mosiah_7,0.9225274928700119,11,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-8,Ether_2,0.9206788250356736,12,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",Ether,2,Ether 2,MP-2,MP-2_3Nephi_to_Moroni
+SR-8,Alma_18,0.9194829671368706,13,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",Alma,18,Alma 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-8,Ether_8,0.9194132872992691,14,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",Ether,8,Ether 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-8,Mosiah_15,0.9186979878376595,15,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",Mosiah,15,Mosiah 15,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-8,Alma_9,0.9174645122216945,16,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",Alma,9,Alma 9,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-8,Ether_13,0.9171767952222397,17,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",Ether,13,Ether 13,MP-2,MP-2_3Nephi_to_Moroni
+SR-8,Alma_30,0.916853662835738,18,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-8,Mosiah_3,0.9161513481275592,19,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",Mosiah,3,Mosiah 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-8,2_Nephi_27,0.9157985964583325,20,Sidney Rigdon,SR,SR-8,"Series of 14 articles from Evening and Morning Star (Vol II, 21: Kirtland, OH June 1834) titled Millenium",2 Nephi,27,2 Nephi 27,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-9,1_Nephi_22,0.9479907028794201,1,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",1 Nephi,22,1 Nephi 22,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-9,Mosiah_7,0.9450726248565082,2,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-9,Mosiah_27,0.9408567074412421,3,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-9,2_Nephi_9,0.9384830452805655,4,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-9,Mosiah_18,0.9346770400957776,5,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",Mosiah,18,Mosiah 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-9,2_Nephi_28,0.9308022792405468,6,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",2 Nephi,28,2 Nephi 28,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-9,1_Nephi_15,0.9304285656103621,7,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",1 Nephi,15,1 Nephi 15,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-9,Alma_9,0.9304148797648045,8,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",Alma,9,Alma 9,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-9,Mosiah_16,0.9298953056097464,9,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",Mosiah,16,Mosiah 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-9,Mormon_5,0.9289826435713376,10,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",Mormon,5,Mormon 5,MP-2,MP-2_3Nephi_to_Moroni
+SR-9,Alma_27,0.9286653750483095,11,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-9,Ether_13,0.9280228930696917,12,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",Ether,13,Ether 13,MP-2,MP-2_3Nephi_to_Moroni
+SR-9,Alma_46,0.928010084164527,13,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",Alma,46,Alma 46,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-9,Alma_17,0.9258937732389617,14,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",Alma,17,Alma 17,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-9,Alma_40,0.9246875869497332,15,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",Alma,40,Alma 40,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-9,Mosiah_3,0.9216795718285972,16,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",Mosiah,3,Mosiah 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-9,Mosiah_8,0.9215558868387448,17,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",Mosiah,8,Mosiah 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-9,Alma_50,0.9210864239925748,18,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",Alma,50,Alma 50,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-9,2_Nephi_1,0.9210836173419549,19,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",2 Nephi,1,2 Nephi 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-9,Alma_42,0.9203428848221866,20,Sidney Rigdon,SR,SR-9,"Series of 14 articles from Evening and Morning Star (Vol II, 22: Kirtland, OH July 1834) titled Millenium",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,Mosiah_27,0.9485596981890169,1,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,Alma_17,0.9456292898365363,2,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Alma,17,Alma 17,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,Alma_50,0.9451602479395206,3,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Alma,50,Alma 50,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,Alma_43,0.9401072329447578,4,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Alma,43,Alma 43,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,Alma_27,0.9387144343855441,5,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,3_Nephi_4,0.9387139195398767,6,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",3 Nephi,4,3 Nephi 4,MP-2,MP-2_3Nephi_to_Moroni
+SR-10,Mosiah_7,0.938451918579691,7,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,Helaman_5,0.9371516117982363,8,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Helaman,5,Helaman 5,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,1_Nephi_15,0.9366529939907917,9,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",1 Nephi,15,1 Nephi 15,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-10,Alma_16,0.9341664562548017,10,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Alma,16,Alma 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,Alma_49,0.9341536192999906,11,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Alma,49,Alma 49,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,Mosiah_23,0.9340701610296377,12,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Mosiah,23,Mosiah 23,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,Mosiah_18,0.9339765797188909,13,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Mosiah,18,Mosiah 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,Alma_22,0.9326293492397665,14,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,Alma_62,0.9323440236395112,15,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Alma,62,Alma 62,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,Alma_56,0.9320098428196556,16,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Alma,56,Alma 56,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,Alma_51,0.9317480408064676,17,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Alma,51,Alma 51,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,Alma_21,0.9309283065241905,18,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Alma,21,Alma 21,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,Alma_31,0.9290444136603844,19,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Alma,31,Alma 31,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-10,Alma_14,0.9286694457760535,20,Sidney Rigdon,SR,SR-10,"Series of 14 articles from Evening and Morning Star (Vol II, 23: Kirtland, OH August 1834) titled Millenium",Alma,14,Alma 14,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-11,2_Nephi_9,0.9337951115659477,1,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-11,2_Nephi_2,0.9177996989853547,2,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",2 Nephi,2,2 Nephi 2,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-11,Jarom_1,0.9091599402301237,3,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",Jarom,1,Jarom 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-11,Alma_30,0.9075543803998722,4,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-11,1_Nephi_15,0.9071817593927056,5,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",1 Nephi,15,1 Nephi 15,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-11,Alma_11,0.9067929988579735,6,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-11,Omni_1,0.906325800809626,7,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",Omni,1,Omni 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-11,Alma_40,0.9028056852167818,8,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",Alma,40,Alma 40,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-11,Alma_21,0.9025358074976061,9,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",Alma,21,Alma 21,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-11,Alma_42,0.9024100178125074,10,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-11,Mosiah_8,0.9014595625159775,11,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",Mosiah,8,Mosiah 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-11,Mosiah_12,0.900401347541669,12,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",Mosiah,12,Mosiah 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-11,Mosiah_7,0.9002236600966261,13,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-11,1_Nephi_22,0.8998560419382357,14,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",1 Nephi,22,1 Nephi 22,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-11,Mosiah_27,0.8996434327113514,15,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-11,Mormon_9,0.8986943157015405,16,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",Mormon,9,Mormon 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-11,Mosiah_26,0.898087338450855,17,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",Mosiah,26,Mosiah 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-11,Alma_55,0.8965483858586332,18,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",Alma,55,Alma 55,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-11,Mormon_8,0.8965386871914736,19,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",Mormon,8,Mormon 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-11,Mosiah_23,0.8956928395650695,20,Sidney Rigdon,SR,SR-11,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Millenium",Mosiah,23,Mosiah 23,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-12,1_Nephi_22,0.94687677215983,1,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",1 Nephi,22,1 Nephi 22,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-12,Mosiah_7,0.9310545930270868,2,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-12,Mormon_5,0.9301101536632079,3,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",Mormon,5,Mormon 5,MP-2,MP-2_3Nephi_to_Moroni
+SR-12,Alma_27,0.9276057252873209,4,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-12,Helaman_15,0.927477145622294,5,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",Helaman,15,Helaman 15,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-12,2_Nephi_28,0.9259408347978195,6,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",2 Nephi,28,2 Nephi 28,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-12,Alma_17,0.9243801428280585,7,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",Alma,17,Alma 17,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-12,Mosiah_28,0.9243780328206577,8,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",Mosiah,28,Mosiah 28,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-12,Alma_25,0.92407245207804245,9,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",Alma,25,Alma 25,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-12,Mosiah_3,0.9240276628794026,10,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",Mosiah,3,Mosiah 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-12,1_Nephi_14,0.9236731439305806,11,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",1 Nephi,14,1 Nephi 14,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-12,Mosiah_27,0.923594927700894,12,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-12,Alma_50,0.9218849092331353,13,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",Alma,50,Alma 50,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-12,Alma_46,0.9203517008274159,14,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",Alma,46,Alma 46,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-12,2_Nephi_12,0.9190587038772005,15,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",2 Nephi,12,2 Nephi 12,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-12,3_Nephi_1,0.9178386802254426,16,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",3 Nephi,1,3 Nephi 1,MP-2,MP-2_3Nephi_to_Moroni
+SR-12,Mosiah_16,0.9171087928338216,17,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",Mosiah,16,Mosiah 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-12,Ether_13,0.9162388104229863,18,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",Ether,13,Ether 13,MP-2,MP-2_3Nephi_to_Moroni
+SR-12,Alma_37,0.9159715405907844,19,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",Alma,37,Alma 37,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-12,Alma_40,0.9148742544566002,20,Sidney Rigdon,SR,SR-12,"Series of 14 articles from LDS Messenger and Advocate (Vol 1, 3: Kirtland, OH December 1834) titled Millenium",Alma,40,Alma 40,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-13,2_Nephi_9,0.92567553762547,1,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-13,Alma_11,0.9226558522444364,2,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-13,Helaman_12,0.9148022512773655,3,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",Helaman,12,Helaman 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-13,Mosiah_16,0.9146928708368476,4,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",Mosiah,16,Mosiah 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-13,Mosiah_15,0.9131118162811792,5,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",Mosiah,15,Mosiah 15,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-13,2_Nephi_20,0.9106813684737556,6,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",2 Nephi,20,2 Nephi 20,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-13,Mosiah_27,0.9101276424203943,7,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-13,Mosiah_12,0.9093001393001743,8,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",Mosiah,12,Mosiah 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-13,2_Nephi_2,0.9092152310546934,9,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",2 Nephi,2,2 Nephi 2,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-13,Mosiah_7,0.9084838428434271,10,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-13,Mosiah_8,0.9050009755248632,11,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",Mosiah,8,Mosiah 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-13,2_Nephi_28,0.9044230262688351,12,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",2 Nephi,28,2 Nephi 28,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-13,Mosiah_3,0.9039893588729564,13,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",Mosiah,3,Mosiah 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-13,Alma_42,0.902473798864975,14,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-13,Alma_18,0.9009243182345482,15,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",Alma,18,Alma 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-13,1_Nephi_22,0.9007398255087444,16,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",1 Nephi,22,1 Nephi 22,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-13,Alma_26,0.900011899396774,17,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",Alma,26,Alma 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-13,Alma_21,0.8989041493970454,18,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",Alma,21,Alma 21,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-13,Mosiah_18,0.8984177623695482,19,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",Mosiah,18,Mosiah 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-13,Jacob_4,0.8981222102204025,20,Sidney Rigdon,SR,SR-13,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Millenium",Jacob,4,Jacob 4,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-14,2_Nephi_13,0.9287248351962409,1,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",2 Nephi,13,2 Nephi 13,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-14,2_Nephi_9,0.9217194056847959,2,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-14,2_Nephi_15,0.9174137254509731,3,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",2 Nephi,15,2 Nephi 15,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-14,Alma_40,0.9158122726539941,4,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",Alma,40,Alma 40,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-14,Alma_11,0.9156727239452587,5,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-14,Mormon_9,0.911480994063963,6,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",Mormon,9,Mormon 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-14,Mormon_8,0.9101176874891705,7,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",Mormon,8,Mormon 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-14,2_Nephi_20,0.9072100344883468,8,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",2 Nephi,20,2 Nephi 20,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-14,Alma_26,0.9059908043734742,9,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",Alma,26,Alma 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-14,2_Nephi_12,0.9030127919949655,10,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",2 Nephi,12,2 Nephi 12,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-14,3_Nephi_9,0.8997782491146288,11,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",3 Nephi,9,3 Nephi 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-14,2_Nephi_24,0.899267884846389,12,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",2 Nephi,24,2 Nephi 24,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-14,Alma_45,0.8959268599604808,13,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",Alma,45,Alma 45,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-14,2_Nephi_27,0.895203080500357,14,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",2 Nephi,27,2 Nephi 27,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-14,Alma_27,0.8948128634729906,15,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-14,Mosiah_3,0.8945125252967355,16,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",Mosiah,3,Mosiah 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-14,Mosiah_12,0.8927200429102731,17,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",Mosiah,12,Mosiah 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-14,3_Nephi_5,0.8927187492916439,18,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",3 Nephi,5,3 Nephi 5,MP-2,MP-2_3Nephi_to_Moroni
+SR-14,Alma_42,0.8926260821765799,19,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-14,2_Nephi_19,0.8923772416553468,20,Sidney Rigdon,SR,SR-14,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Millenium",2 Nephi,19,2 Nephi 19,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-15,3_Nephi_20,0.951855372585461,1,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",3 Nephi,20,3 Nephi 20,MP-2,MP-2_3Nephi_to_Moroni
+SR-15,2_Nephi_30,0.9452633384164587,2,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",2 Nephi,30,2 Nephi 30,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-15,Mormon_8,0.9448194754335244,3,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",Mormon,8,Mormon 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-15,2_Nephi_9,0.9442479424162951,4,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-15,2_Nephi_15,0.9422510144847376,5,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",2 Nephi,15,2 Nephi 15,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-15,Alma_40,0.9416890719913714,6,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",Alma,40,Alma 40,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-15,2_Nephi_27,0.9412254525717203,7,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",2 Nephi,27,2 Nephi 27,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-15,Mosiah_26,0.9383668588766142,8,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",Mosiah,26,Mosiah 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-15,Mosiah_12,0.9380799249845287,9,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",Mosiah,12,Mosiah 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-15,1_Nephi_22,0.936187039217217,10,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",1 Nephi,22,1 Nephi 22,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-15,2_Nephi_28,0.9354090155970801,11,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",2 Nephi,28,2 Nephi 28,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-15,2_Nephi_33,0.9350965889303704,12,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",2 Nephi,33,2 Nephi 33,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-15,2_Nephi_1,0.9323322052198875,13,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",2 Nephi,1,2 Nephi 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-15,2_Nephi_6,0.929636213136875,14,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",2 Nephi,6,2 Nephi 6,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-15,1_Nephi_21,0.9272631147865348,15,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",1 Nephi,21,1 Nephi 21,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-15,2_Nephi_20,0.9269566258086437,16,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",2 Nephi,20,2 Nephi 20,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-15,2_Nephi_24,0.9267038192412245,17,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",2 Nephi,24,2 Nephi 24,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-15,Ether_2,0.9247408876625995,18,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",Ether,2,Ether 2,MP-2,MP-2_3Nephi_to_Moroni
+SR-15,Mormon_9,0.9225578499687653,19,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",Mormon,9,Mormon 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-15,Enos_1,0.9223946278982239,20,Sidney Rigdon,SR,SR-15,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Millenium",Enos,1,Enos 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-16,Mosiah_27,0.9442887021248186,1,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Alma_16,0.9370217020109645,2,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Alma,16,Alma 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Mosiah_18,0.9332799764730373,3,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Mosiah,18,Mosiah 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Mosiah_23,0.931249107112706,4,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Mosiah,23,Mosiah 23,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Ether_13,0.9303957938341006,5,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Ether,13,Ether 13,MP-2,MP-2_3Nephi_to_Moroni
+SR-16,Alma_22,0.9300477333534594,6,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Alma_50,0.929471586157796,7,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Alma,50,Alma 50,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Alma_47,0.9292160106421405,8,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Alma,47,Alma 47,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Alma_27,0.928455442851353,9,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Alma_3,0.9282265662255255,10,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Alma,3,Alma 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Mosiah_7,0.9267622310981671,11,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Alma_51,0.9253544382766945,12,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Alma,51,Alma 51,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Alma_43,0.9252566188131206,13,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Alma,43,Alma 43,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Alma_11,0.9231737834478208,14,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Alma_17,0.9224561534273267,15,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Alma,17,Alma 17,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Alma_42,0.9222293820326837,16,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Alma_21,0.9211385318679359,17,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Alma,21,Alma 21,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Helaman_16,0.9209749346574932,18,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Helaman,16,Helaman 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Mosiah_29,0.9186374357170365,19,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Mosiah,29,Mosiah 29,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-16,Helaman_2,0.9182926384847001,20,Sidney Rigdon,SR,SR-16,"Series of 14 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Millenium",Helaman,2,Helaman 2,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-17,Alma_22,0.9562025963861269,1,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-17,Alma_10,0.9516886574814981,2,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",Alma,10,Alma 10,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-17,Mosiah_7,0.9501724438447036,3,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-17,Alma_30,0.947088528509227,4,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-17,1_Nephi_17,0.9453582193642633,5,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",1 Nephi,17,1 Nephi 17,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-17,2_Nephi_1,0.9446032789952127,6,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",2 Nephi,1,2 Nephi 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-17,Alma_9,0.9434679134418678,7,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",Alma,9,Alma 9,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-17,Ether_2,0.9432563305137242,8,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",Ether,2,Ether 2,MP-2,MP-2_3Nephi_to_Moroni
+SR-17,Mosiah_27,0.9394292721401769,9,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-17,Jacob_5,0.9387154662265826,10,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",Jacob,5,Jacob 5,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-17,Mosiah_29,0.9380705880612715,11,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",Mosiah,29,Mosiah 29,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-17,Alma_8,0.9370041249549352,12,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",Alma,8,Alma 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-17,Ether_13,0.9359098931188901,13,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",Ether,13,Ether 13,MP-2,MP-2_3Nephi_to_Moroni
+SR-17,Mosiah_18,0.9344576202902576,14,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",Mosiah,18,Mosiah 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-17,Alma_46,0.9334085716925166,15,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",Alma,46,Alma 46,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-17,3_Nephi_11,0.9333771201860311,16,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",3 Nephi,11,3 Nephi 11,MP-2,MP-2_3Nephi_to_Moroni
+SR-17,1_Nephi_15,0.9333358518023978,17,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",1 Nephi,15,1 Nephi 15,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-17,Ether_8,0.9329289892054353,18,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",Ether,8,Ether 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-17,Alma_42,0.931607849651409,19,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-17,Mosiah_26,0.9307443590608264,20,Sidney Rigdon,SR,SR-17,"Series of 9 articles from Evening and Morning Star (Vol I, 11: Independence, MO April 1833) titled Gospel",Mosiah,26,Mosiah 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,Mosiah_27,0.9528442758161314,1,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,Alma_17,0.9524948482503169,2,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Alma,17,Alma 17,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,Alma_50,0.9500972177180725,3,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Alma,50,Alma 50,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,Alma_51,0.9446791517896007,4,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Alma,51,Alma 51,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,3_Nephi_1,0.944257130786808,5,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",3 Nephi,1,3 Nephi 1,MP-2,MP-2_3Nephi_to_Moroni
+SR-18,Alma_46,0.9434206639611289,6,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Alma,46,Alma 46,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,Alma_43,0.942983128738386,7,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Alma,43,Alma 43,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,Mosiah_7,0.9422302265289135,8,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,Mosiah_18,0.9421779652669604,9,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Mosiah,18,Mosiah 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,Alma_49,0.9421755488905046,10,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Alma,49,Alma 49,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,Alma_27,0.9419936190411125,11,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,3_Nephi_4,0.9365707802395998,12,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",3 Nephi,4,3 Nephi 4,MP-2,MP-2_3Nephi_to_Moroni
+SR-18,Alma_1,0.9354892150486868,13,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Alma,1,Alma 1,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,Alma_16,0.9351264512160747,14,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Alma,16,Alma 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,Alma_62,0.9347759103903689,15,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Alma,62,Alma 62,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,Helaman_1,0.9336835655481233,16,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Helaman,1,Helaman 1,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,Helaman_5,0.9327979424564521,17,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Helaman,5,Helaman 5,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,Alma_52,0.9324455887443303,18,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Alma,52,Alma 52,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,Mosiah_28,0.9324176555602862,19,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Mosiah,28,Mosiah 28,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-18,Alma_3,0.9319571112565411,20,Sidney Rigdon,SR,SR-18,"Series of 9 articles from Evening and Morning Star (Vol II, 24: Kirtland, OH September 1834) titled Gospel",Alma,3,Alma 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-19,Mosiah_27,0.9069530551670938,1,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-19,Alma_42,0.8993921930297024,2,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-19,Alma_6,0.8992637801144081,3,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Alma,6,Alma 6,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-19,Helaman_7,0.8848857701175993,4,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Helaman,7,Helaman 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-19,Mosiah_7,0.8830344768935993,5,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-19,Alma_30,0.8815365575319115,6,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-19,Alma_11,0.8799539402316184,7,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-19,Alma_10,0.8795216816760122,8,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Alma,10,Alma 10,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-19,Helaman_2,0.8776133167408781,9,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Helaman,2,Helaman 2,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-19,Alma_13,0.8748817334925679,10,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Alma,13,Alma 13,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-19,Helaman_1,0.8706304938507635,11,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Helaman,1,Helaman 1,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-19,1_Nephi_14,0.8703385270827004,12,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",1 Nephi,14,1 Nephi 14,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-19,Mosiah_13,0.8675436366635149,13,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Mosiah,13,Mosiah 13,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-19,Alma_46,0.8645579065226171,14,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Alma,46,Alma 46,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-19,Alma_22,0.8642627225374726,15,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-19,Ether_4,0.863558155320466,16,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Ether,4,Ether 4,MP-2,MP-2_3Nephi_to_Moroni
+SR-19,Mosiah_8,0.8630869987891805,17,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Mosiah,8,Mosiah 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-19,1_Nephi_15,0.8629797047155822,18,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",1 Nephi,15,1 Nephi 15,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-19,Omni_1,0.8629134494745334,19,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Omni,1,Omni 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-19,Moroni_3,0.8627584666588008,20,Sidney Rigdon,SR,SR-19,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 2: Kirtland, OH November 1834) titled Gospel",Moroni,3,Moroni 3,MP-2,MP-2_3Nephi_to_Moroni
+SR-20,Mosiah_23,0.9358565846118543,1,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",Mosiah,23,Mosiah 23,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-20,1_Nephi_15,0.9263203016409274,2,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",1 Nephi,15,1 Nephi 15,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-20,Alma_21,0.9254700813745241,3,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",Alma,21,Alma 21,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-20,Ether_8,0.9252768580274742,4,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",Ether,8,Ether 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-20,2_Nephi_26,0.9243241758021601,5,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",2 Nephi,26,2 Nephi 26,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-20,Ether_6,0.9237211104168478,6,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",Ether,6,Ether 6,MP-2,MP-2_3Nephi_to_Moroni
+SR-20,Mosiah_18,0.9228587740921482,7,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",Mosiah,18,Mosiah 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-20,Alma_31,0.9209523800280806,8,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",Alma,31,Alma 31,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-20,Alma_42,0.9203577832789411,9,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-20,Alma_55,0.919521769905284,10,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",Alma,55,Alma 55,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-20,Alma_22,0.9195108888432956,11,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-20,Mosiah_27,0.9191771585209527,12,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-20,2_Nephi_9,0.9187990290938408,13,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-20,Alma_14,0.9178740903617246,14,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",Alma,14,Alma 14,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-20,Alma_11,0.9174047080066347,15,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-20,Jarom_1,0.9155909016915545,16,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",Jarom,1,Jarom 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-20,Mosiah_7,0.9141244149792279,17,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-20,Alma_45,0.913930184109337,18,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",Alma,45,Alma 45,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-20,Mormon_8,0.913257108443562,19,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",Mormon,8,Mormon 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-20,2_Nephi_2,0.9128260204778542,20,Sidney Rigdon,SR,SR-20,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 3: Kirtland, OH December 1834) titled Gospel",2 Nephi,2,2 Nephi 2,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-21,3_Nephi_1,0.9236627703835506,1,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",3 Nephi,1,3 Nephi 1,MP-2,MP-2_3Nephi_to_Moroni
+SR-21,Mosiah_27,0.9180353089497046,2,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-21,Helaman_16,0.9126681940735489,3,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",Helaman,16,Helaman 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-21,Alma_25,0.9101977926180856,4,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",Alma,25,Alma 25,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-21,1_Nephi_15,0.9093358338614727,5,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",1 Nephi,15,1 Nephi 15,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-21,Alma_42,0.9085206713906178,6,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-21,Alma_1,0.9064805461004248,7,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",Alma,1,Alma 1,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-21,Alma_17,0.9046394296497713,8,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",Alma,17,Alma 17,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-21,Alma_24,0.9024675138993445,9,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",Alma,24,Alma 24,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-21,Mosiah_7,0.9010361458017258,10,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-21,Mormon_5,0.9000622623272501,11,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",Mormon,5,Mormon 5,MP-2,MP-2_3Nephi_to_Moroni
+SR-21,Alma_27,0.8994446353836745,12,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-21,3_Nephi_6,0.8986182287040861,13,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",3 Nephi,6,3 Nephi 6,MP-2,MP-2_3Nephi_to_Moroni
+SR-21,3_Nephi_4,0.8982979793360014,14,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",3 Nephi,4,3 Nephi 4,MP-2,MP-2_3Nephi_to_Moroni
+SR-21,Mosiah_29,0.8979437861714762,15,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",Mosiah,29,Mosiah 29,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-21,Alma_13,0.8966999558154288,16,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",Alma,13,Alma 13,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-21,1_Nephi_22,0.89596342691737,17,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",1 Nephi,22,1 Nephi 22,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-21,Ether_15,0.8957025000933344,18,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",Ether,15,Ether 15,MP-2,MP-2_3Nephi_to_Moroni
+SR-21,Alma_50,0.8947629983292985,19,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",Alma,50,Alma 50,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-21,Alma_51,0.8938990115401673,20,Sidney Rigdon,SR,SR-21,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 4: Kirtland, OH January 1835) titled Gospel",Alma,51,Alma 51,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-22,Mosiah_7,0.936395099153381,1,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-22,Alma_30,0.9360635859571758,2,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-22,Alma_11,0.9317120626539128,3,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-22,2_Nephi_2,0.9306079169185599,4,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",2 Nephi,2,2 Nephi 2,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-22,Alma_22,0.9296658838023497,5,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-22,Mosiah_27,0.9284477925403881,6,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-22,Alma_42,0.9271813102738846,7,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-22,Alma_18,0.927159227699849,8,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Alma,18,Alma 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-22,Mosiah_8,0.9271426507958884,9,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Mosiah,8,Mosiah 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-22,Mosiah_18,0.9265235467882819,10,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Mosiah,18,Mosiah 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-22,2_Nephi_9,0.9243935881237535,11,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-22,Alma_26,0.9223949918960574,12,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Alma,26,Alma 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-22,Alma_10,0.9209591142362957,13,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Alma,10,Alma 10,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-22,Mosiah_29,0.918895505723398,14,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Mosiah,29,Mosiah 29,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-22,Ether_13,0.9183132829762943,15,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Ether,13,Ether 13,MP-2,MP-2_3Nephi_to_Moroni
+SR-22,Mosiah_3,0.9171141746600837,16,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Mosiah,3,Mosiah 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-22,Alma_12,0.9159578346084651,17,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Alma,12,Alma 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-22,Omni_1,0.9154605565729498,18,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Omni,1,Omni 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-22,Mormon_9,0.9152654224703667,19,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Mormon,9,Mormon 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-22,Jacob_4,0.9151182559949036,20,Sidney Rigdon,SR,SR-22,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 5: Kirtland, OH February 1835) titled Gospel",Jacob,4,Jacob 4,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-23,Mosiah_7,0.9475284623874134,1,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-23,Mosiah_27,0.9426558142176319,2,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-23,Alma_55,0.9399758439289385,3,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Alma,55,Alma 55,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-23,Mosiah_18,0.9389461645923143,4,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Mosiah,18,Mosiah 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-23,Alma_47,0.9373645822065247,5,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Alma,47,Alma 47,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-23,Alma_1,0.9371411593613188,6,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Alma,1,Alma 1,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-23,Alma_42,0.936301821628888,7,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-23,Mosiah_25,0.9352624165329977,8,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Mosiah,25,Mosiah 25,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-23,Alma_17,0.9335316614856455,9,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Alma,17,Alma 17,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-23,Alma_46,0.9332607760838787,10,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Alma,46,Alma 46,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-23,Helaman_1,0.9317684450336254,11,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Helaman,1,Helaman 1,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-23,Alma_27,0.9294847797813539,12,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-23,3_Nephi_1,0.9290881889140632,13,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",3 Nephi,1,3 Nephi 1,MP-2,MP-2_3Nephi_to_Moroni
+SR-23,Helaman_5,0.9275851922006143,14,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Helaman,5,Helaman 5,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-23,Ether_15,0.9275706571049073,15,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Ether,15,Ether 15,MP-2,MP-2_3Nephi_to_Moroni
+SR-23,Mosiah_8,0.9269157566571854,16,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Mosiah,8,Mosiah 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-23,Alma_56,0.9268599270822658,17,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Alma,56,Alma 56,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-23,Alma_22,0.9266974550087442,18,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-23,Alma_10,0.926586099354359,19,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Alma,10,Alma 10,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-23,Mosiah_23,0.9261017105535135,20,Sidney Rigdon,SR,SR-23,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 6: Kirtland, OH March 1835) titled Gospel",Mosiah,23,Mosiah 23,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-24,Alma_12,0.9378142342044716,1,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Alma,12,Alma 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-24,Helaman_16,0.9237017197337581,2,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Helaman,16,Helaman 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-24,Alma_24,0.9188065012105097,3,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Alma,24,Alma 24,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-24,Alma_42,0.9186898068887838,4,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-24,Alma_46,0.9173219730320226,5,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Alma,46,Alma 46,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-24,Mosiah_29,0.9149222905439011,6,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Mosiah,29,Mosiah 29,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-24,Alma_1,0.913584936762143,7,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Alma,1,Alma 1,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-24,Mosiah_27,0.9134696872905318,8,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-24,Mosiah_7,0.910391068001337,9,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-24,Alma_27,0.9094391967651889,10,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-24,Mosiah_1,0.9085002435674984,11,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Mosiah,1,Mosiah 1,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-24,Jacob_4,0.9077497030562267,12,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Jacob,4,Jacob 4,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-24,Alma_13,0.9066150909640561,13,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Alma,13,Alma 13,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-24,3_Nephi_1,0.9051546695327226,14,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",3 Nephi,1,3 Nephi 1,MP-2,MP-2_3Nephi_to_Moroni
+SR-24,Alma_22,0.9013442157272697,15,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-24,Alma_25,0.9012844025511306,16,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Alma,25,Alma 25,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-24,Alma_17,0.8991754404973745,17,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Alma,17,Alma 17,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-24,Mosiah_8,0.8989217371846203,18,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Mosiah,8,Mosiah 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-24,2_Nephi_25,0.8973978177795443,19,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",2 Nephi,25,2 Nephi 25,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-24,Ether_13,0.8972471643162973,20,Sidney Rigdon,SR,SR-24,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 8: Kirtland, OH May 1835) titled Gospel",Ether,13,Ether 13,MP-2,MP-2_3Nephi_to_Moroni
+SR-25,Alma_42,0.9060689081657887,1,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-25,Helaman_1,0.9055022679551191,2,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Helaman,1,Helaman 1,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-25,Alma_46,0.9048205523815737,3,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Alma,46,Alma 46,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-25,Mosiah_8,0.9040119629569584,4,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Mosiah,8,Mosiah 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-25,Mosiah_7,0.9030594953503062,5,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-25,Mosiah_27,0.9022735075954635,6,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-25,Helaman_2,0.8997827581415894,7,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Helaman,2,Helaman 2,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-25,Alma_19,0.8973303184821924,8,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Alma,19,Alma 19,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-25,Jacob_4,0.8969564941412905,9,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Jacob,4,Jacob 4,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-25,Ether_13,0.89689261756438,10,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Ether,13,Ether 13,MP-2,MP-2_3Nephi_to_Moroni
+SR-25,Alma_12,0.8945952666916844,11,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Alma,12,Alma 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-25,Alma_30,0.8931593384165765,12,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-25,Alma_22,0.8914427304145514,13,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-25,1_Nephi_10,0.8904070141171149,14,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",1 Nephi,10,1 Nephi 10,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-25,Mosiah_29,0.8886203373025952,15,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Mosiah,29,Mosiah 29,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-25,Moroni_7,0.8880443109146633,16,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Moroni,7,Moroni 7,MP-2,MP-2_3Nephi_to_Moroni
+SR-25,Mosiah_1,0.8875819915375738,17,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Mosiah,1,Mosiah 1,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-25,Ether_12,0.8873969853726394,18,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Ether,12,Ether 12,MP-2,MP-2_3Nephi_to_Moroni
+SR-25,Alma_10,0.887024463266738,19,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Alma,10,Alma 10,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-25,Alma_18,0.8858099264767525,20,Sidney Rigdon,SR,SR-25,"Series of 9 articles from LDS Messenger and Advocate (Vol I, 9: Kirtland, OH June 1835) titled Gospel",Alma,18,Alma 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-26,Helaman_2,0.8692215138681061,1,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",Helaman,2,Helaman 2,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-26,Omni_1,0.8687687400038262,2,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",Omni,1,Omni 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-26,Alma_55,0.8630922386343531,3,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",Alma,55,Alma 55,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-26,Alma_42,0.8623692264881491,4,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-26,1_Nephi_4,0.8604176566452818,5,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",1 Nephi,4,1 Nephi 4,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-26,1_Nephi_11,0.858919927513713,6,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",1 Nephi,11,1 Nephi 11,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-26,Alma_30,0.8559473159229674,7,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-26,Alma_47,0.8555603224152708,8,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",Alma,47,Alma 47,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-26,Enos_1,0.8545081026317249,9,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",Enos,1,Enos 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-26,Alma_20,0.8513551703239987,10,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",Alma,20,Alma 20,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-26,Alma_11,0.8498900998163798,11,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-26,Mosiah_6,0.8489926124308678,12,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",Mosiah,6,Mosiah 6,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-26,Alma_18,0.8488873855548915,13,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",Alma,18,Alma 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-26,Jacob_7,0.8475647767288127,14,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",Jacob,7,Jacob 7,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-26,Ether_14,0.8473573054701438,15,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",Ether,14,Ether 14,MP-2,MP-2_3Nephi_to_Moroni
+SR-26,Alma_15,0.847000416643744,16,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",Alma,15,Alma 15,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-26,1_Nephi_8,0.8468072511640705,17,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",1 Nephi,8,1 Nephi 8,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-26,Mosiah_20,0.8419681590853668,18,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",Mosiah,20,Mosiah 20,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-26,Mosiah_23,0.8394461846992871,19,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",Mosiah,23,Mosiah 23,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-26,Alma_8,0.8390573083522104,20,Sidney Rigdon,SR,SR-26,"To the Public. Evening and Morning Star, Vol II, No.19: Kirtland, Ohio: April 1834",Alma,8,Alma 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-27,Alma_26,0.9102252142812104,1,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Alma,26,Alma 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-27,Mosiah_7,0.9043327465053855,2,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-27,Alma_61,0.9031179786621061,3,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Alma,61,Alma 61,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-27,Alma_41,0.8983314253288116,4,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Alma,41,Alma 41,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-27,Alma_27,0.8965060379350301,5,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-27,Mosiah_8,0.894726187379711,6,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Mosiah,8,Mosiah 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-27,Jacob_1,0.8943601158366532,7,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Jacob,1,Jacob 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-27,Alma_58,0.8923428638440851,8,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Alma,58,Alma 58,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-27,Jacob_4,0.8916753596102871,9,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Jacob,4,Jacob 4,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-27,Mormon_9,0.8891060145215411,10,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Mormon,9,Mormon 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-27,Mosiah_16,0.8852586971329084,11,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Mosiah,16,Mosiah 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-27,Alma_44,0.8830921476216138,12,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Alma,44,Alma 44,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-27,Alma_42,0.882848814062631,13,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-27,1_Nephi_22,0.8816219083626484,14,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",1 Nephi,22,1 Nephi 22,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-27,Jarom_1,0.880291512215314,15,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Jarom,1,Jarom 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-27,Mosiah_5,0.8799731405662442,16,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Mosiah,5,Mosiah 5,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-27,2_Nephi_9,0.8786698989725011,17,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-27,Alma_46,0.8777425992869264,18,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Alma,46,Alma 46,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-27,Alma_57,0.8777281850982785,19,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Alma,57,Alma 57,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-27,Alma_40,0.8773401090222157,20,Sidney Rigdon,SR,SR-27,"Dear Brethren, Zion's Camp. Epistle to LDS by SR and OC (May 10, 1834)",Alma,40,Alma 40,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,Mosiah_7,0.9439889085647262,1,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,Mosiah_27,0.9428529411622043,2,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,Alma_17,0.9402067631594837,3,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Alma,17,Alma 17,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,Alma_46,0.9360524896176918,4,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Alma,46,Alma 46,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,Mosiah_29,0.935993469593873,5,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Mosiah,29,Mosiah 29,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,Alma_50,0.9310717660448454,6,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Alma,50,Alma 50,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,Alma_51,0.9307154622071723,7,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Alma,51,Alma 51,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,Mosiah_18,0.9277586324354035,8,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Mosiah,18,Mosiah 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,Mosiah_16,0.9272717344355231,9,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Mosiah,16,Mosiah 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,Mosiah_28,0.9260140035557282,10,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Mosiah,28,Mosiah 28,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,Alma_13,0.9248625249407184,11,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Alma,13,Alma 13,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,Alma_1,0.9238328262581448,12,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Alma,1,Alma 1,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,Ether_13,0.923742659672893,13,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Ether,13,Ether 13,MP-2,MP-2_3Nephi_to_Moroni
+SR-28,Alma_27,0.9230723427873948,14,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,Helaman_1,0.9213686519805817,15,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Helaman,1,Helaman 1,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,Mosiah_8,0.9184121599634784,16,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Mosiah,8,Mosiah 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,Alma_10,0.9177217151486147,17,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Alma,10,Alma 10,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,3_Nephi_1,0.9174582702758651,18,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",3 Nephi,1,3 Nephi 1,MP-2,MP-2_3Nephi_to_Moroni
+SR-28,Alma_52,0.9169258578414967,19,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Alma,52,Alma 52,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-28,Mormon_5,0.9156627297025188,20,Sidney Rigdon,SR,SR-28,"Ancient Order of Things, LDS Messenger and Advocate, Vol 1, No 12, Kirtland Ohio, September 1835",Mormon,5,Mormon 5,MP-2,MP-2_3Nephi_to_Moroni
+SR-29,Alma_42,0.9434715046566887,1,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-29,Mosiah_27,0.9414513683033603,2,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-29,Mosiah_7,0.932878024710222,3,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-29,3_Nephi_1,0.9317665426967509,4,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",3 Nephi,1,3 Nephi 1,MP-2,MP-2_3Nephi_to_Moroni
+SR-29,Alma_10,0.9264563969364481,5,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",Alma,10,Alma 10,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-29,Alma_12,0.9261558317988082,6,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",Alma,12,Alma 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-29,Alma_30,0.9257956907024331,7,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-29,Mosiah_29,0.9248890983452072,8,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",Mosiah,29,Mosiah 29,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-29,Alma_47,0.9235669006955278,9,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",Alma,47,Alma 47,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-29,1_Nephi_15,0.9214939558278122,10,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",1 Nephi,15,1 Nephi 15,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-29,Alma_31,0.9213983277120158,11,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",Alma,31,Alma 31,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-29,Alma_17,0.9211159556814362,12,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",Alma,17,Alma 17,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-29,Alma_22,0.9198846743968974,13,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-29,Alma_46,0.919439719984877,14,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",Alma,46,Alma 46,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-29,Alma_1,0.9179478065274982,15,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",Alma,1,Alma 1,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-29,Mosiah_18,0.9161208369009654,16,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",Mosiah,18,Mosiah 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-29,Alma_11,0.9156532425412943,17,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-29,Mosiah_23,0.9155863529089672,18,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",Mosiah,23,Mosiah 23,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-29,1_Nephi_17,0.9154989121322887,19,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",1 Nephi,17,1 Nephi 17,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-29,Alma_27,0.9153838492111485,20,Sidney Rigdon,SR,SR-29,"ORDER OF THE NEW TESTAMENT CHURCH. No. I., LDS Messenger and Advocate, Vol 2, No 2, Kirtland Ohio, November 1835",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-30,Alma_11,0.8967232031249129,1,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-30,Mosiah_27,0.8865241966948065,2,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-30,Alma_18,0.8840538034174608,3,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Alma,18,Alma 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-30,Alma_42,0.8818639318847982,4,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-30,Alma_30,0.8802285668853788,5,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-30,2_Nephi_9,0.8743294620239964,6,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-30,Mosiah_7,0.8707512955035719,7,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-30,Omni_1,0.868836165646554,8,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Omni,1,Omni 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-30,Alma_41,0.8647229030521819,9,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Alma,41,Alma 41,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-30,Alma_21,0.8617090781786265,10,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Alma,21,Alma 21,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-30,Mosiah_18,0.8601726311502053,11,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Mosiah,18,Mosiah 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-30,Mosiah_8,0.8594064362344013,12,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Mosiah,8,Mosiah 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-30,Mosiah_15,0.8571308767685327,13,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Mosiah,15,Mosiah 15,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-30,Alma_12,0.8539990222652813,14,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Alma,12,Alma 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-30,Helaman_2,0.8538615710640101,15,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Helaman,2,Helaman 2,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-30,Alma_22,0.851630834529537,16,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-30,Alma_5,0.8505123277708913,17,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Alma,5,Alma 5,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-30,Alma_10,0.8485598541878738,18,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Alma,10,Alma 10,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-30,2_Nephi_20,0.8478903597718811,19,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",2 Nephi,20,2 Nephi 20,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-30,Mosiah_13,0.8478248801895263,20,Sidney Rigdon,SR,SR-30,"LDS Messenger and Advocate, Vol 2, No 4, Kirtland Ohio, January 1836",Mosiah,13,Mosiah 13,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-31,2_Nephi_9,0.9316725162549924,1,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-31,Alma_30,0.9288032446340941,2,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-31,Alma_42,0.9259629809525334,3,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-31,Alma_5,0.9255654722116581,4,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",Alma,5,Alma 5,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-31,Omni_1,0.9250973351707018,5,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",Omni,1,Omni 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-31,Alma_11,0.9191873786630992,6,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-31,1_Nephi_15,0.9116966279907553,7,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",1 Nephi,15,1 Nephi 15,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-31,2_Nephi_2,0.9114597576050915,8,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",2 Nephi,2,2 Nephi 2,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-31,Alma_26,0.9106154711084005,9,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",Alma,26,Alma 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-31,Moroni_8,0.9065799190882913,10,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",Moroni,8,Moroni 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-31,Mosiah_23,0.9057203320198853,11,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",Mosiah,23,Mosiah 23,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-31,Mormon_8,0.9055457711022405,12,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",Mormon,8,Mormon 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-31,Mosiah_7,0.9044852341482293,13,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-31,Alma_55,0.9043850254385908,14,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",Alma,55,Alma 55,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-31,Alma_22,0.9040275446495707,15,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-31,1_Nephi_17,0.902385939939424,16,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",1 Nephi,17,1 Nephi 17,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-31,Jarom_1,0.9019181991455103,17,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",Jarom,1,Jarom 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-31,Alma_40,0.9010883485721386,18,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",Alma,40,Alma 40,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-31,Mosiah_27,0.9009236805574155,19,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-31,Mormon_9,0.899241558570058,20,Sidney Rigdon,SR,SR-31,"LDS Messenger and Advocate, Vol 2, No 5, Kirtland Ohio, February 1836",Mormon,9,Mormon 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-32,Alma_11,0.9063839103857919,1,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-32,Alma_40,0.9013264212866572,2,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",Alma,40,Alma 40,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-32,1_Nephi_15,0.892944481785784,3,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",1 Nephi,15,1 Nephi 15,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-32,Omni_1,0.8915040367476066,4,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",Omni,1,Omni 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-32,Alma_5,0.88963857567387294,5,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",Alma,5,Alma 5,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-32,3_Nephi_9,0.8861949532659522,6,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",3 Nephi,9,3 Nephi 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-32,1_Nephi_14,0.8841036583111759,7,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",1 Nephi,14,1 Nephi 14,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-32,2_Nephi_9,0.8836881277735325,8,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-32,Alma_42,0.88238002182157,9,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-32,3_Nephi_11,0.8801309310534928,10,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",3 Nephi,11,3 Nephi 11,MP-2,MP-2_3Nephi_to_Moroni
+SR-32,Moroni_3,0.8787185668544211,11,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",Moroni,3,Moroni 3,MP-2,MP-2_3Nephi_to_Moroni
+SR-32,Alma_30,0.8783681120044703,12,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-32,Mormon_8,0.8783384308259321,13,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",Mormon,8,Mormon 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-32,Moroni_8,0.8759692755742832,14,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",Moroni,8,Moroni 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-32,2_Nephi_20,0.875515206083166,15,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",2 Nephi,20,2 Nephi 20,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-32,3_Nephi_5,0.8750452169497989,16,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",3 Nephi,5,3 Nephi 5,MP-2,MP-2_3Nephi_to_Moroni
+SR-32,Alma_22,0.8748224203834827,17,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-32,Alma_29,0.8732869063404116,18,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",Alma,29,Alma 29,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-32,Mosiah_13,0.8723872899849673,19,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",Mosiah,13,Mosiah 13,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-32,Jacob_2,0.8720056500330001,20,Sidney Rigdon,SR,SR-32,"LDS Messenger and Advocate, Vol 2, No 6, Kirtland Ohio, March 1836",Jacob,2,Jacob 2,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-33,Mosiah_27,0.9304556936440371,1,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-33,Alma_11,0.9295876423346284,2,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-33,2_Nephi_9,0.9234046733027779,3,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-33,Mosiah_7,0.92255906719462355,4,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-33,Alma_41,0.9154568249950626,5,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Alma,41,Alma 41,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-33,Jarom_1,0.9127301528007744,6,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Jarom,1,Jarom 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-33,Alma_42,0.9114983256167668,7,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-33,Mosiah_8,0.9098606370075409,8,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Mosiah,8,Mosiah 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-33,Alma_30,0.9079862615907988,9,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-33,Alma_21,0.9067219402904464,10,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Alma,21,Alma 21,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-33,Mosiah_18,0.9053307920308472,11,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Mosiah,18,Mosiah 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-33,Omni_1,0.9029507590487305,12,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Omni,1,Omni 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-33,Alma_18,0.9020510153612924,13,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Alma,18,Alma 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-33,Moroni_9,0.9015103394715303,14,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Moroni,9,Moroni 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-33,Mosiah_15,0.901186706643861,15,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Mosiah,15,Mosiah 15,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-33,Mosiah_13,0.901011208542246,16,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Mosiah,13,Mosiah 13,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-33,Mosiah_29,0.9006146669063839,17,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Mosiah,29,Mosiah 29,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-33,Mosiah_12,0.8991044957088928,18,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Mosiah,12,Mosiah 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-33,Mosiah_3,0.8985601870442484,19,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Mosiah,3,Mosiah 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-33,Alma_26,0.8985332892645361,20,Sidney Rigdon,SR,SR-33,"LDS Messenger and Advocate, Vol 2, No 7, Kirtland Ohio, April 1836",Alma,26,Alma 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-34,Alma_5,0.9301284058538039,1,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",Alma,5,Alma 5,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-34,Alma_11,0.9193184243321264,2,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-34,Alma_30,0.9170349109166315,3,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-34,2_Nephi_9,0.913767997205527,4,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-34,Alma_42,0.9135701217008956,5,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-34,Alma_39,0.9101558943049728,6,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",Alma,39,Alma 39,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-34,Moroni_8,0.9048506434364241,7,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",Moroni,8,Moroni 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-34,Mosiah_13,0.9047826765545504,8,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",Mosiah,13,Mosiah 13,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-34,Alma_32,0.9017062444324344,9,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",Alma,32,Alma 32,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-34,Omni_1,0.8982009701002556,10,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",Omni,1,Omni 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-34,Alma_60,0.8972870789271169,11,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",Alma,60,Alma 60,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-34,Jacob_2,0.8964694432741976,12,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",Jacob,2,Jacob 2,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-34,Alma_26,0.8957267024345804,13,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",Alma,26,Alma 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-34,Mormon_8,0.8942952646362873,14,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",Mormon,8,Mormon 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-34,Alma_18,0.893486528207889,15,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",Alma,18,Alma 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-34,2_Nephi_2,0.8932598976433057,16,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",2 Nephi,2,2 Nephi 2,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-34,Alma_41,0.8915206279924915,17,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",Alma,41,Alma 41,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-34,Mormon_9,0.8896099996996233,18,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",Mormon,9,Mormon 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-34,Alma_10,0.886138298091998,19,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",Alma,10,Alma 10,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-34,3_Nephi_11,0.8854761589423448,20,Sidney Rigdon,SR,SR-34,"LDS Messenger and Advocate, Vol 2, No 9, Kirtland Ohio, June 1836",3 Nephi,11,3 Nephi 11,MP-2,MP-2_3Nephi_to_Moroni
+SR-35,1_Nephi_22,0.9364756677984143,1,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",1 Nephi,22,1 Nephi 22,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-35,Alma_37,0.9291384804826783,2,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",Alma,37,Alma 37,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-35,Alma_27,0.9284417321095603,3,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-35,Alma_50,0.927931347698898,4,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",Alma,50,Alma 50,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-35,Mormon_5,0.9261189966876563,5,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",Mormon,5,Mormon 5,MP-2,MP-2_3Nephi_to_Moroni
+SR-35,2_Nephi_28,0.9247479474550611,6,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",2 Nephi,28,2 Nephi 28,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-35,Helaman_3,0.9236687943884178,7,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",Helaman,3,Helaman 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-35,Helaman_16,0.9230054446821375,8,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",Helaman,16,Helaman 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-35,Alma_46,0.9225540582535654,9,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",Alma,46,Alma 46,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-35,Alma_3,0.92174259787761,10,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",Alma,3,Alma 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-35,Mosiah_7,0.9213219437304327,11,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-35,Alma_13,0.9211293440866547,12,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",Alma,13,Alma 13,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-35,Alma_17,0.9203541638604893,13,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",Alma,17,Alma 17,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-35,Alma_12,0.9186451760673144,14,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",Alma,12,Alma 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-35,3_Nephi_1,0.9182555800654062,15,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",3 Nephi,1,3 Nephi 1,MP-2,MP-2_3Nephi_to_Moroni
+SR-35,Mosiah_27,0.9168344511158533,16,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-35,2_Nephi_25,0.9164884324613437,17,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",2 Nephi,25,2 Nephi 25,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-35,Mosiah_3,0.9153286182071924,18,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",Mosiah,3,Mosiah 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-35,2_Nephi_12,0.9153266395135614,19,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",2 Nephi,12,2 Nephi 12,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-35,Alma_16,0.9147905476301196,20,Sidney Rigdon,SR,SR-35,"Latter-day Glory. LDS Messenger and Advocate, Vol 3, No 2, Kirtland Ohio, November 1836",Alma,16,Alma 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-36,1_Nephi_22,0.9353839691540778,1,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",1 Nephi,22,1 Nephi 22,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-36,2_Nephi_9,0.935047677792727,2,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-36,Alma_40,0.9276922091387371,3,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",Alma,40,Alma 40,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-36,1_Nephi_15,0.9267437170861276,4,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",1 Nephi,15,1 Nephi 15,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-36,Mosiah_7,0.9242695122984238,5,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-36,Alma_27,0.9164492299654134,6,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-36,Mosiah_27,0.9159795131313511,7,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-36,2_Nephi_1,0.9159622598746018,8,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",2 Nephi,1,2 Nephi 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-36,Alma_9,0.9157433874838122,9,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",Alma,9,Alma 9,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-36,1_Nephi_14,0.9154014026957333,10,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",1 Nephi,14,1 Nephi 14,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-36,Alma_26,0.9137454600846218,11,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",Alma,26,Alma 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-36,2_Nephi_28,0.9135194301522195,12,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",2 Nephi,28,2 Nephi 28,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-36,Alma_37,0.9108639312089344,13,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",Alma,37,Alma 37,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-36,Alma_11,0.9080396351465161,14,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-36,Alma_42,0.907786297592962,15,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-36,Mosiah_29,0.9067158423233884,16,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",Mosiah,29,Mosiah 29,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-36,Mormon_8,0.9066672615167213,17,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",Mormon,8,Mormon 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-36,1_Nephi_13,0.9063993381926527,18,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",1 Nephi,13,1 Nephi 13,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-36,Mormon_9,0.9062747539965108,19,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",Mormon,9,Mormon 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-36,2_Nephi_27,0.9052571961176432,20,Sidney Rigdon,SR,SR-36,"Saints and the World. LDS Messenger and Advocate, Vol 3, No 3, Kirtland Ohio, December 1836",2 Nephi,27,2 Nephi 27,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-37,Alma_27,0.9374543861316514,1,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-37,Mosiah_7,0.9333918296520395,2,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-37,Alma_17,0.9299280219013544,3,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Alma,17,Alma 17,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-37,Alma_46,0.9237880753783739,4,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Alma,46,Alma 46,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-37,Alma_50,0.9232133799243502,5,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Alma,50,Alma 50,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-37,Mosiah_27,0.9229421469530292,6,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-37,Alma_51,0.9220398223182291,7,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Alma,51,Alma 51,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-37,Mosiah_29,0.9212573611335564,8,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Mosiah,29,Mosiah 29,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-37,Alma_12,0.9210231482293133,9,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Alma,12,Alma 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-37,Alma_24,0.9209702191616246,10,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Alma,24,Alma 24,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-37,3_Nephi_1,0.9176491710540087,11,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",3 Nephi,1,3 Nephi 1,MP-2,MP-2_3Nephi_to_Moroni
+SR-37,Alma_26,0.9168809648946623,12,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Alma,26,Alma 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-37,Alma_13,0.9168384476939874,13,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Alma,13,Alma 13,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-37,Alma_49,0.9162486256703338,14,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Alma,49,Alma 49,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-37,Alma_56,0.9141164149660073,15,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Alma,56,Alma 56,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-37,Alma_1,0.9136557105629973,16,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Alma,1,Alma 1,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-37,Alma_3,0.913402283405285,17,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Alma,3,Alma 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-37,Alma_42,0.9130098086458821,18,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-37,Jacob_4,0.9124579645107,19,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Jacob,4,Jacob 4,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-37,Helaman_5,0.9121152298826496,20,Sidney Rigdon,SR,SR-37,"Persecution. LDS Messenger and Advocate, Vol 3, No 4, Kirtland Ohio, January 1837",Helaman,5,Helaman 5,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,Alma_17,0.9435798553104265,1,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Alma,17,Alma 17,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,Alma_50,0.9410520961897626,2,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Alma,50,Alma 50,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,Alma_27,0.9383227306908895,3,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,Mosiah_27,0.9374941976527783,4,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,Alma_46,0.9367160450652734,5,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Alma,46,Alma 46,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,Mosiah_7,0.9355468709101065,6,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,Alma_13,0.9348224214574062,7,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Alma,13,Alma 13,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,3_Nephi_1,0.9347121258346259,8,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",3 Nephi,1,3 Nephi 1,MP-2,MP-2_3Nephi_to_Moroni
+SR-38,Alma_49,0.932255852895356,9,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Alma,49,Alma 49,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,Alma_1,0.93062836622762235,10,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Alma,1,Alma 1,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,Alma_51,0.9284859416986317,11,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Alma,51,Alma 51,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,Alma_16,0.9253478055793956,12,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Alma,16,Alma 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,Mormon_5,0.924653541026805,13,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Mormon,5,Mormon 5,MP-2,MP-2_3Nephi_to_Moroni
+SR-38,Helaman_1,0.9233024049470961,14,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Helaman,1,Helaman 1,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,Mosiah_28,0.9229965945329414,15,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Mosiah,28,Mosiah 28,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,Alma_2,0.9227309167619868,16,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Alma,2,Alma 2,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,Alma_42,0.9224823608916635,17,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,Alma_3,0.9223197737501265,18,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Alma,3,Alma 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,Helaman_16,0.9217028486653224,19,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Helaman,16,Helaman 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-38,Alma_25,0.9216509005120818,20,Sidney Rigdon,SR,SR-38,"Persecution. LDS Messenger and Advocate, Vol 3, No 6, Kirtland Ohio, March 1837",Alma,25,Alma 25,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-39,Alma_27,0.926449691913192,1,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-39,Alma_37,0.9191639686381423,2,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",Alma,37,Alma 37,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-39,Alma_3,0.9180695031088829,3,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",Alma,3,Alma 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-39,Mosiah_22,0.9175424620337872,4,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",Mosiah,22,Mosiah 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-39,Helaman_16,0.9151811406276656,5,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",Helaman,16,Helaman 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-39,1_Nephi_22,0.911853111206503,6,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",1 Nephi,22,1 Nephi 22,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-39,Mosiah_24,0.9107434748905033,7,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",Mosiah,24,Mosiah 24,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-39,Alma_50,0.9096467560394138,8,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",Alma,50,Alma 50,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-39,3_Nephi_1,0.9095301625856099,9,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",3 Nephi,1,3 Nephi 1,MP-2,MP-2_3Nephi_to_Moroni
+SR-39,Mosiah_7,0.909258992230199,10,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-39,Mosiah_27,0.9075636259612966,11,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-39,Alma_17,0.9053648206939244,12,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",Alma,17,Alma 17,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-39,Helaman_3,0.9050808948341729,13,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",Helaman,3,Helaman 3,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-39,Alma_40,0.9041391488486525,14,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",Alma,40,Alma 40,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-39,1_Nephi_15,0.9025181483975442,15,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",1 Nephi,15,1 Nephi 15,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-39,Mosiah_29,0.9022751921617118,16,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",Mosiah,29,Mosiah 29,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-39,Mormon_5,0.9018560145398125,17,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",Mormon,5,Mormon 5,MP-2,MP-2_3Nephi_to_Moroni
+SR-39,Moroni_9,0.9010833144586479,18,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",Moroni,9,Moroni 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-39,3_Nephi_6,0.8995070366711475,19,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",3 Nephi,6,3 Nephi 6,MP-2,MP-2_3Nephi_to_Moroni
+SR-39,3_Nephi_4,0.8993780312321052,20,Sidney Rigdon,SR,SR-39,"PROSPECTUS. LDS Messenger and Advocate, Vol 3, No 11, Kirtland Ohio, August 1837",3 Nephi,4,3 Nephi 4,MP-2,MP-2_3Nephi_to_Moroni
+SR-40,Alma_40,0.9274704894861009,1,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",Alma,40,Alma 40,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-40,Omni_1,0.9063374091647528,2,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",Omni,1,Omni 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-40,Moroni_8,0.9000834487358519,3,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",Moroni,8,Moroni 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-40,Alma_41,0.8940569542516605,4,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",Alma,41,Alma 41,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-40,Mosiah_13,0.8932830232157117,5,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",Mosiah,13,Mosiah 13,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-40,2_Nephi_9,0.8928435635051101,6,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-40,Jarom_1,0.8919293134375411,7,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",Jarom,1,Jarom 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-40,Jacob_6,0.8861580657888805,8,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",Jacob,6,Jacob 6,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-40,Alma_26,0.885890731295289,9,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",Alma,26,Alma 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-40,Alma_5,0.8820397920595994,10,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",Alma,5,Alma 5,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-40,Mosiah_8,0.8814063464719977,11,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",Mosiah,8,Mosiah 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-40,1_Nephi_12,0.8811258726415093,12,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",1 Nephi,12,1 Nephi 12,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-40,Mosiah_7,0.8809872928215666,13,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-40,2_Nephi_33,0.8808669648837597,14,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",2 Nephi,33,2 Nephi 33,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-40,1_Nephi_14,0.8796296183413637,15,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",1 Nephi,14,1 Nephi 14,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-40,Alma_11,0.8796193771035116,16,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-40,1_Nephi_9,0.8783528841007568,17,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",1 Nephi,9,1 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-40,Mosiah_15,0.874802649792168,18,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",Mosiah,15,Mosiah 15,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-40,Moroni_9,0.8733315689000145,19,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",Moroni,9,Moroni 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-40,Mormon_9,0.8730990240426387,20,Sidney Rigdon,SR,SR-40,"Vol 1, No 1, Kirtland Ohio, October 1837",Mormon,9,Mormon 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-41,Jacob_4,0.922091916747262,1,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",Jacob,4,Jacob 4,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-41,Mosiah_7,0.9174324472226207,2,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-41,Alma_40,0.9158384849923676,3,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",Alma,40,Alma 40,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-41,Alma_27,0.9139054679374051,4,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-41,Mosiah_16,0.9113559448910478,5,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",Mosiah,16,Mosiah 16,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-41,1_Nephi_22,0.911263870250584,6,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",1 Nephi,22,1 Nephi 22,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-41,Alma_41,0.9094086509792024,7,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",Alma,41,Alma 41,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-41,Mosiah_8,0.9093070054981838,8,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",Mosiah,8,Mosiah 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-41,Mormon_5,0.9060302156206038,9,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",Mormon,5,Mormon 5,MP-2,MP-2_3Nephi_to_Moroni
+SR-41,2_Nephi_9,0.9051695360019302,10,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-41,2_Nephi_28,0.9049385898833787,11,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",2 Nephi,28,2 Nephi 28,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-41,Alma_26,0.9049314808003619,12,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",Alma,26,Alma 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-41,Helaman_12,0.9045227018383258,13,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",Helaman,12,Helaman 12,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-41,Jarom_1,0.9032027622133999,14,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",Jarom,1,Jarom 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-41,Mosiah_27,0.90161252326481,15,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-41,Alma_9,0.9012649796250204,16,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",Alma,9,Alma 9,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-41,Moroni_9,0.9010929826032166,17,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",Moroni,9,Moroni 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-41,1_Nephi_15,0.8999271941177016,18,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",1 Nephi,15,1 Nephi 15,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-41,Alma_42,0.8962359782591474,19,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-41,Mosiah_18,0.8951006761088017,20,Sidney Rigdon,SR,SR-41,"TO THE SAINTS ABROAD. Vol 1, No 4, Far West MO, August 1838",Mosiah,18,Mosiah 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-42,Alma_26,0.9411795190567938,1,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",Alma,26,Alma 26,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-42,Jacob_4,0.920626196227675,2,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",Jacob,4,Jacob 4,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-42,Alma_44,0.9191287009396643,3,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",Alma,44,Alma 44,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-42,2_Nephi_9,0.9106727464363943,4,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-42,Alma_27,0.9100557457255528,5,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",Alma,27,Alma 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-42,Alma_61,0.906375311371233,6,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",Alma,61,Alma 61,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-42,Alma_57,0.9060181795381527,7,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",Alma,57,Alma 57,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-42,Alma_56,0.9059347997633165,8,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",Alma,56,Alma 56,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-42,Mosiah_7,0.9055186227247624,9,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-42,Mormon_9,0.9029537762293619,10,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",Mormon,9,Mormon 9,MP-2,MP-2_3Nephi_to_Moroni
+SR-42,Alma_60,0.9021200297436627,11,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",Alma,60,Alma 60,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-42,1_Nephi_15,0.9016302719617815,12,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",1 Nephi,15,1 Nephi 15,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-42,Alma_58,0.9003265232579067,13,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",Alma,58,Alma 58,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-42,Alma_9,0.8969665355364891,14,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",Alma,9,Alma 9,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-42,1_Nephi_17,0.8956140991842241,15,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",1 Nephi,17,1 Nephi 17,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-42,2_Nephi_2,0.8912550909126853,16,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",2 Nephi,2,2 Nephi 2,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-42,Alma_40,0.8891335915190217,17,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",Alma,40,Alma 40,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-42,Alma_22,0.8890551195168861,18,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-42,Alma_11,0.8888966548832551,19,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-42,Alma_5,0.8876611294853248,20,Sidney Rigdon,SR,SR-42,"Oration. July 4 1838, Far West, Caldwell County, MO by Mr. S. Rigdon",Alma,5,Alma 5,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-43,Omni_1,0.9102192966990381,1,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",Omni,1,Omni 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-43,Alma_11,0.9010385402891807,2,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-43,Alma_18,0.9010096996843852,3,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",Alma,18,Alma 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-43,Alma_42,0.9000223184074487,4,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-43,Mosiah_27,0.8931295159393412,5,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-43,Alma_30,0.8926698075989276,6,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-43,Alma_10,0.8891459032891579,7,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",Alma,10,Alma 10,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-43,Mosiah_7,0.8853805439135984,8,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-43,2_Nephi_9,0.884254246773458,9,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",2 Nephi,9,2 Nephi 9,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-43,Alma_55,0.8839175629726975,10,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",Alma,55,Alma 55,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-43,Alma_22,0.8818936907671235,11,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-43,Alma_47,0.8816122719770619,12,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",Alma,47,Alma 47,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-43,Mosiah_23,0.8807116468318663,13,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",Mosiah,23,Mosiah 23,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-43,Jarom_1,0.8800777352183284,14,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",Jarom,1,Jarom 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-43,2_Nephi_20,0.8793257051674181,15,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",2 Nephi,20,2 Nephi 20,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-43,Alma_21,0.8779775585769998,16,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",Alma,21,Alma 21,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-43,Helaman_2,0.875865716046999,17,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",Helaman,2,Helaman 2,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-43,1_Nephi_11,0.8748925526009272,18,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",1 Nephi,11,1 Nephi 11,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-43,Alma_63,0.8741031812283229,19,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",Alma,63,Alma 63,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-43,Enos_1,0.8739722694429573,20,Sidney Rigdon,SR,SR-43,"COMMUNICATIONS. May 27, 1838, Commerce",Enos,1,Enos 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-44,Moroni_3,0.7781059030914905,1,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",Moroni,3,Moroni 3,MP-2,MP-2_3Nephi_to_Moroni
+SR-44,Alma_63,0.7776333085471678,2,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",Alma,63,Alma 63,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-44,Alma_6,0.7607595832117837,3,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",Alma,6,Alma 6,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-44,Moroni_4,0.7606102691869161,4,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",Moroni,4,Moroni 4,MP-2,MP-2_3Nephi_to_Moroni
+SR-44,Alma_42,0.7605793154960289,5,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",Alma,42,Alma 42,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-44,3_Nephi_5,0.75561828836509215,6,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",3 Nephi,5,3 Nephi 5,MP-2,MP-2_3Nephi_to_Moroni
+SR-44,Helaman_2,0.7547447275047273,7,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",Helaman,2,Helaman 2,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-44,Alma_21,0.7545943881098277,8,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",Alma,21,Alma 21,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-44,Ether_8,0.7544462369675689,9,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",Ether,8,Ether 8,MP-2,MP-2_3Nephi_to_Moroni
+SR-44,2_Nephi_20,0.7527339837563798,10,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",2 Nephi,20,2 Nephi 20,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-44,Alma_11,0.7524689427163455,11,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",Alma,11,Alma 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-44,Omni_1,0.7459343476606587,12,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",Omni,1,Omni 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-44,Alma_47,0.7453950256580275,13,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",Alma,47,Alma 47,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-44,2_Nephi_7,0.7447171032986653,14,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",2 Nephi,7,2 Nephi 7,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-44,Helaman_11,0.7443144708071708,15,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",Helaman,11,Helaman 11,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-44,3_Nephi_24,0.744029601229844,16,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",3 Nephi,24,3 Nephi 24,MP-2,MP-2_3Nephi_to_Moroni
+SR-44,2_Nephi_13,0.7438953663813026,17,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",2 Nephi,13,2 Nephi 13,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-44,Jarom_1,0.7437173226376023,18,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",Jarom,1,Jarom 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-44,Mosiah_23,0.7421234506534976,19,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",Mosiah,23,Mosiah 23,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-44,Alma_30,0.7418351371682808,20,Sidney Rigdon,SR,SR-44,"Editor of Wasp. Nauvoo, August 27, 1842",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-45,Alma_55,0.934025483649769,1,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",Alma,55,Alma 55,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-45,Alma_56,0.9336327709798053,2,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",Alma,56,Alma 56,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-45,Omni_1,0.929857592922085,3,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",Omni,1,Omni 1,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-45,Alma_30,0.9234650534359882,4,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",Alma,30,Alma 30,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-45,Alma_22,0.9192430379717363,5,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",Alma,22,Alma 22,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-45,Mosiah_18,0.9182732269103622,6,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",Mosiah,18,Mosiah 18,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-45,Mosiah_23,0.9177933851361303,7,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",Mosiah,23,Mosiah 23,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-45,1_Nephi_8,0.9177482497998232,8,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",1 Nephi,8,1 Nephi 8,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-45,Mosiah_7,0.9169285230879555,9,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",Mosiah,7,Mosiah 7,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-45,Mosiah_27,0.9161235135246919,10,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",Mosiah,27,Mosiah 27,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-45,Alma_21,0.9160529363741323,11,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",Alma,21,Alma 21,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-45,Alma_8,0.91474538010857,12,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",Alma,8,Alma 8,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-45,Alma_47,0.9134839979268838,13,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",Alma,47,Alma 47,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-45,Alma_57,0.9129343912065289,14,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",Alma,57,Alma 57,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-45,1_Nephi_17,0.9127988608022134,15,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",1 Nephi,17,1 Nephi 17,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-45,Alma_10,0.9124904204582958,16,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",Alma,10,Alma 10,MP-1,MP-1_Mosiah_Alma_Helaman
+SR-45,1_Nephi_11,0.9102151164990456,17,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",1 Nephi,11,1 Nephi 11,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-45,1_Nephi_4,0.9100295249439337,18,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",1 Nephi,4,1 Nephi 4,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-45,1_Nephi_15,0.9065665027326513,19,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",1 Nephi,15,1 Nephi 15,MP-3,MP-3_1Nephi_to_WordsOfMormon
+SR-45,Alma_31,0.9062194073150773,20,Sidney Rigdon,SR,SR-45,"Trial of Joseph Smith, Nauvoo Neighbor, July 26, 1843",Alma,31,Alma 31,MP-1,MP-1_Mosiah_Alma_Helaman

@@ -1,0 +1,845 @@
+---
+title: "49 - Compare Joseph, Sidney, and Oliver Mosiah Priority Profiles"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+
+options(
+  tibble.width = Inf,
+  tibble.print_max = 500
+)
+
+library(dplyr)
+library(readr)
+library(stringr)
+library(tidyr)
+library(tibble)
+library(ggplot2)
+library(scales)
+library(forcats)
+library(purrr)
+```
+
+## 1. Purpose
+
+This notebook compares the Mosiah Priority affinity profiles for:
+
+```text
+Joseph Smith
+Sidney Rigdon
+Oliver Cowdery
+```
+
+The prior notebooks produced author-specific chi-square residual profiles:
+
+```text
+46_Sidney_MP_hypothesis.Rmd
+47_Oliver_MP_hypothesis.Rmd
+48_Joseph_MP_hypothesis.Rmd
+```
+
+This notebook compares those profiles directly using:
+
+1. Standardized residual heatmap by Book of Mormon book.
+2. Side-by-side residual bar chart.
+3. Author-to-author residual correlations.
+4. Difference profiles such as Sidney minus Joseph.
+5. Mosiah Priority aggregate comparison.
+
+## 2. Paths
+
+```{r paths}
+export_root <- file.path(STYLO_ROOT, "export")
+
+sidney_dir <- file.path(export_root, "sidney_mp_hypothesis")
+oliver_dir <- file.path(export_root, "oliver_mp_hypothesis")
+joseph_dir <- file.path(export_root, "joseph_mp_hypothesis")
+
+sidney_resid_path <- file.path(sidney_dir, "sidney_bom_book_chisq_residuals.csv")
+oliver_resid_path <- file.path(oliver_dir, "oliver_bom_book_chisq_residuals.csv")
+joseph_resid_path <- file.path(joseph_dir, "joseph_bom_book_chisq_residuals.csv")
+
+sidney_mp_path <- file.path(sidney_dir, "sidney_mp_votes.csv")
+oliver_mp_path <- file.path(oliver_dir, "oliver_mp_votes.csv")
+joseph_mp_path <- file.path(joseph_dir, "joseph_mp_votes.csv")
+
+compare_dir <- file.path(export_root, "compare_js_sr_oc_mp")
+dir.create(compare_dir, recursive = TRUE, showWarnings = FALSE)
+```
+
+## 3. Read author residual profiles
+
+```{r read-residuals}
+required_files <- c(
+  sidney_resid_path,
+  oliver_resid_path,
+  joseph_resid_path
+)
+
+missing_files <- required_files[!file.exists(required_files)]
+
+if(length(missing_files) > 0){
+  stop(
+    "Missing residual CSV(s). Run notebooks 46, 47, and 48 first. Missing:\n",
+    paste(missing_files, collapse = "\n")
+  )
+}
+
+read_author_residuals <- function(path, author, author_code){
+
+  readr::read_csv(path, show_col_types = FALSE) %>%
+    dplyr::mutate(
+      author = author,
+      author_code = author_code,
+      book = as.character(book),
+      mosiah_priority = as.character(mosiah_priority),
+      mosiah_priority_label = as.character(mosiah_priority_label),
+      chisq_stdres = as.numeric(chisq_stdres),
+      pearson_residual = as.numeric(pearson_residual),
+      observed = as.numeric(observed),
+      expected = as.numeric(expected),
+      enrichment = as.numeric(enrichment)
+    )
+
+}
+
+author_residuals <- dplyr::bind_rows(
+  read_author_residuals(sidney_resid_path, "Sidney Rigdon", "SR"),
+  read_author_residuals(oliver_resid_path, "Oliver Cowdery", "OC"),
+  read_author_residuals(joseph_resid_path, "Joseph Smith", "JS")
+)
+
+author_residuals %>%
+  dplyr::select(
+    author,
+    book,
+    mosiah_priority,
+    chapters,
+    observed,
+    expected,
+    enrichment,
+    chisq_stdres
+  ) %>%
+  dplyr::arrange(author, dplyr::desc(chisq_stdres)) %>%
+  print(n = 100)
+
+readr::write_csv(
+  author_residuals,
+  file.path(compare_dir, "author_bom_book_residuals_long.csv")
+)
+```
+
+## 4. Book order
+
+Use the canonical Book of Mormon order.
+
+```{r book-order}
+bom_book_order <- c(
+  "1 Nephi",
+  "2 Nephi",
+  "Jacob",
+  "Enos",
+  "Jarom",
+  "Omni",
+  "Words of Mormon",
+  "Mosiah",
+  "Alma",
+  "Helaman",
+  "3 Nephi",
+  "4 Nephi",
+  "Mormon",
+  "Ether",
+  "Moroni"
+)
+
+author_order <- c(
+  "Joseph Smith",
+  "Sidney Rigdon",
+  "Oliver Cowdery"
+)
+
+author_residuals <- author_residuals %>%
+  dplyr::mutate(
+    book = factor(book, levels = bom_book_order),
+    author = factor(author, levels = author_order),
+    mosiah_priority = factor(mosiah_priority, levels = c("MP-1", "MP-2", "MP-3"))
+  )
+```
+
+## 5. Main heatmap: standardized residuals
+
+```{r residual-heatmap, fig.width=8, fig.height=7}
+ggplot(
+  author_residuals,
+  aes(
+    x = author,
+    y = fct_rev(book),
+    fill = chisq_stdres
+  )
+) +
+  geom_tile(color = "grey85") +
+  geom_text(
+    aes(label = round(chisq_stdres, 1)),
+    size = 3
+  ) +
+  scale_fill_gradient2(
+    low = "firebrick",
+    mid = "white",
+    high = "forestgreen",
+    midpoint = 0
+  ) +
+  theme_bw() +
+  labs(
+    title = "Joseph, Sidney, and Oliver Book of Mormon affinity profiles",
+    subtitle = "Pearson standardized residuals from author-specific chi-square goodness-of-fit tests",
+    x = NULL,
+    y = "Book of Mormon book",
+    fill = "Std.\nresidual"
+  )
+```
+```{r hclust}
+mat <- author_residuals %>%
+  select(author, book, chisq_stdres) %>%
+  pivot_wider(names_from = author, values_from = chisq_stdres) %>%
+  column_to_rownames("book") %>%
+  as.matrix()
+
+hc_books <- hclust(dist(mat))
+hc_authors <- hclust(dist(t(mat)))
+
+hc_books
+hc_authors
+
+
+# 3 authors × 15 books
+author_mat <- residuals_wide %>%
+  dplyr::select(
+    book,
+    `Joseph Smith`,
+    `Sidney Rigdon`,
+    `Oliver Cowdery`
+  ) %>%
+  tibble::column_to_rownames("book") %>%
+  as.matrix()
+
+
+hc_authors <- hclust(
+  dist(t(author_mat)),
+  method = "complete"
+)
+
+plot(
+  hc_authors,
+  main = "Hierarchical clustering of authors",
+  xlab = "",
+  sub = "",
+  ylab = "Euclidean distance"
+)
+
+
+
+
+# Matrix: rows = books, columns = authors
+book_mat <- residuals_wide %>%
+  dplyr::select(
+    book,
+    `Joseph Smith`,
+    `Sidney Rigdon`,
+    `Oliver Cowdery`
+  ) %>%
+  tibble::column_to_rownames("book") %>%
+  as.matrix()
+
+# Correlation between books
+book_cor <- cor(t(book_mat))
+
+hc_books <- hclust(
+  as.dist(1 - book_cor),
+  method = "average"
+)
+
+plot(
+  hc_books,
+  hang = -1,
+  cex = 0.9,
+  main = "Hierarchical clustering of Book of Mormon books",
+  xlab = "",
+  sub = "",
+  ylab = "1 - correlation"
+)
+
+rect.hclust(
+  hc_books,
+  k = 4,
+  border = 2:5
+)
+
+
+hc_books <- hclust(
+  dist(book_mat),
+  method = "complete"
+)
+
+plot(
+  hc_books,
+  hang = -1,
+  cex = 0.9,
+  main = "Hierarchical clustering of Book of Mormon books",
+  ylab = "Euclidean distance"
+)
+
+rect.hclust(
+  hc_books,
+  k = 4,
+  border = 2:5
+)
+
+
+methods <- c(
+  "complete",
+  "average",
+  "ward.D2",
+  "single"
+)
+
+par(mfrow = c(2,2))
+
+for(m in methods){
+
+  hc <- hclust(
+    dist(book_mat),
+    method = m
+  )
+
+  plot(
+    hc,
+    main = m,
+    hang = -1,
+    cex = 0.8
+  )
+}
+
+par(mfrow = c(1,1))
+
+```
+
+
+```{r more plots}
+
+plot_book_hclust <- function(method = "complete", k = 4){
+
+  hc <- hclust(
+    dist(book_mat),
+    method = method
+  )
+
+  plot(
+    hc,
+    hang = -1,
+    cex = 0.9,
+    main = paste("Book clustering -", method),
+    xlab = "",
+    sub = "",
+    ylab = "Height"
+  )
+
+  rect.hclust(
+    hc,
+    k = k,
+    border = 2:(k + 1)
+  )
+
+  invisible(hc)
+}
+
+
+hc_complete <- plot_book_hclust("complete", k = 4)
+hc_average <- plot_book_hclust("average", k = 4)
+hc_ward <- plot_book_hclust("ward.D2", k = 4)
+hc_single <- plot_book_hclust("single", k = 4)
+
+
+```
+
+## 6. Side-by-side residual bar chart
+
+```{r residual-bars, fig.width=12, fig.height=8}
+ggplot(
+  author_residuals,
+  aes(
+    x = fct_rev(book),
+    y = chisq_stdres,
+    fill = chisq_stdres > 0
+  )
+) +
+  geom_col() +
+  coord_flip() +
+  facet_wrap(~author, nrow = 1) +
+  geom_hline(yintercept = 0) +
+  geom_hline(
+    yintercept = c(-2, 2),
+    linetype = "dashed",
+    color = "red"
+  ) +
+  scale_fill_manual(
+    values = c(
+      "TRUE" = "forestgreen",
+      "FALSE" = "firebrick"
+    ),
+    guide = "none"
+  ) +
+  theme_bw() +
+  labs(
+    title = "Standardized residuals by author",
+    subtitle = "Positive values indicate more nearest-neighbor votes than expected from book size",
+    x = "Book of Mormon book",
+    y = "Standardized residual"
+  )
+```
+
+## 7. Wide comparison table
+
+```{r wide-comparison}
+residuals_wide <- author_residuals %>%
+  dplyr::select(
+    book,
+    mosiah_priority,
+    author,
+    chisq_stdres
+  ) %>%
+  tidyr::pivot_wider(
+    names_from = author,
+    values_from = chisq_stdres
+  ) %>%
+  dplyr::mutate(
+    SR_minus_JS = `Sidney Rigdon` - `Joseph Smith`,
+    SR_minus_OC = `Sidney Rigdon` - `Oliver Cowdery`,
+    OC_minus_JS = `Oliver Cowdery` - `Joseph Smith`
+  ) %>%
+  dplyr::arrange(book)
+
+residuals_wide %>%
+  print(n = 100)
+
+readr::write_csv(
+  residuals_wide,
+  file.path(compare_dir, "author_bom_book_residuals_wide.csv")
+)
+```
+
+## 8. Author-to-author correlations
+
+```{r residual-correlations}
+residual_matrix <- residuals_wide %>%
+  dplyr::select(
+    `Joseph Smith`,
+    `Sidney Rigdon`,
+    `Oliver Cowdery`
+  )
+
+cor_matrix <- cor(
+  residual_matrix,
+  use = "pairwise.complete.obs",
+  method = "pearson"
+)
+
+cor_matrix
+
+cor_long <- as.data.frame(as.table(cor_matrix)) %>%
+  dplyr::rename(
+    author_1 = Var1,
+    author_2 = Var2,
+    correlation = Freq
+  )
+
+cor_long
+
+
+
+cor.test(
+    residuals_wide$`Joseph Smith`,
+    residuals_wide$`Oliver Cowdery`
+)
+
+cor.test(
+    residuals_wide$`Joseph Smith`,
+    residuals_wide$`Sidney Rigdon`
+)
+
+cor.test(
+    residuals_wide$`Sidney Rigdon`,
+    residuals_wide$`Oliver Cowdery`
+)
+
+
+
+dist(t(author_mat))
+
+
+library(cocor)
+
+cocor.dep.groups.overlap(
+    r.jk = 0.86489,   # Joseph–Oliver
+    r.jh = 0.67972,   # Joseph–Sidney
+    r.kh = 0.74916,   # Oliver–Sidney
+    n = 15
+)
+
+```
+
+
+```{r pac pca}
+pca <- prcomp(
+    t(author_mat),
+    scale. = TRUE
+)
+
+biplot(pca)
+scores <- as.data.frame(pca$x)
+scores$author <- rownames(scores)
+
+ggplot(scores,
+       aes(PC1, PC2, label = author)) +
+    geom_point(size = 4) +
+    geom_text(vjust = -0.5) +
+    theme_bw()
+
+
+library(ggplot2)
+
+loadings <- as.data.frame(pca$rotation[,1:2])
+loadings$book <- rownames(loadings)
+
+ggplot(loadings,
+       aes(PC1, PC2)) +
+    geom_segment(
+        aes(x=0,y=0,xend=PC1,yend=PC2),
+        arrow=arrow(length=unit(.15,"cm"))
+    ) +
+    geom_text(aes(label=book),
+              hjust=.5,
+              vjust=-.4) +
+    coord_equal() +
+    theme_bw()
+
+scores <- as.data.frame(pca$x)
+scores$author <- rownames(scores)
+
+ggplot(scores,
+       aes(PC1,PC2,label=author)) +
+    geom_point(size=5) +
+    geom_text(vjust=-0.5) +
+    coord_equal() +
+    theme_bw()
+
+
+
+pca$rotation[,2] %>%
+  sort(decreasing = TRUE)
+
+pca$rotation[,2] %>%
+  sort()
+```
+
+```{r correlation-heatmap, fig.width=6, fig.height=5}
+ggplot(
+  cor_long,
+  aes(
+    x = author_1,
+    y = author_2,
+    fill = correlation
+  )
+) +
+  geom_tile(color = "grey85") +
+  geom_text(aes(label = round(correlation, 2)), size = 4) +
+  scale_fill_gradient2(
+    low = "firebrick",
+    mid = "white",
+    high = "forestgreen",
+    midpoint = 0,
+    limits = c(-1, 1)
+  ) +
+  theme_bw() +
+  labs(
+    title = "Correlation of Book of Mormon residual profiles",
+    subtitle = "Pearson correlation across Book of Mormon books",
+    x = NULL,
+    y = NULL,
+    fill = "Correlation"
+  )
+```
+
+## 9. Difference profiles
+
+These plots show which books are more characteristic of one author than another.
+
+### 9.1 Sidney minus Joseph
+
+```{r plot-sr-minus-js, fig.width=9, fig.height=6}
+ggplot(
+  residuals_wide,
+  aes(
+    x = reorder(book, SR_minus_JS),
+    y = SR_minus_JS,
+    fill = SR_minus_JS > 0
+  )
+) +
+  geom_col() +
+  coord_flip() +
+  geom_hline(yintercept = 0) +
+  scale_fill_manual(
+    values = c(
+      "TRUE" = "forestgreen",
+      "FALSE" = "firebrick"
+    ),
+    guide = "none"
+  ) +
+  theme_bw() +
+  labs(
+    title = "Sidney minus Joseph residual profile",
+    subtitle = "Positive values mean stronger relative affinity for Sidney",
+    x = "Book of Mormon book",
+    y = "Difference in standardized residual"
+  )
+```
+
+### 9.2 Sidney minus Oliver
+
+```{r plot-sr-minus-oc, fig.width=9, fig.height=6}
+ggplot(
+  residuals_wide,
+  aes(
+    x = reorder(book, SR_minus_OC),
+    y = SR_minus_OC,
+    fill = SR_minus_OC > 0
+  )
+) +
+  geom_col() +
+  coord_flip() +
+  geom_hline(yintercept = 0) +
+  scale_fill_manual(
+    values = c(
+      "TRUE" = "forestgreen",
+      "FALSE" = "firebrick"
+    ),
+    guide = "none"
+  ) +
+  theme_bw() +
+  labs(
+    title = "Sidney minus Oliver residual profile",
+    subtitle = "Positive values mean stronger relative affinity for Sidney",
+    x = "Book of Mormon book",
+    y = "Difference in standardized residual"
+  )
+```
+
+### 9.3 Oliver minus Joseph
+
+```{r plot-oc-minus-js, fig.width=9, fig.height=6}
+ggplot(
+  residuals_wide,
+  aes(
+    x = reorder(book, OC_minus_JS),
+    y = OC_minus_JS,
+    fill = OC_minus_JS > 0
+  )
+) +
+  geom_col() +
+  coord_flip() +
+  geom_hline(yintercept = 0) +
+  scale_fill_manual(
+    values = c(
+      "TRUE" = "forestgreen",
+      "FALSE" = "firebrick"
+    ),
+    guide = "none"
+  ) +
+  theme_bw() +
+  labs(
+    title = "Oliver minus Joseph residual profile",
+    subtitle = "Positive values mean stronger relative affinity for Oliver",
+    x = "Book of Mormon book",
+    y = "Difference in standardized residual"
+  )
+```
+
+## 10. Mosiah Priority aggregate comparison
+
+Read the MP aggregate vote files from notebooks 46, 47, and 48.
+
+```{r read-mp-votes}
+mp_files <- c(
+  sidney_mp_path,
+  oliver_mp_path,
+  joseph_mp_path
+)
+
+missing_mp_files <- mp_files[!file.exists(mp_files)]
+
+if(length(missing_mp_files) > 0){
+  warning(
+    "Missing MP vote CSV(s). MP aggregate comparison will be skipped. Missing:\n",
+    paste(missing_mp_files, collapse = "\n")
+  )
+  author_mp_votes <- NULL
+} else {
+
+  read_author_mp <- function(path, author, author_code){
+    readr::read_csv(path, show_col_types = FALSE) %>%
+      dplyr::mutate(
+        author = author,
+        author_code = author_code,
+        mosiah_priority = factor(mosiah_priority, levels = c("MP-1", "MP-2", "MP-3")),
+        weighted_pct_votes = as.numeric(weighted_pct_votes),
+        pct_votes = as.numeric(pct_votes)
+      )
+  }
+
+  author_mp_votes <- dplyr::bind_rows(
+    read_author_mp(sidney_mp_path, "Sidney Rigdon", "SR"),
+    read_author_mp(oliver_mp_path, "Oliver Cowdery", "OC"),
+    read_author_mp(joseph_mp_path, "Joseph Smith", "JS")
+  ) %>%
+    dplyr::mutate(
+      author = factor(author, levels = author_order)
+    )
+
+  author_mp_votes %>%
+    dplyr::arrange(author, mosiah_priority) %>%
+    print(n = 100)
+
+}
+```
+
+```{r plot-mp-aggregate-comparison, fig.width=9, fig.height=5}
+if(!is.null(author_mp_votes)){
+
+  ggplot(
+    author_mp_votes,
+    aes(
+      x = mosiah_priority,
+      y = weighted_pct_votes,
+      fill = author
+    )
+  ) +
+    geom_col(position = "dodge") +
+    scale_y_continuous(labels = scales::percent) +
+    theme_bw() +
+    labs(
+      title = "Mosiah Priority nearest-neighbor vote shares by author",
+      subtitle = "Weighted vote share across MP-1, MP-2, and MP-3",
+      x = "Mosiah Priority group",
+      y = "Weighted vote share",
+      fill = "Author"
+    )
+
+}
+```
+
+## 11. Significant over- and under-representation
+
+```{r significant-residuals}
+significant_residuals <- author_residuals %>%
+  dplyr::filter(abs(chisq_stdres) >= 2) %>%
+  dplyr::mutate(
+    direction = dplyr::if_else(
+      chisq_stdres > 0,
+      "Overrepresented",
+      "Underrepresented"
+    )
+  ) %>%
+  dplyr::arrange(author, direction, dplyr::desc(abs(chisq_stdres)))
+
+significant_residuals %>%
+  dplyr::select(
+    author,
+    book,
+    mosiah_priority,
+    observed,
+    expected,
+    chisq_stdres,
+    direction
+  ) %>%
+  print(n = 100)
+
+readr::write_csv(
+  significant_residuals,
+  file.path(compare_dir, "significant_author_book_residuals.csv")
+)
+```
+
+## 12. Summary statistics by author
+
+```{r author-summary-stats}
+author_summary_stats <- author_residuals %>%
+  dplyr::group_by(author) %>%
+  dplyr::summarise(
+    max_positive = max(chisq_stdres, na.rm = TRUE),
+    max_negative = min(chisq_stdres, na.rm = TRUE),
+    mean_abs_residual = mean(abs(chisq_stdres), na.rm = TRUE),
+    n_over_2 = sum(chisq_stdres >= 2, na.rm = TRUE),
+    n_under_minus_2 = sum(chisq_stdres <= -2, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(desc(mean_abs_residual))
+
+author_summary_stats
+
+author_summary_stats <- author_residuals %>%
+  group_by(author) %>%
+  summarise(
+    max_positive = max(chisq_stdres),
+    max_negative = min(chisq_stdres),
+    mean_abs_residual = mean(abs(chisq_stdres)),
+    sd_residual = sd(chisq_stdres),
+    n_over_2 = sum(chisq_stdres >= 2),
+    n_under_minus_2 = sum(chisq_stdres <= -2)
+  )
+
+author_summary_stats
+
+```
+
+## 13. Interpretation guide
+
+Useful reading of the comparison:
+
+```text
+1. A large positive residual means the author's writings select that BOM book
+   more often than expected by book size.
+
+2. A large negative residual means the author's writings select that BOM book
+   less often than expected by book size.
+
+3. Shared positive residuals suggest a common affinity region.
+
+4. Differences such as Sidney minus Joseph identify books where one author's
+   affinity profile is especially distinctive.
+
+5. If 3 Nephi is negative for all three authors, that suggests 3 Nephi may be
+   intrinsically stylometrically distinct from the surviving JSO writings.
+```
+
+## 14. Save comparison object
+
+```{r save-comparison}
+saveRDS(
+  list(
+    author_residuals = author_residuals,
+    residuals_wide = residuals_wide,
+    cor_matrix = cor_matrix,
+    cor_long = cor_long,
+    author_mp_votes = author_mp_votes,
+    significant_residuals = significant_residuals,
+    author_summary_stats = author_summary_stats
+  ),
+  file.path(compare_dir, "compare_js_sr_oc_mp_objects.rds")
+)
+```

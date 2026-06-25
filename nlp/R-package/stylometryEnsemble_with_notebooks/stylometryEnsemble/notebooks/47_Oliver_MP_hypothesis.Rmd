@@ -1,0 +1,1173 @@
+---
+title: "47 - Oliver Cowdery and the Mosiah Priority Hypothesis"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+options(tibble.width = Inf, tibble.print_max = 500)
+
+library(dplyr)
+library(stringr)
+library(readr)
+library(tibble)
+library(tidyr)
+library(purrr)
+library(ggplot2)
+library(scales)
+library(forcats)
+library(mclust)
+```
+
+## 1. Purpose
+
+This notebook tests a specific, falsifiable version of the **Oliver Cowdery contribution/editor hypothesis**:
+
+```text
+Oliver Cowdery's stylometric affinity should be strongest with MP-1
+(Mosiah / Alma), moderate with MP-2 (Helaman through Moroni),
+and weaker with MP-3 (1 Nephi through Words of Mormon).
+```
+
+Expected trend:
+
+```text
+MP-1 > MP-2 > MP-3
+```
+
+The notebook uses two frameworks:
+
+1. **Mclust overlap** from the all-corpus analysis.
+2. **Nearest-neighbor / ensemble votes** using `run_stylometry_ensemble()`, `show_feature_votes()`, and `show_consensus()`.
+
+## 2. Paths
+
+```{r paths}
+prepared_dir <- file.path(STYLO_ROOT, "data", "prepared")
+export_dir <- file.path(STYLO_ROOT, "export", "oliver_mp_hypothesis")
+
+dir.create(export_dir, recursive = TRUE, showWarnings = FALSE)
+
+kjv_path <- file.path(prepared_dir, "kjv_chapter_docs.csv")
+bom_path <- file.path(prepared_dir, "bom_chapter_docs.csv")
+boc_path <- file.path(prepared_dir, "boc_1833_chapter_docs.csv")
+dc1835_path <- file.path(prepared_dir, "dc_1835_chapter_docs.csv")
+jso_path <- file.path(prepared_dir, "jso_manual_chapter_docs.csv")
+corpus_1830_chapter_path <- file.path(prepared_dir, "corpus_1830_manual_chapter_docs.csv")
+corpus_1830_book_path <- file.path(prepared_dir, "corpus_1830_manual_book_docs.csv")
+
+out_mp_votes <- file.path(export_dir, "oliver_mp_votes.csv")
+out_mp_author_votes <- file.path(export_dir, "jso_author_mp_votes.csv")
+out_oliver_bom_neighbors <- file.path(export_dir, "oliver_bom_nearest_neighbors.csv")
+out_cluster_mp <- file.path(export_dir, "mclust_cluster_mp_composition.csv")
+```
+
+## 3. Read corpora
+
+```{r read-corpora}
+read_required <- function(path){
+  if(!file.exists(path)) stop("Missing required file: ", path)
+  readr::read_csv(path, show_col_types = FALSE)
+}
+
+kjv_raw <- read_required(kjv_path)
+bom_raw <- read_required(bom_path)
+boc_raw <- read_required(boc_path)
+dc1835_raw <- read_required(dc1835_path)
+jso_raw <- read_required(jso_path)
+corpus_1830_chapter_raw <- read_required(corpus_1830_chapter_path)
+corpus_1830_book_raw <- read_required(corpus_1830_book_path)
+
+list(
+  kjv = dim(kjv_raw),
+  bom = dim(bom_raw),
+  boc = dim(boc_raw),
+  dc1835 = dim(dc1835_raw),
+  jso = dim(jso_raw),
+  corpus_1830_chapter = dim(corpus_1830_chapter_raw),
+  corpus_1830_book = dim(corpus_1830_book_raw)
+)
+```
+
+## 4. Helpers
+
+```{r helpers}
+clean_text_for_analysis <- function(x){
+  x %>%
+    as.character() %>%
+    stringr::str_replace_all("\r", " ") %>%
+    stringr::str_replace_all("\n", " ") %>%
+    stringr::str_squish()
+}
+
+make_safe_id <- function(x){
+  x %>%
+    as.character() %>%
+    stringr::str_replace_all("[^A-Za-z0-9]+", "_") %>%
+    stringr::str_replace_all("^_+|_+$", "")
+}
+
+assign_mosiah_priority <- function(book){
+  dplyr::case_when(
+    book %in% c("Mosiah", "Alma") ~ "MP-1",
+    book %in% c("Helaman", "3 Nephi", "4 Nephi", "Mormon", "Ether", "Moroni") ~ "MP-2",
+    book %in% c("1 Nephi", "2 Nephi", "Jacob", "Enos", "Jarom", "Omni", "Words of Mormon") ~ "MP-3",
+    TRUE ~ NA_character_
+  )
+}
+
+assign_mosiah_priority_label <- function(mp){
+  dplyr::case_when(
+    mp == "MP-1" ~ "MP-1: Mosiah-Alma",
+    mp == "MP-2" ~ "MP-2: Helaman-Moroni",
+    mp == "MP-3" ~ "MP-3: 1 Nephi-Words of Mormon",
+    TRUE ~ NA_character_
+  )
+}
+
+normalize_general_docs <- function(df, corpus_id_default, translation_default,
+                                   corpus_family_default, source_family_default,
+                                   book_default, macro_genre_default,
+                                   doc_level_default = "chapter") {
+  df %>%
+    dplyr::mutate(
+      corpus_id = if("corpus_id" %in% names(.)) as.character(corpus_id) else corpus_id_default,
+      translation = if("translation" %in% names(.)) as.character(translation) else translation_default,
+      corpus_family = if("corpus_family" %in% names(.)) as.character(corpus_family) else corpus_family_default,
+      source_family = if("source_family" %in% names(.)) as.character(source_family) else source_family_default,
+      doc_id = if("doc_id" %in% names(.)) as.character(doc_id) else paste0(source_family_default, "__", stringr::str_pad(row_number(), 3, pad = "0")),
+      doc_id_original = if("doc_id_original" %in% names(.)) as.character(doc_id_original) else doc_id,
+      book = if("book" %in% names(.)) as.character(book) else if("work" %in% names(.)) as.character(work) else book_default,
+      chapter = if("chapter" %in% names(.)) suppressWarnings(as.integer(chapter)) else row_number(),
+      section = if("section" %in% names(.)) as.character(section) else if("section_label" %in% names(.)) as.character(section_label) else paste0(book, "_", chapter),
+      macro_genre = if("macro_genre" %in% names(.)) as.character(macro_genre) else macro_genre_default,
+      mosiah_priority = if("mosiah_priority" %in% names(.)) as.character(mosiah_priority) else NA_character_,
+      mosiah_priority_label = if("mosiah_priority_label" %in% names(.)) as.character(mosiah_priority_label) else NA_character_,
+      chapter_date = if("chapter_date" %in% names(.)) as.character(chapter_date) else NA_character_,
+      header = if("header" %in% names(.)) as.character(header) else if("chapter_title" %in% names(.)) as.character(chapter_title) else paste0(book, " ", chapter),
+      n_verses = if("n_verses" %in% names(.)) suppressWarnings(as.integer(n_verses)) else NA_integer_,
+      text = clean_text_for_analysis(text),
+      doc_level = if("doc_level" %in% names(.)) as.character(doc_level) else doc_level_default
+    ) %>%
+    dplyr::select(
+      corpus_id, translation, corpus_family, source_family,
+      doc_id, doc_id_original, book, chapter, section, macro_genre,
+      mosiah_priority, mosiah_priority_label, chapter_date, header,
+      n_verses, text, doc_level
+    )
+}
+```
+
+## 5. Normalize corpora
+
+```{r normalize-corpora}
+kjv_docs <- normalize_general_docs(kjv_raw, "KJV", "KJV", "KJV", "KJV", "KJV", "Biblical")
+
+bom_docs <- normalize_general_docs(bom_raw, "BOM", "1830", "BOM", "BOM_1830", "Book of Mormon", "Modern_Scripture") %>%
+  dplyr::mutate(
+    mosiah_priority = dplyr::if_else(
+      is.na(mosiah_priority) | mosiah_priority == "",
+      assign_mosiah_priority(book),
+      mosiah_priority
+    ),
+    mosiah_priority_label = dplyr::if_else(
+      is.na(mosiah_priority_label) | mosiah_priority_label == "",
+      assign_mosiah_priority_label(mosiah_priority),
+      mosiah_priority_label
+    )
+  )
+
+boc_docs <- normalize_general_docs(boc_raw, "BOC", "1833", "BOC", "BOC_1833", "Book of Commandments", "Modern_Revelation")
+dc1835_docs <- normalize_general_docs(dc1835_raw, "DC", "1835", "DC", "DC_1835", "Doctrine and Covenants", "Modern_Revelation")
+
+jso_docs <- jso_raw %>%
+  dplyr::mutate(
+    author = as.character(author),
+    author_code = as.character(author_code),
+    corpus_id = "JSO",
+    translation = "JSO",
+    corpus_family = "JSO",
+    source_family = "JSO",
+    doc_id_original = as.character(doc_id),
+    doc_id = paste0(author_code, "-", chapter),
+    book = author,
+    section = paste0(author_code, "-", chapter_original),
+    macro_genre = "Early_LDS_Writing",
+    mosiah_priority = NA_character_,
+    mosiah_priority_label = NA_character_,
+    chapter_date = NA_character_,
+    header = as.character(chapter_title),
+    n_verses = NA_integer_,
+    text = clean_text_for_analysis(text),
+    doc_level = "chapter"
+  ) %>%
+  dplyr::select(
+    corpus_id, translation, corpus_family, source_family,
+    doc_id, doc_id_original, book, chapter, section, macro_genre,
+    mosiah_priority, mosiah_priority_label, chapter_date, header,
+    n_verses, text, doc_level,
+    author, author_code, short_work, source_file, chapter_original, chapter_title
+  )
+
+corpus_1830_chapter_docs <- corpus_1830_chapter_raw %>%
+  dplyr::mutate(
+    corpus_id = "1830",
+    translation = "1830",
+    corpus_family = "1830",
+    source_family = "1830_Secular",
+    doc_id_original = as.character(doc_id),
+    doc_id = paste0("1830_CH__", make_safe_id(author), "__", make_safe_id(short_work), "__", stringr::str_pad(chapter, 3, pad = "0")),
+    book = paste(author, work, sep = ": "),
+    section = paste0(short_work, "-", chapter_original),
+    macro_genre = as.character(macro_genre),
+    mosiah_priority = NA_character_,
+    mosiah_priority_label = NA_character_,
+    chapter_date = NA_character_,
+    header = as.character(chapter_title),
+    n_verses = NA_integer_,
+    text = clean_text_for_analysis(text),
+    doc_level = "chapter"
+  ) %>%
+  dplyr::select(corpus_id, translation, corpus_family, source_family, doc_id, doc_id_original, book, chapter, section, macro_genre, mosiah_priority, mosiah_priority_label, chapter_date, header, n_verses, text, doc_level)
+
+corpus_1830_book_docs <- corpus_1830_book_raw %>%
+  dplyr::mutate(
+    corpus_id = "1830",
+    translation = "1830",
+    corpus_family = "1830",
+    source_family = "1830_Secular_Book",
+    doc_id_original = as.character(doc_id),
+    doc_id = paste0("1830_BOOK__", make_safe_id(author), "__", make_safe_id(short_work)),
+    book = paste(author, work, sep = ": "),
+    chapter = as.integer(row_number()),
+    section = "BOOK",
+    macro_genre = as.character(macro_genre),
+    mosiah_priority = NA_character_,
+    mosiah_priority_label = NA_character_,
+    chapter_date = NA_character_,
+    header = paste(author, work, sep = ": "),
+    n_verses = NA_integer_,
+    text = clean_text_for_analysis(text),
+    doc_level = "book"
+  ) %>%
+  dplyr::select(corpus_id, translation, corpus_family, source_family, doc_id, doc_id_original, book, chapter, section, macro_genre, mosiah_priority, mosiah_priority_label, chapter_date, header, n_verses, text, doc_level)
+
+analysis_docs <- dplyr::bind_rows(
+  kjv_docs,
+  bom_docs,
+  boc_docs,
+  dc1835_docs,
+  jso_docs %>% dplyr::select(corpus_id, translation, corpus_family, source_family, doc_id, doc_id_original, book, chapter, section, macro_genre, mosiah_priority, mosiah_priority_label, chapter_date, header, n_verses, text, doc_level),
+  corpus_1830_chapter_docs,
+  corpus_1830_book_docs
+) %>%
+  dplyr::mutate(
+    text = clean_text_for_analysis(text),
+    n_words = stringr::str_count(text, "\\S+")
+  ) %>%
+  dplyr::filter(!is.na(text), text != "", n_words >= 50)
+
+analysis_docs %>%
+  dplyr::count(corpus_family, source_family, macro_genre, doc_level, name = "n_docs") %>%
+  dplyr::arrange(corpus_family, source_family, macro_genre, doc_level) %>%
+  print(n = 200)
+
+bom_docs %>%
+  dplyr::count(mosiah_priority, mosiah_priority_label, book, name = "n_chapters") %>%
+  dplyr::arrange(mosiah_priority, book) %>%
+  print(n = 100)
+
+jso_docs %>%
+  dplyr::count(author, author_code, name = "n_docs")
+```
+
+## 6. JSO author map
+
+```{r jso-author-map}
+jso_author_map <- jso_docs %>%
+  dplyr::transmute(
+    doc_id,
+    author,
+    author_code,
+    short_name = paste0(author_code, "-", chapter),
+    chapter,
+    chapter_original,
+    chapter_title,
+    source_file
+  )
+
+jso_author_map %>%
+  dplyr::arrange(author, chapter) %>%
+  print(n = 100)
+```
+
+## 7. Framework A: Mclust MP composition
+
+This section uses an existing Mclust classified object when available.
+
+```{r mclust-classified-setup}
+if(exists("classified")){
+  classified_mp <- classified
+} else if(exists("mc_all_boc_dc1835_jso_1830") && "classified" %in% names(mc_all_boc_dc1835_jso_1830)){
+  classified_mp <- mc_all_boc_dc1835_jso_1830$classified
+} else {
+  classified_mp <- NULL
+  warning("No classified Mclust object found. Mclust framework chunks will be skipped unless classified_mp is supplied.")
+}
+
+if(!is.null(classified_mp)){
+  classified_mp <- classified_mp %>%
+    dplyr::mutate(
+      mosiah_priority = dplyr::if_else(
+        corpus_family == "BOM" & (is.na(mosiah_priority) | mosiah_priority == ""),
+        assign_mosiah_priority(book),
+        as.character(mosiah_priority)
+      ),
+      mosiah_priority_label = dplyr::if_else(
+        corpus_family == "BOM" & (is.na(mosiah_priority_label) | mosiah_priority_label == ""),
+        assign_mosiah_priority_label(mosiah_priority),
+        as.character(mosiah_priority_label)
+      )
+    )
+
+  classified_mp %>%
+    dplyr::count(corpus_family, source_family, name = "n_docs") %>%
+    dplyr::arrange(corpus_family, source_family) %>%
+    print(n = 100)
+}
+```
+
+```{r mclust-mp-composition}
+if(!is.null(classified_mp)){
+
+  cluster_mp <- classified_mp %>%
+    dplyr::filter(corpus_family %in% c("BOM", "JSO")) %>%
+    dplyr::mutate(
+      group_label = dplyr::case_when(
+        corpus_family == "BOM" ~ mosiah_priority_label,
+        corpus_family == "JSO" ~ book,
+        TRUE ~ corpus_family
+      )
+    ) %>%
+    dplyr::count(mclust_cluster, group_label, name = "n_docs") %>%
+    dplyr::group_by(mclust_cluster) %>%
+    dplyr::mutate(pct_cluster = n_docs / sum(n_docs)) %>%
+    dplyr::ungroup() %>%
+    dplyr::arrange(mclust_cluster, dplyr::desc(n_docs))
+
+  cluster_mp %>% print(n = 200)
+  readr::write_csv(cluster_mp, out_cluster_mp)
+}
+```
+
+```{r oliver-cluster-overlap}
+if(!is.null(classified_mp)){
+
+  oliver_clusters <- classified_mp %>%
+    dplyr::filter(corpus_family == "JSO") %>%
+    dplyr::mutate(
+      author_code = stringr::str_extract(doc_id, "^[A-Z]+"),
+      author = dplyr::case_when(
+        author_code == "JS" ~ "Joseph Smith",
+        author_code == "SR" ~ "Oliver Cowdery",
+        author_code == "OC" ~ "Oliver Cowdery",
+        TRUE ~ "Unknown"
+      )
+    ) %>%
+    dplyr::filter(author == "Oliver Cowdery") %>%
+    dplyr::count(mclust_cluster, name = "oliver_docs")
+
+  bom_mp_clusters <- classified_mp %>%
+    dplyr::filter(corpus_family == "BOM", !is.na(mosiah_priority_label)) %>%
+    dplyr::count(mclust_cluster, mosiah_priority, mosiah_priority_label, name = "bom_docs") %>%
+    dplyr::group_by(mclust_cluster) %>%
+    dplyr::mutate(
+      bom_cluster_total = sum(bom_docs),
+      pct_bom_cluster = bom_docs / bom_cluster_total
+    ) %>%
+    dplyr::ungroup()
+
+  oliver_mp_cluster_overlap <- bom_mp_clusters %>%
+    dplyr::left_join(oliver_clusters, by = "mclust_cluster") %>%
+    dplyr::mutate(
+      oliver_docs = tidyr::replace_na(oliver_docs, 0L),
+      overlap_score = oliver_docs * pct_bom_cluster
+    ) %>%
+    dplyr::arrange(dplyr::desc(overlap_score), mclust_cluster)
+
+  oliver_mp_cluster_overlap %>% print(n = 100)
+}
+```
+
+```{r plot-mclust-mp-groups, fig.width=11, fig.height=6}
+if(!is.null(classified_mp)){
+
+  mclust_mp_plot_df <- classified_mp %>%
+    dplyr::filter(
+      corpus_family == "JSO" |
+        (corpus_family == "BOM" & !is.na(mosiah_priority_label))
+    ) %>%
+    dplyr::mutate(
+      plot_group = dplyr::case_when(
+        corpus_family == "JSO" & stringr::str_detect(doc_id, "^SR") ~ "Oliver Cowdery",
+        corpus_family == "JSO" & stringr::str_detect(doc_id, "^JS") ~ "Joseph Smith",
+        corpus_family == "JSO" & stringr::str_detect(doc_id, "^OC") ~ "Oliver Cowdery",
+        corpus_family == "BOM" ~ mosiah_priority_label,
+        TRUE ~ corpus_family
+      )
+    ) %>%
+    dplyr::count(mclust_cluster, plot_group, name = "n_docs")
+
+  ggplot(
+    mclust_mp_plot_df,
+    aes(x = factor(mclust_cluster), y = n_docs, fill = plot_group)
+  ) +
+    geom_col() +
+    theme_bw() +
+    labs(
+      title = "Mclust clusters: JSO authors and Book of Mormon Mosiah Priority groups",
+      subtitle = "Testing whether Oliver's clusters overlap most with MP-1, then MP-2, then MP-3",
+      x = "Mclust cluster",
+      y = "Document count",
+      fill = "Group"
+    )
+}
+```
+
+## 8. Framework B: ensemble nearest-neighbor votes
+
+This is the primary analysis. The target set is restricted to BOM chapters so every vote is interpretable as MP-1, MP-2, or MP-3.
+
+```{r ensemble-source-target}
+source_docs_jso <- jso_docs %>%
+  dplyr::select(doc_id, corpus_id, translation, corpus_family, source_family, book, chapter, section, macro_genre, header, text)
+
+source_docs_oliver <- source_docs_jso %>%
+  dplyr::semi_join(jso_author_map %>% dplyr::filter(author == "Oliver Cowdery"), by = "doc_id")
+
+target_docs_bom <- bom_docs %>%
+  dplyr::filter(!is.na(mosiah_priority)) %>%
+  dplyr::select(doc_id, corpus_id, translation, corpus_family, source_family, book, chapter, section, macro_genre, mosiah_priority, mosiah_priority_label, header, text)
+
+source_docs_jso %>% dplyr::count(book, name = "n_source_docs")
+target_docs_bom %>% dplyr::count(mosiah_priority, mosiah_priority_label, name = "n_target_docs")
+```
+
+## 9. Feature classes
+
+```{r feature-classes}
+include_feature_classes <- c(
+  "function_words", "punctuation", "sentence",
+  "word_length", "lexical", "readability"
+)
+
+
+jso_config  <- default_config(include = include_feature_classes)
+
+
+jso_config$weights <- c(
+    function_words = 0.500,
+    punctuation    = 0.075,
+    sentence       = 0.175,
+    word_length    = 0.125,
+    lexical        = 0.075,
+    readability    = 0.050
+  )
+```
+
+## 10. Run ensemble: JSO to BOM
+
+```{r run-jso-to-bom-ensemble}
+result_jso_bom <- run_stylometry_ensemble(
+  source_docs = source_docs_jso,
+  target_docs = target_docs_bom,
+  config = jso_config,
+  text_col = "text",
+  doc_id_col = "doc_id",
+  k_neighbors = 20,
+  use_cache = TRUE
+)
+
+names(result_jso_bom)
+```
+
+## 11. Run ensemble: Oliver to BOM
+
+```{r run-oliver-to-bom-ensemble}
+result_oliver_bom <- run_stylometry_ensemble(
+  source_docs = source_docs_oliver,
+  target_docs = target_docs_bom,
+  config = jso_config,
+  text_col = "text",
+  doc_id_col = "doc_id",
+  k_neighbors = 20,
+  use_cache = TRUE
+)
+
+names(result_oliver_bom)
+```
+
+## 12. Built-in ensemble reports
+
+```{r show-feature-votes-jso-bom}
+show_feature_votes(result_jso_bom) %>%
+  arrange(desc(votes), desc(weighted_votes))
+```
+
+```{r show-consensus-jso-bom}
+show_consensus(result_jso_bom)%>%
+  arrange(desc(votes), desc(weighted_votes))
+```
+
+```{r show-feature-votes-oliver-bom}
+show_feature_votes(result_oliver_bom) %>%
+  arrange(desc(votes), desc(weighted_votes))
+```
+
+```{r show-consensus-oliver-bom}
+show_consensus(result_oliver_bom) %>%
+  arrange(desc(votes), desc(weighted_votes))
+```
+
+## 13. Nearest-neighbor helpers
+
+```{r nearest-helpers}
+get_nearest_neighbors <- function(result){
+
+  if(!"nearest_neighbors" %in% names(result)){
+    stop("result does not contain nearest_neighbors. Available names: ", paste(names(result), collapse = ", "))
+  }
+
+  result$nearest_neighbors %>%
+    dplyr::mutate(
+      doc_id = as.character(doc_id),
+      neighbor_doc_id = as.character(neighbor_doc_id),
+      similarity = as.numeric(similarity),
+      rank = as.integer(rank)
+    )
+}
+
+label_nn_with_bom_mp <- function(nn, source_map, target_bom){
+  nn %>%
+    dplyr::left_join(
+      source_map %>% dplyr::select(doc_id, author, author_code, short_name, chapter_title),
+      by = "doc_id"
+    ) %>%
+    dplyr::left_join(
+      target_bom %>%
+        dplyr::select(
+          neighbor_doc_id = doc_id,
+          target_book = book,
+          target_chapter = chapter,
+          target_header = header,
+          mosiah_priority,
+          mosiah_priority_label
+        ),
+      by = "neighbor_doc_id"
+    )
+}
+```
+
+```{r label-nearest}
+nn_jso_bom <- get_nearest_neighbors(result_jso_bom) %>%
+  label_nn_with_bom_mp(jso_author_map, target_docs_bom)
+
+nn_oliver_bom <- get_nearest_neighbors(result_oliver_bom) %>%
+  label_nn_with_bom_mp(jso_author_map, target_docs_bom)
+
+nn_oliver_bom %>%
+  dplyr::select(short_name, chapter_title, rank, neighbor_doc_id, target_book, target_chapter, mosiah_priority, similarity) %>%
+  dplyr::arrange(short_name, rank) 
+
+head(nn_oliver_bom)
+
+readr::write_csv(nn_oliver_bom, out_oliver_bom_neighbors)
+```
+
+## 14. Test 1: Oliver votes by Mosiah Priority
+
+```{r oliver-mp-votes}
+oliver_mp_votes <- nn_oliver_bom %>%
+  dplyr::group_by(mosiah_priority, mosiah_priority_label) %>%
+  dplyr::summarise(
+    votes = dplyr::n(),
+    weighted_votes = sum(similarity, na.rm = TRUE),
+    mean_similarity = mean(similarity, na.rm = TRUE),
+    max_similarity = max(similarity, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::mutate(
+    pct_votes = votes / sum(votes),
+    weighted_pct_votes = weighted_votes / sum(weighted_votes),
+    mp_order = match(mosiah_priority, c("MP-1", "MP-2", "MP-3"))
+  ) %>%
+  dplyr::arrange(mp_order)
+
+oliver_mp_votes
+
+readr::write_csv(oliver_mp_votes, out_mp_votes)
+```
+
+```{r plot-oliver-mp-gradient, fig.width=8, fig.height=5}
+ggplot(
+  oliver_mp_votes,
+  aes(
+    x = factor(mosiah_priority, levels = c("MP-1", "MP-2", "MP-3")),
+    y = weighted_pct_votes
+  )
+) +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent) +
+  theme_bw() +
+  labs(
+    title = "Oliver Cowdery Book of Mormon nearest-neighbor votes by Mosiah Priority",
+    subtitle = "Hypothesis prediction: MP-1 > MP-2 > MP-3",
+    x = "Mosiah Priority group",
+    y = "Weighted vote share"
+  )
+```
+
+## 15. Test 2: Oliver chapter-level MP heatmap
+
+```{r oliver-chapter-mp-heatmap-data}
+oliver_chapter_mp <- nn_oliver_bom %>%
+  dplyr::group_by(short_name, chapter_title, mosiah_priority, mosiah_priority_label) %>%
+  dplyr::summarise(
+    votes = dplyr::n(),
+    weighted_votes = sum(similarity, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::group_by(short_name, chapter_title) %>%
+  dplyr::mutate(weighted_pct_votes = weighted_votes / sum(weighted_votes)) %>%
+  dplyr::ungroup() %>%
+  dplyr::mutate(
+    chapter_num = as.integer(stringr::str_extract(short_name, "\\d+$")),
+    short_name = factor(short_name, levels = paste0("OC-", sort(unique(chapter_num)))),
+    mosiah_priority = factor(mosiah_priority, levels = c("MP-1", "MP-2", "MP-3"))
+  )
+
+oliver_chapter_mp %>%
+  dplyr::arrange(chapter_num, mosiah_priority) %>%
+  print(n = 200)
+```
+
+```{r plot-oliver-chapter-mp-heatmap, fig.width=8, fig.height=10}
+ggplot(
+  oliver_chapter_mp,
+  aes(x = mosiah_priority, y = fct_rev(short_name), fill = weighted_pct_votes)
+) +
+  geom_tile(color = "grey85") +
+  scale_fill_gradient(low = "white", high = "darkgreen", labels = scales::percent) +
+  theme_bw() +
+  labs(
+    title = "Oliver Cowdery chapters × Mosiah Priority groups",
+    subtitle = "Row-normalized weighted nearest-neighbor vote share",
+    x = "Book of Mormon group",
+    y = "Oliver chapter",
+    fill = "Weighted\nshare"
+  )
+```
+
+## 16. Test 3: Oliver votes by Book of Mormon book
+
+```{r oliver-bom-book-votes}
+oliver_bom_book_votes <- nn_oliver_bom %>%
+  dplyr::group_by(target_book, mosiah_priority, mosiah_priority_label) %>%
+  dplyr::summarise(
+    votes = dplyr::n(),
+    weighted_votes = sum(similarity, na.rm = TRUE),
+    mean_similarity = mean(similarity, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::mutate(weighted_pct_votes = weighted_votes / sum(weighted_votes)) %>%
+  dplyr::arrange(dplyr::desc(weighted_votes))
+
+oliver_bom_book_votes %>% print(n = 100)
+```
+
+```{r plot-oliver-bom-book-votes, fig.width=10, fig.height=7}
+ggplot(
+  oliver_bom_book_votes,
+  aes(x = reorder(target_book, weighted_votes), y = weighted_votes, fill = mosiah_priority)
+) +
+  geom_col() +
+  coord_flip() +
+  theme_bw() +
+  labs(
+    title = "Oliver Cowdery nearest-neighbor votes by Book of Mormon book",
+    subtitle = "Weighted votes, colored by Mosiah Priority",
+    x = "Book of Mormon book",
+    y = "Weighted votes",
+    fill = "Mosiah Priority"
+  )
+```
+
+## 17. Test 4: JSO author comparison
+
+```{r author-mp-votes}
+jso_author_mp_votes <- nn_jso_bom %>%
+  dplyr::group_by(author, author_code, mosiah_priority, mosiah_priority_label) %>%
+  dplyr::summarise(
+    votes = dplyr::n(),
+    weighted_votes = sum(similarity, na.rm = TRUE),
+    mean_similarity = mean(similarity, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::group_by(author, author_code) %>%
+  dplyr::mutate(
+    pct_votes = votes / sum(votes),
+    weighted_pct_votes = weighted_votes / sum(weighted_votes),
+    mp_order = match(mosiah_priority, c("MP-1", "MP-2", "MP-3"))
+  ) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(author, mp_order)
+
+jso_author_mp_votes
+
+readr::write_csv(jso_author_mp_votes, out_mp_author_votes)
+```
+
+```{r plot-author-mp-comparison, fig.width=9, fig.height=5}
+ggplot(
+  jso_author_mp_votes,
+  aes(
+    x = factor(mosiah_priority, levels = c("MP-1", "MP-2", "MP-3")),
+    y = weighted_pct_votes,
+    fill = author
+  )
+) +
+  geom_col(position = "dodge") +
+  scale_y_continuous(labels = scales::percent) +
+  theme_bw() +
+  labs(
+    title = "JSO author comparison: BOM nearest-neighbor votes by Mosiah Priority",
+    subtitle = "Does Oliver show the strongest MP-1 > MP-2 > MP-3 gradient?",
+    x = "Mosiah Priority group",
+    y = "Weighted vote share",
+    fill = "Author"
+  )
+```
+
+## 18. Statistical trend test
+
+```{r trend-statistics}
+oliver_trend <- oliver_mp_votes %>%
+  dplyr::mutate(
+    mp_numeric = dplyr::case_when(
+      mosiah_priority == "MP-1" ~ 1,
+      mosiah_priority == "MP-2" ~ 2,
+      mosiah_priority == "MP-3" ~ 3,
+      TRUE ~ NA_real_
+    )
+  )
+
+oliver_trend
+
+cor.test(
+  oliver_trend$mp_numeric,
+  oliver_trend$weighted_pct_votes,
+  method = "spearman",
+  exact = FALSE
+)
+```
+
+## 19. Enrichment adjustment by target group size
+
+```{r mp-enrichment}
+mp_target_sizes <- target_docs_bom %>%
+  dplyr::count(mosiah_priority, mosiah_priority_label, name = "target_chapters") %>%
+  dplyr::mutate(expected_share = target_chapters / sum(target_chapters))
+
+oliver_mp_enrichment <- oliver_mp_votes %>%
+  dplyr::left_join(mp_target_sizes, by = c("mosiah_priority", "mosiah_priority_label")) %>%
+  dplyr::mutate(enrichment = weighted_pct_votes / expected_share) %>%
+  dplyr::arrange(mp_order)
+
+oliver_mp_enrichment
+```
+
+```{r plot-mp-enrichment, fig.width=8, fig.height=5}
+ggplot(
+  oliver_mp_enrichment,
+  aes(
+    x = factor(mosiah_priority, levels = c("MP-1", "MP-2", "MP-3")),
+    y = enrichment
+  )
+) +
+  geom_col() +
+  geom_hline(yintercept = 1, linetype = "dashed") +
+  theme_bw() +
+  labs(
+    title = "Oliver Cowdery MP nearest-neighbor enrichment",
+    subtitle = "Values above 1 mean more votes than expected from target group size",
+    x = "Mosiah Priority group",
+    y = "Enrichment ratio"
+  )
+```
+
+## 20. Interpretation guide
+
+The hypothesis is supported if:
+
+```text
+1. Oliver's weighted vote share is highest for MP-1.
+2. Oliver's MP-1 enrichment is > 1.
+3. Oliver's MP-1 share is stronger than Joseph and Oliver.
+4. The pattern is visible across many Oliver chapters.
+5. show_feature_votes(result_oliver_bom) and show_consensus(result_oliver_bom)
+   repeatedly point to MP-1 targets.
+```
+
+The hypothesis is weakened if:
+
+```text
+1. MP-1, MP-2, and MP-3 shares are approximately equal.
+2. MP-3 is as strong or stronger than MP-1.
+3. Joseph or Oliver show the same gradient with equal or greater strength.
+4. The MP-1 signal is driven by a small number of Oliver chapters.
+```
+
+
+```{r book-size norm}
+## 17b. Normalize Oliver book votes by Book of Mormon book size
+
+bom_book_sizes <- target_docs_bom %>%
+  dplyr::count(
+    book,
+    mosiah_priority,
+    mosiah_priority_label,
+    name = "target_chapters"
+  ) %>%
+  dplyr::mutate(
+    expected_share = target_chapters / sum(target_chapters)
+  )
+
+oliver_bom_book_enrichment <- oliver_bom_book_votes %>%
+  dplyr::left_join(
+    bom_book_sizes,
+    by = c(
+      "target_book" = "book",
+      "mosiah_priority",
+      "mosiah_priority_label"
+    )
+  ) %>%
+  dplyr::mutate(
+    observed_share = weighted_votes / sum(weighted_votes),
+    enrichment = observed_share / expected_share
+  ) %>%
+  dplyr::arrange(dplyr::desc(enrichment))
+
+oliver_bom_book_enrichment %>%
+  dplyr::select(
+    target_book,
+    mosiah_priority,
+    target_chapters,
+    weighted_votes,
+    observed_share,
+    expected_share,
+    enrichment
+  ) %>%
+  print(n = 100)
+
+ggplot(
+  oliver_bom_book_enrichment,
+  aes(
+    x = reorder(target_book, enrichment),
+    y = enrichment,
+    fill = mosiah_priority
+  )
+) +
+  geom_col() +
+  geom_hline(yintercept = 1, linetype = "dashed") +
+  coord_flip() +
+  theme_bw() +
+  labs(
+    title = "Oliver Cowdery Book of Mormon vote enrichment by book",
+    subtitle = "Observed weighted vote share divided by expected share from book size",
+    x = "Book of Mormon book",
+    y = "Enrichment ratio",
+    fill = "Mosiah Priority"
+  )
+
+
+### standardized residual Pearson residual
+oliver_book_votes <- nn_oliver_bom %>%
+  dplyr::group_by(target_book) %>%
+  dplyr::summarise(
+    observed = sum(similarity),
+    .groups = "drop"
+  )
+
+bom_book_sizes <- target_docs_bom %>%
+  dplyr::count(
+    book,
+    name = "chapters"
+  )
+
+total_votes <- sum(oliver_book_votes$observed)
+
+expected_votes <- bom_book_sizes %>%
+  dplyr::mutate(
+    expected = total_votes * chapters / sum(chapters)
+  )
+
+oliver_stdres <- expected_votes %>%
+  dplyr::left_join(
+    oliver_book_votes,
+    by = c("book" = "target_book")
+  ) %>%
+  dplyr::mutate(
+    observed = tidyr::replace_na(observed, 0),
+    stdres = (observed - expected) / sqrt(expected)
+  ) %>%
+  dplyr::arrange(desc(stdres))
+
+oliver_stdres
+
+ggplot(
+  oliver_stdres,
+  aes(
+    x = reorder(book, stdres),
+    y = stdres,
+    fill = stdres > 0
+  )
+) +
+  geom_col() +
+  coord_flip() +
+  geom_hline(yintercept = 0, color = "black") +
+  geom_hline(yintercept = c(-2, 2),
+             linetype = "dashed",
+             color = "red") +
+  scale_fill_manual(
+    values = c(
+      "TRUE" = "forestgreen",
+      "FALSE" = "firebrick"
+    ),
+    guide = "none"
+  ) +
+  theme_bw() +
+  labs(
+    title = "Oliver Cowdery standardized residuals by Book of Mormon book",
+    subtitle = "Observed weighted nearest-neighbor votes versus expected from book size",
+    x = "Book of Mormon book",
+    y = "Standardized residual (O − E) / √E"
+  )
+
+
+oliver_stdres <- expected_votes %>%
+  left_join(
+    oliver_book_votes,
+    by = c("book" = "target_book")
+  ) %>%
+  mutate(
+    observed = replace_na(observed, 0),
+    residual = observed - expected,
+    stdres = residual / sqrt(expected * (1 - chapters / sum(chapters)))
+  ) %>%
+  arrange(desc(stdres))
+
+
+oliver_counts <- nn_oliver_bom %>%
+  dplyr::count(
+    target_book,
+    name = "observed"
+  )
+
+book_sizes <- target_docs_bom %>%
+  dplyr::count(
+    book,
+    name = "chapters"
+  ) %>%
+  dplyr::mutate(
+    expected = sum(oliver_counts$observed) *
+      chapters / sum(chapters)
+  )
+
+oliver_residuals <- book_sizes %>%
+  left_join(
+    oliver_counts,
+    by = c("book" = "target_book")
+  ) %>%
+  mutate(
+    observed = tidyr::replace_na(observed, 0L),
+    residual = observed - expected,
+    pearson = residual / sqrt(expected),
+    stdres = residual /
+      sqrt(expected * (1 - chapters / sum(chapters)))
+  ) %>%
+  arrange(desc(stdres))
+
+oliver_residuals
+
+chisq_oliver <- chisq.test(
+  x = oliver_residuals$observed,
+  p = oliver_residuals$chapters /
+      sum(oliver_residuals$chapters)
+)
+
+chisq_oliver
+
+
+oliver_residuals$chisq_stdres <- chisq_oliver$stdres
+oliver_residuals$chisq_residual <- chisq_oliver$residuals
+
+oliver_residuals %>%
+  arrange(desc(chisq_stdres))
+
+ggplot(
+  oliver_residuals,
+  aes(
+    x = reorder(book, chisq_stdres),
+    y = chisq_stdres,
+    fill = chisq_stdres > 0
+  )
+) +
+  geom_col() +
+  coord_flip() +
+  geom_hline(yintercept = 0) +
+  geom_hline(
+    yintercept = c(-2, 2),
+    linetype = "dashed",
+    color = "red"
+  ) +
+  scale_fill_manual(
+    values = c(
+      "TRUE" = "forestgreen",
+      "FALSE" = "firebrick"
+    ),
+    guide = "none"
+  ) +
+  theme_bw() +
+  labs(
+    title = "Oliver Cowdery standardized residuals by Book of Mormon book",
+    subtitle = "Pearson standardized residuals from chi-square goodness-of-fit",
+    x = "Book of Mormon book",
+    y = "Standardized residual"
+  )
+
+
+```
+
+
+
+## 20b. Chi-square goodness-of-fit and standardized residuals by Book of Mormon book
+
+This final test asks whether Oliver's Book of Mormon nearest-neighbor votes are distributed across books merely in proportion to the number of chapters in each book.
+
+```{r oliver-chisq-residuals}
+oliver_counts <- nn_oliver_bom %>%
+  dplyr::count(
+    target_book,
+    name = "observed"
+  )
+
+book_sizes <- target_docs_bom %>%
+  dplyr::count(
+    book,
+    mosiah_priority,
+    mosiah_priority_label,
+    name = "chapters"
+  )
+
+oliver_residuals <- book_sizes %>%
+  dplyr::left_join(
+    oliver_counts,
+    by = c("book" = "target_book")
+  ) %>%
+  dplyr::mutate(
+    observed = tidyr::replace_na(observed, 0L)
+  ) %>%
+  dplyr::arrange(book)
+
+chisq_oliver <- chisq.test(
+  x = oliver_residuals$observed,
+  p = oliver_residuals$chapters / sum(oliver_residuals$chapters)
+)
+
+chisq_oliver
+
+oliver_residuals <- oliver_residuals %>%
+  dplyr::mutate(
+    expected = as.numeric(chisq_oliver$expected),
+    pearson_residual = as.numeric(chisq_oliver$residuals),
+    chisq_stdres = as.numeric(chisq_oliver$stdres),
+    residual = observed - expected,
+    observed_share = observed / sum(observed),
+    expected_share = chapters / sum(chapters),
+    enrichment = observed_share / expected_share
+  ) %>%
+  dplyr::arrange(dplyr::desc(chisq_stdres))
+
+oliver_residuals %>%
+  dplyr::select(
+    book,
+    mosiah_priority,
+    chapters,
+    observed,
+    expected,
+    observed_share,
+    expected_share,
+    enrichment,
+    pearson_residual,
+    chisq_stdres
+  ) %>%
+  print(n = 100)
+
+readr::write_csv(
+  oliver_residuals,
+  file.path(export_dir, "oliver_bom_book_chisq_residuals.csv")
+)
+```
+
+```{r plot-oliver-chisq-residuals, fig.width=10, fig.height=7}
+ggplot(
+  oliver_residuals,
+  aes(
+    x = reorder(book, chisq_stdres),
+    y = chisq_stdres,
+    fill = chisq_stdres > 0
+  )
+) +
+  geom_col() +
+  coord_flip() +
+  geom_hline(yintercept = 0) +
+  geom_hline(
+    yintercept = c(-2, 2),
+    linetype = "dashed",
+    color = "red"
+  ) +
+  scale_fill_manual(
+    values = c(
+      "TRUE" = "forestgreen",
+      "FALSE" = "firebrick"
+    ),
+    guide = "none"
+  ) +
+  theme_bw() +
+  labs(
+    title = "Oliver Cowdery standardized residuals by Book of Mormon book",
+    subtitle = "Pearson standardized residuals from chi-square goodness-of-fit",
+    x = "Book of Mormon book",
+    y = "Standardized residual"
+  )
+```
+
+
+## 21. Save session objects
+
+```{r save-rds}
+saveRDS(
+  list(
+    result_jso_bom = result_jso_bom,
+    result_oliver_bom = result_oliver_bom,
+    nn_jso_bom = nn_jso_bom,
+    nn_oliver_bom = nn_oliver_bom,
+    oliver_mp_votes = oliver_mp_votes,
+    oliver_mp_enrichment = oliver_mp_enrichment,
+    jso_author_mp_votes = jso_author_mp_votes
+  ),
+  file.path(export_dir, "oliver_mp_hypothesis_objects.rds")
+)
+```
