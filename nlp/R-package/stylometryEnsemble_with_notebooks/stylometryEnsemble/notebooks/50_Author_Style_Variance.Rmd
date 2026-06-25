@@ -1,0 +1,913 @@
+---
+title: "50 - Author Style Variance"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+options(tibble.width = Inf, tibble.print_max = 500)
+
+library(dplyr)
+library(readr)
+library(stringr)
+library(tidyr)
+library(tibble)
+library(purrr)
+library(ggplot2)
+library(scales)
+library(forcats)
+```
+
+## 1. Purpose
+
+The MP notebooks showed that Sidney Rigdon has a more polarized Book of Mormon affinity profile than Joseph Smith or Oliver Cowdery.
+
+This notebook tests a different question:
+
+```text
+Do Sidney Rigdon's own writings occupy a larger stylistic space?
+```
+
+That is a **within-author variance** question, not a Book of Mormon affinity question.
+
+We compare Joseph, Sidney, and Oliver using:
+
+1. Pairwise distances among each author's JSO chapters.
+2. Distance from each chapter to its author's centroid.
+3. PCA spread / convex hull area.
+4. Feature-class-specific dispersion.
+5. Optional permutation tests.
+
+The core hypothesis is:
+
+```text
+Sidney has greater internal stylistic variance than Joseph or Oliver.
+```
+
+## 2. Paths
+
+```{r paths}
+prepared_dir <- file.path(STYLO_ROOT, "data", "prepared")
+export_dir <- file.path(STYLO_ROOT, "export", "author_style_variance")
+
+dir.create(export_dir, recursive = TRUE, showWarnings = FALSE)
+
+jso_path <- file.path(prepared_dir, "jso_manual_chapter_docs.csv")
+
+out_pairwise <- file.path(export_dir, "jso_author_pairwise_distances.csv")
+out_centroid <- file.path(export_dir, "jso_author_centroid_distances.csv")
+out_author_summary <- file.path(export_dir, "jso_author_style_variance_summary.csv")
+out_feature_summary <- file.path(export_dir, "jso_author_feature_class_variance_summary.csv")
+```
+
+## 3. Read and normalize JSO corpus
+
+```{r read-normalize-jso}
+if(!file.exists(jso_path)){
+  stop("Missing required file: ", jso_path)
+}
+
+clean_text_for_analysis <- function(x){
+  x %>%
+    as.character() %>%
+    stringr::str_replace_all("\r", " ") %>%
+    stringr::str_replace_all("\n", " ") %>%
+    stringr::str_squish()
+}
+
+jso_raw <- readr::read_csv(jso_path, show_col_types = FALSE)
+
+jso_docs <- jso_raw %>%
+  dplyr::mutate(
+    author = as.character(author),
+    author_code = as.character(author_code),
+    doc_id_original = as.character(doc_id),
+    doc_id = paste0(author_code, "-", chapter),
+    short_name = doc_id,
+    book = author,
+    header = as.character(chapter_title),
+    text = clean_text_for_analysis(text),
+    n_words = stringr::str_count(text, "\\S+")
+  ) %>%
+  dplyr::filter(!is.na(text), text != "", n_words >= 50)
+
+jso_docs %>%
+  dplyr::count(author, author_code, name = "n_docs") %>%
+  dplyr::arrange(author)
+
+jso_docs %>%
+  dplyr::summarise(
+    n_docs = dplyr::n(),
+    min_words = min(n_words),
+    median_words = median(n_words),
+    mean_words = mean(n_words),
+    max_words = max(n_words)
+  )
+```
+
+## 4. Build transparent style feature matrix
+
+This avoids content-heavy word n-grams and focuses on function words, punctuation, sentence length, word length, lexical richness, and readability-like metrics.
+
+```{r feature-functions}
+function_words <- c(
+  "the","and","of","to","in","that","is","was","he","for","it","with",
+  "as","his","on","be","at","by","i","this","had","not","are","but",
+  "from","or","have","an","they","which","one","you","were","all","we",
+  "there","can","their","has","would","what","will","if","so","no",
+  "when","who","more","them","some","him","into","than","then","my",
+  "out","up","upon","do","shall","may","me","our","us","your","ye"
+)
+
+count_sentences <- function(x){
+  n <- stringr::str_count(x, "[.!?]+")
+  pmax(n, 1)
+}
+
+tokenize_words <- function(x){
+  x %>%
+    stringr::str_to_lower() %>%
+    stringr::str_extract_all("[a-z']+")
+}
+
+safe_div <- function(a, b){
+  ifelse(b == 0 | is.na(b), NA_real_, a / b)
+}
+
+compute_style_features <- function(df){
+
+  texts <- df$text
+  words_list <- tokenize_words(texts)
+
+  base <- tibble::tibble(
+    doc_id = df$doc_id,
+    author = df$author,
+    author_code = df$author_code,
+    chapter = df$chapter,
+    short_name = df$short_name,
+    chapter_title = df$chapter_title,
+    n_words = purrr::map_int(words_list, length),
+    n_sentences = purrr::map_int(texts, count_sentences),
+    n_chars = nchar(texts)
+  ) %>%
+    dplyr::mutate(
+      sentence_len_mean = n_words / n_sentences,
+      char_per_word = n_chars / pmax(n_words, 1)
+    )
+
+  fw_mat <- purrr::map_dfr(seq_along(words_list), function(i){
+    w <- words_list[[i]]
+    counts <- tabulate(match(w, function_words), nbins = length(function_words))
+    vals <- 1000 * counts / max(length(w), 1)
+
+    tibble::as_tibble_row(
+      stats::setNames(as.list(vals), paste0("fw_", function_words))
+    ) %>%
+      dplyr::mutate(doc_id = df$doc_id[[i]], .before = 1)
+  })
+
+  punct <- tibble::tibble(
+    doc_id = df$doc_id,
+    comma_per_1k = 1000 * stringr::str_count(texts, ",") / pmax(base$n_words, 1),
+    semicolon_per_1k = 1000 * stringr::str_count(texts, ";") / pmax(base$n_words, 1),
+    colon_per_1k = 1000 * stringr::str_count(texts, ":") / pmax(base$n_words, 1),
+    question_per_1k = 1000 * stringr::str_count(texts, "\\?") / pmax(base$n_words, 1),
+    exclamation_per_1k = 1000 * stringr::str_count(texts, "!") / pmax(base$n_words, 1),
+    period_per_1k = 1000 * stringr::str_count(texts, "\\.") / pmax(base$n_words, 1)
+  )
+
+  sentence_bins <- purrr::map_dfr(seq_along(texts), function(i){
+    sents <- stringr::str_split(texts[[i]], "[.!?]+")[[1]]
+    sent_words <- stringr::str_count(sents, "\\S+")
+    sent_words <- sent_words[sent_words > 0]
+
+    if(length(sent_words) == 0){
+      sent_words <- 0
+    }
+
+    tibble::tibble(
+      doc_id = df$doc_id[[i]],
+      sent_le_10 = mean(sent_words <= 10, na.rm = TRUE),
+      sent_11_15 = mean(sent_words >= 11 & sent_words <= 15, na.rm = TRUE),
+      sent_16_20 = mean(sent_words >= 16 & sent_words <= 20, na.rm = TRUE),
+      sent_gt_20 = mean(sent_words > 20, na.rm = TRUE)
+    )
+  })
+
+  lexical <- purrr::map_dfr(seq_along(words_list), function(i){
+    w <- words_list[[i]]
+    n <- length(w)
+    types <- unique(w)
+    word_lengths <- nchar(w)
+    syllable_proxy <- stringr::str_count(w, "[aeiouy]+")
+    syllable_proxy <- pmax(syllable_proxy, 1)
+
+    tibble::tibble(
+      doc_id = df$doc_id[[i]],
+      type_token_ratio = safe_div(length(types), n),
+      hapax_ratio = safe_div(sum(table(w) == 1), n),
+      mean_word_length = mean(word_lengths, na.rm = TRUE),
+      sd_word_length = sd(word_lengths, na.rm = TRUE),
+      long_word_ratio = mean(word_lengths >= 7, na.rm = TRUE),
+      syllables_per_word_proxy = mean(syllable_proxy, na.rm = TRUE),
+      fk_like = 0.39 * safe_div(n, count_sentences(texts[[i]])) +
+        11.8 * mean(syllable_proxy, na.rm = TRUE) - 15.59
+    )
+  })
+
+  base %>%
+    dplyr::left_join(fw_mat, by = "doc_id") %>%
+    dplyr::left_join(punct, by = "doc_id") %>%
+    dplyr::left_join(sentence_bins, by = "doc_id") %>%
+    dplyr::left_join(lexical, by = "doc_id") %>%
+    dplyr::mutate(
+      dplyr::across(where(is.numeric), ~tidyr::replace_na(.x, 0))
+    )
+}
+
+features <- compute_style_features(jso_docs)
+
+features %>%
+  dplyr::select(doc_id, author, n_words, sentence_len_mean, type_token_ratio, mean_word_length, fk_like) %>%
+  dplyr::arrange(author, doc_id) %>%
+  print(n = 100)
+```
+
+## 5. Scale feature matrix
+
+```{r scale-feature-matrix}
+feature_cols <- features %>%
+  dplyr::select(where(is.numeric)) %>%
+  names()
+
+feature_cols <- setdiff(
+  feature_cols,
+  c("chapter", "n_words", "n_sentences", "n_chars")
+)
+
+X <- features %>%
+  dplyr::select(dplyr::all_of(feature_cols)) %>%
+  as.matrix()
+
+rownames(X) <- features$doc_id
+
+X_scaled <- scale(X)
+
+X_scaled[is.nan(X_scaled)] <- 0
+
+dim(X_scaled)
+```
+
+## 6. PCA overview
+
+```{r pca}
+pca <- prcomp(
+  X_scaled,
+  center = FALSE,
+  scale. = FALSE
+)
+
+pca_scores <- as.data.frame(pca$x[, 1:5]) %>%
+  tibble::rownames_to_column("doc_id") %>%
+  dplyr::left_join(
+    features %>%
+      dplyr::select(doc_id, author, author_code, short_name, chapter, chapter_title),
+    by = "doc_id"
+  )
+
+variance_explained <- tibble::tibble(
+  PC = paste0("PC", seq_along(pca$sdev)),
+  variance = pca$sdev^2 / sum(pca$sdev^2)
+)
+
+variance_explained %>%
+  dplyr::slice_head(n = 10)
+```
+
+```{r plot-pca-author, fig.width=8, fig.height=6}
+ggplot(
+  pca_scores,
+  aes(x = PC1, y = PC2, color = author)
+) +
+  geom_point(size = 3, alpha = 0.8) +
+  theme_bw() +
+  labs(
+    title = "JSO writings in style-feature PCA space",
+    subtitle = "Function words, punctuation, sentence, lexical, word-length, readability-like features",
+    x = paste0("PC1 (", scales::percent(variance_explained$variance[[1]], accuracy = 0.1), ")"),
+    y = paste0("PC2 (", scales::percent(variance_explained$variance[[2]], accuracy = 0.1), ")"),
+    color = "Author"
+  )
+```
+
+## 7. Pairwise within-author distances
+
+```{r pairwise-distances}
+D <- as.matrix(dist(X_scaled, method = "euclidean"))
+
+pairwise_distances <- expand.grid(
+  doc_id_1 = rownames(D),
+  doc_id_2 = colnames(D),
+  stringsAsFactors = FALSE
+) %>%
+  dplyr::filter(doc_id_1 < doc_id_2) %>%
+  dplyr::mutate(distance = D[cbind(doc_id_1, doc_id_2)]) %>%
+  dplyr::left_join(
+    features %>% dplyr::select(doc_id_1 = doc_id, author_1 = author, short_name_1 = short_name),
+    by = "doc_id_1"
+  ) %>%
+  dplyr::left_join(
+    features %>% dplyr::select(doc_id_2 = doc_id, author_2 = author, short_name_2 = short_name),
+    by = "doc_id_2"
+  ) %>%
+  dplyr::mutate(
+    comparison_type = dplyr::if_else(author_1 == author_2, "within_author", "between_author"),
+    author_pair = dplyr::if_else(
+      author_1 == author_2,
+      author_1,
+      paste(pmin(author_1, author_2), pmax(author_1, author_2), sep = " / ")
+    )
+  )
+
+within_author_distances <- pairwise_distances %>%
+  dplyr::filter(comparison_type == "within_author")
+
+within_author_summary <- within_author_distances %>%
+  dplyr::group_by(author_pair) %>%
+  dplyr::summarise(
+    n_pairs = dplyr::n(),
+    mean_distance = mean(distance),
+    median_distance = median(distance),
+    sd_distance = sd(distance),
+    min_distance = min(distance),
+    max_distance = max(distance),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(mean_distance))
+
+within_author_summary
+
+readr::write_csv(pairwise_distances, out_pairwise)
+```
+
+```{r plot-within-pairwise-boxplot, fig.width=8, fig.height=5}
+ggplot(
+  within_author_distances,
+  aes(
+    x = fct_reorder(author_pair, distance, .fun = median),
+    y = distance,
+    fill = author_pair
+  )
+) +
+  geom_boxplot(alpha = 0.7, show.legend = FALSE) +
+  geom_jitter(width = 0.15, alpha = 0.35, show.legend = FALSE) +
+  theme_bw() +
+  labs(
+    title = "Within-author pairwise stylistic distances",
+    subtitle = "Larger distances indicate greater internal stylistic spread",
+    x = "Author",
+    y = "Euclidean distance in scaled style-feature space"
+  )
+```
+
+## 8. Distance from author centroid
+
+```{r centroid-distances}
+scaled_df <- as.data.frame(X_scaled) %>%
+  tibble::rownames_to_column("doc_id") %>%
+  dplyr::left_join(
+    features %>% dplyr::select(doc_id, author, short_name, chapter),
+    by = "doc_id"
+  )
+
+author_centroids <- scaled_df %>%
+  tidyr::pivot_longer(
+    cols = dplyr::all_of(feature_cols),
+    names_to = "feature",
+    values_to = "value"
+  ) %>%
+  dplyr::group_by(author, feature) %>%
+  dplyr::summarise(centroid_value = mean(value), .groups = "drop")
+
+centroid_distances <- scaled_df %>%
+  tidyr::pivot_longer(
+    cols = dplyr::all_of(feature_cols),
+    names_to = "feature",
+    values_to = "value"
+  ) %>%
+  dplyr::left_join(author_centroids, by = c("author", "feature")) %>%
+  dplyr::mutate(squared_diff = (value - centroid_value)^2) %>%
+  dplyr::group_by(doc_id, author, short_name, chapter) %>%
+  dplyr::summarise(
+    centroid_distance = sqrt(sum(squared_diff)),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(author, dplyr::desc(centroid_distance))
+
+centroid_summary <- centroid_distances %>%
+  dplyr::group_by(author) %>%
+  dplyr::summarise(
+    n_docs = dplyr::n(),
+    mean_centroid_distance = mean(centroid_distance),
+    median_centroid_distance = median(centroid_distance),
+    sd_centroid_distance = sd(centroid_distance),
+    max_centroid_distance = max(centroid_distance),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(mean_centroid_distance))
+
+centroid_summary
+
+readr::write_csv(centroid_distances, out_centroid)
+```
+
+```{r plot-centroid-distances, fig.width=8, fig.height=5}
+ggplot(
+  centroid_distances,
+  aes(
+    x = fct_reorder(author, centroid_distance, .fun = median),
+    y = centroid_distance,
+    fill = author
+  )
+) +
+  geom_boxplot(alpha = 0.7, show.legend = FALSE) +
+  geom_jitter(width = 0.15, alpha = 0.5, show.legend = FALSE) +
+  theme_bw() +
+  labs(
+    title = "Distance from each author's stylistic centroid",
+    subtitle = "Larger values indicate chapters farther from the author's average style",
+    x = "Author",
+    y = "Distance from author centroid"
+  )
+```
+```{r distance}
+
+centroid_info = centroid_distances %>%
+  filter(author == "Sidney Rigdon") %>%
+  left_join(
+    jso_docs %>%
+      select(doc_id, header),
+    by = c("short_name" = "doc_id")
+  ) %>%
+  arrange(desc(centroid_distance)) %>%
+  select(
+    short_name,
+    header,
+    centroid_distance
+  )
+
+ centroid_info
+
+```
+
+
+## 9. PCA spread / convex hull area
+
+```{r convex-hull-area}
+polygon_area <- function(x, y){
+  if(length(x) < 3) return(NA_real_)
+  idx <- chull(x, y)
+  x <- x[idx]
+  y <- y[idx]
+  abs(sum(x * c(y[-1], y[1]) - y * c(x[-1], x[1])) / 2)
+}
+
+pca_spread <- pca_scores %>%
+  dplyr::group_by(author) %>%
+  dplyr::summarise(
+    n_docs = dplyr::n(),
+    sd_PC1 = sd(PC1),
+    sd_PC2 = sd(PC2),
+    mean_radial_distance = mean(sqrt((PC1 - mean(PC1))^2 + (PC2 - mean(PC2))^2)),
+    hull_area_PC1_PC2 = polygon_area(PC1, PC2),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(hull_area_PC1_PC2))
+
+pca_spread
+```
+
+```{r plot-pca-hulls, fig.width=8, fig.height=6}
+hull_points <- pca_scores %>%
+  dplyr::group_by(author) %>%
+  dplyr::slice(chull(PC1, PC2)) %>%
+  dplyr::ungroup()
+
+ggplot(
+  pca_scores,
+  aes(x = PC1, y = PC2, color = author, fill = author)
+) +
+  geom_polygon(
+    data = hull_points,
+    aes(group = author),
+    alpha = 0.15,
+    color = NA
+  ) +
+  geom_point(size = 3, alpha = 0.8) +
+  theme_bw() +
+  labs(
+    title = "PCA style-space spread by author",
+    subtitle = "Convex hulls show approximate occupied region in PC1-PC2 space",
+    x = paste0("PC1 (", scales::percent(variance_explained$variance[[1]], accuracy = 0.1), ")"),
+    y = paste0("PC2 (", scales::percent(variance_explained$variance[[2]], accuracy = 0.1), ")"),
+    color = "Author",
+    fill = "Author"
+  )
+```
+
+## 10. Feature-class-specific dispersion
+
+```{r feature-class-dispersion}
+feature_class_map <- tibble::tibble(
+  feature = feature_cols,
+  feature_class = dplyr::case_when(
+    stringr::str_starts(feature, "fw_") ~ "function_words",
+    stringr::str_detect(feature, "comma|semicolon|colon|question|exclamation|period") ~ "punctuation",
+    stringr::str_starts(feature, "sent_") | feature == "sentence_len_mean" ~ "sentence",
+    stringr::str_detect(feature, "word_length|word|long_word|char_per_word|syllables") ~ "word_length",
+    stringr::str_detect(feature, "type_token|hapax") ~ "lexical",
+    stringr::str_detect(feature, "fk_like") ~ "readability",
+    TRUE ~ "other"
+  )
+)
+
+scaled_long <- scaled_df %>%
+  tidyr::pivot_longer(
+    cols = dplyr::all_of(feature_cols),
+    names_to = "feature",
+    values_to = "scaled_value"
+  ) %>%
+  dplyr::left_join(feature_class_map, by = "feature")
+
+feature_class_dispersion <- scaled_long %>%
+  dplyr::group_by(author, feature_class) %>%
+  dplyr::summarise(
+    n_features = dplyr::n_distinct(feature),
+    mean_abs_deviation = mean(abs(scaled_value - mean(scaled_value)), na.rm = TRUE),
+    sd_scaled_value = sd(scaled_value, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(author, feature_class)
+
+feature_class_dispersion
+
+readr::write_csv(feature_class_dispersion, out_feature_summary)
+```
+
+```{r plot-feature-class-dispersion, fig.width=9, fig.height=5}
+ggplot(
+  feature_class_dispersion,
+  aes(
+    x = feature_class,
+    y = mean_abs_deviation,
+    fill = author
+  )
+) +
+  geom_col(position = "dodge") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(
+    title = "Within-author dispersion by feature class",
+    subtitle = "Mean absolute deviation of scaled features within each author",
+    x = "Feature class",
+    y = "Mean absolute deviation",
+    fill = "Author"
+  )
+```
+
+## 11. Permutation test: is Sidney more dispersed?
+
+This nonparametric test compares mean within-author pairwise distance. The null hypothesis is that author labels are exchangeable.
+
+```{r permutation-test, cache=TRUE}
+set.seed(1830)
+
+observed_author_means <- within_author_distances %>%
+  dplyr::group_by(author_pair) %>%
+  dplyr::summarise(
+    mean_distance = mean(distance),
+    .groups = "drop"
+  )
+
+compute_label_mean_distance <- function(labels){
+
+  tmp <- tibble::tibble(
+    doc_id = rownames(D),
+    perm_author = labels
+  )
+
+  expand.grid(
+    doc_id_1 = rownames(D),
+    doc_id_2 = colnames(D),
+    stringsAsFactors = FALSE
+  ) %>%
+    dplyr::filter(doc_id_1 < doc_id_2) %>%
+    dplyr::mutate(distance = D[cbind(doc_id_1, doc_id_2)]) %>%
+    dplyr::left_join(
+      tmp %>% dplyr::rename(doc_id_1 = doc_id, author_1 = perm_author),
+      by = "doc_id_1"
+    ) %>%
+    dplyr::left_join(
+      tmp %>% dplyr::rename(doc_id_2 = doc_id, author_2 = perm_author),
+      by = "doc_id_2"
+    ) %>%
+    dplyr::filter(author_1 == author_2) %>%
+    dplyr::group_by(author_1) %>%
+    dplyr::summarise(
+      mean_distance = mean(distance),
+      .groups = "drop"
+    )
+}
+
+n_perm <- 1000
+
+perm_results <- purrr::map_dfr(seq_len(n_perm), function(i){
+  compute_label_mean_distance(sample(features$author)) %>%
+    dplyr::mutate(iter = i)
+})
+
+permutation_summary <- observed_author_means %>%
+  dplyr::rename(author = author_pair, observed_mean_distance = mean_distance) %>%
+  dplyr::rowwise() %>%
+  dplyr::mutate(
+    p_greater = mean(
+      perm_results$mean_distance[
+        perm_results$author_1 == author
+      ] >= observed_mean_distance
+    )
+  ) %>%
+  dplyr::ungroup()
+
+permutation_summary
+```
+
+## 12. Author style variance summary
+
+```{r author-summary}
+pairwise_summary <- within_author_distances %>%
+  dplyr::group_by(author = author_pair) %>%
+  dplyr::summarise(
+    n_pairs = dplyr::n(),
+    mean_pairwise_distance = mean(distance),
+    median_pairwise_distance = median(distance),
+    sd_pairwise_distance = sd(distance),
+    max_pairwise_distance = max(distance),
+    .groups = "drop"
+  )
+
+author_style_variance_summary <- pairwise_summary %>%
+  dplyr::left_join(centroid_summary, by = "author") %>%
+  dplyr::left_join(pca_spread, by = "author") %>%
+  dplyr::left_join(permutation_summary, by = "author") %>%
+  dplyr::arrange(dplyr::desc(mean_pairwise_distance))
+
+author_style_variance_summary
+
+readr::write_csv(author_style_variance_summary, out_author_summary)
+```
+
+## 13. Interpretation guide
+
+Evidence supporting the "larger style capability / larger variance" interpretation would include:
+
+```text
+1. Sidney has the largest mean within-author pairwise distance.
+2. Sidney has the largest mean distance from his author centroid.
+3. Sidney occupies the largest PCA hull area.
+4. Sidney is more dispersed across multiple feature classes, not only one.
+5. Permutation tests show Sidney's dispersion is unusually high relative to random author labels.
+```
+
+Evidence against the interpretation would include:
+
+```text
+1. Sidney's Book of Mormon residual variance is high, but his own writings are internally compact.
+2. Sidney's apparent variability is driven by one or two outlier chapters.
+3. Greater dispersion appears only in document length or topic-related features rather than style-oriented features.
+```
+
+## 14. Save objects
+
+```{r save-objects}
+saveRDS(
+  list(
+    jso_docs = jso_docs,
+    features = features,
+    feature_cols = feature_cols,
+    X_scaled = X_scaled,
+    pca = pca,
+    pca_scores = pca_scores,
+    pairwise_distances = pairwise_distances,
+    within_author_distances = within_author_distances,
+    centroid_distances = centroid_distances,
+    pca_spread = pca_spread,
+    feature_class_dispersion = feature_class_dispersion,
+    permutation_summary = permutation_summary,
+    author_style_variance_summary = author_style_variance_summary
+  ),
+  file.path(export_dir, "author_style_variance_objects.rds")
+)
+```
+
+
+yes, I don't understand this notebook. why is it not relying on normal features calculated by the ensemble
+
+
+I think you've identified the fundamental problem. **Notebook 50 went off in a different direction than the rest of the project.**
+
+Everything we've built so far has been based on the ensemble.
+
+* Same feature sets.
+* Same TF-IDF.
+* Same cosine/Delta similarities.
+* Same nearest-neighbor methodology.
+* Same weighted voting.
+
+Then I built Notebook 50 using a completely new handcrafted feature extractor (function words, punctuation, readability, etc.), which is **not** the same representation that `run_stylometry_ensemble()` uses. That means the results are not directly comparable to everything else you've done.
+
+## I think Notebook 50 should instead be built entirely on the ensemble outputs.
+
+Your ensemble already computes exactly what we need.
+
+For every Sidney chapter, it already has
+
+* character n-grams
+* word n-grams
+* function words
+* POS n-grams
+* punctuation
+* sentence features
+* lexical richness
+* readability
+* cosine similarities
+* Burrows Delta
+* weighted ensemble similarities
+* nearest neighbors
+
+Those are the author's "style coordinates."
+
+---
+
+## There are three possible notions of "style variance"
+
+### Option A — Raw feature variance (what I mistakenly implemented)
+
+```
+chapter
+   ↓
+feature vector
+   ↓
+Euclidean distance
+```
+
+Pros:
+
+* Simple.
+
+Cons:
+
+* Uses a different feature extraction pipeline.
+* Doesn't use the ensemble.
+
+I'd abandon this.
+
+---
+
+### Option B — Ensemble similarity-space variance ⭐
+
+This is what I think you actually want.
+
+Every chapter already has a similarity vector.
+
+For example,
+
+```
+SR-12
+
+Alma .......... .84
+Mosiah ........ .81
+Isaiah ........ .79
+Jeremiah ...... .75
+...
+```
+
+Every chapter is therefore represented by
+
+```
+(sim1, sim2, sim3, ..., simN)
+```
+
+Compute distances between **those vectors**.
+
+Now we're measuring
+
+> How differently do Sidney's chapters behave under the ensemble?
+
+Everything stays inside the ensemble.
+
+---
+
+### Option C — Vote-profile variance ⭐⭐⭐ (my favorite)
+
+Even better.
+
+Every chapter has a vote distribution.
+
+Example
+
+```
+SR-18
+
+Alma      42%
+Mosiah    26%
+Jeremiah  10%
+Isaiah     8%
+Ether      5%
+...
+```
+
+That vector itself becomes the style representation.
+
+Then compute
+
+```
+distance(
+   vote_vector(SR-1),
+   vote_vector(SR-2)
+)
+```
+
+If Sidney really shifts among stylistic modes, his vote vectors should vary substantially.
+
+This is exactly the question you've been asking throughout the project.
+
+---
+
+## Even better: cluster the vote vectors
+
+Instead of asking
+
+> "How much variance?"
+
+ask
+
+> "How many distinct stylistic modes?"
+
+For every chapter:
+
+```
+chapter
+     ↓
+nearest-neighbor votes
+     ↓
+vector over all books
+     ↓
+PCA
+     ↓
+hclust
+     ↓
+mclust
+```
+
+Then compare
+
+| Author | Number of occupied modes |
+| ------ | -----------------------: |
+| Joseph |                        2 |
+| Oliver |                        3 |
+| Sidney |                        5 |
+
+Now we're talking about **style capability**, not Euclidean variance.
+
+---
+
+## I think this is the strongest direction
+
+I would scrap Notebook 50 and replace it with something like:
+
+```
+50_Author_Style_Modes.Rmd
+```
+
+using **only ensemble objects**.
+
+1. Run `run_stylometry_ensemble()` once.
+2. Extract every chapter's weighted vote vector (or full similarity vector).
+3. Build a chapter × target-book matrix.
+4. Compute distances between chapters in **ensemble space**.
+5. PCA.
+6. Hierarchical clustering.
+7. mclust.
+8. Compare Joseph, Sidney, and Oliver by:
+
+   * average distance between chapters,
+   * number of clusters occupied,
+   * entropy of vote distributions,
+   * within-author cluster diversity.
+
+That notebook would fit seamlessly with the rest of the project because it never leaves the ensemble framework, and it directly tests the hypothesis you've been developing rather than introducing a new, incompatible feature representation. I think it will produce results that are much easier to interpret alongside your MP analyses.
+
+
+

@@ -263,6 +263,27 @@ show_top_feature_rankings(
   result_pos_readability,
   doc_id = "Isaiah_40"
 )
+
+
+cons12 <- show_consensus(
+    result_pos_readability,
+    "Isaiah_12"
+)
+
+show_consensus_summary(cons12)
+
+plot_consensus_scree(cons12)
+
+#show_feature_agreement(
+#    result_pos_readability,
+#    "Isaiah_12"
+#)
+
+summarize_findings(
+    result_pos_readability,
+    "Isaiah_12"
+)
+
 ```
 
 ## 11. POS-only class similarity

@@ -200,8 +200,8 @@ plotPCA(
 plotPCA(
   feature_pca_scores,
   feature_pca_variance,
-  x = 2,
-  y = 3,
+  x = 3,
+  y = 2,
   book = focus_book,
   include_books = comparison_books,
   aggregate_other_books = TRUE,

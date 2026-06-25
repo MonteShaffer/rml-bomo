@@ -1,0 +1,981 @@
+---
+title: "51 - Author Style Modes Using Ensemble Outputs"
+output: html_document
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+source("./00_source_project.R")
+
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+
+options(
+  tibble.width = Inf,
+  tibble.print_max = 500
+)
+
+library(dplyr)
+library(readr)
+library(stringr)
+library(tidyr)
+library(tibble)
+library(purrr)
+library(ggplot2)
+library(scales)
+library(forcats)
+library(mclust)
+```
+
+## 1. Purpose
+
+Notebook 50 used a handcrafted feature matrix. This notebook replaces that approach.
+
+This notebook uses the **pre-defined ensemble engine** developed in the project:
+
+```r
+run_stylometry_ensemble()
+```
+
+The question is:
+
+```text
+Do Joseph Smith, Sidney Rigdon, and Oliver Cowdery occupy different
+stylistic modes when represented by their ensemble nearest-neighbor behavior?
+```
+
+Instead of measuring raw feature variance, this notebook measures variation in:
+
+1. **Book of Mormon vote profiles**
+2. **Book-level weighted nearest-neighbor vectors**
+3. **Mosiah Priority vote vectors**
+4. **Chapter clustering in ensemble-space**
+5. **Author cluster entropy / occupied style modes**
+
+This keeps the analysis inside the same framework as notebooks 45-49.
+
+## 2. Paths
+
+```{r paths}
+prepared_dir <- file.path(STYLO_ROOT, "data", "prepared")
+export_dir <- file.path(STYLO_ROOT, "export", "author_style_modes")
+
+dir.create(export_dir, recursive = TRUE, showWarnings = FALSE)
+
+jso_path <- file.path(prepared_dir, "jso_manual_chapter_docs.csv")
+bom_path <- file.path(prepared_dir, "bom_chapter_docs.csv")
+
+out_nn_jso_bom <- file.path(export_dir, "jso_to_bom_nearest_neighbors.csv")
+out_book_profiles <- file.path(export_dir, "jso_chapter_bom_book_vote_profiles.csv")
+out_mp_profiles <- file.path(export_dir, "jso_chapter_mp_vote_profiles.csv")
+out_mode_assignments <- file.path(export_dir, "jso_author_style_mode_assignments.csv")
+out_author_mode_summary <- file.path(export_dir, "jso_author_style_mode_summary.csv")
+```
+
+## 3. Read data
+
+```{r read-data}
+read_required <- function(path){
+  if(!file.exists(path)){
+    stop("Missing required file: ", path)
+  }
+  readr::read_csv(path, show_col_types = FALSE)
+}
+
+jso_raw <- read_required(jso_path)
+bom_raw <- read_required(bom_path)
+
+jso_raw %>%
+  dplyr::count(author, author_code, name = "n_docs") %>%
+  dplyr::arrange(author)
+
+dim(bom_raw)
+```
+
+## 4. Helpers
+
+```{r helpers}
+clean_text_for_analysis <- function(x){
+  x %>%
+    as.character() %>%
+    stringr::str_replace_all("\r", " ") %>%
+    stringr::str_replace_all("\n", " ") %>%
+    stringr::str_squish()
+}
+
+assign_mosiah_priority <- function(book){
+  dplyr::case_when(
+    book %in% c("Mosiah", "Alma", "Helaman") ~ "MP-1",
+    book %in% c("3 Nephi", "4 Nephi", "Mormon", "Ether", "Moroni") ~ "MP-2",
+    book %in% c("1 Nephi", "2 Nephi", "Jacob", "Enos", "Jarom", "Omni", "Words of Mormon") ~ "MP-3",
+    TRUE ~ NA_character_
+  )
+}
+
+assign_mosiah_priority_label <- function(mp){
+  dplyr::case_when(
+    mp == "MP-1" ~ "MP-1_Mosiah_Alma_Helaman",
+    mp == "MP-2" ~ "MP-2_3Nephi_to_Moroni",
+    mp == "MP-3" ~ "MP-3_1Nephi_to_WordsOfMormon",
+    TRUE ~ NA_character_
+  )
+}
+```
+
+## 5. Normalize JSO and BOM docs
+
+```{r normalize-docs}
+jso_docs <- jso_raw %>%
+  dplyr::mutate(
+    author = as.character(author),
+    author_code = as.character(author_code),
+    corpus_id = "JSO",
+    translation = "JSO",
+    corpus_family = "JSO",
+    source_family = "JSO",
+    doc_id_original = as.character(doc_id),
+    doc_id = paste0(author_code, "-", chapter),
+    short_name = doc_id,
+    book = author,
+    section = paste0(author_code, "-", chapter_original),
+    macro_genre = "Early_LDS_Writing",
+    header = as.character(chapter_title),
+    text = clean_text_for_analysis(text),
+    n_words = stringr::str_count(text, "\\S+")
+  ) %>%
+  dplyr::filter(!is.na(text), text != "", n_words >= 50)
+
+bom_docs <- bom_raw %>%
+  dplyr::mutate(
+    corpus_id = if("corpus_id" %in% names(.)) as.character(corpus_id) else "BOM",
+    translation = if("translation" %in% names(.)) as.character(translation) else "1830",
+    corpus_family = if("corpus_family" %in% names(.)) as.character(corpus_family) else "BOM",
+    source_family = if("source_family" %in% names(.)) as.character(source_family) else "BOM_1830",
+    doc_id = as.character(doc_id),
+    book = as.character(book),
+    chapter = as.integer(chapter),
+    section = if("section" %in% names(.)) as.character(section) else paste0(book, "_", chapter),
+    macro_genre = if("macro_genre" %in% names(.)) as.character(macro_genre) else "Modern_Scripture",
+    header = if("header" %in% names(.)) as.character(header) else paste0(book, " ", chapter),
+    text = clean_text_for_analysis(text),
+    n_words = stringr::str_count(text, "\\S+"),
+    mosiah_priority = if("mosiah_priority" %in% names(.)) as.character(mosiah_priority) else assign_mosiah_priority(book),
+    mosiah_priority = dplyr::if_else(
+      is.na(mosiah_priority) | mosiah_priority == "",
+      assign_mosiah_priority(book),
+      mosiah_priority
+    ),
+    mosiah_priority_label = if("mosiah_priority_label" %in% names(.)) as.character(mosiah_priority_label) else assign_mosiah_priority_label(mosiah_priority),
+    mosiah_priority_label = dplyr::if_else(
+      is.na(mosiah_priority_label) | mosiah_priority_label == "",
+      assign_mosiah_priority_label(mosiah_priority),
+      mosiah_priority_label
+    )
+  ) %>%
+  dplyr::filter(!is.na(text), text != "", n_words >= 50)
+
+jso_docs %>%
+  dplyr::count(author, author_code, name = "n_docs") %>%
+  dplyr::arrange(author)
+
+bom_docs %>%
+  dplyr::count(mosiah_priority, mosiah_priority_label, book, name = "n_chapters") %>%
+  dplyr::arrange(mosiah_priority, book)
+```
+
+## 6. Author map
+
+```{r author-map}
+jso_author_map <- jso_docs %>%
+  dplyr::transmute(
+    doc_id,
+    author,
+    author_code,
+    short_name,
+    chapter,
+    chapter_original,
+    chapter_title,
+    header
+  )
+
+jso_author_map %>%
+  dplyr::arrange(author, chapter) %>%
+  print(n = 100)
+```
+
+## 7. Run ensemble: JSO chapters to BOM chapters
+
+Use the same style-oriented feature classes used in the MP hypothesis notebooks.
+
+```{r feature-classes}
+include_feature_classes <- c(
+  "function_words", "punctuation", "sentence",
+  "word_length", "lexical", "readability"
+)
+
+
+jso_config  <- default_config(include = include_feature_classes)
+
+
+jso_config$weights <- c(
+    function_words = 0.500,
+    punctuation    = 0.075,
+    sentence       = 0.175,
+    word_length    = 0.125,
+    lexical        = 0.075,
+    readability    = 0.050
+  )
+
+```
+
+```{r source-target-docs}
+source_docs_jso <- jso_docs %>%
+  dplyr::select(
+    doc_id,
+    corpus_id,
+    translation,
+    corpus_family,
+    source_family,
+    book,
+    chapter,
+    section,
+    macro_genre,
+    header,
+    text
+  )
+
+target_docs_bom <- bom_docs %>%
+  dplyr::select(
+    doc_id,
+    corpus_id,
+    translation,
+    corpus_family,
+    source_family,
+    book,
+    chapter,
+    section,
+    macro_genre,
+    mosiah_priority,
+    mosiah_priority_label,
+    header,
+    text
+  )
+
+dim(source_docs_jso)
+dim(target_docs_bom)
+```
+
+```{r run-jso-bom-ensemble}
+result_jso_bom <- run_stylometry_ensemble(
+  source_docs = source_docs_jso,
+  target_docs = target_docs_bom,
+  config = jso_config,
+  text_col = "text",
+  doc_id_col = "doc_id",
+  k_neighbors = 20,
+  use_cache = TRUE
+)
+
+names(result_jso_bom)
+```
+
+## 8. Built-in ensemble reports
+
+```{r show-feature-votes}
+show_feature_votes(result_jso_bom)
+```
+
+```{r show-consensus}
+show_consensus(result_jso_bom)
+```
+
+## 9. Label nearest neighbors
+
+```{r label-nearest}
+nn_jso_bom <- result_jso_bom$nearest_neighbors %>%
+  dplyr::mutate(
+    doc_id = as.character(doc_id),
+    neighbor_doc_id = as.character(neighbor_doc_id),
+    similarity = as.numeric(similarity),
+    rank = as.integer(rank)
+  ) %>%
+  dplyr::left_join(
+    jso_author_map %>%
+      dplyr::select(
+        doc_id,
+        author,
+        author_code,
+        short_name,
+        source_chapter = chapter,
+        source_title = chapter_title
+      ),
+    by = "doc_id"
+  ) %>%
+  dplyr::left_join(
+    target_docs_bom %>%
+      dplyr::select(
+        neighbor_doc_id = doc_id,
+        target_book = book,
+        target_chapter = chapter,
+        target_header = header,
+        mosiah_priority,
+        mosiah_priority_label
+      ),
+    by = "neighbor_doc_id"
+  )
+
+nn_jso_bom %>%
+  dplyr::arrange(author, doc_id, rank) %>%
+  dplyr::select(
+    author,
+    short_name,
+    rank,
+    neighbor_doc_id,
+    target_book,
+    target_chapter,
+    mosiah_priority,
+    similarity
+  ) 
+
+nn_jso_bom
+
+readr::write_csv(nn_jso_bom, out_nn_jso_bom)
+```
+
+## 10. Chapter × BOM book vote profiles
+
+Each JSO chapter is represented by its weighted nearest-neighbor vote profile across Book of Mormon books.
+
+```{r book-vote-profiles}
+chapter_book_profiles_long <- nn_jso_bom %>%
+  dplyr::group_by(
+    doc_id,
+    author,
+    author_code,
+    short_name,
+    source_title,
+    target_book
+  ) %>%
+  dplyr::summarise(
+    votes = dplyr::n(),
+    weighted_votes = sum(similarity, na.rm = TRUE),
+    mean_similarity = mean(similarity, na.rm = TRUE),
+    best_rank = min(rank, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::group_by(doc_id) %>%
+  dplyr::mutate(
+    vote_share = votes / sum(votes),
+    weighted_vote_share = weighted_votes / sum(weighted_votes)
+  ) %>%
+  dplyr::ungroup()
+
+chapter_book_profiles_long %>%
+  dplyr::arrange(author, short_name, dplyr::desc(weighted_vote_share)) %>%
+  print(n = 200)
+
+readr::write_csv(chapter_book_profiles_long, out_book_profiles)
+```
+
+```{r book-profile-matrix}
+book_profile_wide <- chapter_book_profiles_long %>%
+  dplyr::select(
+    doc_id,
+    author,
+    author_code,
+    short_name,
+    source_title,
+    target_book,
+    weighted_vote_share
+  ) %>%
+  tidyr::pivot_wider(
+    names_from = target_book,
+    values_from = weighted_vote_share,
+    values_fill = 0
+  )
+
+book_cols <- setdiff(
+  names(book_profile_wide),
+  c("doc_id", "author", "author_code", "short_name", "source_title")
+)
+
+book_profile_matrix <- book_profile_wide %>%
+  dplyr::select(dplyr::all_of(book_cols)) %>%
+  as.matrix()
+
+rownames(book_profile_matrix) <- book_profile_wide$doc_id
+
+dim(book_profile_matrix)
+```
+
+## 11. Chapter × MP vote profiles
+
+```{r mp-vote-profiles}
+chapter_mp_profiles_long <- nn_jso_bom %>%
+  dplyr::group_by(
+    doc_id,
+    author,
+    author_code,
+    short_name,
+    source_title,
+    mosiah_priority,
+    mosiah_priority_label
+  ) %>%
+  dplyr::summarise(
+    votes = dplyr::n(),
+    weighted_votes = sum(similarity, na.rm = TRUE),
+    mean_similarity = mean(similarity, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::group_by(doc_id) %>%
+  dplyr::mutate(
+    vote_share = votes / sum(votes),
+    weighted_vote_share = weighted_votes / sum(weighted_votes)
+  ) %>%
+  dplyr::ungroup()
+
+chapter_mp_profiles_long %>%
+  dplyr::arrange(author, short_name, mosiah_priority) %>%
+  print(n = 200)
+
+readr::write_csv(chapter_mp_profiles_long, out_mp_profiles)
+```
+
+```{r mp-profile-matrix}
+mp_profile_wide <- chapter_mp_profiles_long %>%
+  dplyr::select(
+    doc_id,
+    author,
+    author_code,
+    short_name,
+    source_title,
+    mosiah_priority,
+    weighted_vote_share
+  ) %>%
+  tidyr::pivot_wider(
+    names_from = mosiah_priority,
+    values_from = weighted_vote_share,
+    values_fill = 0
+  )
+
+mp_cols <- intersect(c("MP-1", "MP-2", "MP-3"), names(mp_profile_wide))
+
+mp_profile_matrix <- mp_profile_wide %>%
+  dplyr::select(dplyr::all_of(mp_cols)) %>%
+  as.matrix()
+
+rownames(mp_profile_matrix) <- mp_profile_wide$doc_id
+
+dim(mp_profile_matrix)
+```
+
+## 12. Entropy of each chapter's vote profile
+
+Higher entropy means the chapter spreads its nearest-neighbor votes across many Book of Mormon books. Lower entropy means it concentrates on a few books.
+
+```{r entropy}
+entropy_bits <- function(p){
+  p <- p[p > 0 & !is.na(p)]
+  -sum(p * log2(p))
+}
+
+chapter_entropy <- chapter_book_profiles_long %>%
+  dplyr::group_by(doc_id, author, author_code, short_name, source_title) %>%
+  dplyr::summarise(
+    book_entropy = entropy_bits(weighted_vote_share),
+    effective_books = 2^book_entropy,
+    n_books_with_votes = dplyr::n_distinct(target_book),
+    .groups = "drop"
+  ) %>%
+  dplyr::left_join(
+    chapter_mp_profiles_long %>%
+      dplyr::group_by(doc_id) %>%
+      dplyr::summarise(
+        mp_entropy = entropy_bits(weighted_vote_share),
+        effective_mp_groups = 2^mp_entropy,
+        .groups = "drop"
+      ),
+    by = "doc_id"
+  )
+
+chapter_entropy %>%
+  dplyr::arrange(author, dplyr::desc(book_entropy)) %>%
+  print(n = 100)
+```
+
+```{r plot-author-entropy, fig.width=8, fig.height=5}
+ggplot(
+  chapter_entropy,
+  aes(
+    x = fct_reorder(author, book_entropy, .fun = median),
+    y = book_entropy,
+    fill = author
+  )
+) +
+  geom_boxplot(alpha = 0.7, show.legend = FALSE) +
+  geom_jitter(width = 0.15, alpha = 0.5, show.legend = FALSE) +
+  theme_bw() +
+  labs(
+    title = "Entropy of chapter-level Book of Mormon vote profiles",
+    subtitle = "Higher entropy means nearest-neighbor votes are spread across more books",
+    x = "Author",
+    y = "Book-level vote entropy, bits"
+  )
+```
+
+## 13. Within-author distances in ensemble vote-profile space
+
+This is the direct replacement for Notebook 50's raw feature distance. Here each chapter is represented by its ensemble-derived Book of Mormon vote vector.
+
+```{r profile-distances}
+book_profile_dist <- as.matrix(
+  dist(book_profile_matrix, method = "euclidean")
+)
+
+profile_pairwise_distances <- expand.grid(
+  doc_id_1 = rownames(book_profile_dist),
+  doc_id_2 = colnames(book_profile_dist),
+  stringsAsFactors = FALSE
+) %>%
+  dplyr::filter(doc_id_1 < doc_id_2) %>%
+  dplyr::mutate(
+    distance = book_profile_dist[cbind(doc_id_1, doc_id_2)]
+  ) %>%
+  dplyr::left_join(
+    book_profile_wide %>%
+      dplyr::select(doc_id_1 = doc_id, author_1 = author, short_name_1 = short_name),
+    by = "doc_id_1"
+  ) %>%
+  dplyr::left_join(
+    book_profile_wide %>%
+      dplyr::select(doc_id_2 = doc_id, author_2 = author, short_name_2 = short_name),
+    by = "doc_id_2"
+  ) %>%
+  dplyr::mutate(
+    comparison_type = dplyr::if_else(author_1 == author_2, "within_author", "between_author"),
+    author_pair = dplyr::if_else(
+      author_1 == author_2,
+      author_1,
+      paste(pmin(author_1, author_2), pmax(author_1, author_2), sep = " / ")
+    )
+  )
+
+within_profile_distances <- profile_pairwise_distances %>%
+  dplyr::filter(comparison_type == "within_author")
+
+within_profile_summary <- within_profile_distances %>%
+  dplyr::group_by(author = author_pair) %>%
+  dplyr::summarise(
+    n_pairs = dplyr::n(),
+    mean_profile_distance = mean(distance),
+    median_profile_distance = median(distance),
+    sd_profile_distance = sd(distance),
+    max_profile_distance = max(distance),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(mean_profile_distance))
+
+within_profile_summary
+```
+
+```{r plot-within-profile-distances, fig.width=8, fig.height=5}
+ggplot(
+  within_profile_distances,
+  aes(
+    x = fct_reorder(author_pair, distance, .fun = median),
+    y = distance,
+    fill = author_pair
+  )
+) +
+  geom_boxplot(alpha = 0.7, show.legend = FALSE) +
+  geom_jitter(width = 0.15, alpha = 0.35, show.legend = FALSE) +
+  theme_bw() +
+  labs(
+    title = "Within-author distances in ensemble vote-profile space",
+    subtitle = "Each chapter is represented by weighted BOM book nearest-neighbor shares",
+    x = "Author",
+    y = "Euclidean distance between chapter vote profiles"
+  )
+```
+
+## 14. PCA of ensemble vote profiles
+
+```{r vote-profile-pca}
+vote_pca <- prcomp(
+  book_profile_matrix,
+  center = TRUE,
+  scale. = TRUE
+)
+
+vote_scores <- as.data.frame(vote_pca$x[, 1:5]) %>%
+  tibble::rownames_to_column("doc_id") %>%
+  dplyr::left_join(
+    book_profile_wide %>%
+      dplyr::select(doc_id, author, author_code, short_name, source_title),
+    by = "doc_id"
+  )
+
+vote_variance <- tibble::tibble(
+  PC = paste0("PC", seq_along(vote_pca$sdev)),
+  variance = vote_pca$sdev^2 / sum(vote_pca$sdev^2)
+)
+
+vote_variance %>% dplyr::slice_head(n = 10)
+```
+
+```{r plot-vote-pca, fig.width=8, fig.height=6}
+ggplot(
+  vote_scores,
+  aes(
+    x = PC1,
+    y = PC2,
+    color = author
+  )
+) +
+  geom_point(size = 3, alpha = 0.85) +
+  theme_bw() +
+  labs(
+    title = "JSO chapters in ensemble vote-profile PCA space",
+    subtitle = "Coordinates are derived from BOM book weighted nearest-neighbor vote profiles",
+    x = paste0("PC1 (", scales::percent(vote_variance$variance[[1]], accuracy = 0.1), ")"),
+    y = paste0("PC2 (", scales::percent(vote_variance$variance[[2]], accuracy = 0.1), ")"),
+    color = "Author"
+  )
+```
+
+## 15. Cluster chapters into style modes
+
+Here "style modes" are clusters of chapters with similar ensemble vote profiles.
+
+```{r mclust-style-modes}
+set.seed(1830)
+
+apply(book_profile_matrix, 2, sd) %>%
+  sort(decreasing = TRUE)
+
+mc_modes <- mclust::Mclust(
+  book_profile_matrix,
+  G = 1:10
+)
+
+summary(mc_modes)
+
+mode_assignments <- book_profile_wide %>%
+  dplyr::select(doc_id, author, author_code, short_name, source_title) %>%
+  dplyr::mutate(
+    style_mode = as.integer(mc_modes$classification),
+    uncertainty = as.numeric(mc_modes$uncertainty)
+  ) %>%
+  dplyr::left_join(chapter_entropy, by = c("doc_id", "author", "author_code", "short_name", "source_title"))
+
+mode_assignments %>%
+  dplyr::arrange(style_mode, author, short_name) %>%
+  print(n = 200)
+
+readr::write_csv(mode_assignments, out_mode_assignments)
+```
+
+```{r plot-style-modes-pca, fig.width=8, fig.height=6}
+ggplot(
+  mode_assignments %>%
+    dplyr::left_join(
+      vote_scores %>%
+        dplyr::select(doc_id, PC1, PC2),
+      by = "doc_id"
+    ),
+  aes(
+    x = PC1,
+    y = PC2,
+    color = factor(style_mode),
+    shape = author
+  )
+) +
+  geom_point(size = 3, alpha = 0.85) +
+  theme_bw() +
+  labs(
+    title = "Ensemble-derived style modes",
+    subtitle = "Mclust clusters of chapter-level BOM book vote profiles",
+    x = paste0("PC1 (", scales::percent(vote_variance$variance[[1]], accuracy = 0.1), ")"),
+    y = paste0("PC2 (", scales::percent(vote_variance$variance[[2]], accuracy = 0.1), ")"),
+    color = "Style mode",
+    shape = "Author"
+  )
+```
+
+## 16. Author occupancy of style modes
+
+```{r author-mode-summary}
+author_mode_counts <- mode_assignments %>%
+  dplyr::count(author, style_mode, name = "n_docs") %>%
+  dplyr::group_by(author) %>%
+  dplyr::mutate(
+    author_total = sum(n_docs),
+    pct_author = n_docs / author_total
+  ) %>%
+  dplyr::ungroup()
+
+author_mode_counts %>%
+  dplyr::arrange(author, style_mode) %>%
+  print(n = 100)
+
+author_mode_entropy <- author_mode_counts %>%
+  dplyr::group_by(author) %>%
+  dplyr::summarise(
+    n_style_modes_occupied = dplyr::n_distinct(style_mode),
+    mode_entropy = entropy_bits(pct_author),
+    effective_style_modes = 2^mode_entropy,
+    .groups = "drop"
+  )
+
+author_style_mode_summary <- within_profile_summary %>%
+  dplyr::left_join(
+    chapter_entropy %>%
+      dplyr::group_by(author) %>%
+      dplyr::summarise(
+        mean_book_entropy = mean(book_entropy),
+        median_book_entropy = median(book_entropy),
+        mean_effective_books = mean(effective_books),
+        .groups = "drop"
+      ),
+    by = "author"
+  ) %>%
+  dplyr::left_join(author_mode_entropy, by = "author") %>%
+  dplyr::arrange(dplyr::desc(effective_style_modes))
+
+author_style_mode_summary
+
+readr::write_csv(author_style_mode_summary, out_author_mode_summary)
+```
+
+```{r plot-author-mode-occupancy, fig.width=8, fig.height=5}
+ggplot(
+  author_mode_counts,
+  aes(
+    x = author,
+    y = pct_author,
+    fill = factor(style_mode)
+  )
+) +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent) +
+  theme_bw() +
+  labs(
+    title = "Author occupancy of ensemble-derived style modes",
+    subtitle = "Mode assignments from Mclust over BOM book vote profiles",
+    x = "Author",
+    y = "Share of author's chapters",
+    fill = "Style mode"
+  )
+```
+
+## 17. Heatmap: chapter × BOM book profiles
+
+```{r chapter-book-profile-heatmap, fig.width=12, fig.height=10}
+top_order <- chapter_book_profiles_long %>%
+  dplyr::group_by(target_book) %>%
+  dplyr::summarise(total = sum(weighted_votes), .groups = "drop") %>%
+  dplyr::arrange(dplyr::desc(total)) %>%
+  dplyr::pull(target_book)
+
+chapter_order <- mode_assignments %>%
+  dplyr::arrange(author, style_mode, short_name) %>%
+  dplyr::pull(short_name)
+
+chapter_book_profiles_long %>%
+  dplyr::mutate(
+    target_book = factor(target_book, levels = top_order),
+    short_name = factor(short_name, levels = rev(chapter_order))
+  ) %>%
+  ggplot(
+    aes(
+      x = target_book,
+      y = short_name,
+      fill = weighted_vote_share
+    )
+  ) +
+  geom_tile(color = "grey85") +
+  scale_fill_gradient(
+    low = "white",
+    high = "darkgreen",
+    labels = scales::percent
+  ) +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(angle = 60, hjust = 1)
+  ) +
+  labs(
+    title = "JSO chapter × Book of Mormon book vote-profile heatmap",
+    subtitle = "Row-normalized weighted nearest-neighbor vote shares",
+    x = "Book of Mormon book",
+    y = "JSO chapter",
+    fill = "Weighted\nshare"
+  )
+```
+
+## 18. Top style-mode signatures
+
+Which Book of Mormon books define each ensemble style mode?
+
+```{r mode-signatures}
+mode_signatures <- chapter_book_profiles_long %>%
+  dplyr::left_join(
+    mode_assignments %>%
+      dplyr::select(doc_id, style_mode),
+    by = "doc_id"
+  ) %>%
+  dplyr::group_by(style_mode, target_book) %>%
+  dplyr::summarise(
+    mode_weighted_share = mean(weighted_vote_share, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::group_by(style_mode) %>%
+  dplyr::slice_max(mode_weighted_share, n = 5, with_ties = FALSE) %>%
+  dplyr::ungroup() %>%
+  dplyr::arrange(style_mode, dplyr::desc(mode_weighted_share))
+
+mode_signatures %>%
+  print(n = 100)
+```
+
+## 19. Optional: permutation test for profile distance
+
+This tests whether each author's within-author profile dispersion is unusually high or low relative to random author labels.
+
+```{r permutation-profile-distance, cache=TRUE}
+set.seed(1830)
+
+observed_profile_means <- within_profile_distances %>%
+  dplyr::group_by(author_pair) %>%
+  dplyr::summarise(
+    observed_mean_profile_distance = mean(distance),
+    .groups = "drop"
+  )
+
+compute_perm_profile_means <- function(labels){
+
+  tmp <- tibble::tibble(
+    doc_id = rownames(book_profile_dist),
+    perm_author = labels
+  )
+
+  expand.grid(
+    doc_id_1 = rownames(book_profile_dist),
+    doc_id_2 = colnames(book_profile_dist),
+    stringsAsFactors = FALSE
+  ) %>%
+    dplyr::filter(doc_id_1 < doc_id_2) %>%
+    dplyr::mutate(distance = book_profile_dist[cbind(doc_id_1, doc_id_2)]) %>%
+    dplyr::left_join(
+      tmp %>% dplyr::rename(doc_id_1 = doc_id, author_1 = perm_author),
+      by = "doc_id_1"
+    ) %>%
+    dplyr::left_join(
+      tmp %>% dplyr::rename(doc_id_2 = doc_id, author_2 = perm_author),
+      by = "doc_id_2"
+    ) %>%
+    dplyr::filter(author_1 == author_2) %>%
+    dplyr::group_by(author_1) %>%
+    dplyr::summarise(
+      mean_distance = mean(distance),
+      .groups = "drop"
+    )
+}
+
+n_perm <- 1000
+
+perm_profile_results <- purrr::map_dfr(seq_len(n_perm), function(i){
+  compute_perm_profile_means(sample(book_profile_wide$author)) %>%
+    dplyr::mutate(iter = i)
+})
+
+profile_permutation_summary <- observed_profile_means %>%
+  dplyr::rename(author = author_pair) %>%
+  dplyr::rowwise() %>%
+  dplyr::mutate(
+    p_greater = mean(
+      perm_profile_results$mean_distance[
+        perm_profile_results$author_1 == author
+      ] >= observed_mean_profile_distance
+    ),
+    p_less = mean(
+      perm_profile_results$mean_distance[
+        perm_profile_results$author_1 == author
+      ] <= observed_mean_profile_distance
+    )
+  ) %>%
+  dplyr::ungroup()
+
+profile_permutation_summary
+```
+
+## 20. Interpretation guide
+
+This notebook should be interpreted differently from Notebook 50.
+
+Notebook 50 asked:
+
+```text
+Are an author's raw style features internally dispersed?
+```
+
+This notebook asks:
+
+```text
+Does an author's writing move among multiple ensemble-derived Book of Mormon
+stylistic neighborhoods?
+```
+
+Evidence for broader style modes would include:
+
+```text
+1. Larger within-author distances in ensemble vote-profile space.
+2. Higher entropy of chapter-level vote profiles.
+3. More style modes occupied by an author.
+4. Higher style-mode entropy / effective style modes.
+5. Distinct clusters within an author's chapters, not one compact group.
+```
+
+Evidence against broader style modes would include:
+
+```text
+1. Low within-author vote-profile distance.
+2. Low entropy.
+3. Occupying few style modes.
+4. A single dominant mode across most chapters.
+```
+
+## 21. Save objects
+
+```{r save-objects}
+saveRDS(
+  list(
+    result_jso_bom = result_jso_bom,
+    nn_jso_bom = nn_jso_bom,
+    chapter_book_profiles_long = chapter_book_profiles_long,
+    book_profile_wide = book_profile_wide,
+    book_profile_matrix = book_profile_matrix,
+    chapter_mp_profiles_long = chapter_mp_profiles_long,
+    mp_profile_wide = mp_profile_wide,
+    chapter_entropy = chapter_entropy,
+    profile_pairwise_distances = profile_pairwise_distances,
+    within_profile_distances = within_profile_distances,
+    within_profile_summary = within_profile_summary,
+    vote_pca = vote_pca,
+    vote_scores = vote_scores,
+    mc_modes = mc_modes,
+    mode_assignments = mode_assignments,
+    author_mode_counts = author_mode_counts,
+    author_style_mode_summary = author_style_mode_summary,
+    mode_signatures = mode_signatures,
+    profile_permutation_summary = profile_permutation_summary
+  ),
+  file.path(export_dir, "author_style_modes_objects.rds")
+)
+```
+
+
+
+I think Notebook 51 should be rewritten around ensemble affinity space, not book summaries.
+
+The book summaries are excellent for plots like the MP analyses, but they're too compressed for discovering latent style modes. You're throwing away roughly 94% of the information (239 chapters → 15 books) before clustering. Using the full chapter-level affinity space is much more likely to reveal meaningful structure if it exists.

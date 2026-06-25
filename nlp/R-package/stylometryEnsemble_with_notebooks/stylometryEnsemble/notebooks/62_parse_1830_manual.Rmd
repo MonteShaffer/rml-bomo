@@ -73,7 +73,7 @@ parse_diag_path <- file.path(diagnostic_dir, "corpus_1830_manual_parse_diagnosti
 ```{r enumerate}
 manual_files <- list.files(
   manual_dir,
-  pattern = "\\.txt$",
+  pattern = "__manual\\.txt$",
   full.names = TRUE
 )
 
@@ -83,7 +83,6 @@ manual_manifest <- tibble(
   file_size = file.info(manual_files)$size
 ) %>%
   filter(
-    filename != "_README.txt",
     file_size > 0
   ) %>%
   arrange(filename)
@@ -99,7 +98,6 @@ Expected filename format:
 
 ```text
 Author_Name_Work_Title_manual.txt
-Author_Name_Work_Title_incomplete.txt
 ```
 
 Known multi-token author names are handled explicitly.
@@ -222,82 +220,160 @@ Captures:
 ```
 
 ```{r chapter-parser}
+
 chapter_divider_pattern <- regex(
-  paste0(
-    "(?m)^\\s*",
-    "###\\s+",
-    "CHAPTER\\s+",
-    "([^:\\n]+?)",
-    "(?:\\s*:\\s*(.*?))?",
-    "\\s*$"
-  ),
+  "(?m)^\\s*###\\s+CHAPTER\\b.*$",
   ignore_case = TRUE
 )
 
-parse_manual_chapters <- function(path){
-  txt <- readr::read_file(path)
 
-  txt <- txt %>%
+
+parse_manual_chapters <- function(path){
+
+  txt <- readr::read_file(path) %>%
     str_replace_all("\r", "\n") %>%
     str_replace_all("\uFEFF", "")
 
-  locs <- str_locate_all(txt, chapter_divider_pattern)[[1]]
+  divider_pattern <- regex(
+    "(?m)^\\s*###\\s+CHAPTER\\b.*$",
+    ignore_case = TRUE
+  )
 
-  if(nrow(locs) == 0){
-    return(
-      tibble(
-        chapter = 1L,
-        chapter_original = "1",
-        chapter_title = "Whole Work",
-        chapter_heading_raw = NA_character_,
-        text = normalize_doc_text(txt)
-      ) %>%
-        filter(text != "")
-    )
+  locs <- str_locate_all(txt, divider_pattern)[[1]]
+  headings <- str_extract_all(txt, divider_pattern)[[1]]
+
+  if(length(headings) == 0){
+    return(tibble())
   }
 
-  matches <- str_match_all(txt, chapter_divider_pattern)[[1]]
+  purrr::map_dfr(seq_along(headings), function(i){
 
-  purrr::map_dfr(seq_len(nrow(locs)), function(i){
-    heading_raw <- str_sub(txt, locs[i, 1], locs[i, 2])
-    chapter_original <- clean_heading(matches[i, 2])
-    title_raw <- matches[i, 3]
+    heading_raw <- headings[[i]]
 
-    chapter_title <- ifelse(
-      is.na(title_raw) || str_squish(title_raw) == "",
-      paste0("Chapter ", chapter_original),
-      clean_heading(title_raw)
-    )
+    chapter_original <- heading_raw %>%
+      str_remove(regex("^\\s*###\\s+CHAPTER\\s+", ignore_case = TRUE)) %>%
+      str_replace("\\s*:.*$", "") %>%
+      str_remove("\\s*\\.$") %>%
+      str_squish()
+
+    chapter_title <- heading_raw %>%
+      str_replace(regex("^\\s*###\\s+CHAPTER\\s+[^:]+:?\\s*", ignore_case = TRUE), "") %>%
+      str_remove("\\s*\\.$") %>%
+      str_squish()
+
+    if(chapter_title == ""){
+      chapter_title <- paste0("Chapter ", chapter_original)
+    }
 
     start <- locs[i, 2] + 1
     end <- if(i < nrow(locs)) locs[i + 1, 1] - 1 else nchar(txt)
-    body <- str_sub(txt, start, end)
 
     tibble(
+      chapter = i,
       chapter_original = chapter_original,
       chapter_title = chapter_title,
       chapter_heading_raw = heading_raw,
-      text = normalize_doc_text(body)
+      text = normalize_doc_text(str_sub(txt, start, end))
     )
   }) %>%
-    filter(text != "") %>%
-    mutate(chapter = row_number(), .before = chapter_original)
+    filter(text != "")
 }
 ```
 
 ## 7. Parse all manual files
+
+```{r debug}
+manual_manifest %>%
+
+mutate(
+
+  n_markers = purrr::map_int(
+
+    path,
+
+    ~{
+
+      txt <- readr::read_file(.x)
+
+      stringr::str_count(
+
+        txt,
+
+        regex(
+          "(?m)^\\s*###\\s+CHAPTER\\b",
+          ignore_case=TRUE
+        )
+
+      )
+
+    }
+
+  )
+
+) %>%
+
+select(
+  filename,
+  n_markers
+) %>%
+
+arrange(desc(n_markers))
+
+
+
+marker_counts <- manual_manifest %>%
+
+mutate(
+
+  n_markers = purrr::map_int(
+
+    path,
+
+    ~{
+
+      txt <- readr::read_file(.x)
+
+      stringr::str_count(
+
+        txt,
+
+        regex(
+          "(?m)^\\s*###\\s+CHAPTER\\b",
+          ignore_case=TRUE
+        )
+
+      )
+
+    }
+
+  )
+
+)
+
+sum(marker_counts$n_markers)
+
+
+```
+
 
 ```{r parse-all}
 corpus_1830_manual_chapter_docs <- file_metadata %>%
   mutate(chapters = purrr::map(local_file, parse_manual_chapters)) %>%
   tidyr::unnest(chapters) %>%
   group_by(source_file) %>%
+  mutate(chapter = row_number()) %>%
+  ungroup() %>%
   mutate(
-    chapter = row_number(),
-    chapter_digest = digest::digest(
-      paste(author, work, chapter_original, chapter_title, text, sep = "||"),
-      algo = "xxhash64"
-    ),
+    chapter_digest = purrr::pmap_chr(
+      list(author, work, chapter_original, chapter_title, text),
+      ~digest::digest(
+        paste(..., sep = "||"),
+        algo = "xxhash64"
+      )
+    )
+  ) %>%
+  group_by(source_file) %>%
+  mutate(
     duplicate_digest_in_work = duplicated(chapter_digest)
   ) %>%
   ungroup() %>%
@@ -345,6 +421,8 @@ corpus_1830_manual_chapter_docs %>%
   count(author, work, name = "n_chapters") %>%
   arrange(author, work) %>%
   print(n = 100)
+
+dim(corpus_1830_manual_chapter_docs)
 ```
 
 ## 8. Diagnostics

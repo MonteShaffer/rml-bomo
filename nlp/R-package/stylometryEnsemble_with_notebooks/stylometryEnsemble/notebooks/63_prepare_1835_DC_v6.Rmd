@@ -765,4 +765,30 @@ dc1835_chapter_docs %>%
     mean_words = mean(n_words),
     max_words = max(n_words)
   )
+
+
+dc1835_chapter_docs %>%
+  arrange(n_words) %>%
+  select(
+    page_order,
+    chapter,
+    website_section_id,
+    n_verses,
+    n_words,
+    chapter_title
+  ) %>%
+  print(n = 20)
+
+dc1835_chapter_docs %>%
+  arrange(desc(n_words)) %>%
+  select(
+    page_order,
+    chapter,
+    website_section_id,
+    n_verses,
+    n_words,
+    chapter_title
+  ) %>%
+  print(n = 20)
+
 ```

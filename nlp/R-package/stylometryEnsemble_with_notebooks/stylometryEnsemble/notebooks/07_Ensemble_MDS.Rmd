@@ -498,6 +498,35 @@ plotPCA(
   show_hulls = TRUE,
   title = "Square ensemble MDS: Isaiah Dim1 vs Dim2"
 )
+
+
+plotPCA(
+  mds_square_scores,
+  mds_square_variance,
+  x = 1,
+  y = 2,
+  book = "Isaiah",
+  include_books = c("Psalms", "Hosea", "Job", "Proverbs"),
+  show_other_books = TRUE,
+  label = "doc_id",
+  title = "Isaiah with poetic comparison books: Dim2 vs Dim3"
+)
+
+plotPCA(
+  mds_square_scores,
+  mds_square_variance,
+  x = 1,
+  y = 2,
+  book = "Isaiah",
+  include_books = c("Psalms", "Job", "Proverbs", "Hosea"),
+  aggregate_other_books = TRUE,
+  show_other_books = TRUE,
+  show_hulls = TRUE,
+  show_centroids = TRUE,
+  show_labels = TRUE,
+  title = "Isaiah with poetic comparison book centroids: Dim2 vs Dim3"
+)
+
 ```
 
 ```{r square-mds-pc2-pc3}
