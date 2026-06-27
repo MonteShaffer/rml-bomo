@@ -1,0 +1,41 @@
+D&C 101, from 1835 not found in online database
+
+https://doctrineandcovenants.com/sections/1835dcs/section-1/
+
+but is recorded here:
+
+https://www.josephsmithpapers.org/paper-summary/doctrine-and-covenants-1835/259
+
+101
+
+SECTION CI.
+ 
+MARRIAGE.
+
+1 According to the custom of all civilized nations, marriage is regulated by laws and ceremonies: therefore we believe, that all marriages in this church of Christ of Latter Day Saints, should be solemnized in a public meeting, or feast, prepared for that purpose: and that the solemnization should be performed by a presiding high priest, high priest, bishop, elder, or priest, not even prohibiting those persons who are desirous to get married, of being married by other authority. We believe that it is not right to prohibit members of this church from marrying out of the church, if it be their determination so to do, but such persons will be considered weak in the faith of our Lord and Savior Jesus Christ.
+2 Marriage should be celebrated with prayer and thanksgiving; and at the solemnization, the persons to be married, standing together, the man on the right, and the woman on the left, shall be addressed, by the person officiating, as he shall be directed by the holy Spirit; and if there be no legal objections, he shall say, calling each by their names: “You both mutually agree to be each other’s companion, husband and wife, observing the legal rights belonging to this condition; that is, keeping yourselves wholly for each other, and from all others, during your lives.” And when they have answered “Yes,” he shall pronounce them “husband and wife” in the name of the Lord Jesus Christ, and by virtue of the laws of the country and authority vested in him: “may God add his blessings and keep you to fulfill your covenants from henceforth and forever. Amen.”
+3 The clerk of every church should keep a record of all marriages, solemnized in his branch.
+4 All legal contracts of marriage made before a person is baptized into this church, should be held sacred and fulfilled. Inasmuch as this church of Christ has been reproached with the crime of fornication, and polygamy: we declare that we believe, that one man should have one wife; and one woman, but one husband, except in case of death, when either is at liberty to marry again. It is not right to persuade a woman to be baptized contrary to the will of her husband, neither is it lawful to influence her to leave her husband. All children are bound by law to obey their parents; and to influence them to embrace any religious faith, or be baptized, or leave their parents without their consent, is unlawful and unjust. We believe that all persons who exercise control over their fellow [p. 251] beings, and prevent them from embracing the truth, will have to answer for that sin.
+
+
+102
+
+SECTION CII.
+ 
+Of Governments and Laws in General.
+ 
+That our belief, with regard to earthly governments and laws in general, may not be misinterpreted nor misunderstood, we have thought proper to present, at the close of this volume, our opinion concerning the same.
+1 We believe that Governments were instituted of God for the benefit of man, and that he holds men accountable for their acts in relation to them, either in making laws or administering them, for the good and safety of society.
+2 We believe that no Government can exist, in peace, except such laws are framed and held inviolate as will secure to each individual the free exercise of concience, the right and control of property and the protection of life.
+3 We believe that all Governments necessarily require civil officers and magistrates to enforce the laws of the same, and that such as will administer the law in equity and justice should be sought for and upheld by the voice of the people, (if a Republic,) or the will of the Sovereign.
+4 We believe that religion is instituted of God, and that men are amenable to him and to him only for the exercise of it, unless their religious opinion prompts them to infringe upon the rights and liberties of others; but we do not believe that human law has a right to interfere in prescribing rules of worship to bind the consciences of men, nor dictate forms for public or private devotion; that the civil magistrate should restrain crime, but never control conscience; should punish guilt, but never surpress the freedom of the soul.
+5 We believe that all men are bound to sustain and uphold the respective Governments in which they reside, while protected in their inherent and unalienable rights by the laws of such Governments, and that sedition and rebellion are unbecoming every citizen thus protected, and should be punished accordingly; and that all Governments have a right to enact such laws as in their own judgments are best calculated to secure the public interest, at the same time, however, holding sacred the freedom of conscience.
+6 We believe that every man should be honored in his station: rulers and magistrates as such—being placed for the protection of the innocent and the punishment of the guilty; and that to the laws all men owe respect and deference, as without [p. 252] them peace and harmony would be supplanted by anarchy and terror: human laws being instituted for the express purpose of regulating our interests as individuals and nations, between man and man, and divine laws, given of heaven, prescribing rules on spiritual concerns, for faith and worship, both to be answered by man to his Maker.
+7 We believe that Rulers, States and Governments have a right, and are bound to enact laws for the protection of all citizens in the free exercise of their religious belief; but we do not believe that they have a right, in justice, to deprive citizens of this privilege, or proscribe them in their opinions, so long as a regard and reverence is shown to the laws, and such religious opinions do not justify sedition nor conspiracy.
+8 We believe that the commission of crime should be punished according to the nature of the offence: that murder, treason, robbery, theft and the breach of the general peace, in all respects, should be punished according to their criminality and their tendency to evil among men, by the laws of that Government in which the offence is committed: and for the public peace and tranquility, all men should step forward and use their ability in bringing offenders, against good laws, to punishment.
+9 We do not believe it just to mingle religious influence with civil Government, whereby one religious society is fostered and another proscribed in its spiritual privileges, and the individual rights of its members, as citizens, denied.
+10 We believe that all religious societies have a right to deal with their members for disorderly conduct according to the rules and regulations of such societies, provided that such dealing be for fellowship and good standing; but we do not believe that any religious society has authority to try men on the right of property or life, to take from them this world’s goods, or put them in jeopardy either life or limb, neither to inflict any physical punishment upon them,—they can only excommunicate them from their society and withdraw from their fellowship.
+11 We believe that men should appeal to the civil law for redress of all wrongs and grievances, where personal abuse is inflicted, or the right of property or character infringed, where such laws exist as will protect the same; but we believe that all men are justified in defending themselves, their friends and property, and the Government, from the unlawful assaults and encroachments of all persons, in times of exigencies, where immediate appeal cannot be made to the laws, and relief afforded.
+12 We believe it just to preach the gospel to the nations of [p. 253] the earth, and warn the righteous to save themselves from the corruption of the world; but we do not believe it right to interfere with bond-servants, neither preach the gospel to, nor baptize them, contrary to the will and wish of their masters, nor to meddle with, or influence them in the least to cause them to be dissatisfied with their situations in this life, thereby jeopardizing the lives of men: such interference we believe to be unlawful and unjust, and dangerous to the peace of every Government allowing human beings to be held in servitude.
+
+
